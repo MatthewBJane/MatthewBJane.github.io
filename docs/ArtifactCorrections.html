@@ -61,6 +61,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -114,15 +116,810 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#equations-and-code" id="toc-equations-and-code" class="nav-link active" data-scroll-target="#equations-and-code"># Equations and Code</a></li>
+  <li><a href="#contents" id="toc-contents" class="nav-link" data-scroll-target="#contents">Contents</a></li>
+  <li><a href="#i.-key" id="toc-i.-key" class="nav-link" data-scroll-target="#i.-key">I. Key</a></li>
+  <li><a href="#small-samples" id="toc-small-samples" class="nav-link" data-scroll-target="#small-samples">1. Small Samples</a>
+  <ul class="collapse">
+  <li><a href="#small-samples-1" id="toc-small-samples-1" class="nav-link" data-scroll-target="#small-samples-1">1.1 Small Samples</a>
+  <ul class="collapse">
+  <li><a href="#r-correlation-coefficient-r" id="toc-r-correlation-coefficient-r" class="nav-link" data-scroll-target="#r-correlation-coefficient-r">1.1.r Correlation Coefficient (<em>r</em>) <br></a></li>
+  <li><a href="#d-standardized-mean-difference-d" id="toc-d-standardized-mean-difference-d" class="nav-link" data-scroll-target="#d-standardized-mean-difference-d">1.1.d Standardized Mean Difference (<em>d</em>) <br></a></li>
+  </ul></li>
+  <li><a href="#measurement-error" id="toc-measurement-error" class="nav-link" data-scroll-target="#measurement-error"># 2. Measurement Error</a></li>
+  <li><a href="#univariate-measurement-error-in-continuous-variables" id="toc-univariate-measurement-error-in-continuous-variables" class="nav-link" data-scroll-target="#univariate-measurement-error-in-continuous-variables">2.1 Univariate measurement error in continuous variables</a>
+  <ul class="collapse">
+  <li><a href="#r-correlation-coefficient-r-1" id="toc-r-correlation-coefficient-r-1" class="nav-link" data-scroll-target="#r-correlation-coefficient-r-1">2.1.r Correlation Coefficient (<em>r</em>) <br></a></li>
+  <li><a href="#d-standardized-mean-difference-d-1" id="toc-d-standardized-mean-difference-d-1" class="nav-link" data-scroll-target="#d-standardized-mean-difference-d-1">2.1.d Standardized Mean Difference (<em>d</em>) <br></a></li>
+  </ul></li>
+  <li><a href="#bivariate-measurement-error-for-continuous-variables" id="toc-bivariate-measurement-error-for-continuous-variables" class="nav-link" data-scroll-target="#bivariate-measurement-error-for-continuous-variables">2.2 Bivariate measurement error for continuous variables</a>
+  <ul class="collapse">
+  <li><a href="#r-correlation-coefficient-r-2" id="toc-r-correlation-coefficient-r-2" class="nav-link" data-scroll-target="#r-correlation-coefficient-r-2">2.2.r Correlation Coefficient (<em>r</em>) <br></a></li>
+  </ul></li>
+  <li><a href="#misclassification" id="toc-misclassification" class="nav-link" data-scroll-target="#misclassification">2.3 Misclassification</a>
+  <ul class="collapse">
+  <li><a href="#d-standardized-mean-difference-d-2" id="toc-d-standardized-mean-difference-d-2" class="nav-link" data-scroll-target="#d-standardized-mean-difference-d-2">2.3.d Standardized Mean Difference (<em>d</em>) <br></a></li>
+  </ul></li>
+  <li><a href="#univariate-dichotomization-of-naturally-continuous-variables" id="toc-univariate-dichotomization-of-naturally-continuous-variables" class="nav-link" data-scroll-target="#univariate-dichotomization-of-naturally-continuous-variables">2.4 Univariate dichotomization of naturally continuous variables</a>
+  <ul class="collapse">
+  <li><a href="#r-correlation-coefficient-r-3" id="toc-r-correlation-coefficient-r-3" class="nav-link" data-scroll-target="#r-correlation-coefficient-r-3">2.4.r Correlation Coefficient (<em>r</em>) <br></a></li>
+  <li><a href="#d-standardized-mean-difference-d-3" id="toc-d-standardized-mean-difference-d-3" class="nav-link" data-scroll-target="#d-standardized-mean-difference-d-3">2.4.d Standardized Mean Difference (<em>d</em>) <br></a></li>
+  </ul></li>
+  <li><a href="#bivariate-dichotomization-of-naturally-continuous-variables" id="toc-bivariate-dichotomization-of-naturally-continuous-variables" class="nav-link" data-scroll-target="#bivariate-dichotomization-of-naturally-continuous-variables">2.5 Bivariate dichotomization of naturally continuous variables</a>
+  <ul class="collapse">
+  <li><a href="#r-correlation-coefficient-r-4" id="toc-r-correlation-coefficient-r-4" class="nav-link" data-scroll-target="#r-correlation-coefficient-r-4">2.5.r Correlation Coefficient (<em>r</em>) <br></a></li>
+  </ul></li>
+  <li><a href="#range-restriction" id="toc-range-restriction" class="nav-link" data-scroll-target="#range-restriction"># 3. Range Restriction</a></li>
+  <li><a href="#univariate-direct-range-restriction" id="toc-univariate-direct-range-restriction" class="nav-link" data-scroll-target="#univariate-direct-range-restriction">3.1 Univariate Direct Range Restriction</a>
+  <ul class="collapse">
+  <li><a href="#r-correlation-coefficient-r-5" id="toc-r-correlation-coefficient-r-5" class="nav-link" data-scroll-target="#r-correlation-coefficient-r-5">3.1.r Correlation Coefficient (<em>r</em>) <br></a></li>
+  <li><a href="#d-standardized-mean-difference-d-4" id="toc-d-standardized-mean-difference-d-4" class="nav-link" data-scroll-target="#d-standardized-mean-difference-d-4">3.1.d Standardized Mean Difference (<em>d</em>) <br></a></li>
+  </ul></li>
+  <li><a href="#univariate-indirect-range-restriction" id="toc-univariate-indirect-range-restriction" class="nav-link" data-scroll-target="#univariate-indirect-range-restriction">3.2 Univariate Indirect Range Restriction</a>
+  <ul class="collapse">
+  <li><a href="#r-correlation-coefficient-r-6" id="toc-r-correlation-coefficient-r-6" class="nav-link" data-scroll-target="#r-correlation-coefficient-r-6">3.2.r Correlation Coefficient (<em>r</em>) <br></a></li>
+  <li><a href="#d-standardized-mean-difference-d-5" id="toc-d-standardized-mean-difference-d-5" class="nav-link" data-scroll-target="#d-standardized-mean-difference-d-5">3.2.d Standardized Mean Difference (<em>d</em>) <br></a></li>
+  </ul></li>
+  <li><a href="#bivariate-direct-range-restriction" id="toc-bivariate-direct-range-restriction" class="nav-link" data-scroll-target="#bivariate-direct-range-restriction">3.3 Bivariate Direct Range Restriction</a>
+  <ul class="collapse">
+  <li><a href="#r-correlation-coefficient-r-7" id="toc-r-correlation-coefficient-r-7" class="nav-link" data-scroll-target="#r-correlation-coefficient-r-7">3.3.r Correlation Coefficient (<em>r</em>) <br></a></li>
+  </ul></li>
+  <li><a href="#bivariate-indirect-range-restriction" id="toc-bivariate-indirect-range-restriction" class="nav-link" data-scroll-target="#bivariate-indirect-range-restriction">3.4 Bivariate Indirect Range Restriction</a>
+  <ul class="collapse">
+  <li><a href="#r-correlation-coefficient-r-8" id="toc-r-correlation-coefficient-r-8" class="nav-link" data-scroll-target="#r-correlation-coefficient-r-8">3.4.r Correlation Coefficient (<em>r</em>) <br></a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#range-restriction-and-measurement-error" id="toc-range-restriction-and-measurement-error" class="nav-link" data-scroll-target="#range-restriction-and-measurement-error">4. Range Restriction and Measurement Error</a>
+  <ul class="collapse">
+  <li><a href="#univariate-direct-range-restriction-and-measurement-error" id="toc-univariate-direct-range-restriction-and-measurement-error" class="nav-link" data-scroll-target="#univariate-direct-range-restriction-and-measurement-error">4.1 Univariate Direct Range Restriction and Measurement Error</a>
+  <ul class="collapse">
+  <li><a href="#r-correlation-coefficient-r-9" id="toc-r-correlation-coefficient-r-9" class="nav-link" data-scroll-target="#r-correlation-coefficient-r-9">4.1.r Correlation Coefficient (<em>r</em>) <br></a></li>
+  <li><a href="#d-standardized-mean-difference-d-6" id="toc-d-standardized-mean-difference-d-6" class="nav-link" data-scroll-target="#d-standardized-mean-difference-d-6">4.1.d Standardized Mean Difference (<em>d</em>) <br></a></li>
+  </ul></li>
+  <li><a href="#univariate-indirect-range-restriction-and-measurement-error" id="toc-univariate-indirect-range-restriction-and-measurement-error" class="nav-link" data-scroll-target="#univariate-indirect-range-restriction-and-measurement-error">4.2 Univariate Indirect Range Restriction and Measurement Error</a>
+  <ul class="collapse">
+  <li><a href="#r-correlation-coefficient-r-10" id="toc-r-correlation-coefficient-r-10" class="nav-link" data-scroll-target="#r-correlation-coefficient-r-10">4.2.r Correlation Coefficient (<em>r</em>) <br></a></li>
+  <li><a href="#d-standardized-mean-difference-d-7" id="toc-d-standardized-mean-difference-d-7" class="nav-link" data-scroll-target="#d-standardized-mean-difference-d-7">4.2.d Standardized Mean Difference (<em>d</em>) <br></a></li>
+  </ul></li>
+  <li><a href="#bivariate-direct-range-restriction-and-measurement-error" id="toc-bivariate-direct-range-restriction-and-measurement-error" class="nav-link" data-scroll-target="#bivariate-direct-range-restriction-and-measurement-error">4.3 Bivariate Direct Range Restriction and Measurement Error</a>
+  <ul class="collapse">
+  <li><a href="#r-correlation-coefficient-r-11" id="toc-r-correlation-coefficient-r-11" class="nav-link" data-scroll-target="#r-correlation-coefficient-r-11">4.3.r Correlation Coefficient (<em>r</em>) <br></a></li>
+  </ul></li>
+  <li><a href="#bivariate-indirect-range-restriction-and-measurement-error" id="toc-bivariate-indirect-range-restriction-and-measurement-error" class="nav-link" data-scroll-target="#bivariate-indirect-range-restriction-and-measurement-error">4.4 Bivariate Indirect Range Restriction and Measurement Error</a>
+  <ul class="collapse">
+  <li><a href="#r-correlation-coefficient-r-12" id="toc-r-correlation-coefficient-r-12" class="nav-link" data-scroll-target="#r-correlation-coefficient-r-12">4.4.r Correlation Coefficient (<em>r</em>) <br></a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">5. References</a></li>
+  <li><a href="#cite-this-page" id="toc-cite-this-page" class="nav-link" data-scroll-target="#cite-this-page">6. Cite This Page</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 
+<h1 align="center">
+Artifact corrections for effect sizes: equations, code, and interactive app
+</h1>
+<h3 align="center" class="anchored">
+by Matthew B. Jané
+</h3>
+<p>Effect sizes are indices that help researchers, stakeholders, and policymakers understand the relationship between variables and draw meaningful conclusions from data. However, the usefulness of an effect size is only as good as its estimation. To ensure the accuracy of effect size estimates, it is important to mitigate the attenuation induced by various statistical artifacts, such as measurement error and range restriction. This page provides documentation on these artifacts and provides corrections that can be applied to attenuated effect sizes to obtain unbiased estimates of the true population effect size. Equations and R code are provided for each correction. For additional information on these corrections and their application in meta-analysis, consult the book by <a href="https://books.google.com/books?hl=en&amp;lr=&amp;id=IHSBTHEmYNgC&amp;oi=fnd&amp;pg=PR15&amp;dq=hunter+schmidt+correcting+bias&amp;ots=498mfX5IUM&amp;sig=WvGrusLIQNCjb2SQBuTcBqkTjck#v=onepage&amp;q=hunter%20schmidt%20correcting%20bias&amp;f=false">John E. Hunter and Frank L. Schmidt (2004)</a> and the paper by <a href="https://journals.sagepub.com/doi/pdf/10.1177/2515245919885611">Brenton M. Wiernik and Jeffrey A. Dahlke (2019)</a>. The <em>{psychmeta}</em> package <a href="https://doi.org/10.1177/0146621618795933">(Wiernik and Dahlke, 2019)</a> contains many of these corrections with convenient implementation in R.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th># Interactive Visualization</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>To visualize how various statistical artifacts can bias effect size estimates, play around with this shiny app! <strong>Click the image below to open the web application</strong> <br></td>
+</tr>
+<tr class="even">
+<td><a href="https://matthewbjane.shinyapps.io/effect_size_artifact_bias/"><img align="center" src="../images/Page 9.png" width="250" height="250" alt="Artifact Visualizer"></a> <br></td>
+</tr>
+</tbody>
+</table>
+<section id="equations-and-code" class="level2">
+<h2 class="anchored" data-anchor-id="equations-and-code"># Equations and Code</h2>
+<p><br></p>
+</section>
+<section id="contents" class="level1">
+<h1>Contents</h1>
+<p>I. <a href="https://matthewbjane.github.io/artifact-corrections/#1-small-samples">Key</a> 1. <a href="https://matthewbjane.github.io/artifact-corrections/#1-small-samples">Small Samples</a> <br> &nbsp; &nbsp; 1.1 <a href="https://matthewbjane.github.io/artifact-corrections/#11-small-samples">Small Samples</a> <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1.1.r <a href="https://matthewbjane.github.io/artifact-corrections/#11r-correlation-coefficient-r-">Correlation Coefficient (<em>r</em>)</a> <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1.1.d <a href="https://matthewbjane.github.io/artifact-corrections/#11d-standardized-mean-difference-d-">Standardized mean difference (<em>d</em>)</a> <br> 2. <a href="https://matthewbjane.github.io/artifact-corrections/#2-measurement-error">Measurement Error</a> <br> &nbsp; &nbsp; 2.1 <a href="https://matthewbjane.github.io/artifact-corrections/#21-univariate-measurement-error-in-continuous-variables">Univariate measurement error in continuous variables</a> <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2.1.r <a href="https://matthewbjane.github.io/artifact-corrections/#21r-correlation-coefficient-r-">Correlation Coefficient (<em>r</em>)</a> <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2.1.d <a href="https://matthewbjane.github.io/artifact-corrections/#21d-standardized-mean-difference-d-">Standardized mean difference (<em>d</em>)</a> <br> &nbsp; &nbsp; 2.2 <a href="https://matthewbjane.github.io/artifact-corrections/#22-bivariate-measurement-error-for-continuous-variables">Bivariate measurement error in continuous variables</a> <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2.2.r <a href="https://matthewbjane.github.io/artifact-corrections/#22r-correlation-coefficient-r-">Correlation Coefficient (<em>r</em>)</a> <br> &nbsp; &nbsp; 2.3 <a href="https://matthewbjane.github.io/artifact-corrections/#23-misclassification">Misclassification</a> <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2.3.d <a href="https://matthewbjane.github.io/artifact-corrections/#23d-standardized-mean-difference-d-">Standardized mean difference (<em>d</em>)</a> <br> &nbsp; &nbsp; 2.4 <a href="https://matthewbjane.github.io/artifact-corrections/#24-univariate-dichotomization-of-naturally-continuous-variables">Univariate dichotimization of naturally continuous variables</a> <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2.4.r <a href="https://matthewbjane.github.io/artifact-corrections/#24r-correlation-coefficient-r-">Correlation Coefficient (<em>r</em>)</a> <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2.4.d <a href="https://matthewbjane.github.io/artifact-corrections/#24d-standardized-mean-difference-d-">Standardized mean difference (<em>d</em>)</a> <br> &nbsp; &nbsp; 2.5 <a href="https://matthewbjane.github.io/artifact-corrections/#25-bivariate-dichotomization-of-naturally-continuous-variables">Bivariate dichotimization of naturally continuous variables</a> <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2.5.r <a href="https://matthewbjane.github.io/artifact-corrections/#25r-correlation-coefficient-r-">Correlation Coefficient (<em>r</em>)</a> <br> 3. <a href="https://matthewbjane.github.io/artifact-corrections/#3-range-restriction">Range Restriction</a> <br> &nbsp; &nbsp; 3.1 <a href="https://matthewbjane.github.io/artifact-corrections/#31-univariate-direct-range-restriction">Univariate Direct Range Restriction</a> <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 3.1.r <a href="https://matthewbjane.github.io/artifact-corrections/#31r-correlation-coefficient-r-">Correlation Coefficient (<em>r</em>)</a> <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 3.1.d <a href="https://matthewbjane.github.io/artifact-corrections/#31d-standardized-mean-difference-d-">Standardized mean difference (<em>d</em>)</a> <br> &nbsp; &nbsp; 3.2 <a href="https://matthewbjane.github.io/artifact-corrections/#32-univariate-indirect-range-restriction">Univariate Indirect Range Restriction</a> <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 3.2.r <a href="https://matthewbjane.github.io/artifact-corrections/#32r-correlation-coefficient-r-">Correlation Coefficient (<em>r</em>)</a> <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 3.2.d <a href="https://matthewbjane.github.io/artifact-corrections/#32d-standardized-mean-difference-d-">Standardized mean difference (<em>d</em>)</a> <br> &nbsp; &nbsp; 3.3 <a href="https://matthewbjane.github.io/artifact-corrections/#33-bivariate-direct-range-restriction">Bivariate Direct Range Restriction</a> <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 3.3.r <a href="https://matthewbjane.github.io/artifact-corrections/#33r-correlation-coefficient-r-">Correlation Coefficient (<em>r</em>)</a> <br> &nbsp; &nbsp; 3.4 <a href="https://matthewbjane.github.io/artifact-corrections/#34-bivariate-indirect-range-restriction">Bivariate Indirect Range Restriction</a> <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 3.4.r <a href="https://matthewbjane.github.io/artifact-corrections/#34r-correlation-coefficient-r-">Correlation Coefficient (<em>r</em>)</a> <br> 4. <a href="https://matthewbjane.github.io/artifact-corrections/#4-range-restriction-and-measurement-error">Range Restriction and Measurement Error</a> <br> &nbsp; &nbsp; 4.1 <a href="https://matthewbjane.github.io/artifact-corrections/#41-univariate-direct-range-restriction-and-measurement-error">Univariate Direct Range Restriction with Measurement Error</a> <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 4.1.r <a href="https://matthewbjane.github.io/artifact-corrections/#41r-correlation-coefficient-r-">Correlation Coefficient (<em>r</em>)</a> <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 4.1.d <a href="https://matthewbjane.github.io/artifact-corrections/#41d-standardized-mean-difference-d-">Standardized mean difference (<em>d</em>)</a> <br> &nbsp; &nbsp; 4.2 <a href="https://matthewbjane.github.io/artifact-corrections/#42-univariate-indirect-range-restriction-and-measurement-error">Univariate Indirect Range Restriction with Measurement Error</a> <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 4.2.r <a href="https://matthewbjane.github.io/artifact-corrections/#42r-correlation-coefficient-r-">Correlation Coefficient (<em>r</em>)</a> <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 4.2.d <a href="https://matthewbjane.github.io/artifact-corrections/#42d-standardized-mean-difference-d-">Standardized mean difference (<em>d</em>)</a> <br> &nbsp; &nbsp; 4.3 <a href="https://matthewbjane.github.io/artifact-corrections/#43-bivariate-direct-range-restriction-and-measurement-error">Bivariate Direct Range Restriction with Measurement Error</a> <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 4.3.r <a href="https://matthewbjane.github.io/artifact-corrections/#43r-correlation-coefficient-r-">Correlation Coefficient (<em>r</em>)</a> <br> &nbsp; &nbsp; 4.4 <a href="https://matthewbjane.github.io/artifact-corrections/#44-bivariate-indirect-range-restriction-and-measurement-error">Bivariate Indirect Range Restriction with Measurement Error</a> <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 4.4.r <a href="https://matthewbjane.github.io/artifact-corrections/#44r-correlation-coefficient-r-">Correlation Coefficient (<em>r</em>)</a> <br> 5. <a href="https://matthewbjane.github.io/artifact-corrections/#5-references">References</a> <br> 6. <a href="https://matthewbjane.github.io/artifact-corrections/#6-cite-this-page">Cite This Page</a> <br></p>
+<p><br></p>
+</section>
+<section id="i.-key" class="level1">
+<h1>I. Key</h1>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Math Symbol</th>
+<th>Code Symbol</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(r\)</span></td>
+<td><code>r</code></td>
+<td>Observed correlation</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\hat{\rho}\)</span></td>
+<td><code>rho</code></td>
+<td>Estimated true population correlation</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(d\)</span></td>
+<td><code>d</code></td>
+<td>Observed standardized mean difference</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\hat{\delta}\)</span></td>
+<td><code>delta</code></td>
+<td>Estimated true standardized mean difference</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(se_{r}\)</span></td>
+<td><code>SEr</code></td>
+<td>Standard error of observed correlation</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(se_{\hat{\rho}}\)</span></td>
+<td><code>SErho</code></td>
+<td>Standard error of estimated true population correlation</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(se_{d}\)</span></td>
+<td><code>SErho</code></td>
+<td>standard error of observed standardized mean difference</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(se_{\hat{\delta}}\)</span></td>
+<td><code>SEdelta</code></td>
+<td>Standard error of estimated true population standardized mean difference</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(n\)</span></td>
+<td><code>n</code></td>
+<td>sample size of study sample</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(n_{\mathrm{ref}}\)</span></td>
+<td><code>n_ref</code></td>
+<td>sample size of sample from reference population</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(r_{xx'}, r_{yy'}\)</span></td>
+<td><code>rxx, ryy</code></td>
+<td>reliability coefficients of x and y respectively</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\phi_{gG}\)</span></td>
+<td><code>phi</code></td>
+<td>Phi coefficient between observed group membership and actual (true) group membership</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(u_{x}, u_{y}\)</span></td>
+<td><code>ux, uy</code></td>
+<td>u-ratios indicating range restriction/enhancement. The ratio of the study’s sample standard deviation divided by the population standard deviation</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(r_{sx}, r_{sy}\)</span></td>
+<td><code>rsx, rsy</code></td>
+<td>Crrelation between x or y and the selection variable</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(p_{g}\)</span></td>
+<td><code>pg</code></td>
+<td>Observed proportion of individuals in either group</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(p_{G}\)</span></td>
+<td><code>pG</code></td>
+<td>True proportion of individuals in either group</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(p_{mis}\)</span></td>
+<td><code>p_mis</code></td>
+<td>Proportion of individuals misclassified (observed group membership does not match true group membership)</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+</section>
+<section id="small-samples" class="level1">
+<h1>1. Small Samples</h1>
+<p>Effect sizes estimated from small samples often show systematic bias. The following corrections for <em>r</em> and <em>d</em> are both very close approximations to the more complex unbiased estimators that are much more computatonally expensive. It is often suggested that they should only be applied in situations with low sample sizes (e.g., <span class="math inline">\(n &lt; 20\)</span>), however these corrections can be applied at any sample size. This is because <span class="math inline">\(n\)</span> is built into the correction factor therefore the magnitude of the correction is negligable in large sample sizes. The following corrections can be applied prior any of the other corrections on this page.</p>
+<section id="small-samples-1" class="level2">
+<h2 class="anchored" data-anchor-id="small-samples-1">1.1 Small Samples</h2>
+<p>Below are the correction factors that may be applied to the correlation coefficient (<em>r</em>) and the standardized mean difference (<em>d</em>). Note that the correction for <em>r</em> is not conventionally used as it tends to be a very small adjustment.</p>
+<section id="r-correlation-coefficient-r" class="level3">
+<h3 class="anchored" data-anchor-id="r-correlation-coefficient-r">1.1.r Correlation Coefficient (<em>r</em>) <br></h3>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Point Estimate</em></strong> <br> &nbsp;&nbsp;&nbsp; <span class="math inline">\(\displaystyle{ \hat{\rho} = r \cdot \left( 1 + \frac{1-r^2}{2(n-4)} \right) }\)</span> <br></p>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Standard Error</em></strong> <br> &nbsp;&nbsp;&nbsp; <span class="math inline">\(\displaystyle{ se_{\hat{\rho}} = se_{r} \cdot \left( 1 + \frac{1-r^2}{2(n-4)} \right)}\)</span></p>
+<pre><code># Parameters needed
+r =  # observed correlation between x and y
+SEr =  # standard error of observed correlation between x and y
+n =  # sample size
+
+# Point Estimate
+rho = r * (1 + (1 - r^2) / (2 * (n - 4)))
+
+# Standard Error
+SErho = SEr * (1 + (1 - r^2) / (2 * (n - 4)))</code></pre>
+</section>
+<section id="d-standardized-mean-difference-d" class="level3">
+<h3 class="anchored" data-anchor-id="d-standardized-mean-difference-d">1.1.d Standardized Mean Difference (<em>d</em>) <br></h3>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Point Estimate</em></strong> <br> &nbsp;&nbsp;&nbsp; <span class="math inline">\(\displaystyle{ \hat{\delta} = d \left( 1-\frac{3}{4n-9}\right) }\)</span> <br></p>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Standard Error</em></strong> <br> &nbsp;&nbsp;&nbsp; <span class="math inline">\(\displaystyle{ se_{\hat{\delta}} = se_{d}\left( 1-\frac{3}{4n-9}\right) }\)</span></p>
+<pre><code># Parameters needed
+d =  # observed standardized mean difference
+SEd =  # standard error of observed standardized mean difference
+n =  # total sample size
+
+# Point Estimate
+delta = d * (1 - 3 / (4 * n - 9))
+
+# Standard Error
+SEdelta = SEd * (1 - 3 / (4 * n - 9))</code></pre>
+<p><br></p>
+</section>
+</section>
+<section id="measurement-error" class="level2">
+<h2 class="anchored" data-anchor-id="measurement-error"># 2. Measurement Error</h2>
+<p>Measurement error is ubiquitous in science and it can cause severe bias in standardized parameter estimates. Measurement error is often thought of as random error/noise, however this is generally not the case. Measurement error variance can be attributed to many factors such as transient error (e.g., fluctuations in fatigue or mood), test item interpretations (e.g., varied interpretation of the levels in a Likert scale), extraneous response biases (e.g., participants’ tendency to select socially desirable options). Different estimators of reliability coefficients will capture these different sources of measurement error. For example, test-retest reliability will capture various transient errors that will not be captured by an internal consistency reliability coefficient (i.e., Cronbach’s alpha, McDonald’s omega). To avoid over/under-correcting effect size estimates, researchers should take great care in selecting the appropriate reliability coefficient for their research design.</p>
+</section>
+<section id="univariate-measurement-error-in-continuous-variables" class="level2">
+<h2 class="anchored" data-anchor-id="univariate-measurement-error-in-continuous-variables">2.1 Univariate measurement error in continuous variables</h2>
+<p>Measurement error will likely exist in both variables under invistigation (i.e., <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>), however applying a correction may depend on the research question. For example, if you would like to know how related two psychological constructs are, correcting both variables for measurement error is appropriate, however it may not be appropriate if you would like to use one variable to predict the other (e.g., exam scores to predict college grades). Since observed scores are all that is available to us, therefore correcting the predictor variable for measurement error will not capture its real world predictive utility.</p>
+<section id="r-correlation-coefficient-r-1" class="level3">
+<h3 class="anchored" data-anchor-id="r-correlation-coefficient-r-1">2.1.r Correlation Coefficient (<em>r</em>) <br></h3>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Point Estimate</em></strong> <br> &nbsp;&nbsp;&nbsp; <span class="math inline">\(\displaystyle{ \hat{\rho} = \frac{r}{\sqrt{r_{xx'}}} }\)</span> <br></p>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Standard Error</em></strong> <br> &nbsp;&nbsp;&nbsp; <span class="math inline">\(\displaystyle{ se_{\hat{\rho}} = \frac{se_{r}}{\sqrt{r_{xx'}}} }\)</span> <br></p>
+<pre><code># Parameters needed
+r =  # observed correlation between x and y
+SEr =  # standard error of observed correlation between x and y
+rxx =  # reliability of x within sample
+
+# Point Estimate
+rho = r / sqrt(ryy)
+
+# Standard Error
+SErho = SEr / sqrt(ryy)</code></pre>
+</section>
+<section id="d-standardized-mean-difference-d-1" class="level3">
+<h3 class="anchored" data-anchor-id="d-standardized-mean-difference-d-1">2.1.d Standardized Mean Difference (<em>d</em>) <br></h3>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Point Estimate</em></strong> <br> &nbsp;&nbsp;&nbsp; <span class="math inline">\(\displaystyle{ \hat{\delta} = \frac{d}{\sqrt{r_{yy'}}} }\)</span> <br></p>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Standard Error</em></strong> <br> &nbsp;&nbsp;&nbsp; <span class="math inline">\(\displaystyle{ se_{\hat{\delta}} = \frac{se_{d}}{\sqrt{r_{yy'}}} }\)</span></p>
+<pre><code># Parameters needed
+d =  # observed standardized mean difference
+SEd =  # standard error of observed standardized mean difference
+ryy =  # reliability of y within sample
+
+# Point Estimate
+delta = d / sqrt(ryy)
+
+# Standard Error
+SEdelta = SEd / sqrt(ryy)</code></pre>
+</section>
+</section>
+<section id="bivariate-measurement-error-for-continuous-variables" class="level2">
+<h2 class="anchored" data-anchor-id="bivariate-measurement-error-for-continuous-variables">2.2 Bivariate measurement error for continuous variables</h2>
+<p>Unreliability of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> will bias a pearson correlation coefficient by adding random, uncorrelated noise into the bivariate relationship. If the goal is to understand the relationship between the true, uncontaminated scores between two things, then measurement error on both variables should be corrected for.</p>
+<section id="r-correlation-coefficient-r-2" class="level3">
+<h3 class="anchored" data-anchor-id="r-correlation-coefficient-r-2">2.2.r Correlation Coefficient (<em>r</em>) <br></h3>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Point Estimate</em></strong> <br> &nbsp;&nbsp;&nbsp; <span class="math inline">\(\displaystyle{ \hat{\rho} = \frac{r}{\sqrt{r_{xx'} r_{yy'} }} }\)</span> <br></p>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Standard Error</em></strong> <br> &nbsp;&nbsp;&nbsp; <span class="math inline">\(\displaystyle{ se_{\hat{\rho}} = \frac{se_{r}}{\sqrt{r_{xx'} r_{yy'} }} }\)</span></p>
+<pre><code># Parameters needed
+r =  # observed correlation
+SEr =  # standard error of observed correlation
+rxx =  # reliability of x within sample
+ryy =  # reliability of y within sample
+
+# Point Estimate
+rho = r / sqrt(ryy * rxx)
+
+# Standard Error
+SErho = SEr / sqrt(rxx * ryy)</code></pre>
+</section>
+</section>
+<section id="misclassification" class="level2">
+<h2 class="anchored" data-anchor-id="misclassification">2.3 Misclassification</h2>
+<p>Misclassification encompasses measurement errors for categorical variables. For example, our ability to identify individuals with major depressive disorder is only as accurate as our measurement of depression, therefore if the measure for depression contains measurement error then so will the assignment of individuals in the major depressive group and the control group (i.e., some people with major depressive disorder will be mis-labeled as a control and vice versa). To correct for group misclassification, you must first have an estimate of the phi coefficient (<span class="math inline">\(\phi_{gG}\)</span>) from the 2x2 contingency table comparing actual vs observed group membership. Phi can also be approximated directly from the misclassification rate (<span class="math inline">\(p_{mis}\)</span>), however this may cause undercorrections when misclassification rates differ between groups.</p>
+<section id="d-standardized-mean-difference-d-2" class="level3">
+<h3 class="anchored" data-anchor-id="d-standardized-mean-difference-d-2">2.3.d Standardized Mean Difference (<em>d</em>) <br></h3>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Point Estimate</em></strong> <br></p>
+<ul>
+<li><p>Step 1. Calculate <span class="math inline">\(\phi\)</span> coefficient from the contingency table between actual group membership (<em>G</em>) and observed group membership (<em>g</em>): <br> <span class="math inline">\(\displaystyle{ \phi_{gG} = \sqrt{\frac{\chi_{gG}^{2}}{n}} }\)</span> &nbsp; <em>or</em> &nbsp; <span class="math inline">\(\displaystyle{\phi_{gG} \approx 1 - 2 \cdot p_{mis} }\)</span> <br></p></li>
+<li><p>Step 2. Transform <em>d</em> to <em>r</em> using probability of observed group membership (<span class="math inline">\(p_g\)</span>): <br> <span class="math inline">\(\displaystyle{ r = \frac{d}{d^2 + \sqrt{\frac{1}{p_g ( 1-p_g )}}} }\)</span> <br></p></li>
+<li><p>Step 3. Dissatenuate correlation for misclassification: <br> <span class="math inline">\(\displaystyle{ \hat{\rho} = \frac{r}{\phi_{gG}} }\)</span> <br></p></li>
+<li><p>Step 4. Back-transform <span class="math inline">\(\hat{\rho}\)</span> to <span class="math inline">\(\hat{\delta}\)</span> using probability of actual group membership (<span class="math inline">\(p_G\)</span>). Observed group membership (<span class="math inline">\(p_g\)</span>) can be used instead assuming equal misclassification rate between groups: <br> <span class="math inline">\(\displaystyle{ \hat{\delta} = \frac{\hat{\rho}}{p_G (1-p_G )(1-\hat{\rho}^2)} }\)</span> <br></p></li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Standard Error</em></strong> <br></p>
+<p>&nbsp;&nbsp;&nbsp; <span class="math inline">\(\displaystyle{ se_{\hat{\delta}} = \frac{se_d \left( \frac{\hat{\rho}}{r} \right) }{\left( 1+d^2 p_g\[1-p_g\] \right)\sqrt{\left(d^2 + \frac{1}{p_g(1-p_g)}\right) p_G (1-p_G)(1-\hat{\rho}^2)^3} } }\)</span></p>
+<pre><code># Parameters needed
+d =  # observed standardized mean difference
+SEd =  # standard error of observed standardized mean difference
+rxx =  # reliability of x within sample
+ry =  # reliability of y within sample
+pg =  # observed proportion of individuals in group 1 or 2
+pG =  # actual proportion of individuals in group 1 or 2 (pG=pg when misclassification rate is equal among groups)
+n =  # sample size
+chi2 =  chi squared statistic for actual vs observed group contingency table
+# p_mis =  # misclassification rate (only if alternative step 1 is used)
+
+# Point Estimate
+phi = sqrt(chi2 / n)                           # step 1
+# phi = 1 - 2 * p_mis                          # step 1 (assume equal misclassification)
+r = d / sqrt(1 / (pg * (1 - pg)) )             # step 2
+rho = r / phi                                  # step 3
+delta = rho / ( pG * (1 - pG) * (1 - rho^2) )  # step 4
+
+# Standard Error
+SEdelta = SEd * (rho / r) / ( (1 + d^2 * pg * (1 - pg)) * sqrt(pG * (1 - pG) * (1 - rho^2)^3) )</code></pre>
+</section>
+</section>
+<section id="univariate-dichotomization-of-naturally-continuous-variables" class="level2">
+<h2 class="anchored" data-anchor-id="univariate-dichotomization-of-naturally-continuous-variables">2.4 Univariate dichotomization of naturally continuous variables</h2>
+<p>In some cases, researchers may categorize naturally continuous variables into two groups in order to facilitate interpretation or to perform specific statistical analyses. For example, congenital amusia, also known as tone deafness, is often diagnosed by scoring below a predetermined cutoff in a pitch or melodic discrimination task. This cutoff is arbitrary (although potentially useful) since pitch discrimination ability typically follows a normal distribution. Before someone can adjust the effect sizes for this artificial dichotomization, it is necessary to determine the proportions of participants above or below the cutoff (<span class="math inline">\(p_x\)</span>) as well as the cutoff value (<span class="math inline">\(c_{x}\)</span>), which can be estimated using the quantile function of a standard normal distribution at <span class="math inline">\(p_{x}\)</span>.</p>
+<section id="r-correlation-coefficient-r-3" class="level3">
+<h3 class="anchored" data-anchor-id="r-correlation-coefficient-r-3">2.4.r Correlation Coefficient (<em>r</em>) <br></h3>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Point Estimate</em></strong> <br> &nbsp;&nbsp;&nbsp; Note: <span class="math inline">\(\Phi\)</span> indicates the normal ordinate of a standard normal distribution <br> &nbsp;&nbsp;&nbsp; <span class="math inline">\(\displaystyle{ \hat{\rho} = \frac{r\sqrt{p_x(1-p_x)}}{\Phi(c_x)} }\)</span> <br></p>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Standard Error</em></strong> <br> &nbsp;&nbsp;&nbsp; <span class="math inline">\(\displaystyle{ se_{\hat{\rho}} = \frac{se_{r}\sqrt{p_x(1-p_x)}}{\Phi(c_x)} }\)</span></p>
+<pre><code># Parameters
+r =  # observed correlation
+SEr =  # standard error of observed correlation
+px =  # proportion of individuals in upper or lower group of X
 
 
+# Point Estimate
+cx = qnorm(px)                               # Find cut point 
+rho = r * sqrt(px * (1 - px)) / dnorm(cx)
+
+# Standard Error
+SErho = SEr * sqrt(px * (1 - px)) / dnorm(cx)</code></pre>
+</section>
+<section id="d-standardized-mean-difference-d-3" class="level3">
+<h3 class="anchored" data-anchor-id="d-standardized-mean-difference-d-3">2.4.d Standardized Mean Difference (<em>d</em>) <br></h3>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Point Estimate</em></strong> <br> - Step 1. Transform <em>d</em> to <em>r</em> using probability of observed group membership (<span class="math inline">\(p_g\)</span>): <br> <span class="math inline">\(\displaystyle{ r = \frac{d}{d^2 + \sqrt{\frac{1}{p_g ( 1-p_g )}}} }\)</span> <br></p>
+<ul>
+<li><p>Step 2. Disattenuate correlation for artificial dichotomization: <br> <span class="math inline">\(\displaystyle{ \displaystyle{ \hat{\rho} = \frac{r\sqrt{p_x(1-p_x)}}{\Phi(c_x)} } }\)</span> <br></p></li>
+<li><p>Step 3. Back-transform <span class="math inline">\(\hat{\rho}\)</span> to <span class="math inline">\(\hat{\delta}\)</span> using probability of actual group membership (<span class="math inline">\(p_G\)</span>). Observed group membership (<span class="math inline">\(p_g\)</span>) can be used instead assuming equal misclassification rate between groups: <br> <span class="math inline">\(\displaystyle{ \hat{\delta} = \frac{\hat{\rho}}{p_G (1-p_G )(1-\hat{\rho}^2)} }\)</span> <br></p></li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Standard Error</em></strong> <br></p>
+<p>&nbsp;&nbsp;&nbsp; <span class="math inline">\(\displaystyle{ se_{\hat{\delta}} = \frac{se_d \left( \frac{\hat{\rho}}{r} \right) }{\left( 1+d^2 p_g\[1-p_g\] \right)\sqrt{\left(d^2 + \frac{1}{p_g(1-p_g)}\right) p_G (1-p_G)(1-\hat{\rho}^2)^3} } }\)</span></p>
+<pre><code># Parameters
+d =  # observed standardized mean difference
+SEd =  # standard error of observed standardized mean difference
+px =  # proportion of individuals in upper or lower group of X
+pg =  # observed proportion of individuals in group 1 or 2
+pG =  # actual proportion of individuals in group 1 or 2 (pG=pg when misclassification rate is equal among groups)
+
+# Point Estimate
+cx = qnorm(px)                                    # Find cut point
+r = d / sqrt(1 / (pg * (1 - pg)) )                # step 1
+rho = r * sqrt(px * (1 - px)) / dnorm(cx)         # step 2
+delta = rho / ( pG * (1 - pG) * (1 - rho^2) )     # step 3
+
+# Standard Error
+SEdelta = SEd * (rho / r) / ( (1 + d^2 * pg * (1 - pg)) * sqrt(pG * (1 - pG) * (1 - rho^2)^3) )</code></pre>
+</section>
+</section>
+<section id="bivariate-dichotomization-of-naturally-continuous-variables" class="level2">
+<h2 class="anchored" data-anchor-id="bivariate-dichotomization-of-naturally-continuous-variables">2.5 Bivariate dichotomization of naturally continuous variables</h2>
+<p>I somewhat rarer circumstances, researchers may dichotomize both x and y variables. This will attenuate correlation coefficients more than usual. If a tetrachoric correlation is available, this is more analogous to a pearson correlation coefficient than the correction below.</p>
+<section id="r-correlation-coefficient-r-4" class="level3">
+<h3 class="anchored" data-anchor-id="r-correlation-coefficient-r-4">2.5.r Correlation Coefficient (<em>r</em>) <br></h3>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Point Estimate</em></strong> <br> &nbsp;&nbsp;&nbsp; <em>Note:</em> <span class="math inline">\(\Phi\)</span> <em>indicates the normal ordinate of a standard normal distribution</em> <br> &nbsp;&nbsp;&nbsp; <span class="math inline">\(\displaystyle{ \hat{\rho} = \frac{r\sqrt{p_x p_y (1-p_x) (1-p_y)}}{\Phi(c_x)\Phi(c_y)} }\)</span> <br></p>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Standard Error</em></strong> <br> &nbsp;&nbsp;&nbsp; <span class="math inline">\(\displaystyle{ se_{\hat{\rho}} = \frac{se_{r}\sqrt{p_x p_y(1-p_x)(1-p_y)}}{\Phi(c_x)\Phi(c_y)} }\)</span></p>
+<pre><code># Parameters
+r =  # observed correlation
+SEr =  # standard error of observed correlation
+px =  # proportion of individuals in upper or lower group of X
+py =  # proportion of individuals in upper or lower group of Y
+pg =  # observed proportion of individuals in group 1 or 2
+pG =  # actual proportion of individuals in group 1 or 2 (pG=pg when misclassification rate is equal among groups)
+
+# Point Estimate
+cx = qnorm(px)   # Find cut point on Y variable 
+cy = qnorm(py)   # Find cut point on Y variable
+rho = r * sqrt(px * py * (1 - px) * (1 - py) ) / (dnorm(cx)*dnorm(cy))
+
+# Standard Error
+SErho = SEr * sqrt(px * py * (1 - px) * (1 - py) ) / (dnorm(cx)*dnorm(cy))</code></pre>
+</section>
+</section>
+<section id="range-restriction" class="level2">
+<h2 class="anchored" data-anchor-id="range-restriction"># 3. Range Restriction</h2>
+<p>Range restriction is a phenomenon that occurs when the variability in a sample is limited compared to the larger population it aims to represent. This limitation can lead to biased estimates of effect size. For example, in the context of college admissions, the SAT is frequently utilized as a factor in the selection process. Consequently, a sample of admitted college students may exhibit less variation in SAT scores compared to the entire pool of applicants. When studying the SAT’s predictive ability for first-year GPA, this range restriction can cause an underestimation of the correlation. Correction formulas have been developed to mitigate this issue.</p>
+</section>
+<section id="univariate-direct-range-restriction" class="level2">
+<h2 class="anchored" data-anchor-id="univariate-direct-range-restriction">3.1 Univariate Direct Range Restriction</h2>
+<p>In certain situations, the selection of participants can be identical to one of the variables of interest. For instance, if a study is investigating the correlation between school grades and IQ in students with an intellectual disability, and the diagnosis is defined as having an IQ score of less than 70, then the sample would exhibit direct range restriction.</p>
+<section id="r-correlation-coefficient-r-5" class="level3">
+<h3 class="anchored" data-anchor-id="r-correlation-coefficient-r-5">3.1.r Correlation Coefficient (<em>r</em>) <br></h3>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Point Estimate</em></strong> <br> &nbsp;&nbsp;&nbsp; <span class="math inline">\(\displaystyle{ \hat{\rho} = \frac{r}{u_x \sqrt{r^2 \left(\frac{1}{u_x^2} - 1\right) +1}} }\)</span> <br></p>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Standard Error</em></strong> <br> &nbsp;&nbsp;&nbsp; <span class="math inline">\(\displaystyle{ se_{\hat{\rho}} = \frac{se_r}{u_x \sqrt{r^2 \left(\frac{1}{u_x^2} - 1\right) +1}} }\)</span> <br></p>
+<pre><code># Parameters
+r =  # observed correlation
+SEr =  # standard error of observed correlation
+ux =  # ratio of observed standard deviation to reference standard deviation (ux = SDsample/SDreference)
+
+# Point Estimate
+rho = r / (ux * sqrt( r^2 * (1/ux^2 - 1) + 1))
+
+# Standard Error
+SErho = SEr / (ux * sqrt( r^2 * (1/ux^2 - 1) + 1))</code></pre>
+</section>
+<section id="d-standardized-mean-difference-d-4" class="level3">
+<h3 class="anchored" data-anchor-id="d-standardized-mean-difference-d-4">3.1.d Standardized Mean Difference (<em>d</em>) <br></h3>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Point Estimate</em></strong> <br></p>
+<ul>
+<li><p>Step 1. Transform <em>d</em> to <em>r</em> using probability of observed group membership (<span class="math inline">\(p_g\)</span>): <br> <span class="math inline">\(\displaystyle{ r = \frac{d}{d^2 + \sqrt{\frac{1}{p_g ( 1-p_g )}}} }\)</span> <br></p></li>
+<li><p>Step 2. Correct <em>r</em> for direct range restriction: <br> <span class="math inline">\(\displaystyle{ \hat{\rho} = \frac{r}{u_x \sqrt{r^2 \left(\frac{1}{u_x^2} - 1\right) +1}} }\)</span> <br></p></li>
+<li><p>Step 3. Back-transform <span class="math inline">\(\hat{\rho}\)</span> to <span class="math inline">\(\hat{\delta}\)</span> using probability of actual group membership (<span class="math inline">\(p_G\)</span>). Observed group membership (<span class="math inline">\(p_g\)</span>) can be used instead assuming equal misclassification rate between groups: <br> <span class="math inline">\(\displaystyle{ \hat{\delta} = \frac{\hat{\rho}}{p_G (1-p_G )(1-\hat{\rho}^2)} }\)</span> <br></p></li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Standard Error</em></strong> <br></p>
+<p>&nbsp;&nbsp;&nbsp; <span class="math inline">\(\displaystyle{ se_{\hat{\delta}} = \frac{se_d \left( \frac{\hat{\rho}}{r} \right) }{\left( 1+d^2 p_g\[1-p_g\] \right)\sqrt{\left(d^2 + \frac{1}{p_g(1-p_g)}\right) p_G (1-p_G)(1-\hat{\rho}^2)^3} } }\)</span></p>
+<pre><code># Parameters
+d =  # observed correlation
+SEd =  # standard error of observed correlation
+ux =  # ratio of observed standard deviation to reference standard deviation (ux = SDsample/SDreference)
+pg =  # observed proportion of individuals in group 1 or 2
+pG =  # actual proportion of individuals in group 1 or 2 (pG=pg when misclassification rate is equal among groups)
+
+# Point Estimate
+r = d / sqrt(1 / (pg * (1 - pg)) )                # step 1
+rho = r / (ux * sqrt( r^2 * (1/ux^2 - 1) + 1))    # step 2
+delta = rho / ( pG * (1 - pG) * (1 - rho^2) )     # step 3
+
+# Standard Error
+SEdelta = SEd * (rho / r) / ( (1 + d^2 * pg * (1 - pg)) * sqrt(pG * (1 - pG) * (1 - rho^2)^3) )</code></pre>
+</section>
+</section>
+<section id="univariate-indirect-range-restriction" class="level2">
+<h2 class="anchored" data-anchor-id="univariate-indirect-range-restriction">3.2 Univariate Indirect Range Restriction</h2>
+<p>When the selection process is correlated with one of the variables of interest then the resulting sample with have a reduced variance due to indirect range restriction. For example, suppose a company is hiring employees based on their performance in a test that is correlated with their IQ. If the company only hires employees who score above a certain threshold on the test, then the range of IQ scores in the selected sample will be indirectly restricted. This is because the IQ scores of the selected employees will be higher than the IQ scores of the general population due to the correlation between the test scores and IQ.</p>
+<section id="r-correlation-coefficient-r-6" class="level3">
+<h3 class="anchored" data-anchor-id="r-correlation-coefficient-r-6">3.2.r Correlation Coefficient (<em>r</em>) <br></h3>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Point Estimate</em></strong> <br></p>
+<p>&nbsp;&nbsp;&nbsp; <span class="math inline">\(\displaystyle{ \hat{\rho} = \frac{r}{\sqrt{r^2 + u_x^2 (1 - r^2)}} }\)</span> <br></p>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Standard Error</em></strong> <br> &nbsp;&nbsp;&nbsp; <span class="math inline">\(\displaystyle{se_{\rho} = \frac{se_{r}}{\sqrt{r^2 + u_x^2 (1 - r^2)}} }\)</span> <br></p>
+<pre><code># Parameters
+r =  # observed correlation
+SEr =  # standard error of observed correlation
+ux =  # ratio of observed standard deviation to reference standard deviation (ux = SDsample/SDreference)
+
+# Point Estimate
+rho = r / sqrt( r^2 + ux^2 * (1 - r^2))
+
+# Standard Error
+SErho = SEr / sqrt( r^2 + ux^2 * (1 - r^2))</code></pre>
+</section>
+<section id="d-standardized-mean-difference-d-5" class="level3">
+<h3 class="anchored" data-anchor-id="d-standardized-mean-difference-d-5">3.2.d Standardized Mean Difference (<em>d</em>) <br></h3>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Point Estimate</em></strong> <br></p>
+<ul>
+<li><p>Step 1. Transform <em>d</em> to <em>r</em> using probability of observed group membership (<span class="math inline">\(p_g\)</span>): <br> <span class="math inline">\(\displaystyle{ r = \frac{d}{d^2 + \sqrt{\frac{1}{p_g ( 1-p_g )}}} }\)</span> <br></p></li>
+<li><p>Step 2. Correct <em>r</em> for direct range restriction: <br> <span class="math inline">\(\displaystyle{ \hat{\rho} = \frac{r}{\sqrt{r^2 + u_x^2 (1 - r^2)}} }\)</span> <br></p></li>
+<li><p>Step 3. Back-transform <span class="math inline">\(\hat{\rho}\)</span> to <span class="math inline">\(\hat{\delta}\)</span> using probability of actual group membership (<span class="math inline">\(p_G\)</span>). Observed group membership (<span class="math inline">\(p_g\)</span>) can be used instead assuming equal misclassification rate between groups: <br> <span class="math inline">\(\displaystyle{ \hat{\delta} = \frac{\hat{\rho}}{p_G (1-p_G )(1-\hat{\rho}^2)} }\)</span> <br></p></li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Standard Error</em></strong> <br> &nbsp;&nbsp;&nbsp; <span class="math inline">\(\displaystyle{ se_{\hat{\delta}} = \frac{se_d \left( \frac{\hat{\rho}}{r} \right) }{\left( 1+d^2 p_g\[1-p_g\] \right)\sqrt{\left(d^2 + \frac{1}{p_g(1-p_g)}\right) p_G (1-p_G)(1-\hat{\rho}^2)^3} } }\)</span></p>
+<pre><code># Parameters
+d =  # observed standardized mean difference
+SEd =  # standard error of observed standardized mean difference
+ux =  # ratio of observed standard deviation to reference standard deviation (ux = SDsample/SDreference)
+pg =  # observed proportion of individuals in group 1 or 2
+pG =  # actual proportion of individuals in group 1 or 2 (pG=pg when misclassification rate is equal among groups)
+
+# Point Estimate
+r = d / sqrt(1 / (pg * (1 - pg)) )                # step 1
+rho = r / sqrt( r^2 + ux^2 * (1 - r^2))           # step 2
+delta = rho / ( pG * (1 - pG) * (1 - rho^2) )     # step 3
+
+# Standard Error
+SEdelta = SEd * (rho / r) / ( (1 + d^2 * pg * (1 - pg)) * sqrt(pG * (1 - pG) * (1 - rho^2)^3) )</code></pre>
+</section>
+</section>
+<section id="bivariate-direct-range-restriction" class="level2">
+<h2 class="anchored" data-anchor-id="bivariate-direct-range-restriction">3.3 Bivariate Direct Range Restriction</h2>
+<p>In some instances, direct selection can be placed on both x and y variables. This may happen in instances where a researcher requires subjects to be within the “normal” range of x and y, which tends to restrict the range by excluding individuals at the tails of x and y.</p>
+<section id="r-correlation-coefficient-r-7" class="level3">
+<h3 class="anchored" data-anchor-id="r-correlation-coefficient-r-7">3.3.r Correlation Coefficient (<em>r</em>) <br></h3>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Point Estimate</em></strong> <br></p>
+<ul>
+<li><p>Step 1. Define gamma: <br> <span class="math inline">\(\displaystyle{ \Gamma = u_x u_y \frac{1 - r^2}{2r}}\)</span> <br></p></li>
+<li><p>Step 2. Correct <em>r</em> for bivariate direct range restriction: <br> <span class="math inline">\(\displaystyle{ \hat{\rho} = -\Gamma + \mathrm{sign} (r) \sqrt{\Gamma^2 + 1} }\)</span> <br></p></li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Standard Error</em></strong> <br> &nbsp;&nbsp;&nbsp; <span class="math inline">\(\displaystyle{se_{\rho} = se_{r} \left( \frac{\hat{\rho}}{r} \right) }\)</span> <br></p>
+<pre><code># Parameters
+r =  # observed correlation between x and y
+SEr =  # standard error of observed correlation between x and y
+ux =  # ratio of observed standard deviation of x to reference standard deviation of x (ux = SDsample/SDreference)
+uy =  # ratio of observed standard deviation of y to reference standard deviation of y (uy = SDsample/SDreference)
+
+# Point Estimate
+Gamma = (1 - r^2) / (2*r) * u_x * u_y           # step 1
+rho = -Gamma + sign(r) * sqrt(Gamma^2 + 1)      # step 2
+
+# Standard Error
+SErho = SEr * (rho / r)</code></pre>
+</section>
+</section>
+<section id="bivariate-indirect-range-restriction" class="level2">
+<h2 class="anchored" data-anchor-id="bivariate-indirect-range-restriction">3.4 Bivariate Indirect Range Restriction</h2>
+<p>When the selection process is correlated with both of the variables of interest then the resulting sample with have a reduced variance due to indirect range restriction. This is often the case in college admissions testing where both the predictor (e.g., SAT scores) and the outcome variable (e.g., first year GPA) are correlated with the college admissions process.</p>
+<section id="r-correlation-coefficient-r-8" class="level3">
+<h3 class="anchored" data-anchor-id="r-correlation-coefficient-r-8">3.4.r Correlation Coefficient (<em>r</em>) <br></h3>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Point Estimate</em></strong> <br></p>
+<ul>
+<li><p>Step 1. Define lambda: <br> <span class="math inline">\(\displaystyle{ \lambda = \mathrm{sign} (r_{sx} r_{sy} \[1 - u_x\] \[1 - u_y \])\frac{\mathrm{sign} (1-u_x) \mathrm{min} (u_x, 1/u_x) + \mathrm{sign} (1-u_y) \mathrm{min} (u_y, 1/u_y) }{\mathrm{min} (u_x, 1/u_x) + \mathrm{min} (u_y, 1/u_y)} }\)</span> <br></p></li>
+<li><p>Step 2. Correct <em>r</em> for bivariate indirect range restriction: <br> <span class="math inline">\(\displaystyle{ \hat{\rho} = r u_x u_y + \lambda \sqrt{\left| 1-u_x^2 \right| \left| 1-u_y^2 \right|} }\)</span> <br></p></li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Standard Error</em></strong> <br></p>
+<ul>
+<li>Step 1. Calculate first order partial derivitive of <span class="math inline">\(\hat{\rho}\)</span> with respect to <span class="math inline">\(u_x\)</span> <br> <span class="math inline">\(\displaystyle{ \beta_1 = u_y r - \frac{\lambda u_x (1 - u_x^2) \sqrt{\left| 1 - u_x^2 \right|}}{\sqrt{\left| 1 - u_y^2 \right|^3}} }\)</span></li>
+<li>Step 2. Calculate first order partial derivitive of <span class="math inline">\(\hat{\rho}\)</span> with respect to <span class="math inline">\(u_y\)</span> <br> <span class="math inline">\(\displaystyle{ \beta_2 = u_x r - \frac{\lambda u_y (1 - u_y^2) \sqrt{\left| 1 - u_y^2 \right|}}{\sqrt{\left| 1 - u_x^2 \right|^3}} }\)</span></li>
+<li>Step 3. Calculate first order partial derivitive of <span class="math inline">\(\hat{\rho}\)</span> with respect to <span class="math inline">\(r\)</span> <br> <span class="math inline">\(\displaystyle{ \beta_3 = u_x u_y }\)</span></li>
+<li>Step 4. Calculate standard error for <span class="math inline">\(u_x\)</span> <br> <span class="math inline">\(\displaystyle{ se_{u_x} = u_x \sqrt{ \frac{1}{2(n-1)} + \frac{1}{2(n_{\mathrm{ref}} -1)}} }\)</span></li>
+<li>Step 5. Calculate standard error for <span class="math inline">\(u_y\)</span> (note: sample size for reference sample is <span class="math inline">\(n_\mathrm{ref}\)</span>):<br> <span class="math inline">\(\displaystyle{ se_{u_y} = u_y \sqrt{ \frac{1}{2(n-1)} + \frac{1}{2(n_{\mathrm{ref}} -1)}} }\)</span></li>
+<li>Step 6. Calculate standard error for <span class="math inline">\(r\)</span> <br> <span class="math inline">\(\displaystyle{ se_r = \frac{1-r^2}{\sqrt{n-1}} }\)</span></li>
+<li>Step 7. Calculate standard error of <span class="math inline">\(\hat{\rho}\)</span> using a Taylor Series Approximation <br></li>
+<li><span class="math inline">\(\displaystyle{se_{\hat{\rho}} \approx \sqrt{b_1^2 se_{u_x}^2 + b_2^2 se_{u_y}^2 + b_3^2 se_{r}^2 } }\)</span> <br></li>
+</ul>
+<pre><code># Parameters
+r =    # observed correlation between x and y
+SEr =  # standard error for observed correlation between x and y
+rxx =  # reliability of x within study sample
+ryy =  # reliability of y within study sample
+ux  =  # observed u-ratio of x 
+uy  =  # observed u-ratio of y
+rsy =  # direction of correlation between selector and y (-1 = negative, 0 = no correlation, 1 = positive)
+rsx =  # direction of correlation between selector and x (-1 = negative, 0 = no correlation, 1 = positive)
+
+# Point Estimate
+lambda = sign( rsx * rsy * (1-ux) * (1-uy) ) * ( sign(1 - ux) min(c(ux,1/ux)) * sign(1 - uy) min(c(uy,1/uy)) ) / ( min(c(ux,1/ux)) + min(c(uy,1/uy)) )
+rho = r * ux * uy + lambda * sqrt( abs(1 - ux^2) * abs(1 - uy^2) )
+
+# Standard Error (Taylor Series Approximation)
+b1  = r * uy - ( lambda * ux *(1 - ux^2) * sqrt( abs(1 - uy^2) ) ) / sqrt(abs(1 - uy^2)^3)   # First order partial derivitive of ux
+b2  = r * ux - ( lambda * uy *(1 - uy^2) * sqrt( abs(1 - ux^2) ) ) / sqrt(abs(1 - ux^2)^3)   # First order partial derivitive of uy
+b3  = ux*uy                                                                                    # First order partial derivitive of r
+
+SEux = ux * sqrt( 1 / (2*(n-1)) + 1 / (2*(na-1)) )
+SEuy = uy * sqrt( 1 / (2*(n-1)) + 1 / (2*(na-1)) )
+
+SErho = sqrt( b1^2 * SEux^2 + b2^2 * SEuy^2 + b3^2 * SEr^2 )</code></pre>
+</section>
+</section>
+</section>
+<section id="range-restriction-and-measurement-error" class="level1">
+<h1>4. Range Restriction and Measurement Error</h1>
+<p>Range restriction and measurement error can act in tandem to bias effect size estimates. When correcting for both range restriction and measurement error, reliability and <em>u</em>-ratios are affected by each other, that is, measurement error variance contributes to the overall variance affecting <em>u</em> and restricted range affects the reliability coefficients. Therefore reliability and <em>u</em>-ratios must be first disattenuated for each correction procedure.</p>
+<section id="univariate-direct-range-restriction-and-measurement-error" class="level2">
+<h2 class="anchored" data-anchor-id="univariate-direct-range-restriction-and-measurement-error">4.1 Univariate Direct Range Restriction and Measurement Error</h2>
+<p>In certain situations, the selection of participants can be identical to one of the variables of interest. For instance, if a study is investigating the correlation between school grades and IQ in students with an intellectual disability, and the diagnosis is defined as having an IQ score of less than 70, then the sample would exhibit direct range restriction.</p>
+<section id="r-correlation-coefficient-r-9" class="level3">
+<h3 class="anchored" data-anchor-id="r-correlation-coefficient-r-9">4.1.r Correlation Coefficient (<em>r</em>) <br></h3>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Point Estimate</em></strong> <br> &nbsp;&nbsp;&nbsp; <span class="math inline">\(\displaystyle{ \hat{\rho} = \frac{r}{u_x \sqrt{1 - u_x^2 (1-r_{xx'}) \vphantom{\left(\frac{1}{u_x^2} - 1\right)} } \sqrt{r^2 \left(\frac{1}{u_x^2} - 1\right)+r_{yy'} } } }\)</span></p>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Standard Error</em></strong> <br> &nbsp;&nbsp;&nbsp; <span class="math inline">\(\displaystyle{se_{\hat{\rho}} = se_r \left( \frac{\hat{\rho}}{r} \right)}\)</span> <br></p>
+<pre><code># Parameters
+r =    # observed correlation
+rxx =  # reliability of x
+ryy =  # reliability of y
+ux =   # ratio of observed standard deviation of y to reference standard deviation of x (ux = SDsample/SDreference)
+SEr =  # standard error of observed correlation
+
+# Point Estimate
+rho = r / ( ux * sqrt(1 - ux^2 * (1 - rxx)) * sqrt( r^2 * (1/ux^2 - 1) + ryy) )
+
+# Standard Error
+SErho = SEr * (rho / r)</code></pre>
+</section>
+<section id="d-standardized-mean-difference-d-6" class="level3">
+<h3 class="anchored" data-anchor-id="d-standardized-mean-difference-d-6">4.1.d Standardized Mean Difference (<em>d</em>) <br></h3>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Point Estimate</em></strong> <br></p>
+<ul>
+<li><p>Step 1. Calculate <span class="math inline">\(\phi_{gG}\)</span> from the contingency table between observed and actual group membership: <br> <span class="math inline">\(\displaystyle{ \phi_{gG} = \sqrt{\frac{\chi^2}{n}} }\)</span> &nbsp; <em>or</em> &nbsp; <span class="math inline">\(\displaystyle{\phi_{gG} \approx 1 - 2 \cdot p_{mis} }\)</span> <br></p></li>
+<li><p>Step 2. Transform <em>d</em> to <em>r</em> using probability of observed group membership (<span class="math inline">\(p_g\)</span>): <br> <span class="math inline">\(\displaystyle{ r = \frac{d}{d^2 + \sqrt{\frac{1}{p_g ( 1-p_g )}}} }\)</span> <br></p></li>
+<li><p>Step 3. Correct <em>r</em> for direct range restriction: <br> <span class="math inline">\(\displaystyle{ \hat{\rho} = \frac{r}{u_x \sqrt{1 - u_x^2 (1-\phi_{gG}) \vphantom{\left(\frac{1}{u_x^2} - 1\right)} } \sqrt{r^2 \left(\frac{1}{u_x^2} - 1\right)+r_{yy'} } } }\)</span></p></li>
+<li><p>Step 4. Back-transform <span class="math inline">\(\hat{\rho}\)</span> to <span class="math inline">\(\hat{\delta}\)</span> using probability of actual group membership (<span class="math inline">\(p_G\)</span>). Observed group membership (<span class="math inline">\(p_g\)</span>) can be used instead assuming equal misclassification rate between groups: <br> <span class="math inline">\(\displaystyle{ \hat{\delta} = \frac{\hat{\rho}}{p_G (1-p_G )(1-\hat{\rho}^2)} }\)</span> <br></p></li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Standard Error</em></strong> <br> &nbsp;&nbsp;&nbsp; <span class="math inline">\(\displaystyle{ se_{\hat{\delta}} = \frac{se_d \left( \frac{\hat{\rho}}{r} \right) }{\left( 1+d^2 p_g\[1-p_g\] \right)\sqrt{\left(d^2 + \frac{1}{p_g(1-p_g)}\right) p_G (1-p_G)(1-\hat{\rho}^2)^3} } }\)</span></p>
+<pre><code># Parameters
+d =      # observed standardized mean difference
+SEd =    # standard error of observed standardized mean difference
+ryy =    # reliability of y
+uy =     # ratio of observed standard deviation of y to reference standard deviation of y (uy = SDsample/SDreference)
+pg =     # observed proportion of individuals in group 1 or 2
+pG =     # actual proportion of individuals in group 1 or 2 (pG=pg when misclassification rate is equal among groups)
+chi2 =   # chi squared statistic for actual vs observed group contingency table       
+n =      # sample size
+#p_mis = # proportion of individuals misclassified (only needed if equal misclassification rate is assumed, and alternative phi calculation)
+
+# Point Estimate
+phi =  sqrt(chi2 / n)                                                              # step 1
+# phi = 1 - 2 * p_mis                                                              # step 1 (alternative)
+r = d / sqrt(1 / (pg * (1 - pg)) )                                                 # step 2
+rho = r / ( uy * sqrt(1 - uy^2 * (1 - ryy)) * sqrt( r^2 * (1/uy^2 - 1) + phi^2) )  # step 3
+delta = rho / ( pG * (1 - pG) * (1 - rho^2) )                                      # step 4
+
+# Standard Error
+SEdelta = SEd * (rho / r) / ( (1 + d^2 * pg * (1 - pg)) * sqrt(pG * (1 - pG) * (1 - rho^2)^3) )</code></pre>
+</section>
+</section>
+<section id="univariate-indirect-range-restriction-and-measurement-error" class="level2">
+<h2 class="anchored" data-anchor-id="univariate-indirect-range-restriction-and-measurement-error">4.2 Univariate Indirect Range Restriction and Measurement Error</h2>
+<p>When the selection process is correlated with one of the variables of interest then the resulting sample with have a reduced variance due to indirect range restriction. For example, suppose a company is hiring employees based on their performance in a test that is correlated with their IQ. If the company only hires employees who score above a certain threshold on the test, then the range of IQ scores in the selected sample will be indirectly restricted. This is because the IQ scores of the selected employees will be higher than the IQ scores of the general population due to the correlation between the test scores and IQ.</p>
+<section id="r-correlation-coefficient-r-10" class="level3">
+<h3 class="anchored" data-anchor-id="r-correlation-coefficient-r-10">4.2.r Correlation Coefficient (<em>r</em>) <br></h3>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Point Estimate</em></strong> <br> &nbsp;&nbsp;&nbsp; <span class="math inline">\(\displaystyle{\hat{\rho} = \frac{r}{\sqrt{r^2 + \frac{u_x^2 r_{xx'}(r_{xx'}r_{yy'}-r^2)}{1 - u_x^2 (1-r_{xx'})}}}}\)</span> <br></p>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Standard Error</em></strong> <br> &nbsp;&nbsp;&nbsp; <span class="math inline">\(\displaystyle{se_{\hat{\rho}} = se_r \left( \frac{\hat{\rho}}{r} \right)}\)</span> <br></p>
+<pre><code># Parameters
+r =   # observed correlation
+SEr = # standard error of observed correlation
+rxx = # reliability of x
+ryy = # reliability of y
+ux =  # ratio of observed standard deviation of x to reference standard deviation of x (ux = SDsample/SDreference)
+uy =  # ratio of observed standard deviation of y to reference standard deviation of y (uy = SDsample/SDreference)
+
+# Point Estimate
+rho = r / sqrt(r^2 +  ux^2 * rxx * (rxx * ryy - r^2) / (1 - ux^2 * (1-rxx))  )
+
+# Standard Error
+SErho = SEr * (rho / r)</code></pre>
+</section>
+<section id="d-standardized-mean-difference-d-7" class="level3">
+<h3 class="anchored" data-anchor-id="d-standardized-mean-difference-d-7">4.2.d Standardized Mean Difference (<em>d</em>) <br></h3>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Point Estimate</em></strong> <br></p>
+<ul>
+<li><p>Step 1. Calculate <span class="math inline">\(\phi_{gG}\)</span> from the contingency table between observed and actual group membership: <br> <span class="math inline">\(\displaystyle{ \phi_{gG} = \sqrt{\frac{\chi^2}{n}} }\)</span> &nbsp; <em>or</em> &nbsp; <span class="math inline">\(\displaystyle{\phi_{gG} \approx 1 - 2 \cdot p_{mis} }\)</span> <br></p></li>
+<li><p>Step 2. Transform <em>d</em> to <em>r</em> using probability of observed group membership (<span class="math inline">\(p_g\)</span>): <br> <span class="math inline">\(\displaystyle{ r = \frac{d}{d^2 + \sqrt{\frac{1}{p_g ( 1-p_g )}}} }\)</span> <br></p></li>
+<li><p>Step 3. Correct <em>r</em> for direct range restriction: <br> <span class="math inline">\(\displaystyle{\hat{\rho} = \frac{r}{\sqrt{r^2 + \frac{u_x^2 r_{xx'}(r_{xx'}r_{yy'}-r^2)}{1 - u_x^2 (1-r_{xx'})}}}}\)</span> <br></p></li>
+<li><p>Step 4. Back-transform <span class="math inline">\(\hat{\rho}\)</span> to <span class="math inline">\(\hat{\delta}\)</span> using probability of actual group membership (<span class="math inline">\(p_G\)</span>). Observed group membership (<span class="math inline">\(p_g\)</span>) can be used instead assuming equal misclassification rate between groups: <br> <span class="math inline">\(\displaystyle{ \hat{\delta} = \frac{\hat{\rho}}{p_G (1-p_G )(1-\hat{\rho}^2)} }\)</span> <br></p></li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Standard Error</em></strong> <br> &nbsp;&nbsp;&nbsp; <span class="math inline">\(\displaystyle{ se_{\hat{\delta}} = \frac{se_d \left( \frac{\hat{\rho}}{r} \right) }{\left( 1+d^2 p_g\[1-p_g\] \right)\sqrt{\left(d^2 + \frac{1}{p_g(1-p_g)}\right) p_G (1-p_G)(1-\hat{\rho}^2)^3} } }\)</span></p>
+<pre><code># Parameters
+d =    # observed standardized mean difference
+SEd =  # standard error of observed standardized mean difference
+ryy = # reliability of y
+ux =   # ratio of observed standard deviation of x to reference standard deviation of x (ux = SDsample/SDreference)
+uy =   # ratio of observed standard deviation of y to reference standard deviation of y (uy = SDsample/SDreference)
+pg =   # observed proportion of individuals in group 1 or 2
+pG =   # actual proportion of individuals in group 1 or 2 (pG=pg when misclassification rate is equal among groups)
+chi2 = # chi squared statistic for actual vs observed group contingency table       
+n =    # sample size
+
+# Point Estimate
+phi =  sqrt(chi2 / n)                                                                # step 1
+# phi = 1 - 2 * p_mis                                                                # step 1 (alternative)
+r = d / sqrt(1 / (pg * (1 - pg)) )                                                   # step 2
+rho = r / sqrt(r^2 +  ux^2 * rxx * (rxx * ryy - r^2) / (1 - ux^2 * (1-rxx))  )       # step 3
+delta = rho / ( pG * (1 - pG) * (1 - rho^2) )                                        # step 4
+
+# Standard Error
+SEdelta = SEd * (rho / r) / ( (1 + d^2 * pg * (1 - pg)) * sqrt(pG * (1 - pG) * (1 - rho^2)^3) )</code></pre>
+</section>
+</section>
+<section id="bivariate-direct-range-restriction-and-measurement-error" class="level2">
+<h2 class="anchored" data-anchor-id="bivariate-direct-range-restriction-and-measurement-error">4.3 Bivariate Direct Range Restriction and Measurement Error</h2>
+<p>In some instances, direct selection can be placed on both x and y variables. This may happen in instances where a researcher requires subjects to be within the “normal” range of x and y, which tends to restrict the range by excluding individuals at the tails of x and y.</p>
+<section id="r-correlation-coefficient-r-11" class="level3">
+<h3 class="anchored" data-anchor-id="r-correlation-coefficient-r-11">4.3.r Correlation Coefficient (<em>r</em>) <br></h3>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Point Estimate</em></strong> <br> - Step 1. Define Gamma: <br> <span class="math inline">\(\displaystyle{ \Gamma = u_x u_y \frac{1 - r^2}{2r}}\)</span> <br> - Step 2. Correct <em>r</em> for univariate direct range restriction: <br> <span class="math inline">\(\displaystyle{\hat{\rho} = \frac{-\Gamma u_x u_y + \mathrm{sign}(r)\sqrt{\Gamma^2 + 1} }{\sqrt{1-u_x^2(1-r_{xx'})}\sqrt{1-u_y^2(1-r_{yy'})}} }\)</span> <br></p>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Standard Error</em></strong> <br> &nbsp;&nbsp;&nbsp; <span class="math inline">\(\displaystyle{se_{\hat{\rho}} = se_r \left( \frac{\hat{\rho}}{r} \right)}\)</span> <br></p>
+<pre><code># Parameters
+r =  # observed correlation between x and y
+SEr =  # standard error of observed correlation between x and y
+rxx = # reliability of x
+ryy = # reliability of y
+ux =  # ratio of observed standard deviation of x to reference standard deviation of x (ux = SDsample/SDreference)
+uy =  # ratio of observed standard deviation of y to reference standard deviation of y (uy = SDsample/SDreference)
+
+# Point Estimate
+Gamma = (1 - r^2) / (2*r) * u_x * u_y                                                                         # step 1
+rho = (-Gamma + sign(r) * sqrt(Gamma^2 + 1)) / (sqrt(1 - ux^2 * (1 - rxx)) * sqrt(1 - uy^2 * (1 - ryy)))      # step 2
+
+# Standard Error
+SErho = SEr * (rho / r)</code></pre>
+</section>
+</section>
+<section id="bivariate-indirect-range-restriction-and-measurement-error" class="level2">
+<h2 class="anchored" data-anchor-id="bivariate-indirect-range-restriction-and-measurement-error">4.4 Bivariate Indirect Range Restriction and Measurement Error</h2>
+<p>When the selection process is correlated with both of the variables of interest then the resulting sample with have a reduced variance due to indirect range restriction. This is often the case in college admissions testing where both the predictor (e.g., SAT scores) and the outcome variable (e.g., first year GPA) are correlated with the college admissions process.</p>
+<section id="r-correlation-coefficient-r-12" class="level3">
+<h3 class="anchored" data-anchor-id="r-correlation-coefficient-r-12">4.4.r Correlation Coefficient (<em>r</em>) <br></h3>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Point Estimate</em></strong> <br></p>
+<ul>
+<li><p>Step 1. Define lambda: <br> <span class="math inline">\(\displaystyle{ \lambda = \mathrm{sign} (r_{sx} r_{sy} \[1 - u_x\] \[1 - u_y \])\frac{\mathrm{sign} (1-u_x) \mathrm{min} (u_x, 1/u_x) + \mathrm{sign} (1-u_y) \mathrm{min} (u_y, 1/u_y) }{\mathrm{min} (u_x, 1/u_x) + \mathrm{min} (u_y, 1/u_y)} }\)</span> <br></p></li>
+<li><p>Step 2. Correct <em>r</em> for bivariate indirect range restriction: <br> <span class="math inline">\(\displaystyle{ \hat{\rho} = \frac{r u_x u_y + \lambda \sqrt{\left| 1-u_x^2 \right| \left| 1-u_y^2 \right|} }{\sqrt{1 - u_x^2 (1-r_{xx'})} \sqrt{1 - u_y^2 (1 - r_{yy'})}} }\)</span> <br></p></li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp; <strong><em>Standard Error</em></strong> <br></p>
+<ul>
+<li>Step 1. Calculate the measurement quality index for X in the restricted sample: <br> <span class="math inline">\(\displaystyle{ q_x = \sqrt{r_{xx'}} }\)</span></li>
+<li>Step 2. Calculate the measurement quality index for Y in the restricted sample: <br> <span class="math inline">\(\displaystyle{ q_y = \sqrt{r_{yy'}} }\)</span></li>
+<li>Step 3. Estimated the measurement quality index for X in the unrestricted population: <br> <span class="math inline">\(\displaystyle{ q_X = \sqrt{u_x^2 (r_{xx'} - 1)} }\)</span></li>
+<li>Step 4. Estimate the measurement quality index for Y in the unrestricted population: <br> <span class="math inline">\(\displaystyle{ q_Y = \sqrt{u_y^2 (r_{yy'} - 1)} }\)</span></li>
+<li>Step 5. Calculate first order partial derivitive of <span class="math inline">\(\hat{\rho}\)</span> with respect to <span class="math inline">\(\rho_{xx'}\)</span> <br> <span class="math inline">\(\displaystyle{ \beta_1 = -\frac{u_x u_y r + \lambda \sqrt{\left| 1 - u_x^2 \right| \left| 1 - u_y^2 \right| } }{q_X^2 q_Y} }\)</span></li>
+<li>Step 6. Calculate first order partial derivitive of <span class="math inline">\(\hat{\rho}\)</span> with respect to <span class="math inline">\(\rho_{yy'}\)</span> <br> <span class="math inline">\(\displaystyle{ \beta_2 = -\frac{u_x u_y r + \lambda \sqrt{\left| 1 - u_x^2 \right| \left| 1 - u_y^2 \right| } }{q_Y^2 q_X} }\)</span></li>
+<li>Step 7. Calculate first order partial derivitive of <span class="math inline">\(\hat{\rho}\)</span> with respect to <span class="math inline">\(u_x\)</span> <br> <span class="math inline">\(\displaystyle{ \beta_3 = \frac{u_y r}{q_X q_Y} - \frac{\lambda u_x (1 - u_x^2) \sqrt{\left| 1 - u_x^2 \right|}}{q_X q_Y\sqrt{\left| 1 - u_y^2 \right|^3}} }\)</span></li>
+<li>Step 8. Calculate first order partial derivitive of <span class="math inline">\(\hat{\rho}\)</span> with respect to <span class="math inline">\(u_y\)</span> <br> <span class="math inline">\(\displaystyle{ \beta_4 = \frac{u_x r}{q_X q_Y} - \frac{\lambda u_y (1 - u_y^2) \sqrt{\left| 1 - u_y^2 \right|}}{q_X q_Y\sqrt{\left| 1 - u_x^2 \right|^3}} }\)</span></li>
+<li>Step 9. Calculate first order partial derivitive of <span class="math inline">\(\hat{\rho}\)</span> with respect to <span class="math inline">\(r\)</span> <br> <span class="math inline">\(\displaystyle{ \beta_5 = \frac{u_x u_y}{q_X q_Y} }\)</span></li>
+<li>Step 10. Calculate standard error for unrestricted measure quality index (<span class="math inline">\(q_X\)</span>) <br> <span class="math inline">\(\displaystyle{ se_{q_X} = \sqrt{\frac{1}{2} u_x^4 \left[ \frac{(1-q_x^2)^2}{1-u_x^2 (1-q_x^2)} \right] \left[ \frac{1}{n-1} + \frac{1}{n_{\mathrm{ref}}-1} \right] + \frac{u_x^2 q_x^2(1 - q_x^2)^2}{\[1-u_x^2 (1-q_x^2)\] (n-1)} } }\)</span></li>
+<li>Step 11. Calculate standard error for unrestricted measure quality index (<span class="math inline">\(q_Y\)</span>) <br> <span class="math inline">\(\displaystyle{ se_{q_Y} = \sqrt{\frac{1}{2} u_y^4 \left[ \frac{(1-q_y^2)^2}{1-u_y^2 (1-q_y^2)} \right] \left[ \frac{1}{n-1} + \frac{1}{n_{\mathrm{ref}}-1} \right] + \frac{u_y^2 q_y^2(1 - q_y^2)^2}{\[1-u_y^2 (1-q_y^2)\] (n-1)} } }\)</span></li>
+<li>Step 12. Calculate standard error for <span class="math inline">\(u_x\)</span> (note: sample size for reference sample is <span class="math inline">\(n_\mathrm{ref}\)</span>): <br> <span class="math inline">\(\displaystyle{ se_{u_x} = u_x \sqrt{ \frac{1}{2(n-1)} + \frac{1}{2(n_{\mathrm{ref}} -1)}} }\)</span></li>
+<li>Step 13. Calculate standard error for <span class="math inline">\(u_y\)</span> (note: sample size for reference sample is <span class="math inline">\(n_\mathrm{ref}\)</span>):<br> <span class="math inline">\(\displaystyle{ se_{u_y} = u_y \sqrt{ \frac{1}{2(n-1)} + \frac{1}{2(n_{\mathrm{ref}} -1)}} }\)</span></li>
+<li>Step 14. Calculate standard error for <span class="math inline">\(r\)</span> <br> <span class="math inline">\(\displaystyle{ se_r = \frac{1-r^2}{\sqrt{n-1}} }\)</span></li>
+<li>Step 15. Calculate standard error of <span class="math inline">\(\hat{\rho}\)</span> using a Taylor Series Approximation <br></li>
+<li><span class="math inline">\(\displaystyle{se_{\hat{\rho}} \approx \sqrt{\beta_1^2 se_{q_X}^2 + \beta_2^2 se_{q_Y}^2 + \beta_3^2 se_{u_x}^2 + \beta_4^2 se_{u_y}^2 + \beta_5^2 se_{r}^2 } }\)</span> <br></li>
+</ul>
+<pre><code># Parameters needed
+r =    # observed correlation between x and y
+rxx =  # reliability of x within study sample
+ryy =  # reliability of y within study sample
+n =    # sample size
+nref = # sample size of reference sample
+ux  =  # observed u-ratio of x 
+uy  =  # observed u-ratio of y
+rsy =  # direction of correlation between selector and y (-1 = negative, 0 = no correlation, 1 = positive)
+rsx =  # direction of correlation between selector and x (-1 = negative, 0 = no correlation, 1 = positive)
+
+# Point Estimate
+lambda = sign( rsx * rsy * (1-ux) * (1-uy) ) * ( sign(1 - ux) min(c(ux,1/ux)) * sign(1 - uy) min(c(uy,1/uy)) ) / ( min(c(ux,1/ux)) + min(c(uy,1/uy)) )
+rho = r * ux * uy + lambda * sqrt( abs(1 - ux^2) * abs(1 - uy^2) )
+
+# Standard Error (Taylor Series Approximation)
+qx = sqrt(rxx)
+qy = sqrt(ryy)
+qX = sqrt(ux^2 * (rxx - 1))
+qY = sqrt(uy^2 * (ryy - 1))
+b1  = - ( ux * uy * r + lambda * sqrt(abs(1 - ux^2) * abs(1 - uy^2)) ) / (qX^2 * qY)                                  # First order partial derivitive of qX
+b2  = - ( ux * uy * r + lambda * sqrt(abs(1 - ux^2) * abs(1 - uy^2)) ) / (qY^2 * qX)                                  # First order partial derivitive of qY
+b3  = (r * uy) / (qX * qY) - ( lambda * ux *(1 - ux^2) * sqrt( abs(1 - uy^2) ) ) / (qX * qY * sqrt(abs(1 - uy^2)^3))  # First order partial derivitive of ux
+b4  = (r * ux) / (qX * qY) - ( lambda * uy *(1 - uy^2) * sqrt( abs(1 - ux^2) ) ) / (qX * qY * sqrt(abs(1 - ux^2)^3))  # First order partial derivitive of uy
+b5  = (ux*uy) / (qX * qY)                                                                                             # First order partial derivitive of r
+SEqX = sqrt( .5 * ux^4 * ( (1-qx^2)^2 / (1-ux^2 * (1-qx^2)) ) * (1/(n-1) + 1/(nref-1)) + ( (ux^2 * qx^2 * (1-qx^2)^2) ) / ((1 - ux^2 * (1-qx^2)) * (n-1)) )
+SEqY = sqrt( .5 * uy^4 * ( (1-qy^2)^2 / (1-uy^2 * (1-qy^2)) ) * (1/(n-1) + 1/(nref-1)) + ( (uy^2 * qy^2 * (1-qy^2)^2) ) / ((1 - uy^2 * (1-qy^2)) * (n-1)) )
+SEux = ux * sqrt( 1 / (2*(n-1)) + 1 / (2*(na-1)) )
+SEuy = uy * sqrt( 1 / (2*(n-1)) + 1 / (2*(na-1)) )
+SEr =  (1 - r^2) / sqrt(n - 1)
+SErho = sqrt( b1^2 * SEux^2 + b2^2 * SEuy^2 + b3^2 * SEr^2 )
+</code></pre>
+</section>
+</section>
+</section>
+<section id="references" class="level1">
+<h1>5. References</h1>
+<p>Bobko, P., Roth, P. L., &amp; Bobko, C. (2001). Correcting the effect size of d for range restriction and unreliability. Organizational Research Methods, 4(1), 46-61. <br> <br> Dahlke, J. A., &amp; Wiernik, B. M. (2020). Not restricted to selection research: Accounting for indirect range restriction in organizational research. Organizational Research Methods, 23(4), 717-749. <br> <br> Dahlke, J. A., &amp; Wiernik, B. M. (2019). psychmeta: An R package for psychometric meta-analysis. Applied psychological measurement, 43(5), 415-416. <br> <br> Hunter, J. E., &amp; Schmidt, F. L. (2004). Methods of meta-analysis: Correcting error and bias in research findings. Sage. <br> <br> Hunter, J. E., &amp; Schmidt, F. L. (1990). Dichotomization of continuous variables: The implications for meta-analysis. Journal of applied psychology, 75(3), 334. <br> <br> Hunter, J. E., Schmidt, F. L., &amp; Le, H. (2006). Implications of direct and indirect range restriction for meta-analysis methods and findings. Journal of Applied Psychology, 91(3), 594. <br> <br> Le, H., Schmidt, F., &amp; Oh, I. (2009). Correcting for the distorting effects of study artifacts in meta-analysis. The handbook of research synthesis and meta-analysis, 317. <br> <br> Wiernik, B. M., &amp; Dahlke, J. A. (2020). Obtaining unbiased results in meta-analysis: The importance of correcting for statistical artifacts. Advances in Methods and Practices in Psychological Science, 3(1), 94-123. <br></p>
+</section>
+<section id="cite-this-page" class="level1">
+<h1>6. Cite This Page</h1>
+<p>APA: <br> Jané, M. B. (2023). Artifact corrections for effect sizes: equations, code, and interactive app. https://matthewbjane.github.io/artifact-corrections/, accessed <strong>DAY</strong>-<strong>MONTH</strong>-<strong>YEAR</strong></p>
+<p>BibTeX:</p>
+<pre><code>@misc{,
+  title        = "Artifact corrections for effect sizes: equations, code, and interactive app",
+  author       = "Matthew B. Jan{\'{e}}",
+  howpublished = "\url{https://matthewbjane.github.io/artifact-corrections/}",
+  year         = 2023
+  note         = "accessed DAY-MONTH-YEAR"
+}</code></pre>
+<hr>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

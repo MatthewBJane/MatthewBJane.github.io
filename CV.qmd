@@ -1,11 +1,12 @@
 ---
 description-meta: "Matthew B. Jané's CV"
-date: 2023-02-28
+date: 2023-08-02
 title-block-banner: "#333333ff"
 engine: knitr
 format:
   html: default
   pdf: default
+  fontfamily: times
 ---
 
 # Matthew B. Jané
@@ -14,7 +15,7 @@ format:
 
 ## Bio
 
-Advisor: Dr. Blair T. Johnson
+Current PhD student interested in quantitative methods for meta-analysis and psychological measurement. Specifically, my current research projects focus on correcting bias in effect size estimates caused by statistical artifacts. I am affiliated with the Systematic Health Action Research Program (SHARP) at the University of Connecticut where I am advised by Dr. Blair T. Johnson. I am also on the editorial board for Psychological Bulletin as a methodological reviewer.
 
 ## Education
 
@@ -22,19 +23,29 @@ Advisor: Dr. Blair T. Johnson
 -   2022 \| **M.S.** *Behavioral Neuroscience*, University of Connecticut, Storrs, Connecticut
 -   2020 \| **B.S.** *Computational Neuroscience*, University of Connecticut, Storrs, Connecticut
 
+## Textbooks
+
+- *In progress* | **Correcting Effect Sizes for Statistical Artifacts** A guide for addressing bias in effect size estimates induced by artifacts, by Matthew B. Jané and Blair T. Johnson
+
 ## Software
 
 -   2023 \| **{posc}** An R Package for Probability of Outcome Superiority Curves (POSCs)
+    - Github Repository: https://MatthewBJane.github.io/posc/
 -   2023 \| **{ThemePark}**, An R package for populat culture ggplot themes
+    - Github Repository: https://MatthewBJane.github.io/theme_park/
 -   2023 \| **OpenSynthesis**, website cataloging publicly available meta-analytic databases
+    - Github Repository: https://MatthewBJane.github.io/opensynthesis/
 -   2023 \| **Artifact Simulator**, A Shiny App for Visualizing Statistical Artifacts"
-  - Link: https://matthewbjane.shinyapps.io/effect_size_artifact_bias/
+    - Shiny App: https://matthewbjane.shinyapps.io/effect_size_artifact_bias/
 -   2023 \| **Artifact Corrections for Effect Sizes**, A webpage documenting equations and code for effect size artifact corrections.
-  - Link: https://www.MatthewBJane.com
--   2023 \| **Project Analysis Code and Data**, All data analysis and code can be found 
+    - Link: https://www.MatthewBJane.com/ArtifactCorrections
+-   2023 \| **Project Analysis Code and Data**, All data and code for each one of my projects can be found here
+    - Link: https://www.MatthewBJane.com/ArtifactCorrections
 
 ## Publications
 
+:::{#refs}
+:::
 
 
 
