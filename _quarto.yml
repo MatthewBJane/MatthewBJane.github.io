@@ -1,0 +1,29 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Matthew B. Jané"
+  favicon: webLogoFavicon.png
+  navbar:
+    background: secondary
+    left:
+      - href: index.qmd
+        text: Home
+      - href: CV.qmd
+        text: CV
+      - href: Publications.qmd
+        text: Publications and Data
+      - href: Software.qmd
+        text: Software
+      - href: ArtifactCorrections.qmd
+        text: Artifact Corrections
+
+format:
+  html:
+    theme: darkly
+    css: styles.css
+    toc: true
+
+editor: visual
+

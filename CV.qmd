@@ -1,0 +1,41 @@
+---
+description-meta: "Matthew B. Jané's CV"
+date: 2023-02-28
+title-block-banner: "#333333ff"
+engine: knitr
+format:
+  html: default
+  pdf: default
+bibliography: references.bib
+---
+
+# Matthew B. Jané
+
+[Twitter](https://www.twitter.com/MatthewBJane) $\cdot$ [Github](https://www.github.io/MatthewBJane) $\cdot$ [Website](https://www.MattheBJane.com)
+
+## Bio
+
+Advisor: Dr. Blair T. Johnson
+
+## Education
+
+-   *Present* \| **Ph.D.** *Quantitative Psychology*, University of Connecticut, Storrs, Connecticut
+-   2022 \| **M.S.** *Behavioral Neuroscience*, University of Connecticut, Storrs, Connecticut
+-   2020 \| **B.S.** *Computational Neuroscience*, University of Connecticut, Storrs, Connecticut
+
+## Software
+
+-   2023 \| **{posc}** An R Package for Probability of Outcome Superiority Curves (POSCs)
+-   2023 \| **{ThemePark}**, An R package for populat culture ggplot themes
+-   2023 \| **OpenSynthesis**, website cataloging publicly available meta-analytic databases
+-   2023 \| **Artifact Simulator**, A Shiny App for Visualizing Statistical Artifacts"
+  - Link: https://matthewbjane.shinyapps.io/effect_size_artifact_bias/
+-   2023 \| **Artifact Corrections for Effect Sizes**, A webpage documenting equations and code for effect size artifact corrections.
+  - Link: https://www.MatthewBJane.com
+-   2023 \| **Project Analysis Code and Data**, All data analysis and code can be found 
+
+## Publications
+
+
+
+

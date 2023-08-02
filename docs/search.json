@@ -1,0 +1,30 @@
+[
+  {
+    "objectID": "CV.html",
+    "href": "CV.html",
+    "title": "Matthew B. Jané",
+    "section": "",
+    "text": "Twitter \\(\\cdot\\) Github \\(\\cdot\\) Website\n\n\nAdvisor: Dr. Blair T. Johnson\n\n\n\n\nPresent | Ph.D. Quantitative Psychology, University of Connecticut, Storrs, Connecticut\n2022 | M.S. Behavioral Neuroscience, University of Connecticut, Storrs, Connecticut\n2020 | B.S. Computational Neuroscience, University of Connecticut, Storrs, Connecticut\n\n\n\n\n\n2023 | {posc} An R Package for Probability of Outcome Superiority Curves (POSCs)\n2023 | {ThemePark}, An R package for populat culture ggplot themes\n2023 | OpenSynthesis, website cataloging publicly available meta-analytic databases\n2023 | Artifact Simulator, A Shiny App for Visualizing Statistical Artifacts”\nLink: https://matthewbjane.shinyapps.io/effect_size_artifact_bias/\n2023 | Artifact Corrections for Effect Sizes, A webpage documenting equations and code for effect size artifact corrections.\nLink: https://www.MatthewBJane.com\n2023 | Project Analysis Code and Data, All data analysis and code can be found"
+  },
+  {
+    "objectID": "CV.html#bio",
+    "href": "CV.html#bio",
+    "title": "Matthew B. Jané",
+    "section": "",
+    "text": "Advisor: Dr. Blair T. Johnson"
+  },
+  {
+    "objectID": "CV.html#education",
+    "href": "CV.html#education",
+    "title": "Matthew B. Jané",
+    "section": "",
+    "text": "Present | Ph.D. Quantitative Psychology, University of Connecticut, Storrs, Connecticut\n2022 | M.S. Behavioral Neuroscience, University of Connecticut, Storrs, Connecticut\n2020 | B.S. Computational Neuroscience, University of Connecticut, Storrs, Connecticut"
+  },
+  {
+    "objectID": "CV.html#software",
+    "href": "CV.html#software",
+    "title": "Matthew B. Jané",
+    "section": "",
+    "text": "2023 | {posc} An R Package for Probability of Outcome Superiority Curves (POSCs)\n2023 | {ThemePark}, An R package for populat culture ggplot themes\n2023 | OpenSynthesis, website cataloging publicly available meta-analytic databases\n2023 | Artifact Simulator, A Shiny App for Visualizing Statistical Artifacts”\nLink: https://matthewbjane.shinyapps.io/effect_size_artifact_bias/\n2023 | Artifact Corrections for Effect Sizes, A webpage documenting equations and code for effect size artifact corrections.\nLink: https://www.MatthewBJane.com\n2023 | Project Analysis Code and Data, All data analysis and code can be found"
+  }
+]

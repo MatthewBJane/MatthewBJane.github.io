@@ -1,0 +1,22 @@
+---
+title: "Matthew B. Jané"
+image: webLogo.png
+about: 
+  template: jolla
+  image-shape: rectangle
+  image-width: 20em
+  links:
+    - icon: twitter
+      text: Twitter
+      href: https://twitter.com/MatthewBJane
+    - icon: github
+      text: GitHub
+      href: https://github.com/MatthewBJane
+    - icon: google
+      text: Google Scholar
+      href: https://scholar.google.com/citations?user=a4C6CX0AAAAJ&hl=en
+    - icon: envelope-fill
+      text: Email
+      href: mailto:matthew.jane@uconn.edu
+---
+I am a PhD student in Quantitative Psychology at the University of Connecticut. My research involves quantitative methods for meta-analysis and `psychological measurement`. Specifically, my current research projects focus on correcting bias in effect size estimates caused by statistical artifacts. My advisor is Dr. Blair T. Johnson and I am affiliated with the Systematic Health Action Research Program (SHARP). I am also on the editorial board for Psychological Bulletin as a methodological reviewer.
