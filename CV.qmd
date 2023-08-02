@@ -11,7 +11,7 @@ bibliography: references.bib
 
 # Matthew B. Jané
 
-[Twitter](https://www.twitter.com/MatthewBJane) $\cdot$ [Github](https://www.github.io/MatthewBJane) $\cdot$ [Website](https://www.MattheBJane.com)
+[Twitter](https://www.twitter.com/MatthewBJane) $\cdot$ [Github](https://www.github.io/MatthewBJane) $\cdot$ [Website](https://www.matthebjane.com)
 
 ## Bio
 
