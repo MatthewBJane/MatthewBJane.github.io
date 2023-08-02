@@ -6,7 +6,6 @@ engine: knitr
 format:
   html: default
   pdf: default
-bibliography: references.bib
 ---
 
 # Matthew B. Jané
