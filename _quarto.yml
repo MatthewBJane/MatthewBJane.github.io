@@ -13,7 +13,7 @@ website:
       - href: CV.qmd
         text: CV
       - href: Publications.qmd
-        text: Publications and Data
+        text: Publications
       - href: Software.qmd
         text: Software
       - href: ArtifactCorrections.qmd

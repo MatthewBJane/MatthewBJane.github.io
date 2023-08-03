@@ -3,14 +3,18 @@ description-meta: "Matthew B. Jané's CV"
 date: 2023-08-02
 title-block-banner: "#333333ff"
 engine: knitr
+pdf-engine: xelatex
 format:
   html: default
   pdf: default
+mainfont: Times
 ---
-
+#### Curriculum Vitae
 # Matthew B. Jané
 
-[Twitter](https://www.twitter.com/MatthewBJane) $\cdot$ [Github](https://www.github.io/MatthewBJane) $\cdot$ [Website](https://www.matthebjane.com)
+[Twitter](https://www.twitter.com/MatthewBJane) $\cdot$
+[Github](https://www.github.io/MatthewBJane) $\cdot$ 
+[Website](https://www.matthebjane.com)
 
 ## Bio
 
@@ -28,23 +32,22 @@ Current PhD student interested in quantitative methods for meta-analysis and psy
 
 ## Software
 
--   2023 \| **{posc}** An R Package for Probability of Outcome Superiority Curves (POSCs)
+-   2023 | **{posc}** An R Package for Probability of Outcome Superiority Curves (POSCs)
     - Github Repository: https://MatthewBJane.github.io/posc/
--   2023 \| **{ThemePark}**, An R package for populat culture ggplot themes
+-   2023 | **{ThemePark}**, An R package for populat culture ggplot themes
     - Github Repository: https://MatthewBJane.github.io/theme_park/
--   2023 \| **OpenSynthesis**, website cataloging publicly available meta-analytic databases
+-   2023 | **OpenSynthesis**, website cataloging publicly available meta-analytic databases
     - Github Repository: https://MatthewBJane.github.io/opensynthesis/
--   2023 \| **Artifact Simulator**, A Shiny App for Visualizing Statistical Artifacts"
+-   2023 | **Artifact Simulator**, A Shiny App for Visualizing Statistical Artifacts"
     - Shiny App: https://matthewbjane.shinyapps.io/effect_size_artifact_bias/
--   2023 \| **Artifact Corrections for Effect Sizes**, A webpage documenting equations and code for effect size artifact corrections.
+-   2023 | **Artifact Corrections for Effect Sizes**, A webpage documenting equations and code for effect size artifact corrections.
     - Link: https://www.MatthewBJane.com/ArtifactCorrections
--   2023 \| **Project Analysis Code and Data**, All data and code for each one of my projects can be found here
+-   2023 | **Project Analysis Code and Data**, All data and code for each one of my projects can be found here
     - Link: https://www.MatthewBJane.com/ArtifactCorrections
 
 ## Publications
 
-:::{#refs}
-:::
+{{< include Publications.qmd >}}
 
 
 
