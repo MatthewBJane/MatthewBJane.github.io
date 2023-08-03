@@ -6,7 +6,6 @@ engine: knitr
 format:
   html: default
   pdf: default
-  fontfamily: times
 ---
 
 # Matthew B. Jané
