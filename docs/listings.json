@@ -1,0 +1,19 @@
+[
+  {
+    "listing": "/Publications.html",
+    "items": [
+      "/source-publications/artifact_repeated.html",
+      "/source-publications/bayesian_duration.html",
+      "/source-publications/memory_retention.html",
+      "/source-publications/method_quality.html"
+    ]
+  },
+  {
+    "listing": "/CV.html",
+    "items": [
+      "/source-publications/bayesian_duration.html",
+      "/source-publications/memory_retention.html",
+      "/source-publications/method_quality.html"
+    ]
+  }
+]

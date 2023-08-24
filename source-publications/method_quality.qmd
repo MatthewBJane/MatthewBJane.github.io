@@ -1,0 +1,13 @@
+---
+title: "Methodological Quality in Research in Health Psychology"
+author:
+  - name: Blair T. Johnson
+  - name: Matthew B. Jané
+  - name: Christine M. Curley
+date: 01/01/2023
+date-format: "YYYY"
+Open Science Links: <div class="btn-group" role="group" aria-label="Open Science Links"> [Data](){.btn .btn-secondary .btn-sm role="button" data-toggle="data" title="Data File"}  [Code](){.btn .btn-secondary .btn-sm role="button" data-toggle="data" title="Data File"}  [PDF](){.btn .btn-secondary .btn-sm role="button" data-toggle="PDF" title="Data File"}</div>
+Journal: <span class="badge bg-secondary" style="font-size:.8rem">Under Review at Sage</span><br><br>
+abstract: "This chapter focuses on the role of methodological quality in the conduct of research in health psychology and closely allied scientific fields. There is a broad portfolio of methodological tools scientists may choose to study their phenomena and discover signals amidst the noise of reality. The only sure thing is that no method is perfect; therefore, there has never been a perfect study. Hence, converging operations are crucial to determine what is true about the phenomenon. Likewise, qualitative research may yield insights that quantitative cannot (and vice versa); thus, use of mixed-methods holds great promise. We endorse the view that methodological quality hinges on the question being asked A causal linkage is best investigated in randomized controlled trials or in systematic reviews of such trials. A phenomenological question is best addressed using qualitative or mixed-methods designs. Some conclusions cannot be reached with great confidence without the collaborative efforts of independent scientific teams conducting numerous studies; external validity is one of these, determining how robustly conclusions generalize across diverse ecologies and populations. In turn, syntheses of research such as systematic reviews, meta-analyses, meta-syntheses, and mixed-methods systematic reviews are crucial. At its best, research on health psychology will continue to compile a holistic picture of human functioning and dysfunction. We believe it can best achieve these aims by drawing from the breadth of available methodologies, all while remaining open-minded to the conceptual possibilities regarding the phenomenon in question."
+---
+

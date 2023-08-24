@@ -1,0 +1,12 @@
+---
+title: "Correcting for Measurement Error in Repeated Measures Standardized Mean Differences"
+author:
+  - name: Matthew B. Jané
+  - name: Blair T. Johnson
+date: 01/01/2022
+date-format: "YYYY"
+Open Science Links: <div class="btn-group" role="group" aria-label="Open Science Links"> [Data](){.btn .btn-secondary .btn-sm role="button" data-toggle="data" title="Data File"}  [Code](){.btn .btn-secondary .btn-sm role="button" data-toggle="data" title="Data File"}  [PDF](){.btn .btn-secondary .btn-sm role="button" data-toggle="PDF" title="Data File"}</div>
+Journal: <span class="badge bg-secondary" style="font-size:.8rem">bioRxiv</span><br><br>
+abstract: "In meta-analyses and primary studies involving experimental or longitudinal studies, the repeated measures standardized mean difference, also known as Cohen's drm, is often used as a measure of within-person change. The outcome measures used in these studies are usually highly contaminated by measurement error (i.e., low reliability) which biases effect size estimates. The impact of measurement error in the traditional between-groups standardized mean difference is fairly straight-forward and known, but the repeated measures standardized mean difference is not. In this paper, we provide the functional form of the systematic bias induced by measurement error on the observed repeated measures standardized mean difference and a correction factor to mitigate such bias."
+---
+

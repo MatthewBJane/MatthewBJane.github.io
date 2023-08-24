@@ -7,39 +7,46 @@
     "text": "I am a PhD student in Quantitative Psychology at the University of Connecticut. My research involves quantitative methods for meta-analysis and psychological measurement. Specifically, my current research projects focus on correcting bias in effect size estimates caused by statistical artifacts. My advisor is Dr. Blair T. Johnson and I am affiliated with the Systematic Health Action Research Program (SHARP). I am also on the editorial board for Psychological Bulletin as a methodological reviewer."
   },
   {
+    "objectID": "Publications.html",
+    "href": "Publications.html",
+    "title": "Matthew B. Jané",
+    "section": "",
+    "text": "Correcting for Measurement Error in Repeated Measures Standardized Mean Differences\n\n\n\nMatthew B. Jané, Blair T. Johnson\n\n\n2022\n\n\n\n\n\n\nJournal\n\n\nbioRxiv\n\n\n\n\nOpen Science Links\n\n\n\nData Code PDF\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCorrelations across timing cues in natural vocalizations predict biases in judging synthetic sound burst durations\n\n\n\nMatthew B. Jané, Sashank Pisupati, Kasey E. Smith, Luan C. Tonelli, Liana Melo-Thomas, Rainer K.W. Schwarting, Markus Wöhr, James J. Chrobak, Heather L. Read\n\n\n2022\n\n\n\n\n\n\nJournal\n\n\nbioRxiv\n\n\n\n\nOpen Science Links\n\n\n\nData Code PDF\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMemory retention following acoustic stimulation in slow-wave sleep: a meta-analytic review of replicability and measurement quality\n\n\n\nTylor J. Harlow, Matthew B. Jané, Heather L. Read, James J. Chrobak\n\n\n2023\n\n\n\n\n\n\nJournal\n\n\nFrontiers in Sleep\n\n\n\n\nOpen Science Links\n\n\n\nData Code PDF\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMethodological Quality in Research in Health Psychology\n\n\n\nBlair T. Johnson, Matthew B. Jané, Christine M. Curley\n\n\n2023\n\n\n\n\n\n\nJournal\n\n\nUnder Review at Sage\n\n\n\n\nOpen Science Links\n\n\n\nData Code PDF\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
     "objectID": "CV.html",
     "href": "CV.html",
     "title": "Matthew B. Jané",
     "section": "",
-    "text": "Twitter \\(\\cdot\\) Github \\(\\cdot\\) Website\n\n\nCurrent PhD student interested in quantitative methods for meta-analysis and psychological measurement. Specifically, my current research projects focus on correcting bias in effect size estimates caused by statistical artifacts. I am affiliated with the Systematic Health Action Research Program (SHARP) at the University of Connecticut where I am advised by Dr. Blair T. Johnson. I am also on the editorial board for Psychological Bulletin as a methodological reviewer.\n\n\n\n\nPresent | Ph.D. Quantitative Psychology, University of Connecticut, Storrs, Connecticut\n2022 | M.S. Behavioral Neuroscience, University of Connecticut, Storrs, Connecticut\n2020 | B.S. Computational Neuroscience, University of Connecticut, Storrs, Connecticut\n\n\n\n\n\nIn progress | Correcting Effect Sizes for Statistical Artifacts A guide for addressing bias in effect size estimates induced by artifacts, by Matthew B. Jané and Blair T. Johnson\n\n\n\n\n\n2023 | {posc} An R Package for Probability of Outcome Superiority Curves (POSCs)\n\nGithub Repository: https://MatthewBJane.github.io/posc/\n\n2023 | {ThemePark}, An R package for populat culture ggplot themes\n\nGithub Repository: https://MatthewBJane.github.io/theme_park/\n\n2023 | OpenSynthesis, website cataloging publicly available meta-analytic databases\n\nGithub Repository: https://MatthewBJane.github.io/opensynthesis/\n\n2023 | Artifact Simulator, A Shiny App for Visualizing Statistical Artifacts”\n\nShiny App: https://matthewbjane.shinyapps.io/effect_size_artifact_bias/\n\n2023 | Artifact Corrections for Effect Sizes, A webpage documenting equations and code for effect size artifact corrections.\n\nLink: https://www.MatthewBJane.com/ArtifactCorrections\n\n2023 | Project Analysis Code and Data, All data and code for each one of my projects can be found here\n\nLink: https://www.MatthewBJane.com/ArtifactCorrections"
-  },
-  {
-    "objectID": "CV.html#bio",
-    "href": "CV.html#bio",
-    "title": "Matthew B. Jané",
-    "section": "Bio",
-    "text": "Bio\nCurrent PhD student interested in quantitative methods for meta-analysis and psychological measurement. Specifically, my current research projects focus on correcting bias in effect size estimates caused by statistical artifacts. I am affiliated with the Systematic Health Action Research Program (SHARP) at the University of Connecticut where I am advised by Dr. Blair T. Johnson. I am also on the editorial board for Psychological Bulletin as a methodological reviewer."
+    "text": "Website  Email  Twitter  Github\n\n\nCurrent PhD student interested in quantitative methods for meta-analysis and psychological measurement. Specifically, my current research projects focus on correcting bias in effect size estimates caused by statistical artifacts. I am affiliated with the Systematic Health Action Research Program (SHARP) at the University of Connecticut where I am advised by Dr. Blair T. Johnson. I am also on the editorial board for Psychological Bulletin as a methodological reviewer.\n\n\n\n\n2022–Present | Ph.D. Quantitative Psychology, University of Connecticut, Storrs, Connecticut\n2021–2022 | M.S. Behavioral Neuroscience, University of Connecticut, Storrs, Connecticut\n2018–2020 | B.S. Computational Neuroscience, University of Connecticut, Storrs, Connecticut\n\n\n\n\n\nIn preparation | Correcting Effect Sizes for Statistical Artifacts, by Matthew B. Jané and Blair T. Johnson. A guide for correcting bias in effect size estimates induced by artifacts. Includes applications in meta-analysis and implementation in R and Python.\n\n\n\n\n\n2023 | {ThemePark}, An R package for populat culture ggplot themes.\n\nFeatured on rweekly.org and flowingdata.com\nGithub Repository: MatthewBJane.github.io/theme_park\n\n2023 | {posc} An R Package for generating Probability of Outcome Superiority Curves (POSCs).\n\nGithub Repository: MatthewBJane.github.io/posc\n\n2023 | OpenSynthesis, website cataloging publicly available meta-analytic databases.\n\nGithub Repository: MatthewBJane.github.io/opensynthesis\n\n2023 | Artifact Simulator, A Shiny App for Visualizing Statistical Artifacts.\n\nShiny App: matthewbjane.shinyapps.io/effect_size_artifact_bias\n\n2023 | Artifact Corrections for Effect Sizes, A webpage documenting equations and code for effect size artifact corrections.\n\nWebpage Link: MatthewBJane.com/ArtifactCorrections\n\n2023 | Project Analysis Code and Data, All data and code for all of my publications.\n\nLink: MatthewBJane.com/ArtifactCorrections\n\n\n\n\n\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\nJournal\n\n\n\n\n\n\nCorrelations across timing cues in natural vocalizations predict biases in judging synthetic sound burst durations.\n\n\n2022\n\n\nbioRxiv\n\n\n\n\nMemory retention following acoustic stimulation in slow-wave sleep: a meta-analytic review of replicability and measurement quality\n\n\n2023\n\n\nFrontiers in Sleep\n\n\n\n\nMethodological Quality in Research in Health Psychology.\n\n\n2023\n\n\nUnder Review at Sage\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "CV.html#education",
     "href": "CV.html#education",
     "title": "Matthew B. Jané",
-    "section": "Education",
-    "text": "Education\n\nPresent | Ph.D. Quantitative Psychology, University of Connecticut, Storrs, Connecticut\n2022 | M.S. Behavioral Neuroscience, University of Connecticut, Storrs, Connecticut\n2020 | B.S. Computational Neuroscience, University of Connecticut, Storrs, Connecticut"
+    "section": "",
+    "text": "2022–Present | Ph.D. Quantitative Psychology, University of Connecticut, Storrs, Connecticut\n2021–2022 | M.S. Behavioral Neuroscience, University of Connecticut, Storrs, Connecticut\n2018–2020 | B.S. Computational Neuroscience, University of Connecticut, Storrs, Connecticut"
   },
   {
-    "objectID": "CV.html#software",
-    "href": "CV.html#software",
+    "objectID": "CV.html#work-experience",
+    "href": "CV.html#work-experience",
     "title": "Matthew B. Jané",
-    "section": "Software",
-    "text": "Software\n\n2023 | {posc} An R Package for Probability of Outcome Superiority Curves (POSCs)\n\nGithub Repository: https://MatthewBJane.github.io/posc/\n\n2023 | {ThemePark}, An R package for populat culture ggplot themes\n\nGithub Repository: https://MatthewBJane.github.io/theme_park/\n\n2023 | OpenSynthesis, website cataloging publicly available meta-analytic databases\n\nGithub Repository: https://MatthewBJane.github.io/opensynthesis/\n\n2023 | Artifact Simulator, A Shiny App for Visualizing Statistical Artifacts”\n\nShiny App: https://matthewbjane.shinyapps.io/effect_size_artifact_bias/\n\n2023 | Artifact Corrections for Effect Sizes, A webpage documenting equations and code for effect size artifact corrections.\n\nLink: https://www.MatthewBJane.com/ArtifactCorrections\n\n2023 | Project Analysis Code and Data, All data and code for each one of my projects can be found here\n\nLink: https://www.MatthewBJane.com/ArtifactCorrections"
+    "section": "WORK EXPERIENCE",
+    "text": "WORK EXPERIENCE\n\nData Scientist\nFreelance, Multiple Clients Jan 2020 – June 2021\nProviding data collection, pre-processing, exploratory analysis and modelling services to clients in the early R&D stages of developing data driven products. Projects include:\n\nData description and preliminary product feasibility insights for a start-up real estate bond platform; including assessing suitability of various property transaction databases for use in initial product prototype.\nDevelopment of statistical anomaly detection regimes and key historical insights from internet quality time-series data for use in parametric insurance products, including documenting analysis tools in an R package."
   },
   {
-    "objectID": "CV.html#textbooks",
-    "href": "CV.html#textbooks",
+    "objectID": "CV.html#presentations-and-workshops",
+    "href": "CV.html#presentations-and-workshops",
     "title": "Matthew B. Jané",
-    "section": "Textbooks",
-    "text": "Textbooks\n\nIn progress | Correcting Effect Sizes for Statistical Artifacts A guide for addressing bias in effect size estimates induced by artifacts, by Matthew B. Jané and Blair T. Johnson"
+    "section": "PRESENTATIONS AND WORKSHOPS",
+    "text": "PRESENTATIONS AND WORKSHOPS\n\nTalk: Misadventures with Reproducibility in R (30 Nov 2022, R Ladies Melbourne Meetup)\nTalk: Designing R Packages (4 Oct 2022, Monash EBS Data Science Research Software Study Group)\nTalk: Quarto Websites as Research Compendiums (16 Aug 2022, Monash EBS Data Science Research Software Study Group)\nWorkshop: Writing academic papers with Rmarkdown and friends (9 Aug 2022, Monash University)"
+  },
+  {
+    "objectID": "CV.html#references",
+    "href": "CV.html#references",
+    "title": "Matthew B. Jané",
+    "section": "References",
+    "text": "References\nAvailable upon request"
   },
   {
     "objectID": "ArtifactCorrections.html",
@@ -49,25 +56,11 @@
     "text": "Effect sizes are indices that help researchers, stakeholders, and policymakers understand the relationship between variables and draw meaningful conclusions from data. However, the usefulness of an effect size is only as good as its estimation. To ensure the accuracy of effect size estimates, it is important to mitigate the attenuation induced by various statistical artifacts, such as measurement error and range restriction. This page provides documentation on these artifacts and provides corrections that can be applied to attenuated effect sizes to obtain unbiased estimates of the true population effect size. Equations and R code are provided for each correction. For additional information on these corrections and their application in meta-analysis, consult the book by Hunter and Schmidt (1990) and the paper by Wiernik and Dahlke (2020) . The {psychmeta} package (Dahlke and Wiernik 2019) contains many of these corrections with convenient implementation in R."
   },
   {
-    "objectID": "ArtifactCorrections.html#equations-and-code",
-    "href": "ArtifactCorrections.html#equations-and-code",
-    "title": "\nArtifact corrections for effect sizes: equations, code, and interactive app\n",
-    "section": "# Equations and Code",
-    "text": "# Equations and Code"
-  },
-  {
     "objectID": "ArtifactCorrections.html#small-samples-1",
     "href": "ArtifactCorrections.html#small-samples-1",
     "title": "Artifact corrections for effect sizes: equations, code, and interactive app",
     "section": "Small Samples",
     "text": "Small Samples\nBelow are the correction factors that may be applied to the correlation coefficient (r) and the standardized mean difference (d). Note that the correction for r is not conventionally used as it tends to be a very small adjustment. ### Correlation Coefficient (r) Point Estimate \\[\\displaystyle{ \\hat{\\rho} = r \\cdot \\left( 1 + \\frac{1-r^2}{2(n-4)} \\right) }\\]\nStandard Error \\[\\displaystyle{ se_{\\hat{\\rho}} = se_{r}\\cdot \\left( 1 + \\frac{1-r^2}{2(n-4)} \\right)}\\]\n\n# Parameters needed \nr =  0.50 # observed correlation between x and y \nn =  20 # sample size\nSEr = (1 - r^2) / sqrt(n - 1)  # standard error of observed correlation between x and y \n\n#Point Estimate \nrho = r * (1 + (1 - r^2) / (2 * (n - 4))) \n\n#Standard Error\nSErho = SEr *  (1 + (1 - r^2) / (2 * (n - 4)))\n\n# Print Results\npaste0('rho = ',round(rho,2),', SE = ',round(SErho,2) )\n\n[1] \"rho = 0.51, SE = 0.18\"\n\n\n\nStandardized Mean Difference (d)\nPoint Estimate \\[\\displaystyle{ \\hat{\\delta} = d \\left( 1-\\frac{3}{4n-9}\\right) }\\]\nStandard Error \\[\\displaystyle{ se_{\\hat{\\delta}} = se_{d}\\left( 1-\\frac{3}{4n-9}\\right) }\\]\n\n# Parameters needed \nd = 0.50 # observed standardized mean difference \nn = 20 # total sample size\nSEd = 0.10 # standard error of observed standardized mean difference \n\n# Point Estimate\ndelta = d * ( 1 - 3 / (4 * (n - 9)) ) \n\n# Standard Error\nSEdelta = SEd * ( 1 - 3 / (4 * (n - 9)) ) \n\n# Print Results\npaste0('delta = ',round(delta,2),', SE = ',round(SEdelta,2) )\n\n[1] \"delta = 0.47, SE = 0.09\""
-  },
-  {
-    "objectID": "ArtifactCorrections.html#measurement-error",
-    "href": "ArtifactCorrections.html#measurement-error",
-    "title": "\nArtifact corrections for effect sizes: equations, code, and interactive app\n",
-    "section": "# 2. Measurement Error",
-    "text": "# 2. Measurement Error\nMeasurement error is ubiquitous in science and it can cause severe bias in standardized parameter estimates. Measurement error is often thought of as random error/noise, however this is generally not the case. Measurement error variance can be attributed to many factors such as transient error (e.g., fluctuations in fatigue or mood), test item interpretations (e.g., varied interpretation of the levels in a Likert scale), extraneous response biases (e.g., participants’ tendency to select socially desirable options). Different estimators of reliability coefficients will capture these different sources of measurement error. For example, test-retest reliability will capture various transient errors that will not be captured by an internal consistency reliability coefficient (i.e., Cronbach’s alpha, McDonald’s omega). To avoid over/under-correcting effect size estimates, researchers should take great care in selecting the appropriate reliability coefficient for their research design."
   },
   {
     "objectID": "ArtifactCorrections.html#univariate-measurement-error-in-continuous-variables",
@@ -103,13 +96,6 @@
     "title": "Artifact corrections for effect sizes: equations, code, and interactive app",
     "section": "Bivariate dichotomization of naturally continuous variables",
     "text": "Bivariate dichotomization of naturally continuous variables\nI somewhat rarer circumstances, researchers may dichotomize both x and y variables. This will attenuate correlation coefficients more than usual. If a tetrachoric correlation is available, this is more analogous to a pearson correlation coefficient than the correction below.\n\nCorrelation Coefficient (r)\nPoint Estimate Note: \\(\\Phi\\) indicates the normal ordinate of a standard normal distribution\n\\[\\displaystyle{ \\hat{\\rho} = \\frac{r\\sqrt{p_x p_y (1-p_x) (1-p_y)}}{\\Phi(c_x)\\Phi(c_y)} }\\]\nStandard Error\n\\[\\displaystyle{ se_{\\hat{\\rho}} = \\frac{se_{r}\\sqrt{p_x p_y(1-p_x)(1-p_y)}}{\\Phi(c_x)\\Phi(c_y)} }\\]\n\n# Parameters\nr = 0.50 # observed correlation\nSEr = 0.10 # standard error of observed correlation\npx = 0.50 # proportion of individuals in upper or lower group of X\npy = 0.50 # proportion of individuals in upper or lower group of Y\n\n# Point Estimate\ncx = qnorm(px)# Find cut point on Y variable \ncy = qnorm(py)# Find cut point on Y variable\nrho = r * sqrt(px * py * (1 - px) * (1 - py) ) / (dnorm(cx)*dnorm(cy))\n\n# Standard Error\nSErho = SEr * sqrt(px * py * (1 - px) * (1 - py) ) / (dnorm(cx)*dnorm(cy))\n\n# Print Results\npaste0('rho = ',round(rho,2),', SE = ',round(SErho,2) )\n\n[1] \"rho = 0.79, SE = 0.16\""
-  },
-  {
-    "objectID": "ArtifactCorrections.html#range-restriction",
-    "href": "ArtifactCorrections.html#range-restriction",
-    "title": "Artifact corrections for effect sizes: equations, code, and interactive app",
-    "section": "# 3. Range Restriction",
-    "text": "# 3. Range Restriction\nRange restriction is a phenomenon that occurs when the variability in a sample is limited compared to the larger population it aims to represent. This limitation can lead to biased estimates of effect size. For example, in the context of college admissions, the SAT is frequently utilized as a factor in the selection process. Consequently, a sample of admitted college students may exhibit less variation in SAT scores compared to the entire pool of applicants. When studying the SAT’s predictive ability for first-year GPA, this range restriction can cause an underestimation of the correlation. Correction formulas have been developed to mitigate this issue."
   },
   {
     "objectID": "ArtifactCorrections.html#univariate-direct-range-restriction",
@@ -168,17 +154,66 @@
     "text": "Bivariate Indirect Range Restriction and Measurement Error\nWhen the selection process is correlated with both of the variables of interest then the resulting sample with have a reduced variance due to indirect range restriction. This is often the case in college admissions testing where both the predictor (e.g., SAT scores) and the outcome variable (e.g., first year GPA) are correlated with the college admissions process.\n\nCorrelation Coefficient (r)\nPoint Estimate\n-Step 1. Define lambda:\n\\[\\displaystyle{ \\lambda = \\mathrm{sign} (r_{sx} r_{sy} [1 - u_x] [1 - u_y ])\\frac{\\mathrm{sign} (1-u_x) \\mathrm{min} (u_x, 1/u_x) + \\mathrm{sign} (1-u_y) \\mathrm{min} (u_y, 1/u_y) }{\\mathrm{min} (u_x, 1/u_x) + \\mathrm{min} (u_y, 1/u_y)} }\\]\n-Step 2. Correct r for bivariate indirect range restriction:\n\\[\\hat{\\rho} = \\frac{r u_x u_y + \\lambda \\sqrt{\\left|1-u_x^2 \\right|\\left|1-u_y^2 \\right|} }{\\sqrt{1 - u_x^2 (1-r_{xx'})} \\sqrt{1 - u_y^2 (1 - r_{yy'})}}\\]\nStandard Error\n\nStep 1. Calculate the measurement quality index for X in the restricted sample: \\[ q_x = \\sqrt{r_{xx'}}\\]\nStep 2. Calculate the measurement quality index for Y in the restricted sample: \\[ q_y = \\sqrt{r_{yy'}}\\]\nStep 3. Estimated the measurement quality index for X in the unrestricted population:\n\\[q_X = \\sqrt{1 - u_x^2 (1 - r_{xx'})} \\]\nStep 4. Estimate the measurement quality index for Y in the unrestricted population: \\[ q_Y = \\sqrt{1 - u_y^2 (1 - r_{yy'})} \\]\nStep 5. Calculate first order partial derivative of \\(\\hat{\\rho}\\) with respect to \\(\\rho_{xx'}\\) \\[ \\beta_1 = -\\frac{u_x u_y r + \\lambda \\sqrt{\\left(1 - u_x^2 \\right)\\left(1 - u_y^2 \\right)} }{q_X^2 q_Y} \\]\nStep 6. Calculate first order partial derivitive of \\(\\hat{\\rho}\\) with respect to \\(\\rho_{yy'}\\) \\[ \\beta_2 = -\\frac{u_x u_y r + \\lambda \\sqrt{\\left|1 - u_x^2 \\right|\\left|1 - u_y^2 \\right|} }{q_Y^2 q_X} \\]\nStep 7. Calculate first order partial derivitive of \\(\\hat{\\rho}\\) with respect to \\(u_x\\) \\[ \\beta_3 = \\frac{u_y r}{q_X q_Y} - \\frac{\\lambda u_x (1 - u_x^2) \\sqrt{\\left|1 - u_x^2 \\right|}}{q_X q_Y\\sqrt{\\left|1 - u_y^2 \\right|^3}}\\]\nStep 8. Calculate first order partial derivitive of \\(\\hat{\\rho}\\) with respect to \\(u_y\\) \\[\\beta_4 = \\frac{u_x r}{q_X q_Y} - \\frac{\\lambda u_y (1 - u_y^2) \\sqrt{\\left|1 - u_y^2 \\right|}}{q_X q_Y\\sqrt{\\left|1 - u_x^2 \\right|^3}} \\]\nStep 9. Calculate first order partial derivitive of \\(\\hat{\\rho}\\) with respect to \\(r\\) \\[\\beta_5 = \\frac{u_x u_y}{q_X q_Y} \\]\nStep 10. Calculate standard error for unrestricted measure quality index (\\(q_X\\)) \\[se_{q_X} = \\sqrt{\\frac{1}{2} u_x^4 \\left[ \\frac{(1-q_x^2)^2}{1-u_x^2 (1-q_x^2)} \\right] \\left[ \\frac{1}{n-1} + \\frac{1}{n_{\\mathrm{ref}}-1} \\right] + \\frac{u_x^2 q_x^2(1 - q_x^2)^2}{\\left[1-u_x^2 (1-q_x^2)\\right] (n-1)} } \\]\nStep 11. Calculate standard error for unrestricted measure quality index (\\(q_Y\\)) \\[se_{q_Y} = \\sqrt{\\frac{1}{2} u_y^4 \\left[ \\frac{(1-q_y^2)^2}{1-u_y^2 (1-q_y^2)} \\right] \\left[ \\frac{1}{n-1} + \\frac{1}{n_{\\mathrm{ref}}-1} \\right] + \\frac{u_y^2 q_y^2(1 - q_y^2)^2}{\\left[1-u_y^2 (1-q_y^2)\\right] (n-1)} } \\]\nStep 12. Calculate standard error for \\(u_x\\) (note: sample size for reference sample is \\(n_\\mathrm{ref}\\)): \\[\\displaystyle{ se_{u_x} = u_x \\sqrt{ \\frac{1}{2(n-1)} + \\frac{1}{2(n_{\\mathrm{ref}} -1)}} }\\]\nStep 13. Calculate standard error for \\(u_y\\) (note: sample size for reference sample is \\(n_\\mathrm{ref}\\)): \\[\\displaystyle{ se_{u_y} = u_y \\sqrt{ \\frac{1}{2(n-1)} + \\frac{1}{2(n_{\\mathrm{ref}} -1)}} }\\]\nStep 14. Calculate standard error for \\(r\\) \\[\\displaystyle{ se_r = \\frac{1-r^2}{\\sqrt{n-1}} }\\]\nStep 15. Calculate standard error of \\(\\hat{\\rho}\\) using a Taylor Series Approximation \\[\\displaystyle{se_{\\hat{\\rho}} \\approx \\sqrt{\\beta_1^2 se_{q_X}^2 + \\beta_2^2 se_{q_Y}^2 + \\beta_3^2 se_{u_x}^2 + \\beta_4^2 se_{u_y}^2 + \\beta_5^2 se_{r}^2 } }\\]\n\n\n# Parameters needed\nr = 0.50 # observed correlation between x and y\nSEr = 0.10 # observed correlation between x and y\nrxx = 0.80 # reliability of x within study sample\nryy = 0.70 # reliability of y within study sample\nn = 200 # sample size\nna = 100# sample size of reference sample\nux  = 0.80# observed u-ratio of x \nuy  = 0.85 # observed u-ratio of y\nrsy = 1 # direction of correlation between selector and y (-1 = negative, 0 = no correlation, 1 = positive)\nrsx = 1 # direction of correlation between selector and x (-1 = negative, 0 = no correlation, 1 = positive)\n\n# Point Estimate\nlambda = sign( rsx * rsy * (1-ux) * (1-uy) ) * ( sign(1 - ux) * min(c(ux,1/ux)) + sign(1 - uy) * min(c(uy,1/uy)) ) / ( min(c(ux,1/ux)) + min(c(uy,1/uy)) )\nrho = r * ux * uy + lambda * sqrt( abs(1 - ux^2) * abs(1 - uy^2) )\n\n# Standard Error (Taylor Series Approximation)\nqx = sqrt(rxx)\nqy = sqrt(ryy)\nqX = sqrt(ux^2 * (rxx - 1))\n\nWarning in sqrt(ux^2 * (rxx - 1)): NaNs produced\n\nqY = sqrt(uy^2 * (ryy - 1))\n\nWarning in sqrt(uy^2 * (ryy - 1)): NaNs produced\n\n# First order partial derivitive of qX\nb1  = - ( ux * uy * r + lambda * sqrt(abs(1 - ux^2) * abs(1 - uy^2)) ) / (qX^2 * qY) \n# First order partial derivitive of qY\nb2  = - ( ux * uy * r + lambda * sqrt(abs(1 - ux^2) * abs(1 - uy^2)) ) / (qY^2 * qX) \n# First order partial derivitive of ux\nb3  = (r * uy) / (qX * qY) - ( lambda * ux *(1 - ux^2) * sqrt( abs(1 - uy^2) ) ) / (qX * qY * sqrt(abs(1 - uy^2)^3))  \n# First order partial derivitive of uy\nb4  = (r * ux) / (qX * qY) - ( lambda * uy *(1 - uy^2) * sqrt( abs(1 - ux^2) ) ) / (qX * qY * sqrt(abs(1 - ux^2)^3))  \n# First order partial derivitive of r\nb5  = (ux*uy) / (qX * qY)\n\n# Standard error of qX\nSEqX = sqrt( .5 * ux^4 * ( (1-qx^2)^2 / (1-ux^2 * (1-qx^2)) ) * (1/(n-1) + 1/(na-1)) + ( (ux^2 * qx^2 * (1-qx^2)^2) ) / ((1 - ux^2 * (1-qx^2)) * (n-1)) )\n\n# Standard error of qY\nSEqY = sqrt( .5 * uy^4 * ( (1-qy^2)^2 / (1-uy^2 * (1-qy^2)) ) * (1/(n-1) + 1/(na-1)) + ( (uy^2 * qy^2 * (1-qy^2)^2) ) / ((1 - uy^2 * (1-qy^2)) * (n-1)) )\n\n# Standard error of ux\nSEux = ux * sqrt( 1 / (2*(n-1)) + 1 / (2*(na-1)) )\n\n# Standard error of uy\nSEuy = uy * sqrt( 1 / (2*(n-1)) + 1 / (2*(na-1)) )\n\n# Standard error of r\nSEr =  (1 - r^2) / sqrt(n - 1)\n\n# Taylor series approximation\nSErho = sqrt( b1^2 * SEux^2 + b2^2 * SEuy^2 + b3^2 * SEr^2 )\n\n# Print Results\npaste0('rho = ',round(delta,2),', SE = ',round(SErho,2) )\n\n[1] \"rho = 0.85, SE = NaN\""
   },
   {
-    "objectID": "Publications.html",
-    "href": "Publications.html",
-    "title": "Publications",
+    "objectID": "CV.html#matthew-b.-jané",
+    "href": "CV.html#matthew-b.-jané",
+    "title": "Matthew B. Jané",
     "section": "",
-    "text": "Publications\nHarlow*, T. J., Jané*, M. B., Read, H. L., & Chrobak, J. J. (2023). Memory retention following acoustic stimulation in slow-wave sleep: a meta-analytic review of replicability and measurement quality. Frontiers in Sleep, 2, 1082253.\nData Code PDF\nJané, M., Pisupati, S., Smith, K. E., Castro-Tonelli, L., Melo-Thomas, L., Schwarting, R. K., … & Read, H. L. (2022). Correlations across timing cues in natural vocalizations predict biases in judging synthetic sound burst durations. bioRxiv, 2022-05.\nData Code PDF"
+    "text": "matthew.jane@uconn.edu | Website | Twitter"
+  },
+  {
+    "objectID": "CV.html#experience",
+    "href": "CV.html#experience",
+    "title": "Matthew B. Jané",
+    "section": "EXPERIENCE",
+    "text": "EXPERIENCE\nFreelance, Multiple Clients Jan 2020 – June 2021\nProviding data collection, pre-processing, exploratory analysis and modelling services to clients in the early R&D stages of developing data driven products. Projects include:\n\nData description and preliminary product feasibility insights for a start-up real estate bond platform; including assessing suitability of various property transaction databases for use in initial product prototype.\nDevelopment of statistical anomaly detection regimes and key historical insights from internet quality time-series data for use in parametric insurance products, including documenting analysis tools in an R package."
+  },
+  {
+    "objectID": "CV.html#software",
+    "href": "CV.html#software",
+    "title": "Matthew B. Jané",
+    "section": "",
+    "text": "2023 | {ThemePark}, An R package for populat culture ggplot themes.\n\nFeatured on rweekly.org and flowingdata.com\nGithub Repository: MatthewBJane.github.io/theme_park\n\n2023 | {posc} An R Package for generating Probability of Outcome Superiority Curves (POSCs).\n\nGithub Repository: MatthewBJane.github.io/posc\n\n2023 | OpenSynthesis, website cataloging publicly available meta-analytic databases.\n\nGithub Repository: MatthewBJane.github.io/opensynthesis\n\n2023 | Artifact Simulator, A Shiny App for Visualizing Statistical Artifacts.\n\nShiny App: matthewbjane.shinyapps.io/effect_size_artifact_bias\n\n2023 | Artifact Corrections for Effect Sizes, A webpage documenting equations and code for effect size artifact corrections.\n\nWebpage Link: MatthewBJane.com/ArtifactCorrections\n\n2023 | Project Analysis Code and Data, All data and code for all of my publications.\n\nLink: MatthewBJane.com/ArtifactCorrections"
+  },
+  {
+    "objectID": "CV.html#presentations",
+    "href": "CV.html#presentations",
+    "title": "Matthew B. Jané",
+    "section": "Presentations",
+    "text": "Presentations\n\nTalk: Misadventures with Reproducibility in R (30 Nov 2022, R Ladies Melbourne Meetup)\nTalk: Designing R Packages (4 Oct 2022, Monash EBS Data Science Research Software Study Group)\nTalk: Quarto Websites as Research Compendiums (16 Aug 2022, Monash EBS Data Science Research Software Study Group)\nWorkshop: Writing academic papers with Rmarkdown and friends (9 Aug 2022, Monash University)"
+  },
+  {
+    "objectID": "CV.html#bio",
+    "href": "CV.html#bio",
+    "title": "Matthew B. Jané",
+    "section": "",
+    "text": "Current PhD student interested in quantitative methods for meta-analysis and psychological measurement. Specifically, my current research projects focus on correcting bias in effect size estimates caused by statistical artifacts. I am affiliated with the Systematic Health Action Research Program (SHARP) at the University of Connecticut where I am advised by Dr. Blair T. Johnson. I am also on the editorial board for Psychological Bulletin as a methodological reviewer."
+  },
+  {
+    "objectID": "CV.html#textbooks",
+    "href": "CV.html#textbooks",
+    "title": "Matthew B. Jané",
+    "section": "",
+    "text": "In preparation | Correcting Effect Sizes for Statistical Artifacts, by Matthew B. Jané and Blair T. Johnson. A guide for correcting bias in effect size estimates induced by artifacts. Includes applications in meta-analysis and implementation in R and Python."
   },
   {
     "objectID": "CV.html#publications",
     "href": "CV.html#publications",
     "title": "Matthew B. Jané",
-    "section": "Publications",
-    "text": "Publications"
+    "section": "",
+    "text": "Title\n\n\nDate\n\n\nJournal\n\n\n\n\n\n\nCorrelations across timing cues in natural vocalizations predict biases in judging synthetic sound burst durations.\n\n\n2022\n\n\nbioRxiv\n\n\n\n\nMemory retention following acoustic stimulation in slow-wave sleep: a meta-analytic review of replicability and measurement quality\n\n\n2023\n\n\nFrontiers in Sleep\n\n\n\n\nMethodological Quality in Research in Health Psychology.\n\n\n2023\n\n\nUnder Review at Sage\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "source-publications/template.html",
+    "href": "source-publications/template.html",
+    "title": "Memory retention following acoustic stimulation in slow-wave sleep a meta-analytic review of replicability and measurement quality",
+    "section": "",
+    "text": "Jané, M. B., Johnson B. T. (2023). Correcting for Measurement Error in Repeated Measures Standardized Mean Differences. Manuscript in Preparation.\nJané, M. B., Johnson B. T. (2023). Correcting for Measurement Error in Repeated Measures Standardized Mean Differences. Manuscript in Preparation.\nHarlow*, T. J., Jané*, M. B., Read, H. L., & Chrobak, J. J. (2023). Memory retention following acoustic stimulation in slow-wave sleep: a meta-analytic review of replicability and measurement quality. Frontiers in Sleep, 2, 1082253.\nJané, M. B., Pisupati, S., Smith, K. E., Castro-Tonelli, L., Melo-Thomas, L., Schwarting, R. K., … & Read, H. L. (2022). Correlations across timing cues in natural vocalizations predict biases in judging synthetic sound burst durations. bioRxiv, 2022-05.\nData Code PDF"
+  },
+  {
+    "objectID": "source-publications/template.html#publications",
+    "href": "source-publications/template.html#publications",
+    "title": "Memory retention following acoustic stimulation in slow-wave sleep a meta-analytic review of replicability and measurement quality",
+    "section": "",
+    "text": "Jané, M. B., Johnson B. T. (2023). Correcting for Measurement Error in Repeated Measures Standardized Mean Differences. Manuscript in Preparation.\nJané, M. B., Johnson B. T. (2023). Correcting for Measurement Error in Repeated Measures Standardized Mean Differences. Manuscript in Preparation.\nHarlow*, T. J., Jané*, M. B., Read, H. L., & Chrobak, J. J. (2023). Memory retention following acoustic stimulation in slow-wave sleep: a meta-analytic review of replicability and measurement quality. Frontiers in Sleep, 2, 1082253.\nJané, M. B., Pisupati, S., Smith, K. E., Castro-Tonelli, L., Melo-Thomas, L., Schwarting, R. K., … & Read, H. L. (2022). Correlations across timing cues in natural vocalizations predict biases in judging synthetic sound burst durations. bioRxiv, 2022-05.\nData Code PDF"
   }
 ]

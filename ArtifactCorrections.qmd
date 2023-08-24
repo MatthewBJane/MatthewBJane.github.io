@@ -809,7 +809,7 @@ paste0('rho = ',round(delta,2),', SE = ',round(SErho,2) )
 
 # Cite This Page
 
-APA: Jané, M. B. (2023). Artifact corrections for effect sizes: equations, code, and interactive app. https://matthewbjane.github.io/artifact-corrections/, accessed DD-MM-YYYY
+APA: Jané, M. B. (2023). Artifact corrections for effect sizes: equations, code, and interactive app. https://www.matthewbjane.com/ArtifactCorrections/, accessed DD-MM-YYYY
 
 BibTeX:
 

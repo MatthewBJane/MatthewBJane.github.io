@@ -1,53 +1,95 @@
 ---
-description-meta: "Matthew B. Jané's CV"
-date: 2023-08-02
-title-block-banner: "#333333ff"
-engine: knitr
-pdf-engine: xelatex
 format:
-  html: default
-  pdf: default
-mainfont: Times
+  html:
+    toc: true
+  pdf:
+    pdf-engine: lualatex
+    documentclass: scrartcl
+    mainfont: Times New Roman
+    monofont: Times New Roman
+    sansfont: Times New Roman
+    keep-tex: true
+    urlcolor: Black
+listing:
+  - id: publications
+    contents: "source-publications/!(template).qmd"
+    type: table
+    fields: [title, date, Journal]
+    date-format: "YYYY"
+    filter-ui: false
+    sort-ui: false
+  - id: software
+    contents: "source-software/!(template).qmd"
+    type: table
+    fields: [title, date, Journal]
+    date-format: "YYYY"
+    filter-ui: false
+    sort-ui: false
+format-links: [pdf]
 ---
-#### Curriculum Vitae
 # Matthew B. Jané
 
-[Twitter](https://www.twitter.com/MatthewBJane) $\cdot$
-[Github](https://www.github.io/MatthewBJane) $\cdot$ 
-[Website](https://www.matthebjane.com)
+::: {.content-visible when-format="pdf"}
+
+{{< fa globe >}} [MatthewBJane.com](https://www.matthewbjane.com) \| {{< fa envelope >}} [matthew.jane@uconn.edu](mailto:matthew.jane@uconn.edu) \| {{< fa brands twitter >}}  [@MatthewBJane](https://www.twitter.com/MatthewBJane) \| {{< fa brands github >}} [MatthewBJane](https://www.github.io/MatthewBJane) 
+
+:::
+::: {.content-visible when-format="html"}
+[{{< fa globe >}} Website](https://www.matthewbjane.com){.btn .btn-success .btn-sm role="button" data-toggle="data" title="Data File"} 
+[{{< fa envelope >}} Email](mailto:matthew.jane@uconn.edu){.btn .btn-success .btn-sm role="button" data-toggle="data" title="Data File"} 
+[{{< fa brands twitter >}} Twitter](https://www.twitter.com/MatthewBJane){.btn .btn-success .btn-sm role="button" data-toggle="data" title="Data File"} 
+[{{< fa brands github >}} Github](https://www.github.io/MatthewBJane){.btn .btn-success .btn-sm role="button" data-toggle="data" title="Data File"} 
+:::
 
 ## Bio
 
-Current PhD student interested in quantitative methods for meta-analysis and psychological measurement. Specifically, my current research projects focus on correcting bias in effect size estimates caused by statistical artifacts. I am affiliated with the Systematic Health Action Research Program (SHARP) at the University of Connecticut where I am advised by Dr. Blair T. Johnson. I am also on the editorial board for Psychological Bulletin as a methodological reviewer.
+Current PhD student interested in quantitative methods for meta-analysis and artifacts. Specifically, my current research projects focus on correcting bias in effect size estimates caused by statistical artifacts. I am affiliated with the Systematic Health Action Research Program (SHARP) at the University of Connecticut where I am advised by Dr. Blair T. Johnson. I am also on the editorial board for Psychological Bulletin as a methodological reviewer.
 
 ## Education
 
--   *Present* \| **Ph.D.** *Quantitative Psychology*, University of Connecticut, Storrs, Connecticut
--   2022 \| **M.S.** *Behavioral Neuroscience*, University of Connecticut, Storrs, Connecticut
--   2020 \| **B.S.** *Computational Neuroscience*, University of Connecticut, Storrs, Connecticut
+-   2022--Present \| **Ph.D.** *Quantitative Psychology*, University of Connecticut, Storrs, Connecticut
+-   2021--2022 \| **M.S.** *Behavioral Neuroscience*, University of Connecticut, Storrs, Connecticut
+-   2018--2020 \| **B.S.** *Computational Neuroscience*, University of Connecticut, Storrs, Connecticut
 
 ## Textbooks
 
-- *In progress* | **Correcting Effect Sizes for Statistical Artifacts** A guide for addressing bias in effect size estimates induced by artifacts, by Matthew B. Jané and Blair T. Johnson
+-   In preparation \| **Correcting Effect Sizes for Statistical Artifacts**, *by Matthew B. Jané and Blair T. Johnson*. A guide for correcting bias in effect size estimates induced by artifacts. Includes applications in meta-analysis and implementation in R and Python. 
 
 ## Software
 
--   2023 | **{posc}** An R Package for Probability of Outcome Superiority Curves (POSCs)
-    - Github Repository: https://MatthewBJane.github.io/posc/
--   2023 | **{ThemePark}**, An R package for populat culture ggplot themes
-    - Github Repository: https://MatthewBJane.github.io/theme_park/
--   2023 | **OpenSynthesis**, website cataloging publicly available meta-analytic databases
-    - Github Repository: https://MatthewBJane.github.io/opensynthesis/
--   2023 | **Artifact Simulator**, A Shiny App for Visualizing Statistical Artifacts"
-    - Shiny App: https://matthewbjane.shinyapps.io/effect_size_artifact_bias/
--   2023 | **Artifact Corrections for Effect Sizes**, A webpage documenting equations and code for effect size artifact corrections.
-    - Link: https://www.MatthewBJane.com/ArtifactCorrections
--   2023 | **Project Analysis Code and Data**, All data and code for each one of my projects can be found here
-    - Link: https://www.MatthewBJane.com/ArtifactCorrections
+-   2023 \| **{ThemePark}**, An R package for popular culture ggplot themes.
+    -   Featured on [rweekly.org](https://rweekly.org/2023-W32.html) and [flowingdata.com]()
+    -   Github Repository: MatthewBJane.github.io/theme_park
+-   2023 \| **{posc}** An R Package for generating Probability of Outcome Superiority Curves (POSCs).
+    -   Github Repository: MatthewBJane.github.io/posc
+-   2023 \| **OpenSynthesis**, website cataloging publicly available meta-analytic databases.
+    -   Github Repository: MatthewBJane.github.io/opensynthesis
+-   2023 \| **Artifact Simulator**, A Shiny App for Visualizing Statistical Artifacts.
+    -   Shiny App: matthewbjane.shinyapps.io/effect_size_artifact_bias
+-   2023 \| **Artifact Corrections for Effect Sizes**, A webpage documenting equations and code for effect size artifact corrections.
+    -   Webpage Link: MatthewBJane.com/ArtifactCorrections
+-   2023 \| **Project Analysis Code and Data**, All data and code for all of my publications.
+    -   Link: MatthewBJane.com/ArtifactCorrections
 
 ## Publications
 
-{{< include Publications.qmd >}}
+::: {.content-visible when-format="html"}
+::: {#publications}
+:::
+:::
 
+::: {.content-visible when-format="pdf"}
 
+**Jané, M. B.**, Johnson, B. T. (2023). Correcting Effect Sizes for Statistical Artifacts: Implementation in R and Python. In preparation.
+
+**Jané, M. B.**, Harlow, T. J., Johnson, B. T. (2023). Temporal and Non-Temporal Sensory Discrimination and Fluid Intelligence: Artifact Correction Meta-Analysis. In preparation.
+
+**Jané, M. B.**, Curley, C. Johnson, B. T. (2023). Methodological Quality in Research in Health Psychology. Under review at the Journal of Health Psychology.
+
+**Jané, M. B.**, Johnson, B. T. (2023). Correcting for Measurement Error in Repeated Measures Standardized Mean Differences. Manuscript in Preparation.
+
+Harlow\*, T. J., **Jané\*, M. B.**, Read, H. L., & Chrobak, J. J. (2023). Memory retention following acoustic stimulation in slow-wave sleep: a meta-analytic review of replicability and measurement quality. Frontiers in Sleep.
+
+**Jané, M. B.**, Pisupati, S., Smith, K. E., Castro-Tonelli, L., Melo-Thomas, L., Schwarting, R. K., ... & Read, H. L. (2022). Correlations across timing cues in natural vocalizations predict biases in judging synthetic sound burst durations. bioRxiv.
+:::
 

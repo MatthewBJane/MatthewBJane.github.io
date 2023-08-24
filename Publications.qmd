@@ -1,15 +1,9 @@
-# Publications
-
-
-Harlow\*, T. J., **Jané\*, M. B.**, Read, H. L., & Chrobak, J. J. (2023). Memory retention following acoustic stimulation in slow-wave sleep: a meta-analytic review of replicability and measurement quality. Frontiers in Sleep, 2, 1082253.
-
-[Data](MatthewBJane.github.io/project-data-code/acoustic_stimulation_and_memory/data){.btn .btn-outline-success .btn role="button" data-toggle="data" title="Data File"} 
-[Code](MatthewBJane.github.io/project-data-code/acoustic_stimulation_and_memory/analysis){.btn .btn-outline-success .btn role="button" data-toggle="code" title="Analysis Code"}
-[PDF](manuscripts/Harlow2023_Frontiers.pdf){.btn .btn-outline-success .btn role="button" data-toggle="pdf" title="PDF of Manuscript"}
-
-
-**Jané, M.**, Pisupati, S., Smith, K. E., Castro-Tonelli, L., Melo-Thomas, L., Schwarting, R. K., ... & Read, H. L. (2022). Correlations across timing cues in natural vocalizations predict biases in judging synthetic sound burst durations. bioRxiv, 2022-05.
-
-[Data](https://codeocean.com/capsule/8495056/tree){.btn .btn-outline-success .btn role="button" data-toggle="data" title="Data File"} 
-[Code](https://codeocean.com/capsule/8495056/tree){.btn .btn-outline-success .btn role="button" data-toggle="code" title="Analysis Code"}
-[PDF](manuscripts/Jane2022_BioArxiv.pdf){.btn .btn-outline-success .btn role="button" data-toggle="pdf" title="PDF of Manuscript"}
+---
+listing:
+  type: grid
+  contents: 
+    - "source-publications/!(template).qmd"
+  fields: [date, title, author, Journal, Open Science Links]
+  date-format: "YYYY"
+  grid-columns: 2
+---
