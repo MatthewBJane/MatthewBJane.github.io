@@ -7,7 +7,6 @@ about:
 ---
 
 <div class="btn-group" role="group" aria-label="Social Links">
-[<span style="font-family:'Style Script';font-size:2em;vertical-align: middle;">Matthew B. Jané</span>](){.btn-MBJ .btn-secondary .btn role="button" data-toggle="data" title="Data File" style="pointer-events: none;"}
 [{{< fa envelope >}}<br>Email](mailto:matthew.jane@uconn.edu){.btn .btn-secondary .btn role="button" data-toggle="data" title="email"}
 [{{< fa brands twitter >}}<br>Twitter](https://www.twitter.com/MatthewBJane){.btn .btn-secondary .btn role="button" data-toggle="data" title="twitter"}
 [{{< fa brands github >}}<br>Github](https://www.github.io/MatthewBJane){.btn .btn-secondary .btn role="button" data-toggle="data" title="github"}
