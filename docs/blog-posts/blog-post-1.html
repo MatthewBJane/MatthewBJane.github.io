@@ -97,6 +97,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Asap" type="text/css">
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -235,9 +236,9 @@ S_{post}\approx \bar{S}_{ratio}\times S_{pre}
 <p>A rougher approximation would be to simply set the pre-test SD and post-test SD to be equal.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define standard deviations</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>S_pre <span class="ot">=</span> <span class="dv">9</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>S_post <span class="ot">=</span> <span class="dv">11</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>S_change <span class="ot">=</span> <span class="dv">8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>S_pre <span class="ot">&lt;-</span> <span class="dv">9</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>S_post <span class="ot">&lt;-</span> <span class="dv">11</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>S_change <span class="ot">&lt;-</span> <span class="dv">8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="step-2-calculate-the-prepost-correlation" class="level2">
@@ -251,7 +252,7 @@ r = \frac{S^2_{pre} + S^2_{post} - S^2_{change}}{2S_{pre}S_{post}}
 \]</span> Note that this is a direct conversion and not merely an approximation.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate pre/post correlation</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>r <span class="ot">=</span> (S_pre<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> S_post<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> S_change<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (<span class="dv">2</span><span class="sc">*</span>S_pre<span class="sc">*</span>S_post)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> (S_pre<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> S_post<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> S_change<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (<span class="dv">2</span><span class="sc">*</span>S_pre<span class="sc">*</span>S_post)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">'r = '</span>,<span class="fu">round</span>(r,<span class="dv">3</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -268,29 +269,29 @@ r = \frac{S^2_{pre} + S^2_{post} - S^2_{change}}{2S_{pre}S_{post}}
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define parameters</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>S_pre <span class="ot">=</span> <span class="dv">9</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>S_post <span class="ot">=</span> <span class="dv">11</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>r_true <span class="ot">=</span> .<span class="dv">70</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>S_pre <span class="ot">&lt;-</span> <span class="dv">9</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>S_post <span class="ot">&lt;-</span> <span class="dv">11</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>r_true <span class="ot">&lt;-</span> .<span class="dv">70</span></span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate correlated pre/post scores from bivariate gaussian</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">mvrnorm</span>(<span class="at">n=</span><span class="dv">200</span>,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">mvrnorm</span>(<span class="at">n=</span><span class="dv">200</span>,</span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">mu=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>),</span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>               <span class="at">Sigma =</span> <span class="fu">data.frame</span>(<span class="at">x=</span><span class="fu">c</span>(S_pre<span class="sc">^</span><span class="dv">2</span>,r_true<span class="sc">*</span>S_pre<span class="sc">*</span>S_post),</span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">y=</span><span class="fu">c</span>(r_true<span class="sc">*</span>S_pre<span class="sc">*</span>S_post,S_post<span class="sc">^</span><span class="dv">2</span>)),</span>
 <span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>               <span class="at">empirical =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtain simulated scores</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>x_pre <span class="ot">=</span> data[,<span class="dv">1</span>] <span class="co"># Pre-test scores</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>x_post <span class="ot">=</span> data[,<span class="dv">2</span>] <span class="co"># Post-test scores</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>x_change <span class="ot">=</span> x_post <span class="sc">-</span> x_pre <span class="co"># Calculate change scores</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>x_pre <span class="ot">&lt;-</span> data[,<span class="dv">1</span>] <span class="co"># Pre-test scores</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>x_post <span class="ot">&lt;-</span> data[,<span class="dv">2</span>] <span class="co"># Post-test scores</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>x_change <span class="ot">&lt;-</span> x_post <span class="sc">-</span> x_pre <span class="co"># Calculate change scores</span></span>
 <span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate standard deviations</span></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>S_pre <span class="ot">=</span> <span class="fu">sd</span>(x_pre)</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>S_post <span class="ot">=</span> <span class="fu">sd</span>(x_post)</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>S_change <span class="ot">=</span> <span class="fu">sd</span>(x_change)</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>S_pre <span class="ot">&lt;-</span> <span class="fu">sd</span>(x_pre)</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>S_post <span class="ot">&lt;-</span> <span class="fu">sd</span>(x_post)</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>S_change <span class="ot">&lt;-</span> <span class="fu">sd</span>(x_change)</span>
 <span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate pre/post correlation</span></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>r <span class="ot">=</span> (S_pre<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> S_post<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> S_change<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (<span class="dv">2</span><span class="sc">*</span>S_pre<span class="sc">*</span>S_post)</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> (S_pre<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> S_post<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> S_change<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (<span class="dv">2</span><span class="sc">*</span>S_pre<span class="sc">*</span>S_post)</span>
 <span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">'r = '</span>,r))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">

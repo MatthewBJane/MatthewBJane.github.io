@@ -31,17 +31,17 @@ background-color: null;
 font-style: inherit;"># Define standard deviations</span></span>
 <span id="cb1-2">S_pre <span class="ot" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+font-style: inherit;">&lt;-</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">9</span></span>
 <span id="cb1-3">S_post <span class="ot" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+font-style: inherit;">&lt;-</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">11</span></span>
 <span id="cb1-4">S_change <span class="ot" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+font-style: inherit;">&lt;-</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">8</span></span></code></pre></div>
 </div>
@@ -57,7 +57,7 @@ background-color: null;
 font-style: inherit;"># Calculate pre/post correlation</span></span>
 <span id="cb2-2">r <span class="ot" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">=</span> (S_pre<span class="sc" style="color: #5E5E5E;
+font-style: inherit;">&lt;-</span> (S_pre<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">^</span><span class="dv" style="color: #AD0000;
 background-color: null;
@@ -118,17 +118,17 @@ background-color: null;
 font-style: inherit;"># Define parameters</span></span>
 <span id="cb4-5">S_pre <span class="ot" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+font-style: inherit;">&lt;-</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">9</span></span>
 <span id="cb4-6">S_post <span class="ot" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+font-style: inherit;">&lt;-</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">11</span></span>
 <span id="cb4-7">r_true <span class="ot" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">=</span> .<span class="dv" style="color: #AD0000;
+font-style: inherit;">&lt;-</span> .<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">70</span></span>
 <span id="cb4-8"></span>
@@ -137,7 +137,7 @@ background-color: null;
 font-style: inherit;"># Simulate correlated pre/post scores from bivariate gaussian</span></span>
 <span id="cb4-10">data <span class="ot" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">mvrnorm</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -194,21 +194,21 @@ background-color: null;
 font-style: inherit;"># Obtain simulated scores</span></span>
 <span id="cb4-17">x_pre <span class="ot" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">=</span> data[,<span class="dv" style="color: #AD0000;
+font-style: inherit;">&lt;-</span> data[,<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>] <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Pre-test scores</span></span>
 <span id="cb4-18">x_post <span class="ot" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">=</span> data[,<span class="dv" style="color: #AD0000;
+font-style: inherit;">&lt;-</span> data[,<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">2</span>] <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Post-test scores</span></span>
 <span id="cb4-19">x_change <span class="ot" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">=</span> x_post <span class="sc" style="color: #5E5E5E;
+font-style: inherit;">&lt;-</span> x_post <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">-</span> x_pre <span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -219,17 +219,17 @@ background-color: null;
 font-style: inherit;"># Calculate standard deviations</span></span>
 <span id="cb4-22">S_pre <span class="ot" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">sd</span>(x_pre)</span>
 <span id="cb4-23">S_post <span class="ot" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">sd</span>(x_post)</span>
 <span id="cb4-24">S_change <span class="ot" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">sd</span>(x_change)</span>
 <span id="cb4-25"></span>
@@ -238,7 +238,7 @@ background-color: null;
 font-style: inherit;"># Calculate pre/post correlation</span></span>
 <span id="cb4-27">r <span class="ot" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">=</span> (S_pre<span class="sc" style="color: #5E5E5E;
+font-style: inherit;">&lt;-</span> (S_pre<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">^</span><span class="dv" style="color: #AD0000;
 background-color: null;

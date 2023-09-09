@@ -32,11 +32,13 @@ website:
 
 format:
   html:
+    header-includes: |
+      <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Asap" type="text/css"/>
     theme: 
       - darkly
       - barbie.scss
     css: styles.css
     toc: true
-
 editor: visual
+mainfont: Asap
 

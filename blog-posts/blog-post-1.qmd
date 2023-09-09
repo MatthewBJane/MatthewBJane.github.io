@@ -33,9 +33,9 @@ A rougher approximation would be to simply set the pre-test SD and post-test SD 
 
 ```{r}
 # Define standard deviations
-S_pre = 9
-S_post = 11
-S_change = 8
+S_pre <- 9
+S_post <- 11
+S_change <- 8
 ```
 
 ## Step 2: Calculate the Pre/Post Correlation
@@ -54,7 +54,7 @@ Note that this is a direct conversion and not merely an approximation.
 
 ```{r}
 # Calculate pre/post correlation
-r = (S_pre^2 + S_post^2 - S_change^2) / (2*S_pre*S_post)
+r <- (S_pre^2 + S_post^2 - S_change^2) / (2*S_pre*S_post)
 
 # Print results
 print(paste0('r = ',round(r,3)))
@@ -70,29 +70,29 @@ We can simulate correlated pre/post scores from a bivariate Gaussian with known 
 library(MASS)
 
 # Define parameters
-S_pre = 9
-S_post = 11
-r_true = .70
+S_pre <- 9
+S_post <- 11
+r_true <- .70
 
 # Simulate correlated pre/post scores from bivariate gaussian
-data = mvrnorm(n=200,
+data <- mvrnorm(n=200,
                mu=c(0,0),
                Sigma = data.frame(x=c(S_pre^2,r_true*S_pre*S_post),
                                   y=c(r_true*S_pre*S_post,S_post^2)),
                empirical = TRUE)
 
 # Obtain simulated scores
-x_pre = data[,1] # Pre-test scores
-x_post = data[,2] # Post-test scores
-x_change = x_post - x_pre # Calculate change scores
+x_pre <- data[,1] # Pre-test scores
+x_post <- data[,2] # Post-test scores
+x_change <- x_post - x_pre # Calculate change scores
 
 # Calculate standard deviations
-S_pre = sd(x_pre)
-S_post = sd(x_post)
-S_change = sd(x_change)
+S_pre <- sd(x_pre)
+S_post <- sd(x_post)
+S_change <- sd(x_change)
 
 # Calculate pre/post correlation
-r = (S_pre^2 + S_post^2 - S_change^2) / (2*S_pre*S_post)
+r <- (S_pre^2 + S_post^2 - S_change^2) / (2*S_pre*S_post)
 
 print(paste0('r = ',r))
 ```
