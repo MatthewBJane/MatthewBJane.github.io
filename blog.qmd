@@ -3,7 +3,7 @@ title: "Meta-Analysis Magic"
 format: 
   html: 
     header-includes: |
-      <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Sansita" type="text/css"/>
+      <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Asap" type="text/css"/>
 
 listing: 
   id: blog-listing
@@ -16,6 +16,8 @@ listing:
   type: grid
   grid-columns: 2
   image-height: "12em"
+mainfont: Asap
+sansfont: Asap
 ---
 
 

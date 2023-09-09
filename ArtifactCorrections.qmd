@@ -4,6 +4,12 @@ date: 2023-08-02
 author: "Matthew B. Jané"
 toc: true
 bibliography: references.bib
+mainfont: Asap
+sansfont: Asap
+format:
+  html:
+    header-includes: |
+      <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Asap" type="text/css"/>
 ---
 
 Effect sizes are indices that help researchers, stakeholders, and policymakers understand the relationship between variables and draw meaningful conclusions from data. However, the usefulness of an effect size is only as good as its estimation. To ensure the accuracy of effect size estimates, it is important to mitigate the attenuation induced by various statistical artifacts, such as measurement error and range restriction. This page provides documentation on these artifacts and provides corrections that can be applied to attenuated effect sizes to obtain unbiased estimates of the true population effect size. Equations and R code are provided for each correction. For additional information on these corrections and their application in meta-analysis, consult the book by @hunter1990 and the paper by @wiernik2020 . The *{psychmeta}* package [@dahlke2019] contains many of these corrections with convenient implementation in R.

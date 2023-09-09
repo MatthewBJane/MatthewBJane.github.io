@@ -1,5 +1,11 @@
 ---
 title: "Software"
+format:
+  html:
+    header-includes: |
+      <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Asap" type="text/css"/>
+mainfont: Asap
+sansfont: Asap
 ---
 
 <hr>

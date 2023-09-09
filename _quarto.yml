@@ -41,4 +41,5 @@ format:
     toc: true
 editor: visual
 mainfont: Asap
+sansfont: Asap
 
