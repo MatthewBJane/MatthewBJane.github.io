@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Matthew B. Jané</title>
+<link>matthewbjane.com/blog.html</link>
+<atom:link href="matthewbjane.com/blog.xml" rel="self" type="application/rss+xml"/>
+<description></description>
+<generator>quarto-1.3.361</generator>
+<lastBuildDate>Fri, 08 Sep 2023 04:00:00 GMT</lastBuildDate>
+<item>
+  <title>Calculating Pre/Post Correlation from the Standard Deviation of Change Scores</title>
+  <dc:creator>Matthew B. Jané</dc:creator>
+  <link>matthewbjane.com/blog-posts/blog-post-1.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="step-1-obtain-pre-test-post-test-and-change-score-standard-deviations" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-obtain-pre-test-post-test-and-change-score-standard-deviations">Step 1: Obtain Pre-test, Post-test, and Change score standard deviations</h2>
+<p>In order to calculate the pre/post correlation (<img src="https://latex.codecogs.com/png.latex?r">), we need an estimate of the standard deviation (SD) of pre-test scores (<img src="https://latex.codecogs.com/png.latex?S_%7Bpre%7D">), the SD of post-test scores (<img src="https://latex.codecogs.com/png.latex?S_%7Bpost%7D">), and the SD of change scores (<img src="https://latex.codecogs.com/png.latex?S_%7Bchange%7D">, where <img src="https://latex.codecogs.com/png.latex?x_%7Bchange%7D=x_%7Bpre%7D-x_%7Bpost%7D">). If the post-test standard deviation is unavailable, but the pre-test standard deviation is available, you can approximate the post-test standard deviation by taking average ratio of the pre-test SD and post-test SD from all the other studies in the current meta-analysis.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbar%7BS%7D_%7Bratio%7D=%5Cfrac%7B1%7D%7Bk%7D%5Csum_%7Bi=1%7D%5Ek%20%5Cfrac%7BS_%7Bpost,i%7D%7D%7BS_%7Bpre,i%7D%7D%0A"> Then we can make an approximation of the post-test standard by multiplying the pre-test SD by the ratio of SDs,</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0AS_%7Bpost%7D%5Capprox%20%5Cbar%7BS%7D_%7Bratio%7D%5Ctimes%20S_%7Bpre%7D%0A"></p>
+<p>A rougher approximation would be to simply set the pre-test SD and post-test SD to be equal.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Define standard deviations</span></span>
+<span id="cb1-2">S_pre <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">9</span></span>
+<span id="cb1-3">S_post <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">11</span></span>
+<span id="cb1-4">S_change <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8</span></span></code></pre></div>
+</div>
+</section>
+<section id="step-2-calculate-the-prepost-correlation" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-calculate-the-prepost-correlation">Step 2: Calculate the Pre/Post Correlation</h2>
+<p>The correlation between pre-test and post-test scores (<img src="https://latex.codecogs.com/png.latex?r">) can be calculated by re-arranging the equation for change score SD:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0AS_%7Bchange%7D%20=%20%5Csqrt%7BS%5E2_%7Bpre%7D%20+%20S%5E2_%7Bpost%7D%20-%202rS_%7Bpre%7DS_%7Bpost%7D%7D%0A"> Then we can solve for <img src="https://latex.codecogs.com/png.latex?r">,</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0Ar%20=%20%5Cfrac%7BS%5E2_%7Bpre%7D%20+%20S%5E2_%7Bpost%7D%20-%20S%5E2_%7Bchange%7D%7D%7B2S_%7Bpre%7DS_%7Bpost%7D%7D%0A"> Note that this is a direct conversion and not merely an approximation.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Calculate pre/post correlation</span></span>
+<span id="cb2-2">r <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> (S_pre<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">^</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> S_post<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">^</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> S_change<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">^</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> (<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>S_pre<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>S_post)</span>
+<span id="cb2-3"></span>
+<span id="cb2-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Print results</span></span>
+<span id="cb2-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">print</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste0</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'r = '</span>,<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">round</span>(r,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)))</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "r = 0.697"</code></pre>
+</div>
+</div>
+</section>
+<section id="applying-it-to-a-simulated-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="applying-it-to-a-simulated-dataset">Applying it to a simulated dataset</h2>
+<p>We can simulate correlated pre/post scores from a bivariate Gaussian with known parameters. It can be seen that the correlation calculated from the formulas above is perfectly precise.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># install.packages('MASS')</span></span>
+<span id="cb4-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(MASS)</span>
+<span id="cb4-3"></span>
+<span id="cb4-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Define parameters</span></span>
+<span id="cb4-5">S_pre <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">9</span></span>
+<span id="cb4-6">S_post <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">11</span></span>
+<span id="cb4-7">r_true <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> .<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">70</span></span>
+<span id="cb4-8"></span>
+<span id="cb4-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Simulate correlated pre/post scores from bivariate gaussian</span></span>
+<span id="cb4-10">data <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mvrnorm</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">n=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span>,</span>
+<span id="cb4-11">               <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mu=</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>),</span>
+<span id="cb4-12">               <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">Sigma =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data.frame</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x=</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(S_pre<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">^</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>,r_true<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>S_pre<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>S_post),</span>
+<span id="cb4-13">                                  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y=</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(r_true<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>S_pre<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>S_post,S_post<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">^</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)),</span>
+<span id="cb4-14">               <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">empirical =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)</span>
+<span id="cb4-15"></span>
+<span id="cb4-16"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Obtain simulated scores</span></span>
+<span id="cb4-17">x_pre <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> data[,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>] <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Pre-test scores</span></span>
+<span id="cb4-18">x_post <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> data[,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>] <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Post-test scores</span></span>
+<span id="cb4-19">x_change <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> x_post <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> x_pre <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Calculate change scores</span></span>
+<span id="cb4-20"></span>
+<span id="cb4-21"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Calculate standard deviations</span></span>
+<span id="cb4-22">S_pre <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sd</span>(x_pre)</span>
+<span id="cb4-23">S_post <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sd</span>(x_post)</span>
+<span id="cb4-24">S_change <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sd</span>(x_change)</span>
+<span id="cb4-25"></span>
+<span id="cb4-26"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Calculate pre/post correlation</span></span>
+<span id="cb4-27">r <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> (S_pre<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">^</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> S_post<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">^</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> S_change<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">^</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> (<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>S_pre<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>S_post)</span>
+<span id="cb4-28"></span>
+<span id="cb4-29"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">print</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste0</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'r = '</span>,r))</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "r = 0.7"</code></pre>
+</div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>repeated measures</category>
+  <category>correlations</category>
+  <guid>matthewbjane.com/blog-posts/blog-post-1.html</guid>
+  <pubDate>Fri, 08 Sep 2023 04:00:00 GMT</pubDate>
+</item>
+</channel>
+</rss>

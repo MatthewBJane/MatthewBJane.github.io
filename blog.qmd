@@ -1,0 +1,18 @@
+---
+title: "Meta-Analysis Tricks"
+listing: 
+  id: blog-listing
+  categories: true
+  feed: true
+  sort-ui: true
+  contents:
+  - "blog-posts/!(template).qmd"
+  fields: [title, date, author, tags, description, categories]
+  type: default
+---
+
+Welcome to my blog, **Meta-Analysis Tricks**! Most posts will introduce a tricky method that you can use to extract those pesky, unreported statistics from primary studies. Other posts will pertain to lesser known meta-analysis methods that are often overlooked in practice. Posts will include code in R for easy implementation in your own meta-analysis. 
+<hr>
+::: {#blog-listing}
+
+:::

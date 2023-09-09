@@ -1,5 +1,5 @@
 ---
-title: "Artifact corrections for effect sizes: equations, code, and interactive app"
+title: "Artifact Corrections for Effect Sizes"
 date: 2023-08-02
 author: "Matthew B. Jané"
 toc: true
@@ -12,13 +12,19 @@ Effect sizes are indices that help researchers, stakeholders, and policymakers u
 
 To visualize how various statistical artifacts can bias effect size estimates, play around with this shiny app! 
 
+[Artifact Simulator Shiny App](https://matthewbjane.shinyapps.io/effect_size_artifact_bias/){.btn .btn-secondary .btn-lg role="button" data-toggle="data" title="Data File"}
+
 # Small Samples
 
 Effect sizes estimated from small samples often show systematic bias. The following corrections for *r* and *d* are both very close approximations to the more complex unbiased estimators that are much more computatonally expensive. It is often suggested that they should only be applied in situations with low sample sizes (e.g., $n < 20$), however these corrections can be applied at any sample size. This is because $n$ is built into the correction factor therefore the magnitude of the correction is negligable in large sample sizes. The following corrections can be applied prior any of the other corrections on this page.
 
 ## Small Samples
 
-Below are the correction factors that may be applied to the correlation coefficient (*r*) and the standardized mean difference (*d*). Note that the correction for *r* is not conventionally used as it tends to be a very small adjustment. \### Correlation Coefficient (*r*) ***Point Estimate*** $$\displaystyle{ \hat{\rho} = r \cdot \left( 1 + \frac{1-r^2}{2(n-4)} \right) }$$
+Below are the correction factors that may be applied to the correlation coefficient (*r*) and the standardized mean difference (*d*). Note that the correction for *r* is not conventionally used as it tends to be a very small adjustment. 
+
+### Correlation Coefficient (*r*) 
+
+***Point Estimate*** $$\displaystyle{ \hat{\rho} = r \cdot \left( 1 + \frac{1-r^2}{2(n-4)} \right) }$$
 
 ***Standard Error*** $$\displaystyle{ se_{\hat{\rho}} = se_{r}\cdot \left( 1 + \frac{1-r^2}{2(n-4)} \right)}$$
 

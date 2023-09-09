@@ -1,0 +1,77 @@
+/*-- scss:defaults --*/
+
+/*-- Define colors for later use --*/
+$primary: #3AA6B9;
+$secondary: #ED5C9B;
+$tertiary: #FF9EAA;
+$body-bg: #f1f9fa;
+$body-color: #ED5C9B;
+$h1-font-family-sans-serif: 'Asap';
+$success: #3AA6B9;
+
+
+
+
+
+
+
+
+/*-- scss:rules --*/
+
+
+
+#title-block-header.quarto-title-block.default .quarto-title .title {
+    font-family: 'Style Script';
+    font-size: 3em;
+    color: #ED5C9B;
+}
+.navbar-dark .navbar-brand {
+    color: #dee2e6;
+    font-family: 'Style Script';
+}
+
+.navbar-dark .navbar-brand {
+    color: #ebf6f8;
+    font-family: "Style Script";
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: #ebf6f8;
+}
+
+.navbar-dark .navbar-nav .show>.nav-link, .navbar-dark .navbar-nav .active>.nav-link, .navbar-dark .navbar-nav .nav-link.active {
+    color: #17424a;
+}
+
+.btn-secondary {
+    color: #ebf6f8;
+    background-color: #ed5c9b;
+    border-color: #ed5c9b;
+}
+
+#title-block-header.quarto-title-block.default .quarto-title .title {
+    font-family: "Oleo Script";
+    font-size: 3em;
+    color: #ed5c9b;
+}
+
+
+div.quarto-post .listing-categories .listing-category {
+    color: #3AA6B9;
+    border: solid #3AA6B9 1px;
+    border-radius: 0.25rem;
+    text-transform: uppercase;
+    font-size: .65em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    padding-top: 0.15em;
+    padding-bottom: 0.15em;
+    cursor: pointer;
+    margin-right: 4px;
+    margin-bottom: 4px;
+}
+
+#title-block-header.quarto-title-block.default .quarto-title .title {
+    font-family: "Oleo Script";
+    font-size: 3em;
+    color: #3AA6B9;
+}

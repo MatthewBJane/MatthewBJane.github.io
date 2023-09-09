@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Matthew B. Jané – software</title>
+<title>Matthew B. Jané - Software</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,16 +30,18 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./webLogoFavicon.png" rel="icon" type="image/png">
+<link href="./webLogoFavicon2.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -63,6 +65,11 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="styles.css">
+<meta name="twitter:title" content="Matthew B. Jané - Software">
+<meta name="twitter:image" content="matthewbjane.com/webLogo2.png">
+<meta name="twitter:image-height" content="4780">
+<meta name="twitter:image-width" content="5906">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed">
@@ -72,6 +79,9 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./webLogoFavicon2.png" alt="" class="navbar-logo">
+    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Matthew B. Jané</span>
     </a>
@@ -87,12 +97,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./CV.html" rel="" target="">
- <span class="menu-text">CV</span></a>
+    <a class="nav-link" href="./blog.html" rel="" target="">
+ <span class="menu-text">Meta-Analysis Tricks</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Publications.html" rel="" target="">
- <span class="menu-text">Publications</span></a>
+    <a class="nav-link" href="./CV.html" rel="" target="">
+ <span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./Software.html" rel="" target="" aria-current="page">
@@ -103,7 +113,19 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Artifact Corrections</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.github.io/MatthewBJane" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.twitter.com/MatthewBJane" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
@@ -119,8 +141,128 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Software</h1>
+</div>
 
 
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<hr>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div id="first-column" class="quarto-layout-cell" style="flex-basis: 23.8%;justify-content: center;">
+<p><img src="themeparklogo.png" class="img-fluid"></p>
+</div>
+<div id="second-column" class="quarto-layout-cell" style="flex-basis: 76.2%;justify-content: center;">
+<section id="themepark" class="level3">
+<h3 class="anchored" data-anchor-id="themepark">ThemePark</h3>
+<p>Generating popular culture styled ggplot themes. Featured on <a href="https://rweekly.org/2023-W32.html">rweekly.org</a> and <a href="https://flowingdata.com/2023/07/28/barbie-and-oppenheimer-themes-for-charts-in-r/">flowingdata.com</a></p>
+<p><a href="https://github.com/MatthewBJane/theme_park" class="btn btn-primary btn-sm" role="button" data-toggle="data" title="Data File"><i class="fa-brands fa-github" aria-label="github"></i> Github Repository</a></p>
+</section>
+</div>
+</div>
+</div>
+<hr>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div id="first-column" class="quarto-layout-cell" style="flex-basis: 23.8%;justify-content: center;">
+<p><img src="posclogo.png" class="img-fluid"></p>
+</div>
+<div id="second-column" class="quarto-layout-cell" style="flex-basis: 76.2%;justify-content: center;">
+<section id="posc" class="level3">
+<h3 class="anchored" data-anchor-id="posc">POSC</h3>
+<p>An R Package for generating Probability of Outcome Superiority Curves (POSCs).</p>
+<p><a href="https://github.com/MatthewBJane/posc" class="btn btn-primary btn-sm" role="button" data-toggle="data" title="Data File"><i class="fa-brands fa-github" aria-label="github"></i> Github Repository</a></p>
+</section>
+</div>
+</div>
+</div>
+<hr>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div id="first-column" class="quarto-layout-cell" style="flex-basis: 23.8%;justify-content: center;">
+<p><img src="opensynthesislogo.png" class="img-fluid"></p>
+</div>
+<div id="second-column" class="quarto-layout-cell" style="flex-basis: 76.2%;justify-content: center;">
+<section id="opensynthesis" class="level3">
+<h3 class="anchored" data-anchor-id="opensynthesis">OpenSynthesis</h3>
+<p>Website cataloging publicly available meta-analytic databases.</p>
+<p><a href="https://github.com/MatthewBJane/opensynthesis" class="btn btn-primary btn-sm" role="button" data-toggle="data" title="Data File"><i class="fa-brands fa-github" aria-label="github"></i> Github Repository</a> <a href="https://matthewbjane.com/opensynthesis/" class="btn btn-primary btn-sm" role="button" data-toggle="data" title="Data File"><i class="fa-solid fa-globe" aria-label="globe"></i> Webpage</a></p>
+</section>
+</div>
+</div>
+</div>
+<hr>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div id="first-column" class="quarto-layout-cell" style="flex-basis: 23.8%;justify-content: center;">
+<p><img src="artifactsimulatorlogo.png" class="img-fluid"></p>
+</div>
+<div id="second-column" class="quarto-layout-cell" style="flex-basis: 76.2%;justify-content: center;">
+<section id="artifact-simulator" class="level3">
+<h3 class="anchored" data-anchor-id="artifact-simulator">Artifact Simulator</h3>
+<p>A Shiny App for Visualizing Statistical Artifacts.</p>
+<p><a href="matthewbjane.shinyapps.io/effect_size_artifact_bias" class="btn btn-primary btn-sm" role="button" data-toggle="data" title="Data File"><i class="fa-solid fa-diagram-project" aria-label="diagram-project"></i> Shiny App</a></p>
+</section>
+</div>
+</div>
+</div>
+<hr>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div id="first-column" class="quarto-layout-cell" style="flex-basis: 23.8%;justify-content: center;">
+<p><img src="artifactcorrectionslogo.png" class="img-fluid"></p>
+</div>
+<div id="second-column" class="quarto-layout-cell" style="flex-basis: 76.2%;justify-content: center;">
+<section id="artifact-corrections-for-effect-sizes" class="level3">
+<h3 class="anchored" data-anchor-id="artifact-corrections-for-effect-sizes">Artifact Corrections for Effect Sizes</h3>
+<p>A webpage documenting equations and code for effect size artifact corrections. MatthewBJane.com/ArtifactCorrections</p>
+<p><a href="ArtifactCorrections.html" class="btn btn-primary btn-sm" role="button" data-toggle="data" title="Data File"><i class="fa-solid fa-link" aria-label="link"></i> Webpage</a></p>
+</section>
+</div>
+</div>
+</div>
+<hr>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div id="first-column" class="quarto-layout-cell" style="flex-basis: 23.8%;justify-content: center;">
+<p><img src="metaanalysislogo.png" class="img-fluid"></p>
+</div>
+<div id="second-column" class="quarto-layout-cell" style="flex-basis: 76.2%;justify-content: center;">
+<section id="meta-analysis-data-code" class="level3">
+<h3 class="anchored" data-anchor-id="meta-analysis-data-code">Meta-Analysis Data &amp; Code</h3>
+<p>Repository of data and code for all meta-analytic projects.</p>
+<p><a href="https://github.com/MatthewBJane/meta-analysis-project-data-code" class="btn btn-primary btn-sm" role="button" data-toggle="data" title="Data File"><i class="fa-brands fa-github" aria-label="github"></i> Github Repository</a></p>
+</section>
+</div>
+</div>
+</div>
+<hr>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div id="first-column" class="quarto-layout-cell" style="flex-basis: 23.8%;justify-content: center;">
+<p><img src="primarystudylogo.png" class="img-fluid"></p>
+</div>
+<div id="second-column" class="quarto-layout-cell" style="flex-basis: 76.2%;justify-content: center;">
+<section id="primary-study-data-code" class="level3">
+<h3 class="anchored" data-anchor-id="primary-study-data-code">Primary Study Data &amp; Code</h3>
+<p>Repository of data and code for all primary study projects.</p>
+<p><a href="https://github.com/MatthewBJane/primary-study-project-data-code" class="btn btn-primary btn-sm" role="button" data-toggle="data" title="Data File"><i class="fa-brands fa-github" aria-label="github"></i> Github Repository</a></p>
+</section>
+</div>
+</div>
+</div>
 
 
 

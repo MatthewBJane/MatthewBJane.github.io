@@ -1,0 +1,102 @@
+---
+title: "Calculating Pre/Post Correlation from the Standard Deviation of Change Scores"
+author: "Matthew B. Jané"
+date: 2023-09-08
+description: "Welcome to the first blog post of *Meta-Analysis Tricks*! In this post we will go over a couple of ways to directly calculate pre/post correlations from alternative statistics such as standard deviations of change scores. Pre/post correlations are necessary to obtain various types of effect sizes and standard errors such as the repeated measures variant of Cohen's $d$, also referred to as Cohen's $d_{rm}$."
+categories:
+  - repeated measures
+  - correlations
+
+title-meta: "Calculating Pre/Post Correlation from the Standard Deviation of Change Scores"
+author-meta: "Matthew B. Jané"
+date-meta: 2023-09-08
+---
+
+## Step 1: Obtain Pre-test, Post-test, and Change score standard deviations
+
+In order to calculate the pre/post correlation ($r$), we need an estimate of the standard deviation (SD) of pre-test scores ($S_{pre}$), the SD of post-test scores ($S_{post}$), and the SD of change scores ($S_{change}$, where $x_{change}=x_{pre}-x_{post}$). If the post-test standard deviation is unavailable, but the pre-test standard deviation is available, you can approximate the post-test standard deviation by taking average ratio of the pre-test SD and post-test SD from all the other studies in the current meta-analysis. 
+
+$$
+\bar{S}_{ratio}=\frac{1}{k}\sum_{i=1}^k \frac{S_{post,i}}{S_{pre,i}}
+$$
+Then we can make an approximation of the post-test standard by multiplying the pre-test SD by the ratio of SDs,
+
+$$
+S_{post}\approx \bar{S}_{ratio}\times S_{pre}
+$$
+
+A rougher approximation would be to simply set the pre-test SD and post-test SD to be equal. 
+
+
+```{r}
+# Define standard deviations
+S_pre = 9
+S_post = 11
+S_change = 8
+```
+
+## Step 2: Calculate the Pre/Post Correlation
+
+The correlation between pre-test and post-test scores ($r$) can be calculated by re-arranging the equation for change score SD:
+
+$$
+S_{change} = \sqrt{S^2_{pre} + S^2_{post} - 2rS_{pre}S_{post}}
+$$
+Then we can solve for $r$,
+
+$$
+r = \frac{S^2_{pre} + S^2_{post} - S^2_{change}}{2S_{pre}S_{post}}
+$$
+Note that this is a direct conversion and not merely an approximation.
+
+```{r}
+# Calculate pre/post correlation
+r = (S_pre^2 + S_post^2 - S_change^2) / (2*S_pre*S_post)
+
+# Print results
+print(paste0('r = ',round(r,3)))
+```
+
+
+## Applying it to a simulated dataset
+
+We can simulate correlated pre/post scores from a bivariate Gaussian with known parameters. It can be seen that the correlation calculated from the formulas above is perfectly precise.
+
+```{r}
+# install.packages('MASS')
+library(MASS)
+
+# Define parameters
+S_pre = 9
+S_post = 11
+r_true = .70
+
+# Simulate correlated pre/post scores from bivariate gaussian
+data = mvrnorm(n=200,
+               mu=c(0,0),
+               Sigma = data.frame(x=c(S_pre^2,r_true*S_pre*S_post),
+                                  y=c(r_true*S_pre*S_post,S_post^2)),
+               empirical = TRUE)
+
+# Obtain simulated scores
+x_pre = data[,1] # Pre-test scores
+x_post = data[,2] # Post-test scores
+x_change = x_post - x_pre # Calculate change scores
+
+# Calculate standard deviations
+S_pre = sd(x_pre)
+S_post = sd(x_post)
+S_change = sd(x_change)
+
+# Calculate pre/post correlation
+r = (S_pre^2 + S_post^2 - S_change^2) / (2*S_pre*S_post)
+
+print(paste0('r = ',r))
+```
+
+
+
+
+
+
+

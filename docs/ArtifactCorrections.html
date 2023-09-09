@@ -9,7 +9,7 @@
 <meta name="author" content="Matthew B. Jané">
 <meta name="dcterms.date" content="2023-08-02">
 
-<title>Matthew B. Jané - Artifact corrections for effect sizes: equations, code, and interactive app</title>
+<title>Matthew B. Jané - Artifact Corrections for Effect Sizes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -85,16 +85,16 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./webLogoFavicon.png" rel="icon" type="image/png">
+<link href="./webLogoFavicon2.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -120,6 +120,12 @@ div.csl-indent {
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
+<meta name="twitter:title" content="Matthew B. Jané - Artifact Corrections for Effect Sizes">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="matthewbjane.com/webLogo2.png">
+<meta name="twitter:image-height" content="4780">
+<meta name="twitter:image-width" content="5906">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed">
@@ -129,6 +135,9 @@ div.csl-indent {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./webLogoFavicon2.png" alt="" class="navbar-logo">
+    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Matthew B. Jané</span>
     </a>
@@ -144,12 +153,12 @@ div.csl-indent {
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./CV.html" rel="" target="">
- <span class="menu-text">CV</span></a>
+    <a class="nav-link" href="./blog.html" rel="" target="">
+ <span class="menu-text">Meta-Analysis Tricks</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Publications.html" rel="" target="">
- <span class="menu-text">Publications</span></a>
+    <a class="nav-link" href="./CV.html" rel="" target="">
+ <span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./Software.html" rel="" target="">
@@ -160,7 +169,19 @@ div.csl-indent {
  <span class="menu-text">Artifact Corrections</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.github.io/MatthewBJane" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.twitter.com/MatthewBJane" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
@@ -180,6 +201,7 @@ div.csl-indent {
   <ul class="collapse">
   <li><a href="#small-samples-1" id="toc-small-samples-1" class="nav-link" data-scroll-target="#small-samples-1">Small Samples</a>
   <ul class="collapse">
+  <li><a href="#correlation-coefficient-r" id="toc-correlation-coefficient-r" class="nav-link" data-scroll-target="#correlation-coefficient-r">Correlation Coefficient (<em>r</em>)</a></li>
   <li><a href="#standardized-mean-difference-d" id="toc-standardized-mean-difference-d" class="nav-link" data-scroll-target="#standardized-mean-difference-d">Standardized Mean Difference (<em>d</em>)</a></li>
   </ul></li>
   </ul></li>
@@ -187,12 +209,12 @@ div.csl-indent {
   <ul class="collapse">
   <li><a href="#univariate-measurement-error-in-continuous-variables" id="toc-univariate-measurement-error-in-continuous-variables" class="nav-link" data-scroll-target="#univariate-measurement-error-in-continuous-variables">Univariate measurement error in continuous variables</a>
   <ul class="collapse">
-  <li><a href="#correlation-coefficient-r" id="toc-correlation-coefficient-r" class="nav-link" data-scroll-target="#correlation-coefficient-r">Correlation Coefficient (<em>r</em>)</a></li>
+  <li><a href="#correlation-coefficient-r-1" id="toc-correlation-coefficient-r-1" class="nav-link" data-scroll-target="#correlation-coefficient-r-1">Correlation Coefficient (<em>r</em>)</a></li>
   <li><a href="#standardized-mean-difference-d-1" id="toc-standardized-mean-difference-d-1" class="nav-link" data-scroll-target="#standardized-mean-difference-d-1">Standardized Mean Difference (<em>d</em>)</a></li>
   </ul></li>
   <li><a href="#bivariate-measurement-error-for-continuous-variables" id="toc-bivariate-measurement-error-for-continuous-variables" class="nav-link" data-scroll-target="#bivariate-measurement-error-for-continuous-variables">Bivariate measurement error for continuous variables</a>
   <ul class="collapse">
-  <li><a href="#correlation-coefficient-r-1" id="toc-correlation-coefficient-r-1" class="nav-link" data-scroll-target="#correlation-coefficient-r-1">Correlation Coefficient (<em>r</em>)</a></li>
+  <li><a href="#correlation-coefficient-r-2" id="toc-correlation-coefficient-r-2" class="nav-link" data-scroll-target="#correlation-coefficient-r-2">Correlation Coefficient (<em>r</em>)</a></li>
   </ul></li>
   <li><a href="#misclassification" id="toc-misclassification" class="nav-link" data-scroll-target="#misclassification">Misclassification</a>
   <ul class="collapse">
@@ -200,54 +222,54 @@ div.csl-indent {
   </ul></li>
   <li><a href="#univariate-dichotomization-of-naturally-continuous-variables" id="toc-univariate-dichotomization-of-naturally-continuous-variables" class="nav-link" data-scroll-target="#univariate-dichotomization-of-naturally-continuous-variables">Univariate dichotomization of naturally continuous variables</a>
   <ul class="collapse">
-  <li><a href="#correlation-coefficient-r-2" id="toc-correlation-coefficient-r-2" class="nav-link" data-scroll-target="#correlation-coefficient-r-2">Correlation Coefficient (<em>r</em>)</a></li>
+  <li><a href="#correlation-coefficient-r-3" id="toc-correlation-coefficient-r-3" class="nav-link" data-scroll-target="#correlation-coefficient-r-3">Correlation Coefficient (<em>r</em>)</a></li>
   <li><a href="#standardized-mean-difference-d-3" id="toc-standardized-mean-difference-d-3" class="nav-link" data-scroll-target="#standardized-mean-difference-d-3">Standardized Mean Difference (<em>d</em>)</a></li>
   </ul></li>
   <li><a href="#bivariate-dichotomization-of-naturally-continuous-variables" id="toc-bivariate-dichotomization-of-naturally-continuous-variables" class="nav-link" data-scroll-target="#bivariate-dichotomization-of-naturally-continuous-variables">Bivariate dichotomization of naturally continuous variables</a>
   <ul class="collapse">
-  <li><a href="#correlation-coefficient-r-3" id="toc-correlation-coefficient-r-3" class="nav-link" data-scroll-target="#correlation-coefficient-r-3">Correlation Coefficient (<em>r</em>)</a></li>
+  <li><a href="#correlation-coefficient-r-4" id="toc-correlation-coefficient-r-4" class="nav-link" data-scroll-target="#correlation-coefficient-r-4">Correlation Coefficient (<em>r</em>)</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#range-restriction" id="toc-range-restriction" class="nav-link" data-scroll-target="#range-restriction">Range Restriction</a>
   <ul class="collapse">
   <li><a href="#univariate-direct-range-restriction" id="toc-univariate-direct-range-restriction" class="nav-link" data-scroll-target="#univariate-direct-range-restriction">Univariate Direct Range Restriction</a>
   <ul class="collapse">
-  <li><a href="#correlation-coefficient-r-4" id="toc-correlation-coefficient-r-4" class="nav-link" data-scroll-target="#correlation-coefficient-r-4">Correlation Coefficient (<em>r</em>)</a></li>
+  <li><a href="#correlation-coefficient-r-5" id="toc-correlation-coefficient-r-5" class="nav-link" data-scroll-target="#correlation-coefficient-r-5">Correlation Coefficient (<em>r</em>)</a></li>
   <li><a href="#standardized-mean-difference-d-4" id="toc-standardized-mean-difference-d-4" class="nav-link" data-scroll-target="#standardized-mean-difference-d-4">Standardized Mean Difference (<em>d</em>)</a></li>
   </ul></li>
   <li><a href="#univariate-indirect-range-restriction" id="toc-univariate-indirect-range-restriction" class="nav-link" data-scroll-target="#univariate-indirect-range-restriction">Univariate Indirect Range Restriction</a>
   <ul class="collapse">
-  <li><a href="#correlation-coefficient-r-5" id="toc-correlation-coefficient-r-5" class="nav-link" data-scroll-target="#correlation-coefficient-r-5">Correlation Coefficient (<em>r</em>)</a></li>
+  <li><a href="#correlation-coefficient-r-6" id="toc-correlation-coefficient-r-6" class="nav-link" data-scroll-target="#correlation-coefficient-r-6">Correlation Coefficient (<em>r</em>)</a></li>
   <li><a href="#standardized-mean-difference-d-5" id="toc-standardized-mean-difference-d-5" class="nav-link" data-scroll-target="#standardized-mean-difference-d-5">Standardized Mean Difference (<em>d</em>)</a></li>
   </ul></li>
   <li><a href="#bivariate-direct-range-restriction" id="toc-bivariate-direct-range-restriction" class="nav-link" data-scroll-target="#bivariate-direct-range-restriction">Bivariate Direct Range Restriction</a>
   <ul class="collapse">
-  <li><a href="#correlation-coefficient-r-6" id="toc-correlation-coefficient-r-6" class="nav-link" data-scroll-target="#correlation-coefficient-r-6">Correlation Coefficient (<em>r</em>)</a></li>
+  <li><a href="#correlation-coefficient-r-7" id="toc-correlation-coefficient-r-7" class="nav-link" data-scroll-target="#correlation-coefficient-r-7">Correlation Coefficient (<em>r</em>)</a></li>
   </ul></li>
   <li><a href="#bivariate-indirect-range-restriction" id="toc-bivariate-indirect-range-restriction" class="nav-link" data-scroll-target="#bivariate-indirect-range-restriction">Bivariate Indirect Range Restriction</a>
   <ul class="collapse">
-  <li><a href="#correlation-coefficient-r-7" id="toc-correlation-coefficient-r-7" class="nav-link" data-scroll-target="#correlation-coefficient-r-7">Correlation Coefficient (<em>r</em>)</a></li>
+  <li><a href="#correlation-coefficient-r-8" id="toc-correlation-coefficient-r-8" class="nav-link" data-scroll-target="#correlation-coefficient-r-8">Correlation Coefficient (<em>r</em>)</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#range-restriction-and-measurement-error" id="toc-range-restriction-and-measurement-error" class="nav-link" data-scroll-target="#range-restriction-and-measurement-error">Range Restriction and Measurement Error</a>
   <ul class="collapse">
   <li><a href="#univariate-direct-range-restriction-and-measurement-error" id="toc-univariate-direct-range-restriction-and-measurement-error" class="nav-link" data-scroll-target="#univariate-direct-range-restriction-and-measurement-error">Univariate Direct Range Restriction and Measurement Error</a>
   <ul class="collapse">
-  <li><a href="#correlation-coefficient-r-8" id="toc-correlation-coefficient-r-8" class="nav-link" data-scroll-target="#correlation-coefficient-r-8">Correlation Coefficient (<em>r</em>)</a></li>
+  <li><a href="#correlation-coefficient-r-9" id="toc-correlation-coefficient-r-9" class="nav-link" data-scroll-target="#correlation-coefficient-r-9">Correlation Coefficient (<em>r</em>)</a></li>
   <li><a href="#standardized-mean-difference-d-6" id="toc-standardized-mean-difference-d-6" class="nav-link" data-scroll-target="#standardized-mean-difference-d-6">Standardized Mean Difference (<em>d</em>)</a></li>
   </ul></li>
   <li><a href="#univariate-indirect-range-restriction-and-measurement-error" id="toc-univariate-indirect-range-restriction-and-measurement-error" class="nav-link" data-scroll-target="#univariate-indirect-range-restriction-and-measurement-error">Univariate Indirect Range Restriction and Measurement Error</a>
   <ul class="collapse">
-  <li><a href="#correlation-coefficient-r-9" id="toc-correlation-coefficient-r-9" class="nav-link" data-scroll-target="#correlation-coefficient-r-9">Correlation Coefficient (<em>r</em>)</a></li>
+  <li><a href="#correlation-coefficient-r-10" id="toc-correlation-coefficient-r-10" class="nav-link" data-scroll-target="#correlation-coefficient-r-10">Correlation Coefficient (<em>r</em>)</a></li>
   <li><a href="#standardized-mean-difference-d-7" id="toc-standardized-mean-difference-d-7" class="nav-link" data-scroll-target="#standardized-mean-difference-d-7">Standardized Mean Difference (<em>d</em>)</a></li>
   </ul></li>
   <li><a href="#bivariate-direct-range-restriction-and-measurement-error" id="toc-bivariate-direct-range-restriction-and-measurement-error" class="nav-link" data-scroll-target="#bivariate-direct-range-restriction-and-measurement-error">Bivariate Direct Range Restriction and Measurement Error</a>
   <ul class="collapse">
-  <li><a href="#correlation-coefficient-r-10" id="toc-correlation-coefficient-r-10" class="nav-link" data-scroll-target="#correlation-coefficient-r-10">Correlation Coefficient (<em>r</em>)</a></li>
+  <li><a href="#correlation-coefficient-r-11" id="toc-correlation-coefficient-r-11" class="nav-link" data-scroll-target="#correlation-coefficient-r-11">Correlation Coefficient (<em>r</em>)</a></li>
   </ul></li>
   <li><a href="#bivariate-indirect-range-restriction-and-measurement-error" id="toc-bivariate-indirect-range-restriction-and-measurement-error" class="nav-link" data-scroll-target="#bivariate-indirect-range-restriction-and-measurement-error">Bivariate Indirect Range Restriction and Measurement Error</a>
   <ul class="collapse">
-  <li><a href="#correlation-coefficient-r-11" id="toc-correlation-coefficient-r-11" class="nav-link" data-scroll-target="#correlation-coefficient-r-11">Correlation Coefficient (<em>r</em>)</a></li>
+  <li><a href="#correlation-coefficient-r-12" id="toc-correlation-coefficient-r-12" class="nav-link" data-scroll-target="#correlation-coefficient-r-12">Correlation Coefficient (<em>r</em>)</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
@@ -260,7 +282,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Artifact corrections for effect sizes: equations, code, and interactive app</h1>
+<h1 class="title">Artifact Corrections for Effect Sizes</h1>
 </div>
 
 
@@ -291,13 +313,17 @@ div.csl-indent {
 <section id="interactive-visualization" class="level1">
 <h1>Interactive Visualization</h1>
 <p>To visualize how various statistical artifacts can bias effect size estimates, play around with this shiny app!</p>
+<p><a href="https://matthewbjane.shinyapps.io/effect_size_artifact_bias/" class="btn btn-secondary btn-lg" role="button" data-toggle="data" title="Data File">Artifact Simulator Shiny App</a></p>
 </section>
 <section id="small-samples" class="level1">
 <h1>Small Samples</h1>
 <p>Effect sizes estimated from small samples often show systematic bias. The following corrections for <em>r</em> and <em>d</em> are both very close approximations to the more complex unbiased estimators that are much more computatonally expensive. It is often suggested that they should only be applied in situations with low sample sizes (e.g., <span class="math inline">\(n &lt; 20\)</span>), however these corrections can be applied at any sample size. This is because <span class="math inline">\(n\)</span> is built into the correction factor therefore the magnitude of the correction is negligable in large sample sizes. The following corrections can be applied prior any of the other corrections on this page.</p>
 <section id="small-samples-1" class="level2">
 <h2 class="anchored" data-anchor-id="small-samples-1">Small Samples</h2>
-<p>Below are the correction factors that may be applied to the correlation coefficient (<em>r</em>) and the standardized mean difference (<em>d</em>). Note that the correction for <em>r</em> is not conventionally used as it tends to be a very small adjustment. ### Correlation Coefficient (<em>r</em>) <strong><em>Point Estimate</em></strong> <span class="math display">\[\displaystyle{ \hat{\rho} = r \cdot \left( 1 + \frac{1-r^2}{2(n-4)} \right) }\]</span></p>
+<p>Below are the correction factors that may be applied to the correlation coefficient (<em>r</em>) and the standardized mean difference (<em>d</em>). Note that the correction for <em>r</em> is not conventionally used as it tends to be a very small adjustment.</p>
+<section id="correlation-coefficient-r" class="level3">
+<h3 class="anchored" data-anchor-id="correlation-coefficient-r">Correlation Coefficient (<em>r</em>)</h3>
+<p><strong><em>Point Estimate</em></strong> <span class="math display">\[\displaystyle{ \hat{\rho} = r \cdot \left( 1 + \frac{1-r^2}{2(n-4)} \right) }\]</span></p>
 <p><strong><em>Standard Error</em></strong> <span class="math display">\[\displaystyle{ se_{\hat{\rho}} = se_{r}\cdot \left( 1 + \frac{1-r^2}{2(n-4)} \right)}\]</span></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Parameters needed </span></span>
@@ -317,6 +343,7 @@ div.csl-indent {
 <pre><code>[1] "rho = 0.51, SE = 0.18"</code></pre>
 </div>
 </div>
+</section>
 <section id="standardized-mean-difference-d" class="level3">
 <h3 class="anchored" data-anchor-id="standardized-mean-difference-d">Standardized Mean Difference (<em>d</em>)</h3>
 <p><strong><em>Point Estimate</em></strong> <span class="math display">\[\displaystyle{ \hat{\delta} = d \left( 1-\frac{3}{4n-9}\right) }\]</span></p>
@@ -348,8 +375,8 @@ div.csl-indent {
 <section id="univariate-measurement-error-in-continuous-variables" class="level2">
 <h2 class="anchored" data-anchor-id="univariate-measurement-error-in-continuous-variables">Univariate measurement error in continuous variables</h2>
 <p>Measurement error will likely exist in both variables under invistigation (i.e., <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>), however applying a correction may depend on the research question. For example, if you would like to know how related two psychological constructs are, correcting both variables for measurement error is appropriate, however it may not be appropriate if you would like to use one variable to predict the other (e.g., exam scores to predict college grades). Since observed scores are all that is available to us, therefore correcting the predictor variable for measurement error will not capture its real world predictive utility.</p>
-<section id="correlation-coefficient-r" class="level3">
-<h3 class="anchored" data-anchor-id="correlation-coefficient-r">Correlation Coefficient (<em>r</em>)</h3>
+<section id="correlation-coefficient-r-1" class="level3">
+<h3 class="anchored" data-anchor-id="correlation-coefficient-r-1">Correlation Coefficient (<em>r</em>)</h3>
 <p><strong><em>Point Estimate</em></strong> <span class="math display">\[\displaystyle{ \hat{\rho} = \frac{r}{\sqrt{r_{xx'}}} }\]</span></p>
 <p><strong><em>Standard Error</em></strong> <span class="math display">\[\displaystyle{ se_{\hat{\rho}} = \frac{se_{r}}{\sqrt{r_{xx'}}} }\]</span></p>
 <div class="cell">
@@ -400,8 +427,8 @@ div.csl-indent {
 <section id="bivariate-measurement-error-for-continuous-variables" class="level2">
 <h2 class="anchored" data-anchor-id="bivariate-measurement-error-for-continuous-variables">Bivariate measurement error for continuous variables</h2>
 <p>Unreliability of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> will bias a pearson correlation coefficient by adding random, uncorrelated noise into the bivariate relationship. If the goal is to understand the relationship between the true, uncontaminated scores between two things, then measurement error on both variables should be corrected for.</p>
-<section id="correlation-coefficient-r-1" class="level3">
-<h3 class="anchored" data-anchor-id="correlation-coefficient-r-1">Correlation Coefficient (<em>r</em>)</h3>
+<section id="correlation-coefficient-r-2" class="level3">
+<h3 class="anchored" data-anchor-id="correlation-coefficient-r-2">Correlation Coefficient (<em>r</em>)</h3>
 <p><strong><em>Point Estimate</em></strong><br>
 <span class="math display">\[\displaystyle{ \hat{\rho} = \frac{r}{\sqrt{r_{xx'} r_{yy'} }} }\]</span></p>
 <p><strong><em>Standard Error</em></strong><br>
@@ -475,8 +502,8 @@ div.csl-indent {
 <section id="univariate-dichotomization-of-naturally-continuous-variables" class="level2">
 <h2 class="anchored" data-anchor-id="univariate-dichotomization-of-naturally-continuous-variables">Univariate dichotomization of naturally continuous variables</h2>
 <p>In some cases, researchers may categorize naturally continuous variables into two groups in order to facilitate interpretation or to perform specific statistical analyses. For example, congenital amusia, also known as tone deafness, is often diagnosed by scoring below a predetermined cutoff in a pitch or melodic discrimination task. This cutoff is arbitrary (although potentially useful) since pitch discrimination ability typically follows a normal distribution. Before someone can adjust the effect sizes for this artificial dichotomization, it is necessary to determine the proportions of participants above or below the cutoff (<span class="math inline">\(p_x\)</span>) as well as the cutoff value (<span class="math inline">\(c_{x}\)</span>), which can be estimated using the quantile function of a standard normal distribution at <span class="math inline">\(p_{x}\)</span>.</p>
-<section id="correlation-coefficient-r-2" class="level3">
-<h3 class="anchored" data-anchor-id="correlation-coefficient-r-2">Correlation Coefficient (<em>r</em>)</h3>
+<section id="correlation-coefficient-r-3" class="level3">
+<h3 class="anchored" data-anchor-id="correlation-coefficient-r-3">Correlation Coefficient (<em>r</em>)</h3>
 <p><strong><em>Point Estimate</em></strong> Note: <span class="math inline">\(\Phi\)</span> indicates the normal ordinate of a standard normal distribution<br>
 <span class="math display">\[\displaystyle{ \hat{\rho} = \frac{r\sqrt{p_x(1-p_x)}}{\Phi(c_x)} }\]</span></p>
 <p><strong><em>Standard Error</em></strong><br>
@@ -540,8 +567,8 @@ div.csl-indent {
 <section id="bivariate-dichotomization-of-naturally-continuous-variables" class="level2">
 <h2 class="anchored" data-anchor-id="bivariate-dichotomization-of-naturally-continuous-variables">Bivariate dichotomization of naturally continuous variables</h2>
 <p>I somewhat rarer circumstances, researchers may dichotomize both x and y variables. This will attenuate correlation coefficients more than usual. If a tetrachoric correlation is available, this is more analogous to a pearson correlation coefficient than the correction below.</p>
-<section id="correlation-coefficient-r-3" class="level3">
-<h3 class="anchored" data-anchor-id="correlation-coefficient-r-3">Correlation Coefficient (<em>r</em>)</h3>
+<section id="correlation-coefficient-r-4" class="level3">
+<h3 class="anchored" data-anchor-id="correlation-coefficient-r-4">Correlation Coefficient (<em>r</em>)</h3>
 <p><strong><em>Point Estimate</em></strong> <em>Note:</em> <span class="math inline">\(\Phi\)</span> <em>indicates the normal ordinate of a standard normal distribution</em><br>
 <span class="math display">\[\displaystyle{ \hat{\rho} = \frac{r\sqrt{p_x p_y (1-p_x) (1-p_y)}}{\Phi(c_x)\Phi(c_y)} }\]</span></p>
 <p><strong><em>Standard Error</em></strong><br>
@@ -576,8 +603,8 @@ div.csl-indent {
 <section id="univariate-direct-range-restriction" class="level2">
 <h2 class="anchored" data-anchor-id="univariate-direct-range-restriction">Univariate Direct Range Restriction</h2>
 <p>In certain situations, the selection of participants can be identical to one of the variables of interest. For instance, if a study is investigating the correlation between school grades and IQ in students with an intellectual disability, and the diagnosis is defined as having an IQ score of less than 70, then the sample would exhibit direct range restriction.</p>
-<section id="correlation-coefficient-r-4" class="level3">
-<h3 class="anchored" data-anchor-id="correlation-coefficient-r-4">Correlation Coefficient (<em>r</em>)</h3>
+<section id="correlation-coefficient-r-5" class="level3">
+<h3 class="anchored" data-anchor-id="correlation-coefficient-r-5">Correlation Coefficient (<em>r</em>)</h3>
 <p><strong><em>Point Estimate</em></strong><br>
 <span class="math display">\[\displaystyle{ \hat{\rho} = \frac{r}{u_x \sqrt{r^2 \left(\frac{1}{u_x^2} - 1\right) +1}} }\]</span></p>
 <p><strong><em>Standard Error</em></strong><br>
@@ -632,8 +659,8 @@ div.csl-indent {
 <section id="univariate-indirect-range-restriction" class="level2">
 <h2 class="anchored" data-anchor-id="univariate-indirect-range-restriction">Univariate Indirect Range Restriction</h2>
 <p>When the selection process is correlated with one of the variables of interest then the resulting sample with have a reduced variance due to indirect range restriction. For example, suppose a company is hiring employees based on their performance in a test that is correlated with their IQ. If the company only hires employees who score above a certain threshold on the test, then the range of IQ scores in the selected sample will be indirectly restricted. This is because the IQ scores of the selected employees will be higher than the IQ scores of the general population due to the correlation between the test scores and IQ.</p>
-<section id="correlation-coefficient-r-5" class="level3">
-<h3 class="anchored" data-anchor-id="correlation-coefficient-r-5">Correlation Coefficient (<em>r</em>)</h3>
+<section id="correlation-coefficient-r-6" class="level3">
+<h3 class="anchored" data-anchor-id="correlation-coefficient-r-6">Correlation Coefficient (<em>r</em>)</h3>
 <p><strong><em>Point Estimate</em></strong> <span class="math display">\[\displaystyle{ \hat{\rho} = \frac{r}{\sqrt{r^2 + u_x^2 (1 - r^2)}} }\]</span></p>
 <p><strong><em>Standard Error</em></strong> <span class="math display">\[\displaystyle{se_{\rho} = \frac{se_{r}}{\sqrt{r^2 + u_x^2 (1 - r^2)}} }\]</span></p>
 <div class="cell">
@@ -692,8 +719,8 @@ div.csl-indent {
 <section id="bivariate-direct-range-restriction" class="level2">
 <h2 class="anchored" data-anchor-id="bivariate-direct-range-restriction">Bivariate Direct Range Restriction</h2>
 <p>In some instances, direct selection can be placed on both x and y variables. This may happen in instances where a researcher requires subjects to be within the “normal” range of x and y, which tends to restrict the range by excluding individuals at the tails of x and y.</p>
-<section id="correlation-coefficient-r-6" class="level3">
-<h3 class="anchored" data-anchor-id="correlation-coefficient-r-6">Correlation Coefficient (<em>r</em>)</h3>
+<section id="correlation-coefficient-r-7" class="level3">
+<h3 class="anchored" data-anchor-id="correlation-coefficient-r-7">Correlation Coefficient (<em>r</em>)</h3>
 <p><strong><em>Point Estimate</em></strong></p>
 <p>-Step 1. Define gamma:<br>
 <span class="math display">\[\displaystyle{ \Gamma = u_x u_y \frac{1 - r^2}{2r}}\]</span></p>
@@ -726,8 +753,8 @@ div.csl-indent {
 <section id="bivariate-indirect-range-restriction" class="level2">
 <h2 class="anchored" data-anchor-id="bivariate-indirect-range-restriction">Bivariate Indirect Range Restriction</h2>
 <p>When the selection process is correlated with both of the variables of interest then the resulting sample with have a reduced variance due to indirect range restriction. This is often the case in college admissions testing where both the predictor (e.g., SAT scores) and the outcome variable (e.g., first year GPA) are correlated with the college admissions process.</p>
-<section id="correlation-coefficient-r-7" class="level3">
-<h3 class="anchored" data-anchor-id="correlation-coefficient-r-7">Correlation Coefficient (<em>r</em>)</h3>
+<section id="correlation-coefficient-r-8" class="level3">
+<h3 class="anchored" data-anchor-id="correlation-coefficient-r-8">Correlation Coefficient (<em>r</em>)</h3>
 <p><strong><em>Point Estimate</em></strong></p>
 <p>-Step 1. Define lambda:<br>
 <span class="math display">\[\displaystyle{ \lambda = \mathrm{sign} (r_{sx} r_{sy} [1 - u_x] [1 - u_y ])\frac{\mathrm{sign} (1-u_x) \mathrm{min} (u_x, 1/u_x) + \mathrm{sign} (1-u_y) \mathrm{min} (u_y, 1/u_y) }{\mathrm{min} (u_x, 1/u_x) + \mathrm{min} (u_y, 1/u_y)} }\]</span></p>
@@ -781,8 +808,8 @@ div.csl-indent {
 <section id="univariate-direct-range-restriction-and-measurement-error" class="level2">
 <h2 class="anchored" data-anchor-id="univariate-direct-range-restriction-and-measurement-error">Univariate Direct Range Restriction and Measurement Error</h2>
 <p>In certain situations, the selection of participants can be identical to one of the variables of interest. For instance, if a study is investigating the correlation between school grades and IQ in students with an intellectual disability, and the diagnosis is defined as having an IQ score of less than 70, then the sample would exhibit direct range restriction.</p>
-<section id="correlation-coefficient-r-8" class="level3">
-<h3 class="anchored" data-anchor-id="correlation-coefficient-r-8">Correlation Coefficient (<em>r</em>)</h3>
+<section id="correlation-coefficient-r-9" class="level3">
+<h3 class="anchored" data-anchor-id="correlation-coefficient-r-9">Correlation Coefficient (<em>r</em>)</h3>
 <p><strong><em>Point Estimate</em></strong><br>
 <span class="math display">\[\displaystyle{ \hat{\rho} = \frac{r}{u_x \sqrt{1 - u_x^2 (1-r_{xx'})  } \sqrt{r^2 \left(\frac{1}{u_x^2} - 1\right)+r_{yy'} } } }\]</span></p>
 <p><strong><em>Standard Error</em></strong><br>
@@ -851,8 +878,8 @@ div.csl-indent {
 <section id="univariate-indirect-range-restriction-and-measurement-error" class="level2">
 <h2 class="anchored" data-anchor-id="univariate-indirect-range-restriction-and-measurement-error">Univariate Indirect Range Restriction and Measurement Error</h2>
 <p>When the selection process is correlated with one of the variables of interest then the resulting sample with have a reduced variance due to indirect range restriction. For example, suppose a company is hiring employees based on their performance in a test that is correlated with their IQ. If the company only hires employees who score above a certain threshold on the test, then the range of IQ scores in the selected sample will be indirectly restricted. This is because the IQ scores of the selected employees will be higher than the IQ scores of the general population due to the correlation between the test scores and IQ.</p>
-<section id="correlation-coefficient-r-9" class="level3">
-<h3 class="anchored" data-anchor-id="correlation-coefficient-r-9">Correlation Coefficient (<em>r</em>)</h3>
+<section id="correlation-coefficient-r-10" class="level3">
+<h3 class="anchored" data-anchor-id="correlation-coefficient-r-10">Correlation Coefficient (<em>r</em>)</h3>
 <p><strong><em>Point Estimate</em></strong><br>
 <span class="math display">\[\displaystyle{\hat{\rho} = \frac{r}{\sqrt{r^2 + \frac{u_x^2 r_{xx'}(r_{xx'}r_{yy'}-r^2)}{1 - u_x^2 (1-r_{xx'})}}}}\]</span></p>
 <p><strong><em>Standard Error</em></strong><br>
@@ -920,8 +947,8 @@ div.csl-indent {
 <section id="bivariate-direct-range-restriction-and-measurement-error" class="level2">
 <h2 class="anchored" data-anchor-id="bivariate-direct-range-restriction-and-measurement-error">Bivariate Direct Range Restriction and Measurement Error</h2>
 <p>In some instances, direct selection can be placed on both x and y variables. This may happen in instances where a researcher requires subjects to be within the “normal” range of x and y, which tends to restrict the range by excluding individuals at the tails of x and y.</p>
-<section id="correlation-coefficient-r-10" class="level3">
-<h3 class="anchored" data-anchor-id="correlation-coefficient-r-10">Correlation Coefficient (<em>r</em>)</h3>
+<section id="correlation-coefficient-r-11" class="level3">
+<h3 class="anchored" data-anchor-id="correlation-coefficient-r-11">Correlation Coefficient (<em>r</em>)</h3>
 <p><strong><em>Point Estimate</em></strong> - Step 1. Define Gamma: <span class="math display">\[\displaystyle{ \Gamma = u_x u_y \frac{1 - r^2}{2r}}\]</span></p>
 <ul>
 <li>Step 2. Correct <em>r</em> for univariate direct range restriction: <span class="math display">\[\displaystyle{\hat{\rho} = \frac{-\Gamma u_x u_y + \mathrm{sign}(r)\sqrt{\Gamma^2 + 1} }{\sqrt{1-u_x^2(1-r_{xx'})}\sqrt{1-u_y^2(1-r_{yy'})}} }\]</span></li>
@@ -954,8 +981,8 @@ div.csl-indent {
 <section id="bivariate-indirect-range-restriction-and-measurement-error" class="level2">
 <h2 class="anchored" data-anchor-id="bivariate-indirect-range-restriction-and-measurement-error">Bivariate Indirect Range Restriction and Measurement Error</h2>
 <p>When the selection process is correlated with both of the variables of interest then the resulting sample with have a reduced variance due to indirect range restriction. This is often the case in college admissions testing where both the predictor (e.g., SAT scores) and the outcome variable (e.g., first year GPA) are correlated with the college admissions process.</p>
-<section id="correlation-coefficient-r-11" class="level3">
-<h3 class="anchored" data-anchor-id="correlation-coefficient-r-11">Correlation Coefficient (<em>r</em>)</h3>
+<section id="correlation-coefficient-r-12" class="level3">
+<h3 class="anchored" data-anchor-id="correlation-coefficient-r-12">Correlation Coefficient (<em>r</em>)</h3>
 <p><strong><em>Point Estimate</em></strong></p>
 <p>-Step 1. Define lambda:<br>
 <span class="math display">\[\displaystyle{ \lambda = \mathrm{sign} (r_{sx} r_{sy} [1 - u_x] [1 - u_y ])\frac{\mathrm{sign} (1-u_x) \mathrm{min} (u_x, 1/u_x) + \mathrm{sign} (1-u_y) \mathrm{min} (u_y, 1/u_y) }{\mathrm{min} (u_x, 1/u_x) + \mathrm{min} (u_y, 1/u_y)} }\]</span></p>

@@ -1,1 +1,113 @@
+---
+title: "Software"
+---
 
+<hr>
+
+:::: {layout="[ 25, 80 ]"}
+::: {#first-column}
+![](themeparklogo.png)
+:::
+
+::: {#second-column}
+### ThemePark
+Generating popular culture styled ggplot themes. Featured on [rweekly.org](https://rweekly.org/2023-W32.html) and [flowingdata.com](https://flowingdata.com/2023/07/28/barbie-and-oppenheimer-themes-for-charts-in-r/)
+
+[{{< fa brands github >}} Github Repository](https://github.com/MatthewBJane/theme_park){.btn .btn-primary .btn-sm role="button" data-toggle="data" title="Data File"} 
+
+
+:::
+::::
+
+<hr>
+
+:::: {layout="[ 25, 80 ]"}
+::: {#first-column}
+![](posclogo.png)
+:::
+
+::: {#second-column}
+### POSC
+An R Package for generating Probability of Outcome Superiority Curves (POSCs). 
+
+[{{< fa brands github >}} Github Repository](https://github.com/MatthewBJane/posc){.btn .btn-primary .btn-sm role="button" data-toggle="data" title="Data File"} 
+:::
+::::
+
+
+<hr>
+
+:::: {layout="[ 25, 80 ]"}
+::: {#first-column}
+![](opensynthesislogo.png)
+:::
+
+::: {#second-column}
+### OpenSynthesis
+Website cataloging publicly available meta-analytic databases.
+
+[{{< fa brands github >}} Github Repository](https://github.com/MatthewBJane/opensynthesis){.btn .btn-primary .btn-sm role="button" data-toggle="data" title="Data File"} 
+[{{< fa globe >}} Webpage](https://matthewbjane.com/opensynthesis/){.btn .btn-primary .btn-sm role="button" data-toggle="data" title="Data File"} 
+:::
+::::
+
+
+<hr>
+
+:::: {layout="[ 25, 80 ]"}
+::: {#first-column}
+![](artifactsimulatorlogo.png)
+:::
+
+::: {#second-column}
+### Artifact Simulator
+A Shiny App for Visualizing Statistical Artifacts.
+
+[{{< fa diagram-project >}} Shiny App](matthewbjane.shinyapps.io/effect_size_artifact_bias){.btn .btn-primary .btn-sm role="button" data-toggle="data" title="Data File"} 
+:::
+::::
+
+<hr>
+
+:::: {layout="[ 25, 80 ]"}
+::: {#first-column}
+![](artifactcorrectionslogo.png)
+:::
+
+::: {#second-column}
+### Artifact Corrections for Effect Sizes
+A webpage documenting equations and code for effect size artifact corrections. MatthewBJane.com/ArtifactCorrections
+
+[{{< fa link >}} Webpage](ArtifactCorrections.html){.btn .btn-primary .btn-sm role="button" data-toggle="data" title="Data File"} 
+:::
+::::
+
+<hr>
+
+:::: {layout="[ 25, 80 ]"}
+::: {#first-column}
+![](metaanalysislogo.png)
+:::
+
+::: {#second-column}
+### Meta-Analysis Data & Code
+Repository of data and code for all meta-analytic projects.
+
+[{{< fa brands github >}} Github Repository](https://github.com/MatthewBJane/meta-analysis-project-data-code){.btn .btn-primary .btn-sm role="button" data-toggle="data" title="Data File"} 
+:::
+::::
+
+<hr>
+
+:::: {layout="[ 25, 80 ]"}
+::: {#first-column}
+![](primarystudylogo.png)
+:::
+
+::: {#second-column}
+### Primary Study Data & Code
+Repository of data and code for all primary study projects.
+
+[{{< fa brands github >}} Github Repository](https://github.com/MatthewBJane/primary-study-project-data-code){.btn .btn-primary .btn-sm role="button" data-toggle="data" title="Data File"} 
+:::
+::::

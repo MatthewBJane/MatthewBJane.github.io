@@ -3,17 +3,28 @@ project:
   output-dir: docs
 
 website:
+  site-url: matthewbjane.com
+  page-footer: 
+    left: ""
   title: "Matthew B. Jané"
-  favicon: webLogoFavicon.png
+  favicon: webLogoFavicon2.png
+  twitter-card: 
+    image: webLogo2.png
   navbar:
-    background: secondary
+    right: 
+      - icon: github
+        href: https://www.github.io/MatthewBJane
+      - icon: twitter
+        href: https://www.twitter.com/MatthewBJane
+    logo: webLogoFavicon2.png
+    background: primary
     left:
       - href: index.qmd
         text: Home
+      - href: blog.qmd
+        text: Meta-Analysis Tricks
       - href: CV.qmd
         text: CV
-      - href: Publications.qmd
-        text: Publications
       - href: Software.qmd
         text: Software
       - href: ArtifactCorrections.qmd
@@ -21,7 +32,9 @@ website:
 
 format:
   html:
-    theme: darkly
+    theme: 
+      - darkly
+      - barbie.scss
     css: styles.css
     toc: true
 
