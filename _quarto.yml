@@ -22,7 +22,7 @@ website:
       - href: index.qmd
         text: Home
       - href: blog.qmd
-        text: Meta-Analysis Tricks
+        text: Meta-Analysis Magic
       - href: CV.qmd
         text: CV
       - href: Software.qmd
