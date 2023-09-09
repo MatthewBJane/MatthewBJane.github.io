@@ -14,12 +14,12 @@ date-meta: 2023-09-08
 
 ## Step 1: Obtain Pre-test, Post-test, and Change score standard deviations
 
-In order to calculate the pre/post correlation ($r$), we need an estimate of the standard deviation (SD) of pre-test scores ($S_{pre}$), the SD of post-test scores ($S_{post}$), and the SD of change scores ($S_{change}$, where $x_{change}=x_{pre}-x_{post}$). If the post-test standard deviation is unavailable, but the pre-test standard deviation is available, you can approximate the post-test standard deviation by taking average ratio of the pre-test SD and post-test SD from all the other studies in the current meta-analysis. 
-
+In order to calculate the pre/post correlation ($r$), we need an estimate of the standard deviation (SD) of pre-test scores ($S_{pre}$), the SD of post-test scores ($S_{post}$), and the SD of change scores ($S_{change}$, where $x_{change}=x_{pre}-x_{post}$). If the post-test standard deviation is unavailable, but the pre-test standard deviation is available, you can approximate the post-test standard deviation by taking average ratio of the pre-test SD and post-test SD from all other studies in the current meta-analysis.
+ 
 $$
 \bar{S}_{ratio}=\frac{1}{k}\sum_{i=1}^k \frac{S_{post,i}}{S_{pre,i}}
 $$
-Then we can make an approximation of the post-test standard by multiplying the pre-test SD by the ratio of SDs,
+Where $k$ is the number of studies in the meta-analysis. Then we can make an approximation of the post-test standard by multiplying the pre-test SD by the ratio of SDs,
 
 $$
 S_{post}\approx \bar{S}_{ratio}\times S_{pre}
