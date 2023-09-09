@@ -16,6 +16,8 @@ website:
         href: https://www.github.io/MatthewBJane
       - icon: twitter
         href: https://www.twitter.com/MatthewBJane
+      - icon: rss
+        href: blog.xml
     logo: webLogoFavicon2.png
     background: primary
     left:
