@@ -4,7 +4,7 @@ author: "Matthew B. Jané"
 image: "blog-image.png"
 image-height: "5%"
 date: 2023-09-08
-description: "Welcome to the first blog post of *Meta-Analysis Magic*! In this, post we will go over a couple of ways to directly calculate pre/post correlations from alternative statistics such as standard deviations of change scores. Pre/post correlations are necessary to obtain various types of effect sizes and standard errors such as the repeated measures variant of Cohen's $d$, also referred to as Cohen's $d_{rm}$."
+description: "Welcome to the first blog post of *Meta-Analysis Magic*! In this post we will go over a couple of ways to directly calculate pre/post correlations from alternative statistics such as standard deviations of change scores. Pre/post correlations are necessary to obtain various types of effect sizes and standard errors such as the repeated measures variant of Cohen's $d$, also referred to as Cohen's $d_{rm}$."
 categories:
   - repeated measures
   - correlations
