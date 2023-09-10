@@ -2,13 +2,22 @@ project:
   type: website
   output-dir: docs
 
+  resources:
+    - webLogo2.png
+
 website:
-  site-url: matthewbjane.com
+  site-url: https://matthewbjane.com
   page-footer: 
     left: "Questions? Contact Matthew B. Jané by email at matthew.jane@uconn.edu"
   title: "Matthew B. Jané"
   favicon: webLogoFavicon2.png
+  
+  open-graph:
+    image: webLogo2.png
+    locale: en_US
+    
   twitter-card: 
+    creator: "@MatthewBJane"
     image: webLogo2.png
   navbar:
     right: 
