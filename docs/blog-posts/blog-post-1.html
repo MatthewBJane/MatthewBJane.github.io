@@ -8,7 +8,7 @@
 
 <meta name="author" content="Matthew B. Jané">
 <meta name="dcterms.date" content="2023-09-08">
-<meta name="description" content="Welcome to the first blog post of Meta-Analysis Magic! In this, post we will go over a couple of ways to directly calculate pre/post correlations from alternative statistics such as standard deviations of change scores. Pre/post correlations are necessary to obtain various types of effect sizes and standard errors such as the repeated measures variant of Cohen’s d, also referred to as Cohen’s d_{rm}.">
+<meta name="description" content="Welcome to the first blog post of Meta-Analysis Magic! In this post we will go over a couple of ways to directly calculate pre/post correlations from alternative statistics such as standard deviations of change scores. Pre/post correlations are necessary to obtain various types of effect sizes and standard errors such as the repeated measures variant of Cohen’s d, also referred to as Cohen’s d_{rm}.">
 
 <title>Matthew B. Jané - Calculating Pre/Post Correlation from the Standard Deviation of Change Scores</title>
 <style>
@@ -104,7 +104,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <link rel="stylesheet" href="../styles.css">
 <meta name="twitter:title" content="Matthew B. Jané - Calculating Pre/Post Correlation from the Standard Deviation of Change Scores">
-<meta name="twitter:description" content="Welcome to the first blog post of Meta-Analysis Magic! In this, post we will go over a couple of ways to directly calculate pre/post correlations from alternative statistics such as standard deviations of change scores. Pre/post correlations are necessary to obtain various types of effect sizes and standard errors such as the repeated measures variant of Cohen’s \(d\), also referred to as Cohen’s \(d_{rm}\).">
+<meta name="twitter:description" content="Welcome to the first blog post of Meta-Analysis Magic! In this post we will go over a couple of ways to directly calculate pre/post correlations from alternative statistics such as standard deviations of change scores. Pre/post correlations are necessary to obtain various types of effect sizes and standard errors such as the repeated measures variant of Cohen’s \(d\), also referred to as Cohen’s \(d_{rm}\).">
 <meta name="twitter:image" content="matthewbjane.com/blog-posts/webLogo2.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -202,7 +202,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div>
   <div class="description">
-    Welcome to the first blog post of <em>Meta-Analysis Magic</em>! In this, post we will go over a couple of ways to directly calculate pre/post correlations from alternative statistics such as standard deviations of change scores. Pre/post correlations are necessary to obtain various types of effect sizes and standard errors such as the repeated measures variant of Cohen’s <span class="math inline">\(d\)</span>, also referred to as Cohen’s <span class="math inline">\(d_{rm}\)</span>.
+    Welcome to the first blog post of <em>Meta-Analysis Magic</em>! In this post we will go over a couple of ways to directly calculate pre/post correlations from alternative statistics such as standard deviations of change scores. Pre/post correlations are necessary to obtain various types of effect sizes and standard errors such as the repeated measures variant of Cohen’s <span class="math inline">\(d\)</span>, also referred to as Cohen’s <span class="math inline">\(d_{rm}\)</span>.
   </div>
 </div>
 
@@ -231,7 +231,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="step-1-obtain-pre-test-post-test-and-change-score-standard-deviations" class="level2">
 <h2 class="anchored" data-anchor-id="step-1-obtain-pre-test-post-test-and-change-score-standard-deviations">Step 1: Obtain Pre-test, Post-test, and Change score standard deviations</h2>
-<p>In order to calculate the pre/post correlation (<span class="math inline">\(r\)</span>), we need an estimate of the standard deviation (SD) of pre-test scores (<span class="math inline">\(S_{pre}\)</span>), the SD of post-test scores (<span class="math inline">\(S_{post}\)</span>), and the SD of change scores (<span class="math inline">\(S_{change}\)</span>, where <span class="math inline">\(x_{change}=x_{pre}-x_{post}\)</span>). If the post-test SD is unavailable, but the pre-test SD is available, you can approximate the post-test SD by taking average ratio of the pre-test SD and post-test SD from all other studies in the current meta-analysis.</p>
+<p>In order to calculate the pre/post correlation (<span class="math inline">\(r\)</span>), we need an estimate of the standard deviation (SD) of pre-test scores (<span class="math inline">\(S_{pre}\)</span>), the SD of post-test scores (<span class="math inline">\(S_{post}\)</span>), and the SD of change scores (<span class="math inline">\(S_{change}\)</span>, where <span class="math inline">\(x_{change}=x_{post}-x_{pre}\)</span>). If the post-test SD is unavailable, but the pre-test SD is available, you can approximate the post-test SD by taking average ratio of the pre-test SD and post-test SD from all other studies in the current meta-analysis.</p>
 <p><span class="math display">\[
 \bar{S}_{ratio}=\frac{1}{k}\sum_{i=1}^k \frac{S_{post,i}}{S_{pre,i}}
 \]</span> Where <span class="math inline">\(k\)</span> is the number of studies in the meta-analysis. Then we can make an approximation of the post-test SD by multiplying the pre-test SD by the ratio of SDs,</p>
