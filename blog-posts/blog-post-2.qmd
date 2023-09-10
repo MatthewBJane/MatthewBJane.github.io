@@ -113,9 +113,9 @@ print(S_x)
 
 ## Note the Assumptions!
 
-Since this method provides an approximation of a normal distribution it is important to point out that the method may not be biased under different distributions. For example, if try the same method on a Student's t distribution with heavy tails (3.5 degrees of freedom), $S_(75-25)$ would be equal to 1.50187 which is slightly larger than 1.34898 that we computed from the normal distribution. If we were to assume a normal distribution when it was truly a student's t, the method would over-estimate the standard deviation by ~11%.
+Since this method provides an approximation of a normal distribution it is important to point out that the method may be biased under different distributions. For example, if we try the same method on a Student's t distribution with heavy tails (3.5 degrees of freedom), $S_{(75-25)}$ would be equal to 1.50187 which is slightly larger than 1.34898 that we computed from the normal distribution. If we were to assume a normal distribution when it was truly a student's t, the method would over-estimate the standard deviation by ~11%.
 
-```{r, collapse=TRUE}
+```{r, echo=FALSE}
 
 ggplot(data = NULL, aes(y = 0,
                         xdist = distributional::dist_student_t(3.5,0,1),
