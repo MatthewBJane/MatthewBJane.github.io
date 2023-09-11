@@ -312,7 +312,7 @@ S =  \frac{X_{(75-25)}}{S_{(75-25)}} = \frac{X_{(75-25)}}{1.34898}
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>q75 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">quantile</span>(X,.<span class="dv">75</span>))</span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>X_75_25 <span class="ot">&lt;-</span> q75 <span class="sc">-</span> q25</span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute multiplier</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute IQR in SD units</span></span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>S_75_25 <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(.<span class="dv">75</span>) <span class="sc">-</span> <span class="fu">qnorm</span>(.<span class="dv">25</span>)</span>
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate standard deviation</span></span>

@@ -152,7 +152,7 @@ q25 <- as.numeric(quantile(X,.25))
 q75 <- as.numeric(quantile(X,.75))
 X_75_25 <- q75 - q25
 
-# Compute multiplier
+# Compute IQR in SD units
 S_75_25 <- qnorm(.75) - qnorm(.25)
 
 # Estimate standard deviation
