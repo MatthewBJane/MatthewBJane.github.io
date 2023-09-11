@@ -12,16 +12,16 @@
 <generator>quarto-1.3.353</generator>
 <lastBuildDate>Sun, 10 Sep 2023 04:00:00 GMT</lastBuildDate>
 <item>
-  <title>Approximating Standard Deviations from Two Quantiles</title>
+  <title>Approximating Standard Deviation from Inter-Quantile Range</title>
   <dc:creator>Matthew B. Jané</dc:creator>
   <link>https://matthewbjane.com/blog-posts/blog-post-2.html</link>
   <description><![CDATA[ 
 
 
 
-<section id="interquartile-range-iqr" class="level3">
-<h3 class="anchored" data-anchor-id="interquartile-range-iqr">Interquartile Range (IQR)</h3>
-<p>Studies may report quantiles in order to communicate the spread of the data. However, meta-analysts will need standard deviations (SD) to calculate effect size estimates such as standardized mean differences (i.e., Cohen’s <img src="https://latex.codecogs.com/png.latex?d">). For this post, we will focus on the inter-quartile range (IQR) although the method described here will apply to any set of two quantiles. The IQR (<img src="https://latex.codecogs.com/png.latex?X_%7B(75-25)%7D">) is defined as the difference between the 75th and 25th quantile values, that is, the region where 50% of the data lies. We can visualize what this will look like with normally distributed data:</p>
+<section id="inter-quantile-range" class="level3">
+<h3 class="anchored" data-anchor-id="inter-quantile-range">Inter-Quantile Range</h3>
+<p>Studies may report inter-quantile ranges in order to communicate the spread of the data. However, meta-analysts will need standard deviations (SD) to calculate effect size estimates such as standardized mean differences (i.e., Cohen’s <img src="https://latex.codecogs.com/png.latex?d">). For this post, we will focus on the inter-<em>quartile</em> range (IQR) although the method described here will apply to any range between a pair of quantiles. The IQR (<img src="https://latex.codecogs.com/png.latex?X_%7B(75-25)%7D">) is defined as the difference between the 75th and 25th quantile values, that is, the region where 50% of the data lies. We can visualize what this will look like with normally distributed data:</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="https://matthewbjane.com/blog-posts/blog-post-2_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>

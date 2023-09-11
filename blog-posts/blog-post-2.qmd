@@ -1,15 +1,15 @@
 ---
-title: "Approximating Standard Deviations from Two Quantiles"
+title: "Approximating Standard Deviation from Inter-Quantile Range"
 author: "Matthew B. Jané"
 image: "blog-image.png"
 image-height: "5%"
 date: 2023-09-10
-description: "Occasionally researchers report inter-quartile ranges or sets of quantiles to measure the spread of the data. Since meta-analysts need standard deviations to calculate effect size estimates, here is a strategy to approximate them from a pair of quantiles."
+description: "Occasionally researchers report inter-quantile ranges (e.g., inter-quartile range) to measure the spread of the data. Since meta-analysts need standard deviations to calculate effect size estimates, here is a strategy to approximate them from an inter-quantile range."
 categories:
   - standard deviations
   - approximations
 
-title-meta: "Obtaining Standard Deviations from Max-Min and Inter-Quartile Range"
+title-meta: "Approximating Standard Deviation from Inter-Quantile Range"
 author-meta: "Matthew B. Jané"
 date-meta: 2023-09-10
 image-meta: "blog-image.png"
@@ -21,9 +21,9 @@ mainfont: Asap
 sansfont: Asap
 ---
 
-### Interquartile Range (IQR)
+### Inter-Quantile Range
 
-Studies may report quantiles in order to communicate the spread of the data. However, meta-analysts will need standard deviations (SD) to calculate effect size estimates such as standardized mean differences (i.e., Cohen's $d$). For this post, we will focus on the inter-quartile range (IQR) although the method described here will apply to any set of two quantiles. The IQR ($X_{(75-25)}$) is defined as the difference between the 75th and 25th quantile values, that is, the region where 50% of the data lies. We can visualize what this will look like with normally distributed data:
+Studies may report inter-quantile ranges in order to communicate the spread of the data. However, meta-analysts will need standard deviations (SD) to calculate effect size estimates such as standardized mean differences (i.e., Cohen's $d$). For this post, we will focus on the inter-*quartile* range (IQR) although the method described here will apply to any range between a pair of quantiles. The IQR ($X_{(75-25)}$) is defined as the difference between the 75th and 25th quantile values, that is, the region where 50% of the data lies. We can visualize what this will look like with normally distributed data:
 
 ```{r, echo=FALSE}
 # install.packages('ggplot2')

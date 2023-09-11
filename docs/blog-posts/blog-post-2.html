@@ -8,9 +8,9 @@
 
 <meta name="author" content="Matthew B. Jané">
 <meta name="dcterms.date" content="2023-09-10">
-<meta name="description" content="Occasionally researchers report inter-quartile ranges or sets of quantiles to measure the spread of the data. Since meta-analysts need standard deviations to calculate effect size estimates, here is a strategy to approximate them from a pair of quantiles.">
+<meta name="description" content="Occasionally researchers report inter-quantile ranges (e.g., inter-quartile range) to measure the spread of the data. Since meta-analysts need standard deviations to calculate effect size estimates, here is a strategy to approximate them from an inter-quantile range.">
 
-<title>Matthew B. Jané - Approximating Standard Deviations from Two Quantiles</title>
+<title>Matthew B. Jané - Approximating Standard Deviation from Inter-Quantile Range</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -102,15 +102,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="Matthew B. Jané - Approximating Standard Deviations from Two Quantiles">
-<meta property="og:description" content="Occasionally researchers report inter-quartile ranges or sets of quantiles to measure the spread of the data. Since meta-analysts need standard deviations to calculate effect size estimates, here is a strategy to approximate them from a pair of quantiles.">
+<meta property="og:title" content="Matthew B. Jané - Approximating Standard Deviation from Inter-Quantile Range">
+<meta property="og:description" content="Occasionally researchers report inter-quantile ranges (e.g., inter-quartile range) to measure the spread of the data. Since meta-analysts need standard deviations to calculate effect size estimates, here is a strategy to approximate them from an inter-quantile range.">
 <meta property="og:image" content="https://matthewbjane.com/webLogo2.png">
 <meta property="og:site-name" content="Matthew B. Jané">
 <meta property="og:locale" content="en_US">
 <meta property="og:image:height" content="4780">
 <meta property="og:image:width" content="5906">
-<meta name="twitter:title" content="Matthew B. Jané - Approximating Standard Deviations from Two Quantiles">
-<meta name="twitter:description" content="Occasionally researchers report inter-quartile ranges or sets of quantiles to measure the spread of the data. Since meta-analysts need standard deviations to calculate effect size estimates, here is a strategy to approximate them from a pair of quantiles.">
+<meta name="twitter:title" content="Matthew B. Jané - Approximating Standard Deviation from Inter-Quantile Range">
+<meta name="twitter:description" content="Occasionally researchers report inter-quantile ranges (e.g., inter-quartile range) to measure the spread of the data. Since meta-analysts need standard deviations to calculate effect size estimates, here is a strategy to approximate them from an inter-quantile range.">
 <meta name="twitter:image" content="https://matthewbjane.com/webLogo2.png">
 <meta name="twitter:creator" content="@MatthewBJane">
 <meta name="twitter:image-height" content="4780">
@@ -191,7 +191,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#interquartile-range-iqr" id="toc-interquartile-range-iqr" class="nav-link active" data-scroll-target="#interquartile-range-iqr">Interquartile Range (IQR)</a></li>
+  <li><a href="#inter-quantile-range" id="toc-inter-quantile-range" class="nav-link active" data-scroll-target="#inter-quantile-range">Inter-Quantile Range</a></li>
   <li><a href="#step-2-convert-iqr-to-standard-deviations" id="toc-step-2-convert-iqr-to-standard-deviations" class="nav-link" data-scroll-target="#step-2-convert-iqr-to-standard-deviations">Step 2: Convert IQR to Standard Deviations</a></li>
   <li><a href="#note-the-assumptions" id="toc-note-the-assumptions" class="nav-link" data-scroll-target="#note-the-assumptions">Note the Assumptions!</a>
   <ul class="collapse">
@@ -205,7 +205,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Approximating Standard Deviations from Two Quantiles</h1>
+<h1 class="title">Approximating Standard Deviation from Inter-Quantile Range</h1>
   <div class="quarto-categories">
     <div class="quarto-category">standard deviations</div>
     <div class="quarto-category">approximations</div>
@@ -214,7 +214,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div>
   <div class="description">
-    Occasionally researchers report inter-quartile ranges or sets of quantiles to measure the spread of the data. Since meta-analysts need standard deviations to calculate effect size estimates, here is a strategy to approximate them from a pair of quantiles.
+    Occasionally researchers report inter-quantile ranges (e.g., inter-quartile range) to measure the spread of the data. Since meta-analysts need standard deviations to calculate effect size estimates, here is a strategy to approximate them from an inter-quantile range.
   </div>
 </div>
 
@@ -241,9 +241,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="interquartile-range-iqr" class="level3">
-<h3 class="anchored" data-anchor-id="interquartile-range-iqr">Interquartile Range (IQR)</h3>
-<p>Studies may report quantiles in order to communicate the spread of the data. However, meta-analysts will need standard deviations (SD) to calculate effect size estimates such as standardized mean differences (i.e., Cohen’s <span class="math inline">\(d\)</span>). For this post, we will focus on the inter-quartile range (IQR) although the method described here will apply to any set of two quantiles. The IQR (<span class="math inline">\(X_{(75-25)}\)</span>) is defined as the difference between the 75th and 25th quantile values, that is, the region where 50% of the data lies. We can visualize what this will look like with normally distributed data:</p>
+<section id="inter-quantile-range" class="level3">
+<h3 class="anchored" data-anchor-id="inter-quantile-range">Inter-Quantile Range</h3>
+<p>Studies may report inter-quantile ranges in order to communicate the spread of the data. However, meta-analysts will need standard deviations (SD) to calculate effect size estimates such as standardized mean differences (i.e., Cohen’s <span class="math inline">\(d\)</span>). For this post, we will focus on the inter-<em>quartile</em> range (IQR) although the method described here will apply to any range between a pair of quantiles. The IQR (<span class="math inline">\(X_{(75-25)}\)</span>) is defined as the difference between the 75th and 25th quantile values, that is, the region where 50% of the data lies. We can visualize what this will look like with normally distributed data:</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="blog-post-2_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
