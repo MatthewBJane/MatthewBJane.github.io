@@ -1,1 +1,1 @@
-Sitemap: matthewbjane.com/sitemap.xml
+Sitemap: https://matthewbjane.com/sitemap.xml
