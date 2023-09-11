@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
   resources:
-    - webLogo2.png
+    - "/webLogo2.png"
 
 website:
   site-url: https://matthewbjane.com
@@ -13,16 +13,16 @@ website:
   favicon: webLogoFavicon2.png
   
   open-graph:
-    image: webLogo2.png
+    image: "/webLogo2.png"
     locale: en_US
     
   twitter-card: 
     creator: "@MatthewBJane"
-    image: webLogo2.png
+    image: "/webLogo2.png"
   navbar:
     right: 
       - icon: github
-        href: https://www.github.io/MatthewBJane
+        href: https://www.github.com/MatthewBJane
       - icon: twitter
         href: https://www.twitter.com/MatthewBJane
       - icon: rss
