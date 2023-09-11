@@ -40,8 +40,8 @@
 <p>The quantile function (<img src="https://latex.codecogs.com/png.latex?%5Cphi%5E%7B-1%7D">) of the standard normal distribution (i.e., mean=0, SD=1) converts quantiles of the cumulative density function into the corresponding values in standard deviation units. The difference between the corresponding values will give us the IQR in SD units,</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0AS_%7B(75-25)%7D%20=%20%5Cphi%5E%7B-1%7D(.75)%20-%20%5Cphi%5E%7B-1%7D(.25)%0A"> The resulting value is <img src="https://latex.codecogs.com/png.latex?S_%7B(75-25)%7D=1.34898">. It is important to note that this formulation can be used for any set of quantiles not just IQR, therefore we can generalized this to compare any arbitrary pair of quantiles (<img src="https://latex.codecogs.com/png.latex?Q1,Q2">),</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0AS_%7B(Q_2-Q_1)%7D%20=%20%5Cphi%5E%7B-1%7D(Q_2)%20-%20%5Cphi%5E%7B-1%7D(Q_1)%0A"></p>
-<p>Now that we have the IQR in terms of SD units, we can divide with the raw IQR to obtain an estimate of the SD of x (<img src="https://latex.codecogs.com/png.latex?S_x">),</p>
-<p><img src="https://latex.codecogs.com/png.latex?%0AS%20=%20%20%5Cfrac%7BX_%7B(75-25)%7D%7D%7BS_%7B(75-25)%7D%7D%20=%20%5Cfrac%7BX_%7B(75-25)%7D%7D%7B1.34898%7D%0A"></p>
+<p>Now that we have the IQR in terms of SD units, we can divide with the raw IQR to obtain an estimate of the SD of <img src="https://latex.codecogs.com/png.latex?X"> (<img src="https://latex.codecogs.com/png.latex?S_X">),</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0AS_X%20=%20%20%5Cfrac%7BX_%7B(75-25)%7D%7D%7BS_%7B(75-25)%7D%7D%20=%20%5Cfrac%7BX_%7B(75-25)%7D%7D%7B1.34898%7D%0A"></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -82,7 +82,7 @@ font-style: inherit;">25</span>)</span>
 <span id="cb1-9"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Estimate standard deviation</span></span>
-<span id="cb1-10">S_x <span class="ot" style="color: #003B4F;
+<span id="cb1-10">S_X <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span>  X_75_25 <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -93,7 +93,7 @@ background-color: null;
 font-style: inherit;">#print results</span></span>
 <span id="cb1-13"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">print</span>(S_x)</span></code></pre></div>
+font-style: inherit;">print</span>(S_X)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 14.82602</code></pre>
 </div>
@@ -193,9 +193,9 @@ background-color: null;
 font-style: inherit;"># Print results</span></span>
 <span id="cb3-19"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">print</span>(S_x)</span></code></pre></div>
+font-style: inherit;">print</span>(S_X)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4.706901</code></pre>
+<pre><code>[1] 14.82602</code></pre>
 </div>
 </div>
 

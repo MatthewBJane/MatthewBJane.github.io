@@ -89,10 +89,10 @@ $$
 S_{(Q_2-Q_1)} = \phi^{-1}(Q_2) - \phi^{-1}(Q_1)
 $$
 
-Now that we have the IQR in terms of SD units, we can divide with the raw IQR to obtain an estimate of the SD of x ($S_x$),
+Now that we have the IQR in terms of SD units, we can divide with the raw IQR to obtain an estimate of the SD of $X$ ($S_X$),
 
 $$
-S =  \frac{X_{(75-25)}}{S_{(75-25)}} = \frac{X_{(75-25)}}{1.34898}
+S_X =  \frac{X_{(75-25)}}{S_{(75-25)}} = \frac{X_{(75-25)}}{1.34898}
 $$
 
 ```{r}
@@ -105,10 +105,10 @@ X_75_25 <- X_75 - X_25
 S_75_25 <- qnorm(.75) - qnorm(.25)
 
 # Estimate standard deviation
-S_x <-  X_75_25 / S_75_25
+S_X <-  X_75_25 / S_75_25
 
 #print results
-print(S_x)
+print(S_X)
 ```
 
 ## Note the Assumptions!
@@ -159,5 +159,5 @@ S_75_25 <- qnorm(.75) - qnorm(.25)
 S_x <-  X_75_25 / S_75_25
 
 # Print results
-print(S_x)
+print(S_X)
 ```

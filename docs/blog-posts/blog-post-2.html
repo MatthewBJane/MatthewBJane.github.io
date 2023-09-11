@@ -266,9 +266,9 @@ S_{(75-25)} = \phi^{-1}(.75) - \phi^{-1}(.25)
 <p><span class="math display">\[
 S_{(Q_2-Q_1)} = \phi^{-1}(Q_2) - \phi^{-1}(Q_1)
 \]</span></p>
-<p>Now that we have the IQR in terms of SD units, we can divide with the raw IQR to obtain an estimate of the SD of x (<span class="math inline">\(S_x\)</span>),</p>
+<p>Now that we have the IQR in terms of SD units, we can divide with the raw IQR to obtain an estimate of the SD of <span class="math inline">\(X\)</span> (<span class="math inline">\(S_X\)</span>),</p>
 <p><span class="math display">\[
-S =  \frac{X_{(75-25)}}{S_{(75-25)}} = \frac{X_{(75-25)}}{1.34898}
+S_X =  \frac{X_{(75-25)}}{S_{(75-25)}} = \frac{X_{(75-25)}}{1.34898}
 \]</span></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define IQR</span></span>
@@ -280,10 +280,10 @@ S =  \frac{X_{(75-25)}}{S_{(75-25)}} = \frac{X_{(75-25)}}{1.34898}
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>S_75_25 <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(.<span class="dv">75</span>) <span class="sc">-</span> <span class="fu">qnorm</span>(.<span class="dv">25</span>)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate standard deviation</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>S_x <span class="ot">&lt;-</span>  X_75_25 <span class="sc">/</span> S_75_25</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>S_X <span class="ot">&lt;-</span>  X_75_25 <span class="sc">/</span> S_75_25</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">#print results</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(S_x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(S_X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 14.82602</code></pre>
 </div>
@@ -319,9 +319,9 @@ S =  \frac{X_{(75-25)}}{S_{(75-25)}} = \frac{X_{(75-25)}}{1.34898}
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>S_x <span class="ot">&lt;-</span>  X_75_25 <span class="sc">/</span> S_75_25</span>
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(S_x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(S_X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4.706901</code></pre>
+<pre><code>[1] 14.82602</code></pre>
 </div>
 </div>
 
