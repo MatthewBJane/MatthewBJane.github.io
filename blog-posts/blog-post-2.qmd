@@ -156,7 +156,7 @@ X_75_25 <- q75 - q25
 S_75_25 <- qnorm(.75) - qnorm(.25)
 
 # Estimate standard deviation
-S_x <-  X_75_25 / S_75_25
+S_X <-  X_75_25 / S_75_25
 
 # Print results
 print(S_X)

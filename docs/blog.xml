@@ -182,7 +182,7 @@ font-style: inherit;">25</span>)</span>
 <span id="cb3-15"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Estimate standard deviation</span></span>
-<span id="cb3-16">S_x <span class="ot" style="color: #003B4F;
+<span id="cb3-16">S_X <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span>  X_75_25 <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -195,7 +195,7 @@ font-style: inherit;"># Print results</span></span>
 background-color: null;
 font-style: inherit;">print</span>(S_X)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 14.82602</code></pre>
+<pre><code>[1] 4.706901</code></pre>
 </div>
 </div>
 
