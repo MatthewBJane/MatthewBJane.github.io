@@ -7,6 +7,7 @@ project:
 
 website:
   site-url: https://matthewbjane.com
+  description: "Website for Matthew B. Jané. PhD student at the University of Connecticut."
   page-footer: 
     left: "Questions? Contact Matthew B. Jané by email at matthew.jane@uconn.edu"
   title: "Matthew B. Jané"
