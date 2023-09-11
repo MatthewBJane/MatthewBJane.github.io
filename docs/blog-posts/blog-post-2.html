@@ -268,9 +268,9 @@ S =  \frac{X_{(75-25)}}{S_{(75-25)}} = \frac{X_{(75-25)}}{1.34898}
 \]</span></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define IQR</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>q25 <span class="ot">&lt;-</span> <span class="dv">30</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>q75 <span class="ot">&lt;-</span> <span class="dv">50</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>X_75_25 <span class="ot">&lt;-</span> q75 <span class="sc">-</span> q25</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>X_25 <span class="ot">&lt;-</span> <span class="dv">30</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>X_75 <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>X_75_25 <span class="ot">&lt;-</span> X_75 <span class="sc">-</span> X_25</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute multiplier</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>S_75_25 <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(.<span class="dv">75</span>) <span class="sc">-</span> <span class="fu">qnorm</span>(.<span class="dv">25</span>)</span>

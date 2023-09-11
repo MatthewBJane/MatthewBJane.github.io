@@ -46,21 +46,21 @@
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Define IQR</span></span>
-<span id="cb1-2">q25 <span class="ot" style="color: #003B4F;
+<span id="cb1-2">X_25 <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">30</span></span>
-<span id="cb1-3">q75 <span class="ot" style="color: #003B4F;
+<span id="cb1-3">X_75 <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">50</span></span>
 <span id="cb1-4">X_75_25 <span class="ot" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">&lt;-</span> q75 <span class="sc" style="color: #5E5E5E;
+font-style: inherit;">&lt;-</span> X_75 <span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">-</span> q25</span>
+font-style: inherit;">-</span> X_25</span>
 <span id="cb1-5"></span>
 <span id="cb1-6"><span class="co" style="color: #5E5E5E;
 background-color: null;
