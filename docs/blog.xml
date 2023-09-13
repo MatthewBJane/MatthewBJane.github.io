@@ -29,7 +29,7 @@
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># Define standard deviations</span></span>
+font-style: inherit;"># Obtain values</span></span>
 <span id="cb1-2">M_change <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="dv" style="color: #AD0000;
@@ -333,7 +333,10 @@ font-style: inherit;">*</span>SD_pre<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">*</span>SD_post)</span>
 <span id="cb4-32"></span>
-<span id="cb4-33"><span class="fu" style="color: #4758AB;
+<span id="cb4-33"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># print results</span></span>
+<span id="cb4-34"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">print</span>(<span class="fu" style="color: #4758AB;
 background-color: null;
@@ -352,7 +355,7 @@ font-style: inherit;">'r = '</span>,r))</span></code></pre></div>
 
  ]]></description>
   <category>repeated measures</category>
-  <category>correlations</category>
+  <category>pre/post correlations</category>
   <category>test statistics</category>
   <guid>https://matthewbjane.com/blog-posts/blog-post-3.html</guid>
   <pubDate>Wed, 13 Sep 2023 04:00:00 GMT</pubDate>
@@ -831,7 +834,7 @@ font-style: inherit;">'r = '</span>,r))</span></code></pre></div>
 
  ]]></description>
   <category>repeated measures</category>
-  <category>correlations</category>
+  <category>pre/post correlations</category>
   <guid>https://matthewbjane.com/blog-posts/blog-post-1.html</guid>
   <pubDate>Fri, 08 Sep 2023 04:00:00 GMT</pubDate>
   <media:content url="https://matthewbjane.com/blog-posts/blog-image.png" medium="image" type="image/png" height="96" width="144"/>

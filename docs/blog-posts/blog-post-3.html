@@ -67,7 +67,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../webLogoFavicon2.png" rel="icon" type="image/png">
+<link href="..//webLogoFavicon2.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -206,7 +206,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1 class="title">Calculating Pre/Post Correlation from a Paired T-Test</h1>
   <div class="quarto-categories">
     <div class="quarto-category">repeated measures</div>
-    <div class="quarto-category">correlations</div>
+    <div class="quarto-category">pre/post correlations</div>
     <div class="quarto-category">test statistics</div>
   </div>
   </div>
@@ -252,7 +252,7 @@ t = \sqrt{F}
 \]</span></p>
 <p>Ensure that you apply the correct sign (negative or positive) to the t-statistic, since the F-statistic is always positive.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define standard deviations</span></span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtain values</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>M_change <span class="ot">&lt;-</span> <span class="dv">3</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>SD_post <span class="ot">&lt;-</span> <span class="dv">11</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>SD_pre <span class="ot">&lt;-</span> <span class="dv">9</span></span>
@@ -336,7 +336,8 @@ r = \frac{t^2\left(SD^2_{pre} + SD^2_{post}\right) - N\times M^2_{change} }{2 \t
 <span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate pre/post correlation</span></span>
 <span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> (t<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>(SD_pre<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> SD_post<span class="sc">^</span><span class="dv">2</span>) <span class="sc">-</span> N <span class="sc">*</span> M_change<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (<span class="dv">2</span><span class="sc">*</span>t<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>SD_pre<span class="sc">*</span>SD_post)</span>
 <span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">'r = '</span>,r))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="co"># print results</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">'r = '</span>,r))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "r = 0.7"</code></pre>
 </div>
