@@ -27,7 +27,7 @@ sansfont: Asap
 In order to calculate the pre/post correlation ($r$), we need the standard deviation (SD) of pre-test scores ($SD_{pre}$), the SD of post-test scores ($SD_{post}$), the mean change ($M_{change}$), the paired t-statistic ($t$), the sample size ($N$). In this blog post, we are assuming that the change score standard deviation ($SD_{change}$) is unavailable to us. If the pre-test SD is available, but the post-test SD is unavailable, you can approximate the post-test SD by, first, taking average ratio of the pre-test SD and post-test SD from $k$ studies in the current meta-analysis ($\overline{SD}_{ratio}$; see the blog post on 9/8/2023), then we can approximate the post-test SD by multiplying the pre-test SD by the average SD ratio,
 
 $$
-S_{post}\approx \bar{S}_{ratio}\times S_{pre}
+SD_{post}\approx \bar{SD}_{ratio}\times SD_{pre}
 $$
 
 A rougher approximation would be to simply set the pre-test SD and post-test SD to be equal. If the study reports an f-statistic from a one-way repeated measures ANOVA, the F-statistic is equal to the square of the t-statistic,
