@@ -11,7 +11,7 @@ website:
   page-footer: 
     left: "Questions? Contact Matthew B. Jané by email at matthew.jane@uconn.edu"
   title: "Matthew B. Jané"
-  favicon: webLogoFavicon2.png
+  favicon: "/webLogoFavicon2.png"
   
   open-graph:
     image: "/webLogo2.png"
