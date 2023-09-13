@@ -1,39 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://matthewbjane.com/CV 2.html</loc>
+    <lastmod>2023-09-13T06:13:59.280Z</lastmod>
+  </url>
+  <url>
     <loc>https://matthewbjane.com/Publications 2.html</loc>
-    <lastmod>2023-09-11T19:32:08.720Z</lastmod>
+    <lastmod>2023-09-13T06:14:01.531Z</lastmod>
   </url>
   <url>
     <loc>https://matthewbjane.com/index.html</loc>
-    <lastmod>2023-09-11T19:32:09.714Z</lastmod>
+    <lastmod>2023-09-13T06:14:02.341Z</lastmod>
   </url>
   <url>
     <loc>https://matthewbjane.com/blog-posts/blog-post-2.html</loc>
-    <lastmod>2023-09-11T19:53:20.950Z</lastmod>
+    <lastmod>2023-09-13T06:14:10.231Z</lastmod>
+  </url>
+  <url>
+    <loc>https://matthewbjane.com/blog-posts/blog-post-3.html</loc>
+    <lastmod>2023-09-13T06:14:13.739Z</lastmod>
   </url>
   <url>
     <loc>https://matthewbjane.com/blog-posts/blog-post-1.html</loc>
-    <lastmod>2023-09-11T19:32:18.180Z</lastmod>
+    <lastmod>2023-09-13T06:14:16.431Z</lastmod>
   </url>
   <url>
     <loc>https://matthewbjane.com/Publications.html</loc>
-    <lastmod>2023-09-11T19:32:18.654Z</lastmod>
+    <lastmod>2023-09-13T06:14:16.872Z</lastmod>
   </url>
   <url>
     <loc>https://matthewbjane.com/Software.html</loc>
-    <lastmod>2023-09-11T19:32:19.168Z</lastmod>
+    <lastmod>2023-09-13T06:14:17.616Z</lastmod>
   </url>
   <url>
     <loc>https://matthewbjane.com/CV.html</loc>
-    <lastmod>2023-09-11T19:32:19.952Z</lastmod>
+    <lastmod>2023-09-13T06:14:18.619Z</lastmod>
+  </url>
+  <url>
+    <loc>https://matthewbjane.com/blog 2.html</loc>
+    <lastmod>2023-09-13T06:14:20.703Z</lastmod>
   </url>
   <url>
     <loc>https://matthewbjane.com/ArtifactCorrections.html</loc>
-    <lastmod>2023-09-11T19:32:24.724Z</lastmod>
+    <lastmod>2023-09-13T06:14:26.063Z</lastmod>
+  </url>
+  <url>
+    <loc>https://matthewbjane.com/index 2.html</loc>
+    <lastmod>2023-09-13T06:14:26.881Z</lastmod>
   </url>
   <url>
     <loc>https://matthewbjane.com/blog.html</loc>
-    <lastmod>2023-09-11T19:53:17.101Z</lastmod>
+    <lastmod>2023-09-13T06:14:28.857Z</lastmod>
   </url>
 </urlset>

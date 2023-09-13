@@ -24,18 +24,16 @@ sansfont: Asap
 ## Step 1: Obtain Pre-test, Post-test, and Change score standard deviations
 
 In order to calculate the pre/post correlation ($r$), we need an estimate of the standard deviation (SD) of pre-test scores ($S_{pre}$), the SD of post-test scores ($S_{post}$), and the SD of change scores ($S_{change}$, where $x_{change}=x_{post}-x_{pre}$). If the post-test SD is unavailable, but the pre-test SD is available, you can approximate the post-test SD by, first, taking average ratio of the pre-test SD and post-test SD from $k$ studies in the current meta-analysis,
- 
+
 $$
 \bar{S}_{ratio}=\frac{1}{k}\sum_{i=1}^k \frac{S_{post,i}}{S_{pre,i}}
-$$
-Then we can make an approximation of the post-test SD by multiplying the pre-test SD by the average SD ratio,
+$$ Then we can make an approximation of the post-test SD by multiplying the pre-test SD by the average SD ratio,
 
 $$
 S_{post}\approx \bar{S}_{ratio}\times S_{pre}
 $$
 
-A rougher approximation would be to simply set the pre-test SD and post-test SD to be equal. 
-
+A rougher approximation would be to simply set the pre-test SD and post-test SD to be equal.
 
 ```{r}
 # Define standard deviations
@@ -50,13 +48,11 @@ The correlation between pre-test and post-test scores ($r$) can be calculated by
 
 $$
 S_{change} = \sqrt{S^2_{pre} + S^2_{post} - 2rS_{pre}S_{post}}
-$$
-Then we can solve for $r$,
+$$ Then we can solve for $r$,
 
 $$
 r = \frac{S^2_{pre} + S^2_{post} - S^2_{change}}{2S_{pre}S_{post}}
-$$
-Note that this is a direct conversion and not merely an approximation.
+$$ Note that this is a direct conversion and not merely an approximation.
 
 ```{r}
 # Calculate pre/post correlation
@@ -65,7 +61,6 @@ r <- (S_pre^2 + S_post^2 - S_change^2) / (2*S_pre*S_post)
 # Print results
 print(paste0('r = ',round(r,3)))
 ```
-
 
 ## Applying it to a simulated dataset
 
@@ -102,10 +97,3 @@ r <- (S_pre^2 + S_post^2 - S_change^2) / (2*S_pre*S_post)
 
 print(paste0('r = ',r))
 ```
-
-
-
-
-
-
-
