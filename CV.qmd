@@ -68,8 +68,8 @@ Current PhD student interested in developing statistical methods and software fo
 
 ::: {.content-visible when-format="html"}
 ::: {.btn-group role="group" aria-label="Open Science Links"}
-[Data](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="data" title="data"}\
-[Code](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="code" title="Data File"}\
+[Data](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="data" title="data"}
+[Code](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="code" title="Data File"}
 [PDF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="pdf" title="Data File"} [OSF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="osf" title="Data File"}
 :::
 :::
@@ -80,8 +80,8 @@ Current PhD student interested in developing statistical methods and software fo
 
 ::: {.content-visible when-format="html"}
 ::: {.btn-group role="group" aria-label="Open Science Links"}
-[Data](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="data" title="data"}\
-[Code](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="code" title="Data File"}\
+[Data](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="data" title="data"}
+[Code](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="code" title="Data File"}
 [PDF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="pdf" title="Data File"} [OSF](https://osf.io/d6yxf/){.btn-sm .btn .btn-primary role="button" data-toggle="osf" title="Data File"}
 :::
 :::
@@ -92,8 +92,8 @@ Current PhD student interested in developing statistical methods and software fo
 
 ::: {.content-visible when-format="html"}
 ::: {.btn-group role="group" aria-label="Open Science Links"}
-[Data](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="data" title="data"}\
-[Code](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="code" title="Data File"}\
+[Data](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="data" title="data"}
+[Code](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="code" title="Data File"}
 [PDF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="pdf" title="Data File"} [OSF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="osf" title="Data File"}
 :::
 :::
@@ -104,8 +104,8 @@ Harlow\*, T. J., **Jané\*, M. B.**, Read, H. L., & Chrobak, J. J. (2023). Memor
 
 ::: {.content-visible when-format="html"}
 ::: {.btn-group role="group" aria-label="Open Science Links"}
-[Data](https://github.com/MatthewBJane/meta-analysis-data-code/tree/main/acoustic_stimulation_and_memory/data){.btn-sm .btn .btn-primary role="button" data-toggle="data" title="data"}\
-[Code](https://github.com/MatthewBJane/meta-analysis-data-code/tree/main/acoustic_stimulation_and_memory/analysis){.btn-sm .btn .btn-primary role="button" data-toggle="code" title="Data File"}\
+[Data](https://github.com/MatthewBJane/meta-analysis-data-code/tree/main/acoustic_stimulation_and_memory/data){.btn-sm .btn .btn-primary role="button" data-toggle="data" title="data"}
+[Code](https://github.com/MatthewBJane/meta-analysis-data-code/tree/main/acoustic_stimulation_and_memory/analysis){.btn-sm .btn .btn-primary role="button" data-toggle="code" title="Data File"}
 [PDF](manuscripts/Harlow2023_Frontiers.pdf){.btn-sm .btn .btn-primary role="button" data-toggle="pdf" title="Data File"} [OSF](https://osf.io/8b49k/){.btn-sm .btn .btn-primary role="button" data-toggle="osf" title="Data File"}
 :::
 :::
@@ -116,8 +116,8 @@ Harlow\*, T. J., **Jané\*, M. B.**, Read, H. L., & Chrobak, J. J. (2023). Memor
 
 ::: {.content-visible when-format="html"}
 ::: {.btn-group role="group" aria-label="Open Science Links"}
-[Data](https://doi.org/10.24433/CO.8495056.v1){.btn-sm .btn .btn-primary role="button" data-toggle="data" title="data"}\
-[Code](https://doi.org/10.24433/CO.8495056.v1){.btn-sm .btn .btn-primary role="button" data-toggle="code" title="Data File"}\
+[Data](https://doi.org/10.24433/CO.8495056.v1){.btn-sm .btn .btn-primary role="button" data-toggle="data" title="data"}
+[Code](https://doi.org/10.24433/CO.8495056.v1){.btn-sm .btn .btn-primary role="button" data-toggle="code" title="Data File"}
 [PDF](manuscripts/Jane2022_BioArxiv.pdf){.btn-sm .btn .btn-primary role="button" data-toggle="pdf" title="Data File"} [OSF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="osf" title="Data File"}
 :::
 :::
@@ -128,8 +128,8 @@ Harlow\*, T. J., **Jané\*, M. B.**, Read, H. L., & Chrobak, J. J. (2023). Memor
 
 ::: {.content-visible when-format="html"}
 ::: {.btn-group role="group" aria-label="Open Science Links"}
-[Data](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="data" title="data"}\
-[Code](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="code" title="Data File"}\
+[Data](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="data" title="data"}
+[Code](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="code" title="Data File"}
 [PDF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="pdf" title="Data File"} [OSF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="osf" title="Data File"}
 :::
 :::
@@ -140,8 +140,8 @@ Champion, G., **Jané, M. B.**, Johnson, B. T., and colleagues (2023). Efficacy 
 
 ::: {.content-visible when-format="html"}
 ::: {.btn-group role="group" aria-label="Open Science Links"}
-[Data](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="data" title="data"}\
-[Code](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="code" title="Data File"}\
+[Data](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="data" title="data"}
+[Code](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="code" title="Data File"}
 [PDF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="pdf" title="Data File"} [OSF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="osf" title="Data File"}
 :::
 :::
