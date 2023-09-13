@@ -1,43 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://matthewbjane.com/Publications 2.html</loc>
-    <lastmod>2023-09-11T19:32:08.720Z</lastmod>
-  </url>
-  <url>
     <loc>https://matthewbjane.com/index.html</loc>
-    <lastmod>2023-09-11T19:32:09.714Z</lastmod>
+    <lastmod>2023-09-13T07:02:45.804Z</lastmod>
   </url>
   <url>
     <loc>https://matthewbjane.com/blog-posts/blog-post-2.html</loc>
-    <lastmod>2023-09-11T19:53:20.950Z</lastmod>
-  </url>
-  <url>
-    <loc>https://matthewbjane.com/blog-posts/blog-post-1.html</loc>
-    <lastmod>2023-09-11T19:32:18.180Z</lastmod>
-  </url>
-  <url>
-    <loc>https://matthewbjane.com/Publications.html</loc>
-    <lastmod>2023-09-11T19:32:18.654Z</lastmod>
-  </url>
-  <url>
-    <loc>https://matthewbjane.com/Software.html</loc>
-    <lastmod>2023-09-11T19:32:19.168Z</lastmod>
-  </url>
-  <url>
-    <loc>https://matthewbjane.com/CV.html</loc>
-    <lastmod>2023-09-11T19:32:19.952Z</lastmod>
-  </url>
-  <url>
-    <loc>https://matthewbjane.com/ArtifactCorrections.html</loc>
-    <lastmod>2023-09-11T19:32:24.724Z</lastmod>
-  </url>
-  <url>
-    <loc>https://matthewbjane.com/blog.html</loc>
-    <lastmod>2023-09-13T06:11:39.596Z</lastmod>
+    <lastmod>2023-09-13T07:02:47.781Z</lastmod>
   </url>
   <url>
     <loc>https://matthewbjane.com/blog-posts/blog-post-3.html</loc>
-    <lastmod>2023-09-13T06:11:37.168Z</lastmod>
+    <lastmod>2023-09-13T07:02:48.979Z</lastmod>
+  </url>
+  <url>
+    <loc>https://matthewbjane.com/blog-posts/blog-post-1.html</loc>
+    <lastmod>2023-09-13T07:02:50.072Z</lastmod>
+  </url>
+  <url>
+    <loc>https://matthewbjane.com/Publications.html</loc>
+    <lastmod>2023-09-13T07:02:50.328Z</lastmod>
+  </url>
+  <url>
+    <loc>https://matthewbjane.com/Software.html</loc>
+    <lastmod>2023-09-13T07:02:50.641Z</lastmod>
+  </url>
+  <url>
+    <loc>https://matthewbjane.com/CV.html</loc>
+    <lastmod>2023-09-13T07:02:51.055Z</lastmod>
+  </url>
+  <url>
+    <loc>https://matthewbjane.com/ArtifactCorrections.html</loc>
+    <lastmod>2023-09-13T07:02:53.008Z</lastmod>
+  </url>
+  <url>
+    <loc>https://matthewbjane.com/blog.html</loc>
+    <lastmod>2023-09-13T07:02:53.688Z</lastmod>
   </url>
 </urlset>

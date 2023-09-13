@@ -30,13 +30,11 @@ $$
 S_{post}\approx \bar{S}_{ratio}\times S_{pre}
 $$
 
-A rougher approximation would be to simply set the pre-test SD and post-test SD to be equal. If the study reports an f-statistic from a one-way repeated measures ANOVA, the F-statistic is equal to the square of the t-statistic, 
+A rougher approximation would be to simply set the pre-test SD and post-test SD to be equal. If the study reports an f-statistic from a one-way repeated measures ANOVA, the F-statistic is equal to the square of the t-statistic,
 
 $$
 t = \sqrt{F}
-$$
-Ensure that you apply the correct sign (negative or positive) to the t-statistic, since the F-statistic is always positive.
-
+$$ Ensure that you apply the correct sign (negative or positive) to the t-statistic, since the F-statistic is always positive.
 
 ```{r}
 # Define standard deviations
@@ -48,15 +46,12 @@ N <- 50
 ```
 
 ## Step 2: Calculate the Pre/Post Correlation
-Lets start by figuring out how to find the change score SD. The paired t-statistic is defined as the mean change score divided by the standard error of change scores, such that,
-$$
+
+Lets start by figuring out how to find the change score SD. The paired t-statistic is defined as the mean change score divided by the standard error of change scores, such that, $$
 t = \frac{M_{change}}{SE_{change}}
-$$
-Since we need the change score SD, we can use the definition of the standard error of the mean to put the t-statistic in terms of $SD_{change}$:
-$$
+$$ Since we need the change score SD, we can use the definition of the standard error of the mean to put the t-statistic in terms of $SD_{change}$: $$
 SE_{change}=\frac{SD_{change}}{\sqrt{N}}
-$$
-and therefore $t$ can be expressed as,
+$$ and therefore $t$ can be expressed as,
 
 $$
 t=\frac{M_{change}}{\left(\frac{SD_{change}}{\sqrt{N}}\right)}
@@ -68,28 +63,25 @@ $$
 SD_{change}=\frac{M_{change}\times\sqrt{N}}{t} 
 $$
 
-Okay so now let us recall the definition of change score SDs from the blog post on 9/8/2023. In that blog we discussed how to obtain the pre/post correlation from the change score SD, now that we have converted $t$ to $SD_{change}$, we can solve for the correlation in a similar way. First things first, the change score SD can be defined as,
-$$
+Okay so now let us recall the definition of change score SDs from the blog post on 9/8/2023. In that blog we discussed how to obtain the pre/post correlation from the change score SD, now that we have converted $t$ to $SD_{change}$, we can solve for the correlation in a similar way. First things first, the change score SD can be defined as, $$
 SD_{change} = \sqrt{SD^2_{pre} + SD^2_{post} - 2\times r\times SD_{pre}SD_{post}}
-$$ 
+$$
 
 We can re-arrange this to isolate the pre/post correlation ($r$),
 
 $$
 r = \frac{SD^2_{pre} + SD^2_{post} - SD^2_{change}}{2 \times SD_{pre}\times SD_{post}}
-$$ 
-
+$$
 
 In our case, the study did not report the change score SD, therefore we can replace it with our derived $SD_{change}$ from a paired t-test:
 
 $$
 r = \frac{SD^2_{pre} + SD^2_{post} - \left(\frac{M_{change}\times\sqrt{N}}{t}\right) ^2}{2 \times SD_{pre}\times SD_{post}}
-$$ 
-Lets neaten this formulation up a tad:
+$$ Lets neaten this formulation up a tad:
 
 $$
 r = \frac{t^2\left(SD^2_{pre} + SD^2_{post}\right) - N\times M^2_{change} }{2 \times t^2 \times SD_{pre}\times SD_{post} }
-$$ 
+$$
 
 Isn't that just a beautiful thing?? So there you have it! the full equation for the pre/post correlation from a paired t-test! Note that this is a direct conversion and not merely an approximation.
 

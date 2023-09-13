@@ -1,9 +1,0 @@
----
-listing:
-  type: grid
-  contents: 
-    - "source-publications/!(template).qmd"
-  fields: [date, title, author, Journal, Open Science Links]
-  date-format: "YYYY"
-  grid-columns: 2
----
