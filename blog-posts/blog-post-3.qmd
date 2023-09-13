@@ -30,11 +30,13 @@ $$
 SD_{post}\approx \bar{SD}_{ratio}\times SD_{pre}
 $$
 
-A rougher approximation would be to simply set the pre-test SD and post-test SD to be equal. If the study reports an f-statistic from a one-way repeated measures ANOVA, the F-statistic is equal to the square of the t-statistic,
+A rougher approximation would be to simply set the pre-test SD and post-test SD to be equal. If the study reports an F-statistic from a one-way repeated measures ANOVA, the F-statistic is equal to the square of the t-statistic,
 
 $$
 t = \sqrt{F}
-$$ Ensure that you apply the correct sign (negative or positive) to the t-statistic, since the F-statistic is always positive.
+$$ 
+
+Ensure that you apply the correct sign (negative or positive) to the t-statistic, since the F-statistic is always positive.
 
 ```{r}
 # Define standard deviations

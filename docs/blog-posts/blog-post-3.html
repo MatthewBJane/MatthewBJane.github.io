@@ -244,12 +244,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="step-1-obtain-the-necessary-statistics">Step 1: Obtain the necessary statistics</h2>
 <p>In order to calculate the pre/post correlation (<span class="math inline">\(r\)</span>), we need the standard deviation (SD) of pre-test scores (<span class="math inline">\(SD_{pre}\)</span>), the SD of post-test scores (<span class="math inline">\(SD_{post}\)</span>), the mean change (<span class="math inline">\(M_{change}\)</span>), the paired t-statistic (<span class="math inline">\(t\)</span>), the sample size (<span class="math inline">\(N\)</span>). In this blog post, we are assuming that the change score standard deviation (<span class="math inline">\(SD_{change}\)</span>) is unavailable to us. If the pre-test SD is available, but the post-test SD is unavailable, you can approximate the post-test SD by, first, taking average ratio of the pre-test SD and post-test SD from <span class="math inline">\(k\)</span> studies in the current meta-analysis (<span class="math inline">\(\overline{SD}_{ratio}\)</span>; see the blog post on 9/8/2023), then we can approximate the post-test SD by multiplying the pre-test SD by the average SD ratio,</p>
 <p><span class="math display">\[
-S_{post}\approx \bar{S}_{ratio}\times S_{pre}
+SD_{post}\approx \bar{SD}_{ratio}\times SD_{pre}
 \]</span></p>
-<p>A rougher approximation would be to simply set the pre-test SD and post-test SD to be equal. If the study reports an f-statistic from a one-way repeated measures ANOVA, the F-statistic is equal to the square of the t-statistic,</p>
+<p>A rougher approximation would be to simply set the pre-test SD and post-test SD to be equal. If the study reports an F-statistic from a one-way repeated measures ANOVA, the F-statistic is equal to the square of the t-statistic,</p>
 <p><span class="math display">\[
 t = \sqrt{F}
-\]</span> Ensure that you apply the correct sign (negative or positive) to the t-statistic, since the F-statistic is always positive.</p>
+\]</span></p>
+<p>Ensure that you apply the correct sign (negative or positive) to the t-statistic, since the F-statistic is always positive.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define standard deviations</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>M_change <span class="ot">&lt;-</span> <span class="dv">3</span></span>
