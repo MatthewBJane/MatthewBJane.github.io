@@ -246,28 +246,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><span class="math display">\[
 S_{post}\approx \bar{S}_{ratio}\times S_{pre}
 \]</span></p>
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD A rougher approximation would be to simply set the pre-test SD and post-test SD to be equal. If the study reports an f-statistic from a one-way repeated measures ANOVA, the F-statistic is equal to the square of the t-statistic,</p>
-<p><span class="math display">\[
-t = \sqrt{F}
-\]</span> Ensure that you apply the correct sign (negative or positive) to the t-statistic, since the F-statistic is always positive. ======= A rougher approximation would be to simply set the pre-test SD and post-test SD to be equal. If the study reports an f-statistic from a one-way repeated measures ANOVA, the F-statistic is equal to the square of the t-statistic,</p>
+<p>A rougher approximation would be to simply set the pre-test SD and post-test SD to be equal. If the study reports an f-statistic from a one-way repeated measures ANOVA, the F-statistic is equal to the square of the t-statistic,</p>
 <p><span class="math display">\[
 t = \sqrt{F}
 \]</span> Ensure that you apply the correct sign (negative or positive) to the t-statistic, since the F-statistic is always positive.</p>
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<p>cf885984386c7f4a0a3d674ed9678319ee3b7dd4</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define standard deviations</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>M_change <span class="ot">&lt;-</span> <span class="dv">3</span></span>
@@ -279,16 +261,11 @@ t = \sqrt{F}
 </section>
 <section id="step-2-calculate-the-prepost-correlation" class="level2">
 <h2 class="anchored" data-anchor-id="step-2-calculate-the-prepost-correlation">Step 2: Calculate the Pre/Post Correlation</h2>
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
 <p>Lets start by figuring out how to find the change score SD. The paired t-statistic is defined as the mean change score divided by the standard error of change scores, such that, <span class="math display">\[
 t = \frac{M_{change}}{SE_{change}}
 \]</span> Since we need the change score SD, we can use the definition of the standard error of the mean to put the t-statistic in terms of <span class="math inline">\(SD_{change}\)</span>: <span class="math display">\[
 SE_{change}=\frac{SD_{change}}{\sqrt{N}}
-\]</span> and therefore <span class="math inline">\(t\)</span> can be expressed as, ======= Lets start by figuring out how to find the change score SD. The paired t-statistic is defined as the mean change score divided by the standard error of change scores, such that, <span class="math display">\[
-t = \frac{M_{change}}{SE_{change}}
-\]</span> Since we need the change score SD, we can use the definition of the standard error of the mean to put the t-statistic in terms of <span class="math inline">\(SD_{change}\)</span>: <span class="math display">\[
-SE_{change}=\frac{SD_{change}}{\sqrt{N}}
-\]</span> and therefore <span class="math inline">\(t\)</span> can be expressed as, &gt;&gt;&gt;&gt;&gt;&gt;&gt; cf885984386c7f4a0a3d674ed9678319ee3b7dd4</p>
+\]</span> and therefore <span class="math inline">\(t\)</span> can be expressed as,</p>
 <p><span class="math display">\[
 t=\frac{M_{change}}{\left(\frac{SD_{change}}{\sqrt{N}}\right)}
 \]</span></p>
@@ -296,42 +273,20 @@ t=\frac{M_{change}}{\left(\frac{SD_{change}}{\sqrt{N}}\right)}
 <p><span class="math display">\[
 SD_{change}=\frac{M_{change}\times\sqrt{N}}{t}
 \]</span></p>
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD Okay so now let us recall the definition of change score SDs from the blog post on 9/8/2023. In that blog we discussed how to obtain the pre/post correlation from the change score SD, now that we have converted <span class="math inline">\(t\)</span> to <span class="math inline">\(SD_{change}\)</span>, we can solve for the correlation in a similar way. First things first, the change score SD can be defined as, <span class="math display">\[
+<p>Okay so now let us recall the definition of change score SDs from the blog post on 9/8/2023. In that blog we discussed how to obtain the pre/post correlation from the change score SD, now that we have converted <span class="math inline">\(t\)</span> to <span class="math inline">\(SD_{change}\)</span>, we can solve for the correlation in a similar way. First things first, the change score SD can be defined as, <span class="math display">\[
 SD_{change} = \sqrt{SD^2_{pre} + SD^2_{post} - 2\times r\times SD_{pre}SD_{post}}
-\]</span> ======= Okay so now let us recall the definition of change score SDs from the blog post on 9/8/2023. In that blog we discussed how to obtain the pre/post correlation from the change score SD, now that we have converted <span class="math inline">\(t\)</span> to <span class="math inline">\(SD_{change}\)</span>, we can solve for the correlation in a similar way. First things first, the change score SD can be defined as, <span class="math display">\[
-SD_{change} = \sqrt{SD^2_{pre} + SD^2_{post} - 2\times r\times SD_{pre}SD_{post}}
-\]</span> &gt;&gt;&gt;&gt;&gt;&gt;&gt; cf885984386c7f4a0a3d674ed9678319ee3b7dd4</p>
+\]</span></p>
 <p>We can re-arrange this to isolate the pre/post correlation (<span class="math inline">\(r\)</span>),</p>
 <p><span class="math display">\[
 r = \frac{SD^2_{pre} + SD^2_{post} - SD^2_{change}}{2 \times SD_{pre}\times SD_{post}}
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-\]</span> ======= $$</p>
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<p>cf885984386c7f4a0a3d674ed9678319ee3b7dd4</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
+\]</span></p>
 <p>In our case, the study did not report the change score SD, therefore we can replace it with our derived <span class="math inline">\(SD_{change}\)</span> from a paired t-test:</p>
 <p><span class="math display">\[
 r = \frac{SD^2_{pre} + SD^2_{post} - \left(\frac{M_{change}\times\sqrt{N}}{t}\right) ^2}{2 \times SD_{pre}\times SD_{post}}
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 \]</span> Lets neaten this formulation up a tad:</p>
 <p><span class="math display">\[
 r = \frac{t^2\left(SD^2_{pre} + SD^2_{post}\right) - N\times M^2_{change} }{2 \times t^2 \times SD_{pre}\times SD_{post} }
-\]</span> ======= $$ Lets neaten this formulation up a tad:</p>
-<p><span class="math display">\[
-r = \frac{t^2\left(SD^2_{pre} + SD^2_{post}\right) - N\times M^2_{change} }{2 \times t^2 \times SD_{pre}\times SD_{post} }
-\]</span> &gt;&gt;&gt;&gt;&gt;&gt;&gt; cf885984386c7f4a0a3d674ed9678319ee3b7dd4</p>
+\]</span></p>
 <p>Isn’t that just a beautiful thing?? So there you have it! the full equation for the pre/post correlation from a paired t-test! Note that this is a direct conversion and not merely an approximation.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate pre/post correlation</span></span>
