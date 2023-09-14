@@ -1,0 +1,141 @@
+---
+title: "Calculating Pre/Post Correlation from a Paired T-Test"
+author: "Matthew B. Jané"
+image: "blog-image.png"
+image-height: "5%"
+date: 2023-09-13
+description: "In this post we will go over how to convert a t-statistic from a paired t-test into a pre/post correlation. This is useful when change score standard deviations are unknown. Pre/post correlations are necessary to obtain various types of effect sizes and standard errors such as the repeated measures variant of Cohen's $d$, also referred to as Cohen's $d_{rm}$."
+categories:
+  - repeated measures
+  - pre/post correlations
+  - test statistics
+
+title-meta: "Calculating Pre/Post Correlation from a Paired T-Test"
+author-meta: "Matthew B. Jané"
+date-meta: 2023-09-13
+image-meta: "blog-image.png"
+format:
+  html:
+    header-includes: |
+      <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Asap" type="text/css"/>
+mainfont: Asap
+sansfont: Asap
+---
+
+## Step 1: Obtain the necessary statistics
+
+In order to calculate the pre/post correlation ($r$), we need the standard deviation (SD) of pre-test scores ($SD_{pre}$), the SD of post-test scores ($SD_{post}$), the mean change ($M_{change}$), the paired t-statistic ($t$), the sample size ($N$). In this blog post, we are assuming that the change score standard deviation ($SD_{change}$) is unavailable to us. If the pre-test SD is available, but the post-test SD is unavailable, you can approximate the post-test SD by, first, taking average ratio of the pre-test SD and post-test SD from $k$ studies in the current meta-analysis ($\overline{SD}_{ratio}$; see the blog post on 9/8/2023), then we can approximate the post-test SD by multiplying the pre-test SD by the average SD ratio,
+
+$$
+SD_{post}\approx \bar{SD}_{ratio}\times SD_{pre}
+$$
+
+A rougher approximation would be to simply set the pre-test SD and post-test SD to be equal. If the study reports an F-statistic from a one-way repeated measures ANOVA, the F-statistic is equal to the square of the t-statistic,
+
+$$
+t = \sqrt{F}
+$$ 
+
+Ensure that you apply the correct sign (negative or positive) to the t-statistic, since the F-statistic is always positive.
+
+```{r}
+# Obtain values
+M_change <- 3
+SD_post <- 11
+SD_pre <- 9
+t <- 2.50
+N <- 50
+```
+
+## Step 2: Calculate the Pre/Post Correlation
+
+Lets start by figuring out how to find the change score SD. The paired t-statistic is defined as the mean change score divided by the standard error of change scores, such that, $$
+t = \frac{M_{change}}{SE_{change}}
+$$ Since we need the change score SD, we can use the definition of the standard error of the mean to put the t-statistic in terms of $SD_{change}$: $$
+SE_{change}=\frac{SD_{change}}{\sqrt{N}}
+$$ and therefore $t$ can be expressed as,
+
+$$
+t=\frac{M_{change}}{\left(\frac{SD_{change}}{\sqrt{N}}\right)}
+$$
+
+then we just need to solve for $SD_{change}$:
+
+$$
+SD_{change}=\frac{M_{change}\times\sqrt{N}}{t} 
+$$
+
+Okay so now let us recall the definition of change score SDs from the blog post on 9/8/2023. In that blog we discussed how to obtain the pre/post correlation from the change score SD, now that we have converted $t$ to $SD_{change}$, we can solve for the correlation in a similar way. First things first, the change score SD can be defined as, $$
+SD_{change} = \sqrt{SD^2_{pre} + SD^2_{post} - 2\times r\times SD_{pre}SD_{post}}
+$$
+
+We can re-arrange this to isolate the pre/post correlation ($r$),
+
+$$
+r = \frac{SD^2_{pre} + SD^2_{post} - SD^2_{change}}{2 \times SD_{pre}\times SD_{post}}
+$$
+
+In our case, the study did not report the change score SD, therefore we can replace it with our derived $SD_{change}$ from a paired t-test:
+
+$$
+r = \frac{SD^2_{pre} + SD^2_{post} - \left(\frac{M_{change}\times\sqrt{N}}{t}\right) ^2}{2 \times SD_{pre}\times SD_{post}}
+$$ Lets neaten this formulation up a tad:
+
+$$
+r = \frac{t^2\left(SD^2_{pre} + SD^2_{post}\right) - N\times M^2_{change} }{2 \times t^2 \times SD_{pre}\times SD_{post} }
+$$
+
+Isn't that just a beautiful thing?? So there you have it! the full equation for the pre/post correlation from a paired t-test! Note that this is a direct conversion and not merely an approximation.
+
+```{r}
+# Calculate pre/post correlation
+r <- (t^2*(SD_pre^2 + SD_post^2) - N * M_change^2) / (2*t^2*SD_pre*SD_post)
+
+# Print results
+print(paste0('r = ',round(r,3)))
+```
+
+## Applying it to a simulated dataset
+
+We can simulate correlated pre/post scores from a bivariate Gaussian with known parameters. The calculated correlation is exactly correct!
+
+```{r}
+# install.packages('MASS')
+library(MASS)
+
+# Define parameters
+SD_pre <- 9
+SD_post <- 11
+r_true <- .70
+M_pre <- 20
+M_post <- 25
+N <- 100
+
+# Simulate correlated pre/post scores from bivariate gaussian
+data <- mvrnorm(n=N,
+               mu=c(M_pre,M_post),
+               Sigma = data.frame(x=c(SD_pre^2,r_true*SD_pre*SD_post),
+                                  y=c(r_true*SD_pre*SD_post,SD_post^2)),
+               empirical = TRUE)
+
+# Obtain simulated scores
+x_pre <- data[,1] # Pre-test scores
+x_post <- data[,2] # Post-test scores
+x_change <- x_post - x_pre # Calculate change scores
+
+# Calculate standard deviations, t-stats, and mean change
+SD_pre <- sd(x_pre)
+SD_post <- sd(x_post)
+t <- mean(x_change) / (sd(x_change)/sqrt(N))
+M_change <- mean(x_change)
+
+# Calculate pre/post correlation
+r <- (t^2*(SD_pre^2 + SD_post^2) - N * M_change^2) / (2*t^2*SD_pre*SD_post)
+
+# print results
+print(paste0('r = ',r))
+```
+
+<iframe src="https://embeds.beehiiv.com/f3ffd81a-4723-4419-bb1d-afc8af3bac36" data-test-id="beehiiv-embed" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius: 4px; border: 2px solid #e5e7eb; margin: 0; background-color: transparent;">
+
+</iframe>

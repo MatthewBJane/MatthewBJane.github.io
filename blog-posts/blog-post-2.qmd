@@ -1,15 +1,15 @@
 ---
-title: "Approximating Standard Deviations from Two Quantiles"
+title: "Approximating Standard Deviation from Inter-Quantile Range"
 author: "Matthew B. Jané"
 image: "blog-image.png"
 image-height: "5%"
 date: 2023-09-10
-description: "Occasionally researchers report inter-quartile ranges or sets of quantiles to measure the spread of the data. Since meta-analysts need standard deviations to calculate effect size estimates, here is a strategy to approximate them from a pair of quantiles."
+description: "Occasionally researchers report inter-quantile ranges (e.g., inter-quartile range) to measure the spread of the data. Since meta-analysts need standard deviations to calculate effect size estimates, here is a strategy to approximate them from an inter-quantile range."
 categories:
   - standard deviations
   - approximations
 
-title-meta: "Obtaining Standard Deviations from Max-Min and Inter-Quartile Range"
+title-meta: "Approximating Standard Deviation from Inter-Quantile Range"
 author-meta: "Matthew B. Jané"
 date-meta: 2023-09-10
 image-meta: "blog-image.png"
@@ -21,9 +21,9 @@ mainfont: Asap
 sansfont: Asap
 ---
 
-### Interquartile Range (IQR)
+### Inter-Quantile Range
 
-Studies may report quantiles in order to communicate the spread of the data. However, meta-analysts will need standard deviations (SD) to calculate effect size estimates such as standardized mean differences (i.e., Cohen's $d$). For this post, we will focus on the inter-quartile range (IQR) although the method described here will apply to any set of two quantiles. The IQR ($X_{(75-25)}$) is defined as the difference between the 75th and 25th quantile values, that is, the region where 50% of the data lies. We can visualize what this will look like with normally distributed data:
+Studies may report inter-quantile ranges in order to communicate the spread of the data. However, meta-analysts will need standard deviations (SD) to calculate effect size estimates such as standardized mean differences (i.e., Cohen's $d$). For this post, we will focus on the inter-*quartile* range (IQR) although the method described here will apply to any range between a pair of quantiles. The IQR ($X_{(75-25)}$) is defined as the difference between the 75th and 25th quantile values, that is, the region where 50% of the data lies. We can visualize what this will look like with normally distributed data:
 
 ```{r, echo=FALSE}
 # install.packages('ggplot2')
@@ -83,39 +83,39 @@ The quantile function ($\phi^{-1}$) of the standard normal distribution (i.e., m
 
 $$
 S_{(75-25)} = \phi^{-1}(.75) - \phi^{-1}(.25)
-$$
-The resulting value is $S_{(75-25)}=1.34898$. It is important to note that this formulation can be used for any set of quantiles not just IQR, therefore we can generalized this to compare any arbitrary pair of quantiles ($Q1,Q2$),
+$$ The resulting value is $S_{(75-25)}=1.34898$. It is important to note that this formulation can be used for any set of quantiles not just IQR, therefore we can generalized this to compare any arbitrary pair of quantiles ($Q1,Q2$),
 
 $$
 S_{(Q_2-Q_1)} = \phi^{-1}(Q_2) - \phi^{-1}(Q_1)
 $$
 
-Now that we have the IQR in terms of SD units, we can divide with the raw IQR to obtain an estimate of the SD of x ($S_x$),
+Now that we have the IQR in terms of SD units, we can divide with the raw IQR to obtain an estimate of the SD of $X$ ($S_X$),
 
 $$
-S =  \frac{X_{(75-25)}}{S_{(75-25)}} = \frac{X_{(75-25)}}{1.34898}
+S_X =  \frac{X_{(75-25)}}{S_{(75-25)}} = \frac{X_{(75-25)}}{1.34898}
 $$
+
 ```{r}
 # Define IQR
-q25 <- 30
-q75 <- 50
-X_75_25 <- q75 - q25
+X_25 <- 30
+X_75 <- 50
+X_75_25 <- X_75 - X_25
 
-# Compute multiplier
+# Compute IQR in SDs
 S_75_25 <- qnorm(.75) - qnorm(.25)
 
 # Estimate standard deviation
-S_x <-  X_75_25 / S_75_25
+S_X <-  X_75_25 / S_75_25
 
 #print results
-print(S_x)
+print(S_X)
 ```
 
 ## Note the Assumptions!
 
-Since this method provides an approximation of a normal distribution it is important to point out that the method may not be biased under different distributions. For example, if try the same method on a Student's t distribution with heavy tails (3.5 degrees of freedom), $S_(75-25)$ would be equal to 1.50187 which is slightly larger than 1.34898 that we computed from the normal distribution. If we were to assume a normal distribution when it was truly a student's t, the method would over-estimate the standard deviation by ~11%.
+Since this method provides an approximation of a normal distribution it is important to point out that the method may be biased under different distributions. For example, if we try the same method on a Student's t distribution with heavy tails (3.5 degrees of freedom), $S_{(75-25)}$ would be equal to 1.50187 which is slightly larger than 1.34898 that we computed from the normal distribution. If we were to assume a normal distribution when it was truly a student's t, the method would over-estimate the standard deviation by \~11%.
 
-```{r, collapse=TRUE}
+```{r, echo=FALSE}
 
 ggplot(data = NULL, aes(y = 0,
                         xdist = distributional::dist_student_t(3.5,0,1),
@@ -136,7 +136,6 @@ ggplot(data = NULL, aes(y = 0,
 
 ```
 
-
 ### Applying it to simulated data
 
 Lets see how it performs in simulated sample of normally distributed data... Close enough!!
@@ -153,26 +152,16 @@ q25 <- as.numeric(quantile(X,.25))
 q75 <- as.numeric(quantile(X,.75))
 X_75_25 <- q75 - q25
 
-# Compute multiplier
+# Compute IQR in SD units
 S_75_25 <- qnorm(.75) - qnorm(.25)
 
 # Estimate standard deviation
-S_x <-  X_75_25 / S_75_25
+S_X <-  X_75_25 / S_75_25
 
 # Print results
-print(S_x)
+print(S_X)
 ```
 
+<iframe src="https://embeds.beehiiv.com/f3ffd81a-4723-4419-bb1d-afc8af3bac36" data-test-id="beehiiv-embed" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius: 4px; border: 2px solid #e5e7eb; margin: 0; background-color: transparent;">
 
-
-
-
-
-
-
-
-
-
-
-
-
+</iframe>

@@ -8,9 +8,9 @@
 
 <meta name="author" content="Matthew B. Jané">
 <meta name="dcterms.date" content="2023-09-10">
-<meta name="description" content="Occasionally researchers report inter-quartile ranges or sets of quantiles to measure the spread of the data. Since meta-analysts need standard deviations to calculate effect size estimates, here is a strategy to approximate them from a pair of quantiles.">
+<meta name="description" content="Occasionally researchers report inter-quantile ranges (e.g., inter-quartile range) to measure the spread of the data. Since meta-analysts need standard deviations to calculate effect size estimates, here is a strategy to approximate them from an inter-quantile range.">
 
-<title>Matthew B. Jané - Approximating Standard Deviations from Two Quantiles</title>
+<title>Matthew B. Jané - Approximating Standard Deviation from Inter-Quantile Range</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,7 +67,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../webLogoFavicon2.png" rel="icon" type="image/png">
+<link href="..//webLogoFavicon2.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -103,9 +103,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../styles.css">
-<meta name="twitter:title" content="Matthew B. Jané - Approximating Standard Deviations from Two Quantiles">
-<meta name="twitter:description" content="Occasionally researchers report inter-quartile ranges or sets of quantiles to measure the spread of the data. Since meta-analysts need standard deviations to calculate effect size estimates, here is a strategy to approximate them from a pair of quantiles.">
-<meta name="twitter:image" content="matthewbjane.com/blog-posts/webLogo2.png">
+<meta property="og:title" content="Matthew B. Jané - Approximating Standard Deviation from Inter-Quantile Range">
+<meta property="og:description" content="Occasionally researchers report inter-quantile ranges (e.g., inter-quartile range) to measure the spread of the data. Since meta-analysts need standard deviations to calculate effect size estimates, here is a strategy to approximate them from an inter-quantile range.">
+<meta property="og:image" content="https://matthewbjane.com/webLogo2.png">
+<meta property="og:site-name" content="Matthew B. Jané">
+<meta property="og:locale" content="en_US">
+<meta property="og:image:height" content="4780">
+<meta property="og:image:width" content="5906">
+<meta name="twitter:title" content="Matthew B. Jané - Approximating Standard Deviation from Inter-Quantile Range">
+<meta name="twitter:description" content="Occasionally researchers report inter-quantile ranges (e.g., inter-quartile range) to measure the spread of the data. Since meta-analysts need standard deviations to calculate effect size estimates, here is a strategy to approximate them from an inter-quantile range.">
+<meta name="twitter:image" content="https://matthewbjane.com/webLogo2.png">
+<meta name="twitter:creator" content="@MatthewBJane">
+<meta name="twitter:image-height" content="4780">
+<meta name="twitter:image-width" content="5906">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -152,7 +162,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.github.io/MatthewBJane" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://www.github.com/MatthewBJane" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -182,7 +192,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#interquartile-range-iqr" id="toc-interquartile-range-iqr" class="nav-link active" data-scroll-target="#interquartile-range-iqr">Interquartile Range (IQR)</a></li>
+  <li><a href="#inter-quantile-range" id="toc-inter-quantile-range" class="nav-link active" data-scroll-target="#inter-quantile-range">Inter-Quantile Range</a></li>
   <li><a href="#step-2-convert-iqr-to-standard-deviations" id="toc-step-2-convert-iqr-to-standard-deviations" class="nav-link" data-scroll-target="#step-2-convert-iqr-to-standard-deviations">Step 2: Convert IQR to Standard Deviations</a></li>
   <li><a href="#note-the-assumptions" id="toc-note-the-assumptions" class="nav-link" data-scroll-target="#note-the-assumptions">Note the Assumptions!</a>
   <ul class="collapse">
@@ -196,7 +206,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Approximating Standard Deviations from Two Quantiles</h1>
+<h1 class="title">Approximating Standard Deviation from Inter-Quantile Range</h1>
   <div class="quarto-categories">
     <div class="quarto-category">standard deviations</div>
     <div class="quarto-category">approximations</div>
@@ -205,7 +215,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div>
   <div class="description">
-    Occasionally researchers report inter-quartile ranges or sets of quantiles to measure the spread of the data. Since meta-analysts need standard deviations to calculate effect size estimates, here is a strategy to approximate them from a pair of quantiles.
+    Occasionally researchers report inter-quantile ranges (e.g., inter-quartile range) to measure the spread of the data. Since meta-analysts need standard deviations to calculate effect size estimates, here is a strategy to approximate them from an inter-quantile range.
   </div>
 </div>
 
@@ -232,9 +242,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="interquartile-range-iqr" class="level3">
-<h3 class="anchored" data-anchor-id="interquartile-range-iqr">Interquartile Range (IQR)</h3>
-<p>Studies may report quantiles in order to communicate the spread of the data. However, meta-analysts will need standard deviations (SD) to calculate effect size estimates such as standardized mean differences (i.e., Cohen’s <span class="math inline">\(d\)</span>). For this post, we will focus on the inter-quartile range (IQR) although the method described here will apply to any set of two quantiles. The IQR (<span class="math inline">\(X_{(75-25)}\)</span>) is defined as the difference between the 75th and 25th quantile values, that is, the region where 50% of the data lies. We can visualize what this will look like with normally distributed data:</p>
+<section id="inter-quantile-range" class="level3">
+<h3 class="anchored" data-anchor-id="inter-quantile-range">Inter-Quantile Range</h3>
+<p>Studies may report inter-quantile ranges in order to communicate the spread of the data. However, meta-analysts will need standard deviations (SD) to calculate effect size estimates such as standardized mean differences (i.e., Cohen’s <span class="math inline">\(d\)</span>). For this post, we will focus on the inter-<em>quartile</em> range (IQR) although the method described here will apply to any range between a pair of quantiles. The IQR (<span class="math inline">\(X_{(75-25)}\)</span>) is defined as the difference between the 75th and 25th quantile values, that is, the region where 50% of the data lies. We can visualize what this will look like with normally distributed data:</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="blog-post-2_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
@@ -257,24 +267,24 @@ S_{(75-25)} = \phi^{-1}(.75) - \phi^{-1}(.25)
 <p><span class="math display">\[
 S_{(Q_2-Q_1)} = \phi^{-1}(Q_2) - \phi^{-1}(Q_1)
 \]</span></p>
-<p>Now that we have the IQR in terms of SD units, we can divide with the raw IQR to obtain an estimate of the SD of x (<span class="math inline">\(S_x\)</span>),</p>
+<p>Now that we have the IQR in terms of SD units, we can divide with the raw IQR to obtain an estimate of the SD of <span class="math inline">\(X\)</span> (<span class="math inline">\(S_X\)</span>),</p>
 <p><span class="math display">\[
-S =  \frac{X_{(75-25)}}{S_{(75-25)}} = \frac{X_{(75-25)}}{1.34898}
+S_X =  \frac{X_{(75-25)}}{S_{(75-25)}} = \frac{X_{(75-25)}}{1.34898}
 \]</span></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define IQR</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>q25 <span class="ot">&lt;-</span> <span class="dv">30</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>q75 <span class="ot">&lt;-</span> <span class="dv">50</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>X_75_25 <span class="ot">&lt;-</span> q75 <span class="sc">-</span> q25</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>X_25 <span class="ot">&lt;-</span> <span class="dv">30</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>X_75 <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>X_75_25 <span class="ot">&lt;-</span> X_75 <span class="sc">-</span> X_25</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute multiplier</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute IQR in SDs</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>S_75_25 <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(.<span class="dv">75</span>) <span class="sc">-</span> <span class="fu">qnorm</span>(.<span class="dv">25</span>)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate standard deviation</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>S_x <span class="ot">&lt;-</span>  X_75_25 <span class="sc">/</span> S_75_25</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>S_X <span class="ot">&lt;-</span>  X_75_25 <span class="sc">/</span> S_75_25</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">#print results</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(S_x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(S_X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 14.82602</code></pre>
 </div>
@@ -282,24 +292,8 @@ S =  \frac{X_{(75-25)}}{S_{(75-25)}} = \frac{X_{(75-25)}}{1.34898}
 </section>
 <section id="note-the-assumptions" class="level2">
 <h2 class="anchored" data-anchor-id="note-the-assumptions">Note the Assumptions!</h2>
-<p>Since this method provides an approximation of a normal distribution it is important to point out that the method may not be biased under different distributions. For example, if try the same method on a Student’s t distribution with heavy tails (3.5 degrees of freedom), <span class="math inline">\(S_(75-25)\)</span> would be equal to 1.50187 which is slightly larger than 1.34898 that we computed from the normal distribution. If we were to assume a normal distribution when it was truly a student’s t, the method would over-estimate the standard deviation by ~11%.</p>
+<p>Since this method provides an approximation of a normal distribution it is important to point out that the method may be biased under different distributions. For example, if we try the same method on a Student’s t distribution with heavy tails (3.5 degrees of freedom), <span class="math inline">\(S_{(75-25)}\)</span> would be equal to 1.50187 which is slightly larger than 1.34898 that we computed from the normal distribution. If we were to assume a normal distribution when it was truly a student’s t, the method would over-estimate the standard deviation by ~11%.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="cn">NULL</span>, <span class="fu">aes</span>(<span class="at">y =</span> <span class="dv">0</span>,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">xdist =</span> distributional<span class="sc">::</span><span class="fu">dist_student_t</span>(<span class="fl">3.5</span>,<span class="dv">0</span>,<span class="dv">1</span>),</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">fill=</span><span class="fu">after_stat</span>(<span class="fu">abs</span>(x)<span class="sc">&lt;</span><span class="fu">qstudent_t</span>(.<span class="dv">75</span>,<span class="fl">3.5</span>,<span class="dv">0</span>,<span class="dv">1</span>)))) <span class="sc">+</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_dist_slab</span>(<span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span>  </span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Student's t (3.5 df)"</span>, <span class="at">y =</span> <span class="st">"density"</span>, <span class="at">x =</span> <span class="st">"standard deviations"</span>) <span class="sc">+</span> </span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_ggdist</span>()<span class="sc">+</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">'#f1f9fa'</span>,</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">color =</span> <span class="st">'transparent'</span>),</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">'transparent'</span>),</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">'#ED5C9B'</span>,<span class="at">size =</span> <span class="dv">17</span>),</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">'#ED5C9B'</span>,<span class="at">size =</span> <span class="dv">14</span>),</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">'#ED5C9B'</span>,<span class="at">size =</span> <span class="dv">17</span>),</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">'none'</span>) <span class="sc">+</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">'#FF9EAA'</span>,<span class="st">'#ED5C9B'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="blog-post-2_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -308,29 +302,31 @@ S =  \frac{X_{(75-25)}}{S_{(75-25)}} = \frac{X_{(75-25)}}{1.34898}
 <h3 class="anchored" data-anchor-id="applying-it-to-simulated-data">Applying it to simulated data</h3>
 <p>Lets see how it performs in simulated sample of normally distributed data… Close enough!!</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set seed</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">343</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate normal data (Mean = 10, SD = 5)</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">100</span>,<span class="dv">10</span>,<span class="dv">5</span>)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define IQR</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>q25 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">quantile</span>(X,.<span class="dv">25</span>))</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>q75 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">quantile</span>(X,.<span class="dv">75</span>))</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>X_75_25 <span class="ot">&lt;-</span> q75 <span class="sc">-</span> q25</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute multiplier</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>S_75_25 <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(.<span class="dv">75</span>) <span class="sc">-</span> <span class="fu">qnorm</span>(.<span class="dv">25</span>)</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate standard deviation</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>S_x <span class="ot">&lt;-</span>  X_75_25 <span class="sc">/</span> S_75_25</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(S_x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set seed</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">343</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate normal data (Mean = 10, SD = 5)</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">100</span>,<span class="dv">10</span>,<span class="dv">5</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define IQR</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>q25 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">quantile</span>(X,.<span class="dv">25</span>))</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>q75 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">quantile</span>(X,.<span class="dv">75</span>))</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>X_75_25 <span class="ot">&lt;-</span> q75 <span class="sc">-</span> q25</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute IQR in SD units</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>S_75_25 <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(.<span class="dv">75</span>) <span class="sc">-</span> <span class="fu">qnorm</span>(.<span class="dv">25</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate standard deviation</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>S_X <span class="ot">&lt;-</span>  X_75_25 <span class="sc">/</span> S_75_25</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(S_X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4.706901</code></pre>
 </div>
 </div>
+<iframe src="https://embeds.beehiiv.com/f3ffd81a-4723-4419-bb1d-afc8af3bac36" data-test-id="beehiiv-embed" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius: 4px; border: 2px solid #e5e7eb; margin: 0; background-color: transparent;">
+</iframe>
 
 
 </section>

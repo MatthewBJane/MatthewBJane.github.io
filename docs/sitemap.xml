@@ -1,39 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>matthewbjane.com/Publications 2.html</loc>
-    <lastmod>2023-09-09T23:18:26.545Z</lastmod>
+    <loc>https://matthewbjane.com/index.html</loc>
+    <lastmod>2023-09-13T07:20:58.993Z</lastmod>
   </url>
   <url>
-    <loc>matthewbjane.com/index.html</loc>
-    <lastmod>2023-09-09T23:18:26.862Z</lastmod>
+    <loc>https://matthewbjane.com/blog-posts/blog-post-2.html</loc>
+    <lastmod>2023-09-13T18:02:28.873Z</lastmod>
   </url>
   <url>
-    <loc>matthewbjane.com/blog-posts/blog-post-1.html</loc>
-    <lastmod>2023-09-10T01:02:38.264Z</lastmod>
+    <loc>https://matthewbjane.com/blog-posts/blog-post-3.html</loc>
+    <lastmod>2023-09-13T18:04:29.260Z</lastmod>
   </url>
   <url>
-    <loc>matthewbjane.com/Publications.html</loc>
-    <lastmod>2023-09-09T23:18:28.453Z</lastmod>
+    <loc>https://matthewbjane.com/blog-posts/blog-post-1.html</loc>
+    <lastmod>2023-09-13T18:02:34.101Z</lastmod>
   </url>
   <url>
-    <loc>matthewbjane.com/Software.html</loc>
-    <lastmod>2023-09-09T23:18:28.801Z</lastmod>
+    <loc>https://matthewbjane.com/Software.html</loc>
+    <lastmod>2023-09-13T17:54:13.787Z</lastmod>
   </url>
   <url>
-    <loc>matthewbjane.com/CV.html</loc>
-    <lastmod>2023-09-09T23:18:29.254Z</lastmod>
+    <loc>https://matthewbjane.com/CV.html</loc>
+    <lastmod>2023-09-13T15:54:58.832Z</lastmod>
   </url>
   <url>
-    <loc>matthewbjane.com/ArtifactCorrections.html</loc>
-    <lastmod>2023-09-09T23:18:31.380Z</lastmod>
+    <loc>https://matthewbjane.com/ArtifactCorrections.html</loc>
+    <lastmod>2023-09-13T07:21:05.998Z</lastmod>
   </url>
   <url>
-    <loc>matthewbjane.com/blog.html</loc>
-    <lastmod>2023-09-10T07:21:04.593Z</lastmod>
-  </url>
-  <url>
-    <loc>matthewbjane.com/blog-posts/blog-post-2.html</loc>
-    <lastmod>2023-09-10T07:21:03.974Z</lastmod>
+    <loc>https://matthewbjane.com/blog.html</loc>
+    <lastmod>2023-09-13T18:04:29.939Z</lastmod>
   </url>
 </urlset>
