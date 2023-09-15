@@ -19,6 +19,13 @@ listing:
   image-height: "12em"
 mainfont: Asap
 sansfont: Asap
+
+website:
+  description: "Welcome to my blog, Meta-Analysis Magic! Here, you’ll uncover mind-bending tricks that will help you unveil those elusive, unreported statistics tucked away in primary studies."
+  twitter-card:
+    image: "/blog-image.png"
+  open-graph:
+    image: "/blog-image.png"
 ---
 
 Welcome to my blog, **Meta-Analysis Magic**! Here, you'll uncover mind-bending tricks that will help you unveil those elusive, unreported statistics tucked away in primary studies. But that's not all -- we'll also dive into the thrilling realm of lesser-known meta-analysis modeling techniques that tend to slip under the radar.
