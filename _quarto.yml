@@ -4,6 +4,7 @@ project:
 
   resources:
     - "/webLogo2.png"
+    - "/blog-image.png"
 
 website:
   site-url: https://matthewbjane.com
