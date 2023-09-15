@@ -30,7 +30,7 @@ sansfont: Asap
 
 ## <i class="fa-solid fa-user"></i> Bio
 
-Current PhD student interested in developing statistical methods and software for meta-analyses and primary studies. Specifically, my current research projects focus on correcting bias in effect size estimates caused by statistical artifacts. I am affiliated with the Systematic Health Action Research Program (SHARP) at the University of Connecticut where I am advised by Dr. Blair T. Johnson. I am also on the editorial board for Psychological Bulletin as a methodological reviewer.
+Current PhD student interested in developing statistical methods and software for meta-analyses and primary studies. Specifically, my current research projects focus on correcting bias in effect size estimates caused by statistical artifacts. I am affiliated with the Systematic Health Action Research Program (SHARP) at the University of Connecticut where I am advised by Dr. Blair T. Johnson. I am also on the editorial board for *Psychological Bulletin* as a methodological reviewer.
 
 ## <i class="fa-solid fa-graduation-cap"></i> Education
 
@@ -52,39 +52,28 @@ Current PhD student interested in developing statistical methods and software fo
 
 -   [<i class="fa-solid fa-cube"></i> R Package ]{.badge .rounded-pill .bg-primary} **POSC** An R Package for generating Probability of Outcome Superiority Curves (POSCs). [github.com/MatthewBJane/theme_park](https://github.com/MatthewBJane/theme_park)
 
--   [<i class="fa-solid fa-database"></i> Database ]{.badge .rounded-pill .bg-primary} **OpenSynthesis**, website cataloging publicly available meta-analytic databases. MatthewBJane.github.io/opensynthesis
+-   [<i class="fa-solid fa-database"></i> Database ]{.badge .rounded-pill .bg-primary} **OpenSynthesis**, website cataloging publicly available meta-analytic databases. [matthewbjane.com/opensynthesis](https://matthewbjane.com/opensynthesis)
 
--   [<i class="fa-solid fa-diagram-project"></i> Shiny App ]{.badge .rounded-pill .bg-primary} **Artifact Simulator**, A Shiny App for Visualizing Statistical Artifacts. matthewbjane.shinyapps.io/effect_size_artifact_bias
+-   [<i class="fa-solid fa-diagram-project"></i> Shiny App ]{.badge .rounded-pill .bg-primary} **Artifact Simulator**, A Shiny App for Visualizing Statistical Artifacts. [matthewbjane.shinyapps.io/effect_size_artifact_bias](matthewbjane.shinyapps.io/effect_size_artifact_bias)
 
--   [<i class="fa-solid fa-globe"></i> Webpage ]{.badge .rounded-pill .bg-primary} **Artifact Corrections for Effect Sizes**, A webpage documenting equations and code for effect size artifact corrections. MatthewBJane.com/ArtifactCorrections
+-   [<i class="fa-solid fa-globe"></i> Webpage ]{.badge .rounded-pill .bg-primary} **Artifact Corrections for Effect Sizes**, A webpage documenting equations and code for effect size artifact corrections. [matthewbjane.com/ArtifactCorrections](matthewbjane.com/ArtifactCorrections)
 
--   [<i class="fa-solid fa-chart-simple"></i> Project Data & Code ]{.badge .rounded-pill .bg-primary} **Primary Study Data and Code**, Repository of data and code for all primary study projects. https://github.com/MatthewBJane/primary-project-data-code.
+-   [<i class="fa-solid fa-chart-simple"></i> Project Data & Code ]{.badge .rounded-pill .bg-primary} **Primary Study Data and Code**, Repository of data and code for all primary study projects. [https://github.com/MatthewBJane/primary-project-data-code](https://github.com/MatthewBJane/primary-project-data-code).
 
--   [<i class="fa-solid fa-chart-simple"></i> Project Data & Code ]{.badge .rounded-pill .bg-primary} **Meta-Analysis Data and Code**, Repository of data and code for all meta-analytic projects. https://github.com/MatthewBJane/meta-analysis-project-data-code.
+-   [<i class="fa-solid fa-chart-simple"></i> Project Data & Code ]{.badge .rounded-pill .bg-primary} **Meta-Analysis Data and Code**, Repository of data and code for all meta-analytic projects. [https://github.com/MatthewBJane/meta-analysis-project-data-code](https://github.com/MatthewBJane/meta-analysis-project-data-code).
 
 ## <i class="fa-solid fa-file-lines"></i> Publications
 
-**Jané, M. B.**, Curley, C. Johnson, B. T. (2023). Methodological Quality in Research in Health Psychology. *Under review at Sage Journal of Health Psychology.*
+Johnson, B. T., **Jané, M. B.**, Curley, C. (2023). Methodological Quality in Research in Health Psychology. *Under review at Sage Journal of Health Psychology.*
 
 ::: {.content-visible when-format="html"}
 ::: {.btn-group role="group" aria-label="Open Science Links"}
-[Data](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="data" title="data"}\
-[Code](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="code" title="Data File"}\
+[Data](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="data" title="data"}
+[Code](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="code" title="Data File"}
 [PDF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="pdf" title="Data File"} [OSF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="osf" title="Data File"}
 :::
 :::
 
-<hr width="10%">
-
-**Jané, M. B.**, Harlow, T. J., Johnson, B. T. (2023). Temporal and Non-Temporal Sensory Discrimination and Fluid Intelligence: Artifact Correction Meta-Analysis. *Manuscript in preparation.*
-
-::: {.content-visible when-format="html"}
-::: {.btn-group role="group" aria-label="Open Science Links"}
-[Data](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="data" title="data"}\
-[Code](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="code" title="Data File"}\
-[PDF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="pdf" title="Data File"} [OSF](https://osf.io/d6yxf/){.btn-sm .btn .btn-primary role="button" data-toggle="osf" title="Data File"}
-:::
-:::
 
 <hr width="10%">
 
@@ -92,44 +81,8 @@ Current PhD student interested in developing statistical methods and software fo
 
 ::: {.content-visible when-format="html"}
 ::: {.btn-group role="group" aria-label="Open Science Links"}
-[Data](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="data" title="data"}\
-[Code](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="code" title="Data File"}\
-[PDF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="pdf" title="Data File"} [OSF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="osf" title="Data File"}
-:::
-:::
-
-<hr width="10%">
-
-Harlow\*, T. J., **Jané\*, M. B.**, Read, H. L., & Chrobak, J. J. (2023). Memory retention following acoustic stimulation in slow-wave sleep: a meta-analytic review of replicability and measurement quality. *Frontiers in Sleep.*
-
-::: {.content-visible when-format="html"}
-::: {.btn-group role="group" aria-label="Open Science Links"}
-[Data](https://github.com/MatthewBJane/meta-analysis-data-code/tree/main/acoustic_stimulation_and_memory/data){.btn-sm .btn .btn-primary role="button" data-toggle="data" title="data"}\
-[Code](https://github.com/MatthewBJane/meta-analysis-data-code/tree/main/acoustic_stimulation_and_memory/analysis){.btn-sm .btn .btn-primary role="button" data-toggle="code" title="Data File"}\
-[PDF](manuscripts/Harlow2023_Frontiers.pdf){.btn-sm .btn .btn-primary role="button" data-toggle="pdf" title="Data File"} [OSF](https://osf.io/8b49k/){.btn-sm .btn .btn-primary role="button" data-toggle="osf" title="Data File"}
-:::
-:::
-
-<hr width="10%">
-
-**Jané, M. B.**, Pisupati, S., Smith, K. E., Castro-Tonelli, L., Melo-Thomas, L., Schwarting, R. K., ... & Read, H. L. (2022). Correlations across timing cues in natural vocalizations predict biases in judging synthetic sound burst durations. *bioRxiv.*
-
-::: {.content-visible when-format="html"}
-::: {.btn-group role="group" aria-label="Open Science Links"}
-[Data](https://doi.org/10.24433/CO.8495056.v1){.btn-sm .btn .btn-primary role="button" data-toggle="data" title="data"}\
-[Code](https://doi.org/10.24433/CO.8495056.v1){.btn-sm .btn .btn-primary role="button" data-toggle="code" title="Data File"}\
-[PDF](manuscripts/Jane2022_BioArxiv.pdf){.btn-sm .btn .btn-primary role="button" data-toggle="pdf" title="Data File"} [OSF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="osf" title="Data File"}
-:::
-:::
-
-<hr width="10%">
-
-**Jané, M. B.**, Harlow, T. J., Martinez-Berman, L., Johnson, B. T. (2023). Cognitive Ability Moderates the Accuracy of Self-Reported Perfect Pitch. *Manuscript in Preparation.*
-
-::: {.content-visible when-format="html"}
-::: {.btn-group role="group" aria-label="Open Science Links"}
-[Data](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="data" title="data"}\
-[Code](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="code" title="Data File"}\
+[Data](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="data" title="data"}
+[Code](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="code" title="Data File"}
 [PDF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="pdf" title="Data File"} [OSF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="osf" title="Data File"}
 :::
 :::
@@ -140,9 +93,57 @@ Champion, G., **Jané, M. B.**, Johnson, B. T., and colleagues (2023). Efficacy 
 
 ::: {.content-visible when-format="html"}
 ::: {.btn-group role="group" aria-label="Open Science Links"}
-[Data](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="data" title="data"}\
-[Code](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="code" title="Data File"}\
+[Data](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="data" title="data"}
+[Code](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="code" title="Data File"}
 [PDF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="pdf" title="Data File"} [OSF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="osf" title="Data File"}
+:::
+:::
+
+<hr width="10%">
+
+Harlow\*, T. J., **Jané\*, M. B.**, Read, H. L., & Chrobak, J. J. (2023). Memory retention following acoustic stimulation in slow-wave sleep: a meta-analytic review of replicability and measurement quality. *Frontiers in Sleep.*
+
+::: {.content-visible when-format="html"}
+::: {.btn-group role="group" aria-label="Open Science Links"}
+[Data](https://github.com/MatthewBJane/meta-analysis-data-code/tree/main/acoustic_stimulation_and_memory/data){.btn-sm .btn .btn-primary role="button" data-toggle="data" title="data"}
+[Code](https://github.com/MatthewBJane/meta-analysis-data-code/tree/main/acoustic_stimulation_and_memory/analysis){.btn-sm .btn .btn-primary role="button" data-toggle="code" title="Data File"}
+[PDF](manuscripts/Harlow2023_Frontiers.pdf){.btn-sm .btn .btn-primary role="button" data-toggle="pdf" title="Data File"} [OSF](https://osf.io/8b49k/){.btn-sm .btn .btn-primary role="button" data-toggle="osf" title="Data File"}
+:::
+:::
+
+<hr width="10%">
+
+**Jané, M. B.**, Pisupati, S., Smith, K. E., Castro-Tonelli, L., Melo-Thomas, L., Schwarting, R. K., ... & Read, H. L. (2022). Correlations across timing cues in natural vocalizations predict biases in judging synthetic sound burst durations. *bioRxiv.*
+
+::: {.content-visible when-format="html"}
+::: {.btn-group role="group" aria-label="Open Science Links"}
+[Data](https://doi.org/10.24433/CO.8495056.v1){.btn-sm .btn .btn-primary role="button" data-toggle="data" title="data"}
+[Code](https://doi.org/10.24433/CO.8495056.v1){.btn-sm .btn .btn-primary role="button" data-toggle="code" title="Data File"}
+[PDF](manuscripts/Jane2022_BioArxiv.pdf){.btn-sm .btn .btn-primary role="button" data-toggle="pdf" title="Data File"} [OSF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="osf" title="Data File"}
+:::
+:::
+
+<hr width="10%">
+
+**Jané, M. B.**, Harlow, T. J., Martinez-Berman, L., Johnson, B. T. (2023). Cognitive Ability Moderates the Accuracy of Self-Reported Perfect Pitch. *Manuscript in Preparation.*
+
+::: {.content-visible when-format="html"}
+::: {.btn-group role="group" aria-label="Open Science Links"}
+[Data](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="data" title="data"}
+[Code](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="code" title="Data File"}
+[PDF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="pdf" title="Data File"} [OSF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="osf" title="Data File"}
+:::
+:::
+
+<hr width="10%">
+
+**Jané, M. B.**, Harlow, T. J., Johnson, B. T. (2023). Temporal and Non-Temporal Sensory Discrimination and Fluid Intelligence: Artifact Correction Meta-Analysis. *Manuscript in preparation.*
+
+::: {.content-visible when-format="html"}
+::: {.btn-group role="group" aria-label="Open Science Links"}
+[Data](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="data" title="data"}
+[Code](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="code" title="Data File"}
+[PDF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="pdf" title="Data File"} [OSF](https://osf.io/d6yxf/){.btn-sm .btn .btn-primary role="button" data-toggle="osf" title="Data File"}
 :::
 :::
 

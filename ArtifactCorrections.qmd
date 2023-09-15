@@ -22,7 +22,7 @@ To visualize how various statistical artifacts can bias effect size estimates, p
 
 # Small Samples
 
-Effect sizes estimated from small samples often show systematic bias. The following corrections for *r* and *d* are both very close approximations to the more complex unbiased estimators that are much more computatonally expensive. It is often suggested that they should only be applied in situations with low sample sizes (e.g., $n < 20$), however these corrections can be applied at any sample size. This is because $n$ is built into the correction factor therefore the magnitude of the correction is negligable in large sample sizes. The following corrections can be applied prior any of the other corrections on this page.
+Effect sizes estimated from small samples often show systematic bias. The following corrections for *r* and *d* are both very close approximations to the more complex unbiased estimators that area bit more computationally expensive. It is often suggested that they should only be applied in situations with low sample sizes (e.g., $n < 20$), however these corrections can be applied at any sample size. This is because $n$ is built into the correction factor therefore the magnitude of the correction is negligable in large sample sizes. The following corrections can be applied prior any of the other corrections on this page.
 
 ## Small Samples
 

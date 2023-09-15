@@ -7,7 +7,7 @@ date: 2023-09-08
 description: "Welcome to the first blog post of *Meta-Analysis Magic*! In this post we will go over a couple of ways to directly calculate pre/post correlations from alternative statistics such as standard deviations of change scores. Pre/post correlations are necessary to obtain various types of effect sizes and standard errors such as the repeated measures variant of Cohen's $d$, also referred to as Cohen's $d_{rm}$."
 categories:
   - repeated measures
-  - correlations
+  - pre/post correlations
 
 title-meta: "Calculating Pre/Post Correlation from the Standard Deviation of Change Scores"
 author-meta: "Matthew B. Jané"
@@ -97,3 +97,6 @@ r <- (S_pre^2 + S_post^2 - S_change^2) / (2*S_pre*S_post)
 
 print(paste0('r = ',r))
 ```
+<iframe src="https://embeds.beehiiv.com/f3ffd81a-4723-4419-bb1d-afc8af3bac36" data-test-id="beehiiv-embed" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius: 4px; border: 2px solid #e5e7eb; margin: 0; background-color: transparent;">
+
+</iframe>

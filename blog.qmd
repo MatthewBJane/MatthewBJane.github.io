@@ -9,7 +9,8 @@ listing:
   id: blog-listing
   categories: true
   feed: true
-  sort-ui: true
+  sort-ui: [date, title]
+  sort: "date title"
   contents:
   - "blog-posts/!(template|blog-image).qmd"
   fields: [image, title, date, author, description, categories]
