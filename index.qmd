@@ -3,7 +3,7 @@ image: website_banner.png
 about: 
   template: jolla
   image-shape: rectangle
-  image-width: 25em
+  image-width: 23.5em
 
 mainfont: Asap
 sansfont: Asap
