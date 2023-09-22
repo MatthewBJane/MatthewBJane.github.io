@@ -1,9 +1,9 @@
 ---
-image: webLogo2.png
+image: website_banner.png
 about: 
   template: jolla
   image-shape: rectangle
-  image-width: 20em
+  image-width: 25em
 
 mainfont: Asap
 sansfont: Asap
