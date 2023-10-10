@@ -44,7 +44,7 @@ Current PhD student interested in developing statistical methods and software fo
 
 ## <i class="fa-solid fa-book"></i> Textbooks
 
--   In preparation \| **Correcting Effect Sizes for Artifacts in R**, *by Matthew B. Jané and Blair T. Johnson*. A guide for correcting bias in effect size estimates induced by artifacts. Includes applications in meta-analysis and implementation in R.
+-   2023 \| **Artifact Corrections for Effect Sizes**, *by Matthew B. Jané*. An open-soucre book for correcting bias in effect size estimates contaminated by statistical artifacts. Includes applications meta-analysis and implementation in R.
 
 ## <i class="fa-solid fa-code"></i> Software
 

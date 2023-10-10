@@ -40,8 +40,8 @@ website:
         text: CV
       - href: Software.qmd
         text: Software
-      - href: ArtifactCorrections.qmd
-        text: Artifact Corrections
+      - href: https://matthewbjane.quarto.pub/artifact-corrections-for-effect-sizes/
+        text: Artifact Corrections Text-Book
 
 format:
   html:
