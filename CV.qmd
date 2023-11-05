@@ -30,13 +30,13 @@ sansfont: Asap
 
 ## <i class="fa-solid fa-user"></i> Bio
 
-Current PhD student interested in developing statistical methods and software for meta-analyses and primary studies. Specifically, my current research projects focus on correcting bias in effect size estimates caused by statistical artifacts. I am affiliated with the Systematic Health Action Research Program (SHARP) at the University of Connecticut where I am advised by Dr. Blair T. Johnson. I am also on the editorial board for *Psychological Bulletin* as a methodological reviewer.
+Current PhD student interested in developing statistical methods and software for meta-analyses and primary studies. Specifically, my current research projects focus on correcting bias in effect size estimates caused by statistical artifacts (see my open-access textbook on the topic at [matthewbjane.quarto.pub](https://matthewbjane.quarto.pub)). I am affiliated with the Systematic Health Action Research Program (SHARP) at the University of Connecticut where I am advised by Dr. Blair T. Johnson. I am also on the editorial board for *Psychological Bulletin* as a methodological reviewer.
 
 ## <i class="fa-solid fa-graduation-cap"></i> Education
 
 -   2022--Present \| **Ph.D.** *Quantitative Psychology*, University of Connecticut, Storrs, Connecticut
 
-    -   Research involves statistical methods for meta-analysis and evidence synthesis. Primarily focusing on correcting bias in effect size estimates induced by statistical artifacts.
+    -   Research involves developing statistical methods and software for meta-analysis and evidence synthesis. Primarily focusing on correcting bias in effect size estimates induced by statistical artifacts.
 
 -   2021--2022 \| **M.S.** *Behavioral Neuroscience*, University of Connecticut, Storrs, Connecticut
 
@@ -44,23 +44,25 @@ Current PhD student interested in developing statistical methods and software fo
 
 ## <i class="fa-solid fa-book"></i> Textbooks
 
--   2023 \| **Artifact Corrections for Effect Sizes**, *by Matthew B. Jané*. An open-soucre book for correcting bias in effect size estimates contaminated by statistical artifacts. Includes applications meta-analysis and implementation in R.
+- Jané, Matthew B. (2023) **Artifact Corrections for Effect Sizes: Applications Meta-Analysis and Implementation in R**, *by Matthew B. Jané*. An open-source book for correcting bias in effect size estimates contaminated by statistical artifacts. [https://matthewbjane.quarto.pub/artifact-corrections-for-effect-sizes/](https://matthewbjane.quarto.pub/artifact-corrections-for-effect-sizes/)
+
+- Jané, M. B., Xiao, Q., Yeung, S. K., Caldwell, A. R., Dunleavy, D. J., ... (2023) **Guide to Effect Sizes and Confidence Intervals**, *by Matthew B. Jané*. A collaborative guide to calculating, interpreting, and reporting effect sizes and confidence intervals. Contains examples in R. [https://matthewbjane.quarto.pub/effect-size-and-confidence-intervals-guide/](https://matthewbjane.quarto.pub/effect-size-and-confidence-intervals-guide/)
 
 ## <i class="fa-solid fa-code"></i> Software
 
--   [<i class="fa-solid fa-cube"></i> R Package ]{.badge .rounded-pill .bg-primary} **ThemePark**, Generating popular culture styled ggplot themes. [github.com/MatthewBJane/theme_park](https://github.com/MatthewBJane/theme_park). Featured on [rweekly.org](https://rweekly.org/2023-W32.html) and [flowingdata.com](https://flowingdata.com/2023/07/28/barbie-and-oppenheimer-themes-for-charts-in-r/)
+-   [<i class="fa-solid fa-cube"></i> R Package]{.badge .rounded-pill .bg-primary} **ThemePark**, Generating popular culture styled ggplot themes. [github.com/MatthewBJane/theme_park](https://github.com/MatthewBJane/theme_park). Featured on [rweekly.org](https://rweekly.org/2023-W32.html) and [flowingdata.com](https://flowingdata.com/2023/07/28/barbie-and-oppenheimer-themes-for-charts-in-r/)
 
--   [<i class="fa-solid fa-cube"></i> R Package ]{.badge .rounded-pill .bg-primary} **POSC** An R Package for generating Probability of Outcome Superiority Curves (POSCs). [github.com/MatthewBJane/theme_park](https://github.com/MatthewBJane/theme_park)
+-   [<i class="fa-solid fa-cube"></i> R Package]{.badge .rounded-pill .bg-primary} **POSC** An R Package for generating Probability of Outcome Superiority Curves (POSCs). [github.com/MatthewBJane/ThemePark](https://github.com/MatthewBJane/ThemePark)
 
--   [<i class="fa-solid fa-database"></i> Database ]{.badge .rounded-pill .bg-primary} **OpenSynthesis**, website cataloging publicly available meta-analytic databases. [matthewbjane.com/opensynthesis](https://matthewbjane.com/opensynthesis)
+-   [<i class="fa-solid fa-database"></i> Database]{.badge .rounded-pill .bg-primary} **OpenSynthesis**, website cataloging publicly available meta-analytic databases. [matthewbjane.com/opensynthesis](https://matthewbjane.com/opensynthesis)
 
--   [<i class="fa-solid fa-diagram-project"></i> Shiny App ]{.badge .rounded-pill .bg-primary} **Artifact Simulator**, A Shiny App for Visualizing Statistical Artifacts. [matthewbjane.shinyapps.io/effect_size_artifact_bias](matthewbjane.shinyapps.io/effect_size_artifact_bias)
+-   [<i class="fa-solid fa-diagram-project"></i> Shiny App]{.badge .rounded-pill .bg-primary} **Artifact Simulator**, A Shiny App for Visualizing Statistical Artifacts. [matthewbjane.shinyapps.io/effect_size_artifact_bias](matthewbjane.shinyapps.io/effect_size_artifact_bias)
 
--   [<i class="fa-solid fa-globe"></i> Webpage ]{.badge .rounded-pill .bg-primary} **Artifact Corrections for Effect Sizes**, A webpage documenting equations and code for effect size artifact corrections. [matthewbjane.com/ArtifactCorrections](matthewbjane.com/ArtifactCorrections)
+-   [<i class="fa-solid fa-globe"></i> Webpage]{.badge .rounded-pill .bg-primary} **Artifact Corrections for Effect Sizes**, A webpage documenting equations and code for effect size artifact corrections. [matthewbjane.com/ArtifactCorrections](matthewbjane.com/ArtifactCorrections)
 
--   [<i class="fa-solid fa-chart-simple"></i> Project Data & Code ]{.badge .rounded-pill .bg-primary} **Primary Study Data and Code**, Repository of data and code for all primary study projects. [https://github.com/MatthewBJane/primary-project-data-code](https://github.com/MatthewBJane/primary-project-data-code).
+-   [<i class="fa-solid fa-chart-simple"></i> Project Data & Code]{.badge .rounded-pill .bg-primary} **Primary Study Data and Code**, Repository of data and code for all primary study projects. <https://github.com/MatthewBJane/primary-project-data-code>.
 
--   [<i class="fa-solid fa-chart-simple"></i> Project Data & Code ]{.badge .rounded-pill .bg-primary} **Meta-Analysis Data and Code**, Repository of data and code for all meta-analytic projects. [https://github.com/MatthewBJane/meta-analysis-project-data-code](https://github.com/MatthewBJane/meta-analysis-project-data-code).
+-   [<i class="fa-solid fa-chart-simple"></i> Project Data & Code]{.badge .rounded-pill .bg-primary} **Meta-Analysis Data and Code**, Repository of data and code for all meta-analytic projects. <https://github.com/MatthewBJane/meta-analysis-project-data-code>.
 
 ## <i class="fa-solid fa-file-lines"></i> Publications
 
@@ -68,12 +70,9 @@ Johnson, B. T., **Jané, M. B.**, Curley, C. (2023). Methodological Quality in R
 
 ::: {.content-visible when-format="html"}
 ::: {.btn-group role="group" aria-label="Open Science Links"}
-[Data](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="data" title="data"}
-[Code](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="code" title="Data File"}
-[PDF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="pdf" title="Data File"} [OSF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="osf" title="Data File"}
+[Data](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="data" title="data"} [Code](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="code" title="Data File"} [PDF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="pdf" title="Data File"} [OSF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="osf" title="Data File"}
 :::
 :::
-
 
 <hr width="10%">
 
@@ -81,9 +80,7 @@ Johnson, B. T., **Jané, M. B.**, Curley, C. (2023). Methodological Quality in R
 
 ::: {.content-visible when-format="html"}
 ::: {.btn-group role="group" aria-label="Open Science Links"}
-[Data](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="data" title="data"}
-[Code](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="code" title="Data File"}
-[PDF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="pdf" title="Data File"} [OSF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="osf" title="Data File"}
+[Data](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="data" title="data"} [Code](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="code" title="Data File"} [PDF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="pdf" title="Data File"} [OSF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="osf" title="Data File"}
 :::
 :::
 
@@ -93,9 +90,7 @@ Champion, G., **Jané, M. B.**, Johnson, B. T., and colleagues (2023). Efficacy 
 
 ::: {.content-visible when-format="html"}
 ::: {.btn-group role="group" aria-label="Open Science Links"}
-[Data](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="data" title="data"}
-[Code](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="code" title="Data File"}
-[PDF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="pdf" title="Data File"} [OSF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="osf" title="Data File"}
+[Data](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="data" title="data"} [Code](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="code" title="Data File"} [PDF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="pdf" title="Data File"} [OSF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="osf" title="Data File"}
 :::
 :::
 
@@ -105,9 +100,7 @@ Harlow\*, T. J., **Jané\*, M. B.**, Read, H. L., & Chrobak, J. J. (2023). Memor
 
 ::: {.content-visible when-format="html"}
 ::: {.btn-group role="group" aria-label="Open Science Links"}
-[Data](https://github.com/MatthewBJane/meta-analysis-data-code/tree/main/acoustic_stimulation_and_memory/data){.btn-sm .btn .btn-primary role="button" data-toggle="data" title="data"}
-[Code](https://github.com/MatthewBJane/meta-analysis-data-code/tree/main/acoustic_stimulation_and_memory/analysis){.btn-sm .btn .btn-primary role="button" data-toggle="code" title="Data File"}
-[PDF](manuscripts/Harlow2023_Frontiers.pdf){.btn-sm .btn .btn-primary role="button" data-toggle="pdf" title="Data File"} [OSF](https://osf.io/8b49k/){.btn-sm .btn .btn-primary role="button" data-toggle="osf" title="Data File"}
+[Data](https://github.com/MatthewBJane/meta-analysis-data-code/tree/main/acoustic_stimulation_and_memory/data){.btn-sm .btn .btn-primary role="button" data-toggle="data" title="data"} [Code](https://github.com/MatthewBJane/meta-analysis-data-code/tree/main/acoustic_stimulation_and_memory/analysis){.btn-sm .btn .btn-primary role="button" data-toggle="code" title="Data File"} [PDF](manuscripts/Harlow2023_Frontiers.pdf){.btn-sm .btn .btn-primary role="button" data-toggle="pdf" title="Data File"} [OSF](https://osf.io/8b49k/){.btn-sm .btn .btn-primary role="button" data-toggle="osf" title="Data File"}
 :::
 :::
 
@@ -117,9 +110,7 @@ Harlow\*, T. J., **Jané\*, M. B.**, Read, H. L., & Chrobak, J. J. (2023). Memor
 
 ::: {.content-visible when-format="html"}
 ::: {.btn-group role="group" aria-label="Open Science Links"}
-[Data](https://doi.org/10.24433/CO.8495056.v1){.btn-sm .btn .btn-primary role="button" data-toggle="data" title="data"}
-[Code](https://doi.org/10.24433/CO.8495056.v1){.btn-sm .btn .btn-primary role="button" data-toggle="code" title="Data File"}
-[PDF](manuscripts/Jane2022_BioArxiv.pdf){.btn-sm .btn .btn-primary role="button" data-toggle="pdf" title="Data File"} [OSF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="osf" title="Data File"}
+[Data](https://doi.org/10.24433/CO.8495056.v1){.btn-sm .btn .btn-primary role="button" data-toggle="data" title="data"} [Code](https://doi.org/10.24433/CO.8495056.v1){.btn-sm .btn .btn-primary role="button" data-toggle="code" title="Data File"} [PDF](manuscripts/Jane2022_BioArxiv.pdf){.btn-sm .btn .btn-primary role="button" data-toggle="pdf" title="Data File"} [OSF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="osf" title="Data File"}
 :::
 :::
 
@@ -129,9 +120,7 @@ Harlow\*, T. J., **Jané\*, M. B.**, Read, H. L., & Chrobak, J. J. (2023). Memor
 
 ::: {.content-visible when-format="html"}
 ::: {.btn-group role="group" aria-label="Open Science Links"}
-[Data](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="data" title="data"}
-[Code](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="code" title="Data File"}
-[PDF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="pdf" title="Data File"} [OSF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="osf" title="Data File"}
+[Data](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="data" title="data"} [Code](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="code" title="Data File"} [PDF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="pdf" title="Data File"} [OSF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="osf" title="Data File"}
 :::
 :::
 
@@ -141,9 +130,7 @@ Harlow\*, T. J., **Jané\*, M. B.**, Read, H. L., & Chrobak, J. J. (2023). Memor
 
 ::: {.content-visible when-format="html"}
 ::: {.btn-group role="group" aria-label="Open Science Links"}
-[Data](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="data" title="data"}
-[Code](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="code" title="Data File"}
-[PDF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="pdf" title="Data File"} [OSF](https://osf.io/d6yxf/){.btn-sm .btn .btn-primary role="button" data-toggle="osf" title="Data File"}
+[Data](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="data" title="data"} [Code](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="code" title="Data File"} [PDF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="pdf" title="Data File"} [OSF](https://osf.io/d6yxf/){.btn-sm .btn .btn-primary role="button" data-toggle="osf" title="Data File"}
 :::
 :::
 

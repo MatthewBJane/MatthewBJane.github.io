@@ -1,0 +1,33 @@
+---
+title: 'Books'
+---
+
+
+```{=html}
+<div class="card mb-1">
+  <a href="https://matthewbjane.quarto.pub/effect-size-and-confidence-intervals-guide/">
+    <img class="card-img-bottom" src="ES-book.png" alt="Book Cover" aria-label="Book Cover" focusable="false" role="img" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
+    </a>
+  </png>
+  <div class="card-body">
+    <h1 class="card-title">Guide to Effect Sizes and Confidence Intervals</h1>     <h5 class="text-muted"> 2023</h5>
+    <h5 class="text-muted"> Authors: <b>Jané</b>, Xiao, Yeung, Röseler, Caldwell, Cousineau, Elsherif, Johnson, Moreau, Vieira, Zloteanu, Feldman</h5>
+    <a href="https://matthewbjane.quarto.pub/effect-size-and-confidence-intervals-guide/" class="button">Go to book</a>
+  </div>
+</div>
+```
+<br>
+```{=html}
+<div class="card mb-1">
+  <a href="#">
+    <img class="card-img-bottom" src="AC-book.png" alt="Book Cover" aria-label="Book Cover" focusable="false" role="img" viewBox="0 0 318 180"  style="font-size:1.125rem;text-anchor:middle">
+    </a>
+  </png>
+  <div class="card-body">
+    <h1 class="card-title">Artifact Corrections for Effect Sizes</h1>
+    <h5 class="text-muted"> Coming December 2023</h5>
+    <h5 class="text-muted">Authors: Jané</h5>
+    <a href="#" class="button">Coming Soon!</a>
+  </div>
+</div>
+```

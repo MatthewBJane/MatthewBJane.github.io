@@ -1,0 +1,157 @@
+---
+title: "Sampling Distributions of Squared Effect Sizes and their Implication for Meta-Analysis"
+author: "Matthew B. Jané"
+image: "blog-image.png"
+image-height: "5%"
+code-fold: true
+date: 2023-09-13
+description: "In this post we will discuss how squared effect sizes such as $\\eta^2$ and $R^2$ are distributed and the implications of this when conducting a meta-analysis"
+categories:
+  - sampling error
+  - artifacts
+
+title-meta: "Calculating Pre/Post Correlation from a Paired T-Test"
+author-meta: "Matthew B. Jané"
+date-meta: 2023-09-13
+image-meta: "blog-image.png"
+format:
+  html:
+    header-includes: |
+      <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Asap" type="text/css"/>
+mainfont: Asap
+sansfont: Asap
+---
+
+## Defining a Squared Effect Size
+
+Sometimes squared effect sizes are used in order to interpret results (e.g., $R^2$, $\eta^2$). Generally, lets say we have some observed effect size $h_i$ for a sample $i$. This can be modeled as a function of a population correlation $\theta$ and sampling error $e_i$,
+
+$$
+ES_i = \theta + e_i
+$$
+Where the expectation of $h_i$ (i.e., the average) upon repeated sampling is equal to $\theta$. More importantly for us, the expectation of sampling error $e_i$ across repeated samples would be zero. For the expectation of $e_i$ to be zero, $e$ would need to be randomly distributed around zero with both positive and negative values. Let us see what happens to the model once we square both sides to obtain $h^2$:
+
+$$
+h^2_i = (\theta + e_i)^2
+$$
+
+and thus,
+
+$$
+h^2_i = \theta^2 + 2\theta e_i + e_i^2
+$$
+
+Now let us further assume that the population parameter is zero ($\theta=0$). Then we will see that the equation above will reduce $h_i^2$ to being equal to the $e_i^2$:
+
+$$
+\text{When }\theta=0:\;\;\; h^2_i = e_i^2
+$$
+
+The problem now is that the squared sampling error *must* be positive and therefore the expectation of sampling error $e_i^2$ *and* thus the sample estimate $h_i^2$ will *not* be zero. Also, the variance in sampling error (i.e., $\text{Var}(e_i)$) will be larger with smaller sample sizes thus the expectation of $e^2_i$ will be larger as well.
+
+## Simulated Example
+
+Lets assume that in the population, the squared correlation between predicted and observed outcome ($R^2$) is zero, that is, the independent variables ($X_1$,$X_2$, and $X_3$) do not explain any variance in the dependent variable ($Y$). Lets simulate two studies, where one study has a sample size of 100 and the other has a sample size of 25. Then lets replicate these studies 5,000 times. In the first figure we will see that the mean value of $R^2$ is not zero even though the population value is. And with the smaller sample sizes within each study ($N = 25$), the mean $R^2$ is larger. 
+
+```{r,collapse=TRUE, dev.args=list(bg="transparent"),warning=FALSE}
+library(ggplot2)
+library(ggdist)
+library(ThemePark)
+library(patchwork)
+library(latex2exp)
+set.seed(343)
+
+# sample size
+N <- 100
+
+R21 <- R22 <- R23 <- c()
+for(i in 1:5000){
+  # Obtain simulated scores
+  x1 <- rnorm(N,0,1)
+  x2 <- rnorm(N,0,1)
+  x3 <- rnorm(N,0,1)
+  y <- rnorm(N,0,1)
+  
+  # linear regression model
+  mdl <- lm(y ~ x1 + x2 + x3)
+  R21[i] <- summary(mdl)$r.squared
+
+  # linear regression model
+  mdl <- lm(y ~ x1 + x2 + x3,subset = sample(1:N,25))
+  R22[i] <- summary(mdl)$r.squared
+}
+
+
+h1 <- ggplot(data=NULL, aes(R21)) + 
+  theme_barbie(barbie_font = FALSE) +
+  stat_slabinterval(color = barbie_theme_colors['dark'], 
+                    fill = barbie_theme_colors['light']) +
+  scale_x_continuous(limits = c(0,.5)) +
+  theme(aspect.ratio = 1, 
+        panel.background = element_rect(fill = '#f1f9fa',color = '#f1f9fa'),
+        plot.background = element_rect(fill = '#f1f9fa',color = '#f1f9fa'),
+        )+
+  labs(y = "",x=TeX("$R^2$"), 
+       subtitle =  TeX(paste0('N=', 100, ', Ave $R^2$=', round(mean(R21),2))))
+
+h2 <- ggplot(data=NULL, aes(R22)) + 
+  theme_barbie(barbie_font = FALSE) +
+  stat_slabinterval(color = barbie_theme_colors['dark'], 
+                    fill = barbie_theme_colors['light']) +
+  scale_x_continuous(limits = c(0,.5)) +
+  theme(aspect.ratio = 1, 
+        panel.background = element_rect(fill = '#f1f9fa',color = '#f1f9fa'),
+        plot.background = element_rect(fill = '#f1f9fa',color = '#f1f9fa'),
+        )+
+  labs(y = "",x=TeX("$R^2$"), 
+       subtitle = TeX(paste0('N=', 25, ', Ave $R^2$=', round(mean(R22),2))))
+  
+h1 + h2 & plot_annotation(theme = theme(plot.background = element_rect(color="#f1f9fa",fill ="#f1f9fa")))
+
+```
+
+
+If we were to run a meta-analysis on all 5,000 studies and found a meta-analytic average $R^2$ of .13, we may conclude that there is a meaningful prediction/effect, however, this could simply be an artifact of sampling error. The plot below shows how the mean R^2 changes as you vary the sample size.
+
+```{r,collapse=TRUE, dev.args=list(bg="transparent"),warning=FALSE}
+set.seed(343)
+
+# sample size
+N <- 100
+
+R2 <- N <- c()
+for(i in 1:5000){
+  N[i] <- runif(1,10,70)
+  # Obtain simulated scores
+  x1 <- rnorm(N[i] ,0,1)
+  x2 <- rnorm(N[i] ,0,1)
+  x3 <- rnorm(N[i] ,0,1)
+  y <- rnorm(N[i] ,0,1)
+  # linear regression model
+  mdl <- lm(y ~ x1 + x2 + x3)
+  R2[i] <- summary(mdl)$r.squared
+}
+
+
+ggplot(data=NULL, aes(N,R2)) + 
+  theme_barbie(barbie_font = FALSE) +
+  stat_smooth( color = barbie_theme_colors['dark']) + 
+  theme(aspect.ratio = 1, 
+        panel.background = element_rect(fill = '#f1f9fa',color = '#f1f9fa'),
+        plot.background = element_rect(fill = '#f1f9fa',color = '#f1f9fa'),
+        )+
+  labs(y = TeX("Mean $R^2$"),x="Sample Size", title = "")+ 
+  expand_limits(y = 0)
+
+
+```
+
+## Conclusion
+
+In a meta-analysis, it is always best to use directional effect sizes that can be both positive and negative such as Cohen's $d$'s or Pearson correlations. There are other strategies for meta-analyzing $R^2$ values such as using individual person data meta-analysis (using the raw data for each study) or meta-analyzing the correlation matrix between predictors and outcomes first and then running the regression model on the meta-analytic correlation matrix (this would not allow for non-linear terms though). 
+
+
+
+<iframe src="https://embeds.beehiiv.com/f3ffd81a-4723-4419-bb1d-afc8af3bac36" data-test-id="beehiiv-embed" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius: 4px; border: 2px solid #e5e7eb; margin: 0; background-color: transparent;">
+
+</iframe>
