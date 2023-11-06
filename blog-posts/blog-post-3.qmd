@@ -21,6 +21,7 @@ format:
 mainfont: Asap
 sansfont: Asap
 ---
+<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="matthewbjane" data-color="#ED5C9B" data-emoji="☕" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#f1f9fa" data-font-color="#f1f9fa" data-coffee-color="#FFDD00" ></script>
 
 ## Step 1: Obtain the necessary statistics
 
@@ -34,7 +35,7 @@ A rougher approximation would be to simply set the pre-test SD and post-test SD 
 
 $$
 t = \sqrt{F}
-$$ 
+$$
 
 Ensure that you apply the correct sign (negative or positive) to the t-statistic, since the F-statistic is always positive.
 

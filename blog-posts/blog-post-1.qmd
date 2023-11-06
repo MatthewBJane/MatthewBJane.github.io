@@ -20,6 +20,7 @@ format:
 mainfont: Asap
 sansfont: Asap
 ---
+<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="matthewbjane" data-color="#ED5C9B" data-emoji="☕" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#f1f9fa" data-font-color="#f1f9fa" data-coffee-color="#FFDD00" ></script>
 
 ## Step 1: Obtain Pre-test, Post-test, and Change score standard deviations
 
@@ -97,6 +98,7 @@ r <- (S_pre^2 + S_post^2 - S_change^2) / (2*S_pre*S_post)
 
 print(paste0('r = ',r))
 ```
+
 <iframe src="https://embeds.beehiiv.com/f3ffd81a-4723-4419-bb1d-afc8af3bac36" data-test-id="beehiiv-embed" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius: 4px; border: 2px solid #e5e7eb; margin: 0; background-color: transparent;">
 
 </iframe>

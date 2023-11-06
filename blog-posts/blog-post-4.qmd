@@ -23,6 +23,8 @@ sansfont: Asap
 bibliography: references.bib
 ---
 
+<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="matthewbjane" data-color="#ED5C9B" data-emoji="☕" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#f1f9fa" data-font-color="#f1f9fa" data-coffee-color="#FFDD00" ></script>
+
 ## Defining a Squared Effect Size
 
 Sometimes squared effect sizes are used in order to interpret results (e.g., $R^2$, $\eta^2$). Generally, lets say we have some observed effect size $h_i$ for a sample $i$. This can be modeled as a function of a population correlation $\theta$ and sampling error $e_i$,

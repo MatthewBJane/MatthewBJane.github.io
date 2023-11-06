@@ -36,7 +36,10 @@ If you like the blog, consider subscribing below to be notified whenever a new p
 
 <iframe src="https://embeds.beehiiv.com/f3ffd81a-4723-4419-bb1d-afc8af3bac36?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin: 0; border-radius: 0px !important; background-color: transparent;">
 
-</iframe>
+</iframe><script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="matthewbjane" data-color="#ED5C9B" data-emoji="☕" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#f1f9fa" data-font-color="#f1f9fa" data-coffee-color="#FFDD00" ></script>
+<br>
+
+
 
 ::: {#blog-listing}
 :::

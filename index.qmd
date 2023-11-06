@@ -17,4 +17,6 @@ sansfont: Asap
 
 Hello there! I'm **Matthew B. Jané** - I'm a PhD student in Quantitative Psychology at the University of Connecticut. My research involves developing statistical methods and software to aide in meta-analysis and evidence synthesis. Specifically, my current research projects focus on correcting bias in effect size estimates caused by statistical artifacts. My advisor is Dr. Blair T. Johnson and I am a member of the Systematic Health Action Research Program (SHARP). I am also on the editorial board for *Psychological Bulletin* as a methodological reviewer.
 
+<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="matthewbjane" data-color="#ED5C9B" data-emoji="☕" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#f1f9fa" data-font-color="#f1f9fa" data-coffee-color="#FFDD00" ></script>
+
 <!-- **View my new open-source text-book:** [{{< fa book >}} Artifact Corrections for Effect Sizes](https://matthewbjane.quarto.pub/artifact-corrections-for-effect-sizes/){.btn .btn-primary .btn role="button" data-toggle="data" title="email"} -->
