@@ -258,9 +258,10 @@ div.csl-indent {
 
 </header>
 
+<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="matthewbjane" data-color="#ED5C9B" data-emoji="☕" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#f1f9fa" data-font-color="#f1f9fa" data-coffee-color="#FFDD00"></script>
 <section id="defining-a-squared-effect-size" class="level2">
 <h2 class="anchored" data-anchor-id="defining-a-squared-effect-size">Defining a Squared Effect Size</h2>
-<p>Sometimes squared effect sizes are used in order to interpret results (e.g., <span class="math inline">\(R^2\)</span>, <span class="math inline">\(\eta^2\)</span>). Generally, lets say we have some observed effect size <span class="math inline">\(h_i\)</span> for a sample <span class="math inline">\(i\)</span>. This can be modeled as a function of a population correlation <span class="math inline">\(\theta\)</span> and sampling error <span class="math inline">\(e_i\)</span>,</p>
+<p>Sometimes squared effect sizes are used in order to interpret results (e.g., <span class="math inline">\(R^2\)</span>, <span class="math inline">\(\eta^2\)</span>). However these squared indices are biased in small sample sizes. To see why this is the case we can describe the mathematically. Generally, lets say we have some observed effect size <span class="math inline">\(h_i\)</span> for a sample <span class="math inline">\(i\)</span>. This can be modeled as a function of a population correlation <span class="math inline">\(\theta\)</span> and sampling error <span class="math inline">\(e_i\)</span>,</p>
 <p><span class="math display">\[
 h_i = \theta + e_i
 \]</span></p>
@@ -272,11 +273,15 @@ h^2_i = (\theta + e_i)^2
 <p><span class="math display">\[
 h^2_i = \theta^2 + 2\theta e_i + e_i^2
 \]</span></p>
-<p>Now let us further assume that the population parameter is zero (<span class="math inline">\(\theta=0\)</span>). Then we will see that the equation above will reduce <span class="math inline">\(h_i^2\)</span> to being equal to the <span class="math inline">\(e_i^2\)</span>:</p>
-<p><span class="math display">\[
-\text{When }\theta=0:\;\;\; h^2_i = e_i^2
-\]</span></p>
-<p>The problem now is that the squared sampling error <em>must</em> be positive and therefore the expectation of sampling error <span class="math inline">\(e_i^2\)</span> <em>and</em> thus the sample estimate <span class="math inline">\(h_i^2\)</span> will <em>not</em> be zero. Also, the variance in sampling error (i.e., <span class="math inline">\(\text{Var}(e_i)\)</span>) will be larger with smaller sample sizes thus the expectation of <span class="math inline">\(e^2_i\)</span> will be larger as well.</p>
+<p>The squared effect sizes is now no longer an unbiased estimate of theta. The bias in <span class="math inline">\(h_i^2\)</span> can be seen by taking the expected value of both sides (note that the <span class="math inline">\(\text{Var}(e_i)\)</span> is the sampling error variance and <span class="math inline">\(\mathbb{E}[\cdot]\)</span> is the expected value or the mean across repeated samples):</p>
+<p><span class="math display">\[\begin{align}
+\mathbb{E}[h_i] &amp; = \mathbb{E}[\theta^2 + 2\theta e_i + e_i^2] \\[.5em]
+                &amp; = \theta^2 + 2\theta \times \mathbb{E}[e_i] + \mathbb{E}[e^2_i]\\[.5em]
+                &amp; = \theta^2 + \mathbb{E}[e_i^2] \\[.5em]
+                &amp; = \theta^2 + \left(\text{Var}[e_i] + \mathbb{E}[e_i]^2\right) \\[.5em]
+                &amp; = \theta^2 + \text{Var}[e_i] \\
+\end{align}\]</span></p>
+<p>Since the sampling error variance is always positive (unless the sample size was infinite…), there will be a positive bias in expected value of <span class="math inline">\(h_i^2\)</span>. It is important to note that the variance in sampling error (i.e., <span class="math inline">\(\text{Var}(e_i)\)</span>) will be larger with smaller sample sizes.</p>
 </section>
 <section id="simulated-example" class="level2">
 <h2 class="anchored" data-anchor-id="simulated-example">Simulated Example</h2>
@@ -342,7 +347,7 @@ h^2_i = \theta^2 + 2\theta e_i + e_i^2
 <p><img src="blog-post-4_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>If we were to run a meta-analysis on all 5,000 studies and found a meta-analytic average <span class="math inline">\(R^2\)</span> of .13, we may conclude that there is a meaningful prediction/effect, however, this could simply be an artifact of sampling error. The plot below shows how the mean R^2 changes as you vary the sample size.</p>
+<p>If we were to run a meta-analysis on all 5,000 studies and found a meta-analytic average <span class="math inline">\(R^2\)</span> of .13, we may conclude that there is a meaningful prediction/effect, however, this could simply be an artifact of sampling error. The plot below shows how the mean <span class="math inline">\(R^2\)</span> changes as you vary the sample size.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -360,7 +365,7 @@ h^2_i = \theta^2 + 2\theta e_i + e_i^2
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  x3 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(N[i] ,<span class="dv">0</span>,<span class="dv">1</span>)</span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(N[i] ,<span class="dv">0</span>,<span class="dv">1</span>)</span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># linear regression model</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  mdl <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">+</span> x3)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  mdl <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x1)</span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  R2[i] <span class="ot">&lt;-</span> <span class="fu">summary</span>(mdl)<span class="sc">$</span>r.squared</span>
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
@@ -383,7 +388,45 @@ h^2_i = \theta^2 + 2\theta e_i + e_i^2
 </section>
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>In a meta-analysis, it is always best to use directional effect sizes that can be both positive and negative such as Cohen’s <span class="math inline">\(d\)</span>’s or Pearson correlations. There are other strategies for meta-analyzing <span class="math inline">\(R^2\)</span> values such as using individual person data meta-analysis (using the raw data for each study) or meta-analyzing the correlation matrix between predictors and outcomes first and then running the regression model on the meta-analytic correlation matrix (this would not allow for non-linear terms though).</p>
+<p>In a meta-analysis, it is always best to use directional effect sizes that can be both positive and negative such as Cohen’s <span class="math inline">\(d\)</span>’s or Pearson correlations. There are other strategies for meta-analyzing <span class="math inline">\(R^2\)</span> values such as using individual person data meta-analysis (using the raw data for each study) or meta-analyzing the correlation matrix between predictors and outcomes first and then running the regression model on the meta-analytic correlation matrix (this would not allow for non-linear terms though). If it is necessary to meta-analyze <span class="math inline">\(R^2\)</span> you will want to use the adjusted <span class="math inline">\(R^2\)</span> value. See the plot below that shows the adjusted <span class="math inline">\(R^2\)</span> across different sample sizes</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">343</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># sample size</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>R2 <span class="ot">&lt;-</span> N <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5000</span>){</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  N[i] <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>,<span class="dv">10</span>,<span class="dv">70</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Obtain simulated scores</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  x1 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(N[i] ,<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  x2 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(N[i] ,<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  x3 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(N[i] ,<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(N[i] ,<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># linear regression model</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  mdl <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x1)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  R2[i] <span class="ot">&lt;-</span> <span class="fu">summary</span>(mdl)<span class="sc">$</span>adj.r.squared</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span><span class="cn">NULL</span>, <span class="fu">aes</span>(N,R2)) <span class="sc">+</span> </span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_barbie</span>(<span class="at">barbie_font =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>( <span class="at">color =</span> barbie_theme_colors[<span class="st">'dark'</span>]) <span class="sc">+</span> </span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> <span class="dv">1</span>, </span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">'#f1f9fa'</span>,<span class="at">color =</span> <span class="st">'#f1f9fa'</span>),</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">'#f1f9fa'</span>,<span class="at">color =</span> <span class="st">'#f1f9fa'</span>),</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>        )<span class="sc">+</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="fu">TeX</span>(<span class="st">"Mean adj. $R^2$"</span>),<span class="at">x=</span><span class="st">"Sample Size"</span>, <span class="at">title =</span> <span class="st">""</span>)<span class="sc">+</span> </span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="fu">c</span>(<span class="sc">-</span>.<span class="dv">4</span>,.<span class="dv">4</span>)) <span class="sc">+</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expand_limits</span>(<span class="at">y =</span> <span class="dv">0</span>)</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="do">## `geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = "cs")'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="blog-post-4_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 <iframe src="https://embeds.beehiiv.com/f3ffd81a-4723-4419-bb1d-afc8af3bac36" data-test-id="beehiiv-embed" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius: 4px; border: 2px solid #e5e7eb; margin: 0; background-color: transparent;">
 </iframe>
 

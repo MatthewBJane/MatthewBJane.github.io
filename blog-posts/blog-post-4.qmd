@@ -23,11 +23,12 @@ sansfont: Asap
 bibliography: references.bib
 ---
 
+```{=html}
 <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="matthewbjane" data-color="#ED5C9B" data-emoji="☕" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#f1f9fa" data-font-color="#f1f9fa" data-coffee-color="#FFDD00" ></script>
-
+```
 ## Defining a Squared Effect Size
 
-Sometimes squared effect sizes are used in order to interpret results (e.g., $R^2$, $\eta^2$). Generally, lets say we have some observed effect size $h_i$ for a sample $i$. This can be modeled as a function of a population correlation $\theta$ and sampling error $e_i$,
+Sometimes squared effect sizes are used in order to interpret results (e.g., $R^2$, $\eta^2$). However these squared indices are biased in small sample sizes. To see why this is the case we can describe the mathematically. Generally, lets say we have some observed effect size $h_i$ for a sample $i$. This can be modeled as a function of a population correlation $\theta$ and sampling error $e_i$,
 
 $$
 h_i = \theta + e_i
@@ -45,13 +46,18 @@ $$
 h^2_i = \theta^2 + 2\theta e_i + e_i^2
 $$
 
-Now let us further assume that the population parameter is zero ($\theta=0$). Then we will see that the equation above will reduce $h_i^2$ to being equal to the $e_i^2$:
+The squared effect sizes is now no longer an unbiased estimate of theta. The bias in $h_i^2$ can be seen by taking the expected value of both sides (note that the $\text{Var}(e_i)$ is the sampling error variance and $\mathbb{E}[\cdot]$ is the expected value or the mean across repeated samples):
 
-$$
-\text{When }\theta=0:\;\;\; h^2_i = e_i^2
-$$
+\begin{align}
+\mathbb{E}[h_i] & = \mathbb{E}[\theta^2 + 2\theta e_i + e_i^2] \\[.5em]
+                & = \theta^2 + 2\theta \times \mathbb{E}[e_i] + \mathbb{E}[e^2_i]\\[.5em]
+                & = \theta^2 + \mathbb{E}[e_i^2] \\[.5em]
+                & = \theta^2 + \left(\text{Var}[e_i] + \mathbb{E}[e_i]^2\right) \\[.5em]
+                & = \theta^2 + \text{Var}[e_i] \\
+\end{align}
 
-The problem now is that the squared sampling error *must* be positive and therefore the expectation of sampling error $e_i^2$ *and* thus the sample estimate $h_i^2$ will *not* be zero. Also, the variance in sampling error (i.e., $\text{Var}(e_i)$) will be larger with smaller sample sizes thus the expectation of $e^2_i$ will be larger as well.
+
+Since the sampling error variance is always positive (unless the sample size was infinite...), there will be a positive bias in expected value of $h_i^2$. It is important to note that the variance in sampling error (i.e., $\text{Var}(e_i)$) will be larger with smaller sample sizes.
 
 ## Simulated Example
 
@@ -114,7 +120,7 @@ h1 + h2 & plot_annotation(theme = theme(plot.background = element_rect(color="#f
 
 ```
 
-If we were to run a meta-analysis on all 5,000 studies and found a meta-analytic average $R^2$ of .13, we may conclude that there is a meaningful prediction/effect, however, this could simply be an artifact of sampling error. The plot below shows how the mean R\^2 changes as you vary the sample size.
+If we were to run a meta-analysis on all 5,000 studies and found a meta-analytic average $R^2$ of .13, we may conclude that there is a meaningful prediction/effect, however, this could simply be an artifact of sampling error. The plot below shows how the mean $R^2$ changes as you vary the sample size.
 
 ```{r,collapse=TRUE, dev.args=list(bg="transparent"),warning=FALSE}
 set.seed(343)
@@ -131,7 +137,7 @@ for(i in 1:5000){
   x3 <- rnorm(N[i] ,0,1)
   y <- rnorm(N[i] ,0,1)
   # linear regression model
-  mdl <- lm(y ~ x1 + x2 + x3)
+  mdl <- lm(y ~ x1)
   R2[i] <- summary(mdl)$r.squared
 }
 
@@ -151,7 +157,42 @@ ggplot(data=NULL, aes(N,R2)) +
 
 ## Conclusion
 
-In a meta-analysis, it is always best to use directional effect sizes that can be both positive and negative such as Cohen's $d$'s or Pearson correlations. There are other strategies for meta-analyzing $R^2$ values such as using individual person data meta-analysis (using the raw data for each study) or meta-analyzing the correlation matrix between predictors and outcomes first and then running the regression model on the meta-analytic correlation matrix (this would not allow for non-linear terms though).
+In a meta-analysis, it is always best to use directional effect sizes that can be both positive and negative such as Cohen's $d$'s or Pearson correlations. There are other strategies for meta-analyzing $R^2$ values such as using individual person data meta-analysis (using the raw data for each study) or meta-analyzing the correlation matrix between predictors and outcomes first and then running the regression model on the meta-analytic correlation matrix (this would not allow for non-linear terms though). If it is necessary to meta-analyze $R^2$ you will want to use the adjusted $R^2$ value. See the plot below that shows the adjusted $R^2$ across different sample sizes
+
+
+```{r,collapse=TRUE, dev.args=list(bg="transparent"),warning=FALSE}
+set.seed(343)
+
+# sample size
+N <- 100
+
+R2 <- N <- c()
+for(i in 1:5000){
+  N[i] <- runif(1,10,70)
+  # Obtain simulated scores
+  x1 <- rnorm(N[i] ,0,1)
+  x2 <- rnorm(N[i] ,0,1)
+  x3 <- rnorm(N[i] ,0,1)
+  y <- rnorm(N[i] ,0,1)
+  # linear regression model
+  mdl <- lm(y ~ x1)
+  R2[i] <- summary(mdl)$adj.r.squared
+}
+
+
+ggplot(data=NULL, aes(N,R2)) + 
+  theme_barbie(barbie_font = FALSE) +
+  stat_smooth( color = barbie_theme_colors['dark']) + 
+  theme(aspect.ratio = 1, 
+        panel.background = element_rect(fill = '#f1f9fa',color = '#f1f9fa'),
+        plot.background = element_rect(fill = '#f1f9fa',color = '#f1f9fa'),
+        )+
+  labs(y = TeX("Mean adj. $R^2$"),x="Sample Size", title = "")+ 
+  ylim(c(-.4,.4)) +
+  expand_limits(y = 0)
+
+
+```
 
 <iframe src="https://embeds.beehiiv.com/f3ffd81a-4723-4419-bb1d-afc8af3bac36" data-test-id="beehiiv-embed" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius: 4px; border: 2px solid #e5e7eb; margin: 0; background-color: transparent;">
 
