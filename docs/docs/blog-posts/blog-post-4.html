@@ -262,9 +262,8 @@ div.csl-indent {
 <h2 class="anchored" data-anchor-id="defining-a-squared-effect-size">Defining a Squared Effect Size</h2>
 <p>Sometimes squared effect sizes are used in order to interpret results (e.g., <span class="math inline">\(R^2\)</span>, <span class="math inline">\(\eta^2\)</span>). Generally, lets say we have some observed effect size <span class="math inline">\(h_i\)</span> for a sample <span class="math inline">\(i\)</span>. This can be modeled as a function of a population correlation <span class="math inline">\(\theta\)</span> and sampling error <span class="math inline">\(e_i\)</span>,</p>
 <p><span class="math display">\[
-h_i = \theta + e_i
-\]</span></p>
-<p>Where the expectation of <span class="math inline">\(h_i\)</span> (i.e., the average) upon repeated sampling is equal to <span class="math inline">\(\theta\)</span>. More importantly for us, the expectation of sampling error <span class="math inline">\(e_i\)</span> across repeated samples would be zero. For the expectation of <span class="math inline">\(e_i\)</span> to be zero, <span class="math inline">\(e\)</span> would need to be randomly distributed around zero with both positive and negative values. Let us see what happens to the model once we square both sides to obtain <span class="math inline">\(h^2\)</span>:</p>
+ES_i = \theta + e_i
+\]</span> Where the expectation of <span class="math inline">\(h_i\)</span> (i.e., the average) upon repeated sampling is equal to <span class="math inline">\(\theta\)</span>. More importantly for us, the expectation of sampling error <span class="math inline">\(e_i\)</span> across repeated samples would be zero. For the expectation of <span class="math inline">\(e_i\)</span> to be zero, <span class="math inline">\(e\)</span> would need to be randomly distributed around zero with both positive and negative values. Let us see what happens to the model once we square both sides to obtain <span class="math inline">\(h^2\)</span>:</p>
 <p><span class="math display">\[
 h^2_i = (\theta + e_i)^2
 \]</span></p>
@@ -280,7 +279,7 @@ h^2_i = \theta^2 + 2\theta e_i + e_i^2
 </section>
 <section id="simulated-example" class="level2">
 <h2 class="anchored" data-anchor-id="simulated-example">Simulated Example</h2>
-<p>Lets assume that in the population, the squared correlation between predicted and observed outcome (<span class="math inline">\(R^2\)</span>) is zero, that is, the independent variables (<span class="math inline">\(X_1\)</span>,<span class="math inline">\(X_2\)</span>, and <span class="math inline">\(X_3\)</span>) do not explain any variance in the dependent variable (<span class="math inline">\(Y\)</span>). Lets simulate two studies, where one study has a sample size of 100 and the other has a sample size of 25. Then lets replicate these studies 5,000 times. In the first figure we will see that the mean value of <span class="math inline">\(R^2\)</span> is not zero even though the population value is. And with the smaller sample sizes within each study (<span class="math inline">\(N = 25\)</span>), the mean <span class="math inline">\(R^2\)</span> is larger. The plots below show the distribution of <span class="math inline">\(R^2\)</span> using the <code>ggdist</code> package <span class="citation" data-cites="kay">(<a href="#ref-kay" role="doc-biblioref">Kay 2023</a>)</span>.</p>
+<p>Lets assume that in the population, the squared correlation between predicted and observed outcome (<span class="math inline">\(R^2\)</span>) is zero, that is, the independent variables (<span class="math inline">\(X_1\)</span>,<span class="math inline">\(X_2\)</span>, and <span class="math inline">\(X_3\)</span>) do not explain any variance in the dependent variable (<span class="math inline">\(Y\)</span>). Lets simulate two studies, where one study has a sample size of 100 and the other has a sample size of 25. Then lets replicate these studies 5,000 times. In the first figure we will see that the mean value of <span class="math inline">\(R^2\)</span> is not zero even though the population value is. And with the smaller sample sizes within each study (<span class="math inline">\(N = 25\)</span>), the mean <span class="math inline">\(R^2\)</span> is larger. The plots below show the distribution of <span class="math inline">\(R^2\)</span> using the <code>ggdist</code> package <span class="citation" data-cites="kay">(<a href="#ref-kay" role="doc-biblioref">Kay, n.d.</a>)</span>.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -393,7 +392,7 @@ h^2_i = \theta^2 + 2\theta e_i + e_i^2
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-kay" class="csl-entry" role="listitem">
-Kay, Matthew. 2023. <span>“Ggdist: Visualizations of Distributions and Uncertainty in the Grammar of Graphics.”</span> <a href="https://doi.org/10.31219/osf.io/2gsz6">https://doi.org/10.31219/osf.io/2gsz6</a>.
+Kay, Matthew. n.d. <span>“Ggdist: Visualizations of Distributions and Uncertainty in the Grammar of Graphics.”</span> <a href="https://doi.org/10.31219/osf.io/2gsz6">https://doi.org/10.31219/osf.io/2gsz6</a>.
 </div>
 </div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

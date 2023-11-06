@@ -372,7 +372,8 @@ font-style: inherit;">'r = '</span>,r))</span></code></pre></div>
 <section id="defining-a-squared-effect-size" class="level2">
 <h2 class="anchored" data-anchor-id="defining-a-squared-effect-size">Defining a Squared Effect Size</h2>
 <p>Sometimes squared effect sizes are used in order to interpret results (e.g., <img src="https://latex.codecogs.com/png.latex?R%5E2">, <img src="https://latex.codecogs.com/png.latex?%5Ceta%5E2">). Generally, lets say we have some observed effect size <img src="https://latex.codecogs.com/png.latex?h_i"> for a sample <img src="https://latex.codecogs.com/png.latex?i">. This can be modeled as a function of a population correlation <img src="https://latex.codecogs.com/png.latex?%5Ctheta"> and sampling error <img src="https://latex.codecogs.com/png.latex?e_i">,</p>
-<p><img src="https://latex.codecogs.com/png.latex?%0AES_i%20=%20%5Ctheta%20+%20e_i%0A"> Where the expectation of <img src="https://latex.codecogs.com/png.latex?h_i"> (i.e., the average) upon repeated sampling is equal to <img src="https://latex.codecogs.com/png.latex?%5Ctheta">. More importantly for us, the expectation of sampling error <img src="https://latex.codecogs.com/png.latex?e_i"> across repeated samples would be zero. For the expectation of <img src="https://latex.codecogs.com/png.latex?e_i"> to be zero, <img src="https://latex.codecogs.com/png.latex?e"> would need to be randomly distributed around zero with both positive and negative values. Let us see what happens to the model once we square both sides to obtain <img src="https://latex.codecogs.com/png.latex?h%5E2">:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0Ah_i%20=%20%5Ctheta%20+%20e_i%0A"></p>
+<p>Where the expectation of <img src="https://latex.codecogs.com/png.latex?h_i"> (i.e., the average) upon repeated sampling is equal to <img src="https://latex.codecogs.com/png.latex?%5Ctheta">. More importantly for us, the expectation of sampling error <img src="https://latex.codecogs.com/png.latex?e_i"> across repeated samples would be zero. For the expectation of <img src="https://latex.codecogs.com/png.latex?e_i"> to be zero, <img src="https://latex.codecogs.com/png.latex?e"> would need to be randomly distributed around zero with both positive and negative values. Let us see what happens to the model once we square both sides to obtain <img src="https://latex.codecogs.com/png.latex?h%5E2">:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0Ah%5E2_i%20=%20(%5Ctheta%20+%20e_i)%5E2%0A"></p>
 <p>and thus,</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0Ah%5E2_i%20=%20%5Ctheta%5E2%20+%202%5Ctheta%20e_i%20+%20e_i%5E2%0A"></p>
@@ -382,7 +383,7 @@ font-style: inherit;">'r = '</span>,r))</span></code></pre></div>
 </section>
 <section id="simulated-example" class="level2">
 <h2 class="anchored" data-anchor-id="simulated-example">Simulated Example</h2>
-<p>Lets assume that in the population, the squared correlation between predicted and observed outcome (<img src="https://latex.codecogs.com/png.latex?R%5E2">) is zero, that is, the independent variables (<img src="https://latex.codecogs.com/png.latex?X_1">,<img src="https://latex.codecogs.com/png.latex?X_2">, and <img src="https://latex.codecogs.com/png.latex?X_3">) do not explain any variance in the dependent variable (<img src="https://latex.codecogs.com/png.latex?Y">). Lets simulate two studies, where one study has a sample size of 100 and the other has a sample size of 25. Then lets replicate these studies 5,000 times. In the first figure we will see that the mean value of <img src="https://latex.codecogs.com/png.latex?R%5E2"> is not zero even though the population value is. And with the smaller sample sizes within each study (<img src="https://latex.codecogs.com/png.latex?N%20=%2025">), the mean <img src="https://latex.codecogs.com/png.latex?R%5E2"> is larger.</p>
+<p>Lets assume that in the population, the squared correlation between predicted and observed outcome (<img src="https://latex.codecogs.com/png.latex?R%5E2">) is zero, that is, the independent variables (<img src="https://latex.codecogs.com/png.latex?X_1">,<img src="https://latex.codecogs.com/png.latex?X_2">, and <img src="https://latex.codecogs.com/png.latex?X_3">) do not explain any variance in the dependent variable (<img src="https://latex.codecogs.com/png.latex?Y">). Lets simulate two studies, where one study has a sample size of 100 and the other has a sample size of 25. Then lets replicate these studies 5,000 times. In the first figure we will see that the mean value of <img src="https://latex.codecogs.com/png.latex?R%5E2"> is not zero even though the population value is. And with the smaller sample sizes within each study (<img src="https://latex.codecogs.com/png.latex?N%20=%2025">), the mean <img src="https://latex.codecogs.com/png.latex?R%5E2"> is larger. The plots below show the distribution of <img src="https://latex.codecogs.com/png.latex?R%5E2"> using the <code>ggdist</code> package <span class="citation" data-cites="kay">(Kay 2023)</span>.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -1014,9 +1015,14 @@ font-style: italic;">## `geom_smooth()` using method = 'gam' and formula = 'y ~ 
 </iframe>
 
 
+
 </section>
 
- ]]></description>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-kay" class="csl-entry">
+Kay, Matthew. 2023. <span>“Ggdist: Visualizations of Distributions and Uncertainty in the Grammar of Graphics.”</span> <a href="https://doi.org/10.31219/osf.io/2gsz6">https://doi.org/10.31219/osf.io/2gsz6</a>.
+</div>
+</div></section></div> ]]></description>
   <category>sampling error</category>
   <category>artifacts</category>
   <guid>https://matthewbjane.com/blog-posts/blog-post-4.html</guid>

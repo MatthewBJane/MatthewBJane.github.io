@@ -12,7 +12,7 @@ listing:
   sort-ui: [date, title]
   sort: "date title"
   contents:
-  - "blog-posts/!(template|blog-image).qmd"
+  - "blog-posts/!(template|blog-image|references).qmd"
   fields: [image, title, date, author, description, categories]
   type: grid
   grid-columns: 2
@@ -37,7 +37,6 @@ If you like the blog, consider subscribing below to be notified whenever a new p
 <iframe src="https://embeds.beehiiv.com/f3ffd81a-4723-4419-bb1d-afc8af3bac36?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin: 0; border-radius: 0px !important; background-color: transparent;">
 
 </iframe>
-
 
 ::: {#blog-listing}
 :::
