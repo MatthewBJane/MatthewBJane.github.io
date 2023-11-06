@@ -49,7 +49,7 @@ $$
 The squared effect sizes is now no longer an unbiased estimate of theta. The bias in $h_i^2$ can be seen by taking the expected value of both sides (note that the $\text{Var}(e_i)$ is the sampling error variance and $\mathbb{E}[\cdot]$ is the expected value or the mean across repeated samples):
 
 \begin{align}
-\mathbb{E}[h_i] & = \mathbb{E}[\theta^2 + 2\theta e_i + e_i^2] \\[.5em]
+\mathbb{E}[h^2_i] & = \mathbb{E}[\theta^2 + 2\theta e_i + e_i^2] \\[.5em]
                 & = \theta^2 + 2\theta \times \mathbb{E}[e_i] + \mathbb{E}[e^2_i]\\[.5em]
                 & = \theta^2 + \mathbb{E}[e_i^2] \\[.5em]
                 & = \theta^2 + \left(\text{Var}[e_i] + \mathbb{E}[e_i]^2\right) \\[.5em]
