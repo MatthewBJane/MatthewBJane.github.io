@@ -2,50 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://matthewbjane.com/Books.html</loc>
-    <lastmod>2023-11-07T05:48:04.726Z</lastmod>
-  </url>
-  <url>
-    <loc>https://matthewbjane.com/index.html</loc>
-    <lastmod>2023-11-06T18:38:45.646Z</lastmod>
-  </url>
-  <url>
-    <loc>https://matthewbjane.com/blog-posts/blog-post-2.html</loc>
-    <lastmod>2023-11-07T05:48:07.148Z</lastmod>
-  </url>
-  <url>
-    <loc>https://matthewbjane.com/blog-posts/blog-post-3.html</loc>
-    <lastmod>2023-11-07T05:48:08.341Z</lastmod>
-  </url>
-  <url>
-    <loc>https://matthewbjane.com/blog-posts/blog-post-1.html</loc>
-    <lastmod>2023-11-06T18:39:22.988Z</lastmod>
-  </url>
-  <url>
-    <loc>https://matthewbjane.com/blog-posts/blog-post-4.html</loc>
-    <lastmod>2023-11-07T05:48:16.926Z</lastmod>
-  </url>
-  <url>
-    <loc>https://matthewbjane.com/Software.html</loc>
-    <lastmod>2023-11-07T05:48:18.461Z</lastmod>
-  </url>
-  <url>
-    <loc>https://matthewbjane.com/CV.html</loc>
-    <lastmod>2023-11-07T05:48:18.888Z</lastmod>
-  </url>
-  <url>
-    <loc>https://matthewbjane.com/ArtifactCorrections.html</loc>
-    <lastmod>2023-11-05T20:01:38.035Z</lastmod>
-  </url>
-  <url>
-    <loc>https://matthewbjane.com/blog.html</loc>
-    <lastmod>2023-11-07T05:48:19.885Z</lastmod>
+    <lastmod>2023-11-07T07:17:22.132Z</lastmod>
   </url>
   <url>
     <loc>https://matthewbjane.com/Consulting.html</loc>
-    <lastmod>2023-11-07T07:14:33.454Z</lastmod>
+    <lastmod>2023-11-07T07:17:22.534Z</lastmod>
   </url>
   <url>
-    <loc>https://matthewbjane.com/blog-posts/blog-post-5.html</loc>
-    <lastmod>2023-11-07T05:48:18.120Z</lastmod>
+    <loc>https://matthewbjane.com/index.html</loc>
+    <lastmod>2023-11-07T07:17:22.837Z</lastmod>
+  </url>
+  <url>
+    <loc>https://matthewbjane.com/blog-posts/blog-post-2.html</loc>
+    <lastmod>2023-11-07T07:17:25.018Z</lastmod>
+  </url>
+  <url>
+    <loc>https://matthewbjane.com/blog-posts/blog-post-3.html</loc>
+    <lastmod>2023-11-07T07:17:26.232Z</lastmod>
+  </url>
+  <url>
+    <loc>https://matthewbjane.com/blog-posts/blog-post-1.html</loc>
+    <lastmod>2023-11-07T07:17:27.379Z</lastmod>
+  </url>
+  <url>
+    <loc>https://matthewbjane.com/blog-posts/blog-post-4.html</loc>
+    <lastmod>2023-11-07T07:17:35.891Z</lastmod>
+  </url>
+  <url>
+    <loc>https://matthewbjane.com/Software.html</loc>
+    <lastmod>2023-11-07T07:17:36.209Z</lastmod>
+  </url>
+  <url>
+    <loc>https://matthewbjane.com/CV.html</loc>
+    <lastmod>2023-11-07T07:17:36.648Z</lastmod>
+  </url>
+  <url>
+    <loc>https://matthewbjane.com/ArtifactCorrections.html</loc>
+    <lastmod>2023-11-07T07:17:38.641Z</lastmod>
+  </url>
+  <url>
+    <loc>https://matthewbjane.com/blog.html</loc>
+    <lastmod>2023-11-07T07:17:39.406Z</lastmod>
   </url>
 </urlset>
