@@ -21,8 +21,10 @@ format:
 mainfont: Asap
 sansfont: Asap
 ---
-<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="matthewbjane" data-color="#ED5C9B" data-emoji="☕" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#f1f9fa" data-font-color="#f1f9fa" data-coffee-color="#FFDD00" ></script>
 
+```{=html}
+<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="matthewbjane" data-color="#ED5C9B" data-emoji="☕" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#f1f9fa" data-font-color="#f1f9fa" data-coffee-color="#FFDD00" ></script>
+```
 ## Step 1: Obtain the necessary statistics
 
 In order to calculate the pre/post correlation ($r$), we need the standard deviation (SD) of pre-test scores ($SD_{pre}$), the SD of post-test scores ($SD_{post}$), the mean change ($M_{change}$), the paired t-statistic ($t$), the sample size ($N$). In this blog post, we are assuming that the change score standard deviation ($SD_{change}$) is unavailable to us. If the pre-test SD is available, but the post-test SD is unavailable, you can approximate the post-test SD by, first, taking average ratio of the pre-test SD and post-test SD from $k$ studies in the current meta-analysis ($\overline{SD}_{ratio}$; see the blog post on 9/8/2023), then we can approximate the post-test SD by multiplying the pre-test SD by the average SD ratio,

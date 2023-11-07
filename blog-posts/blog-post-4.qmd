@@ -4,15 +4,15 @@ author: "Matthew B. Jané"
 image: "blog-image.png"
 image-height: "5%"
 code-fold: true
-date: 2023-09-13
+date: 2023-11-06
 description: "In this post we will discuss how squared effect sizes such as $\\eta^2$ and $R^2$ are distributed and the implications of this when conducting a meta-analysis"
 categories:
   - sampling error
   - artifacts
 
-title-meta: "Calculating Pre/Post Correlation from a Paired T-Test"
+title-meta: "Sampling Distributions of Squared Effect Sizes and their Implication for Meta-Analysis"
 author-meta: "Matthew B. Jané"
-date-meta: 2023-09-13
+date-meta: 2023-11-06
 image-meta: "blog-image.png"
 format:
   html:
@@ -48,6 +48,7 @@ $$
 
 The squared effect sizes is now no longer an unbiased estimate of theta. The bias in $h_i^2$ can be seen by taking the expected value of both sides (note that the $\text{Var}(e_i)$ is the sampling error variance and $\mathbb{E}[\cdot]$ is the expected value or the mean across repeated samples):
 
+```{=tex}
 \begin{align}
 \mathbb{E}[h^2_i] & = \mathbb{E}[\theta^2 + 2\theta e_i + e_i^2] \\[.5em]
                 & = \theta^2 + 2\theta \times \mathbb{E}[e_i] + \mathbb{E}[e^2_i]\\[.5em]
@@ -55,8 +56,7 @@ The squared effect sizes is now no longer an unbiased estimate of theta. The bia
                 & = \theta^2 + \left(\text{Var}[e_i] + \mathbb{E}[e_i]^2\right) \\[.5em]
                 & = \theta^2 + \text{Var}[e_i] \\
 \end{align}
-
-
+```
 Since the sampling error variance is always positive (unless the sample size was infinite...), there will be a positive bias in expected value of $h_i^2$. It is important to note that the variance in sampling error (i.e., $\text{Var}(e_i)$) will be larger with smaller sample sizes.
 
 ## Simulated Example
@@ -158,7 +158,6 @@ ggplot(data=NULL, aes(N,R2)) +
 ## Conclusion
 
 In a meta-analysis, it is always best to use directional effect sizes that can be both positive and negative such as Cohen's $d$'s or Pearson correlations. There are other strategies for meta-analyzing $R^2$ values such as using individual person data meta-analysis (using the raw data for each study) or meta-analyzing the correlation matrix between predictors and outcomes first and then running the regression model on the meta-analytic correlation matrix (this would not allow for non-linear terms though). If it is necessary to meta-analyze $R^2$ you will want to use the adjusted $R^2$ value. See the plot below that shows the adjusted $R^2$ across different sample sizes
-
 
 ```{r,collapse=TRUE, dev.args=list(bg="transparent"),warning=FALSE}
 set.seed(343)

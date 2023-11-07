@@ -1,0 +1,74 @@
+
+# Consulting 
+
+::: {.grid}
+
+::: {.g-col-5}
+
+![](https://psychology.uconn.edu/wp-content/uploads/sites/3504/2022/05/Matthew-Jane.jpeg)
+
+{{< fa envelope >}} consulting@matthewbjane.com
+
+:::
+
+::: {.g-col-7}
+I provide a wide range of comprehensive consulting services that cover various aspects of statistics, programming, data visualization, and open and reproducible science. Whether you're working on research projects, data analysis, or striving to make your work more transparent and accessible, I'm here to support you at every step of the way.
+
+If you're interested in learning more about how I can assist with your projects or if you have questions or require advice, please don't hesitate to reach out. I offer a free 20-minute consultation to discuss your specific needs and determine how I can best support you. To schedule this consultation, feel free to contact me at consulting@matthewbjane.com. I'm here to help you achieve your research and data-related goals and look forward to connecting with you soon.
+:::
+
+:::
+
+
+
+## Stats, Data, and Open Science Services
+
+I'm pleased to offer a wide array of services designed to cater to a broad spectrum of needs, whether you're an academic or part of the industry. Here's a detailed list of the services I provide:
+
+- Meta-analysis
+- Data-analysis
+- Data cleaning and management
+- Statistical Modeling
+- Statistical Software
+- Psychometrics and Structural Equation Modeling
+- R Programming
+- Computationally Reproducible and Self-Contained Manuscripts
+- Academic Website Creation
+
+
+I've structured my pricing to accommodate different client types, ensuring a transparent and cost-effective approach. The current hourly rates are as follows:
+
+- Non-Academic (Industry): $150/hr
+- Academic: $100/hr
+- Graduate or Undergraduate Students: $80/hr
+
+
+## Data Visualization Services
+
+### Diagrams 
+
+High quality scientific diagrams used for academic publications, websites, slideshows, etc. The figure below provides an example of what you can anticipate when working with me. Each diagram I produce will be made available as a high-resolution PNG, JPEG, and SVG file. To ensure that your specific needs are met, you can either send me a detailed description of the desired diagram via email (consulting@matthewbjane.com), allowing me to create it accordingly or for a deeper understanding of your requirements, we can arrange a complimentary 20-minute virtual meeting to explore your project further. 
+
+||||
+|:-:|:--:|:--:|
+|Price per diagram| \$75 for academics/students |  \$110 for non-academics/industry | 
+
+: {.bordered}
+
+![](MetaAnalysisFigure 2.png){fig-width=50%}
+
+<hr>
+### Computationally Reproducible Figure Panels
+
+Figure panels that contain real or simulated data for will be produced in R. My service ensures that you not only receive the final visual representation, but also an R script containing the code for reproducing the figure, in addition to high-quality PNG or JPG image files. For your convenience, I've included examples of my work, showcasing both a two-panel figure (top) and a single-panel figure (bottom). I understand the importance of conveying the nuances of your data, and I offer two flexible options for this purpose. You can choose to provide a detailed description of the diagram in an email (consulting@matthewbjane.com), enabling me to tailor the figure to your specific needs. Alternatively, if you prefer a more interactive approach, we can arrange a complimentary 20-minute virtual meeting to discuss the details further.
+
+
+||||
+|:-:|:--:|:--:|
+|Price per diagram| \$100 for academics/students |  \$150 for non-academics/industry | 
+
+: {.bordered}
+
+![](unnamed-chunk-10-1 2.png)
+
+![](unnamed-chunk-6-1 5.png)

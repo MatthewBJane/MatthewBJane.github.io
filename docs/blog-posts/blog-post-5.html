@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Matthew B. Jané">
-<meta name="dcterms.date" content="2023-09-10">
-<meta name="description" content="Occasionally researchers report inter-quantile ranges (e.g., inter-quartile range) to measure the spread of the data. Since meta-analysts need standard deviations to calculate effect size estimates, here is a strategy to approximate them from an inter-quantile range.">
+<meta name="dcterms.date" content="2023-11-06">
+<meta name="description" content="In this post we will go over how to calculate a pre/post correlation from scores calculated as percent change. This is useful when pre/post correlations are not reported but the results are reported as percent change. Pre/post correlations are necessary to obtain various types of effect sizes and standard errors such as the repeated measures variant of Cohen’s d, also referred to as Cohen’s d_{rm}.">
 
-<title>Matthew B. Jané - Approximating Standard Deviation from Inter-Quantile Range</title>
+<title>Matthew B. Jané - Calculating Pre/Post Correlations from Percent Change</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -103,15 +103,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="Matthew B. Jané - Approximating Standard Deviation from Inter-Quantile Range">
-<meta property="og:description" content="Occasionally researchers report inter-quantile ranges (e.g., inter-quartile range) to measure the spread of the data. Since meta-analysts need standard deviations to calculate effect size estimates, here is a strategy to approximate them from an inter-quantile range.">
+<meta property="og:title" content="Matthew B. Jané - Calculating Pre/Post Correlations from Percent Change">
+<meta property="og:description" content="In this post we will go over how to calculate a pre/post correlation from scores calculated as percent change. This is useful when pre/post correlations are not reported but the results are reported as percent change. Pre/post correlations are necessary to obtain various types of effect sizes and standard errors such as the repeated measures variant of Cohen’s \(d\), also referred to as Cohen’s \(d_{rm}\).">
 <meta property="og:image" content="https://matthewbjane.com/blog-image.png">
 <meta property="og:site-name" content="Matthew B. Jané">
 <meta property="og:locale" content="en_US">
 <meta property="og:image:height" content="1872">
 <meta property="og:image:width" content="3381">
-<meta name="twitter:title" content="Matthew B. Jané - Approximating Standard Deviation from Inter-Quantile Range">
-<meta name="twitter:description" content="Occasionally researchers report inter-quantile ranges (e.g., inter-quartile range) to measure the spread of the data. Since meta-analysts need standard deviations to calculate effect size estimates, here is a strategy to approximate them from an inter-quantile range.">
+<meta name="twitter:title" content="Matthew B. Jané - Calculating Pre/Post Correlations from Percent Change">
+<meta name="twitter:description" content="In this post we will go over how to calculate a pre/post correlation from scores calculated as percent change. This is useful when pre/post correlations are not reported but the results are reported as percent change. Pre/post correlations are necessary to obtain various types of effect sizes and standard errors such as the repeated measures variant of Cohen’s \(d\), also referred to as Cohen’s \(d_{rm}\).">
 <meta name="twitter:image" content="https://matthewbjane.com/blog-image.png">
 <meta name="twitter:creator" content="@MatthewBJane">
 <meta name="twitter:image-height" content="1872">
@@ -192,12 +192,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#inter-quantile-range" id="toc-inter-quantile-range" class="nav-link active" data-scroll-target="#inter-quantile-range">Inter-Quantile Range</a></li>
-  <li><a href="#step-2-convert-iqr-to-standard-deviations" id="toc-step-2-convert-iqr-to-standard-deviations" class="nav-link" data-scroll-target="#step-2-convert-iqr-to-standard-deviations">Step 2: Convert IQR to Standard Deviations</a></li>
-  <li><a href="#note-the-assumptions" id="toc-note-the-assumptions" class="nav-link" data-scroll-target="#note-the-assumptions">Note the Assumptions!</a>
-  <ul class="collapse">
-  <li><a href="#applying-it-to-simulated-data" id="toc-applying-it-to-simulated-data" class="nav-link" data-scroll-target="#applying-it-to-simulated-data">Applying it to simulated data</a></li>
-  </ul></li>
+  <li><a href="#step-1-obtain-the-necessary-statistics" id="toc-step-1-obtain-the-necessary-statistics" class="nav-link active" data-scroll-target="#step-1-obtain-the-necessary-statistics">Step 1: Obtain the necessary statistics</a></li>
+  <li><a href="#step-2-calculate-the-prepost-correlation" id="toc-step-2-calculate-the-prepost-correlation" class="nav-link" data-scroll-target="#step-2-calculate-the-prepost-correlation">Step 2: Calculate the Pre/Post Correlation</a></li>
+  <li><a href="#applying-it-to-a-simulated-dataset" id="toc-applying-it-to-a-simulated-dataset" class="nav-link" data-scroll-target="#applying-it-to-a-simulated-dataset">Applying it to a simulated dataset</a></li>
   </ul>
 </nav>
     </div>
@@ -206,16 +203,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Approximating Standard Deviation from Inter-Quantile Range</h1>
+<h1 class="title">Calculating Pre/Post Correlations from Percent Change</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">standard deviations</div>
-    <div class="quarto-category">approximations</div>
+    <div class="quarto-category">repeated measures</div>
+    <div class="quarto-category">pre/post correlations</div>
+    <div class="quarto-category">percent change</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    Occasionally researchers report inter-quantile ranges (e.g., inter-quartile range) to measure the spread of the data. Since meta-analysts need standard deviations to calculate effect size estimates, here is a strategy to approximate them from an inter-quantile range.
+    In this post we will go over how to calculate a pre/post correlation from scores calculated as percent change. This is useful when pre/post correlations are not reported but the results are reported as percent change. Pre/post correlations are necessary to obtain various types of effect sizes and standard errors such as the repeated measures variant of Cohen’s <span class="math inline">\(d\)</span>, also referred to as Cohen’s <span class="math inline">\(d_{rm}\)</span>.
   </div>
 </div>
 
@@ -232,7 +230,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 10, 2023</p>
+      <p class="date">September 13, 2023</p>
     </div>
   </div>
   
@@ -243,94 +241,112 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="matthewbjane" data-color="#ED5C9B" data-emoji="☕" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#f1f9fa" data-font-color="#f1f9fa" data-coffee-color="#FFDD00"></script>
-<section id="inter-quantile-range" class="level3">
-<h3 class="anchored" data-anchor-id="inter-quantile-range">Inter-Quantile Range</h3>
-<p>Studies may report inter-quantile ranges in order to communicate the spread of the data. However, meta-analysts will need standard deviations (SD) to calculate effect size estimates such as standardized mean differences (i.e., Cohen’s <span class="math inline">\(d\)</span>). For this post, we will focus on the inter-<em>quartile</em> range (IQR) although the method described here will apply to any range between a pair of quantiles. The IQR (<span class="math inline">\(X_{(75-25)}\)</span>) is defined as the difference between the 75th and 25th quantile values, that is, the region where 50% of the data lies. We can visualize what this will look like with normally distributed data:</p>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="blog-post-2_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>Now let’s compare the range of values covered by +/- 1 SDs of a normal distribution:</p>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="blog-post-2_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>The range covered by <span class="math inline">\(\pm 1\)</span> SD covers a considerably larger range of values than the IQR.</p>
-</section>
-<section id="step-2-convert-iqr-to-standard-deviations" class="level3">
-<h3 class="anchored" data-anchor-id="step-2-convert-iqr-to-standard-deviations">Step 2: Convert IQR to Standard Deviations</h3>
-<p>The quantile function (<span class="math inline">\(\phi^{-1}\)</span>) of the standard normal distribution (i.e., mean=0, SD=1) converts quantiles of the cumulative density function into the corresponding values in standard deviation units. The difference between the corresponding values will give us the IQR in SD units,</p>
+<section id="step-1-obtain-the-necessary-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-obtain-the-necessary-statistics">Step 1: Obtain the necessary statistics</h2>
+<p>In order to calculate the pre/post correlation (<span class="math inline">\(r\)</span>), we need the standard deviation (SD) of pre-test scores (<span class="math inline">\(SD_{pre}\)</span>), the SD of post-test scores (<span class="math inline">\(SD_{post}\)</span>), the mean change (<span class="math inline">\(M_{change}\)</span>), the paired t-statistic (<span class="math inline">\(t\)</span>), the sample size (<span class="math inline">\(N\)</span>). In this blog post, we are assuming that the change score standard deviation (<span class="math inline">\(SD_{change}\)</span>) is unavailable to us. If the pre-test SD is available, but the post-test SD is unavailable, you can approximate the post-test SD by, first, taking average ratio of the pre-test SD and post-test SD from <span class="math inline">\(k\)</span> studies in the current meta-analysis (<span class="math inline">\(\overline{SD}_{ratio}\)</span>; see the blog post on 9/8/2023), then we can approximate the post-test SD by multiplying the pre-test SD by the average SD ratio,</p>
 <p><span class="math display">\[
-S_{(75-25)} = \phi^{-1}(.75) - \phi^{-1}(.25)
-\]</span> The resulting value is <span class="math inline">\(S_{(75-25)}=1.34898\)</span>. It is important to note that this formulation can be used for any set of quantiles not just IQR, therefore we can generalized this to compare any arbitrary pair of quantiles (<span class="math inline">\(Q1,Q2\)</span>),</p>
-<p><span class="math display">\[
-S_{(Q_2-Q_1)} = \phi^{-1}(Q_2) - \phi^{-1}(Q_1)
+SD_{post}\approx \bar{SD}_{ratio}\times SD_{pre}
 \]</span></p>
-<p>Now that we have the IQR in terms of SD units, we can divide with the raw IQR to obtain an estimate of the SD of <span class="math inline">\(X\)</span> (<span class="math inline">\(S_X\)</span>),</p>
+<p>A rougher approximation would be to simply set the pre-test SD and post-test SD to be equal. If the study reports an F-statistic from a one-way repeated measures ANOVA, the F-statistic is equal to the square of the t-statistic,</p>
 <p><span class="math display">\[
-S_X =  \frac{X_{(75-25)}}{S_{(75-25)}} = \frac{X_{(75-25)}}{1.34898}
+t = \sqrt{F}
 \]</span></p>
+<p>Ensure that you apply the correct sign (negative or positive) to the t-statistic, since the F-statistic is always positive.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define IQR</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>X_25 <span class="ot">&lt;-</span> <span class="dv">30</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>X_75 <span class="ot">&lt;-</span> <span class="dv">50</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>X_75_25 <span class="ot">&lt;-</span> X_75 <span class="sc">-</span> X_25</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute IQR in SDs</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>S_75_25 <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(.<span class="dv">75</span>) <span class="sc">-</span> <span class="fu">qnorm</span>(.<span class="dv">25</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate standard deviation</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>S_X <span class="ot">&lt;-</span>  X_75_25 <span class="sc">/</span> S_75_25</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">#print results</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(S_X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 14.82602</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtain values</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>M_change <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>SD_post <span class="ot">&lt;-</span> <span class="dv">11</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>SD_pre <span class="ot">&lt;-</span> <span class="dv">9</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fl">2.50</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">50</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="note-the-assumptions" class="level2">
-<h2 class="anchored" data-anchor-id="note-the-assumptions">Note the Assumptions!</h2>
-<p>Since this method provides an approximation of a normal distribution it is important to point out that the method may be biased under different distributions. For example, if we try the same method on a Student’s t distribution with heavy tails (3.5 degrees of freedom), <span class="math inline">\(S_{(75-25)}\)</span> would be equal to 1.50187 which is slightly larger than 1.34898 that we computed from the normal distribution. If we were to assume a normal distribution when it was truly a student’s t, the method would over-estimate the standard deviation by ~11%.</p>
+<section id="step-2-calculate-the-prepost-correlation" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-calculate-the-prepost-correlation">Step 2: Calculate the Pre/Post Correlation</h2>
+<p>Lets start by figuring out how to find the change score SD. The paired t-statistic is defined as the mean change score divided by the standard error of change scores, such that, <span class="math display">\[
+t = \frac{M_{change}}{SE_{change}}
+\]</span> Since we need the change score SD, we can use the definition of the standard error of the mean to put the t-statistic in terms of <span class="math inline">\(SD_{change}\)</span>: <span class="math display">\[
+SE_{change}=\frac{SD_{change}}{\sqrt{N}}
+\]</span> and therefore <span class="math inline">\(t\)</span> can be expressed as,</p>
+<p><span class="math display">\[
+t=\frac{M_{change}}{\left(\frac{SD_{change}}{\sqrt{N}}\right)}
+\]</span></p>
+<p>then we just need to solve for <span class="math inline">\(SD_{change}\)</span>:</p>
+<p><span class="math display">\[
+SD_{change}=\frac{M_{change}\times\sqrt{N}}{t}
+\]</span></p>
+<p>Okay so now let us recall the definition of change score SDs from the blog post on 9/8/2023. In that blog we discussed how to obtain the pre/post correlation from the change score SD, now that we have converted <span class="math inline">\(t\)</span> to <span class="math inline">\(SD_{change}\)</span>, we can solve for the correlation in a similar way. First things first, the change score SD can be defined as, <span class="math display">\[
+SD_{change} = \sqrt{SD^2_{pre} + SD^2_{post} - 2\times r\times SD_{pre}SD_{post}}
+\]</span></p>
+<p>We can re-arrange this to isolate the pre/post correlation (<span class="math inline">\(r\)</span>),</p>
+<p><span class="math display">\[
+r = \frac{SD^2_{pre} + SD^2_{post} - SD^2_{change}}{2 \times SD_{pre}\times SD_{post}}
+\]</span></p>
+<p>In our case, the study did not report the change score SD, therefore we can replace it with our derived <span class="math inline">\(SD_{change}\)</span> from a paired t-test:</p>
+<p><span class="math display">\[
+r = \frac{SD^2_{pre} + SD^2_{post} - \left(\frac{M_{change}\times\sqrt{N}}{t}\right) ^2}{2 \times SD_{pre}\times SD_{post}}
+\]</span> Lets neaten this formulation up a tad:</p>
+<p><span class="math display">\[
+r = \frac{t^2\left(SD^2_{pre} + SD^2_{post}\right) - N\times M^2_{change} }{2 \times t^2 \times SD_{pre}\times SD_{post} }
+\]</span></p>
+<p>Isn’t that just a beautiful thing?? So there you have it! the full equation for the pre/post correlation from a paired t-test! Note that this is a direct conversion and not merely an approximation.</p>
 <div class="cell">
-<div class="cell-output-display">
-<p><img src="blog-post-2_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<section id="applying-it-to-simulated-data" class="level3">
-<h3 class="anchored" data-anchor-id="applying-it-to-simulated-data">Applying it to simulated data</h3>
-<p>Lets see how it performs in simulated sample of normally distributed data… Close enough!!</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set seed</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">343</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate normal data (Mean = 10, SD = 5)</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">100</span>,<span class="dv">10</span>,<span class="dv">5</span>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define IQR</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>q25 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">quantile</span>(X,.<span class="dv">25</span>))</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>q75 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">quantile</span>(X,.<span class="dv">75</span>))</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>X_75_25 <span class="ot">&lt;-</span> q75 <span class="sc">-</span> q25</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute IQR in SD units</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>S_75_25 <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(.<span class="dv">75</span>) <span class="sc">-</span> <span class="fu">qnorm</span>(.<span class="dv">25</span>)</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate standard deviation</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>S_X <span class="ot">&lt;-</span>  X_75_25 <span class="sc">/</span> S_75_25</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(S_X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate pre/post correlation</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> (t<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>(SD_pre<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> SD_post<span class="sc">^</span><span class="dv">2</span>) <span class="sc">-</span> N <span class="sc">*</span> M_change<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (<span class="dv">2</span><span class="sc">*</span>t<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>SD_pre<span class="sc">*</span>SD_post)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">'r = '</span>,<span class="fu">round</span>(r,<span class="dv">3</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4.706901</code></pre>
+<pre><code>[1] "r = 0.657"</code></pre>
+</div>
+</div>
+</section>
+<section id="applying-it-to-a-simulated-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="applying-it-to-a-simulated-dataset">Applying it to a simulated dataset</h2>
+<p>We can simulate correlated pre/post scores from a bivariate Gaussian with known parameters. The calculated correlation is exactly correct!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages('MASS')</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define parameters</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>SD_pre <span class="ot">&lt;-</span> <span class="dv">9</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>SD_post <span class="ot">&lt;-</span> <span class="dv">11</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>r_true <span class="ot">&lt;-</span> .<span class="dv">70</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>M_pre <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>M_post <span class="ot">&lt;-</span> <span class="dv">25</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate correlated pre/post scores from bivariate gaussian</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">mvrnorm</span>(<span class="at">n=</span>N,</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>               <span class="at">mu=</span><span class="fu">c</span>(M_pre,M_post),</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>               <span class="at">Sigma =</span> <span class="fu">data.frame</span>(<span class="at">x=</span><span class="fu">c</span>(SD_pre<span class="sc">^</span><span class="dv">2</span>,r_true<span class="sc">*</span>SD_pre<span class="sc">*</span>SD_post),</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">y=</span><span class="fu">c</span>(r_true<span class="sc">*</span>SD_pre<span class="sc">*</span>SD_post,SD_post<span class="sc">^</span><span class="dv">2</span>)),</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>               <span class="at">empirical =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtain simulated scores</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>x_pre <span class="ot">&lt;-</span> data[,<span class="dv">1</span>] <span class="co"># Pre-test scores</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>x_post <span class="ot">&lt;-</span> data[,<span class="dv">2</span>] <span class="co"># Post-test scores</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>x_change <span class="ot">&lt;-</span> x_post<span class="sc">/</span>x_pre <span class="co"># Calculate percent change</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate standard deviations, t-stats, and mean change</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>SD_pre <span class="ot">&lt;-</span> <span class="fu">sd</span>(x_pre)</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>SD_post <span class="ot">&lt;-</span> <span class="fu">sd</span>(x_post)</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">mean</span>(x_change) <span class="sc">/</span> (<span class="fu">sd</span>(x_change)<span class="sc">/</span><span class="fu">sqrt</span>(N))</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>M_change <span class="ot">&lt;-</span> <span class="fu">mean</span>(x_change)</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate pre/post correlation</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> (t<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>(SD_pre<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> SD_post<span class="sc">^</span><span class="dv">2</span>) <span class="sc">-</span> N <span class="sc">*</span> M_change<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (<span class="dv">2</span><span class="sc">*</span>t<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>SD_pre<span class="sc">*</span>SD_post)</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="co"># print results</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">'r = '</span>,r))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "r = -1.02654620113803"</code></pre>
 </div>
 </div>
 <iframe src="https://embeds.beehiiv.com/f3ffd81a-4723-4419-bb1d-afc8af3bac36" data-test-id="beehiiv-embed" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius: 4px; border: 2px solid #e5e7eb; margin: 0; background-color: transparent;">
 </iframe>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

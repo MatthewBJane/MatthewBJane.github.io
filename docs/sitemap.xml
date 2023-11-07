@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://matthewbjane.com/Books.html</loc>
-    <lastmod>2023-11-06T16:41:03.445Z</lastmod>
+    <lastmod>2023-11-07T05:48:04.726Z</lastmod>
   </url>
   <url>
     <loc>https://matthewbjane.com/index.html</loc>
@@ -10,11 +10,11 @@
   </url>
   <url>
     <loc>https://matthewbjane.com/blog-posts/blog-post-2.html</loc>
-    <lastmod>2023-11-05T20:01:25.618Z</lastmod>
+    <lastmod>2023-11-07T05:48:07.148Z</lastmod>
   </url>
   <url>
     <loc>https://matthewbjane.com/blog-posts/blog-post-3.html</loc>
-    <lastmod>2023-11-05T20:01:26.796Z</lastmod>
+    <lastmod>2023-11-07T05:48:08.341Z</lastmod>
   </url>
   <url>
     <loc>https://matthewbjane.com/blog-posts/blog-post-1.html</loc>
@@ -22,15 +22,15 @@
   </url>
   <url>
     <loc>https://matthewbjane.com/blog-posts/blog-post-4.html</loc>
-    <lastmod>2023-11-06T20:07:57.828Z</lastmod>
+    <lastmod>2023-11-07T05:48:16.926Z</lastmod>
   </url>
   <url>
     <loc>https://matthewbjane.com/Software.html</loc>
-    <lastmod>2023-11-06T16:41:45.295Z</lastmod>
+    <lastmod>2023-11-07T05:48:18.461Z</lastmod>
   </url>
   <url>
     <loc>https://matthewbjane.com/CV.html</loc>
-    <lastmod>2023-11-05T20:01:35.965Z</lastmod>
+    <lastmod>2023-11-07T05:48:18.888Z</lastmod>
   </url>
   <url>
     <loc>https://matthewbjane.com/ArtifactCorrections.html</loc>
@@ -38,6 +38,14 @@
   </url>
   <url>
     <loc>https://matthewbjane.com/blog.html</loc>
-    <lastmod>2023-11-06T20:07:58.632Z</lastmod>
+    <lastmod>2023-11-07T05:48:19.885Z</lastmod>
+  </url>
+  <url>
+    <loc>https://matthewbjane.com/Consulting.html</loc>
+    <lastmod>2023-11-07T07:11:35.295Z</lastmod>
+  </url>
+  <url>
+    <loc>https://matthewbjane.com/blog-posts/blog-post-5.html</loc>
+    <lastmod>2023-11-07T05:48:18.120Z</lastmod>
   </url>
 </urlset>

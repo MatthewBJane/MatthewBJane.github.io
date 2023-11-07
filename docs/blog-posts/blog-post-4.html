@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Matthew B. Jané">
-<meta name="dcterms.date" content="2023-09-13">
+<meta name="dcterms.date" content="2023-11-06">
 <meta name="description" content="In this post we will discuss how squared effect sizes such as \eta^2 and R^2 are distributed and the implications of this when conducting a meta-analysis">
 
 <title>Matthew B. Jané - Sampling Distributions of Squared Effect Sizes and their Implication for Meta-Analysis</title>
@@ -248,7 +248,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 13, 2023</p>
+      <p class="date">November 6, 2023</p>
     </div>
   </div>
   
@@ -274,13 +274,13 @@ h^2_i = (\theta + e_i)^2
 h^2_i = \theta^2 + 2\theta e_i + e_i^2
 \]</span></p>
 <p>The squared effect sizes is now no longer an unbiased estimate of theta. The bias in <span class="math inline">\(h_i^2\)</span> can be seen by taking the expected value of both sides (note that the <span class="math inline">\(\text{Var}(e_i)\)</span> is the sampling error variance and <span class="math inline">\(\mathbb{E}[\cdot]\)</span> is the expected value or the mean across repeated samples):</p>
-<p><span class="math display">\[\begin{align}
+<span class="math display">\[\begin{align}
 \mathbb{E}[h^2_i] &amp; = \mathbb{E}[\theta^2 + 2\theta e_i + e_i^2] \\[.5em]
                 &amp; = \theta^2 + 2\theta \times \mathbb{E}[e_i] + \mathbb{E}[e^2_i]\\[.5em]
                 &amp; = \theta^2 + \mathbb{E}[e_i^2] \\[.5em]
                 &amp; = \theta^2 + \left(\text{Var}[e_i] + \mathbb{E}[e_i]^2\right) \\[.5em]
                 &amp; = \theta^2 + \text{Var}[e_i] \\
-\end{align}\]</span></p>
+\end{align}\]</span>
 <p>Since the sampling error variance is always positive (unless the sample size was infinite…), there will be a positive bias in expected value of <span class="math inline">\(h_i^2\)</span>. It is important to note that the variance in sampling error (i.e., <span class="math inline">\(\text{Var}(e_i)\)</span>) will be larger with smaller sample sizes.</p>
 </section>
 <section id="simulated-example" class="level2">
