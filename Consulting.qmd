@@ -42,6 +42,7 @@ I've structured my pricing to accommodate different client types, ensuring a tra
 - Academic: $100/hr
 - Graduate or Undergraduate Students: $80/hr
 
+Pricing can also be done by project rather than hourly. However per-project pricing is not fixed and will largely depend on the scale of the project.
 
 ## Data Visualization Services
 
