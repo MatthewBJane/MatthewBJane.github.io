@@ -50,9 +50,8 @@ Pricing can also be done by project rather than hourly. However per-project pric
 
 High quality scientific diagrams used for academic publications, websites, slideshows, etc. The figure below provides an example of what you can anticipate when working with me. Each diagram I produce will be made available as a high-resolution PNG, JPEG, and SVG file. To ensure that your specific needs are met, you can either send me a detailed description of the desired diagram via email (consulting@matthewbjane.com), allowing me to create it accordingly or for a deeper understanding of your requirements, we can arrange a complimentary 20-minute virtual meeting to explore your project further. 
 
-||||
-|:-:|:--:|:--:|
 |Price per diagram| \$75 for academics/students |  \$110 for non-academics/industry | 
+|:-:|:--:|:--:|
 
 : {.bordered}
 
@@ -63,10 +62,8 @@ High quality scientific diagrams used for academic publications, websites, slide
 
 Figure panels that contain real or simulated data for will be produced in R. My service ensures that you not only receive the final visual representation, but also an R script containing the code for reproducing the figure, in addition to high-quality PNG or JPG image files. For your convenience, I've included examples of my work, showcasing both a two-panel figure (top) and a single-panel figure (bottom). I understand the importance of conveying the nuances of your data, and I offer two flexible options for this purpose. You can choose to provide a detailed description of the diagram in an email (consulting@matthewbjane.com), enabling me to tailor the figure to your specific needs. Alternatively, if you prefer a more interactive approach, we can arrange a complimentary 20-minute virtual meeting to discuss the details further.
 
-
-||||
+|Price per panel| \$100 for academics/students |  \$150 for non-academics/industry | 
 |:-:|:--:|:--:|
-|Price per diagram| \$100 for academics/students |  \$150 for non-academics/industry | 
 
 : {.bordered}
 
