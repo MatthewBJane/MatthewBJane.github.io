@@ -33,7 +33,6 @@ I'm pleased to offer a wide array of services designed to cater to a broad spect
 - Psychometrics and Structural Equation Modeling
 - R Programming
 - Computationally Reproducible and Self-Contained Manuscripts
-- Academic Website Creation
 
 
 I've structured my pricing to accommodate different client types, ensuring a transparent and cost-effective approach. The current hourly rates are as follows:
