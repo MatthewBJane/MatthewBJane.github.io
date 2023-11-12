@@ -40,8 +40,8 @@ I've structured my pricing to accommodate different client types, ensuring a tra
 |Client Type| Rate |
 |:---|:--:|
 |Non-Academic (Industry)|$150/hr|
-|Academic|$100/hr|
-|Student|$80/hr|
+|Academic|$130/hr|
+|Student|$90/hr|
 
 : {.hover}
 
@@ -66,8 +66,8 @@ Stand-alone diagrams are used as visual representations of a scientific concept.
 
 |Client Type| Rate |
 |:---|:--:|
-|Non-Academic (Industry)|$110/diagram|
-|Academic|$80/diagram|
+|Non-Academic (Industry)|$150/diagram|
+|Academic|$120/diagram|
 |Student|$80/diagram|
 
 : {.hover}
@@ -82,7 +82,7 @@ I can also help you generate figure panels that contain real or simulated data. 
 |Client Type| Rate |
 |:---|:--:|
 |Non-Academic (Industry)|$150/panel|
-|Academic|$100/panel|
+|Academic|$130/panel|
 |Student|$100/panel|
 
 : {.hover}
