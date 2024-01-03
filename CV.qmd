@@ -44,9 +44,9 @@ Current PhD student interested in developing statistical methods and software fo
 
 ## <i class="fa-solid fa-book"></i> Textbooks
 
-- Jané, Matthew B. (2023) **Artifact Corrections for Effect Sizes: Applications Meta-Analysis and Implementation in R**, *by Matthew B. Jané*. An open-source book for correcting bias in effect size estimates contaminated by statistical artifacts. [https://matthewbjane.quarto.pub/artifact-corrections-for-effect-sizes/](https://matthewbjane.quarto.pub/artifact-corrections-for-effect-sizes/)
+-   Jané, Matthew B. (2023) **Artifact Corrections for Effect Sizes: Applications Meta-Analysis and Implementation in R**. An open-source book for correcting bias in effect size estimates contaminated by statistical artifacts. <https://matthewbjane.quarto.pub/artifact-corrections-for-effect-sizes/>
 
-- Jané, M. B., Xiao, Q., Yeung, S. K., Caldwell, A. R., Dunleavy, D. J., ... (2023) **Guide to Effect Sizes and Confidence Intervals**, *by Matthew B. Jané*. A collaborative guide to calculating, interpreting, and reporting effect sizes and confidence intervals. Contains examples in R. [https://matthewbjane.quarto.pub/effect-size-and-confidence-intervals-guide/](https://matthewbjane.quarto.pub/effect-size-and-confidence-intervals-guide/)
+-   Jané, M. B., Xiao, Q., Yeung, S. K., Caldwell, A. R., Dunleavy, D. J., ... (2023) **Guide to Effect Sizes and Confidence Intervals**. A collaborative guide to calculating, interpreting, and reporting effect sizes and confidence intervals. Contains examples in R. <https://matthewbjane.quarto.pub/effect-size-and-confidence-intervals-guide/>
 
 ## <i class="fa-solid fa-code"></i> Software
 
@@ -136,5 +136,6 @@ Harlow\*, T. J., **Jané\*, M. B.**, Read, H. L., & Chrobak, J. J. (2023). Memor
 
 <hr width="10%">
 
-
+```{=html}
 <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="matthewbjane" data-description="Support me on Buy me a coffee!" data-message="" data-color="#f1f9fa" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+```

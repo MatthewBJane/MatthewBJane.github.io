@@ -1,23 +1,26 @@
 ---
 title: 'Books'
 ---
-<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="matthewbjane" data-color="#ED5C9B" data-emoji="☕" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#f1f9fa" data-font-color="#f1f9fa" data-coffee-color="#FFDD00" ></script>
+
+```{=html}
+<a href="https://www.buymeacoffee.com/matthewbjane"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=matthewbjane&button_colour=ed5c9b&font_colour=ffffff&font_family=Arial&outline_colour=ffffff&coffee_colour=ffffff" /></a>
+```
 <br>
 
 ```{=html}
 <div class="card mb-1">
-  <a href="https://matthewbjane.quarto.pub/effect-size-and-confidence-intervals-guide/">
+  <a href="https://matthewbjane.quarto.pub/guide-to-effect-sizes-and-confidence-intervals/">
     <img class="card-img-bottom" src="ES-book.png" alt="Book Cover" aria-label="Book Cover" focusable="false" role="img" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
     </a>
   </png>
   <div class="card-body">
-    <h1 class="card-title">Guide to Effect Sizes and Confidence Intervals</h1>     <h5 class="text-muted"> 2023</h5>
-    <h5 class="text-muted"> Authors: <b>Jané</b>, Xiao, Yeung, Röseler, Caldwell, Cousineau, Elsherif, Johnson, Moreau, Vieira, Zloteanu, Feldman</h5>
-    <a href="https://matthewbjane.quarto.pub/effect-size-and-confidence-intervals-guide/" class="button">Go to book</a>
+    <h1 class="card-title">Guide to Effect Sizes and Confidence Intervals</h1>     <h5 class="text-muted"> 2024</h5>
+    <a href="https://matthewbjane.quarto.pub/guide-to-effect-sizes-and-confidence-intervals/" class="button">Go to book</a>
   </div>
 </div>
 ```
 <br>
+
 ```{=html}
 <div class="card mb-1">
   <a href="#">
@@ -26,12 +29,11 @@ title: 'Books'
   </png>
   <div class="card-body">
     <h1 class="card-title">Artifact Corrections for Effect Sizes</h1>
-    <h5 class="text-muted"> Coming December 2023</h5>
-    <h5 class="text-muted">Authors: Jané</h5>
+    <h5 class="text-muted"> Coming 2024</h5>
     <a href="#" class="button">Coming Soon!</a>
   </div>
 </div>
 ```
-
-
+```{=html}
 <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="matthewbjane" data-description="Support me on Buy me a coffee!" data-message="" data-color="#ED5C9B" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+```

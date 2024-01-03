@@ -42,6 +42,11 @@ $success: #3AA6B9;
     color: #17424a;
 }
 
+.blockquote>:last-child {
+    margin-bottom: 0;
+    color: dimgrey;
+}
+
 .btn-secondary {
     color: #ebf6f8;
     background-color: #ed5c9b;

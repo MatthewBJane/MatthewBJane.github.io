@@ -20,8 +20,10 @@ format:
 mainfont: Asap
 sansfont: Asap
 ---
-<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="matthewbjane" data-color="#ED5C9B" data-emoji="☕" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#f1f9fa" data-font-color="#f1f9fa" data-coffee-color="#FFDD00" ></script>
 
+```{=html}
+<a href="https://www.buymeacoffee.com/matthewbjane"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=matthewbjane&button_colour=ed5c9b&font_colour=ffffff&font_family=Arial&outline_colour=ffffff&coffee_colour=ffffff" /></a>
+```
 ## Step 1: Obtain Pre-test, Post-test, and Change score standard deviations
 
 In order to calculate the pre/post correlation ($r$), we need an estimate of the standard deviation (SD) of pre-test scores ($S_{pre}$), the SD of post-test scores ($S_{post}$), and the SD of change scores ($S_{change}$, where $x_{change}=x_{post}-x_{pre}$). If the post-test SD is unavailable, but the pre-test SD is available, you can approximate the post-test SD by, first, taking average ratio of the pre-test SD and post-test SD from $k$ studies in the current meta-analysis,
