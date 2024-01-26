@@ -83,10 +83,6 @@
 
 \KOMAoption{captions}{tableheading}
 \makeatletter
-\makeatother
-\makeatletter
-\makeatother
-\makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
 \ifdefined\contentsname
@@ -122,18 +118,10 @@
 \newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
 \makeatother
 \makeatletter
+\makeatother
+\makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
-\makeatother
-\makeatletter
-\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
-\makeatother
-\makeatletter
-\@ifundefined{shadecolor}{\definecolor{shadecolor}{rgb}{.97, .97, .97}}
-\makeatother
-\makeatletter
-\makeatother
-\makeatletter
 \makeatother
 \makeatletter
 \@ifpackageloaded{fontawesome5}{}{\usepackage{fontawesome5}}
@@ -141,7 +129,8 @@
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\usepackage{bookmark}
+
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
@@ -156,10 +145,8 @@
 \date{}
 
 \begin{document}
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, interior hidden, enhanced, sharp corners, breakable]}{\end{tcolorbox}}\fi
 
-\hypertarget{matthew-b.-januxe9}{%
-\section{Matthew B. Jané}\label{matthew-b.-januxe9}}
+\section{Matthew B. Jané}\label{matthew-b.-januxe9}
 
 \faIcon{globe} \href{https://www.matthewbjane.com}{MatthewBJane.com}
 \textbar{} \faIcon{envelope}
@@ -168,22 +155,17 @@
 \href{https://www.twitter.com/MatthewBJane}{@MatthewBJane} \textbar{}
 \faIcon{github} \href{https://www.github.io/MatthewBJane}{MatthewBJane}
 
-\hypertarget{bio}{%
-\subsection{\texorpdfstring{ Bio}{ Bio}}\label{bio}}
+\subsection{\texorpdfstring{ Bio}{ Bio}}\label{bio}
 
 Current PhD student interested in developing statistical methods and
 software for meta-analyses and primary studies. Specifically, my current
 research projects focus on correcting bias in effect size estimates
-caused by statistical artifacts (see my open-access textbook on the
-topic at
-\href{https://matthewbjane.quarto.pub}{matthewbjane.quarto.pub}). I am
-affiliated with the Systematic Health Action Research Program (SHARP) at
-the University of Connecticut where I am advised by Dr.~Blair T.
-Johnson. I am also on the editorial board for \emph{Psychological
-Bulletin} as a methodological reviewer.
+caused by statistical artifacts. I am affiliated with the Systematic
+Health Action Research Program (SHARP) at the University of Connecticut
+where I am advised by Dr.~Blair T. Johnson. I am also on the editorial
+board for \emph{Psychological Bulletin} as a methodological reviewer.
 
-\hypertarget{education}{%
-\subsection{\texorpdfstring{ Education}{ Education}}\label{education}}
+\subsection{\texorpdfstring{ Education}{ Education}}\label{education}
 
 \begin{itemize}
 \item
@@ -206,27 +188,22 @@ Bulletin} as a methodological reviewer.
   University of Connecticut, Storrs, Connecticut
 \end{itemize}
 
-\hypertarget{textbooks}{%
-\subsection{\texorpdfstring{ Textbooks}{ Textbooks}}\label{textbooks}}
+\subsection{\texorpdfstring{ Textbooks}{ Textbooks}}\label{textbooks}
 
 \begin{itemize}
 \item
-  Jané, Matthew B. (2023) \textbf{Artifact Corrections for Effect Sizes:
-  Applications Meta-Analysis and Implementation in R}. An open-source
-  book for correcting bias in effect size estimates contaminated by
-  statistical artifacts.
-  \url{https://matthewbjane.quarto.pub/artifact-corrections-for-effect-sizes/}
-\item
-  Jané, M. B., Xiao, Q., Yeung, S. K., Caldwell, A. R., Dunleavy, D. J.,
-  \ldots{} (2023) \textbf{Guide to Effect Sizes and Confidence
-  Intervals}. A collaborative guide to calculating, interpreting, and
-  reporting effect sizes and confidence intervals. Contains examples in
-  R.
+  \textbf{Jané, M. B.}, Xiao, Q., Yeung, S. K., Caldwell, A. R.,
+  Dunleavy, D. J., \ldots{} (2023) \textbf{\emph{Guide to Effect Sizes
+  and Confidence Intervals}}. A collaborative guide to calculating,
+  interpreting, and reporting effect sizes and confidence intervals.
   \url{https://matthewbjane.quarto.pub/effect-size-and-confidence-intervals-guide/}
+\item
+  \textbf{Jané, M B.} (2023) \textbf{\emph{Artifact Corrections for
+  Effect Sizes}}. An open-source book for correcting bias in effect size
+  estimates contaminated by statistical artifacts. \emph{In prepation}
 \end{itemize}
 
-\hypertarget{software}{%
-\subsection{\texorpdfstring{ Software}{ Software}}\label{software}}
+\subsection{\texorpdfstring{ Software}{ Software}}\label{software}
 
 \begin{itemize}
 \item
@@ -261,9 +238,20 @@ Bulletin} as a methodological reviewer.
   \url{https://github.com/MatthewBJane/meta-analysis-project-data-code}.
 \end{itemize}
 
-\hypertarget{publications}{%
+\subsection{\texorpdfstring{ Peer
+Reviews}{ Peer Reviews}}\label{peer-reviews}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Psychological Bulletin}, 2 reviews
+\item
+  \textbf{Advances in Methods and Practices in Psychological Science}, 1
+  review
+\end{itemize}
+
 \subsection{\texorpdfstring{
-Publications}{ Publications}}\label{publications}}
+Publications}{ Publications}}\label{publications}
 
 Johnson, B. T., \textbf{Jané, M. B.}, Curley, C. (2023). Methodological
 Quality in Research in Health Psychology. \emph{Under review at Sage
@@ -275,8 +263,8 @@ Error in Repeated Measures Standardized Mean Differences.
 
 Champion, G., \textbf{Jané, M. B.}, Johnson, B. T., and colleagues
 (2023). Efficacy of Mindfulness Based Stress Reduction Interventions on
-Anxiety and Depression in the United States: A Meta-Analysis. \emph{Data
-being collected.}
+Stress Reduction in the United States: A Meta-Analysis. \emph{Data being
+collected.}
 
 Harlow*, T. J., \textbf{Jané*, M. B.}, Read, H. L., \& Chrobak, J. J.
 (2023). Memory retention following acoustic stimulation in slow-wave
@@ -292,9 +280,11 @@ in judging synthetic sound burst durations. \emph{bioRxiv.}
 (2023). Cognitive Ability Moderates the Accuracy of Self-Reported
 Perfect Pitch. \emph{Manuscript in Preparation.}
 
-\textbf{Jané, M. B.}, Harlow, T. J., Johnson, B. T. (2023). Temporal and
-Non-Temporal Sensory Discrimination and Fluid Intelligence: Artifact
-Correction Meta-Analysis. \emph{Manuscript in preparation.}
+\textbf{Jané, M. B.}, Uanhoro, J., Boika, N., Steele, J., Batinovic, L.,
+Johnson, B. T. (2024). Predictive Validity of the Unified Tertiary
+Matriculation Examination on University Grades: A Living Meta-Analysis.
+https://matthewbjane.com/utme-validity-meta-analysis/ \emph{Manuscript
+in Preparation.}
 
 
 

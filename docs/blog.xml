@@ -9,7 +9,7 @@
 <link>https://matthewbjane.com/blog.html</link>
 <atom:link href="https://matthewbjane.com/blog.xml" rel="self" type="application/rss+xml"/>
 <description>Website for Matthew B. Jané. PhD student at the University of Connecticut.</description>
-<generator>quarto-1.3.450</generator>
+<generator>quarto-1.4.549</generator>
 <lastBuildDate>Mon, 06 Nov 2023 05:00:00 GMT</lastBuildDate>
 <item>
   <title>Sampling Distributions of Squared Effect Sizes and their Implication for Meta-Analysis</title>
@@ -19,7 +19,8 @@
 
 
 
-<a href="https://www.buymeacoffee.com/matthewbjane"><img src="https://matthewbjane.com/blog-posts/https:/img.buymeacoffee.com/button-api/?text=Buy me a coffee&amp;emoji=☕&amp;slug=matthewbjane&amp;button_colour=ed5c9b&amp;font_colour=ffffff&amp;font_family=Arial&amp;outline_colour=ffffff&amp;coffee_colour=ffffff"></a>
+
+<a href="https://www.buymeacoffee.com/matthewbjane"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&amp;emoji=☕&amp;slug=matthewbjane&amp;button_colour=ed5c9b&amp;font_colour=ffffff&amp;font_family=Arial&amp;outline_colour=ffffff&amp;coffee_colour=ffffff"></a>
 <section id="defining-a-squared-effect-size" class="level2">
 <h2 class="anchored" data-anchor-id="defining-a-squared-effect-size">Defining a Squared Effect Size</h2>
 <p>Sometimes squared effect sizes are used in order to interpret results (e.g., <img src="https://latex.codecogs.com/png.latex?R%5E2">, <img src="https://latex.codecogs.com/png.latex?%5Ceta%5E2">). However these squared indices are biased in small sample sizes. To see why this is the case we can describe the mathematically. Generally, lets say we have some observed effect size <img src="https://latex.codecogs.com/png.latex?h_i"> for a sample <img src="https://latex.codecogs.com/png.latex?i">. This can be modeled as a function of a population correlation <img src="https://latex.codecogs.com/png.latex?%5Ctheta"> and sampling error <img src="https://latex.codecogs.com/png.latex?e_i">,</p>
@@ -36,7 +37,7 @@
 <h2 class="anchored" data-anchor-id="simulated-example">Simulated Example</h2>
 <p>Lets assume that in the population, the squared correlation between predicted and observed outcome (<img src="https://latex.codecogs.com/png.latex?R%5E2">) is zero, that is, the independent variables (<img src="https://latex.codecogs.com/png.latex?X_1">,<img src="https://latex.codecogs.com/png.latex?X_2">, and <img src="https://latex.codecogs.com/png.latex?X_3">) do not explain any variance in the dependent variable (<img src="https://latex.codecogs.com/png.latex?Y">). Lets simulate two studies, where one study has a sample size of 100 and the other has a sample size of 25. Then lets replicate these studies 5,000 times. In the first figure we will see that the mean value of <img src="https://latex.codecogs.com/png.latex?R%5E2"> is not zero even though the population value is. And with the smaller sample sizes within each study (<img src="https://latex.codecogs.com/png.latex?N%20=%2025">), the mean <img src="https://latex.codecogs.com/png.latex?R%5E2"> is larger. The plots below show the distribution of <img src="https://latex.codecogs.com/png.latex?R%5E2"> using the <code>ggdist</code> package <span class="citation" data-cites="kay">(Kay 2023)</span>.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -445,12 +446,16 @@ background-color: null;
 font-style: inherit;">"#f1f9fa"</span>)))</span></code></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="https://matthewbjane.com/blog-posts/blog-post-4_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="https://matthewbjane.com/blog-posts/blog-post-4_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>If we were to run a meta-analysis on all 5,000 studies and found a meta-analytic average <img src="https://latex.codecogs.com/png.latex?R%5E2"> of .13, we may conclude that there is a meaningful prediction/effect, however, this could simply be an artifact of sampling error. The plot below shows how the mean <img src="https://latex.codecogs.com/png.latex?R%5E2"> changes as you vary the sample size.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -651,7 +656,11 @@ background-color: null;
 font-style: italic;">## `geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = "cs")'</span></span></code></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="https://matthewbjane.com/blog-posts/blog-post-4_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="https://matthewbjane.com/blog-posts/blog-post-4_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -659,7 +668,7 @@ font-style: italic;">## `geom_smooth()` using method = 'gam' and formula = 'y ~ 
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
 <p>In a meta-analysis, it is always best to use directional effect sizes that can be both positive and negative such as Cohen’s <img src="https://latex.codecogs.com/png.latex?d">’s or Pearson correlations. There are other strategies for meta-analyzing <img src="https://latex.codecogs.com/png.latex?R%5E2"> values such as using individual person data meta-analysis (using the raw data for each study) or meta-analyzing the correlation matrix between predictors and outcomes first and then running the regression model on the meta-analytic correlation matrix (this would not allow for non-linear terms though). If it is necessary to meta-analyze <img src="https://latex.codecogs.com/png.latex?R%5E2"> you will want to use the adjusted <img src="https://latex.codecogs.com/png.latex?R%5E2"> value. See the plot below that shows the adjusted <img src="https://latex.codecogs.com/png.latex?R%5E2"> across different sample sizes</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -873,7 +882,11 @@ background-color: null;
 font-style: italic;">## `geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = "cs")'</span></span></code></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="https://matthewbjane.com/blog-posts/blog-post-4_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="https://matthewbjane.com/blog-posts/blog-post-4_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <iframe src="https://embeds.beehiiv.com/f3ffd81a-4723-4419-bb1d-afc8af3bac36" data-test-id="beehiiv-embed" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius: 4px; border: 2px solid #e5e7eb; margin: 0; background-color: transparent;">
@@ -883,7 +896,7 @@ font-style: italic;">## `geom_smooth()` using method = 'gam' and formula = 'y ~ 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
 <div id="ref-kay" class="csl-entry">
 Kay, Matthew. 2023. <span>“Ggdist: Visualizations of Distributions and Uncertainty in the Grammar of Graphics.”</span> <a href="https://doi.org/10.31219/osf.io/2gsz6">https://doi.org/10.31219/osf.io/2gsz6</a>.
 </div>
@@ -902,7 +915,8 @@ Kay, Matthew. 2023. <span>“Ggdist: Visualizations of Distributions and Uncerta
 
 
 
-<a href="https://www.buymeacoffee.com/matthewbjane"><img src="https://matthewbjane.com/blog-posts/https:/img.buymeacoffee.com/button-api/?text=Buy me a coffee&amp;emoji=☕&amp;slug=matthewbjane&amp;button_colour=ed5c9b&amp;font_colour=ffffff&amp;font_family=Arial&amp;outline_colour=ffffff&amp;coffee_colour=ffffff"></a>
+
+<a href="https://www.buymeacoffee.com/matthewbjane"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&amp;emoji=☕&amp;slug=matthewbjane&amp;button_colour=ed5c9b&amp;font_colour=ffffff&amp;font_family=Arial&amp;outline_colour=ffffff&amp;coffee_colour=ffffff"></a>
 <section id="step-1-obtain-the-necessary-statistics" class="level2">
 <h2 class="anchored" data-anchor-id="step-1-obtain-the-necessary-statistics">Step 1: Obtain the necessary statistics</h2>
 <p>In order to calculate the pre/post correlation (<img src="https://latex.codecogs.com/png.latex?r">), we need the standard deviation (SD) of pre-test scores (<img src="https://latex.codecogs.com/png.latex?SD_%7Bpre%7D">), the SD of post-test scores (<img src="https://latex.codecogs.com/png.latex?SD_%7Bpost%7D">), the mean change (<img src="https://latex.codecogs.com/png.latex?M_%7Bchange%7D">), the paired t-statistic (<img src="https://latex.codecogs.com/png.latex?t">), the sample size (<img src="https://latex.codecogs.com/png.latex?N">). In this blog post, we are assuming that the change score standard deviation (<img src="https://latex.codecogs.com/png.latex?SD_%7Bchange%7D">) is unavailable to us. If the pre-test SD is available, but the post-test SD is unavailable, you can approximate the post-test SD by, first, taking average ratio of the pre-test SD and post-test SD from <img src="https://latex.codecogs.com/png.latex?k"> studies in the current meta-analysis (<img src="https://latex.codecogs.com/png.latex?%5Coverline%7BSD%7D_%7Bratio%7D">; see the blog post on 9/8/2023), then we can approximate the post-test SD by multiplying the pre-test SD by the average SD ratio,</p>
@@ -1253,19 +1267,28 @@ font-style: inherit;">'r = '</span>,r))</span></code></pre></div>
 
 
 
-<a href="https://www.buymeacoffee.com/matthewbjane"><img src="https://matthewbjane.com/blog-posts/https:/img.buymeacoffee.com/button-api/?text=Buy me a coffee&amp;emoji=☕&amp;slug=matthewbjane&amp;button_colour=ed5c9b&amp;font_colour=ffffff&amp;font_family=Arial&amp;outline_colour=ffffff&amp;coffee_colour=ffffff"></a>
+
+<a href="https://www.buymeacoffee.com/matthewbjane"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&amp;emoji=☕&amp;slug=matthewbjane&amp;button_colour=ed5c9b&amp;font_colour=ffffff&amp;font_family=Arial&amp;outline_colour=ffffff&amp;coffee_colour=ffffff"></a>
 <section id="inter-quantile-range" class="level3">
 <h3 class="anchored" data-anchor-id="inter-quantile-range">Inter-Quantile Range</h3>
 <p>Studies may report inter-quantile ranges in order to communicate the spread of the data. However, meta-analysts will need standard deviations (SD) to calculate effect size estimates such as standardized mean differences (i.e., Cohen’s <img src="https://latex.codecogs.com/png.latex?d">). For this post, we will focus on the inter-<em>quartile</em> range (IQR) although the method described here will apply to any range between a pair of quantiles. The IQR (<img src="https://latex.codecogs.com/png.latex?X_%7B(75-25)%7D">) is defined as the difference between the 75th and 25th quantile values, that is, the region where 50% of the data lies. We can visualize what this will look like with normally distributed data:</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="https://matthewbjane.com/blog-posts/blog-post-2_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="https://matthewbjane.com/blog-posts/blog-post-2_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Now let’s compare the range of values covered by +/- 1 SDs of a normal distribution:</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="https://matthewbjane.com/blog-posts/blog-post-2_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="https://matthewbjane.com/blog-posts/blog-post-2_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>The range covered by <img src="https://latex.codecogs.com/png.latex?%5Cpm%201"> SD covers a considerably larger range of values than the IQR.</p>
@@ -1339,7 +1362,11 @@ font-style: inherit;">print</span>(S_X)</span></code></pre></div>
 <p>Since this method provides an approximation of a normal distribution it is important to point out that the method may be biased under different distributions. For example, if we try the same method on a Student’s t distribution with heavy tails (3.5 degrees of freedom), <img src="https://latex.codecogs.com/png.latex?S_%7B(75-25)%7D"> would be equal to 1.50187 which is slightly larger than 1.34898 that we computed from the normal distribution. If we were to assume a normal distribution when it was truly a student’s t, the method would over-estimate the standard deviation by ~11%.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="https://matthewbjane.com/blog-posts/blog-post-2_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="https://matthewbjane.com/blog-posts/blog-post-2_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <section id="applying-it-to-simulated-data" class="level3">
@@ -1455,7 +1482,8 @@ font-style: inherit;">print</span>(S_X)</span></code></pre></div>
 
 
 
-<a href="https://www.buymeacoffee.com/matthewbjane"><img src="https://matthewbjane.com/blog-posts/https:/img.buymeacoffee.com/button-api/?text=Buy me a coffee&amp;emoji=☕&amp;slug=matthewbjane&amp;button_colour=ed5c9b&amp;font_colour=ffffff&amp;font_family=Arial&amp;outline_colour=ffffff&amp;coffee_colour=ffffff"></a>
+
+<a href="https://www.buymeacoffee.com/matthewbjane"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&amp;emoji=☕&amp;slug=matthewbjane&amp;button_colour=ed5c9b&amp;font_colour=ffffff&amp;font_family=Arial&amp;outline_colour=ffffff&amp;coffee_colour=ffffff"></a>
 <section id="step-1-obtain-pre-test-post-test-and-change-score-standard-deviations" class="level2">
 <h2 class="anchored" data-anchor-id="step-1-obtain-pre-test-post-test-and-change-score-standard-deviations">Step 1: Obtain Pre-test, Post-test, and Change score standard deviations</h2>
 <p>In order to calculate the pre/post correlation (<img src="https://latex.codecogs.com/png.latex?r">), we need an estimate of the standard deviation (SD) of pre-test scores (<img src="https://latex.codecogs.com/png.latex?S_%7Bpre%7D">), the SD of post-test scores (<img src="https://latex.codecogs.com/png.latex?S_%7Bpost%7D">), and the SD of change scores (<img src="https://latex.codecogs.com/png.latex?S_%7Bchange%7D">, where <img src="https://latex.codecogs.com/png.latex?x_%7Bchange%7D=x_%7Bpost%7D-x_%7Bpre%7D">). If the post-test SD is unavailable, but the pre-test SD is available, you can approximate the post-test SD by, first, taking average ratio of the pre-test SD and post-test SD from <img src="https://latex.codecogs.com/png.latex?k"> studies in the current meta-analysis,</p>
@@ -1709,7 +1737,7 @@ font-style: inherit;">paste0</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'r = '</span>,r))</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "r = 0.699999999999999"</code></pre>
+<pre><code>[1] "r = 0.7"</code></pre>
 </div>
 </div>
 <iframe src="https://embeds.beehiiv.com/f3ffd81a-4723-4419-bb1d-afc8af3bac36" data-test-id="beehiiv-embed" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius: 4px; border: 2px solid #e5e7eb; margin: 0; background-color: transparent;">

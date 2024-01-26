@@ -30,7 +30,7 @@ sansfont: Asap
 
 ## <i class="fa-solid fa-user"></i> Bio
 
-Current PhD student interested in developing statistical methods and software for meta-analyses and primary studies. Specifically, my current research projects focus on correcting bias in effect size estimates caused by statistical artifacts (see my open-access textbook on the topic at [matthewbjane.quarto.pub](https://matthewbjane.quarto.pub)). I am affiliated with the Systematic Health Action Research Program (SHARP) at the University of Connecticut where I am advised by Dr. Blair T. Johnson. I am also on the editorial board for *Psychological Bulletin* as a methodological reviewer.
+Current PhD student interested in developing statistical methods and software for meta-analyses and primary studies. Specifically, my current research projects focus on correcting bias in effect size estimates caused by statistical artifacts. I am affiliated with the Systematic Health Action Research Program (SHARP) at the University of Connecticut where I am advised by Dr. Blair T. Johnson. I am also on the editorial board for *Psychological Bulletin* as a methodological reviewer.
 
 ## <i class="fa-solid fa-graduation-cap"></i> Education
 
@@ -44,9 +44,10 @@ Current PhD student interested in developing statistical methods and software fo
 
 ## <i class="fa-solid fa-book"></i> Textbooks
 
--   Jané, Matthew B. (2023) **Artifact Corrections for Effect Sizes: Applications Meta-Analysis and Implementation in R**. An open-source book for correcting bias in effect size estimates contaminated by statistical artifacts. <https://matthewbjane.quarto.pub/artifact-corrections-for-effect-sizes/>
+-   **Jané, M. B.**, Xiao, Q., Yeung, S. K., Caldwell, A. R., Dunleavy, D. J., ... (2023) ***Guide to Effect Sizes and Confidence Intervals***. A collaborative guide to calculating, interpreting, and reporting effect sizes and confidence intervals. <https://matthewbjane.quarto.pub/effect-size-and-confidence-intervals-guide/>
 
--   Jané, M. B., Xiao, Q., Yeung, S. K., Caldwell, A. R., Dunleavy, D. J., ... (2023) **Guide to Effect Sizes and Confidence Intervals**. A collaborative guide to calculating, interpreting, and reporting effect sizes and confidence intervals. Contains examples in R. <https://matthewbjane.quarto.pub/effect-size-and-confidence-intervals-guide/>
+-   **Jané, M B.** (2023) ***Artifact Corrections for Effect Sizes***. An open-source book for correcting bias in effect size estimates contaminated by statistical artifacts. *In prepation*
+
 
 ## <i class="fa-solid fa-code"></i> Software
 
@@ -63,6 +64,13 @@ Current PhD student interested in developing statistical methods and software fo
 -   [<i class="fa-solid fa-chart-simple"></i> Project Data & Code]{.badge .rounded-pill .bg-primary} **Primary Study Data and Code**, Repository of data and code for all primary study projects. <https://github.com/MatthewBJane/primary-project-data-code>.
 
 -   [<i class="fa-solid fa-chart-simple"></i> Project Data & Code]{.badge .rounded-pill .bg-primary} **Meta-Analysis Data and Code**, Repository of data and code for all meta-analytic projects. <https://github.com/MatthewBJane/meta-analysis-project-data-code>.
+
+## <i class="fa-solid fa-marker"></i> Peer Reviews
+
+-   **Psychological Bulletin**, 2 reviews
+-   **Advances in Methods and Practices in Psychological Science**, 1 review
+
+
 
 ## <i class="fa-solid fa-file-lines"></i> Publications
 
@@ -86,7 +94,7 @@ Johnson, B. T., **Jané, M. B.**, Curley, C. (2023). Methodological Quality in R
 
 <hr width="10%">
 
-Champion, G., **Jané, M. B.**, Johnson, B. T., and colleagues (2023). Efficacy of Mindfulness Based Stress Reduction Interventions on Anxiety and Depression in the United States: A Meta-Analysis. *Data being collected.*
+Champion, G., **Jané, M. B.**, Johnson, B. T., and colleagues (2023). Efficacy of Mindfulness Based Stress Reduction Interventions on Stress Reduction in the United States: A Meta-Analysis. *Data being collected.*
 
 ::: {.content-visible when-format="html"}
 ::: {.btn-group role="group" aria-label="Open Science Links"}
@@ -124,15 +132,15 @@ Harlow\*, T. J., **Jané\*, M. B.**, Read, H. L., & Chrobak, J. J. (2023). Memor
 :::
 :::
 
-<hr width="10%">
 
-**Jané, M. B.**, Harlow, T. J., Johnson, B. T. (2023). Temporal and Non-Temporal Sensory Discrimination and Fluid Intelligence: Artifact Correction Meta-Analysis. *Manuscript in preparation.*
+**Jané, M. B.**, Uanhoro, J., Boika, N., Steele, J., Batinovic, L., Johnson, B. T. (2024). Predictive Validity of the Unified Tertiary Matriculation Examination on University Grades: A Living Meta-Analysis. https://matthewbjane.com/utme-validity-meta-analysis/ *Manuscript in Preparation.*
 
 ::: {.content-visible when-format="html"}
 ::: {.btn-group role="group" aria-label="Open Science Links"}
-[Data](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="data" title="data"} [Code](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="code" title="Data File"} [PDF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="pdf" title="Data File"} [OSF](https://osf.io/d6yxf/){.btn-sm .btn .btn-primary role="button" data-toggle="osf" title="Data File"}
+[Data](https://matthewbjane.com/utme-validity-meta-analysis/){.btn-sm .btn .btn-primary role="button" data-toggle="data" title="data"} [Code](https://github.com/MatthewBJane/utme-validity-meta-analysis){.btn-sm .btn .btn-primary role="button" data-toggle="code" title="Data File"} [PDF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="pdf" title="Data File"} [OSF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="osf" title="Data File"}
 :::
 :::
+
 
 <hr width="10%">
 
