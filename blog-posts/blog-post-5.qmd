@@ -20,14 +20,13 @@ bibliography: references.bib
 ```{=html}
 <a href="https://www.buymeacoffee.com/matthewbjane"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=matthewbjane&button_colour=ed5c9b&font_colour=ffffff&font_family=Arial&outline_colour=ffffff&coffee_colour=ffffff" /></a>
 ```
-
 <br>
 
 ## Some useful definitions
 
-Let us first note that when I refer to a **measurand** I simply mean the (psychological) attribute that we intend to measure. 
+Let us first note that when I refer to a **measurand** I simply mean the (psychological) attribute that we intend to measure.
 
-A **realist** defines the measurand outside of the measurement procedure, that is, the measurand is some test-independent attribute that is estimated by scores produced by the test. 
+A **realist** defines the measurand outside of the measurement procedure, that is, the measurand is some test-independent attribute that is estimated by scores produced by the test.
 
 An **operationalist** would instead suppose that the measurand is defined by the test itself and can not be defined outside of the test (i.e., the measurand is test-dependent). In the measurement error modeling Note that a *strict* operationalist in the form that I discuss in this blog post is a sort of extreme operationalist laxed operationalist in a later section, but it is just a useful descriptor for contrasting two types of operationalist measurement models.
 
@@ -37,7 +36,7 @@ A **respectful operationalist** is an operationalist that defines the measurand 
 
 In **realist** framework, validity may fall under the principles set by @borsboom2004, where the psychological attribute (or construct) has to both 1) exist and 2) cause variation in the measurement procedure. This view of validity is centered around construct validity.
 
-A (strict) **operationalist** need not validate a measure, even if the measure is nonsensical, the measurand is still defined by the test. 
+A (strict) **operationalist** need not validate a measure, even if the measure is nonsensical, the measurand is still defined by the test.
 
 A **respectful operationalist** can validate a measure using a similar approach to Michael T. Kane's argument-based approach to validity in which he guides researchers to specify and justify the intended use of the measure. Specifically, @vessonen2021 proposes that a test is valid if the test incorporates common extra-operational connotations of the target concept. This will be more closely related to test-related types of validity such as content and criterion validity.
 
@@ -130,7 +129,7 @@ Therefore we need to identify which observed scores are produced by tests that h
 
 $$
 X^\star_p = T_p + E_p
-$$ 
+$$
 
 where
 
@@ -145,10 +144,6 @@ In this way, inferences about concepts can be made from observed scores since th
 Respectful operationalism appears to offer the practical advantages of operationalism such as unbiased measurements, without the limitation of being unable to draw meaningful inferences beyond the test. To consider myself a realist, the measurand must be defined coherently with evidence supporting its existence. Currently, I do not believe this is the case for psychological constructs; therefore, I am not comfortable making the ontological commitments necessary for a realist standpoint. Therefore, to me, a know-nothin grad student, Respectful Operationalism seems to best align with my current beliefs.
 
 Further reading, see these papers by Elina Vessonen [-@vessonen2019; -@vessonen2021].
-
-
-
-
 
 <iframe src="https://embeds.beehiiv.com/f3ffd81a-4723-4419-bb1d-afc8af3bac36" data-test-id="beehiiv-embed" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius: 4px; border: 2px solid #33333322; margin: 0; background-color: transparent;">
 
