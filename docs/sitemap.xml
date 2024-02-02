@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://matthewbjane.com/blog.html</loc>
-    <lastmod>2024-01-02T05:54:12.575Z</lastmod>
+    <lastmod>2024-02-01T21:04:20.069Z</lastmod>
   </url>
   <url>
     <loc>https://matthewbjane.com/CV.html</loc>
@@ -43,5 +43,9 @@
   <url>
     <loc>https://matthewbjane.com/ArtifactCorrections.html</loc>
     <lastmod>2023-09-13T07:09:15.452Z</lastmod>
+  </url>
+  <url>
+    <loc>https://matthewbjane.com/blog-posts/blog-post-5.html</loc>
+    <lastmod>2024-02-02T06:36:36.349Z</lastmod>
   </url>
 </urlset>

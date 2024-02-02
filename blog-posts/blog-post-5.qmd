@@ -1,0 +1,152 @@
+---
+title: "Respectful Operationalism, Realism, and Models of Measurement Error in Psychometrics"
+author: "Matthew B. Jané"
+image: "blog-image.png"
+image-height: "5%"
+code-fold: true
+date: 2023-11-06
+description: "Full disclaimer: I am not well-versed in these issues, and I am not a philosopher. The purpose of this post is for me to articulate my own thought process, rather than have it serve as a teaching tool. There may be errors in this text, so please feel free to point them out, and, of course, share your thoughts with me on Twitter (disagreements are encouraged!). I am striving to gain a better understanding of my own beliefs about measurement and how those beliefs may influence my approach to applied measurement. This blog post was inspired by the works of Elina Vessonen, who introduced Respectful Operationalism—a concept that resonates with my beliefs and convictions regarding psychological measurement."
+categories:
+  - psychological measurement
+  - measurement error
+
+title-meta: "The Mathematical Consequences of Respectful Operationalism Psychological Measurement"
+author-meta: "Matthew B. Jané"
+date-meta: 2023-11-06
+image-meta: "blog-image.png"
+bibliography: references.bib
+---
+
+```{=html}
+<a href="https://www.buymeacoffee.com/matthewbjane"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=matthewbjane&button_colour=ed5c9b&font_colour=ffffff&font_family=Arial&outline_colour=ffffff&coffee_colour=ffffff" /></a>
+```
+## Some useful definitions
+
+Let us first note that when I refer to a **measurand** I simply mean the (psychological) attribute that we intend to measure. 
+
+A **realist** defines the measurand outside of the measurement procedure, that is, the measurand is some test-independent attribute that is estimated by scores produced by the test. 
+
+An **operationalist** would instead suppose that the measurand is defined by the test itself and can not be defined outside of the test (i.e., the measurand is test-dependent). In the measurement error modeling Note that a *strict* operationalist in the form that I discuss in this blog post is a sort of extreme operationalist laxed operationalist in a later section, but it is just a useful descriptor for contrasting two types of operationalist measurement models.
+
+A **respectful operationalist** is an operationalist that defines the measurand in terms of the test, but the test is validated for extra-operational meanings and usability [i.e., meanings and usability beyond the test, @vessonen2021]. So the respectful operationalist is kind of like "sure, yeah we can define the measurand in terms of the test, but the test needs to incorporate common connotations of the target concept and produce usable scores"
+
+## What might validity look like in each of these frameworks
+
+In **realist** framework, validity may fall under the principles set by @borsboom2004, where the psychological attribute (or construct) has to both 1) exist and 2) cause variation in the measurement procedure. This view of validity is centered around construct validity.
+
+A (strict) **operationalist** need not validate a measure, even if the measure is nonsensical, the measurand is still defined by the test. 
+
+A **respectful operationalist** can validate a measure using a similar approach to Michael T. Kane's argument-based approach to validity in which he guides researchers to specify and justify the intended use of the measure. Specifically, @vessonen2021 proposes that a test is valid if the test incorporates common extra-operational connotations of the target concept. This will be more closely related to test-related types of validity such as content and criterion validity.
+
+## Operationalist and Realist Measurement Error Models
+
+Okay let's start at the foundation: we observe a test score $X_p$ for a person, $p$.
+
+**A strict operationalist** may simply define a person's *true* score $T_p$ as the observed score such that, $T_p = X_p$. Trivially, the observed score can be modeled *as* the true score,
+
+$$
+X_p = T_p
+$$ {#eq-1}
+
+There is something attractive and so practical about this model, however there are immediate problems of usability. What if we test that person again and they obtain a different score? What if the test is scored by a rater and a different rater assigns a different score to that person? To answer this, let us use an example where a person's true score is defined as the observed score $X_{par}$, for person $p$, test administration $a$, and rater $r$ such that,
+
+$$
+T_p = X_{par}
+$$
+
+However the problem now is that if the observed score varies across test-administrations and/or raters then the true score will not be generalizable across test-administrations or raters,
+
+$$
+T_p = X_{par} \neq X_{pa(r+1)} \neq X_{p(a+1)r}
+$$
+
+This will force us to define a true score for not only each person, but *also* each test administration and rater such that,
+
+$$
+T_{par} = X_{par}.
+$$
+
+However differences in observed scores between test-administration and raters may not be of scientific interest if we only really care about person-level differences. This specific operationalist approach is unusable in practice. Although, it is interesting to note, that the reliability of observed scores is necessarily perfect and can be shown by the reliability index, $\rho_{XT}=1$ (i.e., the correlation between true and observed scores).
+
+A more **laxed operationalist** definition of true scores would be to define it based on the *expectation* of observed scores conditional on a person. Therefore a definition of a true score for a given person can be expressed by,
+
+$$
+T_p = \mathbb{E}[X_{p} | p]
+$$
+
+Conditional expectation ($\mathbb{E}[\cdot]$) is the average observed score over all possible observed scores for a given person. This also provides the beautiful property that $X_{p}$ for a given person, is an "unbiased estimate" of $T_p$, since by the definition of statistical bias,
+
+$$
+\textsf{bias} = T_p -  \mathbb{E}[X_p|p] = T_p - T_p =  0
+$$
+
+So now, even if observed scores vary across raters and/or test administrations, the true score will remain constant. The question at this point is how to model a single instance of an observed score. Here, we will need to introduce a measurement errors. **Measurement errors** can be defined as differences between observed scores and true scores. Remember that in our strict operationalist model (@eq-1) we did not have any measurement errors since the true score was equivalent to the observed score (i.e., if $T_p = X_p$, then $T_p - X_p = 0$). Now that the true score is the expected observed score for a given person, a single instance of an observed score *can* differ from the true score such that,
+
+$$
+X_{p} = T_p + E_{p}
+$$ {#eq-ctt}
+
+Where $E_{p}$ indicates the error in the observed score for a given person and measurement. Since we started with the definition of true scores being $T_p = \mathbb{E}[X | p]$, an extremely useful consequence of this is that the conditional expectation of measurement errors within a person is zero. We can demonstrate why this is the case with a short derivation (first re-arranging @eq-ctt so that $E_{p}$ is on the left hand side),
+
+$$\begin{align}
+\mathbb{E}[E_{p}|p] &= \mathbb{E}[T_p -  X_p|p] \\[.3em]
+ &= \mathbb{E}[T_p|p] -  \mathbb{E}[X_p|p] \\[.3em]
+ &= T_p -  T_p \\[.3em]
+&= 0 \\
+\end{align}$$
+
+Errors that balance out over all possible observed scores for a given person is what distinguishes the classical test theory model from other measurement models [@kroc2020]. It is important to note that the $X=T+E$ model is not what defines the classical test theory model, in fact, many measurement error models come in an analogous form, conditional expectations between the components of the model generally are what distinguish measurement error models across disciplines [@kroc2020].
+
+**A realist** model may suppose that the true score is a construct score that is an objective value that is defined outside of the measurement (the actual value of the construct/attribute being measured; @borsboom2002). Therefore we can not define true scores in terms of observed scores. The model for an observed score is superficially identical to @eq-ctt,
+
+$$
+X_{p} = T_p + E_{p}
+$$ {#eq-nctt}
+
+With the major difference that $\mathbb{E}[X|p] \neq T_p$. Note that @eq-nctt is *not* the classical test theory model because it does not, by default, meet the assumptions of classical test theory that the laxed operationalist model does (@eq-ctt). The big difference between this realist model the laxed operationalist model is that the conditional expectation of errors is no longer zero in the realist approach, and thus systematic errors (i.e., biased estimates of true scores) can exist. In order to recover the unbiased estimate of true scores, we would have to just assume that $\mathbb{E}[E_p]=0$ (see flaws below).
+
+When it comes to psychological constructs the realist approach has two major flaws to me.
+
+1.  An ontological commitment to the existence of an objective construct scores that exist independent of the measure. The problem with this is it includes an additional parameter with an undefined nature and lacking evidence of it's existence. Therefore it adds increased complexity into our theory.
+
+2.  The operationalist model produces an unbiased measure by definition whereas the realist model needs to add an additional assumption (i.e., conditioned on a given person, the expectation of measurement errors is zero) in order for the observed scores to be unbiased.
+
+The operationalist model may have the biggest flaw so far:
+
+1.  You can not really draw any meaningful inferences about anything outside of the measure.
+
+There is a third option though!
+
+## Respectful Operationalist Measurement Error Model
+
+As put by the originator of Respectful Operationalism Elina @vessonen2021 states,
+
+> \[Respectful Operationalism\] is the view that we may define a target concept in terms of a test, as long as that test is validated to incorporate common connotations of the target concept and the usability of the measure
+
+Therefore we need to identify which observed scores are produced by tests that have been validated for extra-operational connotations for the concept of interest. Let's define an observed score produced by a sufficiently valid test as $X_p^\star$ which is contained in the set of all possible observed scores such that, $X_p^\star \in X_p$. As an example, a measure of depression that produces observed scores from responses to the question, "what is your age?", would not encompass common connotations of depression and therefore those observed scores would be in the total set of observed scores, but *not* in the set of *valid* observed scores. This new model can be defined as,
+
+$$
+X^\star_p = T_p + E_p
+$$ 
+
+where
+
+$$
+T_p = \mathbb{E}[X^\star_p|p]
+$$
+
+In this way, inferences about concepts can be made from observed scores since they hold inherent relevance by virtue of prior validation of the test's extra-operational meaning.
+
+## My current stance
+
+Respectful operationalism appears to offer the practical advantages of operationalism such as unbiased measurements, without the limitation of being unable to draw meaningful inferences beyond the test. To consider myself a realist, the measurand must be defined coherently with evidence supporting its existence. Currently, I do not believe this is the case for psychological constructs; therefore, I am not comfortable making the ontological commitments necessary for a realist standpoint. Therefore, to me, a know-nothin grad student, Respectful Operationalism seems to best align with my current beliefs.
+
+Further reading, see these papers by Elina Vessonen [-@vessonen2019; -@vessonen2021].
+
+
+
+
+
+<iframe src="https://embeds.beehiiv.com/f3ffd81a-4723-4419-bb1d-afc8af3bac36" data-test-id="beehiiv-embed" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius: 4px; border: 2px solid #33333322; margin: 0; background-color: transparent;">
+
+</iframe>
