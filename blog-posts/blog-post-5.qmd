@@ -28,7 +28,7 @@ Let us first note that when I refer to a **measurand** I simply mean the (psycho
 
 A **realist** defines the measurand outside of the measurement procedure, that is, the measurand is some test-independent attribute that is estimated by scores produced by the test.
 
-An **operationalist** would instead suppose that the measurand is defined by the test itself and can not be defined outside of the test (i.e., the measurand is test-dependent). In the measurement error modeling Note that a *strict* operationalist in the form that I discuss in this blog post is a sort of extreme operationalist laxed operationalist in a later section, but it is just a useful descriptor for contrasting two types of operationalist measurement models.
+An **operationalist** would instead suppose that the measurand is defined by the test itself and can not be defined outside of the test (i.e., the measurand is test-dependent). Note that a *strict* operationalist in the form that I discuss in this blog post is a sort of extreme operationalist. In the measurement error modeling section, I also describe a *laxed*, but it is just a useful descriptor for contrasting two types of operationalist measurement models.
 
 A **respectful operationalist** is an operationalist that defines the measurand in terms of the test, but the test is validated for extra-operational meanings and usability [i.e., meanings and usability beyond the test, @vessonen2021]. So the respectful operationalist is kind of like "sure, yeah we can define the measurand in terms of the test, but the test needs to incorporate common connotations of the target concept and produce usable scores"
 
