@@ -53,6 +53,4 @@ format:
     css: styles.css
     toc: true
 editor: visual
-mainfont: Asap
-sansfont: Asap
 

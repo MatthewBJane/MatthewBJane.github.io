@@ -13,18 +13,11 @@ title-meta: "Approximating Standard Deviation from Inter-Quantile Range"
 author-meta: "Matthew B. Jané"
 date-meta: 2023-09-10
 image-meta: "blog-image.png"
-format:
-  html:
-    header-includes: |
-      <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Asap" type="text/css"/>
-mainfont: Asap
-sansfont: Asap
 ---
 
 ```{=html}
 <a href="https://www.buymeacoffee.com/matthewbjane"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=matthewbjane&button_colour=ed5c9b&font_colour=ffffff&font_family=Arial&outline_colour=ffffff&coffee_colour=ffffff" /></a>
 ```
-
 ### Inter-Quantile Range
 
 Studies may report inter-quantile ranges in order to communicate the spread of the data. However, meta-analysts will need standard deviations (SD) to calculate effect size estimates such as standardized mean differences (i.e., Cohen's $d$). For this post, we will focus on the inter-*quartile* range (IQR) although the method described here will apply to any range between a pair of quantiles. The IQR ($X_{(75-25)}$) is defined as the difference between the 75th and 25th quantile values, that is, the region where 50% of the data lies. We can visualize what this will look like with normally distributed data:

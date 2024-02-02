@@ -1,6 +1,4 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-
 /*-- scss:defaults --*/
 
 /*-- Define colors for later use --*/
@@ -8,9 +6,10 @@ $primary: #3AA6B9;
 $secondary: #ED5C9B;
 $tertiary: #FF9EAA;
 $body-bg: #fff;
-$body-color: #a6406d;
-$h1-font-family-sans-serif: 'Open Sans';
+$body-color: #444;
 $success: #3AA6B9;
+$h1-font-family-sans-serif: Sans;
+
 
 
 
@@ -24,18 +23,15 @@ $success: #3AA6B9;
 
 
 #title-block-header.quarto-title-block.default .quarto-title .title {
-    font-family:'Open Sans';
     font-size: 3em;
     color: #be4a7c;
 }
 .navbar-dark .navbar-brand {
     color: #dee2e6;
-    font-family: 'Open Sans';
 }
 
 .navbar-dark .navbar-brand {
     color: #ebf6f8;
-    font-family: 'Open Sans';
 }
 .navbar-dark .navbar-nav .nav-link {
     color: #ebf6f8;
@@ -57,9 +53,10 @@ $success: #3AA6B9;
 }
 
 #title-block-header.quarto-title-block.default .quarto-title .title {
-    font-family: 'Open Sans';
+    font-family: "Open Sans";
     font-size: 3em;
     color: #be4a7c;
+    font-family: Sans-Serif;
 }
 
 
@@ -79,13 +76,11 @@ div.quarto-post .listing-categories .listing-category {
 }
 
 #title-block-header.quarto-title-block.default .quarto-title .title {
-    font-family: 'Open Sans';
     font-size: 3em;
     color: #3AA6B9;
 }
 
 .nav-footer .nav-footer-left {
-    font-family: 'Open Sans';
     font-size: .825em;
     color: #666666;
 }

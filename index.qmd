@@ -4,9 +4,6 @@ about:
   template: jolla
   image-shape: rectangle
   image-width: 23.5em
-
-mainfont: Asap
-sansfont: Asap
 ---
 
 ::: {.btn-group role="group" aria-label="Social Links"}
