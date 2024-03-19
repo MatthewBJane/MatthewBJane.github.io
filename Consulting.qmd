@@ -94,7 +94,7 @@ th_red <- theme(aspect.ratio = 1,
         panel.grid.minor = element_blank(),
         panel.grid.major = element_blank(),
         plot.title = element_text(color = text_color_red),
-        plot.background = element_rect(fill = '#f1f9fa',color = '#f1f9fa'),
+        plot.background = element_rect(fill = 'white',color = 'white'),
         panel.background = element_rect(fill = panel_color_red),
         panel.border = element_rect(fill = NA, color = border_color_red,linewidth=1.2),
         axis.title = element_text(size=15, color = text_color_red),
@@ -141,7 +141,7 @@ h1 = ggplot(data=NULL, aes(x = rel, y = r, group = rho, color = rho)) +
         axis.title = element_text(size=14, color = text_color_red),
         axis.text.x = element_text(size=12, color = text_color_red),
         axis.text.y = element_text(size=12, color = text_color_red),
-         plot.background = element_rect(fill = '#f1f9fa',color = '#f1f9fa'),
+         plot.background = element_rect(fill = 'white',color = 'white'),
         axis.ticks = element_line(color = border_color_red,linewidth=1),
         legend.position = "none") +
   scale_y_continuous(limits = c(0,1.065),
@@ -198,7 +198,7 @@ h2 <- ggplot(data = df, aes(x = x, y = y,z = layer, fill = layer, color = layer)
           title = element_text(color = text_color_red),
           panel.background = element_rect(fill = panel_color_red),
           panel.border = element_rect(fill = NA, color = border_color_red,linewidth=1.2),
-         plot.background = element_rect(fill = '#f1f9fa',color = '#f1f9fa'),
+         plot.background = element_rect(fill = 'white',color = 'white'),
           axis.title = element_text(size=14, color = text_color_red),
           axis.text.x = element_text(size=12, color = text_color_red),
           axis.text.y = element_text(size=12, color = text_color_red),
@@ -207,8 +207,8 @@ h2 <- ggplot(data = df, aes(x = x, y = y,z = layer, fill = layer, color = layer)
 
 
 h1 + h2 & plot_annotation(theme = theme(
-  plot.background = element_rect(color="#f1f9fa",fill ="#f1f9fa"),
-  panel.background = element_rect(color="#f1f9fa",fill ="#f1f9fa")
+  plot.background = element_rect(color="white",fill ="white"),
+  panel.background = element_rect(color="white",fill ="white")
   ))
 
 ```
