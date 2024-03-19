@@ -48,7 +48,6 @@ Current PhD student interested in developing statistical methods and software fo
 
 -   **Jané, M B.** (2023) ***Artifact Corrections for Effect Sizes***. An open-source book for correcting bias in effect size estimates contaminated by statistical artifacts. *In prepation*
 
-
 ## <i class="fa-solid fa-code"></i> Software
 
 -   [<i class="fa-solid fa-cube"></i> R Package]{.badge .rounded-pill .bg-primary} **ThemePark**, Generating popular culture styled ggplot themes. [github.com/MatthewBJane/theme_park](https://github.com/MatthewBJane/theme_park). Featured on [rweekly.org](https://rweekly.org/2023-W32.html) and [flowingdata.com](https://flowingdata.com/2023/07/28/barbie-and-oppenheimer-themes-for-charts-in-r/)
@@ -69,8 +68,6 @@ Current PhD student interested in developing statistical methods and software fo
 
 -   **Psychological Bulletin**, 2 reviews
 -   **Advances in Methods and Practices in Psychological Science**, 1 review
-
-
 
 ## <i class="fa-solid fa-file-lines"></i> Publications
 
@@ -132,7 +129,6 @@ Harlow\*, T. J., **Jané\*, M. B.**, Read, H. L., & Chrobak, J. J. (2023). Memor
 :::
 :::
 
-
 **Jané, M. B.**, Uanhoro, J., Boika, N., Steele, J., Batinovic, L., Johnson, B. T. (2024). Predictive Validity of the Unified Tertiary Matriculation Examination on University Grades: A Living Meta-Analysis. https://matthewbjane.com/utme-validity-meta-analysis/ *Manuscript in Preparation.*
 
 ::: {.content-visible when-format="html"}
@@ -140,7 +136,6 @@ Harlow\*, T. J., **Jané\*, M. B.**, Read, H. L., & Chrobak, J. J. (2023). Memor
 [Data](https://matthewbjane.com/utme-validity-meta-analysis/){.btn-sm .btn .btn-primary role="button" data-toggle="data" title="data"} [Code](https://github.com/MatthewBJane/utme-validity-meta-analysis){.btn-sm .btn .btn-primary role="button" data-toggle="code" title="Data File"} [PDF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="pdf" title="Data File"} [OSF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="osf" title="Data File"}
 :::
 :::
-
 
 <hr width="10%">
 
