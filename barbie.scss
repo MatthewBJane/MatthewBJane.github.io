@@ -27,14 +27,14 @@ $h1-font-family-sans-serif: Sans;
     color: #be4a7c;
 }
 .navbar-dark .navbar-brand {
-    color: #dee2e6;
+    color: white;
 }
 
 .navbar-dark .navbar-brand {
-    color: #ebf6f8;
+    color: white;
 }
 .navbar-dark .navbar-nav .nav-link {
-    color: #ebf6f8;
+    color: white;
 }
 
 .navbar-dark .navbar-nav .show>.nav-link, .navbar-dark .navbar-nav .active>.nav-link, .navbar-dark .navbar-nav .nav-link.active {
@@ -47,7 +47,7 @@ $h1-font-family-sans-serif: Sans;
 }
 
 .btn-secondary {
-    color: #ebf6f8;
+    color: white;
     background-color: #ed5c9b;
     border-color: #ed5c9b;
 }
@@ -83,4 +83,36 @@ div.quarto-post .listing-categories .listing-category {
 .nav-footer .nav-footer-left {
     font-size: .825em;
     color: #666666;
+}
+
+
+.nav-link {
+    display: block;
+    padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+    font-size: var(--bs-nav-link-font-size);
+    font-weight: var(--bs-nav-link-font-weight);
+    color: white;
+    text-decoration: none;
+    -webkit-text-decoration: none;
+    -moz-text-decoration: none;
+    -ms-text-decoration: none;
+    -o-text-decoration: none;
+    background: none;
+    border: 0;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
+
+
+.navbar-brand {
+    padding-top: var(--bs-navbar-brand-padding-y);
+    padding-bottom: var(--bs-navbar-brand-padding-y);
+    margin-right: var(--bs-navbar-brand-margin-end);
+    font-size: var(--bs-navbar-brand-font-size);
+    color: white;
+    text-decoration: none;
+    -webkit-text-decoration: none;
+    -moz-text-decoration: none;
+    -ms-text-decoration: none;
+    -o-text-decoration: none;
+    white-space: nowrap;
 }
