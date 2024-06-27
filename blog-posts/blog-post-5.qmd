@@ -76,7 +76,7 @@ $$
 T_p = \mathbb{E}[X_{par}\mid p]
 $$
 
-Conditional expectation ($\mathbb{E}[\cdot]$) is the average observed score over all possible observed scores for a given person. This also provides the beautiful property that $X_{p}$ for a given person, is an \*calibrated\* to $T_p$, since,
+Conditional expectation ($\mathbb{E}[\cdot]$) is the average observed score over all possible observed scores for a given person. This also provides the beautiful property that $X_{p}$ for a given person, is *calibrated* to $T_p$, since,
 
 $$
 T_p -  \mathbb{E}[X_p\mid p] = T_p - T_p =  0.
@@ -134,7 +134,7 @@ $$
 where
 
 $$
-T_p = \mathbb{E}[X^\star_p|p]
+T_p = \mathbb{E}[X^\star_p\mid p]
 $$
 
 In this way, inferences about concepts can be made from observed scores since they hold inherent relevance by virtue of prior validation of the test's extra-operational meaning.
