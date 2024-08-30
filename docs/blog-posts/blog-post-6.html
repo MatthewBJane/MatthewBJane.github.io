@@ -660,6 +660,32 @@ d_i = b_0 + b_1 X_\mathrm{length} + u_i + \varepsilon_i
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: 7 studies with NAs omitted from model fitting.</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>mdl_weeks</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Mixed-Effects Model (k = 20; tau^2 estimator: REML)
+
+tau^2 (estimated amount of residual heterogeneity):     0.0647 (SE = 0.0299)
+tau (square root of estimated tau^2 value):             0.2544
+I^2 (residual heterogeneity / unaccounted variability): 79.40%
+H^2 (unaccounted variability / sampling variability):   4.85
+R^2 (amount of heterogeneity accounted for):            0.00%
+
+Test for Residual Heterogeneity:
+QE(df = 18) = 75.7503, p-val &lt; .0001
+
+Test of Moderators (coefficient 2):
+F(df1 = 1, df2 = 18) = 0.0018, p-val = 0.9667
+
+Model Results:
+
+              estimate      se    tval  df    pval    ci.lb   ci.ub    
+intrcpt         0.0884  0.0922  0.9581  18  0.3507  -0.1054  0.2821    
+length_weeks    0.0014  0.0330  0.0423  18  0.9667  -0.0678  0.0706    
+
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
 </div>
 <p>Okay so as it turns out there appears to be little/no effect of the length of the intervention on the effect size. Let us plot out the data to see what the relationship actually looks like:</p>
 <div class="cell">

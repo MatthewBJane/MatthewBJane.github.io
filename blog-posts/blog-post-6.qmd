@@ -368,7 +368,7 @@ mdl_weeks <- rma(d ~ length_weeks,
                  method = "REML",
                  test = "knha")
 
-
+mdl_weeks
 ```
 
 
