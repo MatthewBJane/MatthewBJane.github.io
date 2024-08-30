@@ -22,9 +22,9 @@
 \usepackage{lmodern}
 \ifPDFTeX\else  
     % xetex/luatex font selection
-  \setmainfont[]{Times New Roman}
-  \setsansfont[]{Times New Roman}
-  \setmonofont[]{Times New Roman}
+    \setmainfont[]{Times New Roman}
+    \setsansfont[]{Times New Roman}
+    \setmonofont[]{Times New Roman}
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -46,14 +46,28 @@
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 % Make \paragraph and \subparagraph free-standing
+\makeatletter
 \ifx\paragraph\undefined\else
   \let\oldparagraph\paragraph
-  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
 \fi
 \ifx\subparagraph\undefined\else
   \let\oldsubparagraph\subparagraph
-  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
+\makeatother
 
 
 \providecommand{\tightlist}{%
@@ -126,6 +140,7 @@
 \makeatletter
 \@ifpackageloaded{fontawesome5}{}{\usepackage{fontawesome5}}
 \makeatother
+
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -141,10 +156,12 @@
   urlcolor={Black},
   pdfcreator={LaTeX via pandoc}}
 
+
 \author{}
 \date{}
 
 \begin{document}
+
 
 \section{Matthew B. Jané}\label{matthew-b.-januxe9}
 
@@ -285,6 +302,7 @@ Johnson, B. T. (2024). Predictive Validity of the Unified Tertiary
 Matriculation Examination on University Grades: A Living Meta-Analysis.
 https://matthewbjane.com/utme-validity-meta-analysis/ \emph{Manuscript
 in Preparation.}
+
 
 
 
