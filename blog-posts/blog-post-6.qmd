@@ -361,7 +361,6 @@ $$
 
 ```{r}
 
-
 mdl_weeks <- rma(d ~ length_weeks,
                  vi = v,
                  data = dat,
@@ -369,6 +368,7 @@ mdl_weeks <- rma(d ~ length_weeks,
                  test = "knha")
 
 mdl_weeks
+
 ```
 
 
