@@ -34,19 +34,15 @@ The original meta-analysis by @ferguson2024 is not without a number of flaws, bu
 
 Also, the results convey a common misinterpretation of the estimate in a random effects meta-analysis. The meta-analytic estimate was communicated as follows:
 
->  As can be seen the overall estimate for d across studies was 0.088, which was nonsignificant and well below the SESOI
-(r = .10, d = 0.21). 
+> As can be seen the overall estimate for d across studies was 0.088, which was nonsignificant and well below the SESOI (r = .10, d = 0.21).
 
 What does an "overall estimate for *d*" actually mean (note: *d* is the effect size, we will talk about this in the next section)? Is there a true *d* that we are estimating by averaging the *d* values from all these studies together? No. A random-effects meta-analysis is estimating the **mean of true effect sizes**. That is, there exists a distribution of true effects and the meta-analytic estimate conveys the central tendency. Therefore, the meta-analytic estimate can *not* tell you whether the the intervention produces an effect of *d* = .088 (lets ignore the variability in this estimate for the moment), it only tells you that the effect is *d* = .088, ***on average***. Heterogeneity in effect sizes describes how wide the distribution of true effects is. You *could* have genuine true effects that are very positive (i.e., social media use is detrimental) and very negative (i.e., social media use is beneficial) even if the meta-analytic estimate is zero. There also could be study-level characteristics that could account for this heterogeneity, for instance, studies using a particular type of experimental design or a certain outcome shows a positive effect while others don't.
 
-
 **A side note**: I also came across this sentence from @ferguson2024's meta-analysis on page 3:
 
-> Given the high power of meta-analysis, almost all meta-analyses are “statistically significant.” 
+> Given the high power of meta-analysis, almost all meta-analyses are “statistically significant.”
 
 I have heard this before but it is just not true, in general. In a random effects meta-analysis where you have both within and between study variance can give pretty wide confidence intervals and large p-values. This would be a reasonable statement if you are referring to a fixed effect meta-analysis with a large total sample size or a random effect meta-analysis with a ton of studies. Neither of which are true in this case.
-
-
 
 ## Let's get into it
 
@@ -66,7 +62,7 @@ $$
 d = \frac{m_\textrm{social} - m_\textrm{no social}}{s_\mathrm{pooled}},
 $$ {#eq-sample-effect}
 
-where English letters denote the sample estimators of the corresponding parameters in @eq-effect. The standardizer $s_\mathrm{pooled}$ here is the pooled standard deviation.  Since we only have access to the standard deviation of each group we have to pool them together to get a more precise estimate of $\sigma$ (again, we are assuming the standard deviations within both groups are equal in the population),
+where English letters denote the sample estimators of the corresponding parameters in @eq-effect. The standardizer $s_\mathrm{pooled}$ here is the pooled standard deviation. Since we only have access to the standard deviation of each group we have to pool them together to get a more precise estimate of $\sigma$ (again, we are assuming the standard deviations within both groups are equal in the population),
 
 $$
 s_\mathrm{pooled} = \sqrt{\frac{(n_\textrm{social}-1)s^2_\textrm{social} + (n_\textrm{no social}-1)s^2_\textrm{no social}}{n_\textrm{social} + n_\textrm{no social} - 2}}
@@ -80,8 +76,7 @@ Ultimately, the observed effect size $d$ is a sample estimate of the true effect
 
 $$
 d_i = \delta_i + \varepsilon_i
-$$
-where $\varepsilon_i$ is literally defined as $\varepsilon_i = d_i - \delta_i$. The extent to which sampling errors are obscuring our effect size can be captured by the **sampling variance**. We can assume that sampling errors are normally distributed and evenly distributed around zero such that, $\varepsilon_i \sim \mathcal{N}(0,v_i)$ where $v_i$ is the sampling variance for study $i$. The sampling variance for a given study is dependent on the sample size with larger samples having more precision and thus less variance. Assuming normally distributed data, the sampling variance of the standardized mean difference (@eq-sample-effect) is calculated with the following formula,
+$$ where $\varepsilon_i$ is literally defined as $\varepsilon_i = d_i - \delta_i$. The extent to which sampling errors are obscuring our effect size can be captured by the **sampling variance**. We can assume that sampling errors are normally distributed and evenly distributed around zero such that, $\varepsilon_i \sim \mathcal{N}(0,v_i)$ where $v_i$ is the sampling variance for study $i$. The sampling variance for a given study is dependent on the sample size with larger samples having more precision and thus less variance. Assuming normally distributed data, the sampling variance of the standardized mean difference (@eq-sample-effect) is calculated with the following formula,
 
 $$
 v = \left(\frac{n-1}{n-3}\right) \left(\frac{n}{n_\textrm{social}n_\textrm{no social}}\right)\left( \frac{d^2}{2n}\right)
@@ -93,9 +88,9 @@ $$
 v = \left(\frac{n-1}{n-3}\right) \left(\frac{4}{n}\right)\left(1 + \frac{d^2}{8}\right)
 $$
 
-Now we might expect that any variation in effect sizes across studies is attributable to variance in random sampling errors, however this is unlikely to be the case. In reality, effect sizes tend to vary across studies above and beyond what we would expect from sampling error alone. This extra variation (known as heterogeneity) in effect sizes could be due to sampling from different populations, utilizing different methodologies, using different measures, etc. 
+Now we might expect that any variation in effect sizes across studies is attributable to variance in random sampling errors, however this is unlikely to be the case. In reality, effect sizes tend to vary across studies above and beyond what we would expect from sampling error alone. This extra variation (known as heterogeneity) in effect sizes could be due to sampling from different populations, utilizing different methodologies, using different measures, etc.
 
-Recall that we modeled an observed effect size as the sum of the true effect size for that study and sampling error $d_i = \delta_i + \varepsilon_i$. We defined the distribution of sampling errors so now we can also define the distribution of true effect sizes as $\delta_i \sim \mathcal{N}(\mu_\delta,\tau^2)$ where $\mu_\delta$ is the mean of true effect sizes across studies and $\tau^2$ is the variance of true effect sizes (i.e., heterogeneity). Ultimately our goal in a meta-analysis is to estimate both $\mu_\delta$ and $\tau$. The common misinterpretation in (random-effect) meta-analyses that I described in the introduction is that a meta-analysis is estimating a single true effect size. If there is heterogeneity ($\tau^2 > 0$) then there is a distribution of true effects that we must consider. 
+Recall that we modeled an observed effect size as the sum of the true effect size for that study and sampling error $d_i = \delta_i + \varepsilon_i$. We defined the distribution of sampling errors so now we can also define the distribution of true effect sizes as $\delta_i \sim \mathcal{N}(\mu_\delta,\tau^2)$ where $\mu_\delta$ is the mean of true effect sizes across studies and $\tau^2$ is the variance of true effect sizes (i.e., heterogeneity). Ultimately our goal in a meta-analysis is to estimate both $\mu_\delta$ and $\tau$. The common misinterpretation in (random-effect) meta-analyses that I described in the introduction is that a meta-analysis is estimating a single true effect size. If there is heterogeneity ($\tau^2 > 0$) then there is a distribution of true effects that we must consider.
 
 ## Parameter estimation
 
@@ -103,13 +98,11 @@ In meta-analysis we are trying to estimate particular parameters (i.e., the mean
 
 $$
 w_i = \frac{1}{\tau^2 + v_i}
-$$
-This will preferentially weight studies with less sampling variance (i.e., larger sample sizes). Also, since $\tau^2$ is the same for all studies, the larger $\tau^2$ is relative to $v_i$ then the weights will become more equal across studies. We can then use these weights to estimate the mean true effect size by taking a weighted average of observed effect sizes across $k$ studies,
+$$ This will preferentially weight studies with less sampling variance (i.e., larger sample sizes). Also, since $\tau^2$ is the same for all studies, the larger $\tau^2$ is relative to $v_i$ then the weights will become more equal across studies. We can then use these weights to estimate the mean true effect size by taking a weighted average of observed effect sizes across $k$ studies,
 
 $$
 \hat{\mu}_\delta = \frac{\sum^k_{i=1} w_i d_i}{\sum^k_{i=1} w_i}
-$$
-where the little carrot $\hat{\cdot}$ denotes an estimate. We can also compute the 95% confidence interval of $\hat{\mu}_\delta$ (the set of plausible values of the actual mean that are compatible with the data) using the Hartung, Knapp, Sidik and Jonkman method (this adjusts for poor coverage rates in small $k$ meta-analyses, which is the case here),
+$$ where the little carrot $\hat{\cdot}$ denotes an estimate. We can also compute the 95% confidence interval of $\hat{\mu}_\delta$ (the set of plausible values of the actual mean that are compatible with the data) using the Hartung, Knapp, Sidik and Jonkman method (this adjusts for poor coverage rates in small $k$ meta-analyses, which is the case here),
 
 $$
 CI =  \hat{\mu}_\delta \pm 1.96 \cdot\sqrt{\frac{\sum^k_{i=1}w_i(d_i-\mu_\delta)^2}{(k-1)\sum^k_{i=1}w_i}} 
@@ -151,7 +144,6 @@ head(dat[c("Citation","n","d")])
 
 ```
 
-
 The data only gives us the effect size `d` and the sample size `n` for each study so we need to calculate the sampling variance. Using the `psychmeta` package we can calculate the sampling variance for each study as follows,
 
 ```{r}
@@ -163,7 +155,6 @@ dat <- dat %>%
 head(dat[c("Citation","n","d","v")])
 
 ```
-
 
 Now we are set up to fit a random effects model. Using the `metafor` package we can use the REML method for estimating the heterogeneity and the Hartung-Knapp-Sidik-Jonkman method for obtaining the confidence intervals and p-values.
 
@@ -188,16 +179,15 @@ predict.rma(mdl)
 
 So, 95% of true effects fall between -.41 and .59 according to our model.
 
-
 ## R&H's analysis
 
 R&H conduct a sub-group analysis by chopping up the studies into three bins. First issue here is that this analysis is completely post-hoc and who knows if they created these bins after trying various combinations to reach the conclusion that they desired. R&H separate the 27 studies into three bins (this is verbatim from the article):
 
-1. **Multi-week reduction experiments.** These ten studies examined the impact of reducing social media use for at least two weeks, allowing withdrawal symptoms to dissipate.
+1.  **Multi-week reduction experiments.** These ten studies examined the impact of reducing social media use for at least two weeks, allowing withdrawal symptoms to dissipate.
 
-2. **Short (one week or less) reduction experiments.** These ten studies examined brief periods of abstinence from social media use, which are likely to pick up withdrawal symptoms from heavy users. 
+2.  **Short (one week or less) reduction experiments.** These ten studies examined brief periods of abstinence from social media use, which are likely to pick up withdrawal symptoms from heavy users.
 
-3. **Exposure experiments.** In these seven studies, the ‘treatment’ is typically brief exposure to some kind of social media, such as requiring high school students to look at their Facebook or Instagram page for 10 minutes.
+3.  **Exposure experiments.** In these seven studies, the ‘treatment’ is typically brief exposure to some kind of social media, such as requiring high school students to look at their Facebook or Instagram page for 10 minutes.
 
 The second problem we see is that the first two groups are separated by dichotomizing a naturally continuous variable (length of intervention). Sure it makes the data more digestible, but you simply lose information. This is generally considered bad statistical practice and we will see why a little later.
 
@@ -241,7 +231,6 @@ head(dat[c("Citation","n","d","v","subgroup")])
 
 ```
 
-
 Now that we have the subgroup column, we can conduct the sub-group analysis. Here comes the next problem, R&H decide to simply calculates the arithmetic (unweighted) mean of the observed effect sizes within each group. The problem is that they aren't capitalizing on the fact that different studies have different levels of precision. The only way it would make sense to compute an unweighted average with respect to the statistical model we are employing is if sampling error didn't exist (it does) or heterogeneity is infinite (its not), so either way its just the wrong approach.
 
 Let's first reproduce R&H's results by taking the unweighted average of observed effect sizes.
@@ -284,9 +273,7 @@ round(data.frame(group = 1:4, mean_delta = estimates$pred),3)
 
 ```
 
-
 As we can see the estimates are a bit different. Another thing that is completely missing from the R&H analysis is any indication of variability in their mean estimates and their is no indication of heterogeneity. It is conveyed as a fixed quantity, however just because we combine many studies together does not mean that uncertainty ceases to exist.
-
 
 ```{r}
 round(data.frame(group = 1:4, 
@@ -301,11 +288,9 @@ round(data.frame(group = 1:4,
 
 True effects for group 1 (multi-week reduction studies, i.e., the focal group) are quite variable and can range from -0.296 to 0.651. An interesting point to bring up is that @ferguson2024 set the smallest effect size of interest (SESOI) to be *d* = .21 in his pre-registration (equivalent to a Pearson correlation of *r* = .10). However, that does not help us much here since the upper bound of the confidence interval is well above *d* = .21 so you can't really make the claim that that there is no clinically meaningful effect, *on average*. And you definitely can't make the claim that all/most true effects are not clinically meaningful since the upper bound of the PI is 0.651. Truthfully, the SESOI established in @ferguson2024 does not seem to have any good theoretical or practical justification outside of "seems reasonable" so it is unclear what the utility of this arbitrary boundary is in this case?
 
-
 ## Properly modeling the length of intervention in reduction studies
 
 Instead of binning the length of the intervention into groups I will use the weeks reported in the R&H article to create a continuous moderator for reduction studies only.
-
 
 ```{r}
 
@@ -345,19 +330,15 @@ head(dat[c("Citation","n","d","v","length_weeks")])
 
 ```
 
-
 Okay so now we have the moderator we can construct a linear meta-regression model of the form,
 
 $$
 d_i = b_0 + b_1 X_\mathrm{length} + u_i + \varepsilon_i
-$$
-Notice now that true effects how is distributed around the regression line such that the distribution of true effects is now 
+$$ Notice now that true effects how is distributed around the regression line such that the distribution of true effects is now
 
 $$
 \delta_i \sim \mathcal{N}(b_0 + b_1 X_\mathrm{length},\tau^2)
 $$
-
-
 
 ```{r}
 
@@ -371,22 +352,20 @@ mdl_weeks
 
 ```
 
-
 Okay so as it turns out there appears to be little/no effect of the length of the intervention on the effect size. Let us plot out the data to see what the relationship actually looks like:
-
 
 ```{r,fig.height = 5, fig.width = 5,echo=FALSE}
 
-regplot(mdl_weeks, pi = T, refline = 0, ylab = "Effect Size (d)", xlab = "Length of Intervention in Weeks")
+regplot(mdl_weeks, pi = T, refline = 0, 
+        ylab = "Effect Size (d)", 
+        xlab = "Length of Intervention in Weeks")
 title("All Reduction Studies")
 
 ```
 
 The regression line looks almost parallel to the *d* = 0 line (the grey line). You may notice the outlier at 10 weeks and you may want to remove it from the analysis. I would ask why? The data point does not appear to be a coding error or a mistake? It is a valid data point and piece of evidence that should not be taken out of the analysis post-hoc. Hell, it could be that the the positive effect of not being on social media only lasts a few weeks and then fades out (not an uncommon trend in psychology interventions). Anyways, any reason to remove that "outlier" would seem to me like a post-hoc rationalization.
 
-
 ## Discussion
-
 
 The re-analysis of @ferguson2024's meta-analysis by R&H does not have adequate statistical rigor to build a "case for causality". Post-hoc subgroup analyses conducted by R&H did not use a principled statistical model, they did not report any variability in their estimates, the estimates themselves were sub-optimal (unweighted averaging), and they misinterpreted the point-estimates that they calculated. They did not do a proper comparison of their point-estimates and instead they treated them as fixed quantities and simply claimed that these average effect sizes are different without consideration of variability in their estimation procedure. Their conclusion claimed that:
 
@@ -394,11 +373,7 @@ The re-analysis of @ferguson2024's meta-analysis by R&H does not have adequate s
 
 Based on my re-analysis of R&H's re-analysis I find that the intervention length when modeled properly as a continuous variable (since it literally is) does not support this claim.
 
-If I did anything incorrectly or if I did not use best practices, I take full responsibility and you can let me know by sending me a DM on twitter or emailing me at matthewbjane@gmail.com.
-
-
-
-
+If I did anything incorrectly or if I did not use best practices, I take full responsibility and you can let me know by sending me a DM on twitter or emailing me at matthewbjane\@gmail.com.
 
 <iframe src="https://embeds.beehiiv.com/f3ffd81a-4723-4419-bb1d-afc8af3bac36" data-test-id="beehiiv-embed" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius: 4px; border: 2px solid #33333322; margin: 0; background-color: transparent;">
 

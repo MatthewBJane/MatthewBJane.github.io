@@ -1,5 +1,5 @@
 ---
-title: "Sampling Distributions of Squared Effect Sizes and their Implication for Meta-Analysis"
+title: "A Response to Jonathan Haidt's response"
 author: "Matthew B. Jané"
 image: "blog-image.png"
 image-height: "5%"

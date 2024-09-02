@@ -10,7 +10,7 @@
 <meta name="dcterms.date" content="2023-11-06">
 <meta name="description" content="In this post we will discuss how squared effect sizes such as \eta^2 and R^2 are distributed and the implications of this when conducting a meta-analysis">
 
-<title>Sampling Distributions of Squared Effect Sizes and their Implication for Meta-Analysis – Matthew B. Jané</title>
+<title>A Response to Jonathan Haidt’s response – Matthew B. Jané</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,27 +57,7 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -156,14 +136,14 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="Sampling Distributions of Squared Effect Sizes and their Implication for Meta-Analysis – Matthew B. Jané">
+<meta property="og:title" content="A Response to Jonathan Haidt’s response – Matthew B. Jané">
 <meta property="og:description" content="In this post we will discuss how squared effect sizes such as \(\eta^2\) and \(R^2\) are distributed and the implications of this when conducting a meta-analysis">
 <meta property="og:image" content="https://matthewbjane.com/blog-posts/blog-image.png">
 <meta property="og:site_name" content="Matthew B. Jané">
 <meta property="og:locale" content="en_US">
 <meta property="og:image:height" content="7206">
 <meta property="og:image:width" content="10817">
-<meta name="twitter:title" content="Sampling Distributions of Squared Effect Sizes and their Implication for Meta-Analysis – Matthew B. Jané">
+<meta name="twitter:title" content="A Response to Jonathan Haidt’s response – Matthew B. Jané">
 <meta name="twitter:description" content="In this post we will discuss how squared effect sizes such as \(\eta^2\) and \(R^2\) are distributed and the implications of this when conducting a meta-analysis">
 <meta name="twitter:image" content="https://matthewbjane.com/blog-posts/blog-image.png">
 <meta name="twitter:creator" content="@MatthewBJane">
@@ -260,7 +240,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Sampling Distributions of Squared Effect Sizes and their Implication for Meta-Analysis</h1>
+<h1 class="title">A Response to Jonathan Haidt’s response</h1>
   <div class="quarto-categories">
     <div class="quarto-category">sampling error</div>
     <div class="quarto-category">artifacts</div>
@@ -325,7 +305,7 @@ h^2_i = \theta^2 + 2\theta e_i + e_i^2
 </section>
 <section id="simulated-example" class="level2">
 <h2 class="anchored" data-anchor-id="simulated-example">Simulated Example</h2>
-<p>Lets assume that in the population, the squared correlation between predicted and observed outcome (<span class="math inline">\(R^2\)</span>) is zero, that is, the independent variables (<span class="math inline">\(X_1\)</span>,<span class="math inline">\(X_2\)</span>, and <span class="math inline">\(X_3\)</span>) do not explain any variance in the dependent variable (<span class="math inline">\(Y\)</span>). Lets simulate two studies, where one study has a sample size of 100 and the other has a sample size of 25. Then lets replicate these studies 5,000 times. In the first figure we will see that the mean value of <span class="math inline">\(R^2\)</span> is not zero even though the population value is. And with the smaller sample sizes within each study (<span class="math inline">\(N = 25\)</span>), the mean <span class="math inline">\(R^2\)</span> is larger. The plots below show the distribution of <span class="math inline">\(R^2\)</span> using the <code>ggdist</code> package <span class="citation" data-cites="kay">(<a href="#ref-kay" role="doc-biblioref">Kay 2023</a>)</span>.</p>
+<p>Lets assume that in the population, the squared correlation between predicted and observed outcome (<span class="math inline">\(R^2\)</span>) is zero, that is, the independent variables (<span class="math inline">\(X_1\)</span>,<span class="math inline">\(X_2\)</span>, and <span class="math inline">\(X_3\)</span>) do not explain any variance in the dependent variable (<span class="math inline">\(Y\)</span>). Lets simulate two studies, where one study has a sample size of 100 and the other has a sample size of 25. Then lets replicate these studies 5,000 times. In the first figure we will see that the mean value of <span class="math inline">\(R^2\)</span> is not zero even though the population value is. And with the smaller sample sizes within each study (<span class="math inline">\(N = 25\)</span>), the mean <span class="math inline">\(R^2\)</span> is larger. The plots below show the distribution of <span class="math inline">\(R^2\)</span> using the <code>ggdist</code> package <span class="citation" data-cites="kay">(<a href="#ref-kay" role="doc-biblioref"><strong>kay?</strong></a>)</span>.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -483,14 +463,9 @@ h^2_i = \theta^2 + 2\theta e_i + e_i^2
 </iframe>
 
 
-
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-kay" class="csl-entry" role="listitem">
-Kay, Matthew. 2023. <span>“Ggdist: Visualizations of Distributions and Uncertainty in the Grammar of Graphics.”</span> <a href="https://doi.org/10.31219/osf.io/2gsz6">https://doi.org/10.31219/osf.io/2gsz6</a>.
-</div>
-</div></section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
