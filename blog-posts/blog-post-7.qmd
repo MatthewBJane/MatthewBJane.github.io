@@ -239,7 +239,8 @@ ggplot(data = NULL, aes(x =  exp(newX), y = sav$pred)) +
   labs(x = "Length of Intervention (weeks)",
        y = "Effect Size (d)") +
   geom_hline(yintercept = 0, linetype = "dashed", alpha=.3)+
-  ylim(-1,1)
+  ylim(-1,1) + 
+  ggtitle("with Collis and Eggers (2022)")
 ```
 
 
@@ -300,7 +301,8 @@ ggplot(data = NULL, aes(x =  exp(newX), y = sav$pred)) +
   labs(x = "Length of Intervention (weeks)",
        y = "Effect Size (d)") +
   geom_hline(yintercept = 0, linetype = "dashed", alpha=.3) +
-  ylim(-1,1)
+  ylim(-1,1) + 
+  ggtitle("without Collis and Eggers (2022)")
 ```
 
 
@@ -367,6 +369,19 @@ Ultimately, after re-running the model with a more sophisticated non-linear regr
 
 
 If I did anything incorrectly or if I did not use best practices, I take full responsibility and you can let me know by sending me a DM on twitter or emailing me at matthewbjane\@gmail.com.
+
+
+## Citing R packages
+
+The following packages were used here: 
+
+- `mgcv` [@mgcv]
+- `splines` [@splines]
+- `osfr` [@osfr]
+- `tidyverse` [@tidyverse]
+- `metafor` [@metafor]
+- `readxl` [@readxl]
+- `psychmeta` [@psychmeta]
 
 <iframe src="https://embeds.beehiiv.com/f3ffd81a-4723-4419-bb1d-afc8af3bac36" data-test-id="beehiiv-embed" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius: 4px; border: 2px solid #33333322; margin: 0; background-color: transparent;">
 
