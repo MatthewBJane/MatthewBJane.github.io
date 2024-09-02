@@ -347,7 +347,7 @@
     "href": "blog-posts/blog-post-7.html#citing-r-packages",
     "title": "A Response to Jonathan Haidt’s Response",
     "section": "Citing R packages",
-    "text": "Citing R packages\nThe following packages were used here:\n\nmgcv (Wood et al. 2016)\nsplines (R Core Team 2024)\nosfr (Wolen et al. 2020)\ntidyverse (Wickham et al. 2019)\nmetafor (Viechtbauer 2010)\nreadxl (Wickham and Bryan 2023)\npsychmeta (Dahlke and Wiernik 2019)"
+    "text": "Citing R packages\nThe following packages were used here:\n\nmgcv (Wood et al. 2016)\nsplines (R Core Team 2024)\nosfr (Wolen et al. 2020)\ntidyverse (Wickham et al. 2019)\nmetafor (Viechtbauer 2010)\nreadxl (Wickham and Bryan 2023)\npsychmeta (Dahlke and Wiernik 2019)\nggdist (Kay 2023)"
   },
   {
     "objectID": "Software.html",
