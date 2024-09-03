@@ -24,6 +24,7 @@ bibliography: references.bib
 ```
 <br>
 
+
 ## Establishing my motivation
 
 Although my original post made it seem that I have some prior opinion that social media effects mental health. In reality, I actually think that social media probably ***does*** have an average negative effect on mental health. I also probably agree that the RCTs in this meta-analysis probably won't find any convincing causal estimates. If Rausch and Haidt's (R&H) made the argument that there is a causal effect, but the RCTs won't capture then I would have never made my original post. What I know is meta-analysis, not the literature on social media use and mental health. I was motivated to write the original post because of the clear statistical malpractice employed in R&H's re-analysis. I have no desire to prove or disprove whether social media is actually detrimental to mental health, but I do have a desire to combat the spread of misleading analyses and poor statistical practice. 
@@ -83,9 +84,18 @@ The reason I treated R&H's re-analysis as a meta-analysis is because it is, by d
 
 > Meta-analysis is the statistical combination of results from two or more separate studies.
 
+
+
 If you simply calculate an average effect size across studies, you have conducted a meta-analysis. If you tally up the number of positive and negative results, you have conducted a meta-analysis. Every table in R&H's article is literally displaying a meta-analysis, whether that was their intent or not.
 
-And most importantly, if you do a meta-analysis you got to do it right (i.e., systematically and transparently with proper statistical methods). 
+On top of all of the fundamental flaws in their analysis, R&H also based the following claim on their meta-analytic results:
+
+> These results clearly indicate that multi-week social media reduction experiments improve some aspects of well-being
+
+Their results absolutely do not *clearly* indicate this. This is an extremely misleading conclusion that is based on a completely inappropriate analysis.
+
+**I recommend that R&H remove the tables with meta-analytic results and all the conclusions/claims associated with those results. Adding a postscript, a preface, and changing the title does not fix this.**
+
 
 
 ## Errors in Effect Sizes and Sample Sizes
@@ -417,7 +427,9 @@ This goes to show that arbitrary post-hoc analytic decisions can greatly impact 
 Ultimately, after re-running the model with a more sophisticated non-linear regression with and without the Collis & Egger study that Haidt suggested, there not great evidence of sustained detrimental effects in these RCTs. This does not mean social media is not, on average, detrimental for mental health, it just means that these these RCTs do not appear be good evidence of that fact.
 
 
+
 If I did anything incorrectly or if I did not use best practices, I take full responsibility and you can let me know by sending me a DM on twitter or emailing me at matthewbjane\@gmail.com.
+
 
 
 ## Citing R packages
