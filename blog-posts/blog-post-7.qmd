@@ -83,6 +83,11 @@ The reason I treated R&H's re-analysis as a meta-analysis is because it is, by d
 
 > Meta-analysis is the statistical combination of results from two or more separate studies.
 
+If you simply calculate an average effect size across studies, you have conducted a meta-analysis. If you tally up the number of positive and negative results, you have conducted a meta-analysis. Every table in R&H's article is literally displaying a meta-analysis, whether that was their intent or not.
+
+And most importantly, if you do a meta-analysis you got to do it right (i.e., systematically and transparently with proper statistical methods). 
+
+
 ## Errors in Effect Sizes and Sample Sizes
 
 Haidt also claims that there are errors in the effect sizes and sample sizes in @ferguson2024's meta-analysis:
@@ -153,6 +158,7 @@ head(dat[c("Citation","n","d")])
 # compute sampling variance
 dat <- dat %>% 
   mutate(v = var_error_d(d = d, n1 = n))
+
 
 # display updated dataset
 head(dat[c("Citation","n","d","v")])
@@ -362,6 +368,49 @@ ggplot(data = NULL) +
 ### A note on effect dependency
 
 The confidence and prediction intervals are probably narrower then what it should be since some of the studies clearly come from the same lab and have similar designs. These CIs are likely the best case scenario. 
+
+## Changing the two week cut-point of R&H's 
+
+Brenton Wiernik suggested that I play around with the two week cut-point that R&H used in their article. I understand R&H had the following justification for their cut-point,
+
+> Acute withdrawal symptoms typically peak after a few days, but often last for up to two weeks.
+
+Therefore R&H selected for reduction studies that were two weeks or longer. But if withdrawal symptoms last for two weeks in many cases, then maybe we should play it safe and only select the studies that are *longer* than two weeks ($X_\mathrm{weeks}>2$ rather than $X_\mathrm{weeks}\geq 2$). This cut-point could have easily been argued with R&H's reasoning. 
+
+```{r}
+
+mdl_2weeks <- rma(yi = d,
+                 vi = v,
+                 data = dat,
+                 method = "REML",
+                 test = "knha",
+                 subset = length_weeks > 2)
+
+predict(mdl_2weeks)
+
+```
+
+After playing it safe and allowing for withdrawal symptoms to subside we see a mean effect of $\hat{\mu}_\delta = .098\, [-.045,\, .241]$. Well seems that the average effect is quite small and about half the size of R&H's average, but maybe we can try only studies that were more than 3 weeks,
+
+```{r}
+
+mdl_3weeks <- rma(yi = d,
+                 vi = v,
+                 data = dat,
+                 method = "REML",
+                 test = "knha",
+                 subset = length_weeks > 3)
+
+predict(mdl_3weeks)
+
+```
+
+
+
+We see the mean effect of $\hat{\mu}_\delta = .045\, [-1.112, \, 1.202]$ is even smaller with very extremely wide CIs.
+
+This goes to show that arbitrary post-hoc analytic decisions can greatly impact the end result. This is just another reason why R&H's analysis was, at the very least, highly misleading.
+
 
 ## Discussion
 

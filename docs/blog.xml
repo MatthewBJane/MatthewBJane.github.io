@@ -55,7 +55,7 @@
 <p>The reanalysis doesn’t use an appropriate statistical model. It simply calculates an unweighted average across different studies, doesn’t provide confidence intervals, and misinterprets the evidence</p>
 </blockquote>
 <p>All these points are unequivocally true. However, Haidt then posted the following tweet,</p>
-<p></p><div id="tweet-47248"></div><script>tweet={"url":"https:\/\/twitter.com\/JonHaidt\/status\/1830583665891385415","author_name":"Jonathan Haidt","author_url":"https:\/\/twitter.com\/JonHaidt","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI&#39;m glad to see the community note has been toned down. But it is still inappropriate. Our post was about how there are so many errors in the Ferguson meta, including errors in sample sizes and effect sizes, that we can&#39;t yet do weighting or confidence intervals. We are taking…\u003C\/p\u003E&mdash; Jonathan Haidt (@JonHaidt) \u003Ca href=\"https:\/\/twitter.com\/JonHaidt\/status\/1830583665891385415?ref_src=twsrc%5Etfw\"\u003ESeptember 2, 2024\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-47248").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-19038"></div><script>tweet={"url":"https:\/\/twitter.com\/JonHaidt\/status\/1830583665891385415","author_name":"Jonathan Haidt","author_url":"https:\/\/twitter.com\/JonHaidt","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI&#39;m glad to see the community note has been toned down. But it is still inappropriate. Our post was about how there are so many errors in the Ferguson meta, including errors in sample sizes and effect sizes, that we can&#39;t yet do weighting or confidence intervals. We are taking…\u003C\/p\u003E&mdash; Jonathan Haidt (@JonHaidt) \u003Ca href=\"https:\/\/twitter.com\/JonHaidt\/status\/1830583665891385415?ref_src=twsrc%5Etfw\"\u003ESeptember 2, 2024\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-19038").innerHTML = tweet["html"];</script><p></p>
 <p>This tweet seemed to get his followers to rate the community note as unhelpful and thus it was taken down again. Of course, it is difficult to maintain a community note with Haidt’s large following. So I guess we will have to treat these blog posts as a much more detailed community note.</p>
 </section>
 <section id="rhs-analysis-was-unequivocally-a-meta-analysis" class="level2">
@@ -68,6 +68,8 @@
 <blockquote class="blockquote">
 <p>Meta-analysis is the statistical combination of results from two or more separate studies.</p>
 </blockquote>
+<p>If you simply calculate an average effect size across studies, you have conducted a meta-analysis. If you tally up the number of positive and negative results, you have conducted a meta-analysis. Every table in R&amp;H’s article is literally displaying a meta-analysis, whether that was their intent or not.</p>
+<p>And most importantly, if you do a meta-analysis you got to do it right (i.e., systematically and transparently with proper statistical methods).</p>
 </section>
 <section id="errors-in-effect-sizes-and-sample-sizes" class="level2">
 <h2 class="anchored" data-anchor-id="errors-in-effect-sizes-and-sample-sizes">Errors in Effect Sizes and Sample Sizes</h2>
@@ -90,7 +92,7 @@
 <section id="controversy-surrounding-the-study-by-collis-and-egger-2022" class="level2">
 <h2 class="anchored" data-anchor-id="controversy-surrounding-the-study-by-collis-and-egger-2022">Controversy surrounding the study by Collis and Egger (2022)</h2>
 <p>R&amp;H’s primary critique of my analysis was that Collis and Egger’s (2022) study shouldn’t be included because the manipulation check failed. From my reading of the paper, the treatment group did demonstrate lower screen time for facebook, instagram, and snapchat, however <em>higher</em> for instant messaging apps, news/media, gaming, as well as overall screen time. R&amp;H mention WhatsApp as one of the primary apps that people replaced social media with. It does not seem that people really consider instant messaging like WhatsApp a form of social media (see poll results below):</p>
-<p></p><div id="tweet-70066"></div><script>tweet={"url":"https:\/\/twitter.com\/MatthewBJane\/status\/1830399884299481182","author_name":"Matthew B Jané","author_url":"https:\/\/twitter.com\/MatthewBJane","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EWould you consider WhatsApp and other instant messaging Apps as “Social Media”?\u003C\/p\u003E&mdash; Matthew B Jané (@MatthewBJane) \u003Ca href=\"https:\/\/twitter.com\/MatthewBJane\/status\/1830399884299481182?ref_src=twsrc%5Etfw\"\u003ESeptember 2, 2024\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-70066").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-67013"></div><script>tweet={"url":"https:\/\/twitter.com\/MatthewBJane\/status\/1830399884299481182","author_name":"Matthew B Jané","author_url":"https:\/\/twitter.com\/MatthewBJane","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EWould you consider WhatsApp and other instant messaging Apps as “Social Media”?\u003C\/p\u003E&mdash; Matthew B Jané (@MatthewBJane) \u003Ca href=\"https:\/\/twitter.com\/MatthewBJane\/status\/1830399884299481182?ref_src=twsrc%5Etfw\"\u003ESeptember 2, 2024\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-67013").innerHTML = tweet["html"];</script><p></p>
 <p>It does not seem clear to me that this is a failed manipulation check, especially considering total digital screen time is not the target intervention variable. R&amp;H also mention there is no evidence that other social media apps were used:</p>
 <blockquote class="blockquote">
 <p>In addition, there is no evidence that participants reduced their use of other social media platforms such as TikTok, YouTube, Twitter, and Reddit (all of which were widely used by college students in 2019).</p>
@@ -219,10 +221,11 @@ font-style: inherit;">d =</span> d, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">n1 =</span> n))</span>
 <span id="cb3-4"></span>
-<span id="cb3-5"><span class="co" style="color: #5E5E5E;
+<span id="cb3-5"></span>
+<span id="cb3-6"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># display updated dataset</span></span>
-<span id="cb3-6"><span class="fu" style="color: #4758AB;
+<span id="cb3-7"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">head</span>(dat[<span class="fu" style="color: #4758AB;
 background-color: null;
@@ -550,6 +553,99 @@ font-style: inherit;">"knha"</span>)</span></code></pre></div>
 <h3 class="anchored" data-anchor-id="a-note-on-effect-dependency">A note on effect dependency</h3>
 <p>The confidence and prediction intervals are probably narrower then what it should be since some of the studies clearly come from the same lab and have similar designs. These CIs are likely the best case scenario.</p>
 </section>
+</section>
+<section id="changing-the-two-week-cut-point-of-rhs" class="level2">
+<h2 class="anchored" data-anchor-id="changing-the-two-week-cut-point-of-rhs">Changing the two week cut-point of R&amp;H’s</h2>
+<p>Brenton Wiernik suggested that I play around with the two week cut-point that R&amp;H used in their article. I understand R&amp;H had the following justification for their cut-point,</p>
+<blockquote class="blockquote">
+<p>Acute withdrawal symptoms typically peak after a few days, but often last for up to two weeks.</p>
+</blockquote>
+<p>Therefore R&amp;H selected for reduction studies that were two weeks or longer. But if withdrawal symptoms last for two weeks in many cases, then maybe we should play it safe and only select the studies that are <em>longer</em> than two weeks (<img src="https://latex.codecogs.com/png.latex?X_%5Cmathrm%7Bweeks%7D%3E2"> rather than <img src="https://latex.codecogs.com/png.latex?X_%5Cmathrm%7Bweeks%7D%5Cgeq%202">). This cut-point could have easily been argued with R&amp;H’s reasoning.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1">mdl_2weeks <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rma</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">yi =</span> d,</span>
+<span id="cb11-2">                 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">vi =</span> v,</span>
+<span id="cb11-3">                 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> dat,</span>
+<span id="cb11-4">                 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">method =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"REML"</span>,</span>
+<span id="cb11-5">                 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">test =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"knha"</span>,</span>
+<span id="cb11-6">                 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">subset =</span> length_weeks <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)</span>
+<span id="cb11-7"></span>
+<span id="cb11-8"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">predict</span>(mdl_2weeks)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   pred     se   ci.lb  ci.ub   pi.lb  pi.ub 
+ 0.0980 0.0514 -0.0448 0.2408 -0.0448 0.2408 </code></pre>
+</div>
+</div>
+<p>After playing it safe and allowing for withdrawal symptoms to subside we see a mean effect of <img src="https://latex.codecogs.com/png.latex?%5Chat%7B%5Cmu%7D_%5Cdelta%20=%20.098%5C,%20%5B-.045,%5C,%20.241%5D">. Well seems that the average effect is quite small and about half the size of R&amp;H’s average, but maybe we can try only studies that were more than 3 weeks,</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">mdl_3weeks <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rma</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">yi =</span> d,</span>
+<span id="cb13-2">                 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">vi =</span> v,</span>
+<span id="cb13-3">                 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> dat,</span>
+<span id="cb13-4">                 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">method =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"REML"</span>,</span>
+<span id="cb13-5">                 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">test =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"knha"</span>,</span>
+<span id="cb13-6">                 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">subset =</span> length_weeks <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)</span>
+<span id="cb13-7"></span>
+<span id="cb13-8"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">predict</span>(mdl_3weeks)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   pred     se   ci.lb  ci.ub   pi.lb  pi.ub 
+ 0.0446 0.0910 -1.1122 1.2015 -1.5739 1.6631 </code></pre>
+</div>
+</div>
+<p>We see the mean effect of <img src="https://latex.codecogs.com/png.latex?%5Chat%7B%5Cmu%7D_%5Cdelta%20=%20.045%5C,%20%5B-1.112,%20%5C,%201.202%5D"> is even smaller with very extremely wide CIs.</p>
+<p>This goes to show that arbitrary post-hoc analytic decisions can greatly impact the end result. This is just another reason why R&amp;H’s analysis was, at the very least, highly misleading.</p>
 </section>
 <section id="discussion" class="level2">
 <h2 class="anchored" data-anchor-id="discussion">Discussion</h2>
