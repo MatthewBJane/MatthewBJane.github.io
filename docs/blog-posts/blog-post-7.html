@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Matthew B. Jané">
+<meta name="dcterms.date" content="2024-02-02">
+<meta name="description" content="I want to thank Jonathan Haidt and Zach Rausch for engaging with my critique of their re-analysis of Ferguson’s meta-analysis. Unfortunately, their response continued to convey a misunderstanding of meta-analysis. There however were some valid points brought up that could have enhanced my analyses so I will also include those here. Before digging into this post, please first read my initial critique. I also address some accusations about my motivation here.">
+
+<title>A Response to Jonathan Haidt’s Response – Matthew B. Jané</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="..//webLogoFavicon2.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="A Response to Jonathan Haidt’s Response – Matthew B. Jané">
+<meta property="og:description" content="I want to thank Jonathan Haidt and Zach Rausch for engaging with my critique of their re-analysis of Ferguson’s meta-analysis. Unfortunately, their response continued to convey a misunderstanding of meta-analysis. There however were some valid points brought up that could have enhanced my analyses so I will also include those here. Before digging into this post, please first read my initial critique. I also address some accusations about my motivation here.">
+<meta property="og:image" content="https://matthewbjane.com/blog-posts/blog-image.png">
+<meta property="og:site_name" content="Matthew B. Jané">
+<meta property="og:locale" content="en_US">
+<meta property="og:image:height" content="7206">
+<meta property="og:image:width" content="10817">
+<meta name="twitter:title" content="A Response to Jonathan Haidt’s Response – Matthew B. Jané">
+<meta name="twitter:description" content="I want to thank Jonathan Haidt and Zach Rausch for engaging with my critique of their re-analysis of Ferguson’s meta-analysis. Unfortunately, their response continued to convey a misunderstanding of meta-analysis. There however were some valid points brought up that could have enhanced my analyses so I will also include those here. Before digging into this post, please first read my initial critique. I also address some accusations about my motivation here.">
+<meta name="twitter:image" content="https://matthewbjane.com/blog-posts/blog-image.png">
+<meta name="twitter:creator" content="@MatthewBJane">
+<meta name="twitter:image-height" content="7206">
+<meta name="twitter:image-width" content="10817">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../webLogoFavicon2.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Matthew B. Jané</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../blog.html"> 
+<span class="menu-text">Meta-Analysis Magic</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../CV.html"> 
+<span class="menu-text">CV</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Software.html"> 
+<span class="menu-text">Software</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Books.html"> 
+<span class="menu-text">Books</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Consulting.html"> 
+<span class="menu-text">Consulting</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.github.com/MatthewBJane"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.twitter.com/MatthewBJane"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../blog.xml"> <i class="bi bi-rss" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#establishing-my-motivation" id="toc-establishing-my-motivation" class="nav-link active" data-scroll-target="#establishing-my-motivation">Establishing my motivation</a></li>
+  <li><a href="#where-could-i-have-been-better" id="toc-where-could-i-have-been-better" class="nav-link" data-scroll-target="#where-could-i-have-been-better">Where could I have been better?</a></li>
+  <li><a href="#in-response-to-the-community-note-on-haidts-tweet" id="toc-in-response-to-the-community-note-on-haidts-tweet" class="nav-link" data-scroll-target="#in-response-to-the-community-note-on-haidts-tweet">In Response to the Community Note on Haidt’s Tweet</a></li>
+  <li><a href="#rhs-analysis-was-unequivocally-a-meta-analysis" id="toc-rhs-analysis-was-unequivocally-a-meta-analysis" class="nav-link" data-scroll-target="#rhs-analysis-was-unequivocally-a-meta-analysis">R&amp;H’s analysis was unequivocally a meta-analysis</a></li>
+  <li><a href="#errors-in-effect-sizes-and-sample-sizes" id="toc-errors-in-effect-sizes-and-sample-sizes" class="nav-link" data-scroll-target="#errors-in-effect-sizes-and-sample-sizes">Errors in Effect Sizes and Sample Sizes</a></li>
+  <li><a href="#haidts-future-meta-analysis" id="toc-haidts-future-meta-analysis" class="nav-link" data-scroll-target="#haidts-future-meta-analysis">Haidt’s future meta-analysis</a></li>
+  <li><a href="#controversy-surrounding-the-study-by-collis-and-egger-2022" id="toc-controversy-surrounding-the-study-by-collis-and-egger-2022" class="nav-link" data-scroll-target="#controversy-surrounding-the-study-by-collis-and-egger-2022">Controversy surrounding the study by Collis and Egger (2022)</a></li>
+  <li><a href="#setting-up-the-code" id="toc-setting-up-the-code" class="nav-link" data-scroll-target="#setting-up-the-code">Setting up the code</a></li>
+  <li><a href="#non-linear-model-with-and-without-collis-eggers-2022" id="toc-non-linear-model-with-and-without-collis-eggers-2022" class="nav-link" data-scroll-target="#non-linear-model-with-and-without-collis-eggers-2022">Non-linear model with and without Collis &amp; Eggers (2022)</a>
+  <ul class="collapse">
+  <li><a href="#a-note-on-effect-dependency" id="toc-a-note-on-effect-dependency" class="nav-link" data-scroll-target="#a-note-on-effect-dependency">A note on effect dependency</a></li>
+  </ul></li>
+  <li><a href="#changing-the-two-week-cut-point-of-rhs" id="toc-changing-the-two-week-cut-point-of-rhs" class="nav-link" data-scroll-target="#changing-the-two-week-cut-point-of-rhs">Changing the two week cut-point of R&amp;H’s</a></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a></li>
+  <li><a href="#citing-r-packages" id="toc-citing-r-packages" class="nav-link" data-scroll-target="#citing-r-packages">Citing R packages</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">A Response to Jonathan Haidt’s Response</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">meta-analysis</div>
+    <div class="quarto-category">social media</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    I want to thank Jonathan Haidt and Zach Rausch for engaging with my <a href="https://matthewbjane.com/blog-posts/blog-post-6.html">critique</a> of their re-analysis of Ferguson’s meta-analysis. Unfortunately, their <a href="https://www.afterbabel.com/i/148238574/postscript">response</a> continued to convey a misunderstanding of meta-analysis. There however were some valid points brought up that could have enhanced my analyses so I will also include those here. Before digging into this post, please first read my initial <a href="https://matthewbjane.com/blog-posts/blog-post-6.html">critique</a>. I also address some accusations about my motivation here.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Matthew B. Jané </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 2, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<a href="https://www.buymeacoffee.com/matthewbjane"><img src="https://img.buymeacoffee.com/button-api/?text=Support my work&amp;emoji=☕&amp;slug=matthewbjane&amp;button_colour=ed5c9b&amp;font_colour=ffffff&amp;font_family=Arial&amp;outline_colour=ffffff&amp;coffee_colour=ffffff"></a>
+<p><br></p>
+<section id="establishing-my-motivation" class="level2">
+<h2 class="anchored" data-anchor-id="establishing-my-motivation">Establishing my motivation</h2>
+<p>Although my original post made it seem that I have some prior opinion that social media effects mental health. In reality, I actually think that social media probably <strong><em>does</em></strong> have an average negative effect on mental health. I also probably agree that the RCTs in this meta-analysis probably won’t find any convincing causal estimates. If Rausch and Haidt’s (R&amp;H) made the argument that there is a causal effect, but the RCTs won’t capture then I would have never made my original post. What I know is meta-analysis, not the literature on social media use and mental health. I was motivated to write the original post because of the clear statistical malpractice employed in R&amp;H’s re-analysis. I have no desire to prove or disprove whether social media is actually detrimental to mental health, but I do have a desire to combat the spread of misleading analyses and poor statistical practice.</p>
+<p>Also, to those absurd comments and emails out there saying that I am somehow working for big Pharma, social media companies, the government, or profiting on some misinformation campaign: I am literally a graduate student who lives with my parents to save money on rent (you can help me out by buying me a <a href="https://www.buymeacoffee.com/matthewbjane">coffee</a>). I do this because I truly believe in the fight for a rigorous, open, and transparent science. I have been very critical of how academia operates and I hope to make some positive change to that end. Anyways, on to the post…</p>
+</section>
+<section id="where-could-i-have-been-better" class="level2">
+<h2 class="anchored" data-anchor-id="where-could-i-have-been-better">Where could I have been better?</h2>
+<p>The best criticisms of my blog outside of R&amp;H’s criticisms seemed to have been that length weeks should have been log scaled (pulling in that 10 week intervention) and also I should have fit some non-linear model. I think these are completely valid points and I will conduct that analysis in this blog post.</p>
+<p>R&amp;H responded to one of my last analyses in the post (regressing the effect size on length of intervention) and said the following:</p>
+<blockquote class="blockquote">
+<p>a blog post by Matthew Jané used Ferguson’s numbers and concluded that there is no relationship between the duration of reduction and the effect size.</p>
+</blockquote>
+<p>This is all true (with the slight quibble that I said “little/no” relationship) and I should have been clearer about the assumptions underlying my claim. In my original post I said this:</p>
+<blockquote class="blockquote">
+<p>Okay so as it turns out there appears to be little/no effect of the length of the intervention on the effect size.</p>
+</blockquote>
+<p>I really should have said this:</p>
+<blockquote class="blockquote">
+<p><span style="color:red;"><strong><em>Given the proposed model and the data,</em></strong></span> there appears to be little/no effect of the length of the intervention on the effect size.</p>
+</blockquote>
+<p>Usually that does not need to be said considering the model was defined, but it is important nonetheless, since if I were to choose a different model it is possible we could have see a relationship between the two variables.</p>
+</section>
+<section id="in-response-to-the-community-note-on-haidts-tweet" class="level2">
+<h2 class="anchored" data-anchor-id="in-response-to-the-community-note-on-haidts-tweet">In Response to the Community Note on Haidt’s Tweet</h2>
+<p>A community note (that I did not write) was attached to Haidt’s tweet containing the R&amp;H re-analysis. It has since disappeared, but here was the content of the note:</p>
+<blockquote class="blockquote">
+<p>As many statistics experts have pointed out, this analysis is incorrect. If done correctly, the analysis shows that reducing social media has no effect. <em>*then it links to my blog post as a source*</em></p>
+</blockquote>
+<p>Although the first sentence I believe is accurate, the <strong>second sentence is not true and I did not state that in the original post</strong>. Therefore I am okay that the community note was taken down for whatever reason. Then promptly, a better and even more recent community note was posted that read,</p>
+<blockquote class="blockquote">
+<p>The reanalysis doesn’t use an appropriate statistical model. It simply calculates an unweighted average across different studies, doesn’t provide confidence intervals, and misinterprets the evidence</p>
+</blockquote>
+<p>All these points are unequivocally true. However, Haidt then posted the following tweet,</p>
+<p></p><div id="tweet-35639"></div><script>tweet={"url":"https:\/\/twitter.com\/JonHaidt\/status\/1830583665891385415","author_name":"Jonathan Haidt","author_url":"https:\/\/twitter.com\/JonHaidt","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI&#39;m glad to see the community note has been toned down. But it is still inappropriate. Our post was about how there are so many errors in the Ferguson meta, including errors in sample sizes and effect sizes, that we can&#39;t yet do weighting or confidence intervals. We are taking…\u003C\/p\u003E&mdash; Jonathan Haidt (@JonHaidt) \u003Ca href=\"https:\/\/twitter.com\/JonHaidt\/status\/1830583665891385415?ref_src=twsrc%5Etfw\"\u003ESeptember 2, 2024\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-35639").innerHTML = tweet["html"];</script><p></p>
+<p>This tweet seemed to get his followers to rate the community note as unhelpful and thus it was taken down again. Of course, it is difficult to maintain a community note with Haidt’s large following. So I guess we will have to treat these blog posts as a much more detailed community note.</p>
+</section>
+<section id="rhs-analysis-was-unequivocally-a-meta-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="rhs-analysis-was-unequivocally-a-meta-analysis">R&amp;H’s analysis was unequivocally a meta-analysis</h2>
+<p>In a tweet by Haidt, he pointed out that R&amp;H’s re-analysis should not be considered a meta-analysis:</p>
+<blockquote class="blockquote">
+<p>I think it was a mistake to treat our essay as a meta-analysis</p>
+</blockquote>
+<p>The reason I treated R&amp;H’s re-analysis as a meta-analysis is because it is, by definition, a meta-analysis. Let me be clear, R&amp;H’s analysis consisted of <strong>1) averaging results across studies</strong> and <strong>2) counting up positive, negative, and null effects</strong>, both of which are just different obsolete and unacceptable methods of meta-analysis (the latter is commonly referred to as a vote-counting meta-analysis). If you are unconvinced, here is the definition of a meta-analysis from the <a href="https://training.cochrane.org/handbook/current/chapter-10">Cochrane handbook</a>:</p>
+<blockquote class="blockquote">
+<p>Meta-analysis is the statistical combination of results from two or more separate studies.</p>
+</blockquote>
+<p>If you simply calculate an average effect size across studies, you have conducted a meta-analysis. If you tally up the number of positive and negative results, you have conducted a meta-analysis. Every table in R&amp;H’s article is literally displaying a meta-analysis, whether that was their intent or not.</p>
+<p>On top of all of the fundamental flaws in their analysis, R&amp;H also based the following claim on their meta-analytic results:</p>
+<blockquote class="blockquote">
+<p>These results clearly indicate that multi-week social media reduction experiments improve some aspects of well-being</p>
+</blockquote>
+<p>Their results absolutely do not <em>clearly</em> indicate this. This is an extremely misleading conclusion that is based on a completely inappropriate analysis.</p>
+<p><strong>I recommend that R&amp;H remove the tables with meta-analytic results and all the conclusions/claims associated with those results. Adding a postscript, a preface, and changing the title does not fix this.</strong></p>
+</section>
+<section id="errors-in-effect-sizes-and-sample-sizes" class="level2">
+<h2 class="anchored" data-anchor-id="errors-in-effect-sizes-and-sample-sizes">Errors in Effect Sizes and Sample Sizes</h2>
+<p>Haidt also claims that there are errors in the effect sizes and sample sizes in <span class="citation" data-cites="ferguson2024">Ferguson (<a href="#ref-ferguson2024" role="doc-biblioref">2024</a>)</span>’s meta-analysis:</p>
+<blockquote class="blockquote">
+<p>Our post was about how there are so many errors in the Ferguson meta, including errors in sample sizes and effect sizes, that we can’t yet do weighting or confidence intervals.</p>
+</blockquote>
+<p>Yet R&amp;H still conduct their re-analysis on those effect sizes. <strong>If the data is untrustworthy why conduct any analysis in the first place?</strong> Why is it more justifiable to compute unweighted average effects without any indicator of variability from that data base? If they believe that the data is untrustworthy, why conduct the analysis at all? If we decide to conduct an analysis, we must do it using the appropriate statistical techniques. <strong>Like I said previously, if R&amp;H retracted their re-analysis and instead argued that these RCTs do not properly capture the causal effects of social media on mental health, I would probably agree with them.</strong></p>
+<p>I do not have the time to double check all the effect sizes of Ferguson’s meta-analysis. I analyzed them at face value which is exactly what R&amp;H did in their re-analyses.</p>
+</section>
+<section id="haidts-future-meta-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="haidts-future-meta-analysis">Haidt’s future meta-analysis</h2>
+<p>Haidt has proposed that he is planning to conduct a re-do of the <span class="citation" data-cites="ferguson2024">Ferguson (<a href="#ref-ferguson2024" role="doc-biblioref">2024</a>)</span>’s meta-analysis</p>
+<blockquote class="blockquote">
+<p>Nonetheless, all of this is to show why we are not trying to do our own meta analysis with Ferguson’s data. In a future post we plan to do a review of the evidence from scratch so that we avoid these many problems. (It’s worth noting that we have also found five additional multi-week reduction studies, all of which find benefits to reduction, which are not in Ferguson’s meta).</p>
+</blockquote>
+<p><strong><em>To Jonathan Haidt</em></strong>: <strong>I would love to offer my help as a collaborator/consultant for this upcoming project so that we can establish a systematic, transparent, reproducible, and rigorous review, and meta-analysis plan. I also know many awesome and knowledgeable meta-analysts that I would be happy to recommend to you. You can email me at matthew.jane@uconn.edu</strong></p>
+<p>Constructing a systematic, rigorous, transparent, and fully reproducible meta-analysis is not only difficult, it is also exceedingly rare.</p>
+</section>
+<section id="controversy-surrounding-the-study-by-collis-and-egger-2022" class="level2">
+<h2 class="anchored" data-anchor-id="controversy-surrounding-the-study-by-collis-and-egger-2022">Controversy surrounding the study by Collis and Egger (2022)</h2>
+<p>R&amp;H’s primary critique of my analysis was that Collis and Egger’s (2022) study shouldn’t be included because the manipulation check failed. From my reading of the paper, the treatment group did demonstrate lower screen time for facebook, instagram, and snapchat, however <em>higher</em> for instant messaging apps, news/media, gaming, as well as overall screen time. R&amp;H mention WhatsApp as one of the primary apps that people replaced social media with. It does not seem that people really consider instant messaging like WhatsApp a form of social media (see poll results below):</p>
+<p></p><div id="tweet-45173"></div><script>tweet={"url":"https:\/\/twitter.com\/MatthewBJane\/status\/1830399884299481182","author_name":"Matthew B Jané","author_url":"https:\/\/twitter.com\/MatthewBJane","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EWould you consider WhatsApp and other instant messaging Apps as “Social Media”?\u003C\/p\u003E&mdash; Matthew B Jané (@MatthewBJane) \u003Ca href=\"https:\/\/twitter.com\/MatthewBJane\/status\/1830399884299481182?ref_src=twsrc%5Etfw\"\u003ESeptember 2, 2024\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-45173").innerHTML = tweet["html"];</script><p></p>
+<p>It does not seem clear to me that this is a failed manipulation check, especially considering total digital screen time is not the target intervention variable. R&amp;H also mention there is no evidence that other social media apps were used:</p>
+<blockquote class="blockquote">
+<p>In addition, there is no evidence that participants reduced their use of other social media platforms such as TikTok, YouTube, Twitter, and Reddit (all of which were widely used by college students in 2019).</p>
+</blockquote>
+<p>However that is true for a lot of the other studies in this meta-analysis where screen time wasn’t even monitored or monitored with self-report rather than more objective measures. I do not think we should punish one study for being transparent and providing a manipulation check.</p>
+<p>Although I am against the exclusion of Collis and Eggers (2022) in principle, I will nevertheless fit the regression model with and without it.</p>
+</section>
+<section id="setting-up-the-code" class="level2">
+<h2 class="anchored" data-anchor-id="setting-up-the-code">Setting up the code</h2>
+<p>In this section we are just going to run the code we went over in the last blog post (see <a href="https://matthewbjane.com/blog-posts/blog-post-6.html">here</a>)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load in packages</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mgcv)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(splines)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(osfr)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(metafor)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psychmeta)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># download data from OSF repo</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">read_xlsx</span>(<span class="st">"~/Documents/MatthewBJane/blog-posts/Best Practices Coding Experiments.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 35 × 16
+   Citation       block     n      d Standardized Outcome…¹ `Validated Outcomes`
+   &lt;chr&gt;          &lt;lgl&gt; &lt;dbl&gt;  &lt;dbl&gt;                  &lt;dbl&gt;                &lt;dbl&gt;
+ 1 Alcott 2020    NA     1661  0.09                       1                    1
+ 2 Brailovskaia … NA      286  0.154                      1                    1
+ 3 Brailovskaia … NA      322  0                          1                    1
+ 4 Collins and E… NA      121 -0.138                      1                    1
+ 5 Deters &amp; Mehl… NA       86 -0.207                      1                    1
+ 6 Faulhaber et … NA      230  0.484                      1                    1
+ 7 Gajdics 2022   NA      235 -0.364                      1                    1
+ 8 Hall et al. 2… NA      130 -0.007                      1                    1
+ 9 Hunt 2018      NA      143  0.232                      1                    1
+10 Hunt 2021      NA       88  0.374                      1                    1
+# ℹ 25 more rows
+# ℹ abbreviated name: ¹​`Standardized Outcomes`
+# ℹ 10 more variables: `Matched Control Condition` &lt;dbl&gt;,
+#   `Distractor Questionnaires` &lt;dbl&gt;, `Query hypothesis guessing` &lt;dbl&gt;,
+#   Preregistration &lt;dbl&gt;, Age &lt;dbl&gt;, Year &lt;dbl&gt;, `Best Practices Total` &lt;dbl&gt;,
+#   `Verified 1= yes, 2=no` &lt;dbl&gt;, `Ratio at post` &lt;dbl&gt;,
+#   `Citation Bias 1=yes, 2 = no` &lt;dbl&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load in dataset and filter out studies without data</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"Best Practices Coding Experiments.xlsx"</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">sheet =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(d))</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># display effect size data for first 6 studies</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat[<span class="fu">c</span>(<span class="st">"Citation"</span>,<span class="st">"n"</span>,<span class="st">"d"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+  Citation                    n      d
+  &lt;chr&gt;                   &lt;dbl&gt;  &lt;dbl&gt;
+1 Alcott 2020              1661  0.09 
+2 Brailovskaia 2020         286  0.154
+3 Brailovskaia 2022         322  0    
+4 Collins and Edgers 2022   121 -0.138
+5 Deters &amp; Mehl 2013         86 -0.207
+6 Faulhaber et al., 2023    230  0.484</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute sampling variance</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">v =</span> <span class="fu">var_error_d</span>(<span class="at">d =</span> d, <span class="at">n1 =</span> n))</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># display updated dataset</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat[<span class="fu">c</span>(<span class="st">"Citation"</span>,<span class="st">"n"</span>,<span class="st">"d"</span>,<span class="st">"v"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+  Citation                    n      d       v
+  &lt;chr&gt;                   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
+1 Alcott 2020              1661  0.09  0.00241
+2 Brailovskaia 2020         286  0.154 0.0141 
+3 Brailovskaia 2022         322  0     0.0125 
+4 Collins and Edgers 2022   121 -0.138 0.0337 
+5 Deters &amp; Mehl 2013         86 -0.207 0.0479 
+6 Faulhaber et al., 2023    230  0.484 0.0181 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">length_weeks =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="co"># Alcott 2020</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">2</span>, <span class="co"># Brailovskaia 2020</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">2</span>, <span class="co"># Brailovskaia 2022</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">10</span>, <span class="co"># Collins and Edgers 2022</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                          <span class="cn">NA</span>, <span class="co"># Deters &amp; Mehl 2013</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">2</span>, <span class="co"># Faulhaber et al., 2023</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">1</span><span class="sc">/</span><span class="dv">7</span>, <span class="co"># Gajdics 2022</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>                          <span class="fl">2.5</span>, <span class="co"># Hall et al. 2021</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">1</span>, <span class="co"># Hunt 2018</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">1</span>, <span class="co"># Hunt 2021</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">1</span>, <span class="co"># Kleefeld dissertation</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">1</span>, <span class="co"># Lambert 2022</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>                          <span class="cn">NA</span>, <span class="co"># Lepp 2022</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">1</span>, <span class="co"># Mahalingham 2023</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">1</span><span class="sc">/</span><span class="dv">7</span>, <span class="co"># Mitev 2021</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>                          <span class="cn">NA</span>, <span class="co"># Ozimek 2020</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">1</span><span class="sc">/</span><span class="dv">7</span>, <span class="co"># Przybylski 2021</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>                          <span class="cn">NA</span>, <span class="co"># Sagioglou 2014 study 2"</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>                          <span class="cn">NA</span>, <span class="co"># Tartaglia</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">3</span>, <span class="co"># Thai 2021</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">3</span>, <span class="co"># Thai 2023</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">1</span>, <span class="co"># Tromholt 2016</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">1</span>, <span class="co"># Valley2019</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">1</span>, <span class="co"># van wezel 2021</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">5</span><span class="sc">/</span><span class="dv">7</span>, <span class="co"># Vanman 2018</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>                          <span class="cn">NA</span>, <span class="co"># Ward 2017</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>                          <span class="cn">NA</span>  <span class="co"># Yuen et al., 2019</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>  ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="non-linear-model-with-and-without-collis-eggers-2022" class="level2">
+<h2 class="anchored" data-anchor-id="non-linear-model-with-and-without-collis-eggers-2022">Non-linear model with and without Collis &amp; Eggers (2022)</h2>
+<p>In my blog post, I regressed the effect size on length of the intervention using a linear meta-regression which estimates the conditional mean effect size with a straight line. I have had a number of people request that weeks should be logged (which will pull in that Collis and Egger study) and fit a non-linear basis spline to the effects. I totally agree with this approach. Essentially we are modeling the conditional mean of the effect size as a non-linear function of the length of weeks. This will help account for the withdrawal effect that R&amp;H had mentioned.</p>
+<p>Let’s first fit the model with the Collis and Egger (2022) included in the data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>nu <span class="ot">=</span> <span class="dv">3</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># model with basis spline over log(weeks)</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>mdl_weeks <span class="ot">&lt;-</span> <span class="fu">rma</span>(d <span class="sc">~</span> <span class="fu">bs</span>(<span class="fu">log</span>(length_weeks), <span class="at">df =</span> nu),</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">vi =</span> v,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> dat,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">method =</span> <span class="st">"REML"</span>,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">test =</span> <span class="st">"knha"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: 7 studies with NAs omitted from model fitting.</code></pre>
+</div>
+</div>
+<p>The output of the model will be difficult to interpret so we will go ahead and plot it out with the confidence and prediction intervals.</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 7 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="blog-post-7_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>As we kind of would have expected, you see an initial increase in the conditional mean and then a slow fall over time. Still there is a lot of variability both in the true effects (prediction interval) and in the conditional mean effect (confidence interval) so it is difficult to say anything here with much confidence. Now we can construct the same model with Collis and Eggers (2022) removed from the analysis.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dat_no_CollisEggers <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Citation <span class="sc">!=</span> <span class="st">"Collins and Edgers 2022"</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>nu <span class="ot">=</span> <span class="dv">3</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>mdl_weeks <span class="ot">&lt;-</span> <span class="fu">rma</span>(d <span class="sc">~</span> <span class="fu">bs</span>(<span class="fu">log</span>(length_weeks), <span class="at">df =</span> nu),</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">vi =</span> v,</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> dat_no_CollisEggers,</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">method =</span> <span class="st">"REML"</span>,</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>                 <span class="at">test =</span> <span class="st">"knha"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: 7 studies with NAs omitted from model fitting.</code></pre>
+</div>
+</div>
+<p>Like we did for the last one, we can plot out the same model without the Collis and Egger (2022) study:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="blog-post-7_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Surprisingly, even without Collis and Egger’s study there really isn’t a whole lot we can say here with confidence. It does not really even appear is much different than it is with Collis and Eggers (2022) study included. In fact, with the predictions (conditional means) plotted side by side they appear almost identical:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="blog-post-7_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Model predictions (conditional mean of true effects) and confidence intervals for the model including Collis &amp; Egger and the model without.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<section id="a-note-on-effect-dependency" class="level3">
+<h3 class="anchored" data-anchor-id="a-note-on-effect-dependency">A note on effect dependency</h3>
+<p>The confidence and prediction intervals are probably narrower then what it should be since some of the studies clearly come from the same lab and have similar designs. These CIs are likely the best case scenario.</p>
+</section>
+</section>
+<section id="changing-the-two-week-cut-point-of-rhs" class="level2">
+<h2 class="anchored" data-anchor-id="changing-the-two-week-cut-point-of-rhs">Changing the two week cut-point of R&amp;H’s</h2>
+<p>Brenton Wiernik suggested that I play around with the two week cut-point that R&amp;H used in their article. I understand R&amp;H had the following justification for their cut-point,</p>
+<blockquote class="blockquote">
+<p>Acute withdrawal symptoms typically peak after a few days, but often last for up to two weeks.</p>
+</blockquote>
+<p>Therefore R&amp;H selected for reduction studies that were two weeks or longer. But if withdrawal symptoms last for two weeks in many cases, then maybe we should play it safe and only select the studies that are <em>longer</em> than two weeks (<span class="math inline">\(X_\mathrm{weeks}&gt;2\)</span> rather than <span class="math inline">\(X_\mathrm{weeks}\geq 2\)</span>). This cut-point could have easily been argued with R&amp;H’s reasoning.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>mdl_2weeks <span class="ot">&lt;-</span> <span class="fu">rma</span>(<span class="at">yi =</span> d,</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">vi =</span> v,</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> dat,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">method =</span> <span class="st">"REML"</span>,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">test =</span> <span class="st">"knha"</span>,</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">subset =</span> length_weeks <span class="sc">&gt;</span> <span class="dv">2</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(mdl_2weeks)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   pred     se   ci.lb  ci.ub   pi.lb  pi.ub 
+ 0.0980 0.0514 -0.0448 0.2408 -0.0448 0.2408 </code></pre>
+</div>
+</div>
+<p>After playing it safe and allowing for withdrawal symptoms to subside we see a mean effect of <span class="math inline">\(\hat{\mu}_\delta = .098\, [-.045,\, .241]\)</span>. Well seems that the average effect is quite small and about half the size of R&amp;H’s average, but maybe we can try only studies that were more than 3 weeks,</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>mdl_3weeks <span class="ot">&lt;-</span> <span class="fu">rma</span>(<span class="at">yi =</span> d,</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">vi =</span> v,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> dat,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">method =</span> <span class="st">"REML"</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">test =</span> <span class="st">"knha"</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">subset =</span> length_weeks <span class="sc">&gt;</span> <span class="dv">3</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(mdl_3weeks)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   pred     se   ci.lb  ci.ub   pi.lb  pi.ub 
+ 0.0446 0.0910 -1.1122 1.2015 -1.5739 1.6631 </code></pre>
+</div>
+</div>
+<p>We see the mean effect of <span class="math inline">\(\hat{\mu}_\delta = .045\, [-1.112, \, 1.202]\)</span> is even smaller with very extremely wide CIs.</p>
+<p>This goes to show that arbitrary post-hoc analytic decisions can greatly impact the end result. This is just another reason why R&amp;H’s analysis was, at the very least, highly misleading.</p>
+</section>
+<section id="discussion" class="level2">
+<h2 class="anchored" data-anchor-id="discussion">Discussion</h2>
+<p>Ultimately, after re-running the model with a more sophisticated non-linear regression with and without the Collis &amp; Egger study that Haidt suggested, there not great evidence of sustained detrimental effects in these RCTs. This does not mean social media is not, on average, detrimental for mental health, it just means that these these RCTs do not appear be good evidence of that fact.</p>
+<p>If I did anything incorrectly or if I did not use best practices, I take full responsibility and you can let me know by sending me a DM on twitter or emailing me at matthewbjane@gmail.com.</p>
+</section>
+<section id="citing-r-packages" class="level2">
+<h2 class="anchored" data-anchor-id="citing-r-packages">Citing R packages</h2>
+<p>The following packages were used here:</p>
+<ul>
+<li><code>mgcv</code> <span class="citation" data-cites="mgcv">(<a href="#ref-mgcv" role="doc-biblioref">Wood et al. 2016</a>)</span></li>
+<li><code>splines</code> <span class="citation" data-cites="splines">(<a href="#ref-splines" role="doc-biblioref">R Core Team 2024</a>)</span></li>
+<li><code>osfr</code> <span class="citation" data-cites="osfr">(<a href="#ref-osfr" role="doc-biblioref">Wolen et al. 2020</a>)</span></li>
+<li><code>tidyverse</code> <span class="citation" data-cites="tidyverse">(<a href="#ref-tidyverse" role="doc-biblioref">Wickham et al. 2019</a>)</span></li>
+<li><code>metafor</code> <span class="citation" data-cites="metafor">(<a href="#ref-metafor" role="doc-biblioref">Viechtbauer 2010</a>)</span></li>
+<li><code>readxl</code> <span class="citation" data-cites="readxl">(<a href="#ref-readxl" role="doc-biblioref">Wickham and Bryan 2023</a>)</span></li>
+<li><code>psychmeta</code> <span class="citation" data-cites="psychmeta">(<a href="#ref-psychmeta" role="doc-biblioref">Dahlke and Wiernik 2019</a>)</span></li>
+<li><code>ggdist</code> <span class="citation" data-cites="ggdist">(<a href="#ref-ggdist" role="doc-biblioref">Kay 2023</a>)</span></li>
+</ul>
+<iframe src="https://embeds.beehiiv.com/f3ffd81a-4723-4419-bb1d-afc8af3bac36" data-test-id="beehiiv-embed" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius: 4px; border: 2px solid #33333322; margin: 0; background-color: transparent;">
+</iframe>
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-psychmeta" class="csl-entry" role="listitem">
+Dahlke, Jeffrey A., and Brenton M. Wiernik. 2019. <span>“<span class="nocase">psychmeta</span>: An r Package for Psychometric Meta-Analysis.”</span> <em>Applied Psychological Measurement</em> 43 (5): 415–16. <a href="https://doi.org/10.1177/0146621618795933">https://doi.org/10.1177/0146621618795933</a>.
+</div>
+<div id="ref-ferguson2024" class="csl-entry" role="listitem">
+Ferguson, Christopher J. 2024. <span>“Do Social Media Experiments Prove a Link with Mental Health: A Methodological and Meta-Analytic Review.”</span> <em>Psychology of Popular Media</em>, No Pagination Specified–. <a href="https://doi.org/10.1037/ppm0000541">https://doi.org/10.1037/ppm0000541</a>.
+</div>
+<div id="ref-ggdist" class="csl-entry" role="listitem">
+Kay, Matthew. 2023. <span>“Ggdist: Visualizations of Distributions and Uncertainty in the Grammar of Graphics.”</span> <a href="https://doi.org/10.31219/osf.io/2gsz6">https://doi.org/10.31219/osf.io/2gsz6</a>.
+</div>
+<div id="ref-splines" class="csl-entry" role="listitem">
+R Core Team. 2024. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
+</div>
+<div id="ref-metafor" class="csl-entry" role="listitem">
+Viechtbauer, Wolfgang. 2010. <span>“Conducting Meta-Analyses in <span>R</span> with the <span class="nocase">metafor</span> Package.”</span> <em>Journal of Statistical Software</em> 36 (3): 1–48. <a href="https://doi.org/10.18637/jss.v036.i03">https://doi.org/10.18637/jss.v036.i03</a>.
+</div>
+<div id="ref-tidyverse" class="csl-entry" role="listitem">
+Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. <span>“Welcome to the <span class="nocase">tidyverse</span>.”</span> <em>Journal of Open Source Software</em> 4 (43): 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.
+</div>
+<div id="ref-readxl" class="csl-entry" role="listitem">
+Wickham, Hadley, and Jennifer Bryan. 2023. <em>Readxl: Read Excel Files</em>. <a href="https://CRAN.R-project.org/package=readxl">https://CRAN.R-project.org/package=readxl</a>.
+</div>
+<div id="ref-osfr" class="csl-entry" role="listitem">
+Wolen, Aaron R., Chris H. J. Hartgerink, Ryan Hafen, Brian G. Richards, Courtney K. Soderberg, and Timothy P. York. 2020. <span>“<span class="nocase">osfr</span>: An <span>R</span> Interface to the Open Science Framework.”</span> <em>Journal of Open Source Software</em> 5 (46): 2071. <a href="https://doi.org/10.21105/joss.02071">https://doi.org/10.21105/joss.02071</a>.
+</div>
+<div id="ref-mgcv" class="csl-entry" role="listitem">
+Wood, S. N., N., Pya, and B. S"afken. 2016. <span>“Smoothing Parameter and Model Selection for General Smooth Models (with Discussion).”</span> <em>Journal of the American Statistical Association</em> 111: 1548–75.
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/matthewbjane\.com");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Email me at matthew.jane@uconn.edu</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="https://platform.twitter.com/widgets.js"></script>
+</body></html>
