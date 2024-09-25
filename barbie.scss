@@ -1,0 +1,169 @@
+
+/*-- scss:defaults --*/
+
+/*-- Define colors for later use --*/
+$primary: #3AA6B9;
+$secondary: #ED5C9B;
+$tertiary: #FF9EAA;
+$body-bg: #fff;
+$body-color: #444;
+$success: #3AA6B9;
+$h1-font-family-sans-serif: Sans;
+
+
+
+
+
+
+
+
+
+/*-- scss:rules --*/
+
+
+span.theorem-title{
+  background-color:#5fa6bc33;
+  padding: 3pt;
+  color: #326982ff;
+  border-radius:3pt;
+}
+
+
+code span.at {
+    color: #bf2986ff;
+    font-style: inherit;
+}
+
+code span.fu {
+    color: #397689ff;
+    font-style: inherit;
+}
+
+code span.st {
+    color: #177;
+    font-style: inherit;
+}
+
+code span.co {
+    color: #999;
+    font-style: inherit;
+}
+
+code span.dv {
+    color: #861d5e;
+    font-style: inherit;
+}
+
+
+p code:not(.sourceCode), li code:not(.sourceCode), td code:not(.sourceCode) {
+    background-color: #f8f8f8;
+    color: #a62675ff;
+    padding: 0.2em;
+}
+
+
+div.sourceCode, div.sourceCode pre.sourceCode {
+    color: #222;
+    background-color: #f6d5e920;
+    border-color: #bf2986ff;
+    padding-left: 3px;
+    border-radius: .5rem;
+}
+
+
+
+
+#title-block-header.quarto-title-block.default .quarto-title .title {
+    font-size: 3em;
+    color: #be4a7c;
+}
+.navbar-dark .navbar-brand {
+    color: white;
+}
+
+.navbar-dark .navbar-brand {
+    color: white;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+}
+
+.navbar-dark .navbar-nav .show>.nav-link, .navbar-dark .navbar-nav .active>.nav-link, .navbar-dark .navbar-nav .nav-link.active {
+    color: #17424a;
+}
+
+.blockquote>:last-child {
+    margin-bottom: 0;
+    color: dimgrey;
+}
+
+.btn-secondary {
+    color: white;
+    background-color: #ed5c9b;
+    border-color: #ed5c9b;
+}
+
+#title-block-header.quarto-title-block.default .quarto-title .title {
+    font-family: "Open Sans";
+    font-size: 3em;
+    color: #be4a7c;
+    font-family: Sans-Serif;
+}
+
+
+div.quarto-post .listing-categories .listing-category {
+    color: #3AA6B9;
+    border: solid #3AA6B9 1px;
+    border-radius: 0.25rem;
+    text-transform: uppercase;
+    font-size: .65em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    padding-top: 0.15em;
+    padding-bottom: 0.15em;
+    cursor: pointer;
+    margin-right: 4px;
+    margin-bottom: 4px;
+}
+
+#title-block-header.quarto-title-block.default .quarto-title .title {
+    font-size: 3em;
+    color: #3AA6B9;
+}
+
+.nav-footer .nav-footer-left {
+    font-size: .825em;
+    color: #666666;
+}
+
+
+.nav-link {
+    display: block;
+    padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+    font-size: var(--bs-nav-link-font-size);
+    font-weight: var(--bs-nav-link-font-weight);
+    color: white;
+    text-decoration: none;
+    -webkit-text-decoration: none;
+    -moz-text-decoration: none;
+    -ms-text-decoration: none;
+    -o-text-decoration: none;
+    background: none;
+    border: 0;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
+
+
+.navbar-brand {
+    padding-top: var(--bs-navbar-brand-padding-y);
+    padding-bottom: var(--bs-navbar-brand-padding-y);
+    margin-right: var(--bs-navbar-brand-margin-end);
+    font-size: var(--bs-navbar-brand-font-size);
+    color: white;
+    text-decoration: none;
+    -webkit-text-decoration: none;
+    -moz-text-decoration: none;
+    -ms-text-decoration: none;
+    -o-text-decoration: none;
+    white-space: nowrap;
+}

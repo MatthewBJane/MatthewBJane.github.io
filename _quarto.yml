@@ -1,0 +1,56 @@
+project:
+  type: website
+  output-dir: docs
+
+  resources:
+    - "/webLogo2.png"
+    - "/blog-image.png"
+
+website:
+  site-url: https://matthewbjane.com
+  description: "Website for Matthew B. Jané. PhD student at the University of Connecticut."
+  page-footer: 
+    left: "Email me at matthew.jane@uconn.edu"
+  title: "Matthew B. Jané"
+  favicon: "/webLogoFavicon2.png"
+  
+  open-graph:
+    image: "/webLogo2.png"
+    locale: en_US
+    
+  twitter-card: 
+    creator: "@MatthewBJane"
+    image: "/webLogo2.png"
+  navbar:
+    right: 
+      - icon: github
+        href: https://www.github.com/MatthewBJane
+      - icon: twitter
+        href: https://www.twitter.com/MatthewBJane
+      - icon: rss
+        href: blog.xml
+    logo: webLogoFavicon2.png
+    background: primary
+    left:
+      - href: index.qmd
+        text: Home
+      - href: blog.qmd
+        text: Meta-Analysis Magic
+      - href: CV.qmd
+        text: CV
+      - href: Software.qmd
+        text: Software
+      - href: Books.qmd
+        text: Books
+      - href: Consulting.qmd
+        text: Consulting
+
+format:
+  html:
+    theme: 
+      - darkly
+      - barbie.scss
+    css: styles.css
+    toc: true
+editor: visual
+
