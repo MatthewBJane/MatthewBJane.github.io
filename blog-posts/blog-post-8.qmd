@@ -40,7 +40,7 @@ The first three terms in the equation is what defines the true effect size $\del
 $$
 \delta_i | M \sim \mathcal{N}\left(b_0 + b_1M_i\, ,\, \tau^2\right)
 $$
-Where $\tau^2$ is the variance in true effects (i.e., $\tau^2 = \mathrm{var}(u_i)$). We can see that the conditional expectation of true effects is a linear function of the moderator variable $\mathbb{E}[\delta_i \mid M] = b_0 + b_1M_i$. But we don't have to model the conditional mean as linear. We can model it as any arbitrary function $f$ such that the conditional mean has any functional form,
+Where $\tau^2$ is the residual variance in true effects (i.e., $\tau^2 = \mathrm{var}(u_i)$). We can see that the conditional expectation of true effects is a linear function of the moderator variable $\mathbb{E}[\delta_i \mid M] = b_0 + b_1M_i$. But we don't have to model the conditional mean as linear. We can model it as any arbitrary function $f$ such that the conditional mean has any functional form,
 
 
 $$
@@ -127,7 +127,7 @@ mdl_lm <- brm(yi | se(sei, sigma = TRUE) ~ xi,
 We can plot out the models by displaying variability in the estimate of the conditional expectation with posterior draws.
 
 
-```{r}
+```{r,fig.height=10}
 
 p1 <- dat %>%
   data_grid(xi = seq_range(xi, n = 51), sei = sei) %>%
@@ -153,7 +153,7 @@ p2 <-dat %>%
   geom_point(data = dat,aes(size = 1/sei^2), alpha = .5) +
   scale_fill_brewer(palette = "Greys") +
   scale_color_brewer(palette = "Set2") +
-  theme_ggdist(base_size = 14) + 
+  theme_ggdist(base_size = 15) + 
   theme(legend.position = "none",
         aspect.ratio = .8) +
   ylab("Effect Size") +
@@ -161,7 +161,7 @@ p2 <-dat %>%
   ggtitle("Linear model")
 
 
-cowplot::plot_grid(p1,p2)
+cowplot::plot_grid(p1,p2,ncol = 1)
 
 
 ```
@@ -173,7 +173,7 @@ Alternatively, we can plot the prediction intervals showing us the variability i
 
 
 
-```{r}
+```{r,fig.height=10}
 
 p3 <- dat %>%
   data_grid(xi = seq_range(xi, n = 51), sei = sei) %>%
@@ -183,7 +183,7 @@ p3 <- dat %>%
   geom_point(data = dat,aes(size = 1/sei^2), alpha = .5) +
   scale_fill_brewer(palette = "Greys") +
   scale_color_brewer(palette = "Set2") +
-  theme_ggdist(base_size = 14) + 
+  theme_ggdist(base_size = 15) + 
   theme(legend.position = "none",
         aspect.ratio = .8) +
   ylab("Effect Size") +
@@ -207,7 +207,7 @@ p4 <- dat %>%
   ggtitle("Linear Model")
 
 
-cowplot::plot_grid(p3,p4)
+cowplot::plot_grid(p3,p4,ncol=1)
 
 ```
 
@@ -219,9 +219,11 @@ The predictive check of the GAM model captures the data better than the linear m
 ```{r}
 
 pp1 <- pp_check(mdl_gam, ndraws = 100) +
-  theme(aspect.ratio = 1, legend.position = "none")
+  theme(aspect.ratio = 1, legend.position = "none") +
+  ggtitle("GAM")
 pp2 <- pp_check(mdl_lm, ndraws = 100) +
-  theme(aspect.ratio = 1, legend.position = "none")
+  theme(aspect.ratio = 1, legend.position = "none") +
+  ggtitle("Linear Model")
 
 
 cowplot::plot_grid(pp1,pp2)

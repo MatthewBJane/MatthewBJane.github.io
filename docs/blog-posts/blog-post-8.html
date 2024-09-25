@@ -313,7 +313,7 @@ d_i = \underset{_\textrm{intercept}}{b_0} + \overset{^\textrm{moderator effect}}
 \]</span> The first three terms in the equation is what defines the true effect size <span class="math inline">\(\delta_i\)</span> for study <span class="math inline">\(i\)</span> and the last term denotes sampling error which is what distinguishes the observed effect size <span class="math inline">\(d_i\)</span> from the true effect size <span class="math inline">\(\delta_i\)</span>. The true effect size is conditionally distributed as,</p>
 <p><span class="math display">\[
 \delta_i | M \sim \mathcal{N}\left(b_0 + b_1M_i\, ,\, \tau^2\right)
-\]</span> Where <span class="math inline">\(\tau^2\)</span> is the variance in true effects (i.e., <span class="math inline">\(\tau^2 = \mathrm{var}(u_i)\)</span>). We can see that the conditional expectation of true effects is a linear function of the moderator variable <span class="math inline">\(\mathbb{E}[\delta_i \mid M] = b_0 + b_1M_i\)</span>. But we don’t have to model the conditional mean as linear. We can model it as any arbitrary function <span class="math inline">\(f\)</span> such that the conditional mean has any functional form,</p>
+\]</span> Where <span class="math inline">\(\tau^2\)</span> is the residual variance in true effects (i.e., <span class="math inline">\(\tau^2 = \mathrm{var}(u_i)\)</span>). We can see that the conditional expectation of true effects is a linear function of the moderator variable <span class="math inline">\(\mathbb{E}[\delta_i \mid M] = b_0 + b_1M_i\)</span>. But we don’t have to model the conditional mean as linear. We can model it as any arbitrary function <span class="math inline">\(f\)</span> such that the conditional mean has any functional form,</p>
 <p><span class="math display">\[
 \delta_i | M \sim \mathcal{N}\left(f(M),\, \tau^2\right).
 \]</span></p>
@@ -427,7 +427,7 @@ d_i = \underset{_\textrm{intercept}}{b_0} + \overset{^\textrm{moderator effect}}
 <span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> dat,<span class="fu">aes</span>(<span class="at">size =</span> <span class="dv">1</span><span class="sc">/</span>sei<span class="sc">^</span><span class="dv">2</span>), <span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
 <span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Greys"</span>) <span class="sc">+</span></span>
 <span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">"Set2"</span>) <span class="sc">+</span></span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_ggdist</span>(<span class="at">base_size =</span> <span class="dv">14</span>) <span class="sc">+</span> </span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_ggdist</span>(<span class="at">base_size =</span> <span class="dv">15</span>) <span class="sc">+</span> </span>
 <span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
 <span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>        <span class="at">aspect.ratio =</span> .<span class="dv">8</span>) <span class="sc">+</span></span>
 <span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Effect Size"</span>) <span class="sc">+</span></span>
@@ -435,7 +435,7 @@ d_i = \underset{_\textrm{intercept}}{b_0} + \overset{^\textrm{moderator effect}}
 <span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Linear model"</span>)</span>
 <span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(p1,p2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(p1,p2,<span class="at">ncol =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -454,7 +454,7 @@ d_i = \underset{_\textrm{intercept}}{b_0} + \overset{^\textrm{moderator effect}}
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> dat,<span class="fu">aes</span>(<span class="at">size =</span> <span class="dv">1</span><span class="sc">/</span>sei<span class="sc">^</span><span class="dv">2</span>), <span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Greys"</span>) <span class="sc">+</span></span>
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">"Set2"</span>) <span class="sc">+</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_ggdist</span>(<span class="at">base_size =</span> <span class="dv">14</span>) <span class="sc">+</span> </span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_ggdist</span>(<span class="at">base_size =</span> <span class="dv">15</span>) <span class="sc">+</span> </span>
 <span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
 <span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">aspect.ratio =</span> .<span class="dv">8</span>) <span class="sc">+</span></span>
 <span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Effect Size"</span>) <span class="sc">+</span></span>
@@ -478,7 +478,7 @@ d_i = \underset{_\textrm{intercept}}{b_0} + \overset{^\textrm{moderator effect}}
 <span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Linear Model"</span>)</span>
 <span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(p3,p4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(p3,p4,<span class="at">ncol=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -493,12 +493,14 @@ d_i = \underset{_\textrm{intercept}}{b_0} + \overset{^\textrm{moderator effect}}
 <p>The predictive check of the GAM model captures the data better than the linear model in this data set.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>pp1 <span class="ot">&lt;-</span> <span class="fu">pp_check</span>(mdl_gam, <span class="at">ndraws =</span> <span class="dv">100</span>) <span class="sc">+</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> <span class="dv">1</span>, <span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>pp2 <span class="ot">&lt;-</span> <span class="fu">pp_check</span>(mdl_lm, <span class="at">ndraws =</span> <span class="dv">100</span>) <span class="sc">+</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> <span class="dv">1</span>, <span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(pp1,pp2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> <span class="dv">1</span>, <span class="at">legend.position =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"GAM"</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>pp2 <span class="ot">&lt;-</span> <span class="fu">pp_check</span>(mdl_lm, <span class="at">ndraws =</span> <span class="dv">100</span>) <span class="sc">+</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> <span class="dv">1</span>, <span class="at">legend.position =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Linear Model"</span>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(pp1,pp2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">

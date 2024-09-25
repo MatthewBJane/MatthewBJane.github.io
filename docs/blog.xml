@@ -27,7 +27,7 @@
 <p><strong>This brief intro section is a sort of a meta-analytic adaptation of a <a href="https://m-clark.github.io/generalized-additive-models/building_gam.html#what-is-a-gam">section</a> of Michael Clark’s online text “Generalized Additive Models”.</strong></p>
 <p>Let’s first consider a simple linear meta-regression model where an observed effect size <img src="https://latex.codecogs.com/png.latex?d_i"> from study <img src="https://latex.codecogs.com/png.latex?i"> is expressed as,</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0Ad_i%20=%20%5Cunderset%7B_%5Ctextrm%7Bintercept%7D%7D%7Bb_0%7D%20+%20%5Coverset%7B%5E%5Ctextrm%7Bmoderator%20effect%7D%7D%7Bb_1M_i%7D%20+%20%5Cunderset%7B_%5Ctextrm%7Btrue%20effect%20variability%7D%7D%7Bu_i%7D%20+%20%5Coverset%7B%5E%5Ctextrm%7Bsampling%20error%7D%7D%7B%5Cvarepsilon_i%7D.%0A"> The first three terms in the equation is what defines the true effect size <img src="https://latex.codecogs.com/png.latex?%5Cdelta_i"> for study <img src="https://latex.codecogs.com/png.latex?i"> and the last term denotes sampling error which is what distinguishes the observed effect size <img src="https://latex.codecogs.com/png.latex?d_i"> from the true effect size <img src="https://latex.codecogs.com/png.latex?%5Cdelta_i">. The true effect size is conditionally distributed as,</p>
-<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cdelta_i%20%7C%20M%20%5Csim%20%5Cmathcal%7BN%7D%5Cleft(b_0%20+%20b_1M_i%5C,%20,%5C,%20%5Ctau%5E2%5Cright)%0A"> Where <img src="https://latex.codecogs.com/png.latex?%5Ctau%5E2"> is the variance in true effects (i.e., <img src="https://latex.codecogs.com/png.latex?%5Ctau%5E2%20=%20%5Cmathrm%7Bvar%7D(u_i)">). We can see that the conditional expectation of true effects is a linear function of the moderator variable <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BE%7D%5B%5Cdelta_i%20%5Cmid%20M%5D%20=%20b_0%20+%20b_1M_i">. But we don’t have to model the conditional mean as linear. We can model it as any arbitrary function <img src="https://latex.codecogs.com/png.latex?f"> such that the conditional mean has any functional form,</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cdelta_i%20%7C%20M%20%5Csim%20%5Cmathcal%7BN%7D%5Cleft(b_0%20+%20b_1M_i%5C,%20,%5C,%20%5Ctau%5E2%5Cright)%0A"> Where <img src="https://latex.codecogs.com/png.latex?%5Ctau%5E2"> is the residual variance in true effects (i.e., <img src="https://latex.codecogs.com/png.latex?%5Ctau%5E2%20=%20%5Cmathrm%7Bvar%7D(u_i)">). We can see that the conditional expectation of true effects is a linear function of the moderator variable <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BE%7D%5B%5Cdelta_i%20%5Cmid%20M%5D%20=%20b_0%20+%20b_1M_i">. But we don’t have to model the conditional mean as linear. We can model it as any arbitrary function <img src="https://latex.codecogs.com/png.latex?f"> such that the conditional mean has any functional form,</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cdelta_i%20%7C%20M%20%5Csim%20%5Cmathcal%7BN%7D%5Cleft(f(M),%5C,%20%5Ctau%5E2%5Cright).%0A"></p>
 <p>For GAMs we elect to choose a space of functions (e.g., cubic splines) called a <strong>basis</strong>. A function within the function space can be expressed as a linear combination of basis functions. For our case, the function <img src="https://latex.codecogs.com/png.latex?f(M)"> can be expressed as, <img src="https://latex.codecogs.com/png.latex?f(M)%20=%20%5Csum%5Em_%7Bq=1%7D%20%5Cxi_q(M)">, where <img src="https://latex.codecogs.com/png.latex?%5Cxi_q"> are basis functions. Therefore the conditional distribution of true effects is now given by,</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cdelta_i%20%7C%20M%20%5Csim%20%5Cmathcal%7BN%7D%5Cleft(%5Csum%5Em_%7Bq=1%7D%20b_q%5Cxi_q(M),%5C,%20%5Ctau%5E2%5Cright).%0A"></p>
@@ -991,7 +991,7 @@ font-style: inherit;">theme_ggdist</span>(<span class="at" style="color: #657422
 background-color: null;
 font-style: inherit;">base_size =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">14</span>) <span class="sc" style="color: #5E5E5E;
+font-style: inherit;">15</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span> </span>
 <span id="cb12-26">  <span class="fu" style="color: #4758AB;
@@ -1033,7 +1033,11 @@ font-style: inherit;">"Linear model"</span>)</span>
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">plot_grid</span>(p1,p2)</span></code></pre></div>
+font-style: inherit;">plot_grid</span>(p1,p2,<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ncol =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1136,7 +1140,7 @@ font-style: inherit;">theme_ggdist</span>(<span class="at" style="color: #657422
 background-color: null;
 font-style: inherit;">base_size =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">14</span>) <span class="sc" style="color: #5E5E5E;
+font-style: inherit;">15</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span> </span>
 <span id="cb13-10">  <span class="fu" style="color: #4758AB;
@@ -1308,7 +1312,11 @@ font-style: inherit;">"Linear Model"</span>)</span>
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">plot_grid</span>(p3,p4)</span></code></pre></div>
+font-style: inherit;">plot_grid</span>(p3,p4,<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ncol=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1343,8 +1351,15 @@ font-style: inherit;">1</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"none"</span>)</span>
-<span id="cb14-3">pp2 <span class="ot" style="color: #003B4F;
+font-style: inherit;">"none"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb14-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggtitle</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"GAM"</span>)</span>
+<span id="cb14-4">pp2 <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1355,7 +1370,7 @@ background-color: null;
 font-style: inherit;">100</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb14-4">  <span class="fu" style="color: #4758AB;
+<span id="cb14-5">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -1365,10 +1380,17 @@ font-style: inherit;">1</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"none"</span>)</span>
-<span id="cb14-5"></span>
-<span id="cb14-6"></span>
-<span id="cb14-7">cowplot<span class="sc" style="color: #5E5E5E;
+font-style: inherit;">"none"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb14-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggtitle</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Linear Model"</span>)</span>
+<span id="cb14-7"></span>
+<span id="cb14-8"></span>
+<span id="cb14-9">cowplot<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
