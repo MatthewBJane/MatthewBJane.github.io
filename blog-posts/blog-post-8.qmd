@@ -7,7 +7,7 @@ image-height: "5%"
 toc: true
 code-fold: false
 date: 2024-09-24
-description: A GAM is a linear or generalized linear model that allows you to model non-linear relationships using splines, smooth functions that allows to model the "wiggiliness" in the data. To my knowledge there is little/nothing out there regarding the use of GAMs in a meta-analysis context.
+description: A GAM is a linear or generalized linear model that allows you to model non-linear relationships using splines, smooth functions that allows to model the "wiggliness" in the data. To my knowledge there is little/nothing out there regarding the use of GAMs in a meta-analysis context.
 
 categories:
   - Generalized Additive Models
@@ -25,12 +25,57 @@ bibliography: references.bib
 ```
 <br>
 
+## What is Meta-regression?
+
+Meta-regression is a modeling approach used in meta-analysis to see how effect sizes vary across studies. For example, let's say we want to know the effect of some drug on disease remission, but the effect sizes are highly heterogenous (studies use different methods, sample from different populations, etc. and thus have different estimands). We may want to know what aspects of these studies cause differences in their resulting effects? If different studies use a different doseage amount then we may hypothesize that dose will account for some of that heterogeneity in effects. Doseage is what we would call a **moderator** of the effect size (moderator is analogous to a predictor in a traditional regression). Meta-regression is like any regression model with the only difference that the data points represent entire studies and that studies are weighted such that more precise studies (i.e., larger sample sizes/smaller standard errors) are preferentially weighted. The regression line will estimate the **conditional mean** effect size.
+
+Let's visualize this example by running a meta-regression and creating a bubble plot (a scatter plot, but the data points are sized relative to the precision of the study). The effect size is the log risk ratio between treatment and control groups,
+
+$$
+\ln RR = \ln \frac{p_T}{p_C},
+$$
+where $p_T$ and $p_C$ are the proportions of individuals in remission within the treatment and control group, respectively. We will then see how the doseage moderates the $\ln RR$ across studies. In R, we can use the `metafor` [@metafor] package to fit a meta-regression.
+
+
+
+```{r,message=FALSE, fig.width = 5, fig.height = 5}
+#| code-fold: true
+#| code-summary: "Show the code"
+#| 
+library(metafor)
+
+dat <- escalc(measure = "RR",
+              # data set loaded in from metafor package
+              data = dat.viechtbauer2021,
+              # treatment/control number of people in remission
+              ai = xTi, ci = xCi,
+              # treatment/control group sample size in
+              n1 = nTi, n2 = nCi,
+              # label effect size and sampling variance (se^2)
+              var.names = c("lnRR", "v"))
+
+# fit model
+mdl <- rma(lnRR ~ dose, 
+           vi = v,
+           data = dat)
+
+# plot model
+regplot(mdl,refline = 0)
+
+```
+
+We see a very strong relationship between the effect size and the dosage amount.
+
+
+
+
+
 ## What would a meta-analytic GAM look like?
 
 **This brief intro section is a sort of a meta-analytic adaptation of a [section](https://m-clark.github.io/generalized-additive-models/building_gam.html#what-is-a-gam) of Michael Clark's online text "Generalized Additive Models".**
 
 
-Let's first consider a simple linear meta-regression model where an observed effect size $d_i$ from study $i$ is expressed as,
+In our example, we used a linear meta-regression so let us define a simple linear meta-regression model mathematically. An observed (arbitrary) effect size $d_i$ from study $i$ is expressed as,
 
 $$
 d_i = \underset{_\textrm{intercept}}{b_0} + \overset{^\textrm{moderator effect}}{b_1M_i} + \underset{_\textrm{true effect variability}}{u_i} + \overset{^\textrm{sampling error}}{\varepsilon_i}.
@@ -38,22 +83,22 @@ $$
 The first three terms in the equation is what defines the true effect size $\delta_i$ for study $i$ and the last term denotes sampling error which is what distinguishes the observed effect size $d_i$ from the true effect size $\delta_i$. The true effect size is conditionally distributed as,
 
 $$
-\delta_i | M \sim \mathcal{N}\left(b_0 + b_1M_i\, ,\, \tau^2\right)
+\delta_i \mid M_i \sim \mathcal{N}\left(b_0 + b_1M_i\, ,\, \tau^2\right)
 $$
-Where $\tau^2$ is the residual variance in true effects (i.e., $\tau^2 = \mathrm{var}(u_i)$). We can see that the conditional expectation of true effects is a linear function of the moderator variable $\mathbb{E}[\delta_i \mid M] = b_0 + b_1M_i$. But we don't have to model the conditional mean as linear. We can model it as any arbitrary function $f$ such that the conditional mean has any functional form,
+Where $\tau^2$ is the residual variance in true effects (i.e., $\tau^2 = \mathrm{var}(u_i)$). We can see that the conditional expectation of true effects is a linear function of the moderator variable $\mathbb{E}[\delta_i \mid M] = b_0 + b_1M_i$. But we don't have to model the conditional mean as linear. If the data appears non-linear we can instead model it as some smooth function $f$ such that the conditional mean has some non-linear functional form,
 
 
 $$
-\delta_i | M \sim \mathcal{N}\left(f(M),\, \tau^2\right).
+\delta_i \mid M_i \sim \mathcal{N}\left(f(M_i),\, \tau^2\right).
 $$
 
-For GAMs we elect to choose a space of functions (e.g., cubic splines) called a **basis**. A function within the function space can be expressed as a linear combination of basis functions. For our case, the function $f(M)$ can be expressed as, $f(M) = \sum^m_{q=1} \xi_q(M)$, where $\xi_q$ are basis functions. Therefore the conditional distribution of true effects is now given by,
+For GAMs we elect to choose a space of functions (e.g., cubic splines) called a **basis**. A function within the function space can be expressed as a linear combination of basis functions. Essentially, we want to estimate this "big" function with with a series of known "smaller" functions. For our case, the function $f(M_i)$ can be expressed as, $f(M_i) = \sum^m_{q=1} b_q\xi_q(M_i)$, where $\xi_q$ are basis functions. Therefore the conditional distribution of true effects is now given by,
 
 $$
-\delta_i | M \sim \mathcal{N}\left(\sum^m_{q=1} b_q\xi_q(M),\, \tau^2\right).
+\delta_i \mid M_i \sim \mathcal{N}\left(\sum^m_{q=1} b_q\xi_q(M_i),\, \tau^2\right).
 $$
 
-The conditional expectation of true effects now can have maximum flexibility. To estimate the conditional expectation, GAMs utilize **penalized splines** which penalizes the function for being too "wiggly" so as to maintain a parsimonious model. The number of knots also does not have to be set manually like they do in other spline models.
+The conditional expectation of true effects now can have a lot of flexibility. Note that we do not want to try to interpret the regression coefficients $b_q$ of those smaller basis functions, instead we want to interpret the bigger function which is estimating the conditional mean of true effects. To estimate the conditional expectation, GAMs utilize **penalized splines** which penalizes the function for being too "wiggly" so as to maintain a parsimonious model. The number of knots (i.e., the joints/abscissa of the "big" function) also does not have to be set manually like they do in other spline models.
 
 
 ## Loading in packages
@@ -72,7 +117,7 @@ library(ggdist)
 
 ## Non-linear Data
 
-We can use some made up non-linear data created by Wolfgang Viechtbauer in his [tutorial](https://www.metafor-project.org/doku.php/tips:non_linear_meta_regression) on spling meta-regression.
+We can use some made up non-linear data created by Wolfgang Viechtbauer in his [tutorial](https://www.metafor-project.org/doku.php/tips:non_linear_meta_regression) on spline meta-regression.
 
 ```{r}
 dat <- structure(list(
@@ -249,7 +294,7 @@ The following packages were used in this post:
 -   `tidybayes` [@tidybayes]
 
 
-**Thanks to Stephen J. Wild for his advice on this post.**
+**Thanks to Isabella R. Ghement, Stephen J. Wild, and Solomon Kurz for their advice and feedback on this post.**
 
 
 <iframe src="https://embeds.beehiiv.com/f3ffd81a-4723-4419-bb1d-afc8af3bac36" data-test-id="beehiiv-embed" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius: 4px; border: 2px solid #33333322; margin: 0; background-color: transparent;">
