@@ -93,11 +93,11 @@ The effect size is denoted with `yi`, the standard errors are denoted with `sei`
 
 ## Constructing the `brms` model
 
-Using the `brm` function in the `brms` [@brms] package we can construct the meta-regression GAM model by utilizing the `se()` function to incorporate the sampling errors in observed effects.
+Using the `brm` function in the `brms` [@brms] package we can construct the meta-regression GAM model by utilizing the `se()` function to incorporate the sampling errors in observed effects and the `s()` function to tell brms you want to model a GAM.
 
-```{r,warning = FALSE}
+```{r,warning = FALSE, results='hide'}
 
-mdl <- brm(yi | se(sei, sigma = TRUE) ~ s(xi),
+mdl_gam <- brm(yi | se(sei, sigma = TRUE) ~ s(xi),
           data = dat, 
           family = gaussian(),
           seed = 17,
@@ -108,14 +108,30 @@ mdl <- brm(yi | se(sei, sigma = TRUE) ~ s(xi),
 ```
 
 
-We can plot out the model by displaying variability in the estimate of the conditional expectation with posterior draws.
+Now let's also construct a linear model so that we can compare the two fits.
+
+
+```{r,warning = FALSE, results='hide'}
+
+mdl_lm <- brm(yi | se(sei, sigma = TRUE) ~ xi,
+          data = dat, 
+          family = gaussian(),
+          seed = 17,
+          iter = 1000, 
+          warmup = 150, 
+          chains = 2)
+
+```
+
+
+We can plot out the models by displaying variability in the estimate of the conditional expectation with posterior draws.
 
 
 ```{r}
 
-dat %>%
+p1 <- dat %>%
   data_grid(xi = seq_range(xi, n = 51), sei = sei) %>%
-  add_epred_draws(mdl, ndraws = 200) %>%
+  add_epred_draws(mdl_gam, ndraws = 200) %>%
   ggplot(aes(x = xi, y = yi)) +
   geom_line(aes(y = .epred, group = .draw), alpha = .1) +
   geom_point(data = dat,aes(size = 1/sei^2), alpha = .5) +
@@ -126,8 +142,26 @@ dat %>%
         aspect.ratio = .8) +
   ylab("Effect Size") +
   xlab("Moderator Value") + 
-  ggtitle("GAM with Prediction Intervals")
+  ggtitle("GAM")
 
+
+p2 <-dat %>%
+  data_grid(xi = seq_range(xi, n = 51), sei = sei) %>%
+  add_epred_draws(mdl_lm, ndraws = 200) %>%
+  ggplot(aes(x = xi, y = yi)) +
+  geom_line(aes(y = .epred, group = .draw), alpha = .1) +
+  geom_point(data = dat,aes(size = 1/sei^2), alpha = .5) +
+  scale_fill_brewer(palette = "Greys") +
+  scale_color_brewer(palette = "Set2") +
+  theme_ggdist(base_size = 14) + 
+  theme(legend.position = "none",
+        aspect.ratio = .8) +
+  ylab("Effect Size") +
+  xlab("Moderator Value") + 
+  ggtitle("Linear model")
+
+
+cowplot::plot_grid(p1,p2)
 
 
 ```
@@ -135,15 +169,15 @@ dat %>%
 
 
 
-Alternatively we can plot the prediction intervals showing us the variability in the true effect sizes rather than the variability in the mean of true effect sizes,
+Alternatively, we can plot the prediction intervals showing us the variability in the true effect sizes rather than the variability in the mean of true effect sizes,
 
 
 
 ```{r}
 
-dat %>%
+p3 <- dat %>%
   data_grid(xi = seq_range(xi, n = 51), sei = sei) %>%
-  add_predicted_draws(mdl) %>%
+  add_predicted_draws(mdl_gam) %>%
   ggplot(aes(x = xi, y = yi)) +
   stat_lineribbon(aes(y = .prediction)) +
   geom_point(data = dat,aes(size = 1/sei^2), alpha = .5) +
@@ -154,21 +188,43 @@ dat %>%
         aspect.ratio = .8) +
   ylab("Effect Size") +
   xlab("Moderator Value") + 
-  ggtitle("GAM with Prediction Intervals")
+  ggtitle("GAM")
 
 
+p4 <- dat %>%
+  data_grid(xi = seq_range(xi, n = 51), sei = sei) %>%
+  add_predicted_draws(mdl_lm) %>%
+  ggplot(aes(x = xi, y = yi)) +
+  stat_lineribbon(aes(y = .prediction)) +
+  geom_point(data = dat,aes(size = 1/sei^2), alpha = .5) +
+  scale_fill_brewer(palette = "Greys") +
+  scale_color_brewer(palette = "Set2") +
+  theme_ggdist(base_size = 14) + 
+  theme(legend.position = "none",
+        aspect.ratio = .8) +
+  ylab("Effect Size") +
+  xlab("Moderator Value") + 
+  ggtitle("Linear Model")
+
+
+cowplot::plot_grid(p3,p4)
 
 ```
 
 
 ## Predictive Check
 
-The predictive check of the model captures the data quite well
+The predictive check of the GAM model captures the data better than the linear model in this data set.
 
 ```{r}
 
-pp_check(mdl,nsamples = 100)
+pp1 <- pp_check(mdl_gam, ndraws = 100) +
+  theme(aspect.ratio = 1, legend.position = "none")
+pp2 <- pp_check(mdl_lm, ndraws = 100) +
+  theme(aspect.ratio = 1, legend.position = "none")
 
+
+cowplot::plot_grid(pp1,pp2)
 ```
 
 ## Session Info
