@@ -15,7 +15,6 @@ categories:
 
 title-meta: Generalized Additive Models for Meta-Regression using `brms`
 author-meta: "Matthew B. Jané"
-date-meta: 2024-02-02
 image-meta: "blog-image.png"
 bibliography: references.bib
 ---

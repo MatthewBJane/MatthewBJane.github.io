@@ -5,7 +5,7 @@ listing:
   categories: true
   feed: true
   sort-ui: [date]
-  sort: "date"
+  sort: "date desc"
   contents:
   - "blog-posts/!(template|blog-image|references).qmd"
   fields: [title, date, author, description, categories]
