@@ -21,9 +21,7 @@ website:
     image: "/blog-image.png"
 ---
 
-Welcome to my blog, **Meta-Analysis Magic**! Here, you'll uncover mind-bending tricks that will help you unveil those elusive, unreported statistics tucked away in primary studies. But that's not all -- we'll also dive into the thrilling realm of lesser-known meta-analysis modeling techniques that tend to slip under the radar.
-
-To make your journey even more enchanting, each post will come complete with R code, making it a breeze for you to work your own meta-analysis wizardry. Let's embark on this adventure together!
+Welcome to my blog, **Meta-Analysis Magic**! I discuss meta-analysis stuff and sometimes measurement.
 
 If you like the blog, consider subscribing below to be notified whenever a new post comes out (it's free!).
 
