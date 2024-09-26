@@ -5,6 +5,7 @@ project:
   resources:
     - "/webLogo2.png"
     - "/blog-image.png"
+    - CNAME
 
 website:
   site-url: https://matthewbjane.com
