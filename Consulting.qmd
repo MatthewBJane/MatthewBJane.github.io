@@ -1,0 +1,246 @@
+# Consulting
+
+{{< fa envelope >}} consulting\@matthewbjane.com
+
+I provide three main types of consulting services: statistical consulting, data visualization, and academic website development.
+
+If you're interested in learning more about how I can assist with your projects or if you have questions or require advice, please don't hesitate to reach out. I offer a free 20-minute consultation to discuss your specific needs and determine how I can best support you. To schedule this consultation, feel free to contact me at consulting\@matthewbjane.com. I will be pleased to support you every step of the way.
+
+## Statistical Consulting Services
+
+I offer a wide array of services designed to cater to a broad spectrum of statistical needs, whether you're an academic or part of the industry. Here's a detailed list of the services I provide:
+
+-   Meta-analysis
+-   Data-analysis
+-   Data cleaning and management
+-   Statistical Modeling
+-   Statistical Software
+-   Psychometrics and Structural Equation Modeling
+-   R Programming
+-   Computationally Reproducible and Self-Contained Manuscripts
+
+I've structured my pricing to accommodate different client types, ensuring a transparent and cost-effective approach. The current hourly rates are as follows:
+
+| Client Type             |   Rate   |
+|:------------------------|:--------:|
+| Non-Academic (Industry) | \$150/hr |
+| Academic                | \$130/hr |
+| Student                 | \$90/hr  |
+
+: {.hover}
+
+Projects with a substantial scope (i.e., more than 20 hours worth of consulting work) can be structured so that their pricing will be done on a per-project rather than a per-hour basis.
+
+## Data Visualization Services
+
+I can help you prepare high-quality data visualizations for academic publications, websites, slideshows, etc. There are two types of data visualizations that I provide: stand-alone diagrams and computationally reproducible figures.
+
+To ensure that your specific needs are met, you can either send me a detailed description of the desired diagram via email (consulting\@matthewbjane.com) with the following information:
+
+1.  What kind of figure do you need?
+2.  When do you realistically need to have it ready by?
+3.  Do you have all the information needed to produce the figure?
+4.  Could you provide an example of a figure you are trying to emulate?
+
+Then we can set up a free 20-minute virtual meeting to discuss the details further.
+
+### Diagrams
+
+Stand-alone diagrams are used as visual representations of a scientific concept. Each diagram I produce will be made available as a high-resolution PNG, JPEG, and SVG file. For your convenience I included an example of my work below .
+
+| Client Type             |     Rate      |
+|:------------------------|:-------------:|
+| Non-Academic (Industry) | \$150/diagram |
+| Academic                | \$120/diagram |
+| Student                 | \$80/diagram  |
+
+: {.hover}
+
+![](MetaAnalysisFigure%202.png){style="fig-height:80%"}
+
+<hr>
+
+### Computationally Reproducible Figure Panels
+
+I can also help you generate figure panels that contain real or simulated data. For each panel, my service ensures that you will receive the final visual representation (as a high-resolution PNG or JPG), but also an R script containing the code for reproducing the figure. For your convenience, I've included examples of my work, showcasing both a two-panel figure (top) and a single-panel figure (bottom).
+
+| Client Type             |    Rate     |
+|:------------------------|:-----------:|
+| Non-Academic (Industry) | \$150/panel |
+| Academic                | \$130/panel |
+| Student                 | \$100/panel |
+
+: {.hover}
+
+```{r,echo=FALSE, dev.args=list(bg="transparent"), warning=FALSE,message=FALSE}
+library(raster)
+library(metR)
+library(isoband)
+library(latex2exp)
+library(extrafont)
+library(ggplot2)
+library(patchwork)
+library(MASS)
+
+
+text_color_red       = '#a62675ff'
+panel_color_red      = '#fdf6faff'
+lightmain_color_red  = '#eeb4d7ff'
+main_color_red       = '#d74ea2ff'
+darkmain_color_red   = '#bf2986ff'
+border_color_red     = '#d74ea2ff'
+
+th_red <- theme(aspect.ratio = 1,
+        panel.grid.minor = element_blank(),
+        panel.grid.major = element_blank(),
+        plot.title = element_text(color = text_color_red),
+        plot.background = element_rect(fill = 'white',color = 'white'),
+        panel.background = element_rect(fill = panel_color_red),
+        panel.border = element_rect(fill = NA, color = border_color_red,linewidth=1.2),
+        axis.title = element_text(size=15, color = text_color_red),
+        axis.text.x = element_text(size=13, color = text_color_red),
+        axis.text.y = element_text(size=13, color = text_color_red),
+        axis.ticks = element_line(color = border_color_red,linewidth=1)) 
+
+rho = c(rep(.0,100),
+        rep(.1,100),
+        rep(.2,100),
+        rep(.3,100),
+        rep(.4,100),
+        rep(.5,100),
+        rep(.6,100),
+        rep(.7,100),
+        rep(.8,100),
+        rep(.9,100),
+        rep(1,100))
+
+rel = c(seq(0,1,length.out = 100),
+        seq(0,1,length.out = 100),
+        seq(0,1,length.out = 100),
+        seq(0,1,length.out = 100),
+        seq(0,1,length.out = 100),
+        seq(0,1,length.out = 100),
+        seq(0,1,length.out = 100),
+        seq(0,1,length.out = 100),
+        seq(0,1,length.out = 100),
+        seq(0,1,length.out = 100),
+        seq(0,1,length.out = 100))
+
+r = rho * sqrt(rel)
+
+
+
+h1 = ggplot(data=NULL, aes(x = rel, y = r, group = rho, color = rho)) +
+  geom_line(alpha = .5, size = 1) + 
+  theme(aspect.ratio = 1,
+        panel.grid.minor = element_blank(),
+        panel.grid.major = element_blank(),
+        title = element_text(color = text_color_red),
+        panel.background = element_rect(fill = panel_color_red),
+        panel.border = element_rect(fill = NA, color = border_color_red,linewidth=1.2),
+        axis.title = element_text(size=14, color = text_color_red),
+        axis.text.x = element_text(size=12, color = text_color_red),
+        axis.text.y = element_text(size=12, color = text_color_red),
+         plot.background = element_rect(fill = 'white',color = 'white'),
+        axis.ticks = element_line(color = border_color_red,linewidth=1),
+        legend.position = "none") +
+  scale_y_continuous(limits = c(0,1.065),
+                       labels = c('0','','.20','','.40','','.60','','.80','','1.00'),
+                     breaks = seq(0,1,by=.1)) +
+  scale_x_continuous(limits = c(0,1),
+                       labels = c('0','','.20','','.40','','.60','','.80','','1.00'),
+                     breaks = seq(0,1,by=.1)) +
+  geom_point(data=NULL, aes(x = rep(1,11), y = unique(rho),
+                            color = unique(rho), group = unique(rho)),size = 1) +
+  annotate(geom="text", x = .97, y = 1.065, label = TeX("$\\rho_{TU}$"), color = text_color_red, 
+           fontface = 'italic') +
+  scale_color_gradient(low = lightmain_color_red,high = darkmain_color_red) +
+  xlab(TeX("Reliability of x ($r_{xx'}$)"))+
+  ylab(TeX("Observed Correlation ($\\rho_{xy}$)")) +
+  ggtitle('Univariate Measurement Error', 
+          subtitle = TeX("Varying True Score Correlations ($\\rho_{TU}$)"))
+
+yt = rnorm(0,1,70)
+xt = rnorm(0,1,70)
+
+
+rxx = seq(0,1,length.out=100)
+relMat = rxx %*% t(rxx)
+rB = .5 * sqrt(relMat)
+rB = apply(rB, 2, rev)
+rB = rB
+
+df = as.data.frame(raster::rotate(raster(rB)), xy = TRUE)
+
+h2 <- ggplot(data = df, aes(x = x, y = y,z = layer, fill = layer, color = layer)) +
+    geom_raster() +
+    geom_contour2(aes(label = stat(level)),breaks = seq(.1,.4,by=.1),
+                  color='white',label.placer = label_placer_fraction(frac = 0.5),
+                  skip = 0) + 
+    annotate(geom="text",x = .945, y = .945, label = "0.5", color = 'white',angle = -45) +
+    geom_point(data=NULL, aes(x = .985, y = .985), 
+               color = 'white', fill = 'white',size = .6) +
+    scale_fill_gradient(low = lightmain_color_red, high = darkmain_color_red) +
+    scale_color_gradient(low = lightmain_color_red, high = main_color_red) +
+    scale_x_continuous(limits = c(0,1), expand = c(0, 0),
+                       labels = c('0','','.20','','.40','','.60','','.80','','1.00'),
+                       breaks = seq(0,1,by=.1)) +
+    scale_y_continuous(limits = c(0,1), expand = c(0, 0),
+                       labels = c('0','','.20','','.40','','.60','','.80','','1.00'),
+                       breaks = seq(0,1,by=.1)) +
+  xlab(TeX("Reliability of x ($r_{xx'}$)"))+
+  ylab(TeX("Reliability of y ($r_{yy'}$)")) + 
+  ggtitle('Bivariate Measurement Error', 
+          subtitle = TeX("True Score Correlation: $\\rho_{TU} =$ .50")) +
+    theme(aspect.ratio = 1,
+          panel.grid.minor = element_blank(),
+          panel.grid.major = element_blank(),
+          title = element_text(color = text_color_red),
+          panel.background = element_rect(fill = panel_color_red),
+          panel.border = element_rect(fill = NA, color = border_color_red,linewidth=1.2),
+         plot.background = element_rect(fill = 'white',color = 'white'),
+          axis.title = element_text(size=14, color = text_color_red),
+          axis.text.x = element_text(size=12, color = text_color_red),
+          axis.text.y = element_text(size=12, color = text_color_red),
+          axis.ticks = element_line(color = border_color_red,linewidth=1),
+          legend.position = "none") 
+
+
+h1 + h2 & plot_annotation(theme = theme(
+  plot.background = element_rect(color="white",fill ="white"),
+  panel.background = element_rect(color="white",fill ="white")
+  ))
+
+```
+
+## Academic Websites Powered by Quarto
+
+I can help you create your own academic/personal website powered through Quarto. Websites can be published through Quarto Pub or Github pages. For an example, my website [matthewbjane.com](https://matthewbjane.com) is entirely created through Quarto. Below are some base packages that you can start with, however prices may vary if features are added or removed from these base packages:
+
+| Features                                    |  Rate   |
+|:--------------------------------------------|:-------:|
+| Home Page + CV + Blog + Favicon/Banner/Logo | \$1,100 |
+| Home Page + CV + Blog                       |  \$800  |
+| Home Page + CV                              |  \$550  |
+
+: {.hover}
+
+
+
+## Testimonials
+
+
+
+[**Velu Immonen**]{style="font-size:17pt"}, Graduate Student at Solent University:
+
+> With Matthew's expert guidance, I navigated through my first meta-analysis with success. His support in effect size selection, model specification, and data visualisation proved indispensable. It felt like having ChatGPT on your ear, with the distinction that Matthew actually offered up-to-date best practices without making up citations – not to mention the human conversation. This service provided me with clarity and considerable time savings. I wholeheartedly endorse it for anyone delving into the world of meta-analysis.
+
+[**Alysson Enes**]{style="font-size:17pt"}, Graduate Student at Federal University of Paraná:
+
+> Matthew helped me with a data visualization service. I spent weeks trying to solve a code in a figure, but I couldn't find the solution. When I contacted Matthew, we had an initial meeting where he was extremely helpful in solving my problem. Matthew quickly sent me a guide with a full explanation of the problem, including how I could use the data visualization on other datasets. I recommend Matthew's work to anyone who is having problems with data visualization.
+
+
+```{=html}
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="matthewbjane" data-description="Support me on Buy me a coffee!" data-message="" data-color="#ED5C9B" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+```
+
