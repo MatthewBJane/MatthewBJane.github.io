@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Matthew B. Jané">
+<meta name="dcterms.date" content="2024-02-02">
+<meta name="description" content="I don’t know anything about the literature on social media and mental health so my focus on this post is to interrogate the statistical approach taken by the article written by Zach Rausch and Jonathon Haidt (link here) and to some extent the original meta-analysis by Ferguson.">
+
+<title>A Statistical Interrogation of “The Case for Causality, Part 1” by Rausch and Haidt – Matthew B. Jané</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="..//webLogoFavicon2.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="A Statistical Interrogation of “The Case for Causality, Part 1” by Rausch and Haidt – Matthew B. Jané">
+<meta property="og:description" content="I don’t know anything about the literature on social media and mental health so my focus on this post is to interrogate the statistical approach taken by the article written by Zach Rausch and Jonathon Haidt (link here) and to some extent the original meta-analysis by Ferguson.">
+<meta property="og:image" content="https://matthewbjane.com/blog-posts/blog-image.png">
+<meta property="og:site_name" content="Matthew B. Jané">
+<meta property="og:locale" content="en_US">
+<meta property="og:image:height" content="7206">
+<meta property="og:image:width" content="10817">
+<meta name="twitter:title" content="A Statistical Interrogation of “The Case for Causality, Part 1” by Rausch and Haidt – Matthew B. Jané">
+<meta name="twitter:description" content="I don’t know anything about the literature on social media and mental health so my focus on this post is to interrogate the statistical approach taken by the article written by Zach Rausch and Jonathon Haidt (link here) and to some extent the original meta-analysis by Ferguson.">
+<meta name="twitter:image" content="https://matthewbjane.com/blog-posts/blog-image.png">
+<meta name="twitter:creator" content="@MatthewBJane">
+<meta name="twitter:image-height" content="7206">
+<meta name="twitter:image-width" content="10817">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../webLogoFavicon2.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Matthew B. Jané</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../blog.html"> 
+<span class="menu-text">Meta-Analysis Magic</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../CV.html"> 
+<span class="menu-text">CV</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Software.html"> 
+<span class="menu-text">Software</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Books.html"> 
+<span class="menu-text">Books</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Consulting.html"> 
+<span class="menu-text">Consulting</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.github.com/MatthewBJane"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.twitter.com/MatthewBJane"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../blog.xml"> <i class="bi bi-rss" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#lets-get-into-it" id="toc-lets-get-into-it" class="nav-link" data-scroll-target="#lets-get-into-it">Let’s get into it</a></li>
+  <li><a href="#effect-size-of-interest" id="toc-effect-size-of-interest" class="nav-link" data-scroll-target="#effect-size-of-interest">Effect Size of Interest</a></li>
+  <li><a href="#statistical-model" id="toc-statistical-model" class="nav-link" data-scroll-target="#statistical-model">Statistical Model</a></li>
+  <li><a href="#parameter-estimation" id="toc-parameter-estimation" class="nav-link" data-scroll-target="#parameter-estimation">Parameter estimation</a></li>
+  <li><a href="#summarizing-and-reproducing-ferguson2024" id="toc-summarizing-and-reproducing-ferguson2024" class="nav-link" data-scroll-target="#summarizing-and-reproducing-ferguson2024">Summarizing and reproducing <span class="citation" data-cites="ferguson2024">Ferguson (2024)</span></a></li>
+  <li><a href="#rhs-analysis" id="toc-rhs-analysis" class="nav-link" data-scroll-target="#rhs-analysis">R&amp;H’s analysis</a></li>
+  <li><a href="#properly-modeling-the-length-of-intervention-in-reduction-studies" id="toc-properly-modeling-the-length-of-intervention-in-reduction-studies" class="nav-link" data-scroll-target="#properly-modeling-the-length-of-intervention-in-reduction-studies">Properly modeling the length of intervention in reduction studies</a></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">A Statistical Interrogation of “The Case for Causality, Part 1” by Rausch and Haidt</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">meta-analysis</div>
+    <div class="quarto-category">social media</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    I don’t know anything about the literature on social media and mental health so my focus on this post is to interrogate the statistical approach taken by the article written by Zach Rausch and Jonathon Haidt (<a href="https://www.afterbabel.com/p/the-case-for-causality-part-1">link here</a>) and to some extent the original meta-analysis by Ferguson.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Matthew B. Jané </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">August 29, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<a href="https://www.buymeacoffee.com/matthewbjane"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&amp;emoji=☕&amp;slug=matthewbjane&amp;button_colour=ed5c9b&amp;font_colour=ffffff&amp;font_family=Arial&amp;outline_colour=ffffff&amp;coffee_colour=ffffff"></a>
+<p><br></p>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>The article by Rausch and Haidt (R&amp;H) conducts a re-analysis of a meta-analysis by <span class="citation" data-cites="ferguson2024">Ferguson (<a href="#ref-ferguson2024" role="doc-biblioref">2024</a>)</span> on RCTs assessing the causal effect (for the sake of this post, I am avoiding any causal inference issues) of social media usage on outcomes related to well-being (e.g., life satisfaction, anxiety). However, the re-analysis conducted by R&amp;H has severe flaws. Generally speaking, if you conduct a re-analysis of any study you should be certain that the re-analysis is of higher methodological quality than the original study. That is not the case here. This blog will get a bit technical, but it is important because meta-analysis isn’t just crunching numbers across studies. There is a formal statistical model that we should adhere to to actually produce coherent and interpretable results.</p>
+<p>The original meta-analysis by <span class="citation" data-cites="ferguson2024">Ferguson (<a href="#ref-ferguson2024" role="doc-biblioref">2024</a>)</span> is not without a number of flaws, but I think it accomplished what it set out to do. Notably, the meta-analysis was pre-registered, transparent, and had publicly available data. The only problem with the open data is that the statistics used to calculate the effect sizes (reported t-statistics, means, SDs, etc.) are completely missing from the database which makes reproducing it a lot harder.</p>
+<p><span class="citation" data-cites="ferguson2024">Ferguson (<a href="#ref-ferguson2024" role="doc-biblioref">2024</a>)</span>’s meta-analysis has a couple things that stood out to me as I was skimmed through it. It seems that all measures related to mental health and well-being are combined even if they are conceptually quite different (e.g., self-esteem and anxiety). When a study reported multiple different outcome measures, Ferguson decided to pool them together presumably to handle the dependency in effects. This is not an ideal strategy for two reasons, it assumes there is no heterogeneity between outcomes and it also loses specificity in the outcome. It would have been nice to see narrower bins of constructs meta-analyzed separately such as clinical anxiety/depression measures or life satisfaction/subjective well-being measures.</p>
+<p>Also, the results convey a common misinterpretation of the estimate in a random effects meta-analysis. The meta-analytic estimate was communicated as follows:</p>
+<blockquote class="blockquote">
+<p>As can be seen the overall estimate for d across studies was 0.088, which was nonsignificant and well below the SESOI (r = .10, d = 0.21).</p>
+</blockquote>
+<p>What does an “overall estimate for <em>d</em>” actually mean (note: <em>d</em> is the effect size, we will talk about this in the next section)? Is there a true <em>d</em> that we are estimating by averaging the <em>d</em> values from all these studies together? No.&nbsp;A random-effects meta-analysis is estimating the <strong>mean of true effect sizes</strong>. That is, there exists a distribution of true effects and the meta-analytic estimate conveys the central tendency. Therefore, the meta-analytic estimate can <em>not</em> tell you whether the the intervention produces an effect of <em>d</em> = .088 (lets ignore the variability in this estimate for the moment), it only tells you that the effect is <em>d</em> = .088, <strong><em>on average</em></strong>. Heterogeneity in effect sizes describes how wide the distribution of true effects is. You <em>could</em> have genuine true effects that are very positive (i.e., social media use is detrimental) and very negative (i.e., social media use is beneficial) even if the meta-analytic estimate is zero. There also could be study-level characteristics that could account for this heterogeneity, for instance, studies using a particular type of experimental design or a certain outcome shows a positive effect while others don’t.</p>
+<p><strong>A side note</strong>: I also came across this sentence from <span class="citation" data-cites="ferguson2024">Ferguson (<a href="#ref-ferguson2024" role="doc-biblioref">2024</a>)</span>’s meta-analysis on page 3:</p>
+<blockquote class="blockquote">
+<p>Given the high power of meta-analysis, almost all meta-analyses are “statistically significant.”</p>
+</blockquote>
+<p>I have heard this before but it is just not true, in general. In a random effects meta-analysis where you have both within and between study variance can give pretty wide confidence intervals and large p-values. This would be a reasonable statement if you are referring to a fixed effect meta-analysis with a large total sample size or a random effect meta-analysis with a ton of studies. Neither of which are true in this case.</p>
+</section>
+<section id="lets-get-into-it" class="level2">
+<h2 class="anchored" data-anchor-id="lets-get-into-it">Let’s get into it</h2>
+<p>The first part of this blog sets up a statistical meta-analysis model called a random-effects model. It is important to keep in mind that a meta-analysis is not throwing a bunch of standardized effects into a calculator and computing a mean. We need a coherent statistical model that allows us to draw meaningful inferences from the data.</p>
+</section>
+<section id="effect-size-of-interest" class="level2">
+<h2 class="anchored" data-anchor-id="effect-size-of-interest">Effect Size of Interest</h2>
+<p>First thing we should do is to define the effect size we are using to quantify the effect of social media on well-being related outcomes. The article by <span class="citation" data-cites="ferguson2024">Ferguson (<a href="#ref-ferguson2024" role="doc-biblioref">2024</a>)</span> says they used a standardized mean difference known as a Cohen’s <em>d</em> to quantify the difference between the post-test scores in the social media using group and the non-social media using group (or some variation of that). You may think “we should be controlling for baseline differences between treatment and control groups”, well in an RCT subject’s are randomly allocated to each group so their baseline scores should be, on average, the same. We can define a (true) effect size <span class="math inline">\(\delta\)</span> as,</p>
+<p><span id="eq-effect"><span class="math display">\[
+\delta = \frac{\mu_\textrm{social} - \mu_\textrm{no social}}{\sigma}
+\tag{1}\]</span></span></p>
+<p>where <span class="math inline">\(\mu_\textrm{social}\)</span> and <span class="math inline">\(\mu_\textrm{no social}\)</span> is the mean of post-test scores for the social media using group and the non-social media using group (i.e., control group), respectively. The standardizer <span class="math inline">\(\sigma\)</span> is the within-group standard deviation and it assumes that both the social media and non-social media group have the same standard deviation (probably a fine assumption 🤷). A sample estimator of the effect size will be denoted as <span class="math inline">\(d\)</span> and it represents the effect size we actually observe from the results of a study,</p>
+<p><span id="eq-sample-effect"><span class="math display">\[
+d = \frac{m_\textrm{social} - m_\textrm{no social}}{s_\mathrm{pooled}},
+\tag{2}\]</span></span></p>
+<p>where English letters denote the sample estimators of the corresponding parameters in <a href="#eq-effect" class="quarto-xref">Equation&nbsp;1</a>. The standardizer <span class="math inline">\(s_\mathrm{pooled}\)</span> here is the pooled standard deviation. Since we only have access to the standard deviation of each group we have to pool them together to get a more precise estimate of <span class="math inline">\(\sigma\)</span> (again, we are assuming the standard deviations within both groups are equal in the population),</p>
+<p><span class="math display">\[
+s_\mathrm{pooled} = \sqrt{\frac{(n_\textrm{social}-1)s^2_\textrm{social} + (n_\textrm{no social}-1)s^2_\textrm{no social}}{n_\textrm{social} + n_\textrm{no social} - 2}}
+\]</span></p>
+<p>I will note here, that there was no correction for small sample bias in the original meta-analysis as far as I could tell so I will not apply any correction here.</p>
+</section>
+<section id="statistical-model" class="level2">
+<h2 class="anchored" data-anchor-id="statistical-model">Statistical Model</h2>
+<p>Ultimately, the observed effect size <span class="math inline">\(d\)</span> is a sample estimate of the true effect size <span class="math inline">\(\delta\)</span> and therefore will contain error. This error is referred to as <strong>sampling error</strong> and is defined as the difference between the observed effect size and the true effect size. For a given study <span class="math inline">\(i\)</span>, we can relate the observed effect size <span class="math inline">\(d_i\)</span> and the true effect size <span class="math inline">\(\delta_i\)</span> by including a sampling error term (<span class="math inline">\(\varepsilon_i\)</span>),</p>
+<p><span class="math display">\[
+d_i = \delta_i + \varepsilon_i
+\]</span> where <span class="math inline">\(\varepsilon_i\)</span> is literally defined as <span class="math inline">\(\varepsilon_i = d_i - \delta_i\)</span>. The extent to which sampling errors are obscuring our effect size can be captured by the <strong>sampling variance</strong>. We can assume that sampling errors are normally distributed and evenly distributed around zero such that, <span class="math inline">\(\varepsilon_i \sim \mathcal{N}(0,v_i)\)</span> where <span class="math inline">\(v_i\)</span> is the sampling variance for study <span class="math inline">\(i\)</span>. The sampling variance for a given study is dependent on the sample size with larger samples having more precision and thus less variance. Assuming normally distributed data, the sampling variance of the standardized mean difference (<a href="#eq-sample-effect" class="quarto-xref">Equation&nbsp;2</a>) is calculated with the following formula,</p>
+<p><span class="math display">\[
+v = \left(\frac{n-1}{n-3}\right) \left(\frac{n}{n_\textrm{social}n_\textrm{no social}}\right)\left( \frac{d^2}{2n}\right)
+\]</span></p>
+<p>where <span class="math inline">\(n=n_\textrm{social}+n_\textrm{no social}\)</span>. However unfortunately, the available dataset from <span class="citation" data-cites="ferguson2024">Ferguson (<a href="#ref-ferguson2024" role="doc-biblioref">2024</a>)</span> did not provide the sample sizes within each group so instead we will have to assume they are equal (<span class="math inline">\(n_\textrm{social}=n_\textrm{no social}\)</span>) and use the simplified formula,</p>
+<p><span class="math display">\[
+v = \left(\frac{n-1}{n-3}\right) \left(\frac{4}{n}\right)\left(1 + \frac{d^2}{8}\right)
+\]</span></p>
+<p>Now we might expect that any variation in effect sizes across studies is attributable to variance in random sampling errors, however this is unlikely to be the case. In reality, effect sizes tend to vary across studies above and beyond what we would expect from sampling error alone. This extra variation (known as heterogeneity) in effect sizes could be due to sampling from different populations, utilizing different methodologies, using different measures, etc.</p>
+<p>Recall that we modeled an observed effect size as the sum of the true effect size for that study and sampling error <span class="math inline">\(d_i = \delta_i + \varepsilon_i\)</span>. We defined the distribution of sampling errors so now we can also define the distribution of true effect sizes as <span class="math inline">\(\delta_i \sim \mathcal{N}(\mu_\delta,\tau^2)\)</span> where <span class="math inline">\(\mu_\delta\)</span> is the mean of true effect sizes across studies and <span class="math inline">\(\tau^2\)</span> is the variance of true effect sizes (i.e., heterogeneity). Ultimately our goal in a meta-analysis is to estimate both <span class="math inline">\(\mu_\delta\)</span> and <span class="math inline">\(\tau\)</span>. The common misinterpretation in (random-effect) meta-analyses that I described in the introduction is that a meta-analysis is estimating a single true effect size. If there is heterogeneity (<span class="math inline">\(\tau^2 &gt; 0\)</span>) then there is a distribution of true effects that we must consider.</p>
+</section>
+<section id="parameter-estimation" class="level2">
+<h2 class="anchored" data-anchor-id="parameter-estimation">Parameter estimation</h2>
+<p>In meta-analysis we are trying to estimate particular parameters (i.e., the mean <span class="math inline">\(\mu_\delta\)</span> and variance <span class="math inline">\(\tau\)</span> of true effect sizes) just like any other statistical model. Simply averaging study effect sizes to obtain some “overall” effect size is not a principled statistical approach. This is why we went through the trouble of describing a random effects model in the previous section. We want to estimate the <em>mean</em> of true effect sizes (<strong>not</strong> the “overall effect size” or “the true effect size”). To estimate the mean of true effects <span class="math inline">\(\mu_\delta\)</span> we can not just calculate the arithmetic mean of observed effect sizes. Instead we must use appropriate weights that take advantage of differential precision across studies. Particularly, we want to weight each study by the inverse variance,</p>
+<p><span class="math display">\[
+w_i = \frac{1}{\tau^2 + v_i}
+\]</span> This will preferentially weight studies with less sampling variance (i.e., larger sample sizes). Also, since <span class="math inline">\(\tau^2\)</span> is the same for all studies, the larger <span class="math inline">\(\tau^2\)</span> is relative to <span class="math inline">\(v_i\)</span> then the weights will become more equal across studies. We can then use these weights to estimate the mean true effect size by taking a weighted average of observed effect sizes across <span class="math inline">\(k\)</span> studies,</p>
+<p><span class="math display">\[
+\hat{\mu}_\delta = \frac{\sum^k_{i=1} w_i d_i}{\sum^k_{i=1} w_i}
+\]</span> where the little carrot <span class="math inline">\(\hat{\cdot}\)</span> denotes an estimate. We can also compute the 95% confidence interval of <span class="math inline">\(\hat{\mu}_\delta\)</span> (the set of plausible values of the actual mean that are compatible with the data) using the Hartung, Knapp, Sidik and Jonkman method (this adjusts for poor coverage rates in small <span class="math inline">\(k\)</span> meta-analyses, which is the case here),</p>
+<p><span class="math display">\[
+CI =  \hat{\mu}_\delta \pm 1.96 \cdot\sqrt{\frac{\sum^k_{i=1}w_i(d_i-\mu_\delta)^2}{(k-1)\sum^k_{i=1}w_i}}
+\]</span></p>
+<p>The last two things we want to estimate are the variance in true effects <span class="math inline">\(\tau^2\)</span> and what is known as a prediction interval. The variance in true effects is estimated a variety of different ways and we won’t go through all of them here. Instead we will exclusively use a restricted maximum likelihood estimator (REML) which is an iterative estimation procedure. <span class="citation" data-cites="ferguson2024">Ferguson (<a href="#ref-ferguson2024" role="doc-biblioref">2024</a>)</span> uses a maximum likelihood estimator (ML), however ML tends to under-estimate the heterogeneity. The 95% prediction interval uses the information from <span class="math inline">\(\hat{\tau}\)</span> to construct an interval that can be interpreted as the interval where 95% of true effect sizes fall.</p>
+<p><span class="math display">\[
+PI = \hat{\mu}_\delta \pm 1.96 \cdot\hat\tau
+\]</span></p>
+<p>So just keep in mind that the <span class="math inline">\(CI\)</span> describes the variability in the estimate of the mean and <span class="math inline">\(PI\)</span> describes the variability in the true effects.</p>
+</section>
+<section id="summarizing-and-reproducing-ferguson2024" class="level2">
+<h2 class="anchored" data-anchor-id="summarizing-and-reproducing-ferguson2024">Summarizing and reproducing <span class="citation" data-cites="ferguson2024">Ferguson (<a href="#ref-ferguson2024" role="doc-biblioref">2024</a>)</span></h2>
+<p>Okay now that we have set up our model, we can now actually look at the data from the meta-analysis. Let’s load in some R packages and the dataset from the OSF repository referenced in <span class="citation" data-cites="ferguson2024">Ferguson (<a href="#ref-ferguson2024" role="doc-biblioref">2024</a>)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load in packages</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(osfr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(metafor)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psychmeta)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># download data from OSF repo</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">read_xlsx</span>(<span class="st">"~/Documents/MatthewBJane/blog-posts/Best Practices Coding Experiments.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 35 × 16
+   Citation       block     n      d Standardized Outcome…¹ `Validated Outcomes`
+   &lt;chr&gt;          &lt;lgl&gt; &lt;dbl&gt;  &lt;dbl&gt;                  &lt;dbl&gt;                &lt;dbl&gt;
+ 1 Alcott 2020    NA     1661  0.09                       1                    1
+ 2 Brailovskaia … NA      286  0.154                      1                    1
+ 3 Brailovskaia … NA      322  0                          1                    1
+ 4 Collins and E… NA      121 -0.138                      1                    1
+ 5 Deters &amp; Mehl… NA       86 -0.207                      1                    1
+ 6 Faulhaber et … NA      230  0.484                      1                    1
+ 7 Gajdics 2022   NA      235 -0.364                      1                    1
+ 8 Hall et al. 2… NA      130 -0.007                      1                    1
+ 9 Hunt 2018      NA      143  0.232                      1                    1
+10 Hunt 2021      NA       88  0.374                      1                    1
+# ℹ 25 more rows
+# ℹ abbreviated name: ¹​`Standardized Outcomes`
+# ℹ 10 more variables: `Matched Control Condition` &lt;dbl&gt;,
+#   `Distractor Questionnaires` &lt;dbl&gt;, `Query hypothesis guessing` &lt;dbl&gt;,
+#   Preregistration &lt;dbl&gt;, Age &lt;dbl&gt;, Year &lt;dbl&gt;, `Best Practices Total` &lt;dbl&gt;,
+#   `Verified 1= yes, 2=no` &lt;dbl&gt;, `Ratio at post` &lt;dbl&gt;,
+#   `Citation Bias 1=yes, 2 = no` &lt;dbl&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load in dataset and filter out studies without data</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"Best Practices Coding Experiments.xlsx"</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">sheet =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(d))</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># display effect size data for first 6 studies</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat[<span class="fu">c</span>(<span class="st">"Citation"</span>,<span class="st">"n"</span>,<span class="st">"d"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+  Citation                    n      d
+  &lt;chr&gt;                   &lt;dbl&gt;  &lt;dbl&gt;
+1 Alcott 2020              1661  0.09 
+2 Brailovskaia 2020         286  0.154
+3 Brailovskaia 2022         322  0    
+4 Collins and Edgers 2022   121 -0.138
+5 Deters &amp; Mehl 2013         86 -0.207
+6 Faulhaber et al., 2023    230  0.484</code></pre>
+</div>
+</div>
+<p>The data only gives us the effect size <code>d</code> and the sample size <code>n</code> for each study so we need to calculate the sampling variance. Using the <code>psychmeta</code> package we can calculate the sampling variance for each study as follows,</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute sampling variance</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">v =</span> <span class="fu">var_error_d</span>(<span class="at">d =</span> d, <span class="at">n1 =</span> n))</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># display updated dataset</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat[<span class="fu">c</span>(<span class="st">"Citation"</span>,<span class="st">"n"</span>,<span class="st">"d"</span>,<span class="st">"v"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+  Citation                    n      d       v
+  &lt;chr&gt;                   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
+1 Alcott 2020              1661  0.09  0.00241
+2 Brailovskaia 2020         286  0.154 0.0141 
+3 Brailovskaia 2022         322  0     0.0125 
+4 Collins and Edgers 2022   121 -0.138 0.0337 
+5 Deters &amp; Mehl 2013         86 -0.207 0.0479 
+6 Faulhaber et al., 2023    230  0.484 0.0181 </code></pre>
+</div>
+</div>
+<p>Now we are set up to fit a random effects model. Using the <code>metafor</code> package we can use the REML method for estimating the heterogeneity and the Hartung-Knapp-Sidik-Jonkman method for obtaining the confidence intervals and p-values.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mdl <span class="ot">&lt;-</span> <span class="fu">rma</span>(<span class="at">yi =</span> d, </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">vi =</span> v, </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> dat,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">method =</span> <span class="st">"REML"</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">test=</span><span class="st">"knha"</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>mdl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Random-Effects Model (k = 27; tau^2 estimator: REML)
+
+tau^2 (estimated amount of total heterogeneity): 0.0564 (SE = 0.0230)
+tau (square root of estimated tau^2 value):      0.2374
+I^2 (total heterogeneity / total variability):   76.62%
+H^2 (total variability / sampling variability):  4.28
+
+Test for Heterogeneity:
+Q(df = 26) = 91.9083, p-val &lt; .0001
+
+Model Results:
+
+estimate      se    tval  df    pval    ci.lb   ci.ub    
+  0.0879  0.0576  1.5249  26  0.1394  -0.0306  0.2063    
+
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>We are pretty much able to reproduce the results seen in <span class="citation" data-cites="ferguson2024">Ferguson (<a href="#ref-ferguson2024" role="doc-biblioref">2024</a>)</span> with slight differences probably due to having to assume equal sample sizes between groups, using a different heterogeneity estimator and using the Hartung-Knapp-Sidik-Jonkman method for the confidence intervals. Let’s get the 95% prediction interval as well.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict.rma</span>(mdl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   pred     se   ci.lb  ci.ub   pi.lb  pi.ub 
+ 0.0879 0.0576 -0.0306 0.2063 -0.4143 0.5901 </code></pre>
+</div>
+</div>
+<p>So, 95% of true effects fall between -.41 and .59 according to our model.</p>
+</section>
+<section id="rhs-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="rhs-analysis">R&amp;H’s analysis</h2>
+<p>R&amp;H conduct a sub-group analysis by chopping up the studies into three bins. First issue here is that this analysis is completely post-hoc and who knows if they created these bins after trying various combinations to reach the conclusion that they desired. R&amp;H separate the 27 studies into three bins (this is verbatim from the article):</p>
+<ol type="1">
+<li><p><strong>Multi-week reduction experiments.</strong> These ten studies examined the impact of reducing social media use for at least two weeks, allowing withdrawal symptoms to dissipate.</p></li>
+<li><p><strong>Short (one week or less) reduction experiments.</strong> These ten studies examined brief periods of abstinence from social media use, which are likely to pick up withdrawal symptoms from heavy users.</p></li>
+<li><p><strong>Exposure experiments.</strong> In these seven studies, the ‘treatment’ is typically brief exposure to some kind of social media, such as requiring high school students to look at their Facebook or Instagram page for 10 minutes.</p></li>
+</ol>
+<p>The second problem we see is that the first two groups are separated by dichotomizing a naturally continuous variable (length of intervention). Sure it makes the data more digestible, but you simply lose information. This is generally considered bad statistical practice and we will see why a little later.</p>
+<p>To reproduce R&amp;H’s analysis, we will add a column to the data set that denotes the group membership (1 = Multi-week reduction experiments, 2 = One week reduction experiments, 3 = Less than one week reduction experiments, 4 = Exposure experiments) of each study.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">subgroup =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="co"># Alcott 2020</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">1</span>, <span class="co"># Brailovskaia 2020</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">1</span>, <span class="co"># Brailovskaia 2022</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">1</span>, <span class="co"># Collins and Edgers 2022</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">4</span>, <span class="co"># Deters &amp; Mehl 2013</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">1</span>, <span class="co"># Faulhaber et al., 2023</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">3</span>, <span class="co"># Gajdics 2022</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">1</span>, <span class="co"># Hall et al. 2021</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">1</span>, <span class="co"># Hunt 2018</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">1</span>, <span class="co"># Hunt 2021</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">2</span>, <span class="co"># Kleefeld dissertation</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">2</span>, <span class="co"># Lambert 2022</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">4</span>, <span class="co"># Lepp 2022</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">2</span>, <span class="co"># Mahalingham 2023</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">3</span>, <span class="co"># Mitev 2021</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">4</span>, <span class="co"># Ozimek 2020</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">3</span>, <span class="co"># Przybylski 2021</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">4</span>, <span class="co"># Sagioglou 2014 study 2"</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">4</span>, <span class="co"># Tartaglia</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">1</span>, <span class="co"># Thai 2021</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">1</span>, <span class="co"># Thai 2023</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">2</span>, <span class="co"># Tromholt 2016</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">2</span>, <span class="co"># Valley2019</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">2</span>, <span class="co"># van wezel 2021</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">3</span>, <span class="co"># Vanman 2018</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">4</span>, <span class="co"># Ward 2017</span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">4</span>  <span class="co"># Yuen et al., 2019</span></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>                      ))</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a><span class="co"># display updated dataset</span></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat[<span class="fu">c</span>(<span class="st">"Citation"</span>,<span class="st">"n"</span>,<span class="st">"d"</span>,<span class="st">"v"</span>,<span class="st">"subgroup"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 5
+  Citation                    n      d       v subgroup
+  &lt;chr&gt;                   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
+1 Alcott 2020              1661  0.09  0.00241        1
+2 Brailovskaia 2020         286  0.154 0.0141         1
+3 Brailovskaia 2022         322  0     0.0125         1
+4 Collins and Edgers 2022   121 -0.138 0.0337         1
+5 Deters &amp; Mehl 2013         86 -0.207 0.0479         4
+6 Faulhaber et al., 2023    230  0.484 0.0181         1</code></pre>
+</div>
+</div>
+<p>Now that we have the subgroup column, we can conduct the sub-group analysis. Here comes the next problem, R&amp;H decide to simply calculates the arithmetic (unweighted) mean of the observed effect sizes within each group. The problem is that they aren’t capitalizing on the fact that different studies have different levels of precision. The only way it would make sense to compute an unweighted average with respect to the statistical model we are employing is if sampling error didn’t exist (it does) or heterogeneity is infinite (its not), so either way its just the wrong approach.</p>
+<p>Let’s first reproduce R&amp;H’s results by taking the unweighted average of observed effect sizes.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">summarize</span>(<span class="at">.data =</span> dat,</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">mean_d =</span> <span class="fu">mean</span>(d),</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">k_studies =</span> <span class="fu">n</span>(),</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">.by =</span> subgroup)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># reorder the subgroup display</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>results[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>),]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 3
+  subgroup  mean_d k_studies
+     &lt;dbl&gt;   &lt;dbl&gt;     &lt;int&gt;
+1        1  0.204         10
+2        2  0.0868         6
+3        3 -0.172          4
+4        4  0.0566         7</code></pre>
+</div>
+</div>
+<p>All the values are accurate. We can compare it to the table shown in R&amp;H’s article:</p>
+<p><img src="table1-2-3_R&amp;H.png" class="img-fluid"></p>
+<p>Okay we see a positive average effect for the multi-week reduction experiments, but lets now use proper inverse-variance weights to calculate the average. This time we will model the groups as dummy predictors and specify the proper contrasts for each group:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># construct a meta-analytic model with subgroup</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># as a dummy-coded categorical predictor</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>mdl <span class="ot">&lt;-</span> <span class="fu">rma</span>(d <span class="sc">~</span> <span class="fu">factor</span>(subgroup,<span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)), </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">vi =</span> v, </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> dat,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">test=</span><span class="st">"knha"</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co"># acquire subgroup-level mean estimates</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>estimates <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">predict</span>(mdl, </span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>          <span class="fu">rbind</span>(<span class="at">g1 =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>),</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>                <span class="at">g2 =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>),</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>                <span class="at">g3 =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>),</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>                <span class="at">g4 =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>))))</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="co"># print results</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">data.frame</span>(<span class="at">group =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">mean_delta =</span> estimates<span class="sc">$</span>pred),<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  group mean_delta
+1     1      0.177
+2     2      0.154
+3     3     -0.172
+4     4      0.082</code></pre>
+</div>
+</div>
+<p>As we can see the estimates are a bit different. Another thing that is completely missing from the R&amp;H analysis is any indication of variability in their mean estimates and their is no indication of heterogeneity. It is conveyed as a fixed quantity, however just because we combine many studies together does not mean that uncertainty ceases to exist.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">data.frame</span>(<span class="at">group =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">mean_delta =</span> estimates<span class="sc">$</span>pred,</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">CI_low =</span> estimates<span class="sc">$</span>ci.lb,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">CI_high =</span> estimates<span class="sc">$</span>ci.ub,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">PI_low =</span> estimates<span class="sc">$</span>pi.lb,</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">PI_high =</span> estimates<span class="sc">$</span>pi.ub),<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  group mean_delta CI_low CI_high PI_low PI_high
+1     1      0.177 -0.005   0.360 -0.296   0.651
+2     2      0.154 -0.098   0.407 -0.350   0.659
+3     3     -0.172 -0.443   0.099 -0.686   0.342
+4     4      0.082 -0.151   0.315 -0.414   0.577</code></pre>
+</div>
+</div>
+<p>True effects for group 1 (multi-week reduction studies, i.e., the focal group) are quite variable and can range from -0.296 to 0.651. An interesting point to bring up is that <span class="citation" data-cites="ferguson2024">Ferguson (<a href="#ref-ferguson2024" role="doc-biblioref">2024</a>)</span> set the smallest effect size of interest (SESOI) to be <em>d</em> = .21 in his pre-registration (equivalent to a Pearson correlation of <em>r</em> = .10). However, that does not help us much here since the upper bound of the confidence interval is well above <em>d</em> = .21 so you can’t really make the claim that that there is no clinically meaningful effect, <em>on average</em>. And you definitely can’t make the claim that all/most true effects are not clinically meaningful since the upper bound of the PI is 0.651. Truthfully, the SESOI established in <span class="citation" data-cites="ferguson2024">Ferguson (<a href="#ref-ferguson2024" role="doc-biblioref">2024</a>)</span> does not seem to have any good theoretical or practical justification outside of “seems reasonable” so it is unclear what the utility of this arbitrary boundary is in this case?</p>
+</section>
+<section id="properly-modeling-the-length-of-intervention-in-reduction-studies" class="level2">
+<h2 class="anchored" data-anchor-id="properly-modeling-the-length-of-intervention-in-reduction-studies">Properly modeling the length of intervention in reduction studies</h2>
+<p>Instead of binning the length of the intervention into groups I will use the weeks reported in the R&amp;H article to create a continuous moderator for reduction studies only.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">length_weeks =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="co"># Alcott 2020</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">2</span>, <span class="co"># Brailovskaia 2020</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">2</span>, <span class="co"># Brailovskaia 2022</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">10</span>, <span class="co"># Collins and Edgers 2022</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>                          <span class="cn">NA</span>, <span class="co"># Deters &amp; Mehl 2013</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">2</span>, <span class="co"># Faulhaber et al., 2023</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">1</span><span class="sc">/</span><span class="dv">7</span>, <span class="co"># Gajdics 2022</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>                          <span class="fl">2.5</span>, <span class="co"># Hall et al. 2021</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">1</span>, <span class="co"># Hunt 2018</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">1</span>, <span class="co"># Hunt 2021</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">1</span>, <span class="co"># Kleefeld dissertation</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">1</span>, <span class="co"># Lambert 2022</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>                          <span class="cn">NA</span>, <span class="co"># Lepp 2022</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">1</span>, <span class="co"># Mahalingham 2023</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">1</span><span class="sc">/</span><span class="dv">7</span>, <span class="co"># Mitev 2021</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>                          <span class="cn">NA</span>, <span class="co"># Ozimek 2020</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">1</span><span class="sc">/</span><span class="dv">7</span>, <span class="co"># Przybylski 2021</span></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>                          <span class="cn">NA</span>, <span class="co"># Sagioglou 2014 study 2"</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>                          <span class="cn">NA</span>, <span class="co"># Tartaglia</span></span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">3</span>, <span class="co"># Thai 2021</span></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">3</span>, <span class="co"># Thai 2023</span></span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">1</span>, <span class="co"># Tromholt 2016</span></span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">1</span>, <span class="co"># Valley2019</span></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">1</span>, <span class="co"># van wezel 2021</span></span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">5</span><span class="sc">/</span><span class="dv">7</span>, <span class="co"># Vanman 2018</span></span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>                          <span class="cn">NA</span>, <span class="co"># Ward 2017</span></span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>                          <span class="cn">NA</span>  <span class="co"># Yuen et al., 2019</span></span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a><span class="co"># display updated dataset</span></span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat[<span class="fu">c</span>(<span class="st">"Citation"</span>,<span class="st">"n"</span>,<span class="st">"d"</span>,<span class="st">"v"</span>,<span class="st">"length_weeks"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 5
+  Citation                    n      d       v length_weeks
+  &lt;chr&gt;                   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;        &lt;dbl&gt;
+1 Alcott 2020              1661  0.09  0.00241            4
+2 Brailovskaia 2020         286  0.154 0.0141             2
+3 Brailovskaia 2022         322  0     0.0125             2
+4 Collins and Edgers 2022   121 -0.138 0.0337            10
+5 Deters &amp; Mehl 2013         86 -0.207 0.0479            NA
+6 Faulhaber et al., 2023    230  0.484 0.0181             2</code></pre>
+</div>
+</div>
+<p>Okay so now we have the moderator we can construct a linear meta-regression model of the form,</p>
+<p><span class="math display">\[
+d_i = b_0 + b_1 X_\mathrm{length} + u_i + \varepsilon_i
+\]</span> Notice now that true effects how is distributed around the regression line such that the distribution of true effects is now</p>
+<p><span class="math display">\[
+\delta_i \sim \mathcal{N}(b_0 + b_1 X_\mathrm{length},\tau^2)
+\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>mdl_weeks <span class="ot">&lt;-</span> <span class="fu">rma</span>(d <span class="sc">~</span> length_weeks,</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">vi =</span> v,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> dat,</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">method =</span> <span class="st">"REML"</span>,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">test =</span> <span class="st">"knha"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: 7 studies with NAs omitted from model fitting.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>mdl_weeks</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Mixed-Effects Model (k = 20; tau^2 estimator: REML)
+
+tau^2 (estimated amount of residual heterogeneity):     0.0647 (SE = 0.0299)
+tau (square root of estimated tau^2 value):             0.2544
+I^2 (residual heterogeneity / unaccounted variability): 79.40%
+H^2 (unaccounted variability / sampling variability):   4.85
+R^2 (amount of heterogeneity accounted for):            0.00%
+
+Test for Residual Heterogeneity:
+QE(df = 18) = 75.7503, p-val &lt; .0001
+
+Test of Moderators (coefficient 2):
+F(df1 = 1, df2 = 18) = 0.0018, p-val = 0.9667
+
+Model Results:
+
+              estimate      se    tval  df    pval    ci.lb   ci.ub    
+intrcpt         0.0884  0.0922  0.9581  18  0.3507  -0.1054  0.2821    
+length_weeks    0.0014  0.0330  0.0423  18  0.9667  -0.0678  0.0706    
+
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>Okay so as it turns out there appears to be little/no effect of the length of the intervention on the effect size. Let us plot out the data to see what the relationship actually looks like:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="blog-post-6_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="480"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The regression line looks almost parallel to the <em>d</em> = 0 line (the grey line). You may notice the outlier at 10 weeks and you may want to remove it from the analysis. I would ask why? The data point does not appear to be a coding error or a mistake? It is a valid data point and piece of evidence that should not be taken out of the analysis post-hoc. Hell, it could be that the the positive effect of not being on social media only lasts a few weeks and then fades out (not an uncommon trend in psychology interventions). Anyways, any reason to remove that “outlier” would seem to me like a post-hoc rationalization.</p>
+</section>
+<section id="discussion" class="level2">
+<h2 class="anchored" data-anchor-id="discussion">Discussion</h2>
+<p>The re-analysis of <span class="citation" data-cites="ferguson2024">Ferguson (<a href="#ref-ferguson2024" role="doc-biblioref">2024</a>)</span>’s meta-analysis by R&amp;H does not have adequate statistical rigor to build a “case for causality”. Post-hoc subgroup analyses conducted by R&amp;H did not use a principled statistical model, they did not report any variability in their estimates, the estimates themselves were sub-optimal (unweighted averaging), and they misinterpreted the point-estimates that they calculated. They did not do a proper comparison of their point-estimates and instead they treated them as fixed quantities and simply claimed that these average effect sizes are different without consideration of variability in their estimation procedure. Their conclusion claimed that:</p>
+<blockquote class="blockquote">
+<p>we still found that his data <em>supports</em> (rather than undermines) the contention by some scholars that “reductions in social media time would improve adolescent mental health,” at least as long as the reductions continue for two weeks or longer.</p>
+</blockquote>
+<p>Based on my re-analysis of R&amp;H’s re-analysis I find that the intervention length when modeled properly as a continuous variable (since it literally is) does not support this claim.</p>
+<p>If I did anything incorrectly or if I did not use best practices, I take full responsibility and you can let me know by sending me a DM on twitter or emailing me at matthewbjane@gmail.com.</p>
+<iframe src="https://embeds.beehiiv.com/f3ffd81a-4723-4419-bb1d-afc8af3bac36" data-test-id="beehiiv-embed" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius: 4px; border: 2px solid #33333322; margin: 0; background-color: transparent;">
+</iframe>
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-ferguson2024" class="csl-entry" role="listitem">
+Ferguson, Christopher J. 2024. <span>“Do Social Media Experiments Prove a Link with Mental Health: A Methodological and Meta-Analytic Review.”</span> <em>Psychology of Popular Media</em>, No Pagination Specified–. <a href="https://doi.org/10.1037/ppm0000541">https://doi.org/10.1037/ppm0000541</a>.
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/matthewbjane\.com");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Email me at matthew.jane@uconn.edu</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
