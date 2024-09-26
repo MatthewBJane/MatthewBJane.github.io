@@ -1,0 +1,24 @@
+---
+image: website_banner.png
+about: 
+  template: jolla
+  image-shape: rectangle
+  image-width: 23.5em
+---
+
+::: {.btn-group role="group" aria-label="Social Links"}
+[{{< fa envelope >}}<br>Email](mailto:matthew.jane@uconn.edu){.btn .btn-secondary .btn role="button" data-toggle="data" title="email"} [{{< fa brands twitter >}}<br>Twitter](https://www.twitter.com/MatthewBJane){.btn .btn-secondary .btn role="button" data-toggle="data" title="twitter"} [{{< fa brands github >}}<br>Github](https://www.github.com/MatthewBJane){.btn .btn-secondary .btn role="button" data-toggle="data" title="github"} [{{< fa graduation-cap >}}<br>Scholar](https://scholar.google.com/citations?user=a4C6CX0AAAAJ&hl=en){.btn .btn-secondary .btn role="button" data-toggle="data" title="scholar"}
+:::
+
+<br>
+
+Hello there! I'm **Matthew B. Jané** - I'm a PhD student in Quantitative Psychology at the University of Connecticut. My research involves developing statistical methods and software to aide in meta-analysis and evidence synthesis. Specifically, my current research projects focus on correcting bias in effect size estimates caused by statistical artifacts. My advisor is Dr. Blair T. Johnson and I am a member of the Systematic Health Action Research Program (SHARP). I am also on the editorial board for *Psychological Bulletin* as a methodological reviewer.
+
+```{=html}
+<a href="https://www.buymeacoffee.com/matthewbjane"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=matthewbjane&button_colour=ed5c9b&font_colour=ffffff&font_family=Arial&outline_colour=ffffff&coffee_colour=ffffff" /></a>
+```
+<!-- **View my new open-source text-book:** [{{< fa book >}} Artifact Corrections for Effect Sizes](https://matthewbjane.quarto.pub/artifact-corrections-for-effect-sizes/){.btn .btn-primary .btn role="button" data-toggle="data" title="email"} -->
+
+```{=html}
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="matthewbjane" data-description="Support me on Buy me a coffee!" data-message="" data-color="#ED5C9B" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+```
