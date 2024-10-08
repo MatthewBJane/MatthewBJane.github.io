@@ -73,7 +73,7 @@ library(ggdist)
 
 df <- read.csv("social_media_data.csv")
 
-# assume .70 pre-post correlation
+# assume .75 pre-post correlation
 r <- .75
 
 dat <- df %>%
