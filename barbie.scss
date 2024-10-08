@@ -14,11 +14,14 @@ $h1-font-family-sans-serif: Sans;
 
 
 
-
-
-
-
 /*-- scss:rules --*/
+
+
+
+.quarto-table-wrapper {
+  overflow-x: scroll;
+  font-size: 17px;
+}
 
 
 span.theorem-title{

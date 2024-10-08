@@ -14,14 +14,14 @@ listing:
   image-height: "12em"
 
 website:
-  description: "Welcome to my blog, Meta-Analysis Magic! Here, you’ll uncover mind-bending tricks that will help you unveil those elusive, unreported statistics tucked away in primary studies."
+  description: "Welcome to my blog, Meta-Analysis Magic!"
   twitter-card:
     image: "/blog-image.png"
   open-graph:
     image: "/blog-image.png"
 ---
 
-Welcome to my blog, **Meta-Analysis Magic**! I discuss meta-analysis stuff and sometimes measurement.
+Welcome to my blog, **Meta-Analysis Magic**! I discuss meta-analysis stuff and sometimes measurement issues.
 
 If you like the blog, consider subscribing below to be notified whenever a new post comes out (it's free!).
 

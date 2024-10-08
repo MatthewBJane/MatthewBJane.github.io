@@ -5,7 +5,6 @@ project:
   resources:
     - "/webLogo2.png"
     - "/blog-image.png"
-    - CNAME
 
 website:
   site-url: https://matthewbjane.com
@@ -45,6 +44,8 @@ website:
         text: Books
       - href: Consulting.qmd
         text: Consulting
+      - href: social_media_mental_health.qmd
+        text: SM & MH Living Meta-Analysis
 
 format:
   html:

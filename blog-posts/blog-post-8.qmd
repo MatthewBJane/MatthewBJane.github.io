@@ -32,10 +32,7 @@ Let's visualize this example by running a meta-regression and creating a bubble 
 
 $$
 \ln RR = \ln \frac{p_T}{p_C},
-$$
-where $p_T$ and $p_C$ are the proportions of individuals in remission within the treatment and control group, respectively. We will then see how the doseage moderates the $\ln RR$ across studies. In R, we can use the `metafor` [@metafor] package to fit a meta-regression.
-
-
+$$ where $p_T$ and $p_C$ are the proportions of individuals in remission within the treatment and control group, respectively. We will then see how the doseage moderates the $\ln RR$ across studies. In R, we can use the `metafor` [@metafor] package to fit a meta-regression.
 
 ```{r,message=FALSE, fig.width = 5, fig.height = 5}
 #| code-fold: true
@@ -65,27 +62,19 @@ regplot(mdl,refline = 0)
 
 We see a very strong relationship between the effect size and the dosage amount.
 
-
-
-
-
 ## What would a meta-analytic GAM look like?
 
 **This brief intro section is a sort of a meta-analytic adaptation of a [section](https://m-clark.github.io/generalized-additive-models/building_gam.html#what-is-a-gam) of Michael Clark's online text "Generalized Additive Models".**
-
 
 In our example, we used a linear meta-regression so let us define a simple linear meta-regression model mathematically. An observed (arbitrary) effect size $d_i$ from study $i$ is expressed as,
 
 $$
 d_i = \underset{_\textrm{intercept}}{b_0} + \overset{^\textrm{moderator effect}}{b_1M_i} + \underset{_\textrm{true effect variability}}{u_i} + \overset{^\textrm{sampling error}}{\varepsilon_i}.
-$$
-The first three terms in the equation is what defines the true effect size $\delta_i$ for study $i$ and the last term denotes sampling error which is what distinguishes the observed effect size $d_i$ from the true effect size $\delta_i$. The true effect size is conditionally distributed as,
+$$ The first three terms in the equation is what defines the true effect size $\delta_i$ for study $i$ and the last term denotes sampling error which is what distinguishes the observed effect size $d_i$ from the true effect size $\delta_i$. The true effect size is conditionally distributed as,
 
 $$
 \delta_i \mid M_i \sim \mathcal{N}\left(b_0 + b_1M_i\, ,\, \tau^2\right)
-$$
-Where $\tau^2$ is the residual variance in true effects (i.e., $\tau^2 = \mathrm{var}(u_i)$). We can see that the conditional expectation of true effects is a linear function of the moderator variable $\mathbb{E}[\delta_i \mid M] = b_0 + b_1M_i$. But we don't have to model the conditional mean as linear. If the data appears non-linear we can instead model it as some smooth function $f$ such that the conditional mean has some non-linear functional form,
-
+$$ Where $\tau^2$ is the residual variance in true effects (i.e., $\tau^2 = \mathrm{var}(u_i)$). We can see that the conditional expectation of true effects is a linear function of the moderator variable $\mathbb{E}[\delta_i \mid M] = b_0 + b_1M_i$. But we don't have to model the conditional mean as linear. If the data appears non-linear we can instead model it as some smooth function $f$ such that the conditional mean has some non-linear functional form,
 
 $$
 \delta_i \mid M_i \sim \mathcal{N}\left(f(M_i),\, \tau^2\right).
@@ -99,7 +88,6 @@ $$
 
 The conditional expectation of true effects now can have a lot of flexibility. Note that we do not want to try to interpret the regression coefficients $b_q$ of those smaller basis functions, instead we want to interpret the bigger function which is estimating the conditional mean of true effects. To estimate the conditional expectation, GAMs utilize **penalized splines** which penalizes the function for being too "wiggly" so as to maintain a parsimonious model. The number of knots (i.e., the joints/abscissa of the "big" function) also does not have to be set manually like they do in other spline models.
 
-
 ## Loading in packages
 
 We will need the following packages before we begin.
@@ -112,7 +100,6 @@ library(tidybayes)
 library(modelr)
 library(ggdist)
 ```
-
 
 ## Non-linear Data
 
@@ -132,7 +119,6 @@ head(dat)
 
 ```
 
-
 The effect size is denoted with `yi`, the standard errors are denoted with `sei`, and the study-level moderator values is denoted with `xi`.
 
 ## Constructing the `brms` model
@@ -147,13 +133,13 @@ mdl_gam <- brm(yi | se(sei, sigma = TRUE) ~ s(xi),
           seed = 17,
           iter = 1000, 
           warmup = 150, 
-          chains = 2)
+          chains = 2,
+          file = "model_gam",
+          file_refit = "on_change")
 
 ```
 
-
 Now let's also construct a linear model so that we can compare the two fits.
-
 
 ```{r,warning = FALSE, results='hide'}
 
@@ -163,13 +149,13 @@ mdl_lm <- brm(yi | se(sei, sigma = TRUE) ~ xi,
           seed = 17,
           iter = 1000, 
           warmup = 150, 
-          chains = 2)
+          chains = 2,
+          file = "model_lm",
+          file_refit = "on_change")
 
 ```
 
-
 We can plot out the models by displaying the estimates of the conditional effect size mean that are compatible with the data (denoted with the dark lines) and the conditional distribution of effect sizes (the density band with the bounds denoting the 95% prediction interval).
-
 
 ```{r,fig.height=10}
 #| code-fold: true
@@ -235,8 +221,6 @@ cowplot::plot_grid(p1,p2,ncol = 1)
 
 ```
 
-
-
 ## Predictive Check
 
 The predictive check of the GAM model captures the data better than the linear model in this data set.
@@ -261,7 +245,6 @@ sessionInfo()
 
 ```
 
-
 ## Citing R packages
 
 The following packages were used in this post:
@@ -273,9 +256,7 @@ The following packages were used in this post:
 -   `modelr` [@modelr]
 -   `tidybayes` [@tidybayes]
 
-
 **Thanks to Isabella R. Ghement, Stephen J. Wild, and Solomon Kurz for their advice and feedback on this post.**
-
 
 <iframe src="https://embeds.beehiiv.com/f3ffd81a-4723-4419-bb1d-afc8af3bac36" data-test-id="beehiiv-embed" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius: 4px; border: 2px solid #33333322; margin: 0; background-color: transparent;">
 

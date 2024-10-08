@@ -10,7 +10,129 @@
 <atom:link href="https://matthewbjane.com/blog.xml" rel="self" type="application/rss+xml"/>
 <description>Website for Matthew B. Jané. PhD student at the University of Connecticut.</description>
 <generator>quarto-1.5.56</generator>
-<lastBuildDate>Tue, 24 Sep 2024 04:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 08 Oct 2024 04:00:00 GMT</lastBuildDate>
+<item>
+  <title>Unjustifiable Methods and How I plan to fix this: a Response to Stein, Rausch, and Haidt</title>
+  <dc:creator>Matthew B. Jané</dc:creator>
+  <link>https://matthewbjane.com/blog-posts/blog-post-9.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<a href="https://www.buymeacoffee.com/matthewbjane"><img src="https://img.buymeacoffee.com/button-api/?text=Support my work&amp;emoji=☕&amp;slug=matthewbjane&amp;button_colour=ed5c9b&amp;font_colour=ffffff&amp;font_family=Arial&amp;outline_colour=ffffff&amp;coffee_colour=ffffff"></a>
+<p><br></p>
+<section id="introducing-a-living-meta-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="introducing-a-living-meta-analysis">Introducing a Living Meta-Analysis</h2>
+<p>I have (along with help from others) created a page on my website that hosts the code and results of a living meta-analysis of RCTs of social media reduction studies for mental health outcomes (depression and anxiety, specifically). The meta-analysis can be found here: <a href="https://matthewbjane.com/social_media_mental_health.html">matthewbjane.com/social_media_mental_health.html</a>. Since the effect sizes in Ferguson’s database had multiple flaws (miscalculated effect sizes, pooled across conceptually different measures, did not code mid-intervention effects), I decided to fully recalculate all the effect sizes for anxiety and depression separately, obtain as many time-points in each study as I could, and construct a multi-level model to account for effect dependency. I think probably most people will agree that the resulting model, follows much more appropriate statistical practices than Haidt, Rausch, and Stein’s (RH&amp;S) approach.</p>
+<p>This site will be completely open to changes, critiques, or additions (open an issue on my github repository, DM me on twitter/blue-sky, or email me at matthewbjane@gmail.com). This should be the first site that Haidt, Rausch, and Stein refer to before they make causal claims.</p>
+<p>If there are any errors at all, let me know and I will make the change ASAP.</p>
+</section>
+<section id="pre-print-by-thrul-et-al." class="level2">
+<h2 class="anchored" data-anchor-id="pre-print-by-thrul-et-al.">Pre-print by Thrul et al.</h2>
+<p>A re-analysis of Ferguson’s meta-analysis by <a href="https://osf.io/preprints/psyarxiv/degba?view_only=">Thrul et al.</a> makes many of the same mistakes that RH&amp;S did. They dichotomize time again to show that effects after one week are positive and effects less than one week are negative. Aside from the fact that there were errors in the data base, <strong>dichotomizing time is virtually never a good modeling approach</strong>. The one-week cut-point differed from Haidt, Rausch, and Stein’s cut-point of 2 weeks. In my last post on this debate, I demonstrated how RH&amp;S’s cut-point of 2 weeks is arbitrary and prone to nose mining (if I change the cut-point to <em>greater</em> than two weeks rather than <em>2 weeks or greater</em> the effect size changes considerably, around a ~50% decrease).</p>
+<p>As for their non-linear model (which is almost identical to what I did in my second post almost a month ago), it is unclear what their model is? Also, there are no confidence intervals or prediction intervals and the points being the same size makes it seem like they did not weight it?</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://matthewbjane.com/blog-posts/thrul_table.png" class="img-fluid figure-img"></p>
+<figcaption>Table from Thrul et al.</figcaption>
+</figure>
+</div>
+<p>This is the entire methods section from Thrul et al.:</p>
+<blockquote class="blockquote">
+<p>We used the information available on the OSF platform related to the original meta-analysis (https://osf.io/jcha2). We then reviewed all included studies (https://osf.io/27dx6). Of the 27 originally included studies, we excluded 7 studies because they were not reduction / abstinence interventions (see online supplement). For example, these studies tested the psychological impact of short sessions of social media use (e.g., active vs.&nbsp;passive use; browsing vs.&nbsp;communicating) (Yuen et al., 2019). We extracted the length of intervention for all studies and categorized them into studies that intervened on social media use for less than 1 week vs.&nbsp;1 week or longer (see online supplement). Moreover, we also tested intervention length as a continuous variable, using number of weeks as well as number of days as moderator and testing curvilinear relationships by including quadratic terms. All effect sizes were taken from the OSF platform. Random-effects models were estimated using the metafor package in R.</p>
+</blockquote>
+<p>This paper has been accepted at <em>Psychology of Popular Media</em>. This paper contains results based on incorrect data, unclear methods, and artificial dichotomization. I do not think it should be published. I will be writing a more formal response, soon.</p>
+<p>Jonathan Haidt then uses this meta-analysis, ignores the curvilinear relationship and then makes a tweet stating:</p>
+<blockquote class="blockquote">
+<p>A new meta-analysis, in press, from @drjthrul et al, using data from the @CJFerguson1111 analysis, finds that “interventions of less than 1 week resulted in significantly worse mental health outcomes (d=-0.168, SE=0.058, p=.004), while interventions of 1 week or longer resulted in significant improvements (d=0.169, SE=0.065, p=.01). Researchers and journalist should stop saying that the evidence is”just correlational.” There is experimental evidence too. We can certainly debate what this all means, but there is a body of experiments that points, pretty consistently, to benefits from reducing social media use, as long as the reduction goes on long enough to get past withdrawal effects.</p>
+</blockquote>
+<p>Of course, this is using, yet again, an arbitrary cut-point to prove the same point <em>and</em> analyzed on a database with incorrect effect sizes. I have modeled it continuously and now with the new living meta, this should be abundantly clear. I followed up to his tweet with the following reply:</p>
+<p></p><div id="tweet-19184"></div><script>tweet={"url":"https:\/\/twitter.com\/MatthewBJane\/status\/1842309358555746607","author_name":"Matthew B Jané","author_url":"https:\/\/twitter.com\/MatthewBJane","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EHi John, truthfully, this is a bit frustrating. I literally did this analysis a month ago (\u003Ca href=\"https:\/\/t.co\/jk0PatPRxu\"\u003Ehttps:\/\/t.co\/jk0PatPRxu\u003C\/a\u003E) completely transparently with open source code that can easily be reproduced. I explained why dichotomizing time is inappropriate. I showed how these cut-points are…\u003C\/p\u003E&mdash; Matthew B Jané (@MatthewBJane) \u003Ca href=\"https:\/\/twitter.com\/MatthewBJane\/status\/1842309358555746607?ref_src=twsrc%5Etfw\"\u003EOctober 4, 2024\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-19184").innerHTML = tweet["html"];</script><p></p>
+<p>Anyways, that is it from me. Here is a much nicer note about causality in these RCTs from Stephen J. Wild.</p>
+</section>
+<section id="a-note-on-causality-in-these-rcts-by-stephen-j.-wild" class="level2">
+<h2 class="anchored" data-anchor-id="a-note-on-causality-in-these-rcts-by-stephen-j.-wild">A note on causality in these RCTs (by Stephen J. Wild)</h2>
+<p>Figuring out the causal effect social media and mental health is difficult. Social media affects mental health through both direct and indirect paths, some of which we can close in reduction or exposure experiments, and some of which we can’t. On top of everything below, we have the usual internal and external validity threats. Among the two biggest issues that likely affect the Ferguson meta-analysis, we cannot agree on the definition of social media or social media use and we do not have a clear and well-measured outcome. Even when we do a well-designed and executed experiment, a number of other challenges threaten our attempts at causal inference.</p>
+<p>First we have interference and spillovers, where the causal effect of our exposure affects units other than the unit under study. For social media, it means that social media use doesn’t just affect the person in the study, but also affects their friends and family. Second is effect heterogeneity and the power of our study. We can and should expect social media to affect different groups differently. Yet many of our studies are not powered to detect small effects, let alone small effects in different subgroups. Third is statistical under or over control, where we include the wrong <a href="https://journals.sagepub.com/doi/full/10.1177/00491241221099552">control variables</a>. We include colliders where we shouldn’t, mediators that block the causal path, and fail to include confounders where we should. Fourth includes failure to account for feedback loops, where our exposure (social media) influences our outcome (mental health), which in turn affects our exposure (we have worse mental health so in turn use more social media, and repeat). And a fifth reason involves substitution effects and the proper attribution of causality. When we reduce our social media use, we increase our time spent on other activities. Is the causal effect due to reduced social media use, or an increase in the other activities?</p>
+</section>
+<section id="session-info" class="level2">
+<h2 class="anchored" data-anchor-id="session-info">Session Info</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sessionInfo</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>R version 4.4.0 (2024-04-24)
+Platform: aarch64-apple-darwin20
+Running under: macOS Sonoma 14.1
+
+Matrix products: default
+BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
+LAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+time zone: America/New_York
+tzcode source: internal
+
+attached base packages:
+[1] stats     graphics  grDevices datasets  utils     methods   base     
+
+loaded via a namespace (and not attached):
+ [1] compiler_4.4.0    fastmap_1.2.0     cli_3.6.3         htmltools_0.5.8.1
+ [5] tools_4.4.0       rstudioapi_0.16.0 yaml_2.3.8        rmarkdown_2.27   
+ [9] knitr_1.47        jsonlite_1.8.8    xfun_0.45         digest_0.6.36    
+[13] rlang_1.1.4       renv_0.17.3       evaluate_0.24.0  </code></pre>
+</div>
+</div>
+</section>
+<section id="citing-r-packages" class="level2">
+<h2 class="anchored" data-anchor-id="citing-r-packages">Citing R packages</h2>
+<p>The following packages were used in this post:</p>
+<ul>
+<li><code>brms</code> <span class="citation" data-cites="brms">(Bürkner 2021)</span></li>
+<li><code>mgcv</code> <span class="citation" data-cites="splines">(R Core Team 2024)</span></li>
+<li><code>tidyverse</code> <span class="citation" data-cites="tidyverse">(Wickham et al. 2019)</span></li>
+<li><code>ggdist</code> <span class="citation" data-cites="ggdist">(Kay 2023)</span></li>
+<li><code>modelr</code> <span class="citation" data-cites="modelr">(Wickham 2023)</span></li>
+<li><code>tidybayes</code> <span class="citation" data-cites="tidybayes">(Kay 2024)</span></li>
+</ul>
+<iframe src="https://embeds.beehiiv.com/f3ffd81a-4723-4419-bb1d-afc8af3bac36" data-test-id="beehiiv-embed" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius: 4px; border: 2px solid #33333322; margin: 0; background-color: transparent;">
+</iframe>
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
+<div id="ref-brms" class="csl-entry">
+Bürkner, Paul-Christian. 2021. <span>“Bayesian Item Response Modeling in <span>R</span> with <span class="nocase">brms</span> and <span>Stan</span>.”</span> <em>Journal of Statistical Software</em> 100 (5): 1–54. <a href="https://doi.org/10.18637/jss.v100.i05">https://doi.org/10.18637/jss.v100.i05</a>.
+</div>
+<div id="ref-ggdist" class="csl-entry">
+Kay, Matthew. 2023. <span>“Ggdist: Visualizations of Distributions and Uncertainty in the Grammar of Graphics.”</span> <a href="https://doi.org/10.31219/osf.io/2gsz6">https://doi.org/10.31219/osf.io/2gsz6</a>.
+</div>
+<div id="ref-tidybayes" class="csl-entry">
+———. 2024. <em><span class="nocase">tidybayes</span>: Tidy Data and Geoms for <span>Bayesian</span> Models</em>. <a href="https://doi.org/10.5281/zenodo.1308151">https://doi.org/10.5281/zenodo.1308151</a>.
+</div>
+<div id="ref-splines" class="csl-entry">
+R Core Team. 2024. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
+</div>
+<div id="ref-modelr" class="csl-entry">
+Wickham, Hadley. 2023. <em>Modelr: Modelling Functions That Work with the Pipe</em>. <a href="https://CRAN.R-project.org/package=modelr">https://CRAN.R-project.org/package=modelr</a>.
+</div>
+<div id="ref-tidyverse" class="csl-entry">
+Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. <span>“Welcome to the <span class="nocase">tidyverse</span>.”</span> <em>Journal of Open Source Software</em> 4 (43): 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.
+</div>
+</div></section></div> ]]></description>
+  <category>Social Media</category>
+  <category>Mental Health</category>
+  <category>Meta-Analysis</category>
+  <guid>https://matthewbjane.com/blog-posts/blog-post-9.html</guid>
+  <pubDate>Tue, 08 Oct 2024 04:00:00 GMT</pubDate>
+  <media:content url="https://matthewbjane.com/blog-posts/blog-image.png" medium="image" type="image/png" height="96" width="144"/>
+</item>
 <item>
   <title>Generalized Additive Models (GAMs) for Meta-Regression using brms</title>
   <dc:creator>Matthew B. Jané</dc:creator>
@@ -775,20 +897,21 @@ font-style: inherit;">150</span>, </span>
 background-color: null;
 font-style: inherit;">chains =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">2</span>)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Compiling Stan program...</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Trying to compile a simple C file</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Start sampling</code></pre>
-</div>
+font-style: inherit;">2</span>,</span>
+<span id="cb5-8">          <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">file =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"model_gam"</span>,</span>
+<span id="cb5-9">          <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">file_refit =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"on_change"</span>)</span></code></pre></div>
 </div>
 <p>Now let’s also construct a linear model so that we can compare the two fits.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">mdl_lm <span class="ot" style="color: #003B4F;
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">mdl_lm <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -803,57 +926,58 @@ background-color: null;
 font-style: inherit;">TRUE</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">~</span> xi,</span>
-<span id="cb9-2">          <span class="at" style="color: #657422;
+<span id="cb6-2">          <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">data =</span> dat, </span>
-<span id="cb9-3">          <span class="at" style="color: #657422;
+<span id="cb6-3">          <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">family =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">gaussian</span>(),</span>
-<span id="cb9-4">          <span class="at" style="color: #657422;
+<span id="cb6-4">          <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">seed =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">17</span>,</span>
-<span id="cb9-5">          <span class="at" style="color: #657422;
+<span id="cb6-5">          <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">iter =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1000</span>, </span>
-<span id="cb9-6">          <span class="at" style="color: #657422;
+<span id="cb6-6">          <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">warmup =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">150</span>, </span>
-<span id="cb9-7">          <span class="at" style="color: #657422;
+<span id="cb6-7">          <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">chains =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">2</span>)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Compiling Stan program...</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Trying to compile a simple C file</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Start sampling</code></pre>
-</div>
+font-style: inherit;">2</span>,</span>
+<span id="cb6-8">          <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">file =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"model_lm"</span>,</span>
+<span id="cb6-9">          <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">file_refit =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"on_change"</span>)</span></code></pre></div>
 </div>
 <p>We can plot out the models by displaying the estimates of the conditional effect size mean that are compatible with the data (denoted with the dark lines) and the conditional distribution of effect sizes (the density band with the bounds denoting the 95% prediction interval).</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Extract conditional mean estimates for GAM</span></span>
-<span id="cb13-2">gam_conditional_means <span class="ot" style="color: #003B4F;
+<span id="cb7-2">gam_conditional_means <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> dat <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span></span>
-<span id="cb13-3">  <span class="fu" style="color: #4758AB;
+<span id="cb7-3">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">data_grid</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -868,23 +992,23 @@ background-color: null;
 font-style: inherit;">sei =</span> sei) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span></span>
-<span id="cb13-4">  <span class="fu" style="color: #4758AB;
+<span id="cb7-4">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">add_epred_draws</span>(mdl_gam, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">ndraws =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">200</span>)</span>
-<span id="cb13-5"></span>
-<span id="cb13-6"><span class="co" style="color: #5E5E5E;
+<span id="cb7-5"></span>
+<span id="cb7-6"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Extract true effect size predictions to construct true effect distribution for GAM</span></span>
-<span id="cb13-7">gam_predictions <span class="ot" style="color: #003B4F;
+<span id="cb7-7">gam_predictions <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> dat <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span></span>
-<span id="cb13-8">  <span class="fu" style="color: #4758AB;
+<span id="cb7-8">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">data_grid</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -899,28 +1023,28 @@ background-color: null;
 font-style: inherit;">sei =</span> sei) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span></span>
-<span id="cb13-9">  <span class="fu" style="color: #4758AB;
+<span id="cb7-9">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">add_predicted_draws</span>(mdl_gam, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">ndraws =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">400</span>)</span>
-<span id="cb13-10"></span>
-<span id="cb13-11"></span>
-<span id="cb13-12">p1 <span class="ot" style="color: #003B4F;
+<span id="cb7-10"></span>
+<span id="cb7-11"></span>
+<span id="cb7-12">p1 <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb13-13">  <span class="fu" style="color: #4758AB;
+<span id="cb7-13">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">stat_lineribbon</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">data =</span> gam_predictions, </span>
-<span id="cb13-14">            <span class="fu" style="color: #4758AB;
+<span id="cb7-14">            <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -931,7 +1055,7 @@ background-color: null;
 font-style: inherit;">fill_ramp =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">after_stat</span>(.width)),</span>
-<span id="cb13-15">            <span class="at" style="color: #657422;
+<span id="cb7-15">            <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">.width =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -950,7 +1074,7 @@ background-color: null;
 font-style: inherit;">"#ED5C9B"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb13-16">  <span class="fu" style="color: #4758AB;
+<span id="cb7-16">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">scale_fill_ramp_continuous</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -971,12 +1095,12 @@ background-color: null;
 font-style: inherit;">"#ED5C9B"</span>)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb13-17">  <span class="fu" style="color: #4758AB;
+<span id="cb7-17">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_line</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">data =</span> gam_conditional_means, </span>
-<span id="cb13-18">            <span class="fu" style="color: #4758AB;
+<span id="cb7-18">            <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -995,7 +1119,7 @@ background-color: null;
 font-style: inherit;">15</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb13-19">  <span class="fu" style="color: #4758AB;
+<span id="cb7-19">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -1026,7 +1150,7 @@ background-color: null;
 font-style: inherit;">"#601543"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb13-20">  <span class="fu" style="color: #4758AB;
+<span id="cb7-20">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme_ggdist</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -1035,7 +1159,7 @@ background-color: null;
 font-style: inherit;">15</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span> </span>
-<span id="cb13-21">  <span class="fu" style="color: #4758AB;
+<span id="cb7-21">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_hline</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -1056,49 +1180,49 @@ background-color: null;
 font-style: inherit;">4</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb13-22">  <span class="fu" style="color: #4758AB;
+<span id="cb7-22">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"none"</span>,</span>
-<span id="cb13-23">        <span class="at" style="color: #657422;
+<span id="cb7-23">        <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">aspect.ratio =</span> .<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">8</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb13-24">  <span class="fu" style="color: #4758AB;
+<span id="cb7-24">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ylab</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Effect Size"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb13-25">  <span class="fu" style="color: #4758AB;
+<span id="cb7-25">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">xlab</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Moderator Value"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span> </span>
-<span id="cb13-26">  <span class="fu" style="color: #4758AB;
+<span id="cb7-26">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggtitle</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"GAM"</span>)</span>
-<span id="cb13-27"></span>
-<span id="cb13-28"><span class="co" style="color: #5E5E5E;
+<span id="cb7-27"></span>
+<span id="cb7-28"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Extract conditional mean estimates for GAM</span></span>
-<span id="cb13-29">lm_conditional_means <span class="ot" style="color: #003B4F;
+<span id="cb7-29">lm_conditional_means <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> dat <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span></span>
-<span id="cb13-30">  <span class="fu" style="color: #4758AB;
+<span id="cb7-30">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">data_grid</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -1113,23 +1237,23 @@ background-color: null;
 font-style: inherit;">sei =</span> sei) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span></span>
-<span id="cb13-31">  <span class="fu" style="color: #4758AB;
+<span id="cb7-31">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">add_epred_draws</span>(mdl_lm, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">ndraws =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">200</span>)</span>
-<span id="cb13-32"></span>
-<span id="cb13-33"><span class="co" style="color: #5E5E5E;
+<span id="cb7-32"></span>
+<span id="cb7-33"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Extract true effect size predictions to construct true effect distribution for GAM</span></span>
-<span id="cb13-34">lm_predictions <span class="ot" style="color: #003B4F;
+<span id="cb7-34">lm_predictions <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> dat <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span></span>
-<span id="cb13-35">  <span class="fu" style="color: #4758AB;
+<span id="cb7-35">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">data_grid</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -1144,28 +1268,28 @@ background-color: null;
 font-style: inherit;">sei =</span> sei) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span></span>
-<span id="cb13-36">  <span class="fu" style="color: #4758AB;
+<span id="cb7-36">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">add_predicted_draws</span>(mdl_lm, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">ndraws =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">200</span>)</span>
-<span id="cb13-37"></span>
-<span id="cb13-38"></span>
-<span id="cb13-39">p2 <span class="ot" style="color: #003B4F;
+<span id="cb7-37"></span>
+<span id="cb7-38"></span>
+<span id="cb7-39">p2 <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb13-40">  <span class="fu" style="color: #4758AB;
+<span id="cb7-40">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">stat_ribbon</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">data =</span> lm_predictions, </span>
-<span id="cb13-41">            <span class="fu" style="color: #4758AB;
+<span id="cb7-41">            <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -1176,7 +1300,7 @@ background-color: null;
 font-style: inherit;">fill_ramp =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">after_stat</span>(.width)),</span>
-<span id="cb13-42">            <span class="at" style="color: #657422;
+<span id="cb7-42">            <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">.width =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1195,7 +1319,7 @@ background-color: null;
 font-style: inherit;">"#ED5C9B"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb13-43">  <span class="fu" style="color: #4758AB;
+<span id="cb7-43">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">scale_fill_ramp_continuous</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -1216,12 +1340,12 @@ background-color: null;
 font-style: inherit;">"#ED5C9B"</span>)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb13-44">  <span class="fu" style="color: #4758AB;
+<span id="cb7-44">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_line</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">data =</span> lm_conditional_means, </span>
-<span id="cb13-45">            <span class="fu" style="color: #4758AB;
+<span id="cb7-45">            <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -1240,7 +1364,7 @@ background-color: null;
 font-style: inherit;">15</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb13-46">  <span class="fu" style="color: #4758AB;
+<span id="cb7-46">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -1271,7 +1395,7 @@ background-color: null;
 font-style: inherit;">"#601543"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb13-47">  <span class="fu" style="color: #4758AB;
+<span id="cb7-47">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme_ggdist</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -1280,7 +1404,7 @@ background-color: null;
 font-style: inherit;">15</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span> </span>
-<span id="cb13-48">  <span class="fu" style="color: #4758AB;
+<span id="cb7-48">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_hline</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -1301,42 +1425,42 @@ background-color: null;
 font-style: inherit;">4</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb13-49">  <span class="fu" style="color: #4758AB;
+<span id="cb7-49">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"none"</span>,</span>
-<span id="cb13-50">        <span class="at" style="color: #657422;
+<span id="cb7-50">        <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">aspect.ratio =</span> .<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">8</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb13-51">  <span class="fu" style="color: #4758AB;
+<span id="cb7-51">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ylab</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Effect Size"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb13-52">  <span class="fu" style="color: #4758AB;
+<span id="cb7-52">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">xlab</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Moderator Value"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span> </span>
-<span id="cb13-53">  <span class="fu" style="color: #4758AB;
+<span id="cb7-53">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggtitle</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"GAM"</span>)</span>
-<span id="cb13-54"></span>
-<span id="cb13-55"></span>
-<span id="cb13-56">cowplot<span class="sc" style="color: #5E5E5E;
+<span id="cb7-54"></span>
+<span id="cb7-55"></span>
+<span id="cb7-56">cowplot<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1359,7 +1483,7 @@ font-style: inherit;">1</span>)</span></code></pre></div>
 <h2 class="anchored" data-anchor-id="predictive-check">Predictive Check</h2>
 <p>The predictive check of the GAM model captures the data better than the linear model in this data set.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">pp1 <span class="ot" style="color: #003B4F;
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">pp1 <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1370,7 +1494,7 @@ background-color: null;
 font-style: inherit;">100</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb14-2">  <span class="fu" style="color: #4758AB;
+<span id="cb8-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -1383,12 +1507,12 @@ background-color: null;
 font-style: inherit;">"none"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb14-3">  <span class="fu" style="color: #4758AB;
+<span id="cb8-3">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggtitle</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"GAM"</span>)</span>
-<span id="cb14-4">pp2 <span class="ot" style="color: #003B4F;
+<span id="cb8-4">pp2 <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1399,7 +1523,7 @@ background-color: null;
 font-style: inherit;">100</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb14-5">  <span class="fu" style="color: #4758AB;
+<span id="cb8-5">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -1412,14 +1536,14 @@ background-color: null;
 font-style: inherit;">"none"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb14-6">  <span class="fu" style="color: #4758AB;
+<span id="cb8-6">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggtitle</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Linear Model"</span>)</span>
-<span id="cb14-7"></span>
-<span id="cb14-8"></span>
-<span id="cb14-9">cowplot<span class="sc" style="color: #5E5E5E;
+<span id="cb8-7"></span>
+<span id="cb8-8"></span>
+<span id="cb8-9">cowplot<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1436,7 +1560,7 @@ font-style: inherit;">plot_grid</span>(pp1,pp2)</span></code></pre></div>
 <section id="session-info" class="level2">
 <h2 class="anchored" data-anchor-id="session-info">Session Info</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">sessionInfo</span>()</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1471,27 +1595,26 @@ loaded via a namespace (and not attached):
  [4] farver_2.1.2         loo_2.8.0            fastmap_1.2.0       
  [7] tensorA_0.36.2.1     mathjaxr_1.6-0       digest_0.6.36       
 [10] timechange_0.3.0     lifecycle_1.0.4      StanHeaders_2.32.10 
-[13] processx_3.8.4       magrittr_2.0.3       posterior_1.6.0     
-[16] compiler_4.4.0       rlang_1.1.4          tools_4.4.0         
-[19] utf8_1.2.4           yaml_2.3.8           knitr_1.47          
-[22] labeling_0.4.3       bridgesampling_1.1-2 pkgbuild_1.4.4      
-[25] plyr_1.8.9           abind_1.4-8          withr_3.0.0         
-[28] grid_4.4.0           stats4_4.4.0         fansi_1.0.6         
-[31] colorspace_2.1-0     inline_0.3.19        scales_1.3.0        
-[34] cli_3.6.3            mvtnorm_1.3-1        rmarkdown_2.27      
-[37] generics_0.1.3       RcppParallel_5.1.9   rstudioapi_0.16.0   
-[40] reshape2_1.4.4       tzdb_0.4.0           rstan_2.32.6        
-[43] splines_4.4.0        bayesplot_1.11.1     parallel_4.4.0      
-[46] matrixStats_1.4.1    vctrs_0.6.5          jsonlite_1.8.8      
-[49] callr_3.7.6          hms_1.1.3            arrayhelpers_1.1-0  
-[52] glue_1.7.0           codetools_0.2-20     ps_1.7.7            
-[55] cowplot_1.1.3        distributional_0.4.0 stringi_1.8.4       
-[58] gtable_0.3.5         QuickJSR_1.3.1       munsell_0.5.1       
-[61] pillar_1.9.0         htmltools_0.5.8.1    Brobdingnag_1.2-9   
-[64] R6_2.5.1             evaluate_0.24.0      lattice_0.22-6      
-[67] backports_1.5.0      broom_1.0.6          renv_0.17.3         
-[70] rstantools_2.4.0     coda_0.19-4.1        gridExtra_2.3       
-[73] checkmate_2.3.1      xfun_0.45            pkgconfig_2.0.3     </code></pre>
+[13] magrittr_2.0.3       posterior_1.6.0      compiler_4.4.0      
+[16] rlang_1.1.4          tools_4.4.0          utf8_1.2.4          
+[19] yaml_2.3.8           knitr_1.47           labeling_0.4.3      
+[22] bridgesampling_1.1-2 pkgbuild_1.4.4       plyr_1.8.9          
+[25] abind_1.4-8          withr_3.0.0          grid_4.4.0          
+[28] stats4_4.4.0         fansi_1.0.6          colorspace_2.1-0    
+[31] inline_0.3.19        scales_1.3.0         cli_3.6.3           
+[34] mvtnorm_1.3-1        rmarkdown_2.27       generics_0.1.3      
+[37] RcppParallel_5.1.9   rstudioapi_0.16.0    reshape2_1.4.4      
+[40] tzdb_0.4.0           rstan_2.32.6         splines_4.4.0       
+[43] bayesplot_1.11.1     parallel_4.4.0       matrixStats_1.4.1   
+[46] vctrs_0.6.5          jsonlite_1.8.8       hms_1.1.3           
+[49] arrayhelpers_1.1-0   glue_1.7.0           codetools_0.2-20    
+[52] cowplot_1.1.3        distributional_0.4.0 stringi_1.8.4       
+[55] gtable_0.3.5         QuickJSR_1.3.1       munsell_0.5.1       
+[58] pillar_1.9.0         htmltools_0.5.8.1    Brobdingnag_1.2-9   
+[61] R6_2.5.1             evaluate_0.24.0      lattice_0.22-6      
+[64] backports_1.5.0      broom_1.0.6          renv_0.17.3         
+[67] rstantools_2.4.0     coda_0.19-4.1        gridExtra_2.3       
+[70] checkmate_2.3.1      xfun_0.45            pkgconfig_2.0.3     </code></pre>
 </div>
 </div>
 </section>
@@ -1587,7 +1710,7 @@ Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino 
 <p>The reanalysis doesn’t use an appropriate statistical model. It simply calculates an unweighted average across different studies, doesn’t provide confidence intervals, and misinterprets the evidence</p>
 </blockquote>
 <p>All these points are unequivocally true. However, Haidt then posted the following tweet,</p>
-<p></p><div id="tweet-69371"></div><script>tweet={"url":"https:\/\/twitter.com\/JonHaidt\/status\/1830583665891385415","author_name":"Jonathan Haidt","author_url":"https:\/\/twitter.com\/JonHaidt","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI&#39;m glad to see the community note has been toned down. But it is still inappropriate. Our post was about how there are so many errors in the Ferguson meta, including errors in sample sizes and effect sizes, that we can&#39;t yet do weighting or confidence intervals. We are taking…\u003C\/p\u003E&mdash; Jonathan Haidt (@JonHaidt) \u003Ca href=\"https:\/\/twitter.com\/JonHaidt\/status\/1830583665891385415?ref_src=twsrc%5Etfw\"\u003ESeptember 2, 2024\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-69371").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-49417"></div><script>tweet={"url":"https:\/\/twitter.com\/JonHaidt\/status\/1830583665891385415","author_name":"Jonathan Haidt","author_url":"https:\/\/twitter.com\/JonHaidt","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI&#39;m glad to see the community note has been toned down. But it is still inappropriate. Our post was about how there are so many errors in the Ferguson meta, including errors in sample sizes and effect sizes, that we can&#39;t yet do weighting or confidence intervals. We are taking…\u003C\/p\u003E&mdash; Jonathan Haidt (@JonHaidt) \u003Ca href=\"https:\/\/twitter.com\/JonHaidt\/status\/1830583665891385415?ref_src=twsrc%5Etfw\"\u003ESeptember 2, 2024\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-49417").innerHTML = tweet["html"];</script><p></p>
 <p>This tweet seemed to get his followers to rate the community note as unhelpful and thus it was taken down again. Of course, it is difficult to maintain a community note with Haidt’s large following. So I guess we will have to treat these blog posts as a much more detailed community note.</p>
 </section>
 <section id="rhs-analysis-was-unequivocally-a-meta-analysis" class="level2">
@@ -1629,7 +1752,7 @@ Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino 
 <section id="controversy-surrounding-the-study-by-collis-and-egger-2022" class="level2">
 <h2 class="anchored" data-anchor-id="controversy-surrounding-the-study-by-collis-and-egger-2022">Controversy surrounding the study by Collis and Egger (2022)</h2>
 <p>R&amp;H’s primary critique of my analysis was that Collis and Egger’s (2022) study shouldn’t be included because the manipulation check failed. From my reading of the paper, the treatment group did demonstrate lower screen time for facebook, instagram, and snapchat, however <em>higher</em> for instant messaging apps, news/media, gaming, as well as overall screen time. R&amp;H mention WhatsApp as one of the primary apps that people replaced social media with. It does not seem that people really consider instant messaging like WhatsApp a form of social media (see poll results below):</p>
-<p></p><div id="tweet-96012"></div><script>tweet={"url":"https:\/\/twitter.com\/MatthewBJane\/status\/1830399884299481182","author_name":"Matthew B Jané","author_url":"https:\/\/twitter.com\/MatthewBJane","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EWould you consider WhatsApp and other instant messaging Apps as “Social Media”?\u003C\/p\u003E&mdash; Matthew B Jané (@MatthewBJane) \u003Ca href=\"https:\/\/twitter.com\/MatthewBJane\/status\/1830399884299481182?ref_src=twsrc%5Etfw\"\u003ESeptember 2, 2024\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-96012").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-63390"></div><script>tweet={"url":"https:\/\/twitter.com\/MatthewBJane\/status\/1830399884299481182","author_name":"Matthew B Jané","author_url":"https:\/\/twitter.com\/MatthewBJane","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EWould you consider WhatsApp and other instant messaging Apps as “Social Media”?\u003C\/p\u003E&mdash; Matthew B Jané (@MatthewBJane) \u003Ca href=\"https:\/\/twitter.com\/MatthewBJane\/status\/1830399884299481182?ref_src=twsrc%5Etfw\"\u003ESeptember 2, 2024\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-63390").innerHTML = tweet["html"];</script><p></p>
 <p>It does not seem clear to me that this is a failed manipulation check, especially considering total digital screen time is not the target intervention variable. R&amp;H also mention there is no evidence that other social media apps were used:</p>
 <blockquote class="blockquote">
 <p>In addition, there is no evidence that participants reduced their use of other social media platforms such as TikTok, YouTube, Twitter, and Reddit (all of which were widely used by college students in 2019).</p>
@@ -5074,7 +5197,7 @@ font-style: inherit;">paste0</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'r = '</span>,r))</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "r = 0.699999999999999"</code></pre>
+<pre><code>[1] "r = 0.7"</code></pre>
 </div>
 </div>
 <iframe src="https://embeds.beehiiv.com/f3ffd81a-4723-4419-bb1d-afc8af3bac36" data-test-id="beehiiv-embed" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius: 4px; border: 2px solid #e5e7eb; margin: 0; background-color: transparent;">

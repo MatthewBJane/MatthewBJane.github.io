@@ -216,6 +216,10 @@ window.Quarto = {
     <a class="nav-link" href="../Consulting.html"> 
 <span class="menu-text">Consulting</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../social_media_mental_health.html"> 
+<span class="menu-text">SM &amp; MH Living Meta-Analysis</span></a>
+  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
@@ -412,96 +416,82 @@ d_i = \underset{_\textrm{intercept}}{b_0} + \overset{^\textrm{moderator effect}}
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">seed =</span> <span class="dv">17</span>,</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">iter =</span> <span class="dv">1000</span>, </span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">warmup =</span> <span class="dv">150</span>, </span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">chains =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Compiling Stan program...</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Trying to compile a simple C file</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Start sampling</code></pre>
-</div>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">chains =</span> <span class="dv">2</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">file =</span> <span class="st">"model_gam"</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">file_refit =</span> <span class="st">"on_change"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now let’s also construct a linear model so that we can compare the two fits.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mdl_lm <span class="ot">&lt;-</span> <span class="fu">brm</span>(yi <span class="sc">|</span> <span class="fu">se</span>(sei, <span class="at">sigma =</span> <span class="cn">TRUE</span>) <span class="sc">~</span> xi,</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> dat, </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">family =</span> <span class="fu">gaussian</span>(),</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">seed =</span> <span class="dv">17</span>,</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">iter =</span> <span class="dv">1000</span>, </span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">warmup =</span> <span class="dv">150</span>, </span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">chains =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Compiling Stan program...</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Trying to compile a simple C file</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Start sampling</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mdl_lm <span class="ot">&lt;-</span> <span class="fu">brm</span>(yi <span class="sc">|</span> <span class="fu">se</span>(sei, <span class="at">sigma =</span> <span class="cn">TRUE</span>) <span class="sc">~</span> xi,</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> dat, </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">family =</span> <span class="fu">gaussian</span>(),</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">seed =</span> <span class="dv">17</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">iter =</span> <span class="dv">1000</span>, </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">warmup =</span> <span class="dv">150</span>, </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">chains =</span> <span class="dv">2</span>,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">file =</span> <span class="st">"model_lm"</span>,</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">file_refit =</span> <span class="st">"on_change"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can plot out the models by displaying the estimates of the conditional effect size mean that are compatible with the data (denoted with the dark lines) and the conditional distribution of effect sizes (the density band with the bounds denoting the 95% prediction interval).</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract conditional mean estimates for GAM</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>gam_conditional_means <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data_grid</span>(<span class="at">xi =</span> <span class="fu">seq_range</span>(xi, <span class="at">n =</span> <span class="dv">101</span>), <span class="at">sei =</span> sei) <span class="sc">%&gt;%</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_epred_draws</span>(mdl_gam, <span class="at">ndraws =</span> <span class="dv">200</span>)</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract true effect size predictions to construct true effect distribution for GAM</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>gam_predictions <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data_grid</span>(<span class="at">xi =</span> <span class="fu">seq_range</span>(xi, <span class="at">n =</span> <span class="dv">71</span>), <span class="at">sei =</span> sei) <span class="sc">%&gt;%</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_predicted_draws</span>(mdl_gam, <span class="at">ndraws =</span> <span class="dv">400</span>)</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_lineribbon</span>(<span class="at">data =</span> gam_predictions, </span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">x =</span> xi, <span class="at">y =</span> .prediction, <span class="at">fill_ramp =</span> <span class="fu">after_stat</span>(.width)),</span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>            <span class="at">.width =</span> <span class="fu">seq</span>(.<span class="dv">05</span>,.<span class="dv">95</span>,<span class="at">by=</span>.<span class="dv">05</span>), <span class="at">fill =</span> <span class="st">"#ED5C9B"</span>) <span class="sc">+</span></span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_ramp_continuous</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">1</span>, .<span class="dv">1</span>), <span class="at">guide =</span> <span class="fu">guide_rampbar</span>(<span class="at">to =</span> <span class="st">"#ED5C9B"</span>)) <span class="sc">+</span></span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> gam_conditional_means, </span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">x =</span> xi, <span class="at">y =</span> .epred, <span class="at">group =</span> .draw),<span class="at">color =</span> <span class="st">"#861d5e"</span>, <span class="at">alpha =</span> .<span class="dv">15</span>) <span class="sc">+</span></span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> dat, <span class="fu">aes</span>(<span class="at">x =</span> xi, <span class="at">y =</span> yi, <span class="at">size =</span> <span class="dv">1</span><span class="sc">/</span>sei<span class="sc">^</span><span class="dv">2</span>), <span class="at">alpha =</span> .<span class="dv">8</span>, <span class="at">color =</span> <span class="st">"#601543"</span>) <span class="sc">+</span></span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_ggdist</span>(<span class="at">base_size =</span> <span class="dv">15</span>) <span class="sc">+</span> </span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">linetype=</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"#ED5C9B"</span>,<span class="at">alpha=</span>.<span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">aspect.ratio =</span> .<span class="dv">8</span>) <span class="sc">+</span></span>
-<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Effect Size"</span>) <span class="sc">+</span></span>
-<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Moderator Value"</span>) <span class="sc">+</span> </span>
-<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"GAM"</span>)</span>
-<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract conditional mean estimates for GAM</span></span>
-<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>lm_conditional_means <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
-<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data_grid</span>(<span class="at">xi =</span> <span class="fu">seq_range</span>(xi, <span class="at">n =</span> <span class="dv">101</span>), <span class="at">sei =</span> sei) <span class="sc">%&gt;%</span></span>
-<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_epred_draws</span>(mdl_lm, <span class="at">ndraws =</span> <span class="dv">200</span>)</span>
-<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract true effect size predictions to construct true effect distribution for GAM</span></span>
-<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>lm_predictions <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
-<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data_grid</span>(<span class="at">xi =</span> <span class="fu">seq_range</span>(xi, <span class="at">n =</span> <span class="dv">51</span>), <span class="at">sei =</span> sei) <span class="sc">%&gt;%</span></span>
-<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_predicted_draws</span>(mdl_lm, <span class="at">ndraws =</span> <span class="dv">200</span>)</span>
-<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_ribbon</span>(<span class="at">data =</span> lm_predictions, </span>
-<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">x =</span> xi, <span class="at">y =</span> .prediction, <span class="at">fill_ramp =</span> <span class="fu">after_stat</span>(.width)),</span>
-<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a>            <span class="at">.width =</span> <span class="fu">seq</span>(.<span class="dv">05</span>,.<span class="dv">95</span>,<span class="at">by=</span>.<span class="dv">05</span>), <span class="at">fill =</span> <span class="st">"#ED5C9B"</span>) <span class="sc">+</span></span>
-<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_ramp_continuous</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">1</span>, .<span class="dv">1</span>), <span class="at">guide =</span> <span class="fu">guide_rampbar</span>(<span class="at">to =</span> <span class="st">"#ED5C9B"</span>)) <span class="sc">+</span></span>
-<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> lm_conditional_means, </span>
-<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">x =</span> xi, <span class="at">y =</span> .epred, <span class="at">group =</span> .draw),<span class="at">color =</span> <span class="st">"#861d5e"</span>, <span class="at">alpha =</span> .<span class="dv">15</span>) <span class="sc">+</span></span>
-<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> dat, <span class="fu">aes</span>(<span class="at">x =</span> xi, <span class="at">y =</span> yi, <span class="at">size =</span> <span class="dv">1</span><span class="sc">/</span>sei<span class="sc">^</span><span class="dv">2</span>), <span class="at">alpha =</span> .<span class="dv">8</span>, <span class="at">color =</span> <span class="st">"#601543"</span>) <span class="sc">+</span></span>
-<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_ggdist</span>(<span class="at">base_size =</span> <span class="dv">15</span>) <span class="sc">+</span> </span>
-<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">linetype=</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"#ED5C9B"</span>,<span class="at">alpha=</span>.<span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
-<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a>        <span class="at">aspect.ratio =</span> .<span class="dv">8</span>) <span class="sc">+</span></span>
-<span id="cb13-51"><a href="#cb13-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Effect Size"</span>) <span class="sc">+</span></span>
-<span id="cb13-52"><a href="#cb13-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Moderator Value"</span>) <span class="sc">+</span> </span>
-<span id="cb13-53"><a href="#cb13-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"GAM"</span>)</span>
-<span id="cb13-54"><a href="#cb13-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-55"><a href="#cb13-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-56"><a href="#cb13-56" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(p1,p2,<span class="at">ncol =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract conditional mean estimates for GAM</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>gam_conditional_means <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data_grid</span>(<span class="at">xi =</span> <span class="fu">seq_range</span>(xi, <span class="at">n =</span> <span class="dv">101</span>), <span class="at">sei =</span> sei) <span class="sc">%&gt;%</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_epred_draws</span>(mdl_gam, <span class="at">ndraws =</span> <span class="dv">200</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract true effect size predictions to construct true effect distribution for GAM</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>gam_predictions <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data_grid</span>(<span class="at">xi =</span> <span class="fu">seq_range</span>(xi, <span class="at">n =</span> <span class="dv">71</span>), <span class="at">sei =</span> sei) <span class="sc">%&gt;%</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_predicted_draws</span>(mdl_gam, <span class="at">ndraws =</span> <span class="dv">400</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_lineribbon</span>(<span class="at">data =</span> gam_predictions, </span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">x =</span> xi, <span class="at">y =</span> .prediction, <span class="at">fill_ramp =</span> <span class="fu">after_stat</span>(.width)),</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>            <span class="at">.width =</span> <span class="fu">seq</span>(.<span class="dv">05</span>,.<span class="dv">95</span>,<span class="at">by=</span>.<span class="dv">05</span>), <span class="at">fill =</span> <span class="st">"#ED5C9B"</span>) <span class="sc">+</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_ramp_continuous</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">1</span>, .<span class="dv">1</span>), <span class="at">guide =</span> <span class="fu">guide_rampbar</span>(<span class="at">to =</span> <span class="st">"#ED5C9B"</span>)) <span class="sc">+</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> gam_conditional_means, </span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">x =</span> xi, <span class="at">y =</span> .epred, <span class="at">group =</span> .draw),<span class="at">color =</span> <span class="st">"#861d5e"</span>, <span class="at">alpha =</span> .<span class="dv">15</span>) <span class="sc">+</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> dat, <span class="fu">aes</span>(<span class="at">x =</span> xi, <span class="at">y =</span> yi, <span class="at">size =</span> <span class="dv">1</span><span class="sc">/</span>sei<span class="sc">^</span><span class="dv">2</span>), <span class="at">alpha =</span> .<span class="dv">8</span>, <span class="at">color =</span> <span class="st">"#601543"</span>) <span class="sc">+</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_ggdist</span>(<span class="at">base_size =</span> <span class="dv">15</span>) <span class="sc">+</span> </span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">linetype=</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"#ED5C9B"</span>,<span class="at">alpha=</span>.<span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">aspect.ratio =</span> .<span class="dv">8</span>) <span class="sc">+</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Effect Size"</span>) <span class="sc">+</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Moderator Value"</span>) <span class="sc">+</span> </span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"GAM"</span>)</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract conditional mean estimates for GAM</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>lm_conditional_means <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data_grid</span>(<span class="at">xi =</span> <span class="fu">seq_range</span>(xi, <span class="at">n =</span> <span class="dv">101</span>), <span class="at">sei =</span> sei) <span class="sc">%&gt;%</span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_epred_draws</span>(mdl_lm, <span class="at">ndraws =</span> <span class="dv">200</span>)</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract true effect size predictions to construct true effect distribution for GAM</span></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>lm_predictions <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data_grid</span>(<span class="at">xi =</span> <span class="fu">seq_range</span>(xi, <span class="at">n =</span> <span class="dv">51</span>), <span class="at">sei =</span> sei) <span class="sc">%&gt;%</span></span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_predicted_draws</span>(mdl_lm, <span class="at">ndraws =</span> <span class="dv">200</span>)</span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_ribbon</span>(<span class="at">data =</span> lm_predictions, </span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">x =</span> xi, <span class="at">y =</span> .prediction, <span class="at">fill_ramp =</span> <span class="fu">after_stat</span>(.width)),</span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>            <span class="at">.width =</span> <span class="fu">seq</span>(.<span class="dv">05</span>,.<span class="dv">95</span>,<span class="at">by=</span>.<span class="dv">05</span>), <span class="at">fill =</span> <span class="st">"#ED5C9B"</span>) <span class="sc">+</span></span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_ramp_continuous</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">1</span>, .<span class="dv">1</span>), <span class="at">guide =</span> <span class="fu">guide_rampbar</span>(<span class="at">to =</span> <span class="st">"#ED5C9B"</span>)) <span class="sc">+</span></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> lm_conditional_means, </span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">x =</span> xi, <span class="at">y =</span> .epred, <span class="at">group =</span> .draw),<span class="at">color =</span> <span class="st">"#861d5e"</span>, <span class="at">alpha =</span> .<span class="dv">15</span>) <span class="sc">+</span></span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> dat, <span class="fu">aes</span>(<span class="at">x =</span> xi, <span class="at">y =</span> yi, <span class="at">size =</span> <span class="dv">1</span><span class="sc">/</span>sei<span class="sc">^</span><span class="dv">2</span>), <span class="at">alpha =</span> .<span class="dv">8</span>, <span class="at">color =</span> <span class="st">"#601543"</span>) <span class="sc">+</span></span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_ggdist</span>(<span class="at">base_size =</span> <span class="dv">15</span>) <span class="sc">+</span> </span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">linetype=</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"#ED5C9B"</span>,<span class="at">alpha=</span>.<span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>        <span class="at">aspect.ratio =</span> .<span class="dv">8</span>) <span class="sc">+</span></span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Effect Size"</span>) <span class="sc">+</span></span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Moderator Value"</span>) <span class="sc">+</span> </span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"GAM"</span>)</span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(p1,p2,<span class="at">ncol =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -516,15 +506,15 @@ d_i = \underset{_\textrm{intercept}}{b_0} + \overset{^\textrm{moderator effect}}
 <h2 class="anchored" data-anchor-id="predictive-check">Predictive Check</h2>
 <p>The predictive check of the GAM model captures the data better than the linear model in this data set.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>pp1 <span class="ot">&lt;-</span> <span class="fu">pp_check</span>(mdl_gam, <span class="at">ndraws =</span> <span class="dv">100</span>) <span class="sc">+</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> <span class="dv">1</span>, <span class="at">legend.position =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"GAM"</span>)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>pp2 <span class="ot">&lt;-</span> <span class="fu">pp_check</span>(mdl_lm, <span class="at">ndraws =</span> <span class="dv">100</span>) <span class="sc">+</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> <span class="dv">1</span>, <span class="at">legend.position =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Linear Model"</span>)</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(pp1,pp2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pp1 <span class="ot">&lt;-</span> <span class="fu">pp_check</span>(mdl_gam, <span class="at">ndraws =</span> <span class="dv">100</span>) <span class="sc">+</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> <span class="dv">1</span>, <span class="at">legend.position =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"GAM"</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>pp2 <span class="ot">&lt;-</span> <span class="fu">pp_check</span>(mdl_lm, <span class="at">ndraws =</span> <span class="dv">100</span>) <span class="sc">+</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> <span class="dv">1</span>, <span class="at">legend.position =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Linear Model"</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(pp1,pp2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -537,7 +527,7 @@ d_i = \underset{_\textrm{intercept}}{b_0} + \overset{^\textrm{moderator effect}}
 <section id="session-info" class="level2">
 <h2 class="anchored" data-anchor-id="session-info">Session Info</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>R version 4.4.0 (2024-04-24)
 Platform: aarch64-apple-darwin20
@@ -570,27 +560,26 @@ loaded via a namespace (and not attached):
  [4] farver_2.1.2         loo_2.8.0            fastmap_1.2.0       
  [7] tensorA_0.36.2.1     mathjaxr_1.6-0       digest_0.6.36       
 [10] timechange_0.3.0     lifecycle_1.0.4      StanHeaders_2.32.10 
-[13] processx_3.8.4       magrittr_2.0.3       posterior_1.6.0     
-[16] compiler_4.4.0       rlang_1.1.4          tools_4.4.0         
-[19] utf8_1.2.4           yaml_2.3.8           knitr_1.47          
-[22] labeling_0.4.3       bridgesampling_1.1-2 pkgbuild_1.4.4      
-[25] plyr_1.8.9           abind_1.4-8          withr_3.0.0         
-[28] grid_4.4.0           stats4_4.4.0         fansi_1.0.6         
-[31] colorspace_2.1-0     inline_0.3.19        scales_1.3.0        
-[34] cli_3.6.3            mvtnorm_1.3-1        rmarkdown_2.27      
-[37] generics_0.1.3       RcppParallel_5.1.9   rstudioapi_0.16.0   
-[40] reshape2_1.4.4       tzdb_0.4.0           rstan_2.32.6        
-[43] splines_4.4.0        bayesplot_1.11.1     parallel_4.4.0      
-[46] matrixStats_1.4.1    vctrs_0.6.5          jsonlite_1.8.8      
-[49] callr_3.7.6          hms_1.1.3            arrayhelpers_1.1-0  
-[52] glue_1.7.0           codetools_0.2-20     ps_1.7.7            
-[55] cowplot_1.1.3        distributional_0.4.0 stringi_1.8.4       
-[58] gtable_0.3.5         QuickJSR_1.3.1       munsell_0.5.1       
-[61] pillar_1.9.0         htmltools_0.5.8.1    Brobdingnag_1.2-9   
-[64] R6_2.5.1             evaluate_0.24.0      lattice_0.22-6      
-[67] backports_1.5.0      broom_1.0.6          renv_0.17.3         
-[70] rstantools_2.4.0     coda_0.19-4.1        gridExtra_2.3       
-[73] checkmate_2.3.1      xfun_0.45            pkgconfig_2.0.3     </code></pre>
+[13] magrittr_2.0.3       posterior_1.6.0      compiler_4.4.0      
+[16] rlang_1.1.4          tools_4.4.0          utf8_1.2.4          
+[19] yaml_2.3.8           knitr_1.47           labeling_0.4.3      
+[22] bridgesampling_1.1-2 pkgbuild_1.4.4       plyr_1.8.9          
+[25] abind_1.4-8          withr_3.0.0          grid_4.4.0          
+[28] stats4_4.4.0         fansi_1.0.6          colorspace_2.1-0    
+[31] inline_0.3.19        scales_1.3.0         cli_3.6.3           
+[34] mvtnorm_1.3-1        rmarkdown_2.27       generics_0.1.3      
+[37] RcppParallel_5.1.9   rstudioapi_0.16.0    reshape2_1.4.4      
+[40] tzdb_0.4.0           rstan_2.32.6         splines_4.4.0       
+[43] bayesplot_1.11.1     parallel_4.4.0       matrixStats_1.4.1   
+[46] vctrs_0.6.5          jsonlite_1.8.8       hms_1.1.3           
+[49] arrayhelpers_1.1-0   glue_1.7.0           codetools_0.2-20    
+[52] cowplot_1.1.3        distributional_0.4.0 stringi_1.8.4       
+[55] gtable_0.3.5         QuickJSR_1.3.1       munsell_0.5.1       
+[58] pillar_1.9.0         htmltools_0.5.8.1    Brobdingnag_1.2-9   
+[61] R6_2.5.1             evaluate_0.24.0      lattice_0.22-6      
+[64] backports_1.5.0      broom_1.0.6          renv_0.17.3         
+[67] rstantools_2.4.0     coda_0.19-4.1        gridExtra_2.3       
+[70] checkmate_2.3.1      xfun_0.45            pkgconfig_2.0.3     </code></pre>
 </div>
 </div>
 </section>
