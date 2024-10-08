@@ -193,7 +193,9 @@ ggplot(data = gam_conditional_means,
            x = means_d$mean_d, 
            y = means_d$weeks-.2,
            label = format(means_d$mean_d, nsmall = 2)) +
-  xlim(-.5,.5)
+  xlim(-.5,.5) +
+  labs(x = "Stand. Mean Difference (d)",
+       y = "Length of Intervention (in weeks)")
   
   
 
