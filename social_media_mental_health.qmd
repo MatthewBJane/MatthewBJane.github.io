@@ -3,7 +3,7 @@ title: "The Effect of Social Media Reduction on Depression and Anxiety: A Meta-A
 editor: source
 
 
-abstract: " This site contains the most up to date database on RCTs of effects of social media's effect on depression and anxiety. Meta-regression analysis on the length of the social media <br><br> **Contributors: Minnea Rutar and Sabrina Norwood.**<br>"
+abstract: " This site contains the most up to date database on RCTs of effects of social media's effect on depression and anxiety.<br><br> **Contributors: Minnea Rutar and Sabrina Norwood.**<br>"
 ---
 
 ## Design of the studies
