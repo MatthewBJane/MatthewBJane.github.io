@@ -1,0 +1,7 @@
+website:
+  description: "Welcome to my blog, Meta-Analysis Magic! Here, you’ll uncover mind-bending tricks that will help you unveil those elusive, unreported statistics tucked away in primary studies."
+  twitter-card:
+    image: "/blog-image.png"
+  open-graph:
+    image: "/blog-image.png"
+  

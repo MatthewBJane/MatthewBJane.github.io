@@ -1,0 +1,263 @@
+---
+title: Generalized Additive Models (GAMs) for Meta-Regression using `brms`
+
+author: "Matthew B. Jané"
+image: "blog-image.png"
+image-height: "5%"
+toc: true
+code-fold: false
+date: 2024-09-24
+description: A GAM is a linear or generalized linear model that allows you to model non-linear relationships using splines, smooth functions that allows to model the "wiggliness" in the data. To my knowledge there is little/nothing out there regarding the use of GAMs in a meta-analysis context.
+
+categories:
+  - Generalized Additive Models
+  - Meta-regression
+
+title-meta: Generalized Additive Models for Meta-Regression using `brms`
+author-meta: "Matthew B. Jané"
+image-meta: "blog-image.png"
+bibliography: references.bib
+---
+
+```{=html}
+<a href="https://www.buymeacoffee.com/matthewbjane"><img src="https://img.buymeacoffee.com/button-api/?text=Support my work&emoji=☕&slug=matthewbjane&button_colour=ed5c9b&font_colour=ffffff&font_family=Arial&outline_colour=ffffff&coffee_colour=ffffff" /></a>
+```
+<br>
+
+## What is Meta-regression?
+
+Meta-regression is a modeling approach used in meta-analysis to see how effect sizes vary across studies. For example, let's say we want to know the effect of some drug on disease remission, but the effect sizes are highly heterogenous (studies use different methods, sample from different populations, etc. and thus have different estimands). We may want to know what aspects of these studies cause differences in their resulting effects? If different studies use a different doseage amount then we may hypothesize that dose will account for some of that heterogeneity in effects. Doseage is what we would call a **moderator** of the effect size (moderator is analogous to a predictor in a traditional regression). Meta-regression is like any regression model with the only difference that the data points represent entire studies and that studies are weighted such that more precise studies (i.e., larger sample sizes/smaller standard errors) are preferentially weighted. The regression line will estimate the **conditional mean** effect size.
+
+Let's visualize this example by running a meta-regression and creating a bubble plot (a scatter plot, but the data points are sized relative to the precision of the study). The effect size is the log risk ratio between treatment and control groups,
+
+$$
+\ln RR = \ln \frac{p_T}{p_C},
+$$ where $p_T$ and $p_C$ are the proportions of individuals in remission within the treatment and control group, respectively. We will then see how the doseage moderates the $\ln RR$ across studies. In R, we can use the `metafor` [@metafor] package to fit a meta-regression.
+
+```{r,message=FALSE, fig.width = 5, fig.height = 5}
+#| code-fold: true
+#| code-summary: "Show the code"
+#| 
+library(metafor)
+
+dat <- escalc(measure = "RR",
+              # data set loaded in from metafor package
+              data = dat.viechtbauer2021,
+              # treatment/control number of people in remission
+              ai = xTi, ci = xCi,
+              # treatment/control group sample size in
+              n1 = nTi, n2 = nCi,
+              # label effect size and sampling variance (se^2)
+              var.names = c("lnRR", "v"))
+
+# fit model
+mdl <- rma(lnRR ~ dose, 
+           vi = v,
+           data = dat)
+
+# plot model
+regplot(mdl,refline = 0)
+
+```
+
+We see a very strong relationship between the effect size and the dosage amount.
+
+## What would a meta-analytic GAM look like?
+
+**This brief intro section is a sort of a meta-analytic adaptation of a [section](https://m-clark.github.io/generalized-additive-models/building_gam.html#what-is-a-gam) of Michael Clark's online text "Generalized Additive Models".**
+
+In our example, we used a linear meta-regression so let us define a simple linear meta-regression model mathematically. An observed (arbitrary) effect size $d_i$ from study $i$ is expressed as,
+
+$$
+d_i = \underset{_\textrm{intercept}}{b_0} + \overset{^\textrm{moderator effect}}{b_1M_i} + \underset{_\textrm{true effect variability}}{u_i} + \overset{^\textrm{sampling error}}{\varepsilon_i}.
+$$ The first three terms in the equation is what defines the true effect size $\delta_i$ for study $i$ and the last term denotes sampling error which is what distinguishes the observed effect size $d_i$ from the true effect size $\delta_i$. The true effect size is conditionally distributed as,
+
+$$
+\delta_i \mid M_i \sim \mathcal{N}\left(b_0 + b_1M_i\, ,\, \tau^2\right)
+$$ Where $\tau^2$ is the residual variance in true effects (i.e., $\tau^2 = \mathrm{var}(u_i)$). We can see that the conditional expectation of true effects is a linear function of the moderator variable $\mathbb{E}[\delta_i \mid M] = b_0 + b_1M_i$. But we don't have to model the conditional mean as linear. If the data appears non-linear we can instead model it as some smooth function $f$ such that the conditional mean has some non-linear functional form,
+
+$$
+\delta_i \mid M_i \sim \mathcal{N}\left(f(M_i),\, \tau^2\right).
+$$
+
+For GAMs we elect to choose a space of functions (e.g., cubic splines) called a **basis**. A function within the function space can be expressed as a linear combination of basis functions. Essentially, we want to estimate this "big" function with with a series of known "smaller" functions. For our case, the function $f(M_i)$ can be expressed as, $f(M_i) = \sum^m_{q=1} b_q\xi_q(M_i)$, where $\xi_q$ are basis functions. Therefore the conditional distribution of true effects is now given by,
+
+$$
+\delta_i \mid M_i \sim \mathcal{N}\left(\sum^m_{q=1} b_q\xi_q(M_i),\, \tau^2\right).
+$$
+
+The conditional expectation of true effects now can have a lot of flexibility. Note that we do not want to try to interpret the regression coefficients $b_q$ of those smaller basis functions, instead we want to interpret the bigger function which is estimating the conditional mean of true effects. To estimate the conditional expectation, GAMs utilize **penalized splines** which penalizes the function for being too "wiggly" so as to maintain a parsimonious model. The number of knots (i.e., the joints/abscissa of the "big" function) also does not have to be set manually like they do in other spline models.
+
+## Loading in packages
+
+We will need the following packages before we begin.
+
+```{r,message=FALSE,warning=FALSE}
+library(tidyverse)
+library(brms)
+library(mgcv)
+library(tidybayes)
+library(modelr)
+library(ggdist)
+```
+
+## Non-linear Data
+
+We can use some made up non-linear data created by Wolfgang Viechtbauer in his [tutorial](https://www.metafor-project.org/doku.php/tips:non_linear_meta_regression) on spline meta-regression.
+
+```{r}
+dat <- structure(list(
+  # effect size data
+  yi = c(0.99, 0.54, -0.01, 1.29, 0.66, -0.12, 1.18,-0.23, 0.03, 0.73, 1.27, 0.38, -0.19, 0.01, 0.31, 1.41, 1.32, 1.22, 1.24,-0.05, 1.17, -0.17, 1.29, -0.07, 0.04, 1.03, -0.16, 1.25, 0.27, 0.27, 0.07,0.02, 0.7, 1.64, 1.66, 1.4, 0.76, 0.8, 1.91, 1.27, 0.62, -0.29, 0.17, 1.05,-0.34, -0.21, 1.24, 0.2, 0.07, 0.21, 0.95, 1.71, -0.11, 0.17, 0.24, 0.78,1.04, 0.2, 0.93, 1, 0.77, 0.47, 1.04, 0.22, 1.42, 1.24, 0.15, -0.53, 0.73,0.98, 1.43, 0.35, 0.64, -0.09, 1.06, 0.36, 0.65, 1.05, 0.97, 1.28), 
+  # standard error
+  sei = sqrt(c(0.018, 0.042, 0.031, 0.022, 0.016, 0.013, 0.066, 0.043, 0.092, 0.009,0.018, 0.034, 0.005, 0.005, 0.015, 0.155, 0.004, 0.124, 0.048, 0.006, 0.134,0.022, 0.004, 0.043, 0.071, 0.01, 0.006, 0.128, 0.1, 0.156, 0.058, 0.044,0.098, 0.154, 0.117, 0.013, 0.055, 0.034, 0.152, 0.022, 0.134, 0.038, 0.119,0.145, 0.037, 0.123, 0.124, 0.081, 0.005, 0.026, 0.018, 0.039, 0.062, 0.012,0.132, 0.02, 0.138, 0.065, 0.005, 0.013, 0.101, 0.051, 0.011, 0.018, 0.012,0.059, 0.111, 0.073, 0.047, 0.01, 0.007, 0.055, 0.019, 0.104, 0.056, 0.006,0.094, 0.009, 0.008, 0.02 )), 
+  # moderator values
+  xi = c(9.4, 6.3, 1.9, 14.5, 8.4, 1.8, 11.3,4.8, 0.7, 8.5, 15, 11.5, 4.5, 4.3, 4.3, 14.7, 11.4, 13.4, 11.5, 0.1, 12.3,1.6, 14.6, 5.4, 2.8, 8.5, 2.9, 10.1, 0.2, 6.1, 4, 5.1, 12.4, 10.1, 13.3,12.4, 7.6, 12.6, 12, 15.5, 4.9, 0.2, 6.4, 9.4, 1.7, 0.5, 8.4, 0.3, 4.3, 1.7,15.2, 13.5, 6.4, 3.8, 8.2, 11.3, 11.9, 7.1, 9, 9.9, 7.8, 5.5, 9.9, 2.6,15.5, 15.3, 0.2, 3.2, 10.1, 15, 10.3, 0, 8.8, 3.6, 15, 6.1, 3.4, 10.2, 10.1,13.7)), 
+  class = "data.frame", row.names = c(NA, -80L))
+
+head(dat)
+
+```
+
+The effect size is denoted with `yi`, the standard errors are denoted with `sei`, and the study-level moderator values is denoted with `xi`.
+
+## Constructing the `brms` model
+
+Using the `brm` function in the `brms` [@brms] package we can construct the meta-regression GAM model by utilizing the `se()` argument to input the standard errors of the effect sizes. Then `s()` function to tell `brms` that we are fitting a GAM. The `sigma=TRUE` function allows us to have heterogeneity, that is, the model includes a $\sigma$ parameter which represents the standard deviation in true effects which we previously defined as $\tau$.
+
+```{r,warning = FALSE, results='hide'}
+
+mdl_gam <- brm(yi | se(sei, sigma = TRUE) ~ s(xi),
+          data = dat, 
+          family = gaussian(),
+          seed = 17,
+          iter = 1000, 
+          warmup = 150, 
+          chains = 2,
+          file = "model_gam",
+          file_refit = "on_change")
+
+```
+
+Now let's also construct a linear model so that we can compare the two fits.
+
+```{r,warning = FALSE, results='hide'}
+
+mdl_lm <- brm(yi | se(sei, sigma = TRUE) ~ xi,
+          data = dat, 
+          family = gaussian(),
+          seed = 17,
+          iter = 1000, 
+          warmup = 150, 
+          chains = 2,
+          file = "model_lm",
+          file_refit = "on_change")
+
+```
+
+We can plot out the models by displaying the estimates of the conditional effect size mean that are compatible with the data (denoted with the dark lines) and the conditional distribution of effect sizes (the density band with the bounds denoting the 95% prediction interval).
+
+```{r,fig.height=10}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+# Extract conditional mean estimates for GAM
+gam_conditional_means <- dat %>%
+  data_grid(xi = seq_range(xi, n = 101), sei = sei) %>%
+  add_epred_draws(mdl_gam, ndraws = 200)
+
+# Extract true effect size predictions to construct true effect distribution for GAM
+gam_predictions <- dat %>%
+  data_grid(xi = seq_range(xi, n = 71), sei = sei) %>%
+  add_predicted_draws(mdl_gam, ndraws = 400)
+
+
+p1 <- ggplot() +
+  stat_lineribbon(data = gam_predictions, 
+            aes(x = xi, y = .prediction, fill_ramp = after_stat(.width)),
+            .width = seq(.05,.95,by=.05), fill = "#ED5C9B") +
+  scale_fill_ramp_continuous(range = c(1, .1), guide = guide_rampbar(to = "#ED5C9B")) +
+  geom_line(data = gam_conditional_means, 
+            aes(x = xi, y = .epred, group = .draw),color = "#861d5e", alpha = .15) +
+  geom_point(data = dat, aes(x = xi, y = yi, size = 1/sei^2), alpha = .8, color = "#601543") +
+  theme_ggdist(base_size = 15) + 
+  geom_hline(yintercept = 0, linetype= "dashed", color = "#ED5C9B",alpha=.4) +
+  theme(legend.position = "none",
+        aspect.ratio = .8) +
+  ylab("Effect Size") +
+  xlab("Moderator Value") + 
+  ggtitle("GAM")
+
+# Extract conditional mean estimates for GAM
+lm_conditional_means <- dat %>%
+  data_grid(xi = seq_range(xi, n = 101), sei = sei) %>%
+  add_epred_draws(mdl_lm, ndraws = 200)
+
+# Extract true effect size predictions to construct true effect distribution for GAM
+lm_predictions <- dat %>%
+  data_grid(xi = seq_range(xi, n = 51), sei = sei) %>%
+  add_predicted_draws(mdl_lm, ndraws = 200)
+
+
+p2 <- ggplot() +
+  stat_ribbon(data = lm_predictions, 
+            aes(x = xi, y = .prediction, fill_ramp = after_stat(.width)),
+            .width = seq(.05,.95,by=.05), fill = "#ED5C9B") +
+  scale_fill_ramp_continuous(range = c(1, .1), guide = guide_rampbar(to = "#ED5C9B")) +
+  geom_line(data = lm_conditional_means, 
+            aes(x = xi, y = .epred, group = .draw),color = "#861d5e", alpha = .15) +
+  geom_point(data = dat, aes(x = xi, y = yi, size = 1/sei^2), alpha = .8, color = "#601543") +
+  theme_ggdist(base_size = 15) + 
+  geom_hline(yintercept = 0, linetype= "dashed", color = "#ED5C9B",alpha=.4) +
+  theme(legend.position = "none",
+        aspect.ratio = .8) +
+  ylab("Effect Size") +
+  xlab("Moderator Value") + 
+  ggtitle("GAM")
+
+
+cowplot::plot_grid(p1,p2,ncol = 1)
+
+
+```
+
+## Predictive Check
+
+The predictive check of the GAM model captures the data better than the linear model in this data set.
+
+```{r}
+
+pp1 <- pp_check(mdl_gam, ndraws = 100) +
+  theme(aspect.ratio = 1, legend.position = "none") +
+  ggtitle("GAM")
+pp2 <- pp_check(mdl_lm, ndraws = 100) +
+  theme(aspect.ratio = 1, legend.position = "none") +
+  ggtitle("Linear Model")
+
+
+cowplot::plot_grid(pp1,pp2)
+```
+
+## Session Info
+
+```{r}
+sessionInfo()
+
+```
+
+## Citing R packages
+
+The following packages were used in this post:
+
+-   `brms` [@brms]
+-   `mgcv` [@splines]
+-   `tidyverse` [@tidyverse]
+-   `ggdist` [@ggdist]
+-   `modelr` [@modelr]
+-   `tidybayes` [@tidybayes]
+
+**Thanks to Isabella R. Ghement, Stephen J. Wild, and Solomon Kurz for their advice and feedback on this post.**
+
+<iframe src="https://embeds.beehiiv.com/f3ffd81a-4723-4419-bb1d-afc8af3bac36" data-test-id="beehiiv-embed" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius: 4px; border: 2px solid #33333322; margin: 0; background-color: transparent;">
+
+</iframe>
