@@ -1,0 +1,65 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Matthew B. Jané",
+    "section": "",
+    "text": "I am a PhD student in Quantitative Psychology at the University of Connecticut. My research involves quantitative methods for meta-analysis and psychological measurement. Specifically, my current research projects focus on correcting bias in effect size estimates caused by statistical artifacts. My advisor is Dr. Blair T. Johnson and I am affiliated with the Systematic Health Action Research Program (SHARP). I am also on the editorial board for Psychological Bulletin as a methodological reviewer."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "CV.html",
+    "href": "CV.html",
+    "title": "Matthew B. Jané",
+    "section": "",
+    "text": "Twitter \\(\\cdot\\) Github \\(\\cdot\\) Website\n\n\n\nAdvisor: Dr. Blair T. Johnson\n\n\n\n\n\nPresent | Ph.D. Quantitative Psychology, University of Connecticut, Storrs, Connecticut\n2022 | M.S. Behavioral Neuroscience, University of Connecticut, Storrs, Connecticut\n2020 | B.S. Computational Neuroscience, University of Connecticut, Storrs, Connecticut\n\n\n\n\n\n2023 | {posc} An R Package for Probability of Outcome Superiority Curves (POSCs)\n2023 | {ThemePark}, An R package for populat culture ggplot themes\n2023 | OpenSynthesis, website cataloging publicly available meta-analytic databases\n2023 | Artifact Simulator, A Shiny App for Visualizing Statistical Artifacts”,\n2023 | Artifact Corrections for Effect Sizes, A webpage documenting equations and code for effect size artifact corrections.\n2023 | Project Analysis Code and Data,"
+  },
+  {
+    "objectID": "cv-matthew-b-jane.html",
+    "href": "cv-matthew-b-jane.html",
+    "title": "Matthew B. Jané",
+    "section": "",
+    "text": "Education\nUniversity of Connecticut, Ph.D. Quantitative Psychology -present University of Connecticut, M.S. Behavioral Neuroscience -2022 University of Connecticut, B.S. Computational Neuroscience -2021\n\n\nPublications\n\n\n\n\n\nTechnical Reports\n\n\n\n\n\nReferences\nAvailable upon request, though likely would include Karl Pearson and Ronald A. Fisher."
+  },
+  {
+    "objectID": "Untitled/cv-matthew-b-jane-2023.html",
+    "href": "Untitled/cv-matthew-b-jane-2023.html",
+    "title": "Some stuff about me",
+    "section": "",
+    "text": "Some stuff about me\n\nI poisoned myself doing research.\nI was the first woman to win a Nobel prize\nI was the first person and only woman to win a Nobel prize in two different sciences.\n\n\n\nEducation\n\n\n# A tibble: 3 × 5\n  what                            when         with                  where why  \n  &lt;chr&gt;                           &lt;chr&gt;        &lt;chr&gt;                 &lt;chr&gt; &lt;lis&gt;\n1 Ph.D. Quantitative Psychology   2022-present University of Connec… Stor… &lt;chr&gt;\n2 M.S. Behavioral Neuroscience    2020-2022    University of Connec… Stor… &lt;chr&gt;\n3 B.S. Computational Neuroscience 2018-2020    University of Connec… Stor… &lt;chr&gt;\n\n\n\n\nNobel Prizes\n\n\n# A tibble: 2 × 3\n  what                      when with                                           \n  &lt;glue&gt;                   &lt;dbl&gt; &lt;chr&gt;                                          \n1 Nobel Prize in Physics    1903 Awarded for her work on radioactivity with Pie…\n2 Nobel Prize in Chemistry  1911 Awarded for the discovery of radium and poloni…\n\n\n\n\nPublications\n\n\n\n/var/folders/fc/r890jjjx34sgpy78185dgxzc0000gn/T//Rtmp5yE3cd/file16ccc59441ce4.yaml"
+  },
+  {
+    "objectID": "CV.html#academic-information",
+    "href": "CV.html#academic-information",
+    "title": "Matthew B. Jané",
+    "section": "",
+    "text": "Advisor: Dr. Blair T. Johnson"
+  },
+  {
+    "objectID": "CV.html#education",
+    "href": "CV.html#education",
+    "title": "Matthew B. Jané",
+    "section": "",
+    "text": "Present | Ph.D. Quantitative Psychology, University of Connecticut, Storrs, Connecticut\n2022 | M.S. Behavioral Neuroscience, University of Connecticut, Storrs, Connecticut\n2020 | B.S. Computational Neuroscience, University of Connecticut, Storrs, Connecticut"
+  },
+  {
+    "objectID": "CV.html#software",
+    "href": "CV.html#software",
+    "title": "Matthew B. Jané",
+    "section": "",
+    "text": "2023 | {posc} An R Package for Probability of Outcome Superiority Curves (POSCs)\n2023 | {ThemePark}, An R package for populat culture ggplot themes\n2023 | OpenSynthesis, website cataloging publicly available meta-analytic databases\n2023 | Artifact Simulator, A Shiny App for Visualizing Statistical Artifacts”,\n2023 | Artifact Corrections for Effect Sizes, A webpage documenting equations and code for effect size artifact corrections.\n2023 | Project Analysis Code and Data,"
+  },
+  {
+    "objectID": "CV.html#publications",
+    "href": "CV.html#publications",
+    "title": "Matthew B. Jané",
+    "section": "Publications",
+    "text": "Publications"
+  }
+]
