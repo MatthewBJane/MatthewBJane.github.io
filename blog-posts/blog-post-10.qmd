@@ -133,7 +133,7 @@ We can interpret the effect size as: on average, a typical person sees a $[\delt
 
 ## IPD Model (pre-sleep score as covariate)
 
-With our data we can model the observed proportions as a beta distribution such that $p_{\mathrm{post},i} \sim \mathrm{Beta}(\mu_i,\phi)$ where $\mu_i$ is the conditional mean (i.e., $\mu_i:=\mathbb{E}(p_{\mathrm{post},i}\, |\, p_{\mathrm{pre},i}, C_i )$) and $\phi$ is the concentration ($\phi$ is inversely related to the variance and we can obtain the variance of $p_i$ with $\mu(1-\mu)/(\phi+1)$). We can model the logit transformed mean $\mu_i$ use an ANCOVA type model by using the pre-sleep scores as a predictor within a regression model.
+With our data we can model the observed proportions as a beta distribution such that $p_{\mathrm{post},i} \sim \mathrm{Beta}(\mu_i,\phi)$ where $\mu_i$ is the conditional mean (i.e., $\mu_i:=\mathbb{E}(p_{\mathrm{post},i}\, |\, p_{\mathrm{pre},i}, C_i )$) and $\phi$ is the concentration ($\phi$ is inversely related to the variance and we can obtain the variance of $p_i$ with $\mu(1-\mu)/(\phi+1)$). We can model the logit transformed $\mu_i$ with an ANCOVA type model by using the pre-sleep scores as a predictor within a regression model.
 
 $$
 \mathrm{logit}(\mu_{i})  = \beta_{0,sp} +  \beta_{1,s}\,p_{\mathrm{pre},i} + \beta_{2,s}\, C_i
