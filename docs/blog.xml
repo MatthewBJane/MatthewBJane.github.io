@@ -12,6 +12,1515 @@
 <generator>quarto-1.5.56</generator>
 <lastBuildDate>Tue, 08 Oct 2024 04:00:00 GMT</lastBuildDate>
 <item>
+  <title>Individual Person Data (IPD) Meta-Analysis with Beta Regression</title>
+  <dc:creator>Matthew B. Jané</dc:creator>
+  <link>https://matthewbjane.com/blog-posts/blog-post-10.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<a href="https://www.buymeacoffee.com/matthewbjane"><img src="https://img.buymeacoffee.com/button-api/?text=Support my work&amp;emoji=☕&amp;slug=matthewbjane&amp;button_colour=ed5c9b&amp;font_colour=ffffff&amp;font_family=Arial&amp;outline_colour=ffffff&amp;coffee_colour=ffffff"></a>
+<p><br></p>
+<section id="description-of-the-meta-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="description-of-the-meta-analysis">Description of the Meta-analysis</h2>
+<section id="study-design" class="level4">
+<h4 class="anchored" data-anchor-id="study-design">Study design</h4>
+<p>The studies in this meta-analysis are investigating if auditory stimuli during slow-wave sleep can enhance overnight memory retention (this is based on theoretical reasons we don’t need to get into). In each study the participants undergo two sleep sessions reflecting two conditions. In one of the sessions, auditory stimuli (i.e., pink noise bursts) were presented while the subject’s were in deep slow-wave sleep (“stim” condition). In the other session there was no auditory stimuli (“sham” condition). These sleep sessions were separated by a week (or two) and were counter-balanced such that the ordering of conditions were randomized. Before subject’s go to sleep, subjects were given word-pairs that they are required to memorize. Prior to falling asleep they are assessed on how many word-pairs they can accurately remember (they are given one word and they are told to recall the other word). After the subjects wake up, they are assessed on the same task and the number of word-pairs they can remember correctly. So ultimately we have a repeated-measures (pre-post) cross-over (treatment-control) design.</p>
+<p>We can load in the necessary packages <span class="citation" data-cites="tidyverse">Kay (2024)</span> and get the data from my <a href="https://github.com/MatthewBJane/meta-analysis-data-code/blob/main/acoustic_stimulation_and_memory/data/individual_person_data.csv">github repository</a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(readr)</span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(brms)</span>
+<span id="cb1-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidybayes)</span>
+<span id="cb1-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(modelr)</span>
+<span id="cb1-6"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggdist)</span>
+<span id="cb1-7"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggtext)</span>
+<span id="cb1-8"></span>
+<span id="cb1-9">urlfile<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://raw.githubusercontent.com/MatthewBJane/meta-analysis-data-code/refs/heads/main/acoustic_stimulation_and_memory/data/individual_person_data.csv"</span></span>
+<span id="cb1-10"></span>
+<span id="cb1-11">df <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read_csv</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">url</span>(urlfile))</span>
+<span id="cb1-12"></span>
+<span id="cb1-13"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">head</span>(df)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 6
+  study preSham postSham preStim postStim total_words
+  &lt;chr&gt;   &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;
+1 W2016      89      103      69       93         120
+2 W2016      59       89      72       92         120
+3 W2016      80       95      48       77         120
+4 W2016      47       75      57       75         120
+5 W2016      40       67      61       91         120
+6 W2016      78      104      71       99         120</code></pre>
+</div>
+</div>
+<p>We can see that each subject has four values: pre-stim, post-stim, pre-sham, and post-sham. The values denote the number of words recalled correctly and the total words column is the total number of word-pairs the subject was tasked to memorize. In total, there are 7 studies and 110 subjects.</p>
+</section>
+<section id="outcome-of-interest" class="level4">
+<h4 class="anchored" data-anchor-id="outcome-of-interest">Outcome of interest</h4>
+<p>Across studies the total number of word-pairs in the recall task varied (range: 80-120) and, consequently, so does the number of word-pairs correctly recalled. This produced different number of correctly recalled words. For this reason, we will choose to use probability of recalling a word-pair accurately.</p>
+<p>Assume <img src="https://latex.codecogs.com/png.latex?Y_%7Bij%7D%20%5Cin%20%5C%7B0,1%5C%7D"> is a Bernoulli random variable that denotes whether a word-pair has been correctly recalled (1) or not (0) for assessment <img src="https://latex.codecogs.com/png.latex?i"> and trial <img src="https://latex.codecogs.com/png.latex?j">. Let each session <img src="https://latex.codecogs.com/png.latex?i"> have it’s own probability distribution for <img src="https://latex.codecogs.com/png.latex?Y"> such that <img src="https://latex.codecogs.com/png.latex?Y_%7Bij%7D%20%5Csim%20%5Cmathrm%7BBer%7D(%5Cpi_i)"> where the parameter <img src="https://latex.codecogs.com/png.latex?%5Cpi_i"> is the <em>true</em> probability of correctly recalling a word-pair for session <img src="https://latex.codecogs.com/png.latex?i"> such that, <img src="https://latex.codecogs.com/png.latex?%5Cpi_i%20=%20%5CPr_i(Y_%7Bij%7D=1)">. Our data set will contain observed proportions <img src="https://latex.codecogs.com/png.latex?p_i%20=%20%5Cfrac%7BN_%7B%5Ctext%7Bcorrect%7D,i%7D%7D%7BN_%7B%5Ctext%7Btotal%20word-pairs%7D,i%7D%7D"> which are estimates of <img src="https://latex.codecogs.com/png.latex?%5Cpi_i">. Therefore the outcome of interest is a probability-valued random variable <img src="https://latex.codecogs.com/png.latex?%5Cpi_i"> which is measured by the observed proportion <img src="https://latex.codecogs.com/png.latex?p_i">.</p>
+</section>
+<section id="time-and-condition-variables" class="level4">
+<h4 class="anchored" data-anchor-id="time-and-condition-variables">Time and condition variables</h4>
+<p>We have two other Bernoulli random variables that represents time <img src="https://latex.codecogs.com/png.latex?T_i"> (pre=0, post=1) and condition <img src="https://latex.codecogs.com/png.latex?C_i"> (sham=0, stim=1). Of course, condition and time do not vary by trial so the subscript <img src="https://latex.codecogs.com/png.latex?j"> is removed. We can condition the probability of correctly recalling a word (<img src="https://latex.codecogs.com/png.latex?%5Cpi_i">) on values of <img src="https://latex.codecogs.com/png.latex?T_i"> and <img src="https://latex.codecogs.com/png.latex?C_i"> so that we have four possible experimental states,</p>
+<ul>
+<li>Pre-sleep, sham condition: <img src="https://latex.codecogs.com/png.latex?%5C;%5Cpi%5E%7B(0)%7D_%7B%5Cmathrm%7Bpre%7D,i%7D%20:=%20%5CPr_i(Y_%7Bij%7D%5C!%20=%5C!1%20%5Cmid%20T_i%5C!%20=%5C!0,%20C_i%5C!%20=%5C!0)"></li>
+<li>Post-sleep, sham condition: <img src="https://latex.codecogs.com/png.latex?%5Cpi%5E%7B(0)%7D_%7B%5Cmathrm%7Bpost%7D,i%7D%20:=%20%5CPr_i(Y_%7Bij%7D%5C!%20=%5C!1%20%5Cmid%20T_i%5C!%20=%5C!1,%20C_i%5C!%20=%5C!0)"></li>
+<li>Pre-sleep, stim condition: <img src="https://latex.codecogs.com/png.latex?%5C;%5C;%5C;%5Cpi%5E%7B(1)%7D_%7B%5Cmathrm%7Bpre%7D,i%7D%20:=%20%5CPr_i(Y_%7Bij%7D%5C!%20=%5C!1%20%5Cmid%20T_i%5C!%20=%5C!0,%20C_i%5C!%20=%5C!1)"></li>
+<li>Post-sleep, stim condition: <img src="https://latex.codecogs.com/png.latex?%5C;%5C;%5Cpi%5E%7B(1)%7D_%7B%5Cmathrm%7Bpost%7D,i%7D%20:=%20%5CPr_i(Y_%7Bij%7D%5C!%20=%5C!1%20%5Cmid%20T_i%5C!%20=%5C!1,%20C_i%5C!%20=%5C!1)"></li>
+</ul>
+<p>Every participant has an observed proportion for all four experimental states: <img src="https://latex.codecogs.com/png.latex?p%5E%7B(0)%7D_%7B%5Cmathrm%7Bpre%7D,i%7D">, <img src="https://latex.codecogs.com/png.latex?p%5E%7B(0)%7D_%7B%5Cmathrm%7Bpost%7D,i%7D">, <img src="https://latex.codecogs.com/png.latex?p%5E%7B(1)%7D_%7B%5Cmathrm%7Bpre%7D,i%7D">, and <img src="https://latex.codecogs.com/png.latex?p%5E%7B(1)%7D_%7B%5Cmathrm%7Bpost%7D,i%7D">. What we want to do is make the data set long where condition is a dummy variable, this will set up our data such that we can fit an ANCOVA model in the next section.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">dat <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> df <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb3-2">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># relabel the column headers</span></span>
+<span id="cb3-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rename</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">pre.sham =</span> preSham, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">pre.stim =</span> preStim, </span>
+<span id="cb3-4">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">post.sham =</span> postSham, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">post.stim =</span> postStim) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb3-5">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># add row for person id</span></span>
+<span id="cb3-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">person =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(df), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.after =</span> study) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb3-7">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># make data set long so that there is one column of scores</span></span>
+<span id="cb3-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pivot_longer</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cols =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(pre.sham, post.sham, pre.stim, post.stim),</span>
+<span id="cb3-9">               <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">names_to =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"session"</span>,</span>
+<span id="cb3-10">               <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values_to =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"num_correct"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb3-11">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># separate the session column into random variables time T and condition C</span></span>
+<span id="cb3-12">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">separate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col =</span> session, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">into =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"time"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"condition"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb3-13">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># recode variables as factors with levels 0 and 1</span></span>
+<span id="cb3-14">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pivot_wider</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">names_from =</span> time,</span>
+<span id="cb3-15">              <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values_from =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(num_correct,total_words),</span>
+<span id="cb3-16">              <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">id_cols =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(person,condition,study)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb3-17">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># clean up variable values and calculate proportions </span></span>
+<span id="cb3-18">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">condition =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">factor</span>(condition, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">levels =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"sham"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"stim"</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">labels =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)),</span>
+<span id="cb3-19">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">study =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">factor</span>(study, </span>
+<span id="cb3-20">                        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">levels =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rev</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"N2013"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"N2015.1"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"N2015.2"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"W2016"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"H2019.1"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"H2019.2"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"S2020"</span>)),</span>
+<span id="cb3-21">                        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">labels =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rev</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Ngo (2013)"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Ngo (2015a)"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Ngo (2015b)"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Weigenand (2016)"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Henin (2019)"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Henin (2019)"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Schneider (2020)"</span>))),</span>
+<span id="cb3-22">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">p_pre =</span> num_correct_pre <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> (total_words_pre<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>(.<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">005</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>total_words_pre)),</span>
+<span id="cb3-23">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">p_post =</span> num_correct_post <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> (total_words_post<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>(.<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">005</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>total_words_post))) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb3-24">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># clean up columns</span></span>
+<span id="cb3-25">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(study, person, condition, p_pre, p_post)</span>
+<span id="cb3-26"></span>
+<span id="cb3-27"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># display cleaned data set</span></span>
+<span id="cb3-28"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">head</span>(dat,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 5
+  study            person condition p_pre p_post
+  &lt;fct&gt;             &lt;int&gt; &lt;fct&gt;     &lt;dbl&gt;  &lt;dbl&gt;
+1 Weigenand (2016)      1 0         0.738  0.854
+2 Weigenand (2016)      1 1         0.572  0.771
+3 Weigenand (2016)      2 0         0.489  0.738
+4 Weigenand (2016)      2 1         0.597  0.763
+5 Weigenand (2016)      3 0         0.663  0.788
+6 Weigenand (2016)      3 1         0.398  0.638
+7 Weigenand (2016)      4 0         0.390  0.622
+8 Weigenand (2016)      4 1         0.473  0.622</code></pre>
+</div>
+</div>
+<p>Now we have columns for the proportions at pre-test and post-test for each condition. Notice that each person has two rows pertaining to the stim and sham condition.</p>
+</section>
+<section id="effect-size-of-interest" class="level4">
+<h4 class="anchored" data-anchor-id="effect-size-of-interest">Effect Size of Interest</h4>
+<p>We would like to the estimate the effect of auditory stimulation on memory retention, so therefore we would like to compare the post-sleep recall proportion correct between conditions. Our effect size of interest can be the defined as the average difference between post-sleep recall scores in the treatment and control group conditioned on a pre-sleep score of .50,</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cdelta%20=%20%5Cmathbb%7BE%7D%5Cleft(p%5E%7B(1)%7D_%7B%5Cmathrm%7Bpost%7D,i%7D%5C,-%20p%5E%7B(0)%7D_%7B%5Cmathrm%7Bpost%7D,i%7D%5C,%20%5Cmiddle%7C%5C,%20p_%7B%5Cmathrm%7Bpre%7D,i%7D%20=%20.50%5Cright).%0A"></p>
+<p>Since this effect size is essentially an average of risk differences, conditioning on a pre-sleep value of .50 is useful as is put succinctly by <a href="https://journals.sagepub.com/doi/10.1177/23780231231192394#:~:text=Risk%20differences%20are%20useful%20when,often%20be%20a%20good%20choice.">Karlson and Quillian (2023)</a> <strong>“Risk differences are useful when base rates are in a middle range”</strong>. We will see that the IPD model will use the pre-sleep score as a covariate so conditioning on pre-sleep scores is straightforward. The grand average pre-sleep score is ~.47, which makes conditioning on .50 a bit easier to justify. We can visualize the pre-sleep scores for each study below, we can see that they are fairly evenly distributed around .50.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(dat, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> p_pre, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> study)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb5-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">stat_slab</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">point_interval =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"mean_qi"</span>,<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"hotpink"</span>,<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">slab_color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"transparent"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">slab_alpha =</span> .<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">15</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb5-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">stat_dotsinterval</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">point_interval =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"mean_qi"</span>,<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"hotpink2"</span>,<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">slab_color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"transparent"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"hotpink4"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb5-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">lims</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb5-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_ggdist</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">base_size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">14</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb5-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">aspect.ratio =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.2</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb5-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_vline</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xintercept =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(.<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linetype =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"dashed"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> .<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb5-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Pre-sleep scores (proportion correct)"</span>,</span>
+<span id="cb5-9">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Studies"</span>) </span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://matthewbjane.com/blog-posts/blog-post-10_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Distributions of pre-sleep scores by study. The dashed line denotes the 50:50 correct/incorrect value (<img src="https://latex.codecogs.com/png.latex?p_%5Cmathrm%7Bpre%7D%20=%20.5">)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>We can interpret the effect size as: on average, a typical person sees a <img src="https://latex.codecogs.com/png.latex?%5B%5Cdelta%5Ctimes%20100%5D"> percentage point increase in accurately recalling a word-pair in the stim condition relative to the sham condition. An effect size value of <img src="https://latex.codecogs.com/png.latex?%5Cdelta%20%3C%200"> would indicate reduced recall in the stim group (i.e., stim was actually detrimental relative to sham), a value between <img src="https://latex.codecogs.com/png.latex?%5Cdelta%20%3E0"> would indicate increased recall in the stim group (i.e., stim was beneficial relative to sham), and a value of <img src="https://latex.codecogs.com/png.latex?%5Cdelta=1"> would be a null effect. Important to note that <img src="https://latex.codecogs.com/png.latex?%5Cdelta"> is not standardized in this meta-analysis because scores are comparable across studies.</p>
+</section>
+</section>
+<section id="ipd-model-pre-sleep-score-as-covariate" class="level2">
+<h2 class="anchored" data-anchor-id="ipd-model-pre-sleep-score-as-covariate">IPD Model (pre-sleep score as covariate)</h2>
+<p>With our data we can model the observed proportions as a beta distribution such that <img src="https://latex.codecogs.com/png.latex?p_%7B%5Cmathrm%7Bpost%7D,i%7D%20%5Csim%20%5Cmathrm%7BBeta%7D(%5Cmu_i,%5Cphi)"> where <img src="https://latex.codecogs.com/png.latex?%5Cmu_i"> is the conditional mean (i.e., <img src="https://latex.codecogs.com/png.latex?%5Cmu_i:=%5Cmathbb%7BE%7D(p_%7B%5Cmathrm%7Bpost%7D,i%7D%5C,%20%7C%5C,%20p_%7B%5Cmathrm%7Bpre%7D,i%7D,%20C_i%20)">) and <img src="https://latex.codecogs.com/png.latex?%5Cphi"> is the concentration (<img src="https://latex.codecogs.com/png.latex?%5Cphi"> is inversely related to the variance and we can obtain the variance of <img src="https://latex.codecogs.com/png.latex?p_i"> with <img src="https://latex.codecogs.com/png.latex?%5Cmu(1-%5Cmu)/(%5Cphi+1)">). We can model the logit transformed mean <img src="https://latex.codecogs.com/png.latex?%5Cmu_i"> use an ANCOVA type model by using the pre-sleep scores as a predictor within a regression model.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cmathrm%7Blogit%7D(%5Cmu_%7Bi%7D)%20%20=%20%5Cbeta_%7B0,sp%7D%20+%20%20%5Cbeta_%7B1,s%7D%5C,p_%7B%5Cmathrm%7Bpre%7D,i%7D%20+%20%5Cbeta_%7B2,s%7D%5C,%20C_i%0A"></p>
+<p><img src="https://latex.codecogs.com/png.latex?C_i%5Cin%5C%7B0,1%5C%7D"> and represent the condition (0=sham, 1=stim). This means that the model-implied conditional mean is,</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cmu_i%20=%20%5Cfrac%7B%5Cexp(%5Cbeta_%7B0,sp%7D%20+%20%20%5Cbeta_%7B1,s%7D%5C,p_%7B%5Cmathrm%7Bpre%7D,i%7D%20+%20%5Cbeta_%7B2,s%7D%5C,%20C_i)%7D%7B1%20+%20%5Cexp(%5Cbeta_%7B0,sp%7D%20+%20%20%5Cbeta_%7B1,s%7D%5C,p_%7B%5Cmathrm%7Bpre%7D,i%7D%20+%20%5Cbeta_%7B2,s%7D%5C,%20C_i)%7D%0A"></p>
+<p>To obtain person and study-level variability, we want to incorporate a random effect for study samples on each of the regression coefficients (there are 7 studies, denoted with subscript <img src="https://latex.codecogs.com/png.latex?s%20=%201...7">). We also allow the intercept to vary between individuals such that each person <img src="https://latex.codecogs.com/png.latex?p"> has a random intercept (this is reasonable since there are individual differences in recall ability). Note that having condition vary by person (each person has 2 data points pertaining to treatment-control) would produce a model that is not identifiable. We will just use the default <code>brms</code> priors for all parameters.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">mdl <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">bf</span>(p_post <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> Intercept <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> p_pre <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> condition <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> (<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|</span>person) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> (<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>p_pre<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>condition<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|</span>study), </span>
+<span id="cb6-2">          <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">family =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">Beta</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"logit"</span>))</span>
+<span id="cb6-3"></span>
+<span id="cb6-4">prior <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">default_prior</span>(mdl, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> dat)</span>
+<span id="cb6-5"></span>
+<span id="cb6-6"></span>
+<span id="cb6-7">fit <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">brm</span>(mdl,</span>
+<span id="cb6-8">           <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> dat,</span>
+<span id="cb6-9">           <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cores =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, </span>
+<span id="cb6-10">           <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">iter =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2000</span>,</span>
+<span id="cb6-11">           <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">warmup =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span>,</span>
+<span id="cb6-12">           <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">chains =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>,</span>
+<span id="cb6-13">           <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">prior =</span> prior,</span>
+<span id="cb6-14">           <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">file =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ipd_meta"</span>,</span>
+<span id="cb6-15">           <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">file_refit =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"on_change"</span>)</span></code></pre></div>
+</div>
+<p>I recommend reading A. Solomon Kurz’s awesome <a href="https://solomonkurz.netlify.app/blog/2023-06-25-causal-inference-with-beta-regression/#beta-likelihood">blog post on Beta regression for causal inference</a>, which inspired some of this model (if I made any mistakes that does not reflect on Solomon’s blog, that is just me being dense).</p>
+<section id="study-level-estimates-of-delta" class="level4">
+<h4 class="anchored" data-anchor-id="study-level-estimates-of-delta">Study-level estimates of <img src="https://latex.codecogs.com/png.latex?%5Cdelta"></h4>
+<p>Let’s observe the posterior distribution of effects from each study in the meta-analysis. Visualizations created with the help of the awesome <code>tidybayes</code> and <code>ggdist</code> packages <span class="citation" data-cites="tidybayes">Kay (2023)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">nd <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data_grid</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">condition =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>,</span>
+<span id="cb7-2">                <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">p_pre =</span> .<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>,</span>
+<span id="cb7-3">                <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">person =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA</span>,</span>
+<span id="cb7-4">                <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">study =</span> dat<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>study,</span>
+<span id="cb7-5">                <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> dat)</span>
+<span id="cb7-6"></span>
+<span id="cb7-7"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">add_epred_draws</span>(fit, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">newdata =</span> nd, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">allow_new_levels =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">re_formula =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> (<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>p_pre<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>condition<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|</span>study)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb7-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pivot_wider</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">names_from =</span> condition,</span>
+<span id="cb7-9">              <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values_from =</span> .epred,</span>
+<span id="cb7-10">              <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">id_cols =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(study,.draw)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb7-11">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">delta =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">1</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">0</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb7-12">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> delta, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> study)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb7-13">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">stat_slabinterval</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">point_interval =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"mean_qi"</span>,<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"hotpink3"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">slab_alpha =</span> .<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">80</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.width =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(.<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>,.<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">95</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb7-14">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_ggdist</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">base_size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">14</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb7-15">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">aspect.ratio =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.1</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb7-16">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">coord_cartesian</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xlim =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>.<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">15</span>,.<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">15</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb7-17">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_vline</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xintercept =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linetype =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"dashed"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> .<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb7-18">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_continuous</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">breaks =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">round</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>.<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">15</span>,.<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">15</span>,<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">by=</span>.<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">05</span>),<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb7-19">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">expression</span>(Effect <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> delta),</span>
+<span id="cb7-20">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb7-21">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggtitle</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Study-level effects"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">subtitle =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"with 50% and 95% intervals"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://matthewbjane.com/blog-posts/blog-post-10_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Study-level posterior estimates of the expected value of <img src="https://latex.codecogs.com/png.latex?%5Cdelta"></figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>In our original paper we found a strong moderating effect of publication year on the effect size. Although we were only able to get a subset of the raw data sets, you can still see the shadow of that trend appears here.</p>
+</section>
+<section id="mean-effect" class="level4">
+<h4 class="anchored" data-anchor-id="mean-effect">Mean Effect</h4>
+<p>Now we want to estimate the average effect across studies, the key here is to set the <code>re_formula</code> argument in the add_epred_draws to <code>NA</code>. The figure below denotes the distribution of plausible values for the average true effect.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">nd <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data_grid</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">condition =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>,</span>
+<span id="cb8-2">                <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">p_pre =</span> .<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>,</span>
+<span id="cb8-3">                <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">person =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA</span>,</span>
+<span id="cb8-4">                <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">study =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA</span>,</span>
+<span id="cb8-5">                <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> dat)</span>
+<span id="cb8-6"></span>
+<span id="cb8-7">posterior_mean <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">add_epred_draws</span>(fit, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">newdata =</span> nd, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">re_formula =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb8-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pivot_wider</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">names_from =</span> condition,</span>
+<span id="cb8-9">              <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values_from =</span> .epred,</span>
+<span id="cb8-10">              <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">id_cols =</span> .draw) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb8-11">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">delta =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">1</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">0</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span>)</span>
+<span id="cb8-12"></span>
+<span id="cb8-13"></span>
+<span id="cb8-14"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> posterior_mean, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> delta, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb8-15">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">stat_slabinterval</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">point_interval =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"mean_qi"</span>,<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"hotpink4"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">slab_alpha =</span> .<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">80</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.width =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(.<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>,.<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">95</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb8-16">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_ggdist</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">base_size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">14</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb8-17">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">aspect.ratio =</span> .<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb8-18">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">coord_cartesian</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xlim =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>.<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">15</span>,.<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">15</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb8-19">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_vline</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xintercept =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linetype =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"dashed"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> .<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb8-20">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">expression</span>(Effect <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> delta),</span>
+<span id="cb8-21">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb8-22">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggtitle</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Mean effect"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">subtitle =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"with 50% and 95% intervals"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb8-23">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_continuous</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">breaks =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">round</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>.<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">15</span>,.<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">15</span>,<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">by=</span>.<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">05</span>),<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb8-24">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_continuous</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">breaks =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://matthewbjane.com/blog-posts/blog-post-10_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>As we can see there is little/no <em>average</em> effect of the stim condition 0.012 [-0.047, 0.069]. The estimate suggests there is about a 1% in recall probability difference from stim to sham.</p>
+<p>Let’s now obtain the credibility intervals which tells us what in what range of <img src="https://latex.codecogs.com/png.latex?%5Cdelta"> do <em>X%</em> of study effects fall. The figure below will show 50, 80, and 95% credibility intervals. To do this in <code>brms</code> I am like 99% sure we just need to incorporate all the study-level random effects in the <code>re_formula</code> argument again. Therefore we would want to specify it as <code>re_formula = ~(1+p_pre+condition|study)</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">nd <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data_grid</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">condition =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>,</span>
+<span id="cb9-2">                <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">p_pre =</span> .<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>,</span>
+<span id="cb9-3">                <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">person =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA</span>,</span>
+<span id="cb9-4">                <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">study =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"new_study"</span>,</span>
+<span id="cb9-5">                <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> dat)</span>
+<span id="cb9-6"></span>
+<span id="cb9-7"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">add_predicted_draws</span>(fit, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">newdata =</span> nd, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">allow_new_levels =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">re_formula =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>p_pre<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>condition<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|</span>study)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb9-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pivot_wider</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">names_from =</span> condition,</span>
+<span id="cb9-9">              <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values_from =</span> .prediction,</span>
+<span id="cb9-10">              <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">id_cols =</span> .draw) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb9-11">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">delta =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">1</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">0</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb9-12">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> delta, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-13">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">stat_interval</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">point_interval =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"mean_qi"</span>,<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"hotpink4"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"hotpink3"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"hotpink2"</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(.<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">7</span>,.<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>,.<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.width =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(.<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>,.<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">80</span>,.<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">95</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-14">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">coord_cartesian</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xlim =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>.<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">15</span>,.<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">15</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-15">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_continuous</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">breaks =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">round</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>.<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">15</span>,.<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">15</span>,<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">by=</span>.<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">05</span>),<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-16">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_ggdist</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">base_size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">14</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-17">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">aspect.ratio =</span> .<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-18">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_vline</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xintercept =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linetype =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"dashed"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> .<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-19">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">expression</span>(Effect <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> delta),</span>
+<span id="cb9-20">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-21">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggtitle</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Credibility intervals"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">subtitle =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Intervals where 50,80,95% of study effects fall"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-22">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_continuous</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">breaks =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://matthewbjane.com/blog-posts/blog-post-10_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="diagnostics" class="level4">
+<h4 class="anchored" data-anchor-id="diagnostics">Diagnostics</h4>
+<p>Let’s observe the posterior predictive check to see if our model performed as we expected.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pp_check</span>(fit, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ndraws =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb10-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">xlim</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb10-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_ggdist</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">base_size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">14</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb10-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_continuous</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">breaks=</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb10-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_color_manual</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"hotpink4"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"hotpink"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb10-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggtitle</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Posterior predictive check"</span>, </span>
+<span id="cb10-7">          <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">subtitle =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"&lt;span style = 'color:hotpink4'&gt;**observed distribution**&lt;/span&gt; and &lt;span style = 'color:hotpink'&gt;**predicted distribution**&lt;/span&gt;"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb10-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"none"</span>,</span>
+<span id="cb10-9">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_markdown</span>(),</span>
+<span id="cb10-10">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">axis.text =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_text</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">family =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"arial"</span>), </span>
+<span id="cb10-11">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">aspect.ratio =</span> .<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">7</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://matthewbjane.com/blog-posts/blog-post-10_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The predictive check looks quite good!</p>
+<p>Anyways… thats the post. Let me know if you have any suggestions or critiques.</p>
+</section>
+</section>
+<section id="session-info" class="level2">
+<h2 class="anchored" data-anchor-id="session-info">Session Info</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sessionInfo</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>R version 4.4.0 (2024-04-24)
+Platform: aarch64-apple-darwin20
+Running under: macOS Sonoma 14.1
+
+Matrix products: default
+BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
+LAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+time zone: America/New_York
+tzcode source: internal
+
+attached base packages:
+[1] stats     graphics  grDevices datasets  utils     methods   base     
+
+other attached packages:
+ [1] ggtext_0.1.2    ggdist_3.3.2    modelr_0.1.11   tidybayes_3.0.7
+ [5] brms_2.22.0     Rcpp_1.0.12     lubridate_1.9.3 forcats_1.0.0  
+ [9] stringr_1.5.1   dplyr_1.1.4     purrr_1.0.2     readr_2.1.5    
+[13] tidyr_1.3.1     tibble_3.2.1    ggplot2_3.5.1   tidyverse_2.0.0
+
+loaded via a namespace (and not attached):
+ [1] svUnit_1.0.6         tidyselect_1.2.1     viridisLite_0.4.2   
+ [4] farver_2.1.2         loo_2.8.0            fastmap_1.2.0       
+ [7] tensorA_0.36.2.1     digest_0.6.36        timechange_0.3.0    
+[10] lifecycle_1.0.4      StanHeaders_2.32.10  magrittr_2.0.3      
+[13] posterior_1.6.0      compiler_4.4.0       rlang_1.1.4         
+[16] tools_4.4.0          utf8_1.2.4           yaml_2.3.8          
+[19] knitr_1.47           labeling_0.4.3       bridgesampling_1.1-2
+[22] htmlwidgets_1.6.4    bit_4.0.5            pkgbuild_1.4.4      
+[25] plyr_1.8.9           xml2_1.3.6           abind_1.4-8         
+[28] withr_3.0.0          grid_4.4.0           stats4_4.4.0        
+[31] fansi_1.0.6          colorspace_2.1-0     inline_0.3.19       
+[34] scales_1.3.0         cli_3.6.3            mvtnorm_1.3-1       
+[37] rmarkdown_2.27       crayon_1.5.3         generics_0.1.3      
+[40] RcppParallel_5.1.9   rstudioapi_0.16.0    reshape2_1.4.4      
+[43] tzdb_0.4.0           commonmark_1.9.2     rstan_2.32.6        
+[46] bayesplot_1.11.1     parallel_4.4.0       matrixStats_1.4.1   
+[49] vctrs_0.6.5          Matrix_1.7-0         jsonlite_1.8.8      
+[52] hms_1.1.3            arrayhelpers_1.1-0   bit64_4.0.5         
+[55] glue_1.7.0           codetools_0.2-20     distributional_0.4.0
+[58] stringi_1.8.4        gtable_0.3.5         QuickJSR_1.3.1      
+[61] quadprog_1.5-8       munsell_0.5.1        pillar_1.9.0        
+[64] htmltools_0.5.8.1    Brobdingnag_1.2-9    R6_2.5.1            
+[67] vroom_1.6.5          evaluate_0.24.0      lattice_0.22-6      
+[70] markdown_1.13        backports_1.5.0      gridtext_0.1.5      
+[73] broom_1.0.6          renv_0.17.3          rstantools_2.4.0    
+[76] gridExtra_2.3        coda_0.19-4.1        nlme_3.1-164        
+[79] checkmate_2.3.1      xfun_0.45            pkgconfig_2.0.3     </code></pre>
+</div>
+</div>
+</section>
+<section id="citing-r-packages" class="level2">
+<h2 class="anchored" data-anchor-id="citing-r-packages">Citing R packages</h2>
+<p>The following packages were used in this post:</p>
+<ul>
+<li><code>brms</code> <span class="citation" data-cites="brms">(Bürkner 2021)</span></li>
+<li><code>tidyverse</code> <span class="citation" data-cites="tidyverse">(Wickham et al. 2019)</span></li>
+<li><code>ggdist</code> <span class="citation" data-cites="ggdist">(Kay 2023)</span></li>
+<li><code>modelr</code> <span class="citation" data-cites="modelr">(Wickham 2023)</span></li>
+<li><code>tidybayes</code> <span class="citation" data-cites="tidybayes">(Kay 2024)</span></li>
+</ul>
+<iframe src="https://embeds.beehiiv.com/f3ffd81a-4723-4419-bb1d-afc8af3bac36" data-test-id="beehiiv-embed" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius: 4px; border: 2px solid #33333322; margin: 0; background-color: transparent;">
+</iframe>
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
+<div id="ref-brms" class="csl-entry">
+Bürkner, Paul-Christian. 2021. <span>“Bayesian Item Response Modeling in <span>R</span> with <span class="nocase">brms</span> and <span>Stan</span>.”</span> <em>Journal of Statistical Software</em> 100 (5): 1–54. <a href="https://doi.org/10.18637/jss.v100.i05">https://doi.org/10.18637/jss.v100.i05</a>.
+</div>
+<div id="ref-ggdist" class="csl-entry">
+Kay, Matthew. 2023. <span>“Ggdist: Visualizations of Distributions and Uncertainty in the Grammar of Graphics.”</span> <a href="https://doi.org/10.31219/osf.io/2gsz6">https://doi.org/10.31219/osf.io/2gsz6</a>.
+</div>
+<div id="ref-tidybayes" class="csl-entry">
+———. 2024. <em><span class="nocase">tidybayes</span>: Tidy Data and Geoms for <span>Bayesian</span> Models</em>. <a href="https://doi.org/10.5281/zenodo.1308151">https://doi.org/10.5281/zenodo.1308151</a>.
+</div>
+<div id="ref-modelr" class="csl-entry">
+Wickham, Hadley. 2023. <em>Modelr: Modelling Functions That Work with the Pipe</em>. <a href="https://CRAN.R-project.org/package=modelr">https://CRAN.R-project.org/package=modelr</a>.
+</div>
+<div id="ref-tidyverse" class="csl-entry">
+Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. <span>“Welcome to the <span class="nocase">tidyverse</span>.”</span> <em>Journal of Open Source Software</em> 4 (43): 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.
+</div>
+</div></section></div> ]]></description>
+  <category>Individual Participant Data</category>
+  <category>Mental Health</category>
+  <category>Meta-Analysis</category>
+  <guid>https://matthewbjane.com/blog-posts/blog-post-10.html</guid>
+  <pubDate>Tue, 08 Oct 2024 04:00:00 GMT</pubDate>
+  <media:content url="https://matthewbjane.com/blog-posts/blog-image.png" medium="image" type="image/png" height="96" width="144"/>
+</item>
+<item>
   <title>Unjustifiable Methods and How I plan to fix this: a Response to Stein, Rausch, and Haidt</title>
   <dc:creator>Matthew B. Jané</dc:creator>
   <link>https://matthewbjane.com/blog-posts/blog-post-9.html</link>

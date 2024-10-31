@@ -14,12 +14,11 @@ sansfont: Asap
 # Matthew B. Jané
 
 ::: {.content-visible when-format="pdf"}
+{{< fa globe >}} [MatthewBJane.com](https://www.matthewbjane.github.io)
 
-{{< fa globe >}} [MatthewBJane.com](https://www.matthewbjane.github.io) 
+{{< fa envelope >}} [matthew.jane\@uconn.edu](mailto:matthew.jane@uconn.edu)
 
-{{< fa envelope >}} [matthew.jane\@uconn.edu](mailto:matthew.jane@uconn.edu) 
-
-{{< fa brands twitter >}} [\@MatthewBJane](https://www.x.com/MatthewBJane) 
+{{< fa brands twitter >}} [\@MatthewBJane](https://www.x.com/MatthewBJane)
 
 {{< fa brands github >}} [MatthewBJane](https://www.github.io/MatthewBJane)
 :::
@@ -42,9 +41,7 @@ sansfont: Asap
 
 -   **Jané, M. B.**, Xiao, Q., Yeung, S. K., Caldwell, A. R., Dunleavy, D. J., ... (2023) ***Guide to Effect Sizes and Confidence Intervals***. A collaborative guide to calculating, interpreting, and reporting effect sizes and confidence intervals. <https://matthewbjane.quarto.pub/effect-size-and-confidence-intervals-guide/>
 
--   **Jané, M. B.**, Kroc, E., Wiernik, B. M., Oswald, F. L., Johnson, B. T. (2023) ***Artifact Corrections for Effect Sizes***. An open-source book for correcting bias in effect size estimates contaminated by statistical artifacts. *In prepation*
-
-
+-   **Jané, M. B.**, Kroc, E., Wiernik, B. M., Oswald, F. L., Johnson, B. T. (2023) ***Artifact Corrections for Effect Sizes***. An open-source book for correcting bias in effect size estimates contaminated by statistical artifacts. https://matthewbjane.quarto.pub/artifact-corrections-for-effect-sizes/
 
 ## <i class="fa-solid fa-code"></i> Software
 
@@ -57,7 +54,6 @@ sansfont: Asap
 -   [<i class="fa-solid fa-diagram-project"></i> Shiny App]{.badge .rounded-pill .bg-primary} **Artifact Simulator**, A Shiny App for Visualizing Statistical Artifacts. [matthewbjane.shinyapps.io/effect_size_artifact_bias](matthewbjane.shinyapps.io/effect_size_artifact_bias)
 
 -   [<i class="fa-solid fa-globe"></i> Webpage]{.badge .rounded-pill .bg-primary} **Artifact Corrections for Effect Sizes**, A webpage documenting equations and code for effect size artifact corrections. [matthewbjane.com/ArtifactCorrections](matthewbjane.com/ArtifactCorrections)
-
 
 ## <i class="fa-solid fa-marker"></i> Peer Reviews
 
@@ -104,7 +100,6 @@ Harlow\*, T. J., **Jané\*, M. B.**, Read, H. L., & Chrobak, J. J. (2023). Memor
 [Data](https://doi.org/10.24433/CO.8495056.v1){.btn-sm .btn .btn-primary role="button" data-toggle="data" title="data"} [Code](https://doi.org/10.24433/CO.8495056.v1){.btn-sm .btn .btn-primary role="button" data-toggle="code" title="Data File"} [PDF](manuscripts/Jane2022_BioArxiv.pdf){.btn-sm .btn .btn-primary role="button" data-toggle="pdf" title="Data File"} [OSF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="osf" title="Data File"}
 :::
 :::
-
 
 <hr width="10%">
 
