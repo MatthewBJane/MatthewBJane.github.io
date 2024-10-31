@@ -1,21 +1,19 @@
 ---
-title: "Individual Person Data (IPD) Meta-Analysis with Beta Regression"
+title: "Individual Person Data (IPD) Meta-Analysis with Beta Regression in a Repeated-Measures Cross-Over Design"
 
 author: "Matthew B. Jané"
 image: "blog-image.png"
 image-height: "5%"
 toc: true
 code-fold: false
-date: 2024-10-08
+date: 2024-10-31
 description: "I worked on a [meta-analysis](https://www.frontiersin.org/journals/sleep/articles/10.3389/frsle.2023.1082253/full) along with my good friend [Tylor J. Harlow](https://x.com/tylor_harlow) on the effect of acoustic stimulations during slow-wave on memory retention. Since we have some individual participant data, I thought it would be fun to conduct an Individual Person Data (IPD) meta-analysis on it. Let me know if you have suggestions to improve this post."
 
 categories:
   - Individual Participant Data
-  - Mental Health
+  - Repeated Measures
   - Meta-Analysis
 
-title-meta: "Individual Person Data (IPD) Meta-Analysis with Beta Regression"
-author-meta: "Matthew B. Jané"
 image-meta: "blog-image.png"
 bibliography: references.bib
 ---
