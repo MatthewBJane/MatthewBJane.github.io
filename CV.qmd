@@ -58,9 +58,9 @@ sansfont: Asap
 
 ## <i class="fa-solid fa-chalkboard-user"></i> Consulting and Workshops
 
-- **Matthew B. Jané Consulting** statistical consulting services for clients in academia and industry research.
-- **Physalia Courses "Meta-Analysis in R" Workshop** hosted a four day workshop in meta-analysis with application to R programming language [www.physalia-courses.org/courses-workshops/metain-r/](https://www.physalia-courses.org/courses-workshops/metain-r/)
-- **R workshops for Ukraine "Meta-Analysis in R" Workshop** hosted a 2-hour workshop in meta-analysis with application to R programming language for charity [sites.google.com/view/dariia-mykhailyshyna/main/r-workshops-for-ukraine#h.qwn56mbd02im](https://sites.google.com/view/dariia-mykhailyshyna/main/r-workshops-for-ukraine#h.qwn56mbd02im).
+- **Matthew B. Jané Consulting** statistical consulting services for clients in academia and industry research. [matthewbjane.github.io/Consulting.html](https://matthewbjane.github.io/Consulting.html)
+- **Physalia Courses "Meta-Analysis in R" Workshop** hosted a four day workshop in meta-analysis with application to R programming language. [www.physalia-courses.org/courses-workshops/metain-r/](https://www.physalia-courses.org/courses-workshops/metain-r/)
+- **R workshops for Ukraine "Meta-Analysis in R" Workshop** hosted a 2-hour workshop in meta-analysis with application to R programming language for charity. [sites.google.com/view/dariia-mykhailyshyna/main/r-workshops-for-ukraine#h.qwn56mbd02im](https://sites.google.com/view/dariia-mykhailyshyna/main/r-workshops-for-ukraine#h.qwn56mbd02im).
 - **USF "Meta-Analysis in R" Workshop** hosted a 1-hour workshop in meta-analysis with application to R programming language for the University of South Florida.
 
 
