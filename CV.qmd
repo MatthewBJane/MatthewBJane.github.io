@@ -39,9 +39,9 @@ sansfont: Asap
 
 ## <i class="fa-solid fa-book"></i> Textbooks
 
--   **Jané, M. B.**, Xiao, Q., Yeung, S. K., Caldwell, A. R., Dunleavy, D. J., ... (2023) ***Guide to Effect Sizes and Confidence Intervals***. A collaborative guide to calculating, interpreting, and reporting effect sizes and confidence intervals. <https://matthewbjane.quarto.pub/effect-size-and-confidence-intervals-guide/>
+-   **Jané, M. B.**, Xiao, Q., Yeung, S. K., Caldwell, A. R., Dunleavy, D. J., ... (2023) ***Guide to Effect Sizes and Confidence Intervals***. A collaborative guide to calculating, interpreting, and reporting effect sizes and confidence intervals. *In Progress*. See preliminary version here: <https://matthewbjane.quarto.pub/effect-size-and-confidence-intervals-guide/>
 
--   **Jané, M. B.**, Kroc, E., Wiernik, B. M., Oswald, F. L., Johnson, B. T. (2023) ***Artifact Corrections for Effect Sizes***. An open-source book for correcting bias in effect size estimates contaminated by statistical artifacts. https://matthewbjane.quarto.pub/artifact-corrections-for-effect-sizes/
+-   **Jané, M. B.**, Kroc, E., Wiernik, B. M., Oswald, F. L., Johnson, B. T. (2023) ***Artifact Corrections for Effect Sizes***. An open-source book for correcting bias in effect size estimates contaminated by statistical artifacts. *In Progress*. See preliminary version here: https://matthewbjane.quarto.pub/artifact-corrections-for-effect-sizes/
 
 ## <i class="fa-solid fa-code"></i> Software
 
@@ -55,13 +55,34 @@ sansfont: Asap
 
 -   [<i class="fa-solid fa-globe"></i> Webpage]{.badge .rounded-pill .bg-primary} **Artifact Corrections for Effect Sizes**, A webpage documenting equations and code for effect size artifact corrections. [matthewbjane.com/ArtifactCorrections](matthewbjane.com/ArtifactCorrections)
 
-## <i class="fa-solid fa-marker"></i> Peer Reviews
 
--   **Psychological Bulletin**, 2 reviews
--   **Advances in Methods and Practices in Psychological Science**, 1 review
--   
+## <i class="fa-solid fa-chalkboard-user"></i> Consulting and Workshops
+
+- **Matthew B. Jané Consulting** statistical consulting services for clients in academia and industry research.
+- **Physalia Courses "Meta-Analysis in R" Workshop** hosted a four day workshop in meta-analysis with application to R programming language [www.physalia-courses.org/courses-workshops/metain-r/](https://www.physalia-courses.org/courses-workshops/metain-r/)
+- **R workshops for Ukraine "Meta-Analysis in R" Workshop** hosted a 2-hour workshop in meta-analysis with application to R programming language for charity [sites.google.com/view/dariia-mykhailyshyna/main/r-workshops-for-ukraine#h.qwn56mbd02im](https://sites.google.com/view/dariia-mykhailyshyna/main/r-workshops-for-ukraine#h.qwn56mbd02im).
+- **USF "Meta-Analysis in R" Workshop** hosted a 1-hour workshop in meta-analysis with application to R programming language for the University of South Florida.
+
+
+## <i class="fa-solid fa-chalkboard-user"></i> Scientific Communication
+
+- **Meta-Analysis Magic Blog** blog discussing statistical modeling and other quantitative topics in meta-analysis and measurement.
+- **X/Twitter and Blue Sky** using twitter and bluesky as a means of scientific communication.
+
 
 ## <i class="fa-solid fa-file-lines"></i> Publications
+
+
+**Jané, M. B.**, Harlow, T. J., Khu, E. C., and colleagues (2024). Extracting Pre-Post Correlations for Meta-Analyses of Repeated Measures Designs https://matthewbjane.quarto.pub/pre-post-correlations/ *Manuscript in Preparation.*
+
+::: {.content-visible when-format="html"}
+::: {.btn-group role="group" aria-label="Open Science Links"}
+[Data](){.btn-sm .btn .disabled .btn-primary role="button" data-toggle="data" title="data"} [Code](https://matthewbjane.quarto.pub/pre-post-correlations/){.btn-sm .btn .btn-primary role="button" data-toggle="code" title="Data File"} [PDF](https://osf.io/nx96q){.btn-sm .btn .btn-primary role="button" data-toggle="pdf" title="Data File"} [OSF](https://osf.io/hzj4d/){.btn-sm .btn .btn-primary role="button" data-toggle="osf" title="Data File"}
+:::
+:::
+
+<hr width="10%">
+
 
 Johnson, B. T., **Jané, M. B.**, Curley, C. (2023). Methodological Quality in Research in Health Psychology. *Under review at Sage Journal of Health Psychology.*
 
@@ -112,6 +133,7 @@ Harlow\*, T. J., **Jané\*, M. B.**, Read, H. L., & Chrobak, J. J. (2023). Memor
 :::
 
 <hr width="10%">
+
 
 ```{=html}
 <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="matthewbjane" data-description="Support me on Buy me a coffee!" data-message="" data-color="#f1f9fa" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
