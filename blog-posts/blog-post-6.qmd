@@ -129,7 +129,7 @@ library(readxl)
 library(psychmeta)
 
 # download data from OSF repo
-read_xlsx("~/Documents/MatthewBJane/blog-posts/Best Practices Coding Experiments.xlsx")
+read_xlsx("~/Documents/MatthewBJane.nosync/blog-posts/Best Practices Coding Experiments.xlsx")
 
 # load in dataset and filter out studies without data
 dat <- read_excel("Best Practices Coding Experiments.xlsx",
