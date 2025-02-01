@@ -14,7 +14,7 @@ sansfont: Asap
 
 <hr>
 
-::: {layout="[ 25, 80 ]"}
+::::: {layout="[ 25, 80 ]"}
 ::: {#first-column}
 ![](themeparklogo.png)
 :::
@@ -26,11 +26,11 @@ Generating popular culture styled ggplot themes. Featured on [rweekly.org](https
 
 [{{< fa brands github >}} Github Repository](https://github.com/MatthewBJane/theme_park){.btn .btn-primary .btn-sm role="button" data-toggle="data" title="Data File"}
 :::
-:::
+:::::
 
 <hr>
 
-::: {layout="[ 25, 80 ]"}
+::::: {layout="[ 25, 80 ]"}
 <div>
 
 ![](posclogo.png)
@@ -46,11 +46,11 @@ An R Package for generating Probability of Outcome Superiority Curves (POSCs).
 [{{< fa brands github >}} Github Repository](https://github.com/MatthewBJane/posc){.btn .btn-primary .btn-sm role="button" data-toggle="data" title="Data File"}
 
 </div>
-:::
+:::::
 
 <hr>
 
-::: {layout="[ 25, 80 ]"}
+::::: {layout="[ 25, 80 ]"}
 <div>
 
 ![](opensynthesislogo.png)
@@ -66,11 +66,11 @@ Website cataloging publicly available meta-analytic databases.
 [{{< fa brands github >}} Github Repository](https://github.com/MatthewBJane/opensynthesis){.btn .btn-primary .btn-sm role="button" data-toggle="data" title="Data File"} [{{< fa globe >}} Webpage](https://matthewbjane.com/opensynthesis/){.btn .btn-primary .btn-sm role="button" data-toggle="data" title="Data File"}
 
 </div>
-:::
+:::::
 
 <hr>
 
-::: {layout="[ 25, 80 ]"}
+::::: {layout="[ 25, 80 ]"}
 <div>
 
 ![](artifactsimulatorlogo.png)
@@ -86,67 +86,8 @@ A Shiny App for Visualizing Statistical Artifacts.
 [{{< fa diagram-project >}} Shiny App](matthewbjane.shinyapps.io/effect_size_artifact_bias){.btn .btn-primary .btn-sm role="button" data-toggle="data" title="Data File"}
 
 </div>
-:::
+:::::
 
-<hr>
-
-::: {layout="[ 25, 80 ]"}
-<div>
-
-![](artifactcorrectionslogo.png)
-
-</div>
-
-<div>
-
-### Artifact Corrections for Effect Sizes
-
-A webpage documenting equations and code for effect size artifact corrections. MatthewBJane.com/ArtifactCorrections
-
-[{{< fa link >}} Webpage](ArtifactCorrections.html){.btn .btn-primary .btn-sm role="button" data-toggle="data" title="Data File"}
-
-</div>
-:::
-
-<hr>
-
-::: {layout="[ 25, 80 ]"}
-<div>
-
-![](metaanalysislogo.png)
-
-</div>
-
-<div>
-
-### Meta-Analysis Data & Code
-
-Repository of data and code for all meta-analytic projects.
-
-[{{< fa brands github >}} Github Repository](https://github.com/MatthewBJane/meta-analysis-project-data-code){.btn .btn-primary .btn-sm role="button" data-toggle="data" title="Data File"}
-
-</div>
-:::
-
-<hr>
-
-::: {layout="[ 25, 80 ]"}
-<div>
-
-![](primarystudylogo.png)
-
-</div>
-
-<div>
-
-### Primary Study Data & Code
-
-Repository of data and code for all primary study projects.
-
-[{{< fa brands github >}} Github Repository](https://github.com/MatthewBJane/primary-study-project-data-code){.btn .btn-primary .btn-sm role="button" data-toggle="data" title="Data File"}
-
-</div>
-:::
 
 ```{=html}
 <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="matthewbjane" data-description="Support me on Buy me a coffee!" data-message="" data-color="#ED5C9B" data-position="Right" data-x_margin="18" data-y_margin="18"></script>

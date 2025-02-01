@@ -47,13 +47,12 @@ sansfont: Asap
 
 -   [<i class="fa-solid fa-cube"></i> R Package]{.badge .rounded-pill .bg-primary} **ThemePark**, Generating popular culture styled ggplot themes. [github.com/MatthewBJane/theme_park](https://github.com/MatthewBJane/theme_park). Featured on [rweekly.org](https://rweekly.org/2023-W32.html) and [flowingdata.com](https://flowingdata.com/2023/07/28/barbie-and-oppenheimer-themes-for-charts-in-r/)
 
--   [<i class="fa-solid fa-cube"></i> R Package]{.badge .rounded-pill .bg-primary} **POSC** An R Package for generating Probability of Outcome Superiority Curves (POSCs). [github.com/MatthewBJane/ThemePark](https://github.com/MatthewBJane/ThemePark)
+-   [<i class="fa-solid fa-cube"></i> R Package]{.badge .rounded-pill .bg-primary} **POSC** An R Package for generating Probability of Outcome Superiority Curves (POSCs). [github.com/MatthewBJane/posc](https://github.com/MatthewBJane/posc)
 
 -   [<i class="fa-solid fa-database"></i> Database]{.badge .rounded-pill .bg-primary} **OpenSynthesis**, website cataloging publicly available meta-analytic databases. [matthewbjane.com/opensynthesis](https://matthewbjane.com/opensynthesis)
 
 -   [<i class="fa-solid fa-diagram-project"></i> Shiny App]{.badge .rounded-pill .bg-primary} **Artifact Simulator**, A Shiny App for Visualizing Statistical Artifacts. [matthewbjane.shinyapps.io/effect_size_artifact_bias](matthewbjane.shinyapps.io/effect_size_artifact_bias)
 
--   [<i class="fa-solid fa-globe"></i> Webpage]{.badge .rounded-pill .bg-primary} **Artifact Corrections for Effect Sizes**, A webpage documenting equations and code for effect size artifact corrections. [matthewbjane.com/ArtifactCorrections](matthewbjane.com/ArtifactCorrections)
 
 
 ## <i class="fa-solid fa-chalkboard-user"></i> Consulting and Workshops
