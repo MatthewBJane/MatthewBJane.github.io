@@ -1521,174 +1521,6 @@ Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino 
   <media:content url="https://matthewbjane.com/blog-posts/blog-image.png" medium="image" type="image/png" height="96" width="144"/>
 </item>
 <item>
-  <title>Unjustifiable Methods and How I plan to fix this: a Response to Stein, Rausch, and Haidt</title>
-  <dc:creator>Matthew B. Jané</dc:creator>
-  <link>https://matthewbjane.com/blog-posts/deleted_post.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<a href="https://www.buymeacoffee.com/matthewbjane"><img src="https://img.buymeacoffee.com/button-api/?text=Support my work&amp;emoji=☕&amp;slug=matthewbjane&amp;button_colour=ed5c9b&amp;font_colour=ffffff&amp;font_family=Arial&amp;outline_colour=ffffff&amp;coffee_colour=ffffff"></a>
-<p><br></p>
-<section id="introducing-a-living-meta-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="introducing-a-living-meta-analysis">Introducing a Living Meta-Analysis</h2>
-<p>I have (along with help from others) created a page on my website that hosts the code and results of a living meta-analysis of RCTs of social media reduction studies for mental health outcomes (depression and anxiety, specifically). The meta-analysis can be found here: <a href="https://matthewbjane.com/social_media_mental_health.html">matthewbjane.com/social_media_mental_health.html</a>. Since the effect sizes in Ferguson’s database had multiple flaws (miscalculated effect sizes, pooled across conceptually different measures, did not code mid-intervention effects), I decided to fully recalculate all the effect sizes for anxiety and depression separately, obtain as many time-points in each study as I could, and construct a multi-level model to account for effect dependency. I think probably most people will agree that the resulting model, follows much more appropriate statistical practices than Haidt, Rausch, and Stein’s (RH&amp;S) approach.</p>
-<p>This site will be completely open to changes, critiques, or additions (open an issue on my github repository, DM me on twitter/blue-sky, or email me at matthewbjane@gmail.com). This should be the first site that Haidt, Rausch, and Stein refer to before they make causal claims.</p>
-<p>If there are any errors at all, let me know and I will make the change ASAP.</p>
-</section>
-<section id="pre-print-by-thrul-et-al." class="level2">
-<h2 class="anchored" data-anchor-id="pre-print-by-thrul-et-al.">Pre-print by Thrul et al.</h2>
-<p>A re-analysis of Ferguson’s meta-analysis by <a href="https://osf.io/preprints/psyarxiv/degba?view_only=">Thrul et al.</a> makes many of the same mistakes that RH&amp;S did. They dichotomize time again to show that effects after one week are positive and effects less than one week are negative. Aside from the fact that there were errors in the data base, <strong>dichotomizing time is virtually never a good modeling approach</strong>. The one-week cut-point differed from Haidt, Rausch, and Stein’s cut-point of 2 weeks. In my last post on this debate, I demonstrated how RH&amp;S’s cut-point of 2 weeks is arbitrary and prone to nose mining (if I change the cut-point to <em>greater</em> than two weeks rather than <em>2 weeks or greater</em> the effect size changes considerably, around a ~50% decrease).</p>
-<p>As for their non-linear model (which is almost identical to what I did in my second post almost a month ago), it is unclear what their model is? Also, there are no confidence intervals or prediction intervals and the points being the same size makes it seem like they did not weight it?</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://matthewbjane.com/blog-posts/thrul_table.png" class="img-fluid figure-img"></p>
-<figcaption>Table from Thrul et al.</figcaption>
-</figure>
-</div>
-<p>This is the entire methods section from Thrul et al.:</p>
-<blockquote class="blockquote">
-<p>We used the information available on the OSF platform related to the original meta-analysis (https://osf.io/jcha2). We then reviewed all included studies (https://osf.io/27dx6). Of the 27 originally included studies, we excluded 7 studies because they were not reduction / abstinence interventions (see online supplement). For example, these studies tested the psychological impact of short sessions of social media use (e.g., active vs.&nbsp;passive use; browsing vs.&nbsp;communicating) (Yuen et al., 2019). We extracted the length of intervention for all studies and categorized them into studies that intervened on social media use for less than 1 week vs.&nbsp;1 week or longer (see online supplement). Moreover, we also tested intervention length as a continuous variable, using number of weeks as well as number of days as moderator and testing curvilinear relationships by including quadratic terms. All effect sizes were taken from the OSF platform. Random-effects models were estimated using the metafor package in R.</p>
-</blockquote>
-<p>This paper has been accepted at <em>Psychology of Popular Media</em>. This paper contains results based on incorrect data, unclear methods, and artificial dichotomization. I do not think it should be published. I will be writing a more formal response, soon.</p>
-<p>Jonathan Haidt then uses this meta-analysis, ignores the curvilinear relationship and then makes a tweet stating:</p>
-<blockquote class="blockquote">
-<p>A new meta-analysis, in press, from @drjthrul et al, using data from the @CJFerguson1111 analysis, finds that “interventions of less than 1 week resulted in significantly worse mental health outcomes (d=-0.168, SE=0.058, p=.004), while interventions of 1 week or longer resulted in significant improvements (d=0.169, SE=0.065, p=.01). Researchers and journalist should stop saying that the evidence is”just correlational.” There is experimental evidence too. We can certainly debate what this all means, but there is a body of experiments that points, pretty consistently, to benefits from reducing social media use, as long as the reduction goes on long enough to get past withdrawal effects.</p>
-</blockquote>
-<p>Of course, this is using, yet again, an arbitrary cut-point to prove the same point <em>and</em> analyzed on a database with incorrect effect sizes. I have modeled it continuously and now with the new living meta, this should be abundantly clear. I followed up to his tweet with the following reply:</p>
-<p></p><div id="tweet-29525"></div><script>tweet=<!DOCTYPE html>
-<html lang="en" class="dog">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>X / ?</title>
-    <meta name="version" content="1">
-    <link href="https://abs.twimg.com/favicons/twitter.3.ico" rel="shortcut icon" type="image/x-icon">
-    <link rel="stylesheet" href="https://abs.twimg.com/errors/fullscreen_errors-047ca1475a6efac7c9c89a9ff92b7a20.css">
-  </head>
-  <body dir="auto">
-    <div class="top">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1519 200">
-        <defs/>
-        <path d="M708 103l9-5 13 1 2-2 5 1h8l1-1 42-5h7l7 3v1l12-2a9368 9368 0 0129-6l2-5 12 1 6-2 3 1 2 1v-2l13-2v1l4 2 7-1h1l17-3 1 2 4-1 18-7 3-1 4-1h9l13-1 1-4 3-2 13 1v2l22-2 10-3h6l10 5 16-5 15-3 2-1 8-4 6-2 12-1 7-2 8 5 7 1 22-9h7l5-1v-1l25-3 1 2 5 2v1h11l2 1 8-4h3l-1 1h11l10-6 6 3 9-1 4-1 1 1 1-2 6-1 1-1 10-2h2l7-5v1h4l3-1c11 0 23 2 34-3 2-2 7 0 10 0l12 1 4 1 9 2 12-1 11-3 11 1h4l10-6 17 1 2 1c9 2 19-3 22-11l1-1 9 1 15-5c3-1 9 4 9-5 5 0 5 3 5 7l2 3 4-1 4-2 9-4 3-3h3l8-4 6-3 26 2 7-4h18l7 1c10 3 13-6 17-12l8 4 3-1 14-3 15-2a38 38 0 01-5-1l-8-4 7-8 8-4-10-136-922 71 16 205z"/>
-        <path d="M-36 193l9-5 13 1 2-2 5 1h8l1-1 42-5h7l7 3v1l12-2a9328 9328 0 0129-6l2-5 12 1 6-2 3 1 2 1v-2l13-2v1l4 2 7-1h1l17-3 1 2 4-1 18-7 3-1 4-1h9l13-1 1-4 3-2 13 1v2l22-2 10-3h6l10 5 16-5 15-3 2-1 8-4 6-2 12-1 7-2 8 5 7 1 22-9h7l5-1v-1l25-3 1 2 5 2v1h11l2 1 8-4h3l-1 1h9a6 6 0 002 0l10-6 6 3 9-1 4-1a6 6 0 001 1l1-2 6-1 1-1 10-2h2l7-5v1h4l3-1c11 0 23 2 34-3 2-2 7 0 10 0l12 1 4 1 9 2 12-1 11-3 11 1h4l10-6 17 1 2 1c9 2 19-3 22-11l1-1 9 1 15-5c3-1 9 4 9-5 5 0 5 3 5 7l2 3 4-1 4-2 9-4 3-3h3l8-4 6-3 26 2 7-4h18l7 1c10 3 13-6 17-12l8 4 3-1 14-3 15-2a37 37 0 01-5-1l-8-4 7-8 8-4-10-136-922 71 16 205z"/>
-      </svg>
-    </div>
-    <div class="container">
-      <div class="content">
-        <a href="https://twitter.com" title="X logo">
-          <svg viewBox="0 0 24 24" aria-hidden="true" class="x-logo"><g><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></g></svg>
-        </a>
-        <h1 id="header">Nothing to see here</h1>
-        <p id="description">Looks like this page doesn’t exist. Here’s a picture of a poodle sitting in a chair for your trouble.</p>
-
-          <a id="button_search" href="/" class="button">Looking for this?</a>
-
-      </div>
-      <img id="image" src="https://abs.twimg.com/errors/ErrorState_NotFound.png" alt="A primped poodle with a bow in its hair sitting in a chair like a human.">
-      <div class="footer">
-        <ul>
-          <li><a href="https://twitter.com/" id="footer_home">Home</a></li>
-          <li><a href="https://status.twitterstat.us/" id="footer_status">Status</a></li>
-          <li><a href="https://twitter.com/tos" id="footer_tos">Terms of Service</a></li>
-          <li><a href="https://twitter.com/privacy" id="footer_privacy">Privacy Policy</a></li>
-          <li><a href="https://support.twitter.com/articles/20170514" id="footer_cookie">Cookie Policy</a></li>
-          <li><a href="https://legal.twitter.com/imprint" id="footer_imprint">Imprint</a></li>
-          <li><a href="https://business.twitter.com/en/help/troubleshooting/how-twitter-ads-work.html" id="footer_ads">Ads info</a></li>
-          <li dir="ltr">&copy; X Corp. <span id="copyright-year">&emsp;&emsp;&emsp;&emsp;</span></li>
-        </ul>
-      </div>
-    </div>
-  </body>
-  <script src="https://abs.twimg.com/errors/404-8651f633fd193e0b546010676a4fac06.js"></script>
-
-;document.getElementById("tweet-29525").innerHTML = tweet["html"];<p></p>
-<p>Anyways, that is it from me. Here is a much nicer note about causality in these RCTs from Stephen J. Wild.</p>
-</section>
-<section id="a-note-on-causality-in-these-rcts-by-stephen-j.-wild" class="level2">
-<h2 class="anchored" data-anchor-id="a-note-on-causality-in-these-rcts-by-stephen-j.-wild">A note on causality in these RCTs (by Stephen J. Wild)</h2>
-<p>Figuring out the causal effect social media and mental health is difficult. Social media affects mental health through both direct and indirect paths, some of which we can close in reduction or exposure experiments, and some of which we can’t. On top of everything below, we have the usual internal and external validity threats. Among the two biggest issues that likely affect the Ferguson meta-analysis, we cannot agree on the definition of social media or social media use and we do not have a clear and well-measured outcome. Even when we do a well-designed and executed experiment, a number of other challenges threaten our attempts at causal inference.</p>
-<p>First we have interference and spillovers, where the causal effect of our exposure affects units other than the unit under study. For social media, it means that social media use doesn’t just affect the person in the study, but also affects their friends and family. Second is effect heterogeneity and the power of our study. We can and should expect social media to affect different groups differently. Yet many of our studies are not powered to detect small effects, let alone small effects in different subgroups. Third is statistical under or over control, where we include the wrong <a href="https://journals.sagepub.com/doi/full/10.1177/00491241221099552">control variables</a>. We include colliders where we shouldn’t, mediators that block the causal path, and fail to include confounders where we should. Fourth includes failure to account for feedback loops, where our exposure (social media) influences our outcome (mental health), which in turn affects our exposure (we have worse mental health so in turn use more social media, and repeat). And a fifth reason involves substitution effects and the proper attribution of causality. When we reduce our social media use, we increase our time spent on other activities. Is the causal effect due to reduced social media use, or an increase in the other activities?</p>
-</section>
-<section id="session-info" class="level2">
-<h2 class="anchored" data-anchor-id="session-info">Session Info</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sessionInfo</span>()</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>R version 4.4.2 (2024-10-31)
-Platform: aarch64-apple-darwin20
-Running under: macOS Sonoma 14.1
-
-Matrix products: default
-BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
-LAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
-
-locale:
-[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
-
-time zone: America/New_York
-tzcode source: internal
-
-attached base packages:
-[1] stats     graphics  grDevices datasets  utils     methods   base     
-
-loaded via a namespace (and not attached):
- [1] htmlwidgets_1.6.4 compiler_4.4.2    fastmap_1.2.0     cli_3.6.3        
- [5] htmltools_0.5.8.1 tools_4.4.2       rstudioapi_0.16.0 yaml_2.3.8       
- [9] rmarkdown_2.27    knitr_1.47        jsonlite_1.8.8    xfun_0.45        
-[13] digest_0.6.36     rlang_1.1.4       renv_0.17.3       evaluate_0.24.0  </code></pre>
-</div>
-</div>
-</section>
-<section id="citing-r-packages" class="level2">
-<h2 class="anchored" data-anchor-id="citing-r-packages">Citing R packages</h2>
-<p>The following packages were used in this post:</p>
-<ul>
-<li><code>brms</code> <span class="citation" data-cites="brms">(Bürkner 2021)</span></li>
-<li><code>mgcv</code> <span class="citation" data-cites="splines">(R Core Team 2024)</span></li>
-<li><code>tidyverse</code> <span class="citation" data-cites="tidyverse">(Wickham et al. 2019)</span></li>
-<li><code>ggdist</code> <span class="citation" data-cites="ggdist">(Kay 2023)</span></li>
-<li><code>modelr</code> <span class="citation" data-cites="modelr">(Wickham 2023)</span></li>
-<li><code>tidybayes</code> <span class="citation" data-cites="tidybayes">(Kay 2024)</span></li>
-</ul>
-<iframe src="https://embeds.beehiiv.com/f3ffd81a-4723-4419-bb1d-afc8af3bac36" data-test-id="beehiiv-embed" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius: 4px; border: 2px solid #33333322; margin: 0; background-color: transparent;">
-</iframe>
-
-
-
-</section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
-<div id="ref-brms" class="csl-entry">
-Bürkner, Paul-Christian. 2021. <span>“Bayesian Item Response Modeling in <span>R</span> with <span class="nocase">brms</span> and <span>Stan</span>.”</span> <em>Journal of Statistical Software</em> 100 (5): 1–54. <a href="https://doi.org/10.18637/jss.v100.i05">https://doi.org/10.18637/jss.v100.i05</a>.
-</div>
-<div id="ref-ggdist" class="csl-entry">
-Kay, Matthew. 2023. <span>“Ggdist: Visualizations of Distributions and Uncertainty in the Grammar of Graphics.”</span> <a href="https://doi.org/10.31219/osf.io/2gsz6">https://doi.org/10.31219/osf.io/2gsz6</a>.
-</div>
-<div id="ref-tidybayes" class="csl-entry">
-———. 2024. <em><span class="nocase">tidybayes</span>: Tidy Data and Geoms for <span>Bayesian</span> Models</em>. <a href="https://doi.org/10.5281/zenodo.1308151">https://doi.org/10.5281/zenodo.1308151</a>.
-</div>
-<div id="ref-splines" class="csl-entry">
-R Core Team. 2024. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
-</div>
-<div id="ref-modelr" class="csl-entry">
-Wickham, Hadley. 2023. <em>Modelr: Modelling Functions That Work with the Pipe</em>. <a href="https://CRAN.R-project.org/package=modelr">https://CRAN.R-project.org/package=modelr</a>.
-</div>
-<div id="ref-tidyverse" class="csl-entry">
-Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. <span>“Welcome to the <span class="nocase">tidyverse</span>.”</span> <em>Journal of Open Source Software</em> 4 (43): 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.
-</div>
-</div></section></div> ]]></description>
-  <category>Social Media</category>
-  <category>Mental Health</category>
-  <category>Meta-Analysis</category>
-  <guid>https://matthewbjane.com/blog-posts/deleted_post.html</guid>
-  <pubDate>Tue, 08 Oct 2024 04:00:00 GMT</pubDate>
-  <media:content url="https://matthewbjane.com/blog-posts/blog-image.png" medium="image" type="image/png" height="96" width="144"/>
-</item>
-<item>
   <title>Generalized Additive Models (GAMs) for Meta-Regression using brms</title>
   <dc:creator>Matthew B. Jané</dc:creator>
   <link>https://matthewbjane.com/blog-posts/blog-post-8.html</link>
@@ -3266,7 +3098,7 @@ Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino 
 <p>The reanalysis doesn’t use an appropriate statistical model. It simply calculates an unweighted average across different studies, doesn’t provide confidence intervals, and misinterprets the evidence</p>
 </blockquote>
 <p>All these points are unequivocally true. However, Haidt then posted the following tweet,</p>
-<p></p><div id="tweet-68987"></div><script>tweet={"url":"https:\/\/twitter.com\/JonHaidt\/status\/1830583665891385415","author_name":"Jonathan Haidt","author_url":"https:\/\/twitter.com\/JonHaidt","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI&#39;m glad to see the community note has been toned down. But it is still inappropriate. Our post was about how there are so many errors in the Ferguson meta, including errors in sample sizes and effect sizes, that we can&#39;t yet do weighting or confidence intervals. We are taking…\u003C\/p\u003E&mdash; Jonathan Haidt (@JonHaidt) \u003Ca href=\"https:\/\/twitter.com\/JonHaidt\/status\/1830583665891385415?ref_src=twsrc%5Etfw\"\u003ESeptember 2, 2024\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-68987").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-95267"></div><script>tweet={"url":"https:\/\/twitter.com\/JonHaidt\/status\/1830583665891385415","author_name":"Jonathan Haidt","author_url":"https:\/\/twitter.com\/JonHaidt","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI&#39;m glad to see the community note has been toned down. But it is still inappropriate. Our post was about how there are so many errors in the Ferguson meta, including errors in sample sizes and effect sizes, that we can&#39;t yet do weighting or confidence intervals. We are taking…\u003C\/p\u003E&mdash; Jonathan Haidt (@JonHaidt) \u003Ca href=\"https:\/\/twitter.com\/JonHaidt\/status\/1830583665891385415?ref_src=twsrc%5Etfw\"\u003ESeptember 2, 2024\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-95267").innerHTML = tweet["html"];</script><p></p>
 <p>This tweet seemed to get his followers to rate the community note as unhelpful and thus it was taken down again. Of course, it is difficult to maintain a community note with Haidt’s large following. So I guess we will have to treat these blog posts as a much more detailed community note.</p>
 </section>
 <section id="rhs-analysis-was-unequivocally-a-meta-analysis" class="level2">
@@ -3308,7 +3140,7 @@ Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino 
 <section id="controversy-surrounding-the-study-by-collis-and-egger-2022" class="level2">
 <h2 class="anchored" data-anchor-id="controversy-surrounding-the-study-by-collis-and-egger-2022">Controversy surrounding the study by Collis and Egger (2022)</h2>
 <p>R&amp;H’s primary critique of my analysis was that Collis and Egger’s (2022) study shouldn’t be included because the manipulation check failed. From my reading of the paper, the treatment group did demonstrate lower screen time for facebook, instagram, and snapchat, however <em>higher</em> for instant messaging apps, news/media, gaming, as well as overall screen time. R&amp;H mention WhatsApp as one of the primary apps that people replaced social media with. It does not seem that people really consider instant messaging like WhatsApp a form of social media (see poll results below):</p>
-<p></p><div id="tweet-25115"></div><script>tweet={"url":"https:\/\/twitter.com\/MatthewBJane\/status\/1830399884299481182","author_name":"Matthew B Jané","author_url":"https:\/\/twitter.com\/MatthewBJane","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EWould you consider WhatsApp and other instant messaging Apps as “Social Media”?\u003C\/p\u003E&mdash; Matthew B Jané (@MatthewBJane) \u003Ca href=\"https:\/\/twitter.com\/MatthewBJane\/status\/1830399884299481182?ref_src=twsrc%5Etfw\"\u003ESeptember 2, 2024\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-25115").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-23997"></div><script>tweet={"url":"https:\/\/twitter.com\/MatthewBJane\/status\/1830399884299481182","author_name":"Matthew B Jané","author_url":"https:\/\/twitter.com\/MatthewBJane","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EWould you consider WhatsApp and other instant messaging Apps as “Social Media”?\u003C\/p\u003E&mdash; Matthew B Jané (@MatthewBJane) \u003Ca href=\"https:\/\/twitter.com\/MatthewBJane\/status\/1830399884299481182?ref_src=twsrc%5Etfw\"\u003ESeptember 2, 2024\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-23997").innerHTML = tweet["html"];</script><p></p>
 <p>It does not seem clear to me that this is a failed manipulation check, especially considering total digital screen time is not the target intervention variable. R&amp;H also mention there is no evidence that other social media apps were used:</p>
 <blockquote class="blockquote">
 <p>In addition, there is no evidence that participants reduced their use of other social media platforms such as TikTok, YouTube, Twitter, and Reddit (all of which were widely used by college students in 2019).</p>
