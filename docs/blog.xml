@@ -1524,7 +1524,7 @@ font-style: inherit;">sessionInfo</span>()</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>R version 4.4.2 (2024-10-31)
 Platform: aarch64-apple-darwin20
-Running under: macOS Sonoma 14.1
+Running under: macOS Sequoia 15.4.1
 
 Matrix products: default
 BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
@@ -3195,7 +3195,7 @@ Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino 
 <p>The reanalysis doesn’t use an appropriate statistical model. It simply calculates an unweighted average across different studies, doesn’t provide confidence intervals, and misinterprets the evidence</p>
 </blockquote>
 <p>All these points are unequivocally true. However, Haidt then posted the following tweet,</p>
-<p></p><div id="tweet-94896"></div><script>tweet=<!DOCTYPE html>
+<p></p><div id="tweet-60114"></div><script>tweet=<!DOCTYPE html>
 <html lang="en" class="dog">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -3241,7 +3241,7 @@ Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino 
   </body>
   <script src="https://abs.twimg.com/errors/404-8651f633fd193e0b546010676a4fac06.js"></script>
 
-;document.getElementById("tweet-94896").innerHTML = tweet["html"];<p></p>
+;document.getElementById("tweet-60114").innerHTML = tweet["html"];<p></p>
 <p>This tweet seemed to get his followers to rate the community note as unhelpful and thus it was taken down again. Of course, it is difficult to maintain a community note with Haidt’s large following. So I guess we will have to treat these blog posts as a much more detailed community note.</p>
 </section>
 <section id="rhs-analysis-was-unequivocally-a-meta-analysis" class="level2">
@@ -3283,7 +3283,7 @@ Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino 
 <section id="controversy-surrounding-the-study-by-collis-and-egger-2022" class="level2">
 <h2 class="anchored" data-anchor-id="controversy-surrounding-the-study-by-collis-and-egger-2022">Controversy surrounding the study by Collis and Egger (2022)</h2>
 <p>R&amp;H’s primary critique of my analysis was that Collis and Egger’s (2022) study shouldn’t be included because the manipulation check failed. From my reading of the paper, the treatment group did demonstrate lower screen time for facebook, instagram, and snapchat, however <em>higher</em> for instant messaging apps, news/media, gaming, as well as overall screen time. R&amp;H mention WhatsApp as one of the primary apps that people replaced social media with. It does not seem that people really consider instant messaging like WhatsApp a form of social media (see poll results below):</p>
-<p></p><div id="tweet-58293"></div><script>tweet=<!DOCTYPE html>
+<p></p><div id="tweet-66985"></div><script>tweet=<!DOCTYPE html>
 <html lang="en" class="dog">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -3329,7 +3329,7 @@ Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino 
   </body>
   <script src="https://abs.twimg.com/errors/404-8651f633fd193e0b546010676a4fac06.js"></script>
 
-;document.getElementById("tweet-58293").innerHTML = tweet["html"];<p></p>
+;document.getElementById("tweet-66985").innerHTML = tweet["html"];<p></p>
 <p>It does not seem clear to me that this is a failed manipulation check, especially considering total digital screen time is not the target intervention variable. R&amp;H also mention there is no evidence that other social media apps were used:</p>
 <blockquote class="blockquote">
 <p>In addition, there is no evidence that participants reduced their use of other social media platforms such as TikTok, YouTube, Twitter, and Reddit (all of which were widely used by college students in 2019).</p>

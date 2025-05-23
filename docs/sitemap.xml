@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://matthewbjane.com/blog-posts/blog-post-11.html</loc>
-    <lastmod>2025-05-23T22:13:55.756Z</lastmod>
-  </url>
-  <url>
     <loc>https://matthewbjane.com/blog.html</loc>
     <lastmod>2024-10-04T16:58:05.178Z</lastmod>
   </url>
@@ -17,24 +13,52 @@
     <lastmod>2025-02-01T04:33:46.050Z</lastmod>
   </url>
   <url>
-    <loc>https://matthewbjane.com/blog-posts/blog-post-6.html</loc>
-    <lastmod>2024-11-02T01:45:12.431Z</lastmod>
+    <loc>https://matthewbjane.com/blog-posts/blog-post-11.html</loc>
+    <lastmod>2025-05-23T22:13:55.756Z</lastmod>
   </url>
   <url>
-    <loc>https://matthewbjane.com/blog-posts/blog-post-5.html</loc>
-    <lastmod>2024-06-27T14:23:39.524Z</lastmod>
-  </url>
-  <url>
-    <loc>https://matthewbjane.com/blog-posts/blog-post-1.html</loc>
-    <lastmod>2024-02-02T07:46:48.428Z</lastmod>
+    <loc>https://matthewbjane.com/blog-posts/blog-post-7.html</loc>
+    <lastmod>2024-11-02T01:45:26.368Z</lastmod>
   </url>
   <url>
     <loc>https://matthewbjane.com/blog-posts/blog-post-4.html</loc>
     <lastmod>2024-09-01T16:01:10.286Z</lastmod>
   </url>
   <url>
-    <loc>https://matthewbjane.com/blog-posts/blog-post-7.html</loc>
-    <lastmod>2024-11-02T01:45:26.368Z</lastmod>
+    <loc>https://matthewbjane.com/blog-posts/blog-post-3.html</loc>
+    <lastmod>2024-02-02T07:47:46.361Z</lastmod>
+  </url>
+  <url>
+    <loc>https://matthewbjane.com/blog-posts/blog-post-8.html</loc>
+    <lastmod>2024-10-08T23:06:46.804Z</lastmod>
+  </url>
+  <url>
+    <loc>https://matthewbjane.com/Consulting.html</loc>
+    <lastmod>2025-02-01T04:32:36.291Z</lastmod>
+  </url>
+  <url>
+    <loc>https://matthewbjane.com/Books.html</loc>
+    <lastmod>2025-02-01T04:40:44.874Z</lastmod>
+  </url>
+  <url>
+    <loc>https://matthewbjane.com/index.html</loc>
+    <lastmod>2024-04-24T05:13:12.871Z</lastmod>
+  </url>
+  <url>
+    <loc>https://matthewbjane.com/blog-posts/blog-post-2.html</loc>
+    <lastmod>2024-02-02T07:47:39.544Z</lastmod>
+  </url>
+  <url>
+    <loc>https://matthewbjane.com/blog-posts/blog-post-1.html</loc>
+    <lastmod>2024-02-02T07:46:48.428Z</lastmod>
+  </url>
+  <url>
+    <loc>https://matthewbjane.com/blog-posts/blog-post-5.html</loc>
+    <lastmod>2024-06-27T14:23:39.524Z</lastmod>
+  </url>
+  <url>
+    <loc>https://matthewbjane.com/blog-posts/blog-post-6.html</loc>
+    <lastmod>2024-11-02T01:45:12.431Z</lastmod>
   </url>
   <url>
     <loc>https://matthewbjane.com/blog-posts/blog-post-10.html</loc>
