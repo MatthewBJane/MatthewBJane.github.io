@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://matthewbjane.com/blog-posts/blog-post-11.html</loc>
+    <lastmod>2025-05-23T22:13:55.756Z</lastmod>
+  </url>
+  <url>
     <loc>https://matthewbjane.com/blog.html</loc>
     <lastmod>2024-10-04T16:58:05.178Z</lastmod>
   </url>
@@ -25,30 +29,6 @@
     <lastmod>2024-02-02T07:46:48.428Z</lastmod>
   </url>
   <url>
-    <loc>https://matthewbjane.com/blog-posts/blog-post-2.html</loc>
-    <lastmod>2024-02-02T07:47:39.544Z</lastmod>
-  </url>
-  <url>
-    <loc>https://matthewbjane.com/index.html</loc>
-    <lastmod>2024-04-24T05:13:12.871Z</lastmod>
-  </url>
-  <url>
-    <loc>https://matthewbjane.com/Books.html</loc>
-    <lastmod>2025-02-01T04:40:44.874Z</lastmod>
-  </url>
-  <url>
-    <loc>https://matthewbjane.com/Consulting.html</loc>
-    <lastmod>2025-02-01T04:32:36.291Z</lastmod>
-  </url>
-  <url>
-    <loc>https://matthewbjane.com/blog-posts/blog-post-8.html</loc>
-    <lastmod>2024-10-08T23:06:46.804Z</lastmod>
-  </url>
-  <url>
-    <loc>https://matthewbjane.com/blog-posts/blog-post-3.html</loc>
-    <lastmod>2024-02-02T07:47:46.361Z</lastmod>
-  </url>
-  <url>
     <loc>https://matthewbjane.com/blog-posts/blog-post-4.html</loc>
     <lastmod>2024-09-01T16:01:10.286Z</lastmod>
   </url>
@@ -67,9 +47,5 @@
   <url>
     <loc>https://matthewbjane.com/social_media_mental_health.html</loc>
     <lastmod>2024-10-11T17:50:19.215Z</lastmod>
-  </url>
-  <url>
-    <loc>https://matthewbjane.com/blog-posts/blog-post-11.html</loc>
-    <lastmod>2025-05-23T22:13:55.756Z</lastmod>
   </url>
 </urlset>
