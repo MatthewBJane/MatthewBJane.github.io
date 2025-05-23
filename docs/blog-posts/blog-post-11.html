@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Matthew B. Jané">
+<meta name="dcterms.date" content="2025-05-23">
+<meta name="description" content="Meta-analyses are often seen as the gold standard of evidence synthesis–systematic, quantitative, and rigorous (at least when done well). So it’s no surprise that some researchers have taken things a step further, conducting meta-meta-analyses– that is, a quantitative syntheses of multiple meta-analyses. These reviews promise a definitive summary of entire literatures. But in practice, they compound methodological flaws, obscure meaningful variation, and produce estimates with no clear scientific interpretation. This post explains why meta-meta-analyses often do more harm than good.">
+
+<title>When Evidence Synthesis Obscures: A Critique of Meta-Meta-Analyses – Matthew B. Jané</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="..//webLogoFavicon2.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="When Evidence Synthesis Obscures: A Critique of Meta-Meta-Analyses – Matthew B. Jané">
+<meta property="og:description" content="Meta-analyses are often seen as the gold standard of evidence synthesis–systematic, quantitative, and rigorous (at least when done well). So it’s no surprise that some researchers have taken things a step further, conducting meta-meta-analyses– that is, a quantitative syntheses of multiple meta-analyses. These reviews promise a definitive summary of entire literatures. But in practice, they compound methodological flaws, obscure meaningful variation, and produce estimates with no clear scientific interpretation. This post explains why meta-meta-analyses often do more harm than good.">
+<meta property="og:image" content="https://matthewbjane.com/blog-posts/blog-image.png">
+<meta property="og:site_name" content="Matthew B. Jané">
+<meta property="og:locale" content="en_US">
+<meta property="og:image:height" content="7206">
+<meta property="og:image:width" content="10817">
+<meta name="twitter:title" content="When Evidence Synthesis Obscures: A Critique of Meta-Meta-Analyses – Matthew B. Jané">
+<meta name="twitter:description" content="Meta-analyses are often seen as the gold standard of evidence synthesis–systematic, quantitative, and rigorous (at least when done well). So it’s no surprise that some researchers have taken things a step further, conducting meta-meta-analyses– that is, a quantitative syntheses of multiple meta-analyses. These reviews promise a definitive summary of entire literatures. But in practice, they compound methodological flaws, obscure meaningful variation, and produce estimates with no clear scientific interpretation. This post explains why meta-meta-analyses often do more harm than good.">
+<meta name="twitter:image" content="https://matthewbjane.com/blog-posts/blog-image.png">
+<meta name="twitter:creator" content="@MatthewBJane">
+<meta name="twitter:image-height" content="7206">
+<meta name="twitter:image-width" content="10817">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../webLogoFavicon2.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Matthew B. Jané</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../blog.html"> 
+<span class="menu-text">Meta-Analysis Magic</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../CV.html"> 
+<span class="menu-text">CV</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Software.html"> 
+<span class="menu-text">Software</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Books.html"> 
+<span class="menu-text">Books</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Consulting.html"> 
+<span class="menu-text">Consulting</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.github.com/MatthewBJane"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.twitter.com/MatthewBJane"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../blog.xml"> <i class="bi bi-rss" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-problems-in-plain-english" id="toc-the-problems-in-plain-english" class="nav-link active" data-scroll-target="#the-problems-in-plain-english">The problems in plain english</a>
+  <ul class="collapse">
+  <li><a href="#stacking-flaws-on-flaws" id="toc-stacking-flaws-on-flaws" class="nav-link" data-scroll-target="#stacking-flaws-on-flaws">Stacking flaws on flaws</a></li>
+  <li><a href="#heterogeneity-at-the-wrong-level" id="toc-heterogeneity-at-the-wrong-level" class="nav-link" data-scroll-target="#heterogeneity-at-the-wrong-level">Heterogeneity at the wrong level</a></li>
+  <li><a href="#violated-independence" id="toc-violated-independence" class="nav-link" data-scroll-target="#violated-independence">Violated independence</a></li>
+  <li><a href="#what-are-we-even-estimating" id="toc-what-are-we-even-estimating" class="nav-link" data-scroll-target="#what-are-we-even-estimating">What Are We Even Estimating?</a></li>
+  <li><a href="#the-only-workable-solution-meta-analyze-the-primary-studies-themselves" id="toc-the-only-workable-solution-meta-analyze-the-primary-studies-themselves" class="nav-link" data-scroll-target="#the-only-workable-solution-meta-analyze-the-primary-studies-themselves">The only workable solution: meta-analyze the primary studies themselves</a></li>
+  <li><a href="#authority-without-rigor" id="toc-authority-without-rigor" class="nav-link" data-scroll-target="#authority-without-rigor">Authority Without Rigor</a></li>
+  </ul></li>
+  <li><a href="#modeling-the-madness" id="toc-modeling-the-madness" class="nav-link" data-scroll-target="#modeling-the-madness">Modeling the Madness</a>
+  <ul class="collapse">
+  <li><a href="#problem-1-the-estimand-is-unclear" id="toc-problem-1-the-estimand-is-unclear" class="nav-link" data-scroll-target="#problem-1-the-estimand-is-unclear">Problem 1: The Estimand Is Unclear</a></li>
+  <li><a href="#problem-2-phi2-is-unexplainable" id="toc-problem-2-phi2-is-unexplainable" class="nav-link" data-scroll-target="#problem-2-phi2-is-unexplainable">Problem 2: <span class="math inline">\(\phi^2\)</span> Is Unexplainable</a></li>
+  <li><a href="#problem-3-assumes-independence-ignores-overlap" id="toc-problem-3-assumes-independence-ignores-overlap" class="nav-link" data-scroll-target="#problem-3-assumes-independence-ignores-overlap">Problem 3: Assumes Independence, Ignores Overlap</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">When Evidence Synthesis Obscures: A Critique of Meta-Meta-Analyses</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Methods</div>
+    <div class="quarto-category">Meta-Analysis</div>
+    <div class="quarto-category">Meta-Meta-Analyses</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Meta-analyses are often seen as the gold standard of evidence synthesis–systematic, quantitative, and rigorous (at least when done well). So it’s no surprise that some researchers have taken things a step further, conducting meta-meta-analyses– that is, a quantitative syntheses of multiple meta-analyses. These reviews promise a definitive summary of entire literatures. But in practice, they compound methodological flaws, obscure meaningful variation, and produce estimates with no clear scientific interpretation. This post explains why meta-meta-analyses often do more harm than good.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Matthew B. Jané </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 23, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<a href="https://www.buymeacoffee.com/matthewbjane"><img src="https://img.buymeacoffee.com/button-api/?text=Support my work&amp;emoji=☕&amp;slug=matthewbjane&amp;button_colour=ed5c9b&amp;font_colour=ffffff&amp;font_family=Arial&amp;outline_colour=ffffff&amp;coffee_colour=ffffff"></a>
+<p><br></p>
+<section id="the-problems-in-plain-english" class="level2">
+<h2 class="anchored" data-anchor-id="the-problems-in-plain-english">The problems in plain english</h2>
+<section id="stacking-flaws-on-flaws" class="level3">
+<h3 class="anchored" data-anchor-id="stacking-flaws-on-flaws">Stacking flaws on flaws</h3>
+<p>The foundational problem with meta-meta-analyses is that they stack methodological vulnerabilities at two levels: the primary studies and the meta-analyses themselves. When you synthesize meta-analyses quantitatively, you are not working with clean, raw data–you are inheriting the full scope of methodological baggage of every meta-analysis you include.</p>
+<p>This means your summary estimate is downstream of two levels of potential error: study-level errors (e.g., flawed study designs, biased outcome reporting, inadequate controls, miscalculations, etc.) and meta-analytic error (compounded by meta-analytic decisions, inclusion/exclusion criteria, modeling choices, effect size miscalculations, study coding errors, etc.). It’s not just “garbage in, garbage out”—it’s garbage in, then reprocessed and repackaged by another potentially flawed process, and then aggregated again. Think of it like a synthetic CDO (CDO²) from the 2008 financial crisis. Risky subprime mortgages were bundled into CDOs, which were then bundled again into even more complex financial products—each layer obscuring the original risk (see the <a href="https://jamesclaims.substack.com/p/the-meta-analysis-as-cdo">following substack article by James Heathers</a> that I took this analogy from). Meta-meta-analyses do the same: the result may look polished, but it’s far removed from the original evidence and just as prone to collapse under scrutiny.</p>
+<p>By the time a number is produced at the end of a meta-meta-analysis, it’s often impossible to disentangle where the bias originates or how severely it distorts the result (see Brandolini’s law, which states that the amount of energy needed to refute nonsense is an order of magnitude greater than to produce it). The process compounds issues, but conceals it under the guise of a comprehensive evidence synthesis. Rather than clarifying what we know, meta-meta-analyses risk amplifying what we misunderstand.</p>
+</section>
+<section id="heterogeneity-at-the-wrong-level" class="level3">
+<h3 class="anchored" data-anchor-id="heterogeneity-at-the-wrong-level">Heterogeneity at the wrong level</h3>
+<p>In a standard meta-analysis, heterogeneity denotes the variation in effect sizes across individual studies—variation we can often explain through study-level characteristics like population differences, intervention types, or methodological quality. But in a meta-meta-analysis, heterogeneity refers to differences between meta-analyses. It doesn’t tell us much–it’s confounded by differences in analytic decisions, inclusion/exclusion criteria, or year when the literature search was conducted rather than substantive study differences. Additionally, if heterogeneity is low, it might give the misleading impression that the literature is consistent and homogeneous, even though the homogeneity is simply product of an additional layer of abstraction.</p>
+<p>In effect, quantifying heterogeneity at the meta-meta-analysis level is meaningless and strips away the meaningful variation across studies.</p>
+</section>
+<section id="violated-independence" class="level3">
+<h3 class="anchored" data-anchor-id="violated-independence">Violated independence</h3>
+<p>An assumption in meta-analysis is that the effect sizes being pooled are statistically independent. Meta-meta-analyses routinely violate this by including multiple meta-analyses that draw from overlapping sets of primary studies. This redundancy creates dependencies in the data–artificially inflating the weight of certain studies and distorting both estimates and standard errors.</p>
+<p>Study overlap is often assessed using the Corrected Covered Area (CCA) index, which quantifies the degree of duplication across meta-analyses. However, instead of being incorporated into the statistical model, CCA is typically used only as a filter: meta-analyses with “too much” overlap are excluded based on arbitrary thresholds—slight (&lt;5%), moderate (6–10%), high (11–15%), or very high (&gt;15%).</p>
+<p>But filtering is not modeling. It does nothing to correct for the underlying statistical dependence among effect sizes. Even small amounts of undetected or uncorrected overlap can lead to inflated precision and misleading conclusions. Meta-meta-analyses that ignore this problem are reporting uncertainty that is unjustifiably narrow, and conclusions that are more confident than the data allow.</p>
+</section>
+<section id="what-are-we-even-estimating" class="level3">
+<h3 class="anchored" data-anchor-id="what-are-we-even-estimating">What Are We Even Estimating?</h3>
+<p>At the heart of any serious statistical analysis is a clearly defined estimand–the specific quantity of scientific interest. In a well-designed meta-analysis, the estimand might be something like the average treatment effect across a defined population of studies, under ideal conditions, or within a particular subgroup. Even then, identifying and justifying the estimand is no trivial task.</p>
+<p>In a meta-meta-analysis, the situation becomes obscured. What exactly does the mean of mean effect sizes represent? It’s not the average effect across all studies–those are hidden inside the meta-analyses. It’s not the average effect across all populations, interventions, or outcomes–those are inconsistently defined and often incommensurable across meta-analyses.</p>
+<p>Instead, we’re left with an undefined quantity that bears no clear relationship to any real-world intervention or scientific question. It floats free of context, untethered to a well-specified target.</p>
+<p>This lack of a coherent estimand makes interpretation not just difficult, but arguably meaningless. Without knowing what question you’re answering, the answer–however precisely computed–is at best ambiguous, and at worst, misleading.</p>
+</section>
+<section id="the-only-workable-solution-meta-analyze-the-primary-studies-themselves" class="level3">
+<h3 class="anchored" data-anchor-id="the-only-workable-solution-meta-analyze-the-primary-studies-themselves">The only workable solution: meta-analyze the primary studies themselves</h3>
+<p>If your goal is to synthesize the research results in a given domain that has already been meta-analyzed multiple times, the most principled approach is also the most labor-intensive: extract all the unique primary studies from each meta-analysis and conduct a standard meta-analysis yourself. This allows for consistent inclusion criteria, uniform effect size calculation, proper handling of duplicate studies, consistent analytic decisions–none of which can be guaranteed when simply pooling published meta-analyses.</p>
+<p>Yes, this takes time. Yes, it requires manual effort. But good science isn’t supposed to be fast. When you synthesize at the study level, you maintain control over what’s included, how it’s coded, and how quality is assessed. You can examine moderator variables properly, assess publication bias, and apply up-to-date modeling strategies. You’re synthesizing evidence, not recycling others’ summaries.</p>
+<p>Meta-meta-analyses trade precision and rigor for expediency. If your aim is rigor, there’s no substitute for doing the hard work.</p>
+</section>
+<section id="authority-without-rigor" class="level3">
+<h3 class="anchored" data-anchor-id="authority-without-rigor">Authority Without Rigor</h3>
+<p>Meta-meta-analyses may appear to be at the tippity-top of the evidence hierarchy. But this appearance of authority is largely unearned because of the reasons previously described. Despite this, meta-meta-analyses will undoubtedly be communicated as the authoritative piece in a literature, because after all, they are meta-analyses OF META-ANALYSES. But stacking flaws on flaws doesn’t produce clarity–it produces a false sense of confidence.</p>
+</section>
+</section>
+<section id="modeling-the-madness" class="level2">
+<h2 class="anchored" data-anchor-id="modeling-the-madness">Modeling the Madness</h2>
+<p>Let’s formalize a statistical model that attempts to represent what a meta-meta-analysis is doing. Suppose we try to model each mean effect size <span class="math inline">\(\hat{\mu}_{m}\)</span> from meta-analysis <span class="math inline">\(m\)</span> as follows:</p>
+<p><span class="math display">\[
+\hat{\mu}_{m} = \psi + \xi_{m} + \varepsilon_{m}
+\]</span></p>
+<p>Where:</p>
+<ul>
+<li><span class="math inline">\(\psi\)</span> is the mean of means effect sizes across meta-analyses,</li>
+<li><span class="math inline">\(\xi_m \sim \mathcal{N}(0, \phi^2)\)</span> captures variability <em>between</em> meta-analyses,</li>
+<li><span class="math inline">\(\varepsilon_{m} \sim \mathcal{N}(0, \sigma^2)\)</span> is the deviations due to within-meta-analysis variance for meta-analysis <span class="math inline">\(m\)</span>. This would ultimately encompass both between-study variance and sampling error.</li>
+</ul>
+<p>At first glance, this looks like a reasonable hierarchical model. But in practice, it quickly becomes untenable. Perfect—that’s a crucial technical clarification. Here’s the updated <strong>Problem 1</strong> section, integrating that point for both conceptual clarity and statistical precision:</p>
+<section id="problem-1-the-estimand-is-unclear" class="level3">
+<h3 class="anchored" data-anchor-id="problem-1-the-estimand-is-unclear">Problem 1: The Estimand Is Unclear</h3>
+<p>What exactly does <span class="math inline">\(\psi\)</span> represent? In this model, it’s defined as <span class="math inline">\(\psi = \mathbb{E}(\hat{\mu}_m)\)</span>—the expected value of mean effect sizes across meta-analyses. But this immediately raises a deeper problem: what is the expectation <em>over</em>? That is, what is the population of meta-analyses being sampled from? Meta-analyses differ in scope, inclusion criteria, populations, outcome definitions, and effect size metrics. There’s no well-defined superpopulation of meta-analyses to anchor this expectation, making <span class="math inline">\(\psi\)</span> hard to interpret in any meaningful way.</p>
+<p>Rather than estimating a coherent treatment effect, <span class="math inline">\(\psi\)</span> becomes a <em>statistical artifact</em> rather than a well-defined scientific quantity.</p>
+<p>Got it—let’s revisit and expand the subsection on <span class="math inline">\(\phi^2\)</span>, now with tighter clarity and a touch more technical context:</p>
+</section>
+<section id="problem-2-phi2-is-unexplainable" class="level3">
+<h3 class="anchored" data-anchor-id="problem-2-phi2-is-unexplainable">Problem 2: <span class="math inline">\(\phi^2\)</span> Is Unexplainable</h3>
+<p>In this model, <span class="math inline">\(\phi^2\)</span> captures the variance in effect size estimates <em>between</em> meta-analyses. In principle, this is analogous to heterogeneity (<span class="math inline">\(\tau^2\)</span>) in a regular meta-analysis, which we often explore using study-level moderators. But in meta-meta-analysis, we lose that resolution entirely.</p>
+<p>First, we typically don’t have access to the raw study data needed to evaluate moderators meaningfully. Second–and more subtly–even when individual meta-analyses stratify by useful variables (e.g., age, dosage, study quality), that information becomes highly coarse or inconsistent at the meta-meta level. One meta-analysis may define “high quality” based on blinding; another based on sample size; a third may not define it at all. These moderator definitions are not harmonized, and their meaning shifts between meta-analyses.</p>
+<p>As a result, <span class="math inline">\(\phi^2\)</span> becomes a kind of unexplained, uninterpretable heterogeneity–absorbing all the differences in methods, populations, metrics, and contexts that vary across meta-analyses. It’s a variance you can estimate, but not interpret. The model gives you a number, but no meaningful insight.</p>
+</section>
+<section id="problem-3-assumes-independence-ignores-overlap" class="level3">
+<h3 class="anchored" data-anchor-id="problem-3-assumes-independence-ignores-overlap">Problem 3: Assumes Independence, Ignores Overlap</h3>
+<p>Although this point might seem trivial given that both <span class="math inline">\(\psi\)</span> and <span class="math inline">\(\phi^2\)</span> already lack clear meaning, it’s worth emphasizing that the model also violates a basic statistical assumption: independence. The model treats each meta-analysis estimate <span class="math inline">\(\hat{\mu}_m\)</span> as if it were generated from a distinct, non-overlapping set of primary studies. In reality, that’s rarely the case.</p>
+<p>Primary studies are often included in multiple meta-analyses, sometimes dozens of them. This overlap introduces dependencies among the <span class="math inline">\(\hat{\mu}_m\)</span> values that are not modeled—leading to two serious problems. First, duplicated studies are effectively given more weight, biasing the overall estimate <span class="math inline">\(\psi\)</span>. Second, standard errors and confidence intervals become artificially narrow because the model assumes more information than actually exists.</p>
+<p>While metrics like the Corrected Covered Area (CCA) can detect this redundancy, they are usually applied only as loose diagnostics—if at all—and not integrated into the analysis itself. Even modest levels of unmodeled overlap can skew results and inflate certainty.</p>
+<p>In short, meta-meta-analyses don’t just suffer from vague estimands and uninterpretable variance—they also fail to meet the most basic statistical requirements for valid inference.</p>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>By stacking flawed summaries on top of each other, meta-meta-analyses obscure more than they reveal. Without a clear estimand, consistent methods, or proper handling of dependencies, the numbers they produce may look rigorous–but lack real meaning.</p>
+<p>If we care about getting the science right, there’s no substitute for going back to the primary studies. Synthesis is valuable, but shortcuts aren’t.</p>
+<iframe src="https://embeds.beehiiv.com/f3ffd81a-4723-4419-bb1d-afc8af3bac36" data-test-id="beehiiv-embed" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius: 4px; border: 2px solid #33333322; margin: 0; background-color: transparent;">
+</iframe>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/matthewbjane\.com");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Email me at matthew.jane@uconn.edu</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

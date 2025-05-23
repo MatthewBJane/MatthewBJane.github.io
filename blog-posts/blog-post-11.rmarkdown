@@ -1,0 +1,455 @@
+---
+title: "Multilevel Item Response Theory: Incorporating Random Effects in IRT models"
+
+author: "Matthew B. Jané"
+image: "blog-image.png"
+image-height: "5%"
+toc: true
+code-fold: false
+date: 2024-10-31
+description: "This is a short blog post on performing multilevel item response theory models with the `mirt` package [@mirt]. This blog will discuss incorporating random effects into "
+
+categories:
+  - Individual Participant Data
+  - Repeated Measures
+  - Meta-Analysis
+
+format: pdf
+image-meta: "blog-image.png"
+bibliography: references.bib
+---
+
+```{=html}
+<a href="https://www.buymeacoffee.com/matthewbjane"><img src="https://img.buymeacoffee.com/button-api/?text=Support my work&emoji=☕&slug=matthewbjane&button_colour=ed5c9b&font_colour=ffffff&font_family=Arial&outline_colour=ffffff&coffee_colour=ffffff" /></a>
+```
+
+
+
+<br>
+
+
+## A basic multilevel model
+
+
+Let's think of a traditional multilevel model that contains two sources of error, $u_i$ (between-group error) and $e_{ij}$ (within-group error), where $i$ denotes the group and $j$ denotes an individual,
+
+$$
+y_{ij} = \mu + u_i + e_{ij}
+$$ {#eq-1}
+
+where $\mu$ is the (fixed) population mean and $y_{ij}$ is the outcome variable for school $i$ and individual $j$. Let's assume that the error variables $u_i$ and $e_{ij}$ are normally distributed such that,
+
+$$
+u_i \sim \mathcal{N}(0, \tau),
+$$ {#eq-2}
+$$
+e_{ij} \sim \mathcal{N}(0, \sigma).
+$$ {#eq-3}
+
+
+Using this basic multilevel structure we can model the `Penicillin` dataset in `lme4` [@lme4]. For the outcome of interest we can use the diameter of the zone of inhibition of the growth of the organism (*B. subtilis*; diameter is related to the concentration of Penicillin in the solution). The grouping variable will be the 6 samples that are labeled A,B,C,D,E,F where each sample has 24 observations corresponding to 24 plates (we will ignore plates as a grouping variable for this example). We can visualize the structure of the dataset with a flowchart,
+
+
+
+```{mermaid}
+
+flowchart TD
+    A(sample A) --> o1A(obs 1)
+    A(sample A) --> o2A(obs 2)
+    A(sample A) --> SPACEA(...)
+    A(sample A) --> o24A(obs 24)
+    spacing(...)
+    F(Sample F) --> o1F(obs 1)
+    F(Sample F) --> o2F(obs 2)
+    F(Sample F) --> SPACEF(...)
+    F(Sample F) --> o24F(obs 24)
+    
+
+
+```
+
+
+
+
+Now let's view the actual dataset in R,
+
+
+
+
+
+```{r, message=F}
+
+library(lme4)
+library(tidyverse)
+
+# note: we will be ignoring the Plate variable
+head(Penicillin %>% select(-plate),12)
+
+```
+
+
+
+Relating back to equation 1, $y_{ij}$ will represent the diameter for sample $i = \{A,B,C,D,E,F\}$ and observation $j = \{1_i...24_i\} = \{1_A...24_A...1_F...24_F\}$. Then $\mu$ is the global diameter mean, $u_i$ is the between-sample error (this also means that $\mu+u_i$ is the sample mean) and $e_{ij}$ is the within-sample error (this of course mean that $\mu+u_i + e_{ij}$ recovers the values of the outcome, $y_{ij}$). We also have the parameters $\tau^2$ and $\sigma^2$ which denote the between-sample variance and within-sample variance respectively (we will assume that all groups have the same within-group variance, $\sigma=\sigma_A=...=\sigma_F$). Let's visualize all the data before we start fitting a model:
+
+
+
+```{r}
+
+library(ggdist)
+
+ggplot(data = Penicillin, aes(x = diameter, y = sample)) +
+  stat_histinterval(slab_fill = "skyblue3", color = "skyblue4", 
+                    point_interval = mean_qi, breaks = seq(18,28,by=.5), 
+                    align = .25, scale = .7)  +
+  theme_ggdist(base_size = 15) +
+  theme(aspect.ratio = 1.2) +
+  geom_hline(yintercept = unique(Penicillin$sample), linewidth = .2, alpha = .2) + 
+  scale_x_continuous(breaks=18:28) +
+  labs(x = "Diameter (mm)", y = "Sample")
+
+
+```
+
+
+
+
+We can see that the means are quite different between each group, yet it is probably reasonable to fix the within-group variance as the same value for each group. Calculating the means and standard deviations for each group demonstrates supports this:
+
+
+
+
+```{r}
+
+Penicillin %>%
+  summarize(mean_diameter = round(mean(diameter),2),
+            sd_diameter = round(sd(diameter),2),
+            .by = sample)
+
+
+```
+
+
+
+
+Using `lme4` we can model the data and obtain estimates of the parameters of interest: $\mu, \tau, \sigma$.
+
+
+
+
+```{r}
+
+# fit model
+mlm <- lmer(diameter ~ 1 + (1 | sample), data = Penicillin)
+
+# display results
+summary(mlm)
+
+```
+
+
+
+Based on the model, we get an estimate of the global mean from the `(Intercept)` under the `Fixed effects` header which gives $\hat{\mu} = 22.97$. Under the `Random effects` header, we see the `sample` and `Residual` terms under `Groups` which gives us the between-sample variance/standard deviation ($\tau^2$/$\tau$) and the within-sample variance/standard deviation ($\sigma^2$/$\sigma$), respectively. The model fit gives us $\hat{\tau} = 1.92$ and $\hat{\sigma} = 1.02$. We can also extract estimates of the error components of the model $\hat{u}_i$ and $\hat{e}_{ij}$.
+
+
+
+```{r}
+
+# obtain u_i
+ranef(mlm)$sample
+
+# obtain e_ij (first 20)
+residuals(mlm)[1:20]
+
+```
+
+
+
+
+## Item response theory
+
+Item response theory deals with trying to estimate an underlying characteristic of a person based on categorical/ordinal measurements of that characteristic. For example, let's say we have a math test with 10 problem items. For an item $i$ and person $p$, they can answer the item correctly ($Y_{ip}=1$) or incorrectly ($Y_{ip}=0$). We can suppose that the probability that a person correctly answers a given item depends on the person's mathematical ability, we will call this $\theta_p$. We can write this probability as $\Pr (Y_{ip} = 1 \,|\, \theta_p)$ where the probability is conditional on the person's ability. However, the probability will likely change based on item-specific characteristics such as the difficulty of an item (harder items have a lower probability of getting them correct) and sensitivity of the item (how related is the item to the construct of mathematical ability). If we denote difficulty as $d$ and sensitivity as $a$ then $\Pr (Y_{ip} = 1 \,|\, \theta_p,a_i,d_i)$ can be modeled as a sigmoidal function,
+
+$$
+\Pr (Y_{ip} = 1 \,|\, \theta_p,a_i,d_i) = \phi(\theta_{p}; a_i,d_i)
+$$
+
+Where $\phi$ is typically a logistic function, but it can be modeled as other sigmoids such as a cumulative normal. For a logistic function the probability of answering a question correctly is
+
+$$
+\Pr (Y_{ip} = 1 \,|\, \theta_p,a_i,d_i) = \frac{\exp[a_i(\theta_p - d_i)]}{1 + \exp[a_i(\theta_p - d_i)]}
+$$
+
+This function can be visualized by an item characteristic curve:
+
+
+
+```{r, message=FALSE, warning=FALSE}
+#| code-fold: true
+
+library(patchwork)
+library(ggtext)
+library(latex2exp)
+
+a <- c(1,1,1.5,.5)
+d <- c(-1,1,0,0)
+theta <- seq(-3,3,.1)
+
+M1 <- exp(a[1]*(theta - d[1]))
+p1 <- M1 / (1 + M1)
+M2 <- exp(a[2]*(theta - d[2]))
+p2 <- M2 / (1 + M2)
+M3 <- exp(a[3]*(theta - d[3]))
+p3 <- M3 / (1 + M3)
+M4 <- exp(a[4]*(theta - d[4]))
+p4 <- M4 / (1 + M4)
+
+h1 <- ggplot(data = NULL) +
+  geom_line(aes(x = theta, y = p1),linewidth = 1.5,color = "steelblue2") + 
+  geom_line(aes(x = theta, y = p2),linewidth = 1.5,color = "hotpink3") + 
+  theme_ggdist(base_size = 15) +
+  theme(aspect.ratio = 1) +
+  annotate(geom="text", x = -1, y = .78, label = "easy item\n(d=-1)", color = "steelblue2", fontface = "bold",size = 4) +
+  annotate(geom="text", x = 2, y = .40, label = "hard item\n(d=1)", color = "hotpink3", fontface = "bold",size = 4) +
+  xlim(-3,3) +
+  labs(x = TeX("Ability (\\theta)"), y = "Probability of Correct Response")+ 
+  scale_x_continuous(breaks = -3:3) +
+  ggtitle("Effect of difficulty")
+
+
+h2 <- ggplot(data = NULL) +
+  geom_line(aes(x = theta, y = p3),linewidth = 1.5,color = "steelblue2") + 
+  geom_line(aes(x = theta, y = p4),linewidth = 1.5,color = "hotpink3") + 
+  theme_ggdist(base_size = 15) +
+  theme(aspect.ratio = 1) +
+  annotate(geom="text", x = -.7, y = .83, label = "more sensitive\n(a=1.5)", color = "steelblue2", fontface = "bold",size = 4) +
+  annotate(geom="text", x = 1.8, y = .45, label = "less sensitive\n(a=.5)", color = "hotpink3", fontface = "bold",size = 4) +
+  labs(x = TeX("Ability (\\theta)"), y = "") + 
+  scale_x_continuous(breaks = -3:3) +
+  ggtitle("Effect of sensitivity")
+
+h1 + h2
+
+```
+
+
+
+
+With real data, we do not have access to a person's ability and therefore it has to be estimated based on the test item responses. We can estimate $\theta$ as well as the difficulty $d$ and sensitivity $a$ parameters as long as we can assume that $\theta$ has a mean of zero and a variance of 1. In R, we can fit use the `mirt` package [@mirt] to obtain item parameter estimates and $\theta$ estimates. We will use the `ability` dataset from the `psychTools` package [@psychTools]. This data set contains 16 cognitive items with dummy-coded correct/incorrect responses. 
+
+
+
+```{r,message=FALSE}
+library(mirt)
+library(psychTools)
+
+# preview data
+head(ability)
+
+```
+
+
+
+For the moment we are going to assume their is a single ability underlying these responses (since they are three different tasks it is more likely that you will see additional covariance between items from the same task). Let's fit the 2-parameter (difficulty and sensitivity) item response theory model:
+
+
+
+```{r}
+
+irt <- mirt(data = ability, itemtype = "2PL")
+
+```
+
+
+
+Now let us see the item parameters:
+
+
+
+```{r}
+
+
+coef(irt, IRTpars = T, simplify = T)$items
+
+```
+
+
+Note that the `b` parameter here is the difficulty parameter. We can also get the $\theta$ estimates ($\hat{\theta}$) with the `fscores()` function from `mirt`:
+
+
+
+```{r,warning=FALSE}
+
+# first 20 people
+ggplot(data = NULL, aes(x=as.numeric(fscores(irt)))) +
+  stat_histinterval(breaks = seq(-3,3,by=.1), slab_fill = "steelblue1",color = "black") +
+  theme_ggdist(base_size = 15) +
+  theme(aspect.ratio = .5) +
+  scale_y_continuous(breaks = c()) +
+  scale_x_continuous(breaks = -3:3) +
+  labs(x = TeX("Estimated ability (\\hat{\\theta})"),y = "")
+  
+
+```
+
+
+
+
+
+
+Let's plot out an easy item (`reason.16`) and a difficult item (`rotate.8`). We can include empirical probability estimates overlaid on top by binning $\hat{\theta}$ 
+
+
+
+```{r,warning=FALSE, message=FALSE}
+#| code-fold: true
+
+theta <- seq(-3,3,.1)
+params <- coef(irt, IRTpars = T, simplify = T)
+a1 <- params$items["reason.16","a"]
+d1 <- params$items["reason.16","b"]
+
+a2 <- params$items["rotate.8","a"]
+d2 <- params$items["rotate.8","b"]
+
+p1 <- exp(a1*(theta - d1)) / (1 + exp(a1*(theta - d1)))
+p2 <- exp(a2*(theta - d2)) / (1 + exp(a2*(theta - d2)))
+
+ggplot(data = NULL) +
+  geom_line(aes(x = theta, y = p1),linewidth = 1.5,color = "steelblue2") + 
+  geom_line(aes(x = theta, y = p2),linewidth = 1.5,color = "hotpink3") + 
+  stat_summary_bin(aes(x = as.numeric(fscores(irt)), y = as_tibble(ability)$reason.16), 
+                   fun.data = mean_cl_normal, bins = 8, color = "steelblue3") +
+  stat_summary_bin(aes(x = as.numeric(fscores(irt)), y = as_tibble(ability)$rotate.8), 
+                   fun.data = mean_cl_normal, bins = 8, color = "hotpink4") +
+  theme_ggdist(base_size = 15) +
+  theme(aspect.ratio = 1, plot.title  = element_markdown()) +
+  xlim(-3,3) +
+  labs(x = TeX("Ability (\\theta)"), y = "Probability of Correct Response", 
+       title = "Items <span style = 'color:steelblue2;'>**reason.16**</span> and <span style = 'color:hotpink3;'>**reason.16**</span>") + 
+  scale_x_continuous(breaks = -3:3) 
+
+```
+
+
+
+
+
+
+## Multilevel IRT
+
+Now that we have a basic idea for a multilevel model and a an item response theory model, we can start combining them. Let's recall the first multilevel model equation of $y_{ij} = \mu + u_i + e_{ij}$, however now let's replace $y_{ij}$ with the ability parameter from the item response theory model $\theta_{gp}$ for group $g$ and person $p$ such that,
+
+$$
+\theta_{gp} = \mu + u_g + e_{gp}
+$$
+where now $u_g$ is the between-group residual term and $e_{gp}$ is the within-group residual term. In the original multilevel model we constructed we knew the value of the outcome $y_{ij}$ however now we have an unknown parameter as the outcome $\theta_{gp}$ and therefore we have to estimate it. The item response theory model must be appended now to incorporate the grouping variable:
+
+$$
+\Pr (Y_{igp} = 1 \,|\, \theta_{gp},a_i,d_i) = \frac{\exp[a_i(\theta_{gp} - d_i)]}{1 + \exp[a_i(\theta_{gp} - d_i)]}
+$$
+
+Note that item parameters should be independent of group or individuals, if they weren't then we would have differential item functioning and may warrant exclusion of the item from the model. Using a data set from the General Social Survey (GSS; 1972-2022) from the `gssr` package [@gssr], we can use responses to 10 vocabulary items and treat the region they live in as a random effect (i.e., New England). Therefore $\mu+u_g$ will denote mean ability for region $g$. Since the GSS is a massive data set, we can sample 10,000 individuals so that the model fitting runs a bit quicker.
+
+
+
+
+
+```{r}
+# remotes::install_github("kjhealy/gssr")
+library(gssr)
+
+data(gss_all)
+
+gss <- gss_all %>%
+  # select only necessary data
+  select(worda, wordb, wordc, wordd, worde, wordf, wordg, wordh, wordi, wordj, reg16) %>%
+  mutate_at(vars(worda, wordb, wordc, wordd, worde, wordf, wordg, wordh, wordi, wordj), as.numeric) %>%
+  # filter out missing data
+  filter(complete.cases(.)) %>%
+  slice_sample(n = 10000, replace = FALSE)
+
+# view data set
+head(gss)
+
+# remove from original data from environment (very large file)
+remove(gss_all)
+
+```
+
+
+
+Now let's fit the model with the `mixedmirt()` function 
+
+
+
+
+```{r, results='hide'}
+
+mlm_irt <- mixedmirt(data = gss %>% select(-reg16), 
+                     covdata = gss %>% select(reg16),
+                     model = "Theta = 1-10",
+                     fixed = ~ 1, 
+                     lr.random = ~ 1|reg16, 
+                     itemtype = '2PL')
+
+
+```
+
+
+
+Now that we have fit the model we can obtain the $\theta$ estimates. 
+
+
+
+```{r}
+#| code-fold: true
+
+ggplot(data = NULL, aes(x = as.numeric(randef(mlm_irt)$Theta), y = factor(gss$reg16))) +
+  stat_slabinterval(slab_fill = "hotpink3", point_interval = "mean_qi") +
+  theme_ggdist(base_size = 15) +
+  theme(aspect.ratio = 1.4) +
+  labs(x = TeX("Ability (\\theta)"),
+       y = "Region")
+
+```
+
+
+
+We can also obtain the item parameters via the `coef()` function,
+
+
+
+
+```{r}
+
+coef(mlm_irt, IRTpars = T, simplify = T)
+
+```
+
+
+
+
+## Session Info
+
+
+
+```{r}
+sessionInfo()
+```
+
+
+
+## Citing R packages
+
+The following packages were used in this post:
+
+-   `brms` [@brms]
+-   `tidyverse` [@tidyverse]
+-   `ggdist` [@ggdist]
+-   `modelr` [@modelr]
+-   `tidybayes` [@tidybayes]
+
+<iframe src="https://embeds.beehiiv.com/f3ffd81a-4723-4419-bb1d-afc8af3bac36" data-test-id="beehiiv-embed" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius: 4px; border: 2px solid #33333322; margin: 0; background-color: transparent;">
+
+</iframe>
+
