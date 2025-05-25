@@ -91,7 +91,6 @@ Where:
 * $\varepsilon_{m} \sim \mathcal{N}(0, \sigma^2)$ is the deviations due to within-meta-analysis variance for meta-analysis $m$. This would ultimately encompass both between-study variance and sampling error.
 
 At first glance, this looks like a reasonable hierarchical model. But in practice, it quickly becomes untenable.
-Perfect—that's a crucial technical clarification.
 
 ### Problem 1: The Estimand Is Unclear
 

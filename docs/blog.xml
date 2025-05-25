@@ -69,12 +69,11 @@
 <li><img src="https://latex.codecogs.com/png.latex?%5Cxi_m%20%5Csim%20%5Cmathcal%7BN%7D(0,%20%5Cphi%5E2)"> captures variability <em>between</em> meta-analyses,</li>
 <li><img src="https://latex.codecogs.com/png.latex?%5Cvarepsilon_%7Bm%7D%20%5Csim%20%5Cmathcal%7BN%7D(0,%20%5Csigma%5E2)"> is the deviations due to within-meta-analysis variance for meta-analysis <img src="https://latex.codecogs.com/png.latex?m">. This would ultimately encompass both between-study variance and sampling error.</li>
 </ul>
-<p>At first glance, this looks like a reasonable hierarchical model. But in practice, it quickly becomes untenable. Perfect—that’s a crucial technical clarification. Here’s the updated <strong>Problem 1</strong> section, integrating that point for both conceptual clarity and statistical precision:</p>
+<p>At first glance, this looks like a reasonable hierarchical model. But in practice, it quickly becomes untenable.</p>
 <section id="problem-1-the-estimand-is-unclear" class="level3">
 <h3 class="anchored" data-anchor-id="problem-1-the-estimand-is-unclear">Problem 1: The Estimand Is Unclear</h3>
 <p>What exactly does <img src="https://latex.codecogs.com/png.latex?%5Cpsi"> represent? In this model, it’s defined as <img src="https://latex.codecogs.com/png.latex?%5Cpsi%20=%20%5Cmathbb%7BE%7D(%5Chat%7B%5Cmu%7D_m)">—the expected value of mean effect sizes across meta-analyses. But this immediately raises a deeper problem: what is the expectation <em>over</em>? That is, what is the population of meta-analyses being sampled from? Meta-analyses differ in scope, inclusion criteria, populations, outcome definitions, and effect size metrics. There’s no well-defined superpopulation of meta-analyses to anchor this expectation, making <img src="https://latex.codecogs.com/png.latex?%5Cpsi"> hard to interpret in any meaningful way.</p>
 <p>Rather than estimating a coherent treatment effect, <img src="https://latex.codecogs.com/png.latex?%5Cpsi"> becomes a <em>statistical artifact</em> rather than a well-defined scientific quantity.</p>
-<p>Got it—let’s revisit and expand the subsection on <img src="https://latex.codecogs.com/png.latex?%5Cphi%5E2">, now with tighter clarity and a touch more technical context:</p>
 </section>
 <section id="problem-2-phi2-is-unexplainable" class="level3">
 <h3 class="anchored" data-anchor-id="problem-2-phi2-is-unexplainable">Problem 2: <img src="https://latex.codecogs.com/png.latex?%5Cphi%5E2"> Is Unexplainable</h3>
