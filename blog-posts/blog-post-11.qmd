@@ -91,7 +91,7 @@ Where:
 * $\varepsilon_{m} \sim \mathcal{N}(0, \sigma^2)$ is the deviations due to within-meta-analysis variance for meta-analysis $m$. This would ultimately encompass both between-study variance and sampling error.
 
 At first glance, this looks like a reasonable hierarchical model. But in practice, it quickly becomes untenable.
-Perfect—that's a crucial technical clarification. Here's the updated **Problem 1** section, integrating that point for both conceptual clarity and statistical precision:
+Perfect—that's a crucial technical clarification.
 
 ### Problem 1: The Estimand Is Unclear
 
@@ -99,7 +99,6 @@ What exactly does $\psi$ represent? In this model, it’s defined as $\psi = \ma
 
 Rather than estimating a coherent treatment effect, $\psi$ becomes a *statistical artifact* rather than a well-defined scientific quantity.
 
-Got it—let’s revisit and expand the subsection on $\phi^2$, now with tighter clarity and a touch more technical context:
 
 
 ### Problem 2: $\phi^2$ Is Unexplainable
