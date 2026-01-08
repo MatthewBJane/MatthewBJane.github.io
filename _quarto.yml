@@ -42,8 +42,6 @@ website:
         text: Software
       - href: Books.qmd
         text: Books
-      - href: Consulting.qmd
-        text: Consulting
 
 format:
   html:

@@ -7,7 +7,7 @@ about:
 ---
 
 ::: {.btn-group role="group" aria-label="Social Links"}
-[{{< fa envelope >}}<br>Email](mailto:matthew.jane@uconn.edu){.btn .btn-secondary .btn role="button" data-toggle="data" title="email"} [{{< fa brands twitter >}}<br>Twitter](https://www.twitter.com/MatthewBJane){.btn .btn-secondary .btn role="button" data-toggle="data" title="twitter"} [{{< fa brands github >}}<br>Github](https://www.github.com/MatthewBJane){.btn .btn-secondary .btn role="button" data-toggle="data" title="github"} [{{< fa graduation-cap >}}<br>Scholar](https://scholar.google.com/citations?user=a4C6CX0AAAAJ&hl=en){.btn .btn-secondary .btn role="button" data-toggle="data" title="scholar"}
+[{{< fa envelope >}}<br>Email](mailto:matthew.jane@uconn.edu){.btn .btn-secondary .btn role="button" data-toggle="data" title="email"} [{{< fa brands twitter >}}<br>Twitter](https://www.twitter.com/MatthewBJane){.btn .btn-secondary .btn role="button" data-toggle="data" title="twitter"} [{{< fa brands github >}}<br>Github](https://www.github.com/MatthewBJane){.btn .btn-secondary .btn role="button" data-toggle="data" title="github"} [{{< fa graduation-cap >}}<br>Scholar](https://scholar.google.com/citations?user=LemZrcQAAAAJ&hl=en){.btn .btn-secondary .btn role="button" data-toggle="data" title="scholar"}
 :::
 
 <br>
@@ -17,6 +17,7 @@ Hello there! I'm **Matthew B. Jané** - I'm a PhD student in Quantitative Psycho
 ```{=html}
 <a href="https://www.buymeacoffee.com/matthewbjane"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=matthewbjane&button_colour=ed5c9b&font_colour=ffffff&font_family=Arial&outline_colour=ffffff&coffee_colour=ffffff" /></a>
 ```
+
 <!-- **View my new open-source text-book:** [{{< fa book >}} Artifact Corrections for Effect Sizes](https://matthewbjane.quarto.pub/artifact-corrections-for-effect-sizes/){.btn .btn-primary .btn role="button" data-toggle="data" title="email"} -->
 
 ```{=html}

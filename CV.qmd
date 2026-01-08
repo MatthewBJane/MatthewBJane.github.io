@@ -41,7 +41,7 @@ sansfont: Asap
 
 -   **Jané, M. B.**, Xiao, Q., Yeung, S. K., Caldwell, A. R., Dunleavy, D. J., ... (2023) ***Guide to Effect Sizes and Confidence Intervals***. A collaborative guide to calculating, interpreting, and reporting effect sizes and confidence intervals. *In Progress*. See preliminary version here: <https://matthewbjane.quarto.pub/effect-size-and-confidence-intervals-guide/>
 
--   **Jané, M. B.**, Kroc, E., Wiernik, B. M., Oswald, F. L., Johnson, B. T. (2023) ***Artifact Corrections for Effect Sizes***. An open-source book for correcting bias in effect size estimates contaminated by statistical artifacts. *In Progress*. See preliminary version here: https://matthewbjane.quarto.pub/artifact-corrections-for-effect-sizes/
+-   **Jané, M. B.**, Kroc, E., Wiernik, B. M., Oswald, F. L., Johnson, B. T. (2023) ***Artifact Corrections for Effect Sizes***. An open-source book for correcting bias in effect size estimates contaminated by statistical artifacts. *In Progress*. See preliminary version here: <https://matthewbjane.quarto.pub/artifact-corrections-for-effect-sizes/>
 
 ## <i class="fa-solid fa-code"></i> Software
 
@@ -53,86 +53,79 @@ sansfont: Asap
 
 -   [<i class="fa-solid fa-diagram-project"></i> Shiny App]{.badge .rounded-pill .bg-primary} **Artifact Simulator**, A Shiny App for Visualizing Statistical Artifacts. [matthewbjane.shinyapps.io/effect_size_artifact_bias](matthewbjane.shinyapps.io/effect_size_artifact_bias)
 
-
-
 ## <i class="fa-solid fa-chalkboard-user"></i> Consulting and Workshops
 
-- **Matthew B. Jané Consulting** statistical consulting services for clients in academia and industry research. [matthewbjane.github.io/Consulting.html](https://matthewbjane.github.io/Consulting.html)
-- **Physalia Courses "Meta-Analysis in R" Workshop** hosted a four day workshop in meta-analysis with application to R programming language. [www.physalia-courses.org/courses-workshops/metain-r/](https://www.physalia-courses.org/courses-workshops/metain-r/)
-- **R workshops for Ukraine "Meta-Analysis in R" Workshop** hosted a 2-hour workshop in meta-analysis with application to R programming language for charity. [sites.google.com/view/dariia-mykhailyshyna/main/r-workshops-for-ukraine#h.qwn56mbd02im](https://sites.google.com/view/dariia-mykhailyshyna/main/r-workshops-for-ukraine#h.qwn56mbd02im).
-- **USF "Meta-Analysis in R" Workshop** hosted a 1-hour workshop in meta-analysis with application to R programming language for the University of South Florida.
-
+-   **Matthew B. Jané Consulting** statistical consulting services for clients in academia and industry research. [matthewbjane.github.io/Consulting.html](https://matthewbjane.github.io/Consulting.html)
+-   **Physalia Courses "Meta-Analysis in R" Workshop** hosted a four day workshop in meta-analysis with application to R programming language. [www.physalia-courses.org/courses-workshops/metain-r/](https://www.physalia-courses.org/courses-workshops/metain-r/)
+-   **R workshops for Ukraine "Meta-Analysis in R" Workshop** hosted a 2-hour workshop in meta-analysis with application to R programming language for charity. [sites.google.com/view/dariia-mykhailyshyna/main/r-workshops-for-ukraine#h.qwn56mbd02im](https://sites.google.com/view/dariia-mykhailyshyna/main/r-workshops-for-ukraine#h.qwn56mbd02im).
+-   **USF "Meta-Analysis in R" Workshop** hosted a 1-hour workshop in meta-analysis with application to R programming language for the University of South Florida.
 
 ## <i class="fa-solid fa-chalkboard-user"></i> Scientific Communication
 
-- **Meta-Analysis Magic Blog** blog discussing statistical modeling and other quantitative topics in meta-analysis and measurement.
-- **X/Twitter and Blue Sky** using twitter and bluesky as a means of scientific communication.
-
+-   **Meta-Analysis Magic Blog** blog discussing statistical modeling and other quantitative topics in meta-analysis and measurement.
+-   **X/Twitter and Blue Sky** using twitter and bluesky as a means of scientific communication.
 
 ## <i class="fa-solid fa-file-lines"></i> Publications
 
-
 **Jané, M. B.**, Harlow, T. J., Khu, E. C., and colleagues (2024). Extracting Pre-Post Correlations for Meta-Analyses of Repeated Measures Designs https://matthewbjane.quarto.pub/pre-post-correlations/ *Manuscript in Preparation.*
 
-::: {.content-visible when-format="html"}
+:::: {.content-visible when-format="html"}
 ::: {.btn-group role="group" aria-label="Open Science Links"}
 [Data](){.btn-sm .btn .disabled .btn-primary role="button" data-toggle="data" title="data"} [Code](https://matthewbjane.quarto.pub/pre-post-correlations/){.btn-sm .btn .btn-primary role="button" data-toggle="code" title="Data File"} [PDF](https://osf.io/nx96q){.btn-sm .btn .btn-primary role="button" data-toggle="pdf" title="Data File"} [OSF](https://osf.io/hzj4d/){.btn-sm .btn .btn-primary role="button" data-toggle="osf" title="Data File"}
 :::
-:::
+::::
 
 <hr width="10%">
 
-
 Johnson, B. T., **Jané, M. B.**, Curley, C. (2023). Methodological Quality in Research in Health Psychology. *Under review at Sage Journal of Health Psychology.*
 
-::: {.content-visible when-format="html"}
+:::: {.content-visible when-format="html"}
 ::: {.btn-group role="group" aria-label="Open Science Links"}
 [Data](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="data" title="data"} [Code](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="code" title="Data File"} [PDF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="pdf" title="Data File"} [OSF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="osf" title="Data File"}
 :::
-:::
+::::
 
 <hr width="10%">
 
 Champion, G., **Jané, M. B.**, Johnson, B. T., and colleagues (2023). Efficacy of Mindfulness Based Stress Reduction Interventions on Stress Reduction in the United States: A Meta-Analysis. *Data being collected.*
 
-::: {.content-visible when-format="html"}
+:::: {.content-visible when-format="html"}
 ::: {.btn-group role="group" aria-label="Open Science Links"}
 [Data](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="data" title="data"} [Code](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="code" title="Data File"} [PDF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="pdf" title="Data File"} [OSF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="osf" title="Data File"}
 :::
-:::
+::::
 
 <hr width="10%">
 
 Harlow\*, T. J., **Jané\*, M. B.**, Read, H. L., & Chrobak, J. J. (2023). Memory retention following acoustic stimulation in slow-wave sleep: a meta-analytic review of replicability and measurement quality. *Frontiers in Sleep.*
 
-::: {.content-visible when-format="html"}
+:::: {.content-visible when-format="html"}
 ::: {.btn-group role="group" aria-label="Open Science Links"}
 [Data](https://github.com/MatthewBJane/meta-analysis-data-code/tree/main/acoustic_stimulation_and_memory/data){.btn-sm .btn .btn-primary role="button" data-toggle="data" title="data"} [Code](https://github.com/MatthewBJane/meta-analysis-data-code/tree/main/acoustic_stimulation_and_memory/analysis){.btn-sm .btn .btn-primary role="button" data-toggle="code" title="Data File"} [PDF](manuscripts/Harlow2023_Frontiers.pdf){.btn-sm .btn .btn-primary role="button" data-toggle="pdf" title="Data File"} [OSF](https://osf.io/8b49k/){.btn-sm .btn .btn-primary role="button" data-toggle="osf" title="Data File"}
 :::
-:::
+::::
 
 <hr width="10%">
 
 **Jané, M. B.**, Pisupati, S., Smith, K. E., Castro-Tonelli, L., Melo-Thomas, L., Schwarting, R. K., ... & Read, H. L. (2022). Correlations across timing cues in natural vocalizations predict biases in judging synthetic sound burst durations. *bioRxiv.*
 
-::: {.content-visible when-format="html"}
+:::: {.content-visible when-format="html"}
 ::: {.btn-group role="group" aria-label="Open Science Links"}
 [Data](https://doi.org/10.24433/CO.8495056.v1){.btn-sm .btn .btn-primary role="button" data-toggle="data" title="data"} [Code](https://doi.org/10.24433/CO.8495056.v1){.btn-sm .btn .btn-primary role="button" data-toggle="code" title="Data File"} [PDF](manuscripts/Jane2022_BioArxiv.pdf){.btn-sm .btn .btn-primary role="button" data-toggle="pdf" title="Data File"} [OSF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="osf" title="Data File"}
 :::
-:::
+::::
 
 <hr width="10%">
 
 **Jané, M. B.**, Uanhoro, J., Boika, N. (2024). Predictive Validity of the Unified Tertiary Matriculation Examination on University Grades: A Living Meta-Analysis. https://matthewbjane.com/utme-validity-meta-analysis/ *Manuscript in Preparation.*
 
-::: {.content-visible when-format="html"}
+:::: {.content-visible when-format="html"}
 ::: {.btn-group role="group" aria-label="Open Science Links"}
 [Data](https://matthewbjane.com/utme-validity-meta-analysis/){.btn-sm .btn .btn-primary role="button" data-toggle="data" title="data"} [Code](https://github.com/MatthewBJane/utme-validity-meta-analysis){.btn-sm .btn .btn-primary role="button" data-toggle="code" title="Data File"} [PDF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="pdf" title="Data File"} [OSF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="osf" title="Data File"}
 :::
-:::
+::::
 
 <hr width="10%">
-
 
 ```{=html}
 <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="matthewbjane" data-description="Support me on Buy me a coffee!" data-message="" data-color="#f1f9fa" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
