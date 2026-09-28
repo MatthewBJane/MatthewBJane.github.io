@@ -1,0 +1,238 @@
+/* Artifact Simulator (artifact-simulator.qmd). Colors come from the site's
+   --mbj-* tokens in styles.css, so the app follows the light/dark toggle. */
+
+.as-app { margin: 0 0 2rem; }
+.sim-tabs { margin-top: 1.5rem; }
+
+/* ---- effect-size tabs ---- */
+.as-tabs { display: flex; flex-wrap: wrap; border-bottom: 1px solid var(--mbj-line); margin-bottom: 1.25rem; }
+.as-tab {
+  appearance: none; background: transparent; border: 0; border-bottom: 3px solid transparent;
+  padding: 0.55rem 0.9rem; margin-bottom: -1px; color: var(--mbj-muted);
+  font-family: "Roboto Mono", monospace; font-size: 0.74rem; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer;
+}
+.as-tab[aria-selected="true"] { color: var(--mbj-text); border-bottom-color: var(--mbj-accent); }
+.as-tab:focus-visible { outline: 2px solid var(--mbj-accent); outline-offset: 2px; }
+
+.as-body { display: grid; grid-template-columns: minmax(250px, 310px) minmax(0, 1fr); gap: 1.75rem; align-items: start; }
+@media (max-width: 860px) {
+  .as-body { grid-template-columns: minmax(0, 1fr); }
+  .as-output { order: -1; }          /* results first on narrow screens */
+}
+
+/* ---- controls ---- */
+.as-controls { border: 1px solid var(--mbj-line); padding: 1rem 1rem 0.25rem; }
+.as-controls-top { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-bottom: 0.25rem; }
+.as-controls-top .btn { margin: 0 !important; }
+.as-key {
+  font-family: "Roboto Mono", monospace; font-size: 0.66rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--mbj-muted);
+}
+.as-preset { width: 100%; margin: 0.75rem 0 0.25rem; }
+.as-preset select {
+  width: 100%; margin-top: 0.3rem; padding: 0.35rem 0.5rem; border-radius: 0;
+  border: 1px solid var(--mbj-line); background: transparent; color: var(--mbj-text);
+  font-size: 0.86rem;
+}
+.as-preset select option { color: #1a1f24; background: #fff; }
+.as-group { border-top: 1px solid var(--mbj-line); padding-top: 0.75rem; margin-top: 0.75rem; }
+.as-group-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; }
+.as-group.is-off .as-field { opacity: 0.38; }
+.as-switch { display: inline-flex; align-items: center; gap: 0.45rem; cursor: pointer; margin: 0; }
+.as-switch span { font-family: "Roboto Mono", monospace; font-size: 0.64rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mbj-muted); min-width: 1.6rem; text-align: right; }
+.as-switch input {
+  appearance: none; -webkit-appearance: none; position: relative; width: 30px; height: 16px; margin: 0;
+  border: 1px solid var(--mbj-grey); border-radius: 0; background: transparent; cursor: pointer;
+}
+.as-switch input::after {
+  content: ""; position: absolute; top: 2px; left: 2px; width: 10px; height: 10px;
+  background: var(--mbj-grey); transition: transform 0.15s ease;
+}
+.as-switch input:checked { border-color: var(--mbj-accent); background: var(--mbj-accent-wash); }
+.as-switch input:checked::after { transform: translateX(14px); background: var(--mbj-accent); }
+.as-switch input:focus-visible { outline: 2px solid var(--mbj-accent); outline-offset: 2px; }
+
+.as-field { margin-bottom: 0.9rem; }
+.as-field-head { display: flex; justify-content: space-between; align-items: baseline; gap: 0.75rem; }
+.as-field label, .as-field .as-field-label { font-size: 0.86rem; font-weight: 600; color: var(--mbj-text); line-height: 1.25; margin: 0; }
+.as-val { font-family: "Roboto Mono", monospace; font-size: 0.78rem; color: var(--mbj-ink); white-space: nowrap; }
+.as-field input[type=range] { width: 100%; accent-color: var(--mbj-accent); margin: 0.35rem 0 0; }
+
+/* segmented radio buttons (also used for the view switch) */
+.as-seg { display: flex; margin-top: 0.4rem; }
+.as-seg label {
+  flex: 1 1 0; text-align: center; cursor: pointer; border: 1px solid var(--mbj-line); margin: 0 0 0 -1px;
+  padding: 0.32rem 0.55rem; font-family: "Roboto Mono", monospace; font-size: 0.68rem !important;
+  font-weight: 700 !important; letter-spacing: 0.06em; text-transform: uppercase; color: var(--mbj-muted) !important;
+  white-space: nowrap;
+}
+.as-seg label:first-child { margin-left: 0; }
+.as-seg input { position: absolute; opacity: 0; pointer-events: none; }
+.as-seg label:has(input:checked) { border-color: var(--mbj-accent); color: var(--mbj-text) !important; background: var(--mbj-accent-wash); position: relative; }
+.as-seg label:has(input:focus-visible) { outline: 2px solid var(--mbj-accent); outline-offset: 1px; }
+
+/* ---- output ---- */
+.as-toolbar { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
+.as-toolbar .as-seg { margin: 0; }
+.as-actions { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.as-actions .btn { margin: 0 !important; }
+
+.as-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(118px, 1fr)); border-top: 1px solid var(--mbj-line); border-left: 1px solid var(--mbj-line); margin-bottom: 0.75rem; }
+@media (max-width: 560px) {
+  .as-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .as-stat:last-child:nth-child(odd) { grid-column: span 2; }
+}
+.as-stat { padding: 0.55rem 0.75rem; border-right: 1px solid var(--mbj-line); border-bottom: 1px solid var(--mbj-line); }
+.as-stat-val { font-size: 1.4rem; font-weight: 700; color: var(--mbj-text); font-variant-numeric: tabular-nums; line-height: 1.2; transition: opacity 0.15s; }
+.as-stat-val.as-lead { color: var(--mbj-ink); }
+.as-stat-val.is-stale { opacity: 0.45; }
+
+.as-plot-wrap { position: relative; }
+.as-plot { width: 100%; height: auto; display: block; }
+.as-plot text { font-family: Roboto, sans-serif; fill: var(--mbj-muted); font-size: 13px; }
+.as-plot .as-axis-title { fill: var(--mbj-text); font-size: 14px; font-weight: 600; }
+.as-plot .as-grid { stroke: var(--mbj-line); stroke-width: 1; }
+.as-plot .as-zero { stroke: var(--mbj-grey); stroke-width: 1; stroke-dasharray: 5 4; }
+.as-plot .as-frame { fill: none; stroke: var(--mbj-line); }
+.as-plot .as-pt-in { fill: var(--mbj-ink); fill-opacity: 0.75; stroke: none; }
+.as-plot .as-pt-out { fill: none; stroke: var(--mbj-grey); stroke-opacity: 0.55; stroke-width: 1; }
+.as-plot .as-fit { stroke: var(--mbj-title); stroke-width: 2.5; }
+.as-plot .as-box { fill: var(--mbj-accent-wash); stroke: var(--mbj-text); stroke-width: 1.4; }
+.as-plot .as-box-line { stroke: var(--mbj-text); stroke-width: 1.4; }
+.as-plot .as-box-med { stroke: var(--mbj-text); stroke-width: 3; }
+.as-plot .as-hist-obs { fill: var(--mbj-ink); fill-opacity: 0.45; stroke: none; }
+.as-plot .as-hist-cor { fill: none; stroke: var(--mbj-title); stroke-width: 2; }
+.as-plot .as-vl-true { stroke: var(--mbj-text); stroke-width: 2; stroke-dasharray: 6 4; }
+.as-plot .as-vl-exp { stroke: var(--mbj-accent); stroke-width: 2.5; }
+.as-plot .as-vl-label { font-size: 12px; font-weight: 600; fill: var(--mbj-text); }
+.as-plot .as-status { font-size: 14px; fill: var(--mbj-muted); }
+
+.as-legend { display: flex; flex-wrap: wrap; gap: 0.4rem 1.25rem; font-size: 0.8rem; color: var(--mbj-muted); margin-top: 0.4rem; }
+.as-legend span { display: inline-flex; align-items: center; gap: 0.4rem; }
+.as-legend svg { width: 14px; height: 14px; overflow: visible; }
+
+/* ---- bias breakdown table ---- */
+.as-budget { margin-top: 1.5rem; }
+.as-budget table { width: 100%; border-collapse: collapse; font-size: 0.86rem; margin-top: 0.5rem; }
+.as-budget th { text-align: left; padding: 0.35rem 0.5rem; border-bottom: 1px solid var(--mbj-line); }
+.as-budget td { padding: 0.45rem 0.5rem; border-bottom: 1px solid var(--mbj-line); vertical-align: top; color: var(--mbj-text); }
+.as-budget td.as-num, .as-budget th.as-num { text-align: right; font-family: "Roboto Mono", monospace; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.as-budget tfoot td { font-weight: 700; border-bottom: 0; }
+.as-budget .as-method { display: block; font-family: Roboto, sans-serif; font-size: 0.72rem; color: var(--mbj-muted); white-space: normal; margin-top: 0.1rem; }
+.as-budget .as-bar { height: 4px; background: var(--mbj-line); margin-top: 0.35rem; }
+.as-budget .as-bar i { display: block; height: 100%; background: var(--mbj-ink); transition: width 0.25s ease; }
+.as-budget .as-loss { color: var(--mbj-ink); }
+.as-budget.is-stale td { opacity: 0.55; }
+.as-note { font-size: 0.78rem; color: var(--mbj-muted); margin: 0.5rem 0 0; }
+@media (max-width: 560px) {
+  .as-budget table { font-size: 0.8rem; }
+  .as-budget td, .as-budget th { padding: 0.35rem 0.3rem; }
+}
+
+/* ---- odds & risk ratios tab (ratio.js) ---- */
+.rs-measure { margin: 0.9rem 0 0.25rem; }
+.rs-sub { font-size: 0.72rem; color: var(--mbj-muted); margin-top: 0.1rem; font-variant-numeric: tabular-nums; }
+/* contingency tables: cyan = outcome column (a, c), magenta = no-outcome column (b, d)
+   (fixed brand colors in both themes); fill-opacity is set per cell from its row share */
+.as-plot .rs-cell-t { fill: #03e5ff; stroke: #03e5ff; stroke-width: 1.5; }
+.as-plot .rs-cell-f { fill: #e262e2; stroke: #e262e2; stroke-width: 1.5; }
+.as-plot .rs-t-title { font-family: "Roboto Mono", monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; fill: var(--mbj-text); }
+.as-plot .rs-t-sub { font-size: 12px; fill: var(--mbj-muted); }
+.as-plot .rs-t-head { font-size: 13px; font-weight: 600; fill: var(--mbj-text); }
+.as-plot .rs-cell-lab { font-family: "Roboto Mono", monospace; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; fill: var(--mbj-muted); }
+.as-plot .rs-cell-n { font-size: 22px; font-weight: 700; fill: var(--mbj-text); font-variant-numeric: tabular-nums; }
+.as-plot .rs-cell-p { font-family: "Roboto Mono", monospace; font-size: 11.5px; fill: var(--mbj-text); }
+.as-plot .rs-ink { fill: #1a1f24; }
+.as-plot .rs-side { font-family: "Roboto Mono", monospace; font-size: 14px; font-weight: 700; fill: var(--mbj-text); font-variant-numeric: tabular-nums; }
+.as-plot .rs-side-f { font-family: "Roboto Mono", monospace; font-size: 10.5px; fill: var(--mbj-muted); }
+.as-plot .rs-t-foot { font-family: "Roboto Mono", monospace; font-size: 12.5px; fill: var(--mbj-muted); }
+.as-plot .rs-t-foot .rs-on { fill: var(--mbj-text); font-weight: 700; }
+.as-budget td.rs-on { color: var(--mbj-ink); font-weight: 700; }
+
+/* ---- info buttons and pop-up descriptions (both tabs) ---- */
+.as-field { position: relative; }
+.as-lab { display: inline; }
+.as-lab label, .as-lab .as-field-label { display: inline; }   /* keep the "i" beside the last word when a label wraps */
+.as-info {
+  display: inline-flex; align-items: center; justify-content: center; vertical-align: 0.1em;
+  width: 15px; height: 15px; margin-left: 0.35rem; padding: 0;
+  border: 1px solid var(--mbj-grey); border-radius: 0; background: transparent; cursor: pointer;
+  color: var(--mbj-muted); font-family: "Roboto Mono", monospace; font-size: 10px; font-weight: 700; line-height: 1;
+}
+.as-info:hover, .as-info:focus-visible, .as-info[aria-expanded="true"] { border-color: var(--mbj-accent); color: var(--mbj-text); background: var(--mbj-accent-wash); }
+.as-info:focus-visible { outline: 2px solid var(--mbj-accent); outline-offset: 1px; }
+.as-tip {
+  display: none; position: absolute; left: 0; right: 0; z-index: 20; margin-top: 0.35rem;
+  padding: 0.55rem 0.7rem; border: 1px solid var(--mbj-accent); border-left-width: 3px;
+  background: var(--bs-body-bg, #fff); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  font-family: Roboto, sans-serif; font-size: 0.8rem; font-weight: 400; line-height: 1.4;
+  color: var(--mbj-text); text-transform: none; letter-spacing: 0; white-space: normal;
+}
+.as-info:hover + .as-tip, .as-info:focus-visible + .as-tip, .as-info[aria-expanded="true"] + .as-tip, .as-tip:hover { display: block; }
+
+/* ---- clinical trial simulator (trial-simulator/trial.js) ---- */
+#tr-app { --tr-tx: #0aa6c2; --tr-ct: #c43fc4; }
+body.quarto-dark #tr-app { --tr-tx: #03e5ff; --tr-ct: #e262e2; }
+.tr-select {
+  width: 100%; margin-top: 0.3rem; padding: 0.35rem 0.5rem; border-radius: 0;
+  border: 1px solid var(--mbj-line); background: transparent; color: var(--mbj-text); font-size: 0.86rem;
+}
+.tr-select option { color: #1a1f24; background: #fff; }
+.tr-analysis { border-top: 0; margin-top: 0.5rem; padding-top: 0.25rem; }
+.as-plot .tr-ind { stroke-width: 1; stroke-opacity: 0.16; }
+.as-plot .tr-ind-key { stroke-opacity: 0.6; }
+.as-plot .tr-ind-pt, .as-plot .tr-ind-pt.tr-tx, .as-plot .tr-ind-pt.tr-ct { stroke: none; fill-opacity: 0.4; }
+.as-plot .tr-ind-pt.tr-ind-key { fill-opacity: 0.8; }
+.as-plot .tr-tx { stroke: var(--tr-tx); fill: var(--tr-tx); }
+.as-plot .tr-ct { stroke: var(--tr-ct); fill: var(--tr-ct); }
+.as-plot .tr-drop { fill: none; stroke-width: 1.2; stroke-opacity: 0.8; }
+.as-plot .tr-drop.tr-tx, .as-plot .tr-drop.tr-ct { fill: none; }
+.as-plot .tr-imp { stroke-width: 1; stroke-opacity: 0.55; stroke-dasharray: 3 3; fill: none; }
+.as-plot .tr-x { fill: none; stroke-width: 1.3; stroke-opacity: 0.85; stroke-linecap: round; }
+.as-plot .tr-mean { stroke-width: 4; }
+.as-plot .tr-mean-pt { stroke: var(--bs-body-bg, #fff); stroke-width: 2; }
+.as-plot .tr-mean-lab { stroke: none; font-family: "Roboto Mono", monospace; font-size: 12.5px; font-weight: 700; }
+.tr-flow { margin-top: 1.25rem; }
+.tr-flow table { width: 100%; border-collapse: collapse; font-size: 0.86rem; margin-top: 0.5rem; }
+.tr-flow th, .tr-flow td { padding: 0.4rem 0.5rem; border-bottom: 1px solid var(--mbj-line); color: var(--mbj-text); }
+.tr-flow tbody th { text-align: left; font-weight: 600; white-space: nowrap; }
+.tr-flow td.as-num, .tr-flow th.as-num { text-align: right; font-family: "Roboto Mono", monospace; font-variant-numeric: tabular-nums; }
+.tr-sw { display: inline-block; width: 10px; height: 10px; margin-right: 0.45rem; background: currentColor; }
+.tr-sw.tr-tx { color: var(--tr-tx); }
+.tr-sw.tr-ct { color: var(--tr-ct); }
+@media (max-width: 560px) { .tr-flow table { font-size: 0.76rem; } .tr-flow th, .tr-flow td { padding: 0.35rem 0.25rem; } }
+.sim-page { margin-top: 1.5rem; }
+.tr-flow thead th { white-space: normal; vertical-align: bottom; }
+@media (max-width: 560px) {
+  .tr-flow table { table-layout: fixed; }
+  .tr-flow tbody th { white-space: normal; width: 30%; }
+  .tr-flow thead th.as-key { font-size: 0.58rem; letter-spacing: 0.04em; }
+}
+@media (max-width: 560px) { .tr-sw { display: none; } }
+
+/* ---- POSC simulator (posc-simulator/posc.js) ---- */
+#po-app { --po-1: #0aa6c2; --po-2: #c43fc4; }
+body.quarto-dark #po-app { --po-1: #03e5ff; --po-2: #e262e2; }
+#po-app .as-plot-wrap .as-plot { touch-action: pan-y; cursor: ew-resize; }
+.as-plot .po-line { fill: none; stroke-width: 3; }
+.as-plot .po-band { stroke: none; fill-opacity: 0.16; }
+.as-plot .po-c1 { stroke: var(--po-1); fill: var(--po-1); }
+.as-plot .po-c2 { stroke: var(--po-2); fill: var(--po-2); }
+.as-plot .po-line.po-c1, .as-plot .po-line.po-c2 { fill: none; }
+.as-plot .po-band.po-c1, .as-plot .po-band.po-c2 { stroke: none; }
+.as-plot .po-marker { stroke: var(--mbj-grey); stroke-width: 1.2; stroke-dasharray: 4 4; }
+.as-plot .po-dot { fill: var(--po-1); stroke: var(--bs-body-bg, #fff); stroke-width: 2.5; }
+.as-plot .po-read { font-family: "Roboto Mono", monospace; font-size: 15px; font-weight: 700; fill: var(--mbj-text); }
+.as-plot .po-hit { fill: transparent; stroke: none; }
+.po-sentence { margin: 0.9rem 0 0; padding: 0.75rem 0.9rem; border-left: 3px solid var(--mbj-accent); background: var(--mbj-accent-wash); font-size: 0.95rem; color: var(--mbj-text); }
+.po-table { margin-top: 1.25rem; }
+.po-table table { width: 100%; border-collapse: collapse; font-size: 0.86rem; margin-top: 0.5rem; }
+.po-table th, .po-table td { padding: 0.4rem 0.5rem; border-bottom: 1px solid var(--mbj-line); color: var(--mbj-text); text-align: left; }
+.po-table .as-num { text-align: right; font-family: "Roboto Mono", monospace; font-variant-numeric: tabular-nums; }
+.po-table .po-ci { display: block; font-size: 0.72rem; color: var(--mbj-muted); }
+.po-input { font-family: Roboto, sans-serif; }
+
+/* odds & risk ratios tab: an artifact that is switched off shows only its header */
+#rs-app .as-group.is-off .as-field { display: none; }
+#rs-app .as-group.is-off .as-group-head { margin-bottom: 0.1rem; }

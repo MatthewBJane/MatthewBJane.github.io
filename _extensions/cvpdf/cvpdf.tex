@@ -1,0 +1,104 @@
+% ---------------------------------------------------------------
+% cvpdf: PDF layout for the CV.
+% A restrained, professional layout: Roboto throughout, a deep-teal accent
+% for section labels and bullets, hairline rules, dates right-aligned in grey,
+% the organization in grey italics on the line below each title, and
+% bulleted references with a hanging indent.
+% The \cv... macros are emitted by _extensions/cv/cv.lua.
+% ---------------------------------------------------------------
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{etoolbox}
+\usepackage{lastpage}
+\usepackage{needspace}
+
+\geometry{letterpaper, left=0.7in, right=0.7in, top=0.55in, bottom=0.65in, footskip=0.3in}
+
+% ---- colours ----
+\definecolor{cvink}{HTML}{1A1F24}    % body text
+\definecolor{cvgrey}{HTML}{55606B}   % organizations, descriptions
+\definecolor{cvmuted}{HTML}{8A949E}  % footer, separators
+\definecolor{cvrule}{HTML}{C9D0D6}   % hairlines
+\definecolor{cvaccent}{HTML}{0B6E82} % section labels, bullets (deep teal)
+\definecolor{cvlink}{HTML}{0B6E82}
+
+% ---- fonts (bundled with this extension; OFL) ----
+\setmainfont{Roboto}[
+  Path=_extensions/cvpdf/fonts/, Extension=.ttf, Scale=0.91,
+  UprightFont=*-Regular, BoldFont=*-Bold,
+  ItalicFont=*-Italic, BoldItalicFont=*-BoldItalic]
+\setsansfont{Roboto}[
+  Path=_extensions/cvpdf/fonts/, Extension=.ttf, Scale=0.91,
+  UprightFont=*-Regular, BoldFont=*-Bold,
+  ItalicFont=*-Italic, BoldItalicFont=*-BoldItalic]
+\setmonofont{RobotoMono}[
+  Path=_extensions/cvpdf/fonts/, Extension=.ttf, Scale=0.87,
+  UprightFont=*-Regular, BoldFont=*-Bold, ItalicFont=*-Italic]
+
+\color{cvink}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt}
+\raggedright
+\linespread{1.03}
+
+% ---- footer: name on the left, page x of y on the right ----
+\makeatletter
+\fancypagestyle{cv}{%
+  \fancyhf{}%
+  \renewcommand\headrulewidth{0pt}%
+  \renewcommand\footrulewidth{0pt}%
+  \fancyfoot[L]{{\scriptsize\color{cvmuted}\@title\ \textperiodcentered\ Curriculum Vitae}}%
+  \fancyfoot[R]{{\scriptsize\color{cvmuted}Page \thepage\ of \pageref*{LastPage}}}}
+\fancypagestyle{plain}{\pagestyle{cv}}
+\pagestyle{cv}
+
+% ---- header: name, headline, contact line, then a full-width rule ----
+\renewcommand{\maketitle}{%
+  {\bfseries\fontsize{23}{27}\selectfont\color{cvink}\@title\par}%
+  \vspace{1pt}}
+\makeatother
+
+\newcommand{\cvheadline}[1]{%
+  {\small\color{cvaccent}\addfontfeatures{LetterSpace=2}#1\par}\vspace{3pt}}
+\newcommand{\cvsep}{\hspace{0.5em}{\color{cvrule}\textbar}\hspace{0.5em}}
+\newcommand{\cvcontact}[1]{{\footnotesize\color{cvgrey}#1\par}\vspace{5pt}%
+  {\color{cvaccent}\rule{\linewidth}{0.9pt}}\par\vspace{1pt}}
+
+% ---- section headings ----
+% ## : small uppercase letterspaced label in the accent colour, hairline below
+\newcommand{\cvhair}{\par\vspace{-0.6ex}{\color{cvrule}\rule{\linewidth}{0.5pt}}\par}
+\titleformat{\subsection}{\needspace{5\baselineskip}\bfseries\normalsize\color{cvaccent}}{}{0em}
+  {\addfontfeatures{LetterSpace=8}\MakeUppercase}[\cvhair]
+\titlespacing*{\subsection}{0pt}{7pt plus 2pt minus 2pt}{2pt}
+% ### : bold italic sub-label
+\titleformat{\subsubsection}{\needspace{4\baselineskip}\bfseries\itshape\small\color{cvink}}{}{0em}{}
+\titlespacing*{\subsubsection}{0pt}{3pt plus 1pt}{1pt}
+
+% ---- lists: small accent bullets ----
+\setlist[itemize]{leftmargin=1.05em, itemsep=0.5pt, parsep=0pt, topsep=1pt, partopsep=0pt,
+  label={\color{cvaccent}\raisebox{0.15ex}{\scriptsize\textbullet}}}
+
+% ---- CV entries ----
+\newcommand{\cvdate}[1]{{\footnotesize\color{cvgrey}#1}}
+% \cventry{title}{dates}{organization}
+% long titles wrap before the date column instead of running into it
+\newlength{\cvdatew}
+\newcommand{\cventry}[3]{%
+  \par\needspace{3.2\baselineskip}\settowidth{\cvdatew}{\cvdate{#2}}%
+  \noindent\parbox[t]{\dimexpr\linewidth-\cvdatew-1.5em\relax}{\raggedright #1\strut}\hfill\cvdate{#2}\par\nopagebreak
+  \ifblank{#3}{}{{\color{cvgrey}\itshape #3}\par\nopagebreak}}
+\newcommand{\cvendentry}{\par\vspace{3.5pt}}
+\newcommand{\cvkind}[1]{\hspace{0.45em}{\scriptsize\color{cvaccent}\addfontfeatures{LetterSpace=6}\MakeUppercase{#1}}}
+% references: a bulleted list with a hanging indent
+\newenvironment{cvrefs}{\begin{itemize}[leftmargin=1.05em, itemsep=2pt, topsep=1pt]}{\end{itemize}\vspace{1pt}}
+\newcommand{\cvref}[1]{\par\needspace{2.5\baselineskip}\noindent #1\par\vspace{2pt}}
+\newcommand{\cvlinks}[1]{{\scriptsize #1\par}\vspace{4pt}}
+\newcommand{\cvnote}[1]{{\footnotesize\color{cvgrey}#1\par}\vspace{1pt}}
+\newcommand{\cvfed}[1]{{\footnotesize\color{cvgrey}#1\par}}
+% "Category  items" lines: category in a fixed-width bold column
+\newlength{\cvskillw}\setlength{\cvskillw}{1.55in}
+\newcommand{\cvskill}[2]{\par\noindent\hangindent=\cvskillw\hangafter=1%
+  \makebox[\cvskillw][l]{\textbf{#1}}#2\par\vspace{1.5pt}}

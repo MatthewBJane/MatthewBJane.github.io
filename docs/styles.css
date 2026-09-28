@@ -1,5 +1,2903 @@
-/* css styles */
+/* =====================================================================
+   Matthew B. Jané personal site. Theme ported from ACE (auditclinicalevidence.org)
+   styles.css, sections copied verbatim except where noted "MBJ:" below.
+   Personal-site rules are at the end under "MBJ PERSONAL SITE".
+   ===================================================================== */
 
 
-// Inline code
-$code-color: #999; // inline code text color
+/* ##### ACE styles.css lines 1-708: fonts, global, navbar links, light/dark toggle, wordmark + text glitch, titles, subtitle, headers, links, selection, navbar, body, TOC, solid letters ##### */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500;600;700&family=Rubik+Glitch&display=swap');
+
+/* ---- GLOBAL STYLES ---- */
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 90%;
+}
+
+
+code, pre {
+  font-family: 'Roboto Mono', monospace;
+}
+
+
+/* The wordmark's glitch shadows draw 3px outside the text box on every side,
+   and Rubik Glitch's ink overhangs its advance width. Bootstrap gives
+   .navbar-brand overflow:hidden (to truncate long titles), which clipped both.
+   Let it overflow and give the shadows room. */
+.navbar .navbar-brand {
+  overflow: visible !important;
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+}
+
+/* ---------------------------------------------------------
+   NAVBAR LINKS
+   Thin wireframe box in the navbar's own border colour
+   (magenta in dark, cyan in light); fills solid on hover.
+--------------------------------------------------------- */
+.navbar .navbar-nav .nav-link {
+  border: 1px solid rgba(226, 98, 226, 0.55);
+  border-radius: 0;
+  padding: 0.3rem 0.75rem !important;
+  margin: 0 0.2rem;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+/* hover: 75% fill (more than the 22% current-page tint, less than solid),
+   solid border for a crisp edge. Text colour chosen per theme for contrast
+   against the blended result over the dark navbar. */
+.navbar .navbar-nav .nav-link:hover,
+.navbar .navbar-nav .nav-link:focus-visible {
+  text-decoration: none !important;
+  background-color: rgba(226, 98, 226, 0.75);
+  border-color: #e262e2;
+  color: #ffffff !important;
+}
+
+/* current page: a low-alpha fill of the theme colour; border stays subtle */
+.navbar .navbar-nav .nav-link.active {
+  background-color: rgba(226, 98, 226, 0.22);
+}
+
+/* light theme: the navbar border is cyan, so the boxes follow */
+body.quarto-light .navbar .navbar-nav .nav-link {
+  border-color: rgba(3, 229, 255, 0.55);
+}
+
+body.quarto-light .navbar .navbar-nav .nav-link:hover,
+body.quarto-light .navbar .navbar-nav .nav-link:focus-visible {
+  background-color: rgba(3, 229, 255, 0.75);
+  border-color: #03e5ff;
+  color: #ffffff !important;
+}
+
+body.quarto-light .navbar .navbar-nav .nav-link.active {
+  background-color: rgba(3, 229, 255, 0.22);
+}
+
+/* ---------------------------------------------------------
+   LIGHT / DARK TOGGLE
+   Quarto adds .alternate to the toggle link in dark mode and
+   draws its icon on .bi::before. Rebuilt as a switch: ::before
+   is the pill track, ::after is the knob, which carries a sun
+   (light, knob left) or crescent (dark, knob right).
+--------------------------------------------------------- */
+.navbar .quarto-color-scheme-toggle {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 0.45rem !important;
+}
+
+.navbar .quarto-color-scheme-toggle .bi {
+  display: inline-block;
+  position: relative;
+  width: 2.9rem;
+  height: 1.55rem;
+}
+
+/* track */
+.navbar .quarto-color-scheme-toggle .bi::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: auto !important;
+  height: auto !important;
+  background-image: none !important;
+  background-color: transparent;
+  border: 1px solid rgba(226, 98, 226, 0.75);
+  border-radius: 999px;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+body.quarto-light .navbar .quarto-color-scheme-toggle .bi::before {
+  border-color: rgba(3, 229, 255, 0.75);
+}
+
+.navbar .quarto-color-scheme-toggle:hover .bi::before {
+  background-color: rgba(226, 98, 226, 0.18);
+}
+
+body.quarto-light .navbar .quarto-color-scheme-toggle:hover .bi::before {
+  background-color: rgba(3, 229, 255, 0.18);
+}
+
+/* knob, carrying the icon for the CURRENT mode. The crescent is a dark disc
+   with a magenta disc cut across it - it only ever appears on the magenta knob. */
+.navbar .quarto-color-scheme-toggle .bi::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);   /* true vertical centre, whatever the track height */
+  left: 0.2rem;
+  width: 1.15rem;
+  height: 1.15rem;
+  border-radius: 50%;
+  background-color: #e262e2;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 0.85rem 0.85rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='6.3' fill='%23222'/%3E%3Ccircle cx='10.6' cy='6.5' r='5.1' fill='%23e262e2'/%3E%3C/svg%3E");
+  transition: left 0.2s ease, background-color 0.15s ease;
+}
+
+body.quarto-light .navbar .quarto-color-scheme-toggle .bi::after {
+  background-color: #03e5ff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23222' stroke-width='1.7' stroke-linecap='round'%3E%3Ccircle cx='8' cy='8' r='2.8' fill='%23222' stroke='none'/%3E%3Cpath d='M8 1.4v1.6M8 13v1.6M1.4 8h1.6M13 8h1.6M3.3 3.3l1.1 1.1M11.6 11.6l1.1 1.1M3.3 12.7l1.1-1.1M11.6 4.4l1.1-1.1'/%3E%3C/svg%3E");
+}
+
+/* dark: knob slides to the right */
+.navbar .quarto-color-scheme-toggle.alternate .bi::after {
+  left: calc(100% - 1.15rem - 0.2rem);
+}
+
+/* ---------------------------------------------------------
+   WORDMARK HOVER GLITCH
+   The ACE wordmark (navbar + homepage) is text with magenta/cyan
+   drop-shadows. On hover, jitter those offsets and add a little
+   skew, stepped rather than eased so it jumps between states like
+   a signal dropout. Snaps back to the resting look on mouse-out.
+--------------------------------------------------------- */
+@keyframes ace-glitch {
+  0%, 100% { filter: drop-shadow(3px 3px 0 #e262e2) drop-shadow(-3px -3px 0 #03e5ff); transform: none; }
+  8%   { filter: drop-shadow(-5px 2px 0 #e262e2) drop-shadow(5px -2px 0 #03e5ff); transform: translate(-2px, 1px) skewX(-6deg); }
+  16%  { filter: drop-shadow(6px -1px 0 #e262e2) drop-shadow(-6px 1px 0 #03e5ff); transform: translate(2px, -1px); }
+  24%  { filter: drop-shadow(-2px -5px 0 #e262e2) drop-shadow(2px 5px 0 #03e5ff); transform: translate(-1px, 0) skewX(4deg); }
+  32%  { filter: drop-shadow(4px 4px 0 #e262e2) drop-shadow(-4px -4px 0 #03e5ff); transform: translate(1px, 1px); }
+  40%  { filter: drop-shadow(-7px 0 0 #e262e2) drop-shadow(7px 0 0 #03e5ff); transform: translate(-3px, 0) skewX(-8deg); }
+  48%  { filter: drop-shadow(2px -3px 0 #e262e2) drop-shadow(-2px 3px 0 #03e5ff); transform: none; }
+  56%  { filter: drop-shadow(-3px 3px 0 #e262e2) drop-shadow(3px -3px 0 #03e5ff); transform: translate(2px, 0) skewX(5deg); }
+  64%  { filter: drop-shadow(5px 1px 0 #e262e2) drop-shadow(-5px -1px 0 #03e5ff); transform: translate(-1px, -1px); }
+  72%  { filter: drop-shadow(-4px -2px 0 #e262e2) drop-shadow(4px 2px 0 #03e5ff); transform: translate(1px, 0) skewX(-3deg); }
+  80%  { filter: drop-shadow(3px 3px 0 #e262e2) drop-shadow(-3px -3px 0 #03e5ff); transform: none; }
+  88%  { filter: drop-shadow(-6px 3px 0 #e262e2) drop-shadow(6px -3px 0 #03e5ff); transform: translate(-2px, 1px) skewX(6deg); }
+}
+
+/* Ambient: rest for ~3.5s, then a ~1s burst (the last 22% of a 4.5s
+   cycle, eleven stepped states). Only the burst repaints. */
+@keyframes ace-glitch-ambient {
+  0%, 77%, 100% { filter: drop-shadow(3px 3px 0 #e262e2) drop-shadow(-3px -3px 0 #03e5ff); transform: none; }
+  78% { filter: drop-shadow(-5px 2px 0 #e262e2) drop-shadow(5px -2px 0 #03e5ff); transform: translate(-2px, 1px) skewX(-6deg); }
+  80% { filter: drop-shadow(6px -1px 0 #e262e2) drop-shadow(-6px 1px 0 #03e5ff); transform: translate(2px, -1px); }
+  82% { filter: drop-shadow(-2px -5px 0 #e262e2) drop-shadow(2px 5px 0 #03e5ff); transform: translate(-1px, 0) skewX(4deg); }
+  84% { filter: drop-shadow(4px 4px 0 #e262e2) drop-shadow(-4px -4px 0 #03e5ff); transform: translate(1px, 1px); }
+  86% { filter: drop-shadow(-7px 0 0 #e262e2) drop-shadow(7px 0 0 #03e5ff); transform: translate(-3px, 0) skewX(-8deg); }
+  88% { filter: drop-shadow(2px -3px 0 #e262e2) drop-shadow(-2px 3px 0 #03e5ff); transform: none; }
+  90% { filter: drop-shadow(-3px 3px 0 #e262e2) drop-shadow(3px -3px 0 #03e5ff); transform: translate(2px, 0) skewX(5deg); }
+  92% { filter: drop-shadow(5px 1px 0 #e262e2) drop-shadow(-5px -1px 0 #03e5ff); transform: translate(-1px, -1px); }
+  94% { filter: drop-shadow(-4px -2px 0 #e262e2) drop-shadow(4px 2px 0 #03e5ff); transform: translate(1px, 0) skewX(-3deg); }
+  96% { filter: drop-shadow(-6px 3px 0 #e262e2) drop-shadow(6px -3px 0 #03e5ff); transform: translate(-2px, 1px) skewX(6deg); }
+  98% { filter: drop-shadow(4px -2px 0 #e262e2) drop-shadow(-4px 2px 0 #03e5ff); transform: translate(1px, 0); }
+}
+
+/* always on, intermittently; the homepage mark is offset so the two
+   don't burst in unison */
+.navbar .navbar-title {
+  animation: ace-glitch-ambient 4.5s steps(1, end) infinite;
+}
+
+body.homepage h1.title {
+  animation: ace-glitch-ambient 4.5s steps(1, end) -2s infinite;
+}
+
+/* hover: continuous */
+.navbar .navbar-brand:hover .navbar-title,
+body.homepage h1.title:hover {
+  animation: ace-glitch 0.8s steps(1, end) infinite;
+}
+
+/* keep it still for people who have asked their OS for less motion */
+@media (prefers-reduced-motion: reduce) {
+  .navbar .navbar-title,
+  body.homepage h1.title,
+  .navbar .navbar-brand:hover .navbar-title,
+  body.homepage h1.title:hover {
+    animation: none;
+  }
+}
+
+
+/* ---------------------------------------------------------
+   TEXT HOVER GLITCH
+   Smaller-amplitude version for ordinary text: a cyan/magenta
+   split via text-shadow plus a little skew. Used on listing
+   titles and navbar link text on hover.
+--------------------------------------------------------- */
+@keyframes ace-text-glitch {
+  0%, 100% { text-shadow: none; transform: none; }
+  10% { text-shadow: -2px 0 #03e5ff, 2px 0 #e262e2; transform: translate(-1px, 0) skewX(-6deg); }
+  20% { text-shadow: 2px 0 #03e5ff, -2px 0 #e262e2; transform: translate(1px, 0); }
+  30% { text-shadow: -1px -1px #03e5ff, 1px 1px #e262e2; transform: translate(0, -1px) skewX(4deg); }
+  40% { text-shadow: 3px 0 #03e5ff, -3px 0 #e262e2; transform: translate(-2px, 0) skewX(-8deg); }
+  50% { text-shadow: none; transform: none; }
+  60% { text-shadow: -2px 1px #03e5ff, 2px -1px #e262e2; transform: translate(1px, 0) skewX(5deg); }
+  70% { text-shadow: 1px 0 #03e5ff, -1px 0 #e262e2; transform: translate(-1px, -1px); }
+  80% { text-shadow: none; transform: none; }
+  90% { text-shadow: -3px 0 #03e5ff, 3px 0 #e262e2; transform: translate(2px, 0) skewX(6deg); }
+}
+
+/* listing title: glitch on top of the existing background wash */
+.ace-report-title a:hover,
+.ace-report-title a:focus-visible {
+  animation: ace-text-glitch 0.8s steps(1, end) infinite;
+}
+
+/* navbar links: glitch the text only, so the wireframe box stays put */
+.navbar .navbar-nav .nav-link .menu-text {
+  display: inline-block;
+}
+
+.navbar .navbar-nav .nav-link:hover .menu-text,
+.navbar .navbar-nav .nav-link:focus-visible .menu-text {
+  animation: ace-text-glitch 0.8s steps(1, end) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ace-report-title a:hover,
+  .ace-report-title a:focus-visible,
+  .navbar .navbar-nav .nav-link:hover .menu-text,
+  .navbar .navbar-nav .nav-link:focus-visible .menu-text {
+    animation: none;
+  }
+}
+
+/* Navbar wordmark - keeps the ACE glitch treatment */
+.navbar-title {
+  font-family: 'Rubik Glitch', system-ui;
+  font-weight: normal !important;
+  background: white;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  font-size: 36pt;
+  filter:
+    drop-shadow(3px 3px 0px #e262e2)
+    drop-shadow(-3px -3px 0px #03e5ff);
+}
+
+/* ---------------------------------------------------------
+   ACE TITLES
+   Clean, high-contrast headings. No display face, no glitch.
+--------------------------------------------------------- */
+
+h1 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  font-size: 2rem;
+
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-text-fill-color: currentColor;
+  color: inherit;
+  filter: none;
+}
+
+/* Report / page titles - clean. Homepage wordmark excluded below. */
+html body:not(.homepage) h1.title {
+  font-family: 'Roboto', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: clamp(1.7rem, 1.3rem + 1.3vw, 2.35rem) !important;
+  letter-spacing: -0.022em !important;
+  line-height: 1.12 !important;
+  text-wrap: balance;
+
+  margin-bottom: 0.5rem !important;
+
+  background: none !important;
+  -webkit-background-clip: border-box !important;
+  background-clip: border-box !important;
+  filter: none !important;
+}
+
+html body.quarto-light:not(.homepage) h1.title {
+  color: #0f1419 !important;
+  -webkit-text-fill-color: #0f1419 !important;
+}
+
+html body.quarto-dark:not(.homepage) h1.title {
+  color: #f2f5f7 !important;
+  -webkit-text-fill-color: #f2f5f7 !important;
+}
+
+/* Homepage wordmark - keeps the ACE glitch treatment, matching the navbar */
+body.homepage h1.title {
+  font-size: 70pt !important;
+  font-family: 'Rubik Glitch', system-ui !important;
+  font-weight: normal !important;
+
+  background: black !important;
+
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+
+  filter:
+    drop-shadow(3px 3px 0px #e262e2)
+    drop-shadow(-3px -3px 0px #03e5ff);
+}
+
+body.homepage.quarto-light h1.title {
+  background-color: #222222 !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+}
+
+body.homepage.quarto-dark h1.title {
+  background-color: white !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+}
+
+/* ---------------------------------------------------------
+   ACE SUBTITLE
+   Quiet deck line under the title. No box, no accent bar.
+--------------------------------------------------------- */
+
+html body .subtitle {
+  font-family: 'Roboto', sans-serif !important;
+  font-size: clamp(1.15rem, 1.02rem + 0.45vw, 1.45rem) !important;
+  font-weight: 400 !important;
+  line-height: 1.45 !important;
+  letter-spacing: 0 !important;
+
+  width: auto !important;
+  max-width: 66ch !important;
+
+  padding: 0 !important;
+  margin: 0.2rem 0 1.4rem !important;
+
+  border: 0 !important;
+  background: none !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  filter: none !important;
+  transform: none !important;
+}
+
+html body.quarto-light .subtitle {
+  color: #6b7681 !important;
+  -webkit-text-fill-color: #6b7681 !important;
+}
+
+html body.quarto-dark .subtitle {
+  color: #b8c2cb !important;
+  -webkit-text-fill-color: #b8c2cb !important;
+}
+
+html body .subtitle:hover {
+  background: none !important;
+  background-color: transparent !important;
+  filter: none !important;
+  transform: none !important;
+}
+
+/* Homepage deck line under the ACE wordmark: tracked mono caps ruled
+   top and bottom in the theme accent (cyan light / magenta dark), matching
+   the navbar borders. Report pages keep the quiet subtitle above. */
+html body.homepage .subtitle {
+  font-family: 'Roboto Mono', monospace !important;
+  /* sized so the line spans roughly the ink width of the ACE wordmark above */
+  font-size: 0.76rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase;
+  line-height: 1.3 !important;
+
+  display: inline-block;
+  width: auto !important;
+  max-width: none !important;
+  padding: 0.4rem 0 !important;
+  margin: -0.1rem 0 1.3rem !important;
+
+  border-top: 2px solid #03e5ff !important;
+  border-bottom: 2px solid #03e5ff !important;
+}
+
+html body.homepage.quarto-light .subtitle {
+  color: #1a1f24 !important;
+  -webkit-text-fill-color: #1a1f24 !important;
+}
+
+html body.homepage.quarto-dark .subtitle {
+  color: #f2f5f7 !important;
+  -webkit-text-fill-color: #f2f5f7 !important;
+  border-top-color: #e262e2 !important;
+  border-bottom-color: #e262e2 !important;
+}
+
+html body.homepage .subtitle:hover {
+  animation: ace-text-glitch 0.8s steps(1, end) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body.homepage .subtitle:hover { animation: none; }
+}
+
+
+/* Standard styling for smaller headers */
+h2 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 17pt;
+  font-weight: bold;
+  padding: 0pt;
+}
+
+h3 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14pt;
+  font-weight: 700;
+  padding: 0pt;
+}
+
+h4, h5 {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* ---------------------------------------------------------
+   ACE HTML SECTION NUMBER STYLE
+   Quarto still generates the numbers.
+   JavaScript below converts h3 numbers from 1.1 to 1.A.
+--------------------------------------------------------- */
+
+.header-section-number {
+  font-family: "Roboto Mono", monospace;
+  font-weight: 700;
+  margin-right: 0.35rem;
+}
+
+/* Light theme section numbers */
+html[data-bs-theme="light"] .header-section-number,
+body[data-bs-theme="light"] .header-section-number,
+body.quarto-light .header-section-number {
+  color: #222 !important;
+}
+
+/* Dark theme section numbers */
+html[data-bs-theme="dark"] .header-section-number,
+body[data-bs-theme="dark"] .header-section-number,
+body.quarto-dark .header-section-number {
+  color: #fff !important;
+}
+
+/* Hyperlinks */
+a {
+  color: #03e5ff; /* Changed from orange to red */
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ffffff; /* High-contrast white hover */
+  text-decoration: underline;
+}
+
+/* Link hover override for Light Mode */
+[data-bs-theme="light"] a:hover {
+  color: #222222; /* High-contrast black hover */
+}
+
+/* ---- CUSTOM TEXT SELECTION HIGHLIGHT ---- */
+/* Light theme selection */
+html[data-bs-theme="light"] ::selection,
+body[data-bs-theme="light"] ::selection,
+body.quarto-light ::selection {
+  background: rgba(226, 98, 226, 0.28);
+  color: inherit;
+}
+
+/* Dark theme selection */
+html[data-bs-theme="dark"] ::selection,
+body[data-bs-theme="dark"] ::selection,
+body.quarto-dark ::selection {
+  background: rgba(3, 229, 255, 0.32);
+  color: inherit;
+}
+
+/* ---- GLOBAL NAVBAR STYLE ---- */
+.navbar {
+  background-color: #222222 !important; /* Smooth off-black for both themes */
+  border-width: 10px 0 10px 0; 
+  border-style: solid;
+  border-image: linear-gradient(90deg, #e262e2, #d75dd7) 1;
+}
+
+.navbar {
+  background-color: #222222 !important;
+  border-width: 10px 0 10px 0;
+  border-style: solid;
+  border-image: linear-gradient(90deg, #e262e2, #d75dd7) 1;
+}
+
+/* Light theme gradient */
+html[data-bs-theme="light"] .navbar,
+body[data-bs-theme="light"] .navbar,
+[data-bs-theme="light"] .navbar,
+body.quarto-light .navbar,
+.quarto-light .navbar {
+  border-image: linear-gradient(90deg, #03e5ff, #03cee6) 1 !important;
+}
+
+
+/* ---- THEME OVERRIDES (Body Backgrounds) ---- */
+[data-bs-theme="dark"] body {
+  background-color: #222222 !important;
+  color: #ffffff;
+}
+
+[data-bs-theme="light"] body {
+  background-color: #ffffff !important;
+  color: #222222;
+}
+
+
+/* ---- TABLE OF CONTENTS (right margin) ----
+   Title as a small mono-caps key, a hairline rail down the left of the list,
+   quiet grey entries, and the current section marked by an accent segment on
+   the rail plus a translucent tint (magenta in light, cyan in dark), the same
+   language as the section flags and pills. Hover = the tint without the rail. */
+
+/* Drop the whole block so its title sits level with the ACE ID pill above
+   the report title (sidebar top is set by Quarto's JS; 14px padding is its own). */
+#quarto-margin-sidebar nav[role="doc-toc"] {
+  padding-top: 1.2rem;              /* title centre lines up with the pill centre */
+}
+
+.sidebar nav[role="doc-toc"] #toc-title,
+.sidebar nav[role="doc-toc"] > h2 {
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8a949e;
+  margin: 0 0 0.55rem 0;
+  padding-left: 0.85rem;
+}
+body.quarto-dark .sidebar nav[role="doc-toc"] #toc-title,
+body.quarto-dark .sidebar nav[role="doc-toc"] > h2 { color: #9aa4ae; }
+
+/* the rail */
+.sidebar nav[role="doc-toc"] > ul {
+  border-left: 2px solid rgba(138, 148, 158, 0.28);
+  margin-left: 0;
+  padding-left: 0;
+}
+body.quarto-dark .sidebar nav[role="doc-toc"] > ul { border-left-color: rgba(154, 164, 174, 0.28); }
+.sidebar nav[role="doc-toc"] ul ul {
+  border-left: 0;
+  padding-left: 0;
+  margin: 0.05rem 0 0.15rem 0;
+}
+
+/* entries */
+html body .sidebar nav[role="doc-toc"] a.nav-link {
+  display: block;
+  margin-left: -2px;                /* sit on the rail */
+  padding: 0.28rem 0.7rem 0.28rem 0.85rem;
+  border-left: 2px solid transparent;
+  border-radius: 0 6px 6px 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.86rem;
+  line-height: 1.3;
+  font-weight: 400 !important;
+  text-decoration: none !important;
+  background-color: transparent !important;
+  transition: color 0.12s ease, background-color 0.12s ease, border-color 0.12s ease;
+}
+html body .sidebar nav[role="doc-toc"] ul ul a.nav-link {
+  font-size: 0.8rem;
+  padding-top: 0.22rem;
+  padding-bottom: 0.22rem;
+  padding-left: 1.55rem;
+}
+html body .sidebar nav[role="doc-toc"] a.nav-link .header-section-number {
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.9em;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-right: 0.45em;
+  opacity: 0.75;
+}
+
+/* colours: quiet at rest, accent when current, tint on hover */
+html body.quarto-light .sidebar nav[role="doc-toc"] a.nav-link {
+  color: #4b5560 !important;
+  -webkit-text-fill-color: #4b5560 !important;
+}
+html body.quarto-dark .sidebar nav[role="doc-toc"] a.nav-link {
+  color: #b8c2cb !important;
+  -webkit-text-fill-color: #b8c2cb !important;
+}
+
+html body.quarto-light .sidebar nav[role="doc-toc"] a.nav-link:hover,
+html body.quarto-light .sidebar nav[role="doc-toc"] a.nav-link:focus {
+  color: #222222 !important;
+  -webkit-text-fill-color: #222222 !important;
+  background-color: rgba(226, 98, 226, 0.12) !important;
+  border-left-color: transparent;
+}
+html body.quarto-dark .sidebar nav[role="doc-toc"] a.nav-link:hover,
+html body.quarto-dark .sidebar nav[role="doc-toc"] a.nav-link:focus {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  background-color: rgba(3, 229, 255, 0.14) !important;
+  border-left-color: transparent;
+}
+
+html body.quarto-light .sidebar nav[role="doc-toc"] a.nav-link.active,
+html body.quarto-light .sidebar nav[role="doc-toc"] a.nav-link[aria-current="true"] {
+  color: #222222 !important;
+  -webkit-text-fill-color: #222222 !important;
+  font-weight: 700 !important;
+  background-color: rgba(226, 98, 226, 0.16) !important;
+  border-left-color: #e262e2 !important;
+}
+html body.quarto-dark .sidebar nav[role="doc-toc"] a.nav-link.active,
+html body.quarto-dark .sidebar nav[role="doc-toc"] a.nav-link[aria-current="true"] {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  font-weight: 700 !important;
+  background-color: rgba(3, 229, 255, 0.16) !important;
+  border-left-color: #03e5ff !important;
+}
+html body.quarto-light .sidebar nav[role="doc-toc"] a.nav-link.active .header-section-number { color: #c94fc9; opacity: 1; }
+html body.quarto-dark  .sidebar nav[role="doc-toc"] a.nav-link.active .header-section-number { color: #03e5ff; opacity: 1; }
+
+/* "Other Formats" block: same key style as the title, aligned to the rail */
+.sidebar nav[role="doc-toc"] .quarto-other-links,
+.sidebar nav[role="doc-toc"] .quarto-alternate-formats {
+  margin-top: 1.1rem;
+  padding-left: 0.85rem;
+}
+.sidebar nav[role="doc-toc"] .quarto-other-links h2,
+.sidebar nav[role="doc-toc"] .quarto-alternate-formats h2 {
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8a949e;
+  margin-bottom: 0.5rem;
+}
+body.quarto-dark .sidebar nav[role="doc-toc"] .quarto-other-links h2,
+body.quarto-dark .sidebar nav[role="doc-toc"] .quarto-alternate-formats h2 { color: #9aa4ae; }
+
+/* ---- CUSTOM TITLE COLORS ---- */
+/* Forces specific letters to be solid colored instead of the gradient */
+.solid-letter {
+  background: none !important;
+  -webkit-text-fill-color: #ffffff !important;
+  color: #ffffff !important;
+}
+
+/* Adjusts solid letters to black in Light Mode using Quarto's native body class */
+body.quarto-light .solid-letter {
+  -webkit-text-fill-color: #222222 !important;
+  color: #222222 !important;
+}
+
+/* Forces the navbar letters to STAY white in Light Mode since the navbar is always dark */
+body.quarto-light .navbar .solid-letter {
+  -webkit-text-fill-color: #ffffff !important;
+  color: #ffffff !important;
+}
+
+
+:root {
+    --bslib-page-sidebar-title-bg: #03e5ff;
+    --bslib-page-sidebar-title-color: #fff;
+}
+
+
+/* ##### ACE styles.css lines 777-884: sidebar Other Formats badges ##### */
+
+/* ---------------------------------------------------------
+   SIDEBAR "DOWNLOAD" BLOCK (Quarto alternate formats)
+   Small mono label + the same black/white block button as the
+   listing cards. The block sits inside nav[role=doc-toc], whose
+   theme rules use !important, hence the weight here.
+--------------------------------------------------------- */
+
+.quarto-alternate-formats,
+.quarto-other-links {
+  margin-top: 1.4rem;
+}
+
+.quarto-alternate-formats h2,
+.quarto-other-links h2 {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6b7681;
+  margin: 0 0 0.5rem;
+  padding: 0;
+  border: 0;
+}
+body.quarto-dark .quarto-alternate-formats h2,
+.quarto-other-links h2 { color: #9aa4ae; }
+
+.quarto-alternate-formats ul, .quarto-other-links ul { list-style: none; margin: 0; padding: 0; }
+.quarto-alternate-formats li, .quarto-other-links li { margin: 0; }
+
+.sidebar nav[role="doc-toc"] .quarto-alternate-formats a,
+.sidebar nav[role="doc-toc"] .quarto-other-links a,
+.sidebar nav[role="doc-toc"] .quarto-alternate-formats a:visited,
+.sidebar nav[role="doc-toc"] .quarto-other-links a:visited {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.85rem !important;
+  border-radius: 0;               /* squared */
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.1 !important;
+  text-decoration: none !important;
+}
+
+.sidebar nav[role="doc-toc"] .quarto-alternate-formats a .bi,
+.sidebar nav[role="doc-toc"] .quarto-other-links a .bi {
+  font-size: 1.25rem;             /* bigger glyph ... */
+  line-height: 0;                 /* ... without adding height to the button */
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Grey wireframe badge like the ORCID / email badges: outline at rest,
+   grey fill with white text on hover. */
+body.quarto-light .sidebar nav[role="doc-toc"] .quarto-alternate-formats a,
+body.quarto-light .sidebar nav[role="doc-toc"] .quarto-other-links a,
+html[data-bs-theme="light"] .sidebar nav[role="doc-toc"] .quarto-alternate-formats a,
+html[data-bs-theme="light"] .sidebar nav[role="doc-toc"] .quarto-other-links a,
+body.quarto-dark .sidebar nav[role="doc-toc"] .quarto-alternate-formats a,
+body.quarto-dark .sidebar nav[role="doc-toc"] .quarto-other-links a,
+html[data-bs-theme="dark"] .sidebar nav[role="doc-toc"] .quarto-alternate-formats a,
+html[data-bs-theme="dark"] .sidebar nav[role="doc-toc"] .quarto-other-links a {
+  --ace-badge-grey: #8a949e;
+  background-color: transparent !important;
+  border: 1px solid var(--ace-badge-grey);
+  color: var(--ace-badge-grey) !important;
+  -webkit-text-fill-color: var(--ace-badge-grey) !important;
+  transition: background-color 0.12s ease, color 0.12s ease;
+}
+
+body.quarto-dark .sidebar nav[role="doc-toc"] .quarto-alternate-formats a,
+body.quarto-dark .sidebar nav[role="doc-toc"] .quarto-other-links a,
+html[data-bs-theme="dark"] .sidebar nav[role="doc-toc"] .quarto-alternate-formats a,
+html[data-bs-theme="dark"] .sidebar nav[role="doc-toc"] .quarto-other-links a {
+  --ace-badge-grey: #9aa4ae;
+}
+
+/* Hover: the TOC's own hover rule (magenta fill, !important, specificity
+   0,4,3) outranks a plain selector, so these carry html + body.theme. */
+html body.quarto-light .sidebar nav[role="doc-toc"] .quarto-alternate-formats a:hover,
+html body.quarto-light .sidebar nav[role="doc-toc"] .quarto-other-links a:hover,
+html body.quarto-light .sidebar nav[role="doc-toc"] .quarto-alternate-formats a:focus-visible,
+html body.quarto-light .sidebar nav[role="doc-toc"] .quarto-other-links a:focus-visible,
+html body.quarto-dark .sidebar nav[role="doc-toc"] .quarto-alternate-formats a:hover,
+html body.quarto-dark .sidebar nav[role="doc-toc"] .quarto-other-links a:hover,
+html body.quarto-dark .sidebar nav[role="doc-toc"] .quarto-alternate-formats a:focus-visible,
+html body.quarto-dark .sidebar nav[role="doc-toc"] .quarto-other-links a:focus-visible {
+  background-color: var(--ace-badge-grey) !important;
+  border-color: var(--ace-badge-grey) !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  transform: none;
+  filter: none;
+}
+html body.quarto-dark .sidebar nav[role="doc-toc"] .quarto-alternate-formats a:hover,
+html body.quarto-dark .sidebar nav[role="doc-toc"] .quarto-other-links a:hover,
+html body.quarto-dark .sidebar nav[role="doc-toc"] .quarto-alternate-formats a:focus-visible,
+html body.quarto-dark .sidebar nav[role="doc-toc"] .quarto-other-links a:focus-visible {
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
+}
+
+
+
+
+
+/* ##### ACE styles.css lines 1155-1311: category tags, reference links, body links ##### */
+
+/* ---------------------------------------------------------
+   ACE LISTING CATEGORY TAGS
+--------------------------------------------------------- */
+
+.ace-report-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.3rem 0 0.5rem 0;
+}
+
+.ace-report-category {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 0.22rem 0.55rem;
+
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  border: 1px solid rgba(0, 0, 0, 0.18);
+}
+
+/* Light theme */
+html[data-bs-theme="light"] .ace-report-category,
+body[data-bs-theme="light"] .ace-report-category,
+body.quarto-light .ace-report-category {
+  background: rgba(226, 98, 226, 0.12);
+  color: #222222;
+  border-color: rgba(226, 98, 226, 0.35);
+}
+
+/* Dark theme */
+html[data-bs-theme="dark"] .ace-report-category,
+body[data-bs-theme="dark"] .ace-report-category,
+body.quarto-dark .ace-report-category {
+  background: rgba(3, 229, 255, 0.13);
+  color: #f2f2f2;
+  border-color: rgba(3, 229, 255, 0.35);
+}
+
+
+/* Reference and citation links */
+html[data-bs-theme="light"] #refs a,
+html[data-bs-theme="light"] .references a,
+html[data-bs-theme="light"] a.citation,
+html[data-bs-theme="light"] a[role="doc-biblioref"],
+html[data-bs-theme="light"] a[role="doc-noteref"],
+body[data-bs-theme="light"] #refs a,
+body[data-bs-theme="light"] .references a,
+body[data-bs-theme="light"] a.citation,
+body[data-bs-theme="light"] a[role="doc-biblioref"],
+body[data-bs-theme="light"] a[role="doc-noteref"],
+body.quarto-light #refs a,
+body.quarto-light .references a,
+body.quarto-light a.citation,
+body.quarto-light a[role="doc-biblioref"],
+body.quarto-light a[role="doc-noteref"] {
+  color: #0b7f97 !important;
+  -webkit-text-fill-color: #0b7f97 !important;
+  text-decoration-color: #0b7f97 !important;
+}
+
+html[data-bs-theme="dark"] #refs a,
+html[data-bs-theme="dark"] .references a,
+html[data-bs-theme="dark"] a.citation,
+html[data-bs-theme="dark"] a[role="doc-biblioref"],
+html[data-bs-theme="dark"] a[role="doc-noteref"],
+body[data-bs-theme="dark"] #refs a,
+body[data-bs-theme="dark"] .references a,
+body[data-bs-theme="dark"] a.citation,
+body[data-bs-theme="dark"] a[role="doc-biblioref"],
+body[data-bs-theme="dark"] a[role="doc-noteref"],
+body.quarto-dark #refs a,
+body.quarto-dark .references a,
+body.quarto-dark a.citation,
+body.quarto-dark a[role="doc-biblioref"],
+body.quarto-dark a[role="doc-noteref"] {
+  color: #e39be0 !important;
+  -webkit-text-fill-color: #e39be0 !important;
+  text-decoration-color: #e39be0 !important;
+}
+
+
+html[data-bs-theme="light"] main a:not(.ace-pdf-button):not(.nav-link):not(.navbar-brand):not(.ace-report-title a):not(.ace-doi-link):not(.btn):not(.mbj-badge),
+body[data-bs-theme="light"] main a:not(.ace-pdf-button):not(.nav-link):not(.navbar-brand):not(.ace-report-title a):not(.ace-doi-link):not(.btn):not(.mbj-badge),
+body.quarto-light main a:not(.ace-pdf-button):not(.nav-link):not(.navbar-brand):not(.ace-report-title a):not(.ace-doi-link):not(.btn):not(.mbj-badge) {
+  color: #0b7f97 !important;
+  -webkit-text-fill-color: #0b7f97 !important;
+  text-decoration-color: #0b7f97 !important;
+}
+
+html[data-bs-theme="dark"] main a:not(.ace-pdf-button):not(.nav-link):not(.navbar-brand):not(.ace-report-title a):not(.ace-doi-link):not(.btn):not(.mbj-badge),
+body[data-bs-theme="dark"] main a:not(.ace-pdf-button):not(.nav-link):not(.navbar-brand):not(.ace-report-title a):not(.ace-doi-link):not(.btn):not(.mbj-badge),
+body.quarto-dark main a:not(.ace-pdf-button):not(.nav-link):not(.navbar-brand):not(.ace-report-title a):not(.ace-doi-link):not(.btn):not(.mbj-badge) {
+  color: #e39be0 !important;
+  -webkit-text-fill-color: #e39be0 !important;
+  text-decoration-color: #e39be0 !important;
+}
+
+
+/* Links: no underline at rest; on hover the whole link is boxed with a
+   translucent fill in the link colour (same pattern as listing titles). */
+main a:not(.ace-pdf-button):not(.nav-link):not(.navbar-brand):not(.ace-report-title a):not(.ace-doi-link):not(.btn):not(.mbj-badge):not(.ace-orcid),
+#refs a,
+a.citation,
+a[role="doc-biblioref"],
+a[role="doc-noteref"] {
+  text-decoration: none !important;
+  padding: 0.02em 0.22em;
+  margin: 0 -0.22em;             /* cancel the padding so text position is unchanged */
+  border-radius: 0;
+  transition: background-color 0.12s ease, color 0.12s ease;
+}
+
+body.quarto-light main a:not(.ace-pdf-button):not(.nav-link):not(.navbar-brand):not(.ace-report-title a):not(.ace-doi-link):not(.btn):not(.mbj-badge):hover,
+body.quarto-light #refs a:hover,
+body.quarto-light a.citation:hover,
+body.quarto-light a[role="doc-biblioref"]:hover,
+body.quarto-light a[role="doc-noteref"]:hover {
+  background-color: rgba(11, 127, 151, 0.14);
+  color: #066a80 !important;
+  -webkit-text-fill-color: #066a80 !important;
+}
+
+body.quarto-dark main a:not(.ace-pdf-button):not(.nav-link):not(.navbar-brand):not(.ace-report-title a):not(.ace-doi-link):not(.btn):not(.mbj-badge):hover,
+body.quarto-dark #refs a:hover,
+body.quarto-dark a.citation:hover,
+body.quarto-dark a[role="doc-biblioref"]:hover,
+body.quarto-dark a[role="doc-noteref"]:hover {
+  background-color: rgba(227, 155, 224, 0.18);
+  color: #f3bdee !important;
+  -webkit-text-fill-color: #f3bdee !important;
+}
+
+/* Keep ACE listing titles from inheriting global gray body-link colors */
+html[data-bs-theme="light"] main .ace-report-title a,
+body[data-bs-theme="light"] main .ace-report-title a,
+body.quarto-light main .ace-report-title a {
+  color: #e262e2 !important;
+  -webkit-text-fill-color: #e262e2 !important;
+  text-decoration-color: #e262e2 !important;
+}
+
+html[data-bs-theme="dark"] main .ace-report-title a,
+body[data-bs-theme="dark"] main .ace-report-title a,
+body.quarto-dark main .ace-report-title a {
+  color: #03e5ff !important;
+  -webkit-text-fill-color: #03e5ff !important;
+  text-decoration-color: #03e5ff !important;
+}
+
+
+
+
+/* ##### ACE styles.css lines 1312-1498: title-block category pills, tables, bibliography ##### */
+
+/* ---------------------------------------------------------
+   ACE REPORT PAGE CATEGORY PILLS
+   Prevents double-pill rendering after Quarto navigation
+--------------------------------------------------------- */
+
+.quarto-title .quarto-categories,
+.quarto-title-block .quarto-categories,
+#title-block-header .quarto-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.55rem 0 0.9rem 0;
+}
+
+/* Style only the actual category wrapper or direct category link */
+.quarto-title .quarto-category,
+.quarto-title-block .quarto-category,
+#title-block-header .quarto-category,
+.quarto-title .quarto-categories > a,
+.quarto-title-block .quarto-categories > a,
+#title-block-header .quarto-categories > a {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 0.22rem 0.55rem;
+
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  text-decoration: none !important;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+}
+
+/* Reset nested links so they do NOT become a second pill */
+.quarto-category a,
+.quarto-categories .quarto-category a {
+  display: inline !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: inherit !important;
+  -webkit-text-fill-color: inherit !important;
+  text-decoration: none !important;
+  font: inherit !important;
+  letter-spacing: inherit !important;
+  text-transform: inherit !important;
+}
+
+/* Light theme */
+html[data-bs-theme="light"] .quarto-title .quarto-category,
+html[data-bs-theme="light"] .quarto-title-block .quarto-category,
+html[data-bs-theme="light"] #title-block-header .quarto-category,
+html[data-bs-theme="light"] .quarto-title .quarto-categories > a,
+html[data-bs-theme="light"] .quarto-title-block .quarto-categories > a,
+html[data-bs-theme="light"] #title-block-header .quarto-categories > a,
+body[data-bs-theme="light"] .quarto-title .quarto-category,
+body[data-bs-theme="light"] .quarto-title-block .quarto-category,
+body[data-bs-theme="light"] #title-block-header .quarto-category,
+body[data-bs-theme="light"] .quarto-title .quarto-categories > a,
+body[data-bs-theme="light"] .quarto-title-block .quarto-categories > a,
+body[data-bs-theme="light"] #title-block-header .quarto-categories > a,
+body.quarto-light .quarto-title .quarto-category,
+body.quarto-light .quarto-title-block .quarto-category,
+body.quarto-light #title-block-header .quarto-category,
+body.quarto-light .quarto-title .quarto-categories > a,
+body.quarto-light .quarto-title-block .quarto-categories > a,
+body.quarto-light #title-block-header .quarto-categories > a {
+  /* matches .ace-report-category in the listings */
+  background: rgba(226, 98, 226, 0.12) !important;
+  color: #222222 !important;
+  -webkit-text-fill-color: #222222 !important;
+  border-color: rgba(226, 98, 226, 0.35) !important;
+}
+
+/* Dark theme */
+html[data-bs-theme="dark"] .quarto-title .quarto-category,
+html[data-bs-theme="dark"] .quarto-title-block .quarto-category,
+html[data-bs-theme="dark"] #title-block-header .quarto-category,
+html[data-bs-theme="dark"] .quarto-title .quarto-categories > a,
+html[data-bs-theme="dark"] .quarto-title-block .quarto-categories > a,
+html[data-bs-theme="dark"] #title-block-header .quarto-categories > a,
+body[data-bs-theme="dark"] .quarto-title .quarto-category,
+body[data-bs-theme="dark"] .quarto-title-block .quarto-category,
+body[data-bs-theme="dark"] #title-block-header .quarto-category,
+body[data-bs-theme="dark"] .quarto-title .quarto-categories > a,
+body[data-bs-theme="dark"] .quarto-title-block .quarto-categories > a,
+body[data-bs-theme="dark"] #title-block-header .quarto-categories > a,
+body.quarto-dark .quarto-title .quarto-category,
+body.quarto-dark .quarto-title-block .quarto-category,
+body.quarto-dark #title-block-header .quarto-category,
+body.quarto-dark .quarto-title .quarto-categories > a,
+body.quarto-dark .quarto-title-block .quarto-categories > a,
+body.quarto-dark #title-block-header .quarto-categories > a {
+  /* matches .ace-report-category in the listings */
+  background: rgba(3, 229, 255, 0.13) !important;
+  color: #f2f2f2 !important;
+  -webkit-text-fill-color: #f2f2f2 !important;
+  border-color: rgba(3, 229, 255, 0.35) !important;
+}
+
+/* The pill text is a link. The site-wide link rules (main a ... !important)
+   outrank the plain reset above, so pin the pill text colour with an
+   ID-weighted selector: same #222222 / #f2f2f2 as the listing pills, no
+   hover box, no padding shift. */
+body.quarto-light main #title-block-header .quarto-categories .quarto-category a,
+body.quarto-light main #title-block-header .quarto-categories .quarto-category a:hover {
+  color: #222222 !important;
+  -webkit-text-fill-color: #222222 !important;
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  text-decoration: none !important;
+}
+
+body.quarto-dark main #title-block-header .quarto-categories .quarto-category a,
+body.quarto-dark main #title-block-header .quarto-categories .quarto-category a:hover {
+  color: #f2f2f2 !important;
+  -webkit-text-fill-color: #f2f2f2 !important;
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  text-decoration: none !important;
+}
+
+/* Hover only the outer pill. No translateY: the pill slides its facet key out
+   on hover, and lifting the whole chip at the same time reads as a wobble. */
+.quarto-title .quarto-category:hover,
+.quarto-title-block .quarto-category:hover,
+#title-block-header .quarto-category:hover,
+.quarto-title .quarto-categories > a:hover,
+.quarto-title-block .quarto-categories > a:hover,
+#title-block-header .quarto-categories > a:hover,
+.quarto-title .quarto-categories a:hover,
+.quarto-title-block .quarto-categories a:hover,
+#title-block-header .quarto-categories a:hover {
+  text-decoration: none !important;
+}
+
+
+
+
+table {
+  border-collapse: separate !important;
+  border-spacing: 0 0.25rem !important;
+}
+
+/* Remove ordinary cell borders */
+table td,
+table th {
+  border-left: none !important;
+  border-right: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  vertical-align: middle !important;
+}
+
+/* Keep a rule separating header from body */
+table thead th {
+  border-bottom: 1px solid var(--bs-border-color, #767676) !important;
+}
+
+/* Keep a rule separating table body from notes/footer */
+table tfoot td,
+table tfoot th {
+  border-top: 1px solid var(--bs-border-color, #767676) !important;
+}
+
+/* Add comfortable row height */
+table td {
+  padding-top: 0.45rem !important;
+  padding-bottom: 0.45rem !important;
+}
+
+
+
+/* Add vertical space between bibliography entries */
+#refs .csl-entry {
+  margin-bottom: 0.75rem;
+}
+
+
+
+
+/* ##### ACE styles.css lines 1499-1782: global search panel ##### */
+
+/* ---------------------------------------------------------
+   GLOBAL SEARCH (navbar magnifying glass)
+   One panel instead of a stack of rounded cards: a wireframe field like the
+   listing filter, a mono-caps header, rows separated by hairlines, and the
+   selected row marked by an accent bar and a translucent tint, the same
+   language as the table of contents and the category list. Matches are
+   washed in the accent rather than boxed.
+--------------------------------------------------------- */
+
+/* ---- the panel surface ---- */
+html[data-bs-theme="light"] .aa-DetachedContainer,
+html[data-bs-theme="light"] .aa-Panel,
+body.quarto-light .aa-DetachedContainer,
+body.quarto-light .aa-Panel {
+  background: #ffffff !important;
+  color: #222222 !important;
+}
+html[data-bs-theme="dark"] .aa-DetachedContainer,
+html[data-bs-theme="dark"] .aa-Panel,
+body.quarto-dark .aa-DetachedContainer,
+body.quarto-dark .aa-Panel {
+  background: #222222 !important;
+  color: #ffffff !important;
+}
+.aa-DetachedContainer,
+.aa-Panel {
+  border-radius: 0 !important;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.18) !important;
+}
+.aa-Panel .aa-PanelLayout { padding: 0 !important; }
+
+/* ---- the field: same wireframe as the listing filter ---- */
+.aa-DetachedFormContainer {
+  padding: 0.65rem 0.7rem !important;
+  border-bottom: 1px solid #c9d0d6;
+  /* autocomplete paints these white from its own variables */
+  background: transparent !important;
+}
+.aa-DetachedContainer, .aa-DetachedFormContainer, .aa-Form, .aa-InputWrapper {
+  --aa-background-color-rgb: 255, 255, 255;
+  --aa-input-background-color-rgb: 255, 255, 255;
+}
+body.quarto-dark .aa-DetachedContainer,
+body.quarto-dark .aa-DetachedFormContainer,
+body.quarto-dark .aa-Form,
+body.quarto-dark .aa-InputWrapper {
+  --aa-background-color-rgb: 34, 34, 34;
+  --aa-input-background-color-rgb: 34, 34, 34;
+}
+body.quarto-dark .aa-DetachedFormContainer { border-bottom-color: #3a4148; }
+
+.aa-DetachedFormContainer .aa-Form {
+  align-items: center;
+  height: 2.2rem;
+  padding: 0 0.5rem 0 0.6rem;
+  border: 1px solid #8a949e !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  transition: border-color 0.12s ease, background-color 0.12s ease;
+}
+.aa-DetachedFormContainer .aa-Form:focus-within {
+  border-color: #03e5ff !important;
+  background-color: rgba(3, 229, 255, 0.08) !important;
+}
+body.quarto-dark .aa-DetachedFormContainer .aa-Form { border-color: #9aa4ae !important; }
+body.quarto-dark .aa-DetachedFormContainer .aa-Form:focus-within {
+  border-color: #e262e2 !important;
+  background-color: rgba(226, 98, 226, 0.14) !important;
+}
+
+.aa-Form .aa-InputWrapperPrefix { height: auto; }
+.aa-SubmitButton { padding: 0 !important; width: 1.1rem; height: 1.1rem; color: #8a949e !important; }
+.aa-SubmitIcon { width: 1rem; height: 1rem; }
+.aa-ClearButton { color: #8a949e !important; padding: 0 0.2rem !important; }
+
+.aa-Form .aa-Input {
+  font-family: "Roboto Mono", monospace !important;
+  font-size: 0.85rem !important;
+  padding: 0 0 0 0.5rem !important;
+  color: #1a1f24 !important;
+  -webkit-text-fill-color: #1a1f24 !important;
+}
+body.quarto-dark .aa-Form .aa-Input,
+body.quarto-dark .aa-Input {
+  color: #f2f5f7 !important;
+  -webkit-text-fill-color: #f2f5f7 !important;
+}
+.aa-Input::placeholder { color: #8a949e !important; -webkit-text-fill-color: #8a949e !important; }
+
+.aa-DetachedCancelButton {
+  font-family: "Roboto Mono", monospace !important;
+  font-size: 0.66rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: #8a949e !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 0.2rem 0 0.85rem !important;
+}
+.aa-DetachedCancelButton:hover { color: #222222 !important; }
+body.quarto-dark .aa-DetachedCancelButton:hover { color: #ffffff !important; }
+
+/* ---- results ---- */
+.search-result-header {
+  font-family: "Roboto Mono", monospace !important;
+  font-size: 0.64rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  color: #8a949e !important;
+  background: transparent !important;
+  padding: 0.75rem 0.9rem 0.5rem !important;
+}
+body.quarto-dark .search-result-header { color: #9aa4ae !important; }
+
+.aa-Panel .aa-List { padding: 0 !important; }
+.aa-Item {
+  border-radius: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+
+/* rows: hairline separated, never boxed */
+html .search-item,
+html[data-bs-theme="light"] .search-item,
+body.quarto-light .search-item,
+html[data-bs-theme="dark"] .search-item,
+body.quarto-dark .search-item {
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  border-top: 1px solid rgba(138, 148, 158, 0.3) !important;
+  border-left: 2px solid transparent !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  transition: background-color 0.12s ease, border-color 0.12s ease;
+}
+body.quarto-dark .search-item { border-top-color: rgba(154, 164, 174, 0.28) !important; }
+
+.aa-Item .search-result-link { display: block; padding: 0.6rem 0.9rem !important; }
+.aa-Item .search-result-doc-section .search-result-link { padding-left: 1.7rem !important; }
+.aa-Item .search-result-title-container {
+  padding: 0 !important;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+.aa-Item .search-result-text-container { margin-left: 0 !important; padding: 0 !important; }
+.aa-Item .search-item i.bi, .search-result-icon { display: none !important; }
+.aa-Item .search-result-doc-section,
+.aa-Item .search-result-more { padding-left: 0 !important; }
+
+.search-result-title {
+  font-family: "Roboto", sans-serif !important;
+  font-size: 0.92rem !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  color: #1a1f24 !important;
+  margin: 0 !important;
+}
+body.quarto-dark .search-result-title { color: #f2f5f7 !important; }
+
+.search-result-section {
+  font-family: "Roboto Mono", monospace !important;
+  font-size: 0.64rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  color: #0b7f97 !important;
+  margin: 0 0 0.2rem !important;
+  opacity: 1 !important;
+}
+body.quarto-dark .search-result-section { color: #e39be0 !important; }
+
+.search-result-text,
+.search-result-text-container {
+  font-family: "Roboto", sans-serif !important;
+  font-size: 0.82rem !important;
+  line-height: 1.45 !important;
+  color: #5b6670 !important;
+  opacity: 1 !important;
+}
+body.quarto-dark .search-result-text,
+body.quarto-dark .search-result-text-container { color: #b8c2cb !important; }
+
+.search-result-more {
+  font-family: "Roboto Mono", monospace !important;
+  font-size: 0.64rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  color: #8a949e !important;
+  padding: 0.5rem 0.9rem 0.5rem 1.7rem !important;
+}
+
+/* the match itself: an accent wash, no box */
+mark,
+.search-result-highlight,
+.aa-Item .search-item mark.search-match,
+.aa-Item .search-item .search-match.mark {
+  background-color: rgba(3, 229, 255, 0.3) !important;
+  color: inherit !important;
+  -webkit-text-fill-color: inherit !important;
+  padding: 0 0.12em !important;
+  border-radius: 0 !important;
+}
+body.quarto-dark mark,
+body.quarto-dark .search-result-highlight,
+body.quarto-dark .aa-Item .search-item mark.search-match,
+body.quarto-dark .aa-Item .search-item .search-match.mark {
+  background-color: rgba(226, 98, 226, 0.32) !important;
+}
+
+/* selection and hover: accent bar plus tint (never a filled card) */
+html[data-bs-theme="light"] .aa-Item[aria-selected="true"] .search-item,
+html[data-bs-theme="light"] .aa-Item:hover .search-item,
+body.quarto-light .aa-Item[aria-selected="true"] .search-item,
+body.quarto-light .aa-Item:hover .search-item,
+.aa-DetachedOverlay li.aa-Item[aria-selected="true"] .search-item,
+#quarto-search-results li.aa-Item[aria-selected="true"] .search-item {
+  background-color: rgba(3, 229, 255, 0.13) !important;
+  border-left-color: #03e5ff !important;
+  color: inherit !important;
+}
+html[data-bs-theme="dark"] .aa-Item[aria-selected="true"] .search-item,
+html[data-bs-theme="dark"] .aa-Item:hover .search-item,
+body.quarto-dark .aa-Item[aria-selected="true"] .search-item,
+body.quarto-dark .aa-Item:hover .search-item {
+  background-color: rgba(226, 98, 226, 0.16) !important;
+  border-left-color: #e262e2 !important;
+  color: inherit !important;
+}
+/* Quarto paints the selected row's children too; keep them transparent */
+.aa-Item[aria-selected="true"] .search-item *,
+.aa-Item:hover .search-item * {
+  background-color: transparent !important;
+  color: inherit !important;
+  -webkit-text-fill-color: inherit !important;
+}
+.aa-Item[aria-selected="true"] .search-item mark.search-match,
+.aa-Item:hover .search-item mark.search-match {
+  background-color: rgba(3, 229, 255, 0.38) !important;
+}
+body.quarto-dark .aa-Item[aria-selected="true"] .search-item mark.search-match,
+body.quarto-dark .aa-Item:hover .search-item mark.search-match {
+  background-color: rgba(226, 98, 226, 0.4) !important;
+}
+
+/* Dark theme: search input text and magnifying glass */
+html[data-bs-theme="dark"] .aa-Input,
+body[data-bs-theme="dark"] .aa-Input,
+body.quarto-dark .aa-Input {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+html[data-bs-theme="dark"] .aa-Input::placeholder,
+body[data-bs-theme="dark"] .aa-Input::placeholder,
+body.quarto-dark .aa-Input::placeholder {
+  color: rgba(255, 255, 255, 0.75) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.75) !important;
+}
+
+/* Magnifying glass / search icon */
+html[data-bs-theme="dark"] .aa-SubmitIcon,
+html[data-bs-theme="dark"] .aa-SubmitButton svg,
+html[data-bs-theme="dark"] .aa-InputWrapperPrefix svg,
+body[data-bs-theme="dark"] .aa-SubmitIcon,
+body[data-bs-theme="dark"] .aa-SubmitButton svg,
+body[data-bs-theme="dark"] .aa-InputWrapperPrefix svg,
+body.quarto-dark .aa-SubmitIcon,
+body.quarto-dark .aa-SubmitButton svg,
+body.quarto-dark .aa-InputWrapperPrefix svg {
+  color: rgba(255, 255, 255, 0.75) !important;
+  fill: rgba(255, 255, 255, 0.75) !important;
+}
+
+
+
+
+
+
+/* ##### ACE styles.css lines 1783-1855: homepage about links (trestles badges) ##### */
+
+/* ---------------------------------------------------------
+   ACE HOMEPAGE ABOUT LINKS (GitHub / Contact)
+   Wireframe badges in the theme accent, like the author ORCID
+   badges: outline at rest, filled on hover with white text.
+--------------------------------------------------------- */
+
+/* Quarto's trestles theme stacks these full-width below 992px; keep them a
+   small centered row at every width. */
+div.quarto-about-trestles .about-entity .about-links {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem !important;
+  width: auto !important;
+  padding-bottom: 0 !important;
+  margin-bottom: 1.25rem;        /* room before the intro box when stacked */
+}
+
+div.quarto-about-trestles .about-entity .about-link {
+  --ace-accent: #03e5ff;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.45rem;
+  width: auto !important;
+  flex: 0 0 auto;
+  padding: 0.35rem 0.75rem !important;
+  margin: 0 !important;
+  border: 1px solid var(--ace-accent) !important;
+  border-radius: 3px !important;
+  background: transparent !important;
+  color: #222222 !important;
+  font-family: "Roboto Mono", monospace !important;
+  font-size: 0.8rem !important;
+  font-weight: 700 !important;
+  line-height: 1.1 !important;
+  text-decoration: none !important;
+  transition: background-color 0.12s ease, color 0.12s ease;
+}
+
+div.quarto-about-trestles .about-entity .about-link .bi {
+  font-size: 1rem;
+  line-height: 1;
+  color: inherit;
+}
+
+/* Contact: same square-cornered envelope as the author email badge, drawn as
+   a mask in currentColor so it follows the badge's rest/hover colours. */
+div.quarto-about-trestles .about-entity .about-link .bi-envelope::before {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linejoin='round'%3E%3Crect x='2.5' y='5' width='19' height='14'/%3E%3Cpath d='M2.5 6.5l9.5 7 9.5-7'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linejoin='round'%3E%3Crect x='2.5' y='5' width='19' height='14'/%3E%3Cpath d='M2.5 6.5l9.5 7 9.5-7'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+div.quarto-about-trestles .about-entity .about-link:hover,
+div.quarto-about-trestles .about-entity .about-link:focus-visible {
+  background: var(--ace-accent) !important;
+  color: #ffffff !important;
+  transform: none;
+  filter: none;
+}
+
+body.quarto-dark div.quarto-about-trestles .about-entity .about-link {
+  --ace-accent: #e262e2;
+  color: #ffffff !important;
+}
+
+
+/* ##### ACE styles.css lines 2065-2245: ORCID link, homepage lead, intro box, section heading ##### */
+
+/* ---------------------------------------------------------
+   ORCID LINK WITH ICON (icon inherits the link text colour)
+--------------------------------------------------------- */
+
+a.ace-orcid {
+  white-space: nowrap;
+  padding: 0.08em 0.3em;
+  margin: 0 -0.3em;          /* padding is cancelled so the text position is unchanged */
+  text-decoration: none !important;
+  transition: background-color 0.12s ease, color 0.12s ease;
+}
+
+/* Hover: fill with the link grey, flip words + icon to white.
+   Class is repeated to outrank the global grey body-link rule (!important, specificity 0,5,2). */
+body.quarto-light main a.ace-orcid.ace-orcid.ace-orcid.ace-orcid:hover,
+body.quarto-light main a.ace-orcid.ace-orcid.ace-orcid.ace-orcid:focus-visible {
+  background-color: #0b7f97;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+body.quarto-dark main a.ace-orcid.ace-orcid.ace-orcid.ace-orcid:hover,
+body.quarto-dark main a.ace-orcid.ace-orcid.ace-orcid.ace-orcid:focus-visible {
+  background-color: #e39be0;
+  color: #111111 !important;   /* dark text on the soft magenta fill */
+  -webkit-text-fill-color: #111111 !important;
+}
+
+.ace-orcid-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-right: 0.28em;
+  vertical-align: -0.15em;   /* sit the icon on the text baseline, like a glyph */
+  fill: currentColor;
+  color: inherit;
+}
+
+/* ---------------------------------------------------------
+   HOMEPAGE INTRO CALLOUT
+   Bordered statement block; accent matches the navbar borders.
+--------------------------------------------------------- */
+
+/* Home page lead paragraph: no panel, just the statement, with the project
+   name set in mono so it reads as the wordmark. */
+.ace-lead {
+  margin: 0 0 1.8rem;
+}
+.ace-lead p {
+  margin: 0;
+  font-size: 1.06rem;
+  line-height: 1.65;
+  color: #1a1f24;
+}
+.ace-wordmark {
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.92em;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #0b7f97;                /* the theme's text cyan */
+}
+body.quarto-dark .ace-lead p {
+  color: #f2f5f7;
+}
+body.quarto-dark .ace-wordmark {
+  color: #e39be0;                /* the theme's text magenta */
+}
+
+.ace-intro {
+  border: 1px solid rgba(3, 229, 255, 0.85);
+  background-color: rgba(3, 229, 255, 0.06);
+  padding: 1rem 1.15rem;
+  margin: 0 0 1.6rem;
+}
+
+.ace-intro p {
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: #1a1f24;
+}
+
+.ace-intro strong {
+  font-weight: 700;
+}
+
+body.quarto-dark .ace-intro {
+  border-color: rgba(226, 98, 226, 0.85);
+  background-color: rgba(226, 98, 226, 0.07);
+}
+
+body.quarto-dark .ace-intro p {
+  color: #f2f5f7;
+}
+
+/* ---------------------------------------------------------
+   SECTION HEADING (home page and Reports page "Reports")
+   Same treatment as the report h2 headings: bold title, thin vertical
+   divider, grey note, and a rule underneath made of a short accent segment
+   and a grey hairline.
+   Usage: #### [Reports]{.ace-section-label} [note]{.ace-section-note} {.ace-section-heading}
+--------------------------------------------------------- */
+
+/* Quarto copies a heading's classes onto its wrapping <section>, so the
+   rule is scoped to the heading element itself or it draws twice. */
+h1.ace-section-heading, h2.ace-section-heading, h3.ace-section-heading,
+h4.ace-section-heading, h5.ace-section-heading {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 2.4rem 0 1rem;
+  padding: 0 0 0.5rem 0;
+  border: 0;
+  border-bottom: 1px solid rgba(138, 148, 158, 0.45);
+  line-height: 1;
+}
+h1.ace-section-heading::after, h2.ace-section-heading::after, h3.ace-section-heading::after,
+h4.ace-section-heading::after, h5.ace-section-heading::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 2.6rem;
+  height: 3px;
+  background-color: #03e5ff;
+}
+
+.ace-section-label {
+  display: inline-block;
+  padding: 0 0.7rem 0 0;
+  margin-right: 0.7rem;
+  border-right: 2px solid rgba(138, 148, 158, 0.45);
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 17pt;
+  line-height: 1.15;
+  color: #222222;
+}
+
+.ace-section-note {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 0.95rem;
+  line-height: 1.3;
+  letter-spacing: 0;
+  color: #4b5560;
+}
+
+section.ace-section-heading {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+section.ace-section-heading::after { content: none; }
+
+body.quarto-dark h1.ace-section-heading, body.quarto-dark h2.ace-section-heading,
+body.quarto-dark h3.ace-section-heading, body.quarto-dark h4.ace-section-heading,
+body.quarto-dark h5.ace-section-heading {
+  border-bottom-color: rgba(154, 164, 174, 0.4);
+}
+body.quarto-dark h1.ace-section-heading::after, body.quarto-dark h2.ace-section-heading::after,
+body.quarto-dark h3.ace-section-heading::after, body.quarto-dark h4.ace-section-heading::after,
+body.quarto-dark h5.ace-section-heading::after {
+  background-color: #e262e2;
+}
+body.quarto-dark .ace-section-label {
+  color: #ffffff;
+  border-right-color: rgba(154, 164, 174, 0.4);
+}
+body.quarto-dark .ace-section-note {
+  color: #b8c2cb;
+}
+
+/* Tighten the gap between a section heading, the listing filter box, and
+   the first report card (was ~90px of stacked margins). */
+h4.ace-section-heading {
+  margin-bottom: 0.6rem;
+}
+
+
+/* ##### ACE styles.css lines 2246-2321: listing categories sidebar ##### */
+
+/* ---------------------------------------------------------
+   LISTING CATEGORIES (margin sidebar on the home and Reports pages)
+   The same language as the table of contents on report pages: a mono-caps
+   key, a hairline rail, quiet rows, and an accent segment plus a translucent
+   tint on the selected category. Counts sit right-aligned in mono.
+--------------------------------------------------------- */
+#quarto-margin-sidebar .quarto-listing-category-title,
+h5.quarto-listing-category-title {
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8a949e;
+  /* 1.2rem clears the navbar, matching the TOC title on report pages */
+  margin: 1.2rem 0 0.45rem 0;
+  padding-left: 0.85rem;
+}
+body.quarto-dark #quarto-margin-sidebar .quarto-listing-category-title { color: #9aa4ae; }
+
+.quarto-listing-category {
+  border-left: 2px solid rgba(138, 148, 158, 0.28);
+  padding-left: 0;
+  margin-bottom: 1.1rem;
+}
+body.quarto-dark .quarto-listing-category { border-left-color: rgba(154, 164, 174, 0.28); }
+
+.quarto-listing-category .category {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  margin-left: -2px;                 /* sit on the rail */
+  padding: 0.17rem 0.6rem 0.17rem 0.8rem;
+  border-left: 2px solid transparent;
+  border-radius: 0 6px 6px 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.78rem;
+  line-height: 1.25;
+  color: #4b5560;
+  cursor: pointer;
+  transition: color 0.12s ease, background-color 0.12s ease, border-color 0.12s ease;
+}
+body.quarto-dark .quarto-listing-category .category { color: #b8c2cb; }
+
+.quarto-listing-category .category .quarto-category-count {
+  margin-left: auto;
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #8a949e;
+}
+body.quarto-dark .quarto-listing-category .category .quarto-category-count { color: #9aa4ae; }
+
+.quarto-listing-category .category:hover {
+  color: #222222;
+  background-color: rgba(226, 98, 226, 0.12);
+}
+body.quarto-dark .quarto-listing-category .category:hover {
+  color: #ffffff;
+  background-color: rgba(3, 229, 255, 0.14);
+}
+
+.quarto-listing-category .category.active {
+  color: #222222;
+  font-weight: 700;
+  background-color: rgba(226, 98, 226, 0.16);
+  border-left-color: #e262e2;
+}
+.quarto-listing-category .category.active .quarto-category-count { color: #c94fc9; }
+body.quarto-dark .quarto-listing-category .category.active {
+  color: #ffffff;
+  background-color: rgba(3, 229, 255, 0.16);
+  border-left-color: #03e5ff;
+}
+body.quarto-dark .quarto-listing-category .category.active .quarto-category-count { color: #03e5ff; }
+
+
+/* ##### ACE styles.css lines 2569-2890: code, navbar hexagon icons, hamburger + search icons ##### */
+
+/* ---------------------------------------------------------
+   CODE: inline and blocks
+   Clean neutral surfaces, square corners, a restrained token
+   palette built from the ACE cyan/magenta + near-black.
+   Selectors are prefixed with the theme body class so they
+   outrank Quarto's generated `code span.xx` rules without
+   !important.
+--------------------------------------------------------- */
+
+/* --- Inline code (anything not inside a <pre>) --- */
+body.quarto-light :not(pre) > code:not(.sourceCode),
+body.quarto-light p code:not(.sourceCode),
+body.quarto-light li code:not(.sourceCode),
+body.quarto-light td code:not(.sourceCode) {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.9em;
+  color: #1f2933;
+  background-color: #eef1f4;
+  border: 1px solid #dfe4e8;
+  border-radius: 0;
+  padding: 0 0.25em 0.02em;
+}
+
+body.quarto-dark :not(pre) > code:not(.sourceCode),
+body.quarto-dark p code:not(.sourceCode),
+body.quarto-dark li code:not(.sourceCode),
+body.quarto-dark td code:not(.sourceCode) {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.9em;
+  color: #e6e9ec;
+  background-color: #2c3138;
+  border: 1px solid #3a4148;
+  border-radius: 0;
+  padding: 0 0.25em 0.02em;
+}
+
+/* Inline code inside links / headings keeps its surroundings' colour */
+body.quarto-light a > code:not(.sourceCode),
+body.quarto-dark a > code:not(.sourceCode) {
+  color: inherit;
+}
+
+/* --- Code blocks --- */
+body.quarto-light div.sourceCode,
+body.quarto-light pre:not(.sourceCode) {
+  background-color: #f4f6f8;
+  border: 1px solid #e3e7ea;
+  border-radius: 0;
+}
+
+body.quarto-dark div.sourceCode,
+body.quarto-dark pre:not(.sourceCode) {
+  background-color: #2c3138;      /* a step lighter than the #222 page */
+  border: 1px solid #3a4148;
+  border-radius: 0;
+}
+
+div.sourceCode pre.sourceCode,
+pre:not(.sourceCode) {
+  padding: 0.9rem 1rem;
+  margin: 0;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.86em;
+  line-height: 1.55;
+  background-color: transparent;
+}
+
+div.sourceCode {
+  margin: 0.6rem 0 1rem;
+}
+
+body.quarto-light pre.sourceCode code,
+body.quarto-light pre:not(.sourceCode) { color: #1f2933; }
+body.quarto-dark  pre.sourceCode code,
+body.quarto-dark  pre:not(.sourceCode) { color: #e6e9ec; }
+
+/* Copy button: keep it quiet and square */
+div.sourceCode .code-copy-button {
+  border-radius: 0;
+}
+
+/* --- Token colours: light --- */
+body.quarto-light code span.fu,                      /* function */
+body.quarto-light code span.bu,                      /* builtin */
+body.quarto-light code span.ex { color: #1a1f24; font-weight: 600; }
+body.quarto-light code span.kw,                      /* keyword */
+body.quarto-light code span.cf,                      /* control flow */
+body.quarto-light code span.im { color: #8a2d8a; }   /* import */
+body.quarto-light code span.st,                      /* string */
+body.quarto-light code span.vs,
+body.quarto-light code span.ss,
+body.quarto-light code span.ch { color: #0b6b8f; }
+body.quarto-light code span.dv,                      /* numbers */
+body.quarto-light code span.fl,
+body.quarto-light code span.bn,
+body.quarto-light code span.cn { color: #b0296f; }   /* constant */
+body.quarto-light code span.co,                      /* comment */
+body.quarto-light code span.do,
+body.quarto-light code span.an,
+body.quarto-light code span.cv,
+body.quarto-light code span.in { color: #7b8590; font-style: italic; }
+body.quarto-light code span.op,                      /* operator */
+body.quarto-light code span.ot,                      /* other */
+body.quarto-light code span.sc,                      /* special char */
+body.quarto-light code span.at,                      /* attribute / arg name */
+body.quarto-light code span.pp { color: #5b6670; }
+body.quarto-light code span.dt { color: #8a2d8a; }   /* data type */
+body.quarto-light code span.va { color: #1f2933; }   /* variable */
+body.quarto-light code span.al,                      /* alert */
+body.quarto-light code span.er { color: #c92a2a; font-weight: 600; }
+body.quarto-light code span.wa { color: #b0296f; font-style: italic; }
+
+/* --- Token colours: dark --- */
+body.quarto-dark code span.fu,
+body.quarto-dark code span.bu,
+body.quarto-dark code span.ex { color: #f2f5f7; font-weight: 600; }
+body.quarto-dark code span.kw,
+body.quarto-dark code span.cf,
+body.quarto-dark code span.im { color: #e79be0; }
+body.quarto-dark code span.st,
+body.quarto-dark code span.vs,
+body.quarto-dark code span.ss,
+body.quarto-dark code span.ch { color: #6fd8ea; }
+body.quarto-dark code span.dv,
+body.quarto-dark code span.fl,
+body.quarto-dark code span.bn,
+body.quarto-dark code span.cn { color: #f08fd0; }
+body.quarto-dark code span.co,
+body.quarto-dark code span.do,
+body.quarto-dark code span.an,
+body.quarto-dark code span.cv,
+body.quarto-dark code span.in { color: #8a949e; font-style: italic; }
+body.quarto-dark code span.op,
+body.quarto-dark code span.ot,
+body.quarto-dark code span.sc,
+body.quarto-dark code span.at,
+body.quarto-dark code span.pp { color: #a3adb7; }
+body.quarto-dark code span.dt { color: #e79be0; }
+body.quarto-dark code span.va { color: #e6e9ec; }
+body.quarto-dark code span.al,
+body.quarto-dark code span.er { color: #ff6b6b; font-weight: 600; }
+body.quarto-dark code span.wa { color: #f08fd0; font-style: italic; }
+
+/* Code-fold "Show code" toggle */
+details > summary.code-fold-summary,
+.code-fold > summary {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #6b7681;
+  cursor: pointer;
+}
+body.quarto-dark details > summary.code-fold-summary,
+body.quarto-dark .code-fold > summary { color: #9aa4ae; }
+
+/* ---------------------------------------------------------
+   NAVBAR ICON LINK (GitHub): hexagon outline instead of the
+   square wireframe, icon centred and a touch larger.
+   Quarto marks icon-only navbar items with .nav-item.compact.
+   ::before = hexagon in the border colour, ::after = inset
+   hexagon in the navbar colour, leaving a ~1.2px outline.
+--------------------------------------------------------- */
+
+.navbar .navbar-nav .nav-item.compact .nav-link {
+  --ace-hex: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.1rem;
+  height: 2.4rem;                 /* width/height = 0.875 ~ regular hexagon */
+  padding: 0 !important;
+  margin: 0 0.2rem;
+  border: 0 !important;
+  background: transparent !important;
+  color: #ffffff !important;
+}
+
+.navbar .navbar-nav .nav-item.compact .nav-link::before,
+.navbar .navbar-nav .nav-item.compact .nav-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  clip-path: var(--ace-hex);
+  z-index: 0;
+}
+
+.navbar .navbar-nav .nav-item.compact .nav-link::before {
+  background: rgba(226, 98, 226, 0.55);
+}
+
+.navbar .navbar-nav .nav-item.compact .nav-link::after {
+  inset: 1.2px;
+  background: #222222;            /* navbar background */
+}
+
+.navbar .navbar-nav .nav-item.compact .nav-link .bi {
+  position: relative;
+  z-index: 1;
+  display: block;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.navbar .navbar-nav .nav-item.compact .nav-link .menu-text {
+  display: none;                  /* empty span that was pushing the icon off-centre */
+}
+
+/* Hover: solid outline, 75%-alpha fill (pre-blended over #222 since the
+   inner hexagon sits above the outline layer) */
+.navbar .navbar-nav .nav-item.compact .nav-link:hover::before,
+.navbar .navbar-nav .nav-item.compact .nav-link:focus-visible::before {
+  background: #e262e2;
+}
+.navbar .navbar-nav .nav-item.compact .nav-link:hover::after,
+.navbar .navbar-nav .nav-item.compact .nav-link:focus-visible::after {
+  background: #b050b0;            /* 75% #e262e2 over #222 */
+}
+
+body.quarto-light .navbar .navbar-nav .nav-item.compact .nav-link::before {
+  background: rgba(3, 229, 255, 0.55);
+}
+body.quarto-light .navbar .navbar-nav .nav-item.compact .nav-link:hover::before,
+body.quarto-light .navbar .navbar-nav .nav-item.compact .nav-link:focus-visible::before {
+  background: #03e5ff;
+}
+body.quarto-light .navbar .navbar-nav .nav-item.compact .nav-link:hover::after,
+body.quarto-light .navbar .navbar-nav .nav-item.compact .nav-link:focus-visible::after {
+  background: #09b2c6;            /* 75% #03e5ff over #222 */
+}
+
+/* Collapsed (hamburger) navbar: breathing room between the page links and
+   the icon links, and keep the icons side by side rather than stacked. */
+@media (max-width: 991.98px) {
+  .navbar .navbar-collapse .navbar-nav.ms-auto {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.8rem;
+    padding-left: 0.2rem;
+  }
+}
+
+/* ---------------------------------------------------------
+   NAVBAR UTILITY ICONS: hamburger + search
+   Thin, square-capped line icons drawn as CSS masks so they
+   take colour from `background-color` (white at rest, theme
+   accent on hover). The hamburger's lines are staggered to
+   echo the glitch wordmark and it turns into an X when open.
+--------------------------------------------------------- */
+
+/* --- Hamburger --- */
+.navbar .navbar-toggler {
+  border: 0;
+  border-radius: 0;
+  padding: 0.35rem 0.4rem;
+  box-shadow: none !important;
+}
+
+.navbar .navbar-toggler .navbar-toggler-icon {
+  width: 1.7rem;
+  height: 1.7rem;
+  background-image: none;
+  background-color: #ffffff;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='square'%3E%3Cpath d='M3 6h18M3 12h13M3 18h18'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='square'%3E%3Cpath d='M3 6h18M3 12h13M3 18h18'/%3E%3C/svg%3E") center / contain no-repeat;
+  transition: background-color 0.12s ease;
+}
+
+.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='square'%3E%3Cpath d='M5 5l14 14M19 5L5 19'/%3E%3C/svg%3E");
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='square'%3E%3Cpath d='M5 5l14 14M19 5L5 19'/%3E%3C/svg%3E");
+}
+
+.navbar .navbar-toggler:hover .navbar-toggler-icon,
+.navbar .navbar-toggler:focus-visible .navbar-toggler-icon {
+  background-color: #e262e2;
+}
+body.quarto-light .navbar .navbar-toggler:hover .navbar-toggler-icon,
+body.quarto-light .navbar .navbar-toggler:focus-visible .navbar-toggler-icon {
+  background-color: #03e5ff;
+}
+
+/* --- Search --- */
+.navbar #quarto-search .aa-DetachedSearchButton {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+  width: 2.1rem;
+  height: 2.1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar #quarto-search .aa-DetachedSearchButtonIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: transparent;                    /* hide the stock SVG, keep the box */
+  background-color: #ffffff;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='square'%3E%3Ccircle cx='10.5' cy='10.5' r='6.5'/%3E%3Cpath d='M15.4 15.4L21 21'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='square'%3E%3Ccircle cx='10.5' cy='10.5' r='6.5'/%3E%3Cpath d='M15.4 15.4L21 21'/%3E%3C/svg%3E") center / contain no-repeat;
+  transition: background-color 0.12s ease;
+}
+
+.navbar #quarto-search .aa-DetachedSearchButtonIcon svg {
+  display: none;
+}
+
+.navbar #quarto-search .aa-DetachedSearchButton:hover .aa-DetachedSearchButtonIcon,
+.navbar #quarto-search .aa-DetachedSearchButton:focus-visible .aa-DetachedSearchButtonIcon {
+  background-color: #e262e2;
+}
+body.quarto-light .navbar #quarto-search .aa-DetachedSearchButton:hover .aa-DetachedSearchButtonIcon,
+body.quarto-light .navbar #quarto-search .aa-DetachedSearchButton:focus-visible .aa-DetachedSearchButtonIcon {
+  background-color: #03e5ff;
+}
+
+/* ---------------------------------------------------------
+
+/* ##### ACE styles.css lines 2991-3161: title-block meta ##### */
+
+/* ---------------------------------------------------------
+   TITLE-BLOCK META (report pages)
+   Condensed from Quarto's four labelled columns into three short blocks:
+     AUTHORS  key with a hairline, then two lines per author (name and
+              university; email/ORCID badges and city), rebuilt by
+              report-scripts.html into a two-column grid;
+     PUBLISHED / MODIFIED as one small accent-tinted bar under the subtitle;
+     ABSTRACT key with a hairline, then the text.
+   Keys use the same mono-caps style as the TOC and the RIV page.
+--------------------------------------------------------- */
+#title-block-header.quarto-title-block .quarto-title-meta-heading,
+#title-block-header.quarto-title-block .abstract .block-title {
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #5a6570;
+  margin: 0 !important;                /* Quarto: margin-top 1em */
+  padding: 0;
+  border: 0;
+  opacity: 1;
+}
+body.quarto-dark #title-block-header .quarto-title-meta-heading,
+body.quarto-dark #title-block-header .abstract .block-title { color: #b8c2cb; }
+
+/* authors: the key, then a two-column grid built by report-scripts.html:
+     name              | university
+     [email] [ORCID]   | city, state
+   Badges and the small line share one size so the second line sits flush. */
+#title-block-header.quarto-title-block .quarto-title-meta-author {
+  display: block !important;
+  margin-top: 1.1rem;
+}
+#title-block-header .quarto-title-meta-author .quarto-title-meta-heading:nth-child(1) {
+  display: block;
+  border-bottom: 1px solid #c9d0d6;
+  padding-bottom: 0.3rem;
+  margin-bottom: 0.45rem !important;
+}
+#title-block-header .quarto-title-meta-author .quarto-title-meta-heading:nth-child(2) {
+  display: none;
+}
+#title-block-header .ace-authors {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: 1.1rem;
+  row-gap: 0;
+  align-items: center;
+}
+#title-block-header .ace-author-name {
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+#title-block-header .ace-author-aff {
+  font-size: 0.95rem;
+  line-height: 1.35;
+  color: #4b5560;
+}
+#title-block-header .ace-author-badges {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-bottom: 0.65rem;
+}
+#title-block-header .ace-author-loc {
+  font-size: 0.8rem;
+  line-height: 1;
+  color: #6b7681;
+  margin-bottom: 0.65rem;
+}
+/* badge size = the small line's cap height, so both rows read as one strip */
+#title-block-header .ace-author-badges a.quarto-title-author-orcid,
+#title-block-header .ace-author-badges a.quarto-title-author-email {
+  width: 0.95rem;
+  height: 0.95rem;
+  margin: 0 !important;
+  vertical-align: middle;
+  border-radius: 2px;
+}
+#title-block-header .ace-author-badges a.quarto-title-author-orcid::before,
+#title-block-header .ace-author-badges a.quarto-title-author-email::before {
+  width: 0.66rem;
+  height: 0.66rem;
+}
+#title-block-header .ace-authors > .ace-author-badges:nth-last-child(2),
+#title-block-header .ace-authors > .ace-author-loc:last-child { margin-bottom: 0; }
+body.quarto-dark #title-block-header .ace-author-aff { color: #b8c2cb; }
+body.quarto-dark #title-block-header .ace-author-loc { color: #9aa4ae; }
+
+/* published / modified: moved under the subtitle by report-scripts.html and
+   shown as one grey bar, right-aligned, text in the page background colour */
+/* Quarto emits an empty .quarto-title-meta on pages with no dates (the home
+   page); without this it would show as a small tinted box under the title. */
+#title-block-header.quarto-title-block .quarto-title-meta:not(:has(.quarto-title-meta-heading)) {
+  display: none !important;
+}
+#title-block-header.quarto-title-block .quarto-title-meta {
+  display: inline-flex !important;       /* one rectangle, only as wide as its text */
+  max-width: 100%;
+  align-items: baseline;
+  gap: 0 !important;                     /* Quarto's grid gap would pad the divider's left */
+  margin: 0.1rem 0 0 0;
+  padding: 0.28rem 0.6rem;
+  line-height: 1;
+  background-color: rgba(3, 229, 255, 0.18);     /* light cyan; magenta in dark */
+  border: 0;
+  border-radius: 0;
+}
+#title-block-header .quarto-title-meta > div {
+  display: flex;
+  flex: none;
+  align-items: baseline;               /* key and date share a baseline */
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  background: none;
+}
+/* divider between Published and Modified, like the section-heading divider */
+#title-block-header .quarto-title-meta > div + div {
+  margin-left: 0.6rem;
+  padding-left: 0.6rem;
+  border-left: 1.5px solid rgba(3, 229, 255, 0.7);
+}
+#title-block-header.quarto-title-block .quarto-title-meta .quarto-title-meta-heading {
+  color: #222222;
+  font-weight: 700;
+  font-size: 0.66rem;
+  line-height: 1;
+  white-space: nowrap;                 /* never wrap inside the bar; the script shortens the dates instead */
+}
+#title-block-header.quarto-title-block .quarto-title .subtitle { margin-bottom: 0.45rem !important; }
+#title-block-header.quarto-title-block .quarto-title-meta .quarto-title-meta-contents,
+#title-block-header.quarto-title-block .quarto-title-meta p {
+  margin: 0 !important;
+  padding: 0;
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.7rem;
+  line-height: 1;
+  color: #222222;
+  white-space: nowrap;
+}
+body.quarto-dark #title-block-header.quarto-title-block .quarto-title-meta { background-color: rgba(226, 98, 226, 0.2); }
+body.quarto-dark #title-block-header .quarto-title-meta > div + div { border-left-color: rgba(226, 98, 226, 0.7); }
+body.quarto-dark #title-block-header.quarto-title-block .quarto-title-meta .quarto-title-meta-heading { color: #ffffff; }
+body.quarto-dark #title-block-header.quarto-title-block .quarto-title-meta p { color: #ffffff; }
+
+/* abstract */
+#title-block-header.quarto-title-block .abstract {
+  margin-top: 1.5rem !important;       /* Quarto zeroes it with a heavier selector */
+}
+
+/* categories: moved under the abstract by report-scripts.html */
+#title-block-header.quarto-title-block .quarto-categories.ace-categories-after-abstract {
+  margin-top: 1rem !important;
+  margin-bottom: 0 !important;
+}
+#title-block-header.quarto-title-block .abstract .block-title {
+  display: block;
+  border-bottom: 1px solid #c9d0d6 !important;
+  padding-bottom: 0.3rem !important;
+  margin-bottom: 0.6rem !important;
+}
+body.quarto-dark #title-block-header .quarto-title-meta-author .quarto-title-meta-heading:nth-child(1),
+body.quarto-dark #title-block-header .abstract .block-title { border-color: #3a4148; }
+
+@media (max-width: 575.98px) {
+  /* narrow screens: one column, university and city under the name */
+  #title-block-header .ace-authors { grid-template-columns: 1fr; }
+  #title-block-header .ace-author-badges { margin-bottom: 0.1rem; }
+}
+
+/* ##### ACE styles.css lines 3412-3512: fold-in right panel ##### */
+
+/* ---------------------------------------------------------
+   FOLD-IN RIGHT PANEL (narrow screens)
+   Quarto hides #quarto-margin-sidebar (TOC + Download) below 768px (its md
+   breakpoint); between 768 and 991px it still shows the sidebar inline.
+   Below that width it becomes an off-canvas panel on the right, opened
+   by an edge tab with a chevron (button added by the site script in
+   _quarto.yml, on any page whose sidebar holds a TOC, categories or
+   download links).
+--------------------------------------------------------- */
+
+@media (max-width: 767.98px) {
+  #quarto-margin-sidebar {
+    display: block !important;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: min(80vw, 320px);
+    box-sizing: border-box;
+    padding: 4.5rem 1.1rem 1.5rem;
+    background: #ffffff;
+    border-left: 1px solid #c9d0d6;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.25s ease;
+    z-index: 1040;
+  }
+  body.ace-panel-open #quarto-margin-sidebar {
+    transform: none;
+    box-shadow: -8px 0 24px rgba(0, 0, 0, 0.12);
+  }
+  #quarto-margin-sidebar nav#TOC,
+  #quarto-margin-sidebar #TOC,
+  #quarto-margin-sidebar .quarto-listing-category,
+  #quarto-margin-sidebar .quarto-listing-category-title {
+    display: block !important;
+  }
+  /* the panel's own 4.5rem already clears the navbar here, so drop the
+     offset the two titles carry on wide screens */
+  #quarto-margin-sidebar .quarto-listing-category-title { margin-top: 0; }
+  #quarto-margin-sidebar nav[role="doc-toc"] { padding-top: 0; }
+  body.quarto-dark #quarto-margin-sidebar {
+    background: #222222;
+    border-left-color: #3a4148;
+  }
+
+  .ace-panel-toggle {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1041;
+    width: 1.7rem;
+    height: 3.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 1px solid rgba(138, 148, 158, 0.6);
+    border-right: 0;
+    border-radius: 0;
+    background: rgba(255, 255, 255, 0.55);   /* translucent while collapsed */
+    color: rgba(138, 148, 158, 0.85);
+    cursor: pointer;
+    transition: right 0.25s ease, background-color 0.12s ease, color 0.12s ease;
+  }
+  body.ace-panel-open .ace-panel-toggle {   /* solid once the panel is open */
+    right: min(80vw, 320px);
+    background: #ffffff;
+    border-color: #8a949e;
+    color: #8a949e;
+  }
+  .ace-panel-toggle:hover,
+  .ace-panel-toggle:focus-visible { background: #8a949e; color: #ffffff; outline: none; }
+  /* chevron: points left when closed, right when open */
+  .ace-panel-toggle::before {
+    content: "";
+    width: 0.55rem;
+    height: 0.55rem;
+    border-left: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+    margin-left: 0.3rem;
+    transition: transform 0.25s ease, margin 0.25s ease;
+  }
+  body.ace-panel-open .ace-panel-toggle::before {
+    transform: rotate(-135deg);
+    margin-left: -0.3rem;
+  }
+
+  body.quarto-dark #quarto-margin-sidebar { background: #222222; border-left-color: #3a4148; }
+  body.quarto-dark .ace-panel-toggle { background: rgba(34, 34, 34, 0.55); border-color: rgba(154, 164, 174, 0.6); color: rgba(154, 164, 174, 0.85); }
+  body.quarto-dark.ace-panel-open .ace-panel-toggle { background: #222222; border-color: #9aa4ae; color: #9aa4ae; }
+  body.quarto-dark .ace-panel-toggle:hover,
+  body.quarto-dark .ace-panel-toggle:focus-visible { background: #9aa4ae; color: #111111; }
+}
+
+@media (min-width: 768px) {
+  .ace-panel-toggle { display: none; }
+}
+
+
+/* ##### ACE styles.css lines 3652-3780: section headings, homepage handbook-style button ##### */
+
+/* ---------------------------------------------------------
+   SECTION HEADINGS (report pages and site pages)
+   h2: number in mono in the text accent, a thin vertical divider, the
+       title in Roboto bold, and a rule underneath made of a short accent
+       segment plus a grey hairline.
+   h3: number in mono in the theme's text accent, no rule.
+   Accent = cyan in light, magenta in dark. Unnumbered h2s (About, RIV
+   page) get the same rule without a chip. Mirrored in the PDF template
+   (acePDF.tex: \aceSecNum / \aceSecRule).
+--------------------------------------------------------- */
+main h2:not(.ace-report-title):not(.ace-section-heading):not(#toc-title) {
+  position: relative;
+  display: flex;                 /* number and title as siblings, centred on */
+  align-items: center;           /* each other so the divider sits mid-cap   */
+  flex-wrap: nowrap;
+  margin: 2.6rem 0 1.1rem 0;
+  padding: 0 0 0.5rem 0;
+  border-bottom: 1px solid rgba(138, 148, 158, 0.45);
+}
+main h2:not(.ace-report-title):not(.ace-section-heading):not(#toc-title)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 2.6rem;
+  height: 3px;
+  background-color: #03e5ff;
+}
+body.quarto-dark main h2:not(.ace-report-title):not(.ace-section-heading):not(#toc-title) {
+  border-bottom-color: rgba(154, 164, 174, 0.4);
+}
+body.quarto-dark main h2:not(.ace-report-title):not(.ace-section-heading):not(#toc-title)::after {
+  background-color: #e262e2;
+}
+
+/* h2 number: mono, in the text accent, set off from the title by a thin
+   vertical divider */
+main h2 > .header-section-number {
+  flex: none;
+  display: block;
+  margin-right: 0.7rem;
+  padding: 0 0.7rem 0 0;
+  border-right: 2px solid rgba(138, 148, 158, 0.45);
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.95em;
+  font-weight: 700;
+  line-height: 1.15;             /* sets the divider's height */
+}
+html body.quarto-light main h2 > .header-section-number { color: #0b7f97 !important; }
+html body.quarto-dark  main h2 > .header-section-number {
+  color: #e39be0 !important;
+  border-right-color: rgba(154, 164, 174, 0.4);
+}
+
+/* h3: mono number in the text accent */
+main h3 {
+  margin: 1.9rem 0 0.7rem 0;
+}
+main h3 > .header-section-number {
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.92em;
+  font-weight: 700;
+  margin-right: 0.5rem;
+}
+html body.quarto-light main h3 > .header-section-number { color: #0b7f97 !important; }
+html body.quarto-dark  main h3 > .header-section-number { color: #e39be0 !important; }
+
+/* keep Quarto's anchor link from picking up the chip styling */
+main h2 > .anchorjs-link, main h3 > .anchorjs-link { font-family: inherit; }
+
+/* ---------------------------------------------------------
+   HOME PAGE: HANDBOOK BUTTON
+   The two wireframe badges (GitHub, Contact) sit in a two-column grid; the
+   Handbook link takes the row below and stretches across both. Unlike the
+   badges it is a translucent accent panel with a 2px frame (the section-flag
+   language), Roboto text instead of mono, and a small "PDF" tag at the end.
+--------------------------------------------------------- */
+div.quarto-about-trestles .about-entity .about-links {
+  display: grid !important;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  gap: 0.5rem !important;
+}
+div.quarto-about-trestles .about-entity .about-link[href$="CV.pdf"] {
+  grid-column: 1 / -1;
+  justify-content: flex-start;
+  gap: 0.6rem;
+  margin-top: 0.15rem !important;
+  padding: 0.55rem 0.8rem !important;
+  border: 2px solid var(--ace-accent) !important;
+  border-radius: 6px !important;
+  background: rgba(3, 229, 255, 0.14) !important;
+  color: #222222 !important;
+  font-family: "Roboto", sans-serif !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0;
+}
+div.quarto-about-trestles .about-entity .about-link[href$="CV.pdf"] .bi {
+  display: none;                 /* the PDF tag on the right carries the format */
+}
+/* "PDF" tag on the right */
+div.quarto-about-trestles .about-entity .about-link[href$="CV.pdf"]::after {
+  content: "PDF";
+  margin-left: auto;
+  padding: 0.14rem 0.4rem 0.12rem;
+  border: 1.5px solid currentColor;
+  border-radius: 999px;
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1;
+}
+div.quarto-about-trestles .about-entity .about-link[href$="CV.pdf"]:hover,
+div.quarto-about-trestles .about-entity .about-link[href$="CV.pdf"]:focus-visible {
+  background: rgba(3, 229, 255, 0.3) !important;
+  color: #222222 !important;
+}
+body.quarto-dark div.quarto-about-trestles .about-entity .about-link[href$="CV.pdf"] {
+  background: rgba(226, 98, 226, 0.16) !important;
+  color: #ffffff !important;
+}
+body.quarto-dark div.quarto-about-trestles .about-entity .about-link[href$="CV.pdf"]:hover,
+body.quarto-dark div.quarto-about-trestles .about-entity .about-link[href$="CV.pdf"]:focus-visible {
+  background: rgba(226, 98, 226, 0.32) !important;
+  color: #ffffff !important;
+}
+
+
+/* =====================================================================
+   MBJ PERSONAL SITE
+   Everything below is specific to matthewbjane.com, written in the ACE
+   language (square wireframes, mono caps keys, cyan leads in light mode,
+   magenta leads in dark mode).
+   ===================================================================== */
+
+/* ---- accent tokens ---- */
+body.quarto-light {
+  --mbj-accent: #03e5ff;
+  --mbj-accent-wash: rgba(3, 229, 255, 0.14);
+  --mbj-ink: #0b7f97;          /* text-strength accent */
+  --mbj-grey: #8a949e;
+  --mbj-muted: #6b7681;
+  --mbj-line: #d5dbe0;
+  --mbj-text: #1a1f24;
+  --mbj-title: #e262e2;        /* card titles: magenta in light, like ACE listing titles */
+}
+body.quarto-dark {
+  --mbj-accent: #e262e2;
+  --mbj-accent-wash: rgba(226, 98, 226, 0.16);
+  --mbj-ink: #e39be0;
+  --mbj-grey: #9aa4ae;
+  --mbj-muted: #9aa4ae;
+  --mbj-line: #3a4148;
+  --mbj-text: #f2f5f7;
+  --mbj-title: #03e5ff;
+}
+
+/* ---- navbar logo: the plain white MJ mark on the dark bar
+        (no offset layers, no animation) ---- */
+.navbar .navbar-brand-container { overflow: visible; }
+.navbar .navbar-logo {
+  max-height: 52px;
+  height: 52px;
+  width: auto;
+  filter: none !important;
+  animation: none !important;
+  transform: none !important;
+}
+
+/* ---- homepage: the full logo (mark + name), large, in place of the
+        page title. One solid fill that follows the theme (off-black in
+        light, white in dark) with the ACE glitch shadows and ambient burst,
+        over a light right-skewed distribution in the theme accent. The h1
+        text stays for screen readers. ---- */
+body.homepage h1.title {
+  position: relative;
+  display: block;
+  width: min(340px, 80vw);
+  aspect-ratio: 900 / 769;
+  margin: 3.2rem auto 1.4rem !important;   /* room for the bars above the logo */
+  font-size: 0 !important;
+  line-height: 0 !important;
+  background: none !important;
+  filter: none !important;
+  animation: none !important;
+}
+/* the distribution: Poisson counts as slanted bars on a baseline at the
+   M/J junction; each bar snaps to a new height about every half second
+   (the animation lives inside the SVG; it stops for reduced motion).
+   The box is 6% wider than the logo on each side so the axis runs past it,
+   and extends above the logo for the tallest bars. */
+body.homepage h1.title::before {
+  content: "";
+  position: absolute;
+  top: -20.41%;          /* the tall bars rise above the logo */
+  bottom: 0;
+  left: -6%;
+  right: -6%;
+  background: url("images/logo/logo-bars-light.svg") center / 100% 100% no-repeat;
+  opacity: 0.75;
+}
+body.homepage.quarto-dark h1.title::before {
+  background-image: url("images/logo/logo-bars-dark.svg");
+  opacity: 0.7;
+}
+/* the logo: plain solid fill, no glitch or offset layers */
+body.homepage h1.title::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("images/logo/logo-black.png") center / contain no-repeat;
+}
+body.homepage.quarto-dark h1.title::after { background-image: url("images/logo/logo-white.png"); }
+
+
+/* homepage links: GitHub / Scholar / Email / X in a 2x2 grid, CV full width */
+div.quarto-about-trestles .about-entity .about-link .bi-twitter-x,
+div.quarto-about-trestles .about-entity .about-link .bi-mortarboard { font-size: 1rem; }
+div.quarto-about-trestles .about-entity .about-link { justify-content: center; }
+
+/* ---- badges: every Bootstrap button inside the page becomes a square
+        wireframe. .btn-secondary = accent (primary actions),
+        .btn-primary = grey (links in lists, e.g. Data / Code / PDF). ---- */
+main .btn,
+main a.mbj-badge {
+  --mbj-badge: var(--mbj-grey);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.3rem 0.65rem !important;
+  margin: 0 0.3rem 0.35rem 0;
+  border: 1px solid var(--mbj-badge) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--mbj-badge) !important;
+  -webkit-text-fill-color: var(--mbj-badge) !important;
+  font-family: "Roboto Mono", monospace !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.1 !important;
+  text-decoration: none !important;
+  transition: background-color 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+}
+main .btn.btn-secondary,
+main a.mbj-badge.mbj-badge-accent {
+  --mbj-badge: var(--mbj-accent);
+  color: var(--mbj-text) !important;
+  -webkit-text-fill-color: var(--mbj-text) !important;
+}
+main .btn:hover,
+main .btn:focus-visible,
+main a.mbj-badge:hover,
+main a.mbj-badge:focus-visible {
+  background: var(--mbj-badge) !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+body.quarto-dark main .btn.btn-primary:hover,
+body.quarto-dark main a.mbj-badge:not(.mbj-badge-accent):hover { color: #111111 !important; -webkit-text-fill-color: #111111 !important; }
+main .btn.disabled,
+main .btn:disabled {
+  opacity: 0.35;
+  border-style: dashed !important;
+}
+main .btn .bi, main .btn .fa-solid, main .btn .fa-brands,
+main a.mbj-badge .bi { font-size: 0.95em; color: inherit; }
+main .btn-group { display: flex; flex-wrap: wrap; gap: 0; }
+main .btn-group > .btn { flex: 0 0 auto; }
+
+/* ---- pills (CV software tags) in the ACE category-pill language ---- */
+main .badge.rounded-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.22rem 0.55rem;
+  border-radius: 999px;
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  vertical-align: 0.12em;
+  background: var(--mbj-accent-wash) !important;
+  border: 1px solid var(--mbj-accent);
+  color: var(--mbj-text) !important;
+}
+
+/* ---- headings carrying a Font Awesome icon (CV) ---- */
+main h2 > i.fa-solid,
+main h2 > i.fa-brands {
+  flex: none;
+  width: 1.4em;
+  margin-right: 0.5rem;
+  font-size: 0.85em;
+  text-align: center;
+  color: var(--mbj-ink);
+}
+
+/* ---- short rule between CV entries ---- */
+main hr[width] {
+  width: 2.6rem !important;
+  height: 0;
+  margin: 1.4rem 0;
+  border: 0;
+  border-top: 2px solid var(--mbj-line);
+  opacity: 1;
+}
+
+/* ---- project cards (Software page, homepage) ---- */
+.mbj-cards { display: grid; gap: 1rem; margin: 0.4rem 0 1.6rem; }
+.mbj-card {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  gap: 1.1rem;
+  align-items: start;
+  padding: 1.1rem 1.25rem 0.85rem;
+  border: 1px solid var(--mbj-line);
+  border-radius: 10px;
+  background: transparent;
+  transition: border-color 0.12s ease;
+}
+.mbj-card:hover { border-color: var(--mbj-accent); }
+.mbj-card.mbj-card-noimg { grid-template-columns: minmax(0, 1fr); }
+.mbj-card-logo img { width: 88px; height: auto; display: block; }
+.mbj-card-kind {
+  display: block;
+  margin: 0 0 0.25rem;
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mbj-muted);
+}
+main .mbj-card h3,
+main .mbj-card .mbj-card-title {
+  margin: 0 0 0.35rem !important;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--mbj-title);
+}
+.mbj-card p { margin: 0 0 0.65rem; color: var(--mbj-text); }
+.mbj-card-links { display: flex; flex-wrap: wrap; }
+.mbj-card:hover h3 { animation: ace-text-glitch 0.8s steps(1, end) 1; }
+@media (prefers-reduced-motion: reduce) { .mbj-card:hover h3 { animation: none; } }
+@media (max-width: 575.98px) {
+  .mbj-card { grid-template-columns: 60px minmax(0, 1fr); gap: 0.85rem; }
+  .mbj-card-logo img { width: 60px; }
+}
+
+/* ---- callouts: the ACE intro box (accent frame, faint wash, square) ---- */
+main .callout.callout-style-simple,
+main .callout.callout-style-default {
+  border: 1px solid var(--mbj-accent) !important;
+  border-left-width: 1px !important;
+  border-radius: 0 !important;
+  background: var(--mbj-accent-wash) !important;
+  box-shadow: none !important;
+  padding: 0.55rem 0.9rem !important;
+}
+main .callout .callout-icon-container { display: none; }
+main .callout .callout-body-container p {
+  margin: 0;
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--mbj-text);
+}
+
+/* ---- blog archive table ---- */
+.quarto-listing-table { font-size: 0.95rem; }
+.quarto-listing-table thead th {
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mbj-muted);
+}
+.quarto-listing-table tbody td:first-child {
+  width: 7.5rem;
+  white-space: nowrap;
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.75rem;
+  color: var(--mbj-muted);
+}
+.quarto-listing-table tbody tr { border-bottom: 1px solid var(--mbj-line); }
+.quarto-listing-table tbody td { border-bottom: 1px solid var(--mbj-line) !important; }
+
+/* ---- footer: quiet mono line ---- */
+.nav-footer {
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  border-top: 1px solid var(--mbj-line);
+}
+.nav-footer a { color: var(--mbj-muted) !important; text-decoration: none; }
+.nav-footer a:hover { color: var(--mbj-ink) !important; }
+.nav-footer .nav-footer-left, .nav-footer .nav-footer-right { color: var(--mbj-muted); }
+
+/* ---- post pages: description under the title reads as a deck line ---- */
+#title-block-header .description p {
+  color: var(--mbj-muted);
+  font-size: 1rem;
+  line-height: 1.55;
+  max-width: 70ch;
+}
+
+/* ---- homepage: description is for link previews only (as on ACE) ---- */
+body.homepage .description { display: none; }
+.quarto-listing-table tbody tr:last-child td { border-bottom: 0 !important; }
+
+/* ---- homepage on narrow screens: clear the navbar ---- */
+@media (max-width: 991.98px) {
+  body.homepage div.quarto-about-trestles .about-entity { padding-top: 1.4rem; }
+}
+
+
+/* ---- CV (built from cv/*.yml by the cv shortcode extension) ---- */
+.cv-headline {
+  display: block;
+  margin: -0.2rem 0 0.9rem;
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mbj-muted);
+}
+.cv-contact { margin: 0 0 1.2rem; }
+.cv-entry { margin: 0 0 1.15rem; }
+.cv-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.cv-head .cv-what { flex: 1 1 auto; }
+.cv-date {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.74rem;
+  color: var(--mbj-muted);
+}
+.cv-entry > ul { margin: 0.3rem 0 0; padding-left: 1.2rem; }
+.cv-entry > ul li { margin: 0.1rem 0; }
+.cv-entry > p { margin: 0.25rem 0 0.35rem; }
+.cv-ref { margin: 0 0 1rem; }
+.cv-ref > p { margin: 0 0 0.35rem; }
+.cv-refs > ul { padding-left: 1.2rem; margin: 0.2rem 0 1rem; }
+.cv-refs > ul > li { margin: 0 0 0.6rem; }
+.cv-refs > ul > li > p { margin: 0; }
+.cv-refs > ul > li::marker { color: var(--mbj-accent, currentColor); }
+.cv-org { color: var(--mbj-muted); margin-top: 0.05rem; }
+.cv-links { margin: 0; }
+.cv-links .btn { margin-bottom: 0.2rem; }
+.cv-skill p { margin: 0 0 0.45rem; }
+.cv-note { font-size: 0.8rem; color: var(--mbj-muted); }
+main h3 { font-size: 1.05rem; margin-top: 1.5rem; }
+@media (max-width: 575.98px) {
+  .cv-head { flex-direction: column; gap: 0.1rem; }
+}
+
+/* ---- navbar: the ACE link shows the ACE logo instead of the word ----
+   (the word stays in the page for screen readers; the logo is white on a
+   transparent background, which suits the dark navbar in both themes) */
+.navbar a.nav-link[href*="auditclinicalevidence.org"] {
+  display: flex;
+  align-items: center;
+}
+.navbar a.nav-link[href*="auditclinicalevidence.org"] .menu-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.navbar a.nav-link[href*="auditclinicalevidence.org"]::before {
+  content: "";
+  display: block;
+  width: 58px;
+  height: 21px;
+  background: url("images/logo/ace-navbar.png") center / contain no-repeat;
+}

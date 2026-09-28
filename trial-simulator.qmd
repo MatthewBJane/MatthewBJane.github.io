@@ -1,0 +1,111 @@
+---
+title: "Clinical Trial Simulator"
+description: "Interactive simulation of how non-adherence, attrition, measurement error, unblinded assessment, allocation concealment failure, and regression to the mean bias the results of a randomized pre-post-control trial."
+toc: false
+page-layout: full
+resources:
+  - trial-simulator/trial.js
+  - artifact-simulator/simulator.css
+---
+
+Randomization protects a trial's comparison only until something breaks it: people stop taking the treatment, drop out, get measured with error, or get assessed by someone who knows their group. This simulator runs a two-arm randomized trial with a baseline and a follow-up measurement. Switch artifacts on and off, change how the trial is analyzed, and compare the estimate with the two effects a trial can target: the effect of being *assigned* the treatment (intention to treat) and the effect of actually *receiving* it (per protocol). Everything runs in your browser. For correlations, mean differences, and odds and risk ratios in general, see the [Artifact Simulator](artifact-simulator.qmd).
+
+```{=html}
+<link rel="stylesheet" href="artifact-simulator/simulator.css">
+<div class="as-app sim-page" id="tr-app">
+  <div class="as-body">
+    <div class="as-controls">
+      <div class="as-controls-top">
+        <button type="button" class="btn btn-secondary as-seed">Regenerate seed</button>
+      </div>
+      <div class="as-panel"></div>
+    </div>
+    <div class="as-output">
+      <div class="as-toolbar">
+        <div class="as-seg as-view" role="radiogroup" aria-label="View">
+          <label><input type="radio" name="tr-view" value="sample" checked>Single trial</label>
+          <label><input type="radio" name="tr-view" value="repl">1,000 trials</label>
+        </div>
+        <div class="as-actions">
+          <button type="button" class="btn btn-primary as-copy">Copy link</button>
+          <button type="button" class="btn btn-primary as-png">PNG</button>
+          <button type="button" class="btn btn-primary as-svg">SVG</button>
+        </div>
+      </div>
+      <div class="as-stats" aria-live="polite"></div>
+      <div class="as-plot-wrap">
+        <svg class="as-plot" viewBox="0 0 640 420" role="img" aria-label="Baseline and follow-up scores by group"></svg>
+      </div>
+      <div class="as-legend"></div>
+      <div class="tr-flow"></div>
+      <div class="as-budget"></div>
+    </div>
+  </div>
+</div>
+<script src="trial-simulator/trial.js"></script>
+<script>
+// info buttons: tap to open or close a description; tap elsewhere or press Escape to close
+(function () {
+  function closeTips(except) {
+    document.querySelectorAll('.as-info[aria-expanded="true"]').forEach(function (o) { if (o !== except) o.setAttribute("aria-expanded", "false"); });
+  }
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest(".as-info");
+    closeTips(b);
+    if (b) b.setAttribute("aria-expanded", b.getAttribute("aria-expanded") === "true" ? "false" : "true");
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "Escape") return;
+    closeTips(null);
+    if (document.activeElement && document.activeElement.classList.contains("as-info")) document.activeElement.blur();
+  });
+})();
+</script>
+```
+
+## Reading the output
+
+- **Estimated** is the treatment effect from the simulated trial, with its 95% confidence interval, as a mean difference in points or as an SMD.
+- **Expected** is the average result a very large trial would give with the same artifacts and analysis: the bias, with sampling error removed.
+- **True ITT effect** is the effect of being assigned the treatment. With non-adherence it is smaller than the effect of the treatment itself, because some people in the treatment arm never take it and some in the control arm do. **True per-protocol effect** is the effect of receiving the treatment. An intention-to-treat analysis targets the first; per-protocol and as-treated analyses target the second.
+- **The plot** shows each person's baseline and follow-up score (thin lines), people without a follow-up score (open circles at baseline), and each group's mean (thick lines).
+- **Participant flow** counts, for each arm, how many were randomized, received the treatment, had no follow-up score, and were analyzed.
+- **1,000 trials** repeats the trial 1,000 times. *CI coverage* is the share of 95% confidence intervals that contain the target, and *power* is the share that exclude 0.
+- **The bias breakdown** adds the active artifacts one at a time and shows how the expected result moves, then compares it with the target.
+- **Copy link** saves the settings and seed in the page address. **PNG** and **SVG** download the current plot.
+
+## Analysis choices
+
+**Intention to treat vs. per protocol.** Randomization makes the arms comparable as randomized. An intention-to-treat analysis keeps that comparison, so it is unbiased for the effect of assignment, even with non-adherence. Per-protocol analyses (dropping people who didn't follow their assignment) and as-treated analyses (grouping people by what they received) aim at the effect of the treatment itself, but if adherence depends on prognosis, the groups they compare are no longer alike (try *Non-adherence: ITT vs per protocol*).
+
+**Estimators.** With randomization, ANCOVA, change scores, and follow-up-only comparisons all estimate the same effect, but ANCOVA is the most precise. They part ways when the arms differ at baseline (see *Allocation concealment failure*). The treatment group's pre–post change with no control group is not a trial analysis at all: it adds the change over time and regression to the mean to the treatment effect.
+
+**Missing follow-up.** Complete-case analysis is unbiased when dropout is unrelated to the outcome, or when it is related in the same way and at the same rate in both arms. Carrying baseline forward assumes dropouts didn't change, which pulls the treatment arm's mean toward baseline. Regression imputation predicts missing follow-up scores from baseline within each group, which works when dropout depends only on baseline.
+
+**SMD standardizer.** The SMD divides the mean difference by a standard deviation. The pooled baseline SD is the usual choice for pre-post-control designs. Dividing by the SD of the change scores inflates the SMD when baseline and follow-up are strongly correlated, because change scores vary less than the scores themselves.
+
+## What each artifact does
+
+**Eligibility cutoff (regression to the mean).** Trials often enroll only people with poor baseline scores. Part of what makes a baseline score look poor is measurement error and day-to-day fluctuation, so at follow-up those scores drift back toward the average in both arms. A control group cancels this; a pre–post comparison does not. Restricting enrollment also shrinks the baseline SD, which inflates the SMD.
+
+**Allocation concealment failure.** If the people enrolling participants can foresee the next assignment, they can steer patients with better prognoses into the treatment arm. The arms then differ before treatment starts. Change scores and ANCOVA adjust for the measured baseline, but measurement error in the baseline leaves part of the difference in place.
+
+**Measurement error.** Error at baseline and follow-up doesn't bias the mean difference, but it widens the confidence interval, weakens baseline adjustment, and shrinks the SMD, because the SD it is divided by now includes error.
+
+**Non-adherence.** Some people assigned to the treatment don't take it, and some assigned to control get it anyway. This dilutes the intention-to-treat effect (which is correct for what ITT estimates) and, when adherence depends on prognosis, biases per-protocol and as-treated comparisons.
+
+**Attrition.** People drop out before follow-up. *Non-differential* attrition (the same rate and the same reasons in both arms) leaves a complete-case comparison unbiased. *Differential* attrition (different rates, or different reasons) biases it, especially when dropout depends on the outcome itself.
+
+**Unblinded outcome assessment.** Assessors who know who got the treatment may rate the treatment arm more favorably. No analysis can remove this bias; only blinding prevents it.
+
+## How the simulation works
+
+- Everyone has a true baseline score (mean 50 points) and a true follow-up score. Follow-up = baseline × the baseline–follow-up correlation + the change over time + the treatment effect (for people who receive the treatment) + individual variation, so the true scores have the chosen SD at both times.
+- The effect of receiving the treatment is the same for everyone. Randomization is 1:1.
+- **Eligibility:** people are screened until enough with measured baseline scores in the lowest chosen share are enrolled.
+- **Allocation concealment failure:** the treatment arm's true scores are shifted up by the chosen amount at both time points.
+- **Measurement error:** independent errors with the chosen reliability are added at baseline and follow-up.
+- **Non-adherence:** a person's chance of not taking the treatment (treatment arm) or of getting it anyway (control arm) rises as their prognosis worsens, to the degree set by the dependence slider; the overall rates match the sliders.
+- **Attrition:** within each arm, the chosen share drops out; with *worse baseline* or *worse follow-up*, people with lower measured scores are more likely to drop out, to the degree set by the strength slider.
+- **Unblinded assessment:** the chosen amount is added to the treatment arm's measured follow-up scores.
+- **Confidence intervals** come from the usual formulas for each estimator (OLS for ANCOVA, Welch-type for the mean comparisons). For the SMD, the interval divides the mean difference's interval by the standardizer and ignores the standardizer's own uncertainty.

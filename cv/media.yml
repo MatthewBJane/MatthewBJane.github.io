@@ -1,0 +1,25 @@
+# ---------------------------------------------------------------
+# MEDIA COVERAGE: newest first. Shown in the same style as publications:
+#   Author (Year) Title. *Outlet*. Note. URL
+#   author:  writer, or leave out
+#   year:    e.g. 2025
+#   title:   headline
+#   outlet:  publication (italic)
+#   note:    what the coverage was about (optional)
+#   url:     link
+# ---------------------------------------------------------------
+entries:
+  # TODO: add Gideon Meyerowitz-Katz's coverage of ACE (title, outlet, date, link)
+
+  - year: 2025
+    title: "The research on fluoride and IQ"
+    outlet: "Good Science Project"
+    note: "On the fluoride–IQ critique"
+    url: "https://goodscienceproject.org/articles/the-research-on-fluoride-and-iq/"
+
+  - author: "Lee"
+    year: 2024
+    title: "Jonathan Haidt started a social-media war. Did he win?"
+    outlet: "The Chronicle of Higher Education"
+    note: "On the Haidt–Jané social media debate"
+    url: "https://www.chronicle.com/article/jonathan-haidt-started-a-social-media-war-did-he-win"

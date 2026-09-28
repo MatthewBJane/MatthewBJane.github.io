@@ -87,16 +87,18 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="..//webLogoFavicon2.png" rel="icon" type="image/png">
+<link href="..//images/favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -124,9 +126,18 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
+<script>
+window.MathJax = {
+  output: { font: "mathjax-fira" },
+  tex: {
+    inlineMath:  [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"], ["$$", "$$"]]
+  }
+};
+</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml-nofont.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -158,18 +169,18 @@ window.Quarto = {
 <link rel="stylesheet" href="../styles.css">
 <meta property="og:title" content="A Response to Jonathan Haidt’s Response – Matthew B. Jané">
 <meta property="og:description" content="I want to thank Jonathan Haidt and Zach Rausch for engaging with my critique of their re-analysis of Ferguson’s meta-analysis. Unfortunately, their response continued to convey a misunderstanding of meta-analysis. There however were some valid points brought up that could have enhanced my analyses so I will also include those here. Before digging into this post, please first read my initial critique. I also address some accusations about my motivation here.">
-<meta property="og:image" content="https://matthewbjane.com/blog-posts/blog-image.png">
+<meta property="og:image" content="https://matthewbjane.com/blog-posts/images/blog-image.png">
 <meta property="og:site_name" content="Matthew B. Jané">
 <meta property="og:locale" content="en_US">
 <meta property="og:image:height" content="7206">
 <meta property="og:image:width" content="10817">
 <meta name="twitter:title" content="A Response to Jonathan Haidt’s Response – Matthew B. Jané">
 <meta name="twitter:description" content="I want to thank Jonathan Haidt and Zach Rausch for engaging with my critique of their re-analysis of Ferguson’s meta-analysis. Unfortunately, their response continued to convey a misunderstanding of meta-analysis. There however were some valid points brought up that could have enhanced my analyses so I will also include those here. Before digging into this post, please first read my initial critique. I also address some accusations about my motivation here.">
-<meta name="twitter:image" content="https://matthewbjane.com/blog-posts/blog-image.png">
+<meta name="twitter:image" content="https://matthewbjane.com/blog-posts/images/blog-image.png">
 <meta name="twitter:creator" content="@MatthewBJane">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image-height" content="7206">
 <meta name="twitter:image-width" content="10817">
-<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed">
@@ -180,10 +191,7 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../webLogoFavicon2.png" alt="" class="navbar-logo">
-    </a>
-    <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Matthew B. Jané</span>
+    <img src="../images/logo/logo-navbar.png" alt="Matthew B. Jané" class="navbar-logo">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -197,10 +205,6 @@ window.Quarto = {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../blog.html"> 
-<span class="menu-text">Meta-Analysis Magic</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="../CV.html"> 
 <span class="menu-text">CV</span></a>
   </li>  
@@ -208,34 +212,45 @@ window.Quarto = {
     <a class="nav-link" href="../Software.html"> 
 <span class="menu-text">Software</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../Books.html"> 
-<span class="menu-text">Books</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-simulators" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Simulators</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-simulators">    
+        <li>
+    <a class="dropdown-item" href="../artifact-simulator.html">
+ <span class="dropdown-text">Artifact Simulator</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../trial-simulator.html">
+ <span class="dropdown-text">Clinical Trial Simulator</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../posc-simulator.html">
+ <span class="dropdown-text">POSC Simulator</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
-    <a class="nav-link" href="../Consulting.html"> 
-<span class="menu-text">Consulting</span></a>
+    <a class="nav-link" href="https://auditclinicalevidence.org"> 
+<span class="menu-text">ACE</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.github.com/MatthewBJane"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://www.github.com/MatthewBJane"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.twitter.com/MatthewBJane"> <i class="bi bi-twitter" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="../blog.xml"> <i class="bi bi-rss" role="img">
+    <a class="nav-link" href="https://www.x.com/MatthewBJane"> <i class="bi bi-twitter-x" role="img" aria-label="X">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -246,7 +261,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+    <h2 id="toc-title">Sections</h2>
    
   <ul>
   <li><a href="#establishing-my-motivation" id="toc-establishing-my-motivation" class="nav-link active" data-scroll-target="#establishing-my-motivation">Establishing my motivation</a></li>
@@ -310,6 +325,16 @@ window.Quarto = {
 </header>
 
 
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>This post is archived and is no longer updated. <a href="../blog.html">See all archived posts</a>.</p>
+</div>
+</div>
+</div>
 <a href="https://www.buymeacoffee.com/matthewbjane"><img src="https://img.buymeacoffee.com/button-api/?text=Support my work&amp;emoji=☕&amp;slug=matthewbjane&amp;button_colour=ed5c9b&amp;font_colour=ffffff&amp;font_family=Arial&amp;outline_colour=ffffff&amp;coffee_colour=ffffff"></a>
 <p><br></p>
 <section id="establishing-my-motivation" class="level2">
@@ -345,53 +370,8 @@ window.Quarto = {
 <p>The reanalysis doesn’t use an appropriate statistical model. It simply calculates an unweighted average across different studies, doesn’t provide confidence intervals, and misinterprets the evidence</p>
 </blockquote>
 <p>All these points are unequivocally true. However, Haidt then posted the following tweet,</p>
-<p></p><div id="tweet-60114"></div><script>tweet=<!DOCTYPE html>
-<html lang="en" class="dog">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>X / ?</title>
-    <meta name="version" content="1">
-    <link href="https://abs.twimg.com/favicons/twitter.3.ico" rel="shortcut icon" type="image/x-icon">
-    <link rel="stylesheet" href="https://abs.twimg.com/errors/fullscreen_errors-047ca1475a6efac7c9c89a9ff92b7a20.css">
-  </head>
-  <body dir="auto">
-    <div class="top">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1519 200">
-        <defs/>
-        <path d="M708 103l9-5 13 1 2-2 5 1h8l1-1 42-5h7l7 3v1l12-2a9368 9368 0 0129-6l2-5 12 1 6-2 3 1 2 1v-2l13-2v1l4 2 7-1h1l17-3 1 2 4-1 18-7 3-1 4-1h9l13-1 1-4 3-2 13 1v2l22-2 10-3h6l10 5 16-5 15-3 2-1 8-4 6-2 12-1 7-2 8 5 7 1 22-9h7l5-1v-1l25-3 1 2 5 2v1h11l2 1 8-4h3l-1 1h11l10-6 6 3 9-1 4-1 1 1 1-2 6-1 1-1 10-2h2l7-5v1h4l3-1c11 0 23 2 34-3 2-2 7 0 10 0l12 1 4 1 9 2 12-1 11-3 11 1h4l10-6 17 1 2 1c9 2 19-3 22-11l1-1 9 1 15-5c3-1 9 4 9-5 5 0 5 3 5 7l2 3 4-1 4-2 9-4 3-3h3l8-4 6-3 26 2 7-4h18l7 1c10 3 13-6 17-12l8 4 3-1 14-3 15-2a38 38 0 01-5-1l-8-4 7-8 8-4-10-136-922 71 16 205z"/>
-        <path d="M-36 193l9-5 13 1 2-2 5 1h8l1-1 42-5h7l7 3v1l12-2a9328 9328 0 0129-6l2-5 12 1 6-2 3 1 2 1v-2l13-2v1l4 2 7-1h1l17-3 1 2 4-1 18-7 3-1 4-1h9l13-1 1-4 3-2 13 1v2l22-2 10-3h6l10 5 16-5 15-3 2-1 8-4 6-2 12-1 7-2 8 5 7 1 22-9h7l5-1v-1l25-3 1 2 5 2v1h11l2 1 8-4h3l-1 1h9a6 6 0 002 0l10-6 6 3 9-1 4-1a6 6 0 001 1l1-2 6-1 1-1 10-2h2l7-5v1h4l3-1c11 0 23 2 34-3 2-2 7 0 10 0l12 1 4 1 9 2 12-1 11-3 11 1h4l10-6 17 1 2 1c9 2 19-3 22-11l1-1 9 1 15-5c3-1 9 4 9-5 5 0 5 3 5 7l2 3 4-1 4-2 9-4 3-3h3l8-4 6-3 26 2 7-4h18l7 1c10 3 13-6 17-12l8 4 3-1 14-3 15-2a37 37 0 01-5-1l-8-4 7-8 8-4-10-136-922 71 16 205z"/>
-      </svg>
-    </div>
-    <div class="container">
-      <div class="content">
-        <a href="https://twitter.com" title="X logo">
-          <svg viewBox="0 0 24 24" aria-hidden="true" class="x-logo"><g><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></g></svg>
-        </a>
-        <h1 id="header">Nothing to see here</h1>
-        <p id="description">Looks like this page doesn’t exist. Here’s a picture of a poodle sitting in a chair for your trouble.</p>
-
-          <a id="button_search" href="/" class="button">Looking for this?</a>
-
-      </div>
-      <img id="image" src="https://abs.twimg.com/errors/ErrorState_NotFound.png" alt="A primped poodle with a bow in its hair sitting in a chair like a human.">
-      <div class="footer">
-        <ul>
-          <li><a href="https://twitter.com/" id="footer_home">Home</a></li>
-          <li><a href="https://status.twitterstat.us/" id="footer_status">Status</a></li>
-          <li><a href="https://twitter.com/tos" id="footer_tos">Terms of Service</a></li>
-          <li><a href="https://twitter.com/privacy" id="footer_privacy">Privacy Policy</a></li>
-          <li><a href="https://support.twitter.com/articles/20170514" id="footer_cookie">Cookie Policy</a></li>
-          <li><a href="https://legal.twitter.com/imprint" id="footer_imprint">Imprint</a></li>
-          <li><a href="https://business.twitter.com/en/help/troubleshooting/how-twitter-ads-work.html" id="footer_ads">Ads info</a></li>
-          <li dir="ltr">&copy; X Corp. <span id="copyright-year">&emsp;&emsp;&emsp;&emsp;</span></li>
-        </ul>
-      </div>
-    </div>
-  </body>
-  <script src="https://abs.twimg.com/errors/404-8651f633fd193e0b546010676a4fac06.js"></script>
-
-;document.getElementById("tweet-60114").innerHTML = tweet["html"];<p></p>
+<blockquote class="twitter-tweet blockquote" data-align="center"><a href="https://twitter.com/jonhaidt/status/1830583665891385415">View this post by @jonhaidt on X</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <p>This tweet seemed to get his followers to rate the community note as unhelpful and thus it was taken down again. Of course, it is difficult to maintain a community note with Haidt’s large following. So I guess we will have to treat these blog posts as a much more detailed community note.</p>
 </section>
 <section id="rhs-analysis-was-unequivocally-a-meta-analysis" class="level2">
@@ -433,53 +413,8 @@ window.Quarto = {
 <section id="controversy-surrounding-the-study-by-collis-and-egger-2022" class="level2">
 <h2 class="anchored" data-anchor-id="controversy-surrounding-the-study-by-collis-and-egger-2022">Controversy surrounding the study by Collis and Egger (2022)</h2>
 <p>R&amp;H’s primary critique of my analysis was that Collis and Egger’s (2022) study shouldn’t be included because the manipulation check failed. From my reading of the paper, the treatment group did demonstrate lower screen time for facebook, instagram, and snapchat, however <em>higher</em> for instant messaging apps, news/media, gaming, as well as overall screen time. R&amp;H mention WhatsApp as one of the primary apps that people replaced social media with. It does not seem that people really consider instant messaging like WhatsApp a form of social media (see poll results below):</p>
-<p></p><div id="tweet-66985"></div><script>tweet=<!DOCTYPE html>
-<html lang="en" class="dog">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>X / ?</title>
-    <meta name="version" content="1">
-    <link href="https://abs.twimg.com/favicons/twitter.3.ico" rel="shortcut icon" type="image/x-icon">
-    <link rel="stylesheet" href="https://abs.twimg.com/errors/fullscreen_errors-047ca1475a6efac7c9c89a9ff92b7a20.css">
-  </head>
-  <body dir="auto">
-    <div class="top">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1519 200">
-        <defs/>
-        <path d="M708 103l9-5 13 1 2-2 5 1h8l1-1 42-5h7l7 3v1l12-2a9368 9368 0 0129-6l2-5 12 1 6-2 3 1 2 1v-2l13-2v1l4 2 7-1h1l17-3 1 2 4-1 18-7 3-1 4-1h9l13-1 1-4 3-2 13 1v2l22-2 10-3h6l10 5 16-5 15-3 2-1 8-4 6-2 12-1 7-2 8 5 7 1 22-9h7l5-1v-1l25-3 1 2 5 2v1h11l2 1 8-4h3l-1 1h11l10-6 6 3 9-1 4-1 1 1 1-2 6-1 1-1 10-2h2l7-5v1h4l3-1c11 0 23 2 34-3 2-2 7 0 10 0l12 1 4 1 9 2 12-1 11-3 11 1h4l10-6 17 1 2 1c9 2 19-3 22-11l1-1 9 1 15-5c3-1 9 4 9-5 5 0 5 3 5 7l2 3 4-1 4-2 9-4 3-3h3l8-4 6-3 26 2 7-4h18l7 1c10 3 13-6 17-12l8 4 3-1 14-3 15-2a38 38 0 01-5-1l-8-4 7-8 8-4-10-136-922 71 16 205z"/>
-        <path d="M-36 193l9-5 13 1 2-2 5 1h8l1-1 42-5h7l7 3v1l12-2a9328 9328 0 0129-6l2-5 12 1 6-2 3 1 2 1v-2l13-2v1l4 2 7-1h1l17-3 1 2 4-1 18-7 3-1 4-1h9l13-1 1-4 3-2 13 1v2l22-2 10-3h6l10 5 16-5 15-3 2-1 8-4 6-2 12-1 7-2 8 5 7 1 22-9h7l5-1v-1l25-3 1 2 5 2v1h11l2 1 8-4h3l-1 1h9a6 6 0 002 0l10-6 6 3 9-1 4-1a6 6 0 001 1l1-2 6-1 1-1 10-2h2l7-5v1h4l3-1c11 0 23 2 34-3 2-2 7 0 10 0l12 1 4 1 9 2 12-1 11-3 11 1h4l10-6 17 1 2 1c9 2 19-3 22-11l1-1 9 1 15-5c3-1 9 4 9-5 5 0 5 3 5 7l2 3 4-1 4-2 9-4 3-3h3l8-4 6-3 26 2 7-4h18l7 1c10 3 13-6 17-12l8 4 3-1 14-3 15-2a37 37 0 01-5-1l-8-4 7-8 8-4-10-136-922 71 16 205z"/>
-      </svg>
-    </div>
-    <div class="container">
-      <div class="content">
-        <a href="https://twitter.com" title="X logo">
-          <svg viewBox="0 0 24 24" aria-hidden="true" class="x-logo"><g><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></g></svg>
-        </a>
-        <h1 id="header">Nothing to see here</h1>
-        <p id="description">Looks like this page doesn’t exist. Here’s a picture of a poodle sitting in a chair for your trouble.</p>
-
-          <a id="button_search" href="/" class="button">Looking for this?</a>
-
-      </div>
-      <img id="image" src="https://abs.twimg.com/errors/ErrorState_NotFound.png" alt="A primped poodle with a bow in its hair sitting in a chair like a human.">
-      <div class="footer">
-        <ul>
-          <li><a href="https://twitter.com/" id="footer_home">Home</a></li>
-          <li><a href="https://status.twitterstat.us/" id="footer_status">Status</a></li>
-          <li><a href="https://twitter.com/tos" id="footer_tos">Terms of Service</a></li>
-          <li><a href="https://twitter.com/privacy" id="footer_privacy">Privacy Policy</a></li>
-          <li><a href="https://support.twitter.com/articles/20170514" id="footer_cookie">Cookie Policy</a></li>
-          <li><a href="https://legal.twitter.com/imprint" id="footer_imprint">Imprint</a></li>
-          <li><a href="https://business.twitter.com/en/help/troubleshooting/how-twitter-ads-work.html" id="footer_ads">Ads info</a></li>
-          <li dir="ltr">&copy; X Corp. <span id="copyright-year">&emsp;&emsp;&emsp;&emsp;</span></li>
-        </ul>
-      </div>
-    </div>
-  </body>
-  <script src="https://abs.twimg.com/errors/404-8651f633fd193e0b546010676a4fac06.js"></script>
-
-;document.getElementById("tweet-66985").innerHTML = tweet["html"];<p></p>
+<blockquote class="twitter-tweet blockquote" data-align="center"><a href="https://twitter.com/matthewbjane/status/1830399884299481182">View this post by @matthewbjane on X</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <p>It does not seem clear to me that this is a failed manipulation check, especially considering total digital screen time is not the target intervention variable. R&amp;H also mention there is no evidence that other social media apps were used:</p>
 <blockquote class="blockquote">
 <p>In addition, there is no evidence that participants reduced their use of other social media platforms such as TikTok, YouTube, Twitter, and Reddit (all of which were widely used by college students in 2019).</p>
@@ -490,8 +425,7 @@ window.Quarto = {
 <section id="setting-up-the-code" class="level2">
 <h2 class="anchored" data-anchor-id="setting-up-the-code">Setting up the code</h2>
 <p>In this section we are just going to run the code we went over in the last blog post (see <a href="https://matthewbjane.com/blog-posts/blog-post-6.html">here</a>)</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load in packages</span></span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load in packages</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mgcv)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(splines)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(osfr)</span>
@@ -502,8 +436,7 @@ window.Quarto = {
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># download data from OSF repo</span></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">read_xlsx</span>(<span class="st">"~/Documents/MatthewBJane.nosync/blog-posts/Best Practices Coding Experiments.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 35 × 16
+<pre class="cell-output"><code># A tibble: 35 × 16
    Citation       block     n      d Standardized Outcome…¹ `Validated Outcomes`
    &lt;chr&gt;          &lt;lgl&gt; &lt;dbl&gt;  &lt;dbl&gt;                  &lt;dbl&gt;                &lt;dbl&gt;
  1 Alcott 2020    NA     1661  0.09                       1                    1
@@ -523,16 +456,14 @@ window.Quarto = {
 #   Preregistration &lt;dbl&gt;, Age &lt;dbl&gt;, Year &lt;dbl&gt;, `Best Practices Total` &lt;dbl&gt;,
 #   `Verified 1= yes, 2=no` &lt;dbl&gt;, `Ratio at post` &lt;dbl&gt;,
 #   `Citation Bias 1=yes, 2 = no` &lt;dbl&gt;</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load in dataset and filter out studies without data</span></span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load in dataset and filter out studies without data</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"Best Practices Coding Experiments.xlsx"</span>,</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">sheet =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(d))</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># display effect size data for first 6 studies</span></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat[<span class="fu">c</span>(<span class="st">"Citation"</span>,<span class="st">"n"</span>,<span class="st">"d"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 3
+<pre class="cell-output"><code># A tibble: 6 × 3
   Citation                    n      d
   &lt;chr&gt;                   &lt;dbl&gt;  &lt;dbl&gt;
 1 Alcott 2020              1661  0.09 
@@ -541,16 +472,13 @@ window.Quarto = {
 4 Collins and Edgers 2022   121 -0.138
 5 Deters &amp; Mehl 2013         86 -0.207
 6 Faulhaber et al., 2023    230  0.484</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute sampling variance</span></span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute sampling variance</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span> </span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">v =</span> <span class="fu">var_error_d</span>(<span class="at">d =</span> d, <span class="at">n1 =</span> n))</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># display updated dataset</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat[<span class="fu">c</span>(<span class="st">"Citation"</span>,<span class="st">"n"</span>,<span class="st">"d"</span>,<span class="st">"v"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 4
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># display updated dataset</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat[<span class="fu">c</span>(<span class="st">"Citation"</span>,<span class="st">"n"</span>,<span class="st">"d"</span>,<span class="st">"v"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="cell-output"><code># A tibble: 6 × 4
   Citation                    n      d       v
   &lt;chr&gt;                   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
 1 Alcott 2020              1661  0.09  0.00241
@@ -559,8 +487,7 @@ window.Quarto = {
 4 Collins and Edgers 2022   121 -0.138 0.0337 
 5 Deters &amp; Mehl 2013         86 -0.207 0.0479 
 6 Faulhaber et al., 2023    230  0.484 0.0181 </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">length_weeks =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="co"># Alcott 2020</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">2</span>, <span class="co"># Brailovskaia 2020</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">2</span>, <span class="co"># Brailovskaia 2022</span></span>
@@ -589,14 +516,12 @@ window.Quarto = {
 <span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>                          <span class="cn">NA</span>, <span class="co"># Ward 2017</span></span>
 <span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>                          <span class="cn">NA</span>  <span class="co"># Yuen et al., 2019</span></span>
 <span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>  ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
 <section id="non-linear-model-with-and-without-collis-eggers-2022" class="level2">
 <h2 class="anchored" data-anchor-id="non-linear-model-with-and-without-collis-eggers-2022">Non-linear model with and without Collis &amp; Eggers (2022)</h2>
 <p>In my blog post, I regressed the effect size on length of the intervention using a linear meta-regression which estimates the conditional mean effect size with a straight line. I have had a number of people request that weeks should be logged (which will pull in that Collis and Egger study) and fit a non-linear basis spline to the effects. I totally agree with this approach. Essentially we are modeling the conditional mean of the effect size as a non-linear function of the length of weeks. This will help account for the withdrawal effect that R&amp;H had mentioned.</p>
 <p>Let’s first fit the model with the Collis and Egger (2022) included in the data:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>nu <span class="ot">=</span> <span class="dv">3</span></span>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>nu <span class="ot">=</span> <span class="dv">3</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># model with basis spline over log(weeks)</span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>mdl_weeks <span class="ot">&lt;-</span> <span class="fu">rma</span>(d <span class="sc">~</span> <span class="fu">bs</span>(<span class="fu">log</span>(length_weeks), <span class="at">df =</span> nu),</span>
@@ -604,59 +529,26 @@ window.Quarto = {
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> dat,</span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">method =</span> <span class="st">"REML"</span>,</span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">test =</span> <span class="st">"knha"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: 7 studies with NAs omitted from model fitting.</code></pre>
-</div>
-</div>
 <p>The output of the model will be difficult to interpret so we will go ahead and plot it out with the confidence and prediction intervals.</p>
-<div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 7 rows containing missing values or values outside the scale range
-(`geom_point()`).</code></pre>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="blog-post-7_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
+<p><img src="figures/blog-post-7-fig1.png" class="img-fluid"></p>
 <p>As we kind of would have expected, you see an initial increase in the conditional mean and then a slow fall over time. Still there is a lot of variability both in the true effects (prediction interval) and in the conditional mean effect (confidence interval) so it is difficult to say anything here with much confidence. Now we can construct the same model with Collis and Eggers (2022) removed from the analysis.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dat_no_CollisEggers <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Citation <span class="sc">!=</span> <span class="st">"Collins and Edgers 2022"</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>nu <span class="ot">=</span> <span class="dv">3</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>mdl_weeks <span class="ot">&lt;-</span> <span class="fu">rma</span>(d <span class="sc">~</span> <span class="fu">bs</span>(<span class="fu">log</span>(length_weeks), <span class="at">df =</span> nu),</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">vi =</span> v,</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> dat_no_CollisEggers,</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">method =</span> <span class="st">"REML"</span>,</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>                 <span class="at">test =</span> <span class="st">"knha"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: 7 studies with NAs omitted from model fitting.</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dat_no_CollisEggers <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Citation <span class="sc">!=</span> <span class="st">"Collins and Edgers 2022"</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>nu <span class="ot">=</span> <span class="dv">3</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>mdl_weeks <span class="ot">&lt;-</span> <span class="fu">rma</span>(d <span class="sc">~</span> <span class="fu">bs</span>(<span class="fu">log</span>(length_weeks), <span class="at">df =</span> nu),</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">vi =</span> v,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> dat_no_CollisEggers,</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">method =</span> <span class="st">"REML"</span>,</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>                 <span class="at">test =</span> <span class="st">"knha"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Like we did for the last one, we can plot out the same model without the Collis and Egger (2022) study:</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="blog-post-7_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
+<p><img src="figures/blog-post-7-fig2.png" class="img-fluid"></p>
 <p>Surprisingly, even without Collis and Egger’s study there really isn’t a whole lot we can say here with confidence. It does not really even appear is much different than it is with Collis and Eggers (2022) study included. In fact, with the predictions (conditional means) plotted side by side they appear almost identical:</p>
-<div class="cell">
-<div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="blog-post-7_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="figures/blog-post-7-fig3.png" class="img-fluid figure-img"></p>
 <figcaption>Model predictions (conditional mean of true effects) and confidence intervals for the model including Collis &amp; Egger and the model without.</figcaption>
 </figure>
-</div>
-</div>
 </div>
 <section id="a-note-on-effect-dependency" class="level3">
 <h3 class="anchored" data-anchor-id="a-note-on-effect-dependency">A note on effect dependency</h3>
@@ -670,37 +562,29 @@ window.Quarto = {
 <p>Acute withdrawal symptoms typically peak after a few days, but often last for up to two weeks.</p>
 </blockquote>
 <p>Therefore R&amp;H selected for reduction studies that were two weeks or longer. But if withdrawal symptoms last for two weeks in many cases, then maybe we should play it safe and only select the studies that are <em>longer</em> than two weeks (<span class="math inline">\(X_\mathrm{weeks}&gt;2\)</span> rather than <span class="math inline">\(X_\mathrm{weeks}\geq 2\)</span>). This cut-point could have easily been argued with R&amp;H’s reasoning.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>mdl_2weeks <span class="ot">&lt;-</span> <span class="fu">rma</span>(<span class="at">yi =</span> d,</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">vi =</span> v,</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> dat,</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">method =</span> <span class="st">"REML"</span>,</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">test =</span> <span class="st">"knha"</span>,</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">subset =</span> length_weeks <span class="sc">&gt;</span> <span class="dv">2</span>)</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(mdl_2weeks)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>mdl_2weeks <span class="ot">&lt;-</span> <span class="fu">rma</span>(<span class="at">yi =</span> d,</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">vi =</span> v,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> dat,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">method =</span> <span class="st">"REML"</span>,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">test =</span> <span class="st">"knha"</span>,</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">subset =</span> length_weeks <span class="sc">&gt;</span> <span class="dv">2</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(mdl_2weeks)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="cell-output"><code>
    pred     se   ci.lb  ci.ub   pi.lb  pi.ub 
  0.0980 0.0514 -0.0448 0.2408 -0.0448 0.2408 </code></pre>
-</div>
-</div>
 <p>After playing it safe and allowing for withdrawal symptoms to subside we see a mean effect of <span class="math inline">\(\hat{\mu}_\delta = .098\, [-.045,\, .241]\)</span>. Well seems that the average effect is quite small and about half the size of R&amp;H’s average, but maybe we can try only studies that were more than 3 weeks,</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>mdl_3weeks <span class="ot">&lt;-</span> <span class="fu">rma</span>(<span class="at">yi =</span> d,</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">vi =</span> v,</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> dat,</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">method =</span> <span class="st">"REML"</span>,</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">test =</span> <span class="st">"knha"</span>,</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">subset =</span> length_weeks <span class="sc">&gt;</span> <span class="dv">3</span>)</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(mdl_3weeks)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>mdl_3weeks <span class="ot">&lt;-</span> <span class="fu">rma</span>(<span class="at">yi =</span> d,</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">vi =</span> v,</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> dat,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">method =</span> <span class="st">"REML"</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">test =</span> <span class="st">"knha"</span>,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">subset =</span> length_weeks <span class="sc">&gt;</span> <span class="dv">3</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(mdl_3weeks)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="cell-output"><code>
    pred     se   ci.lb  ci.ub   pi.lb  pi.ub 
  0.0446 0.0910 -1.1122 1.2015 -1.5739 1.6631 </code></pre>
-</div>
-</div>
 <p>We see the mean effect of <span class="math inline">\(\hat{\mu}_\delta = .045\, [-1.112, \, 1.202]\)</span> is even smaller with very extremely wide CIs.</p>
 <p>This goes to show that arbitrary post-hoc analytic decisions can greatly impact the end result. This is just another reason why R&amp;H’s analysis was, at the very least, highly misleading.</p>
 </section>
@@ -778,6 +662,150 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -1182,19 +1210,68 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Email me at matthew.jane@uconn.edu</p>
+<p>© 2026 Matthew B. Jané</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
     <div class="nav-footer-right">
-      &nbsp;
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="../blog.html">
+<p>Blog archive</p>
+</a>
+  </li>  
+</ul>
     </div>
   </div>
 </footer>
+<script>
+// Fold-in right panel for narrow screens. Quarto hides
+// #quarto-margin-sidebar below 768px; this adds an edge tab that
+// slides it in as an overlay, on every page that has something in
+// that column (report and page contents, downloads, categories).
+// Styling lives in styles.css under "FOLD-IN RIGHT PANEL".
+(function () {
+  function addPanelToggle() {
+    var sidebar = document.getElementById("quarto-margin-sidebar");
+    if (!sidebar || document.querySelector(".ace-panel-toggle")) return;
+    var hasToc = !!sidebar.querySelector("nav[role='doc-toc'], #TOC");
+    var hasCats = !!sidebar.querySelector(".quarto-listing-category");
+    var hasLinks = !!sidebar.querySelector(".quarto-other-links, .quarto-alternate-formats");
+    if (!hasToc && !hasCats && !hasLinks) return;
+    var what = hasCats && !hasToc ? "categories" : "contents";
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "ace-panel-toggle";
+    b.setAttribute("aria-expanded", "false");
+    function setOpen(open) {
+      document.body.classList.toggle("ace-panel-open", open);
+      b.setAttribute("aria-expanded", open ? "true" : "false");
+      b.setAttribute("aria-label", (open ? "Close " : "Open ") + what + " panel");
+    }
+    setOpen(false);
+    b.addEventListener("click", function () {
+      setOpen(!document.body.classList.contains("ace-panel-open"));
+    });
+    // close after choosing a section, a category, or the PDF, and on Escape
+    sidebar.addEventListener("click", function (e) {
+      if (e.target.closest("a, .category")) setOpen(false);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") setOpen(false);
+    });
+    document.body.appendChild(b);
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", addPanelToggle);
+  } else {
+    addPanelToggle();
+  }
+})();
+</script>
 
 
 
 
-<script src="https://platform.twitter.com/widgets.js"></script>
 </body></html>

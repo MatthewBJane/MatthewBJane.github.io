@@ -1,0 +1,29 @@
+# ---------------------------------------------------------------
+# TALKS, TEACHING, AND WORKSHOPS: newest first. Shown as
+#   **Location** – *Title*                               date
+#   description
+#   location:    host institution or organization   (required)
+#   title:       talk or workshop title             (required)
+#   description: what it was, one line              (optional)
+#   date:        e.g. "Nov 2025" or "2025"          (optional)
+# ---------------------------------------------------------------
+entries:
+  - location: "Princeton University"
+    title: "Detecting errors and fraud in meta-analysis with the help of forensic meta-science"
+    description: "Invited talk and workshop, Seminar in Advanced Research Methods"
+    date: "2025"
+
+  - location: "Physalia Courses"
+    title: "Meta-analysis in R"
+    description: "Four-day workshop"
+    date: "2025"
+
+  - location: "University of South Florida"
+    title: "Meta-analysis and data visualization in R"
+    description: "Two 1-hour workshops"
+    date: "2024"
+
+  - location: "R Workshops for Ukraine"
+    title: "Meta-analysis in R"
+    description: "2-hour charity workshop"
+    date: "2024"

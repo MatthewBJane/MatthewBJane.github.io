@@ -1,0 +1,49 @@
+# ---------------------------------------------------------------
+# EXPERIENCE: newest first, in two lists.
+#   professional:  shown under "Professional Experience"
+#   additional:    shown under "Additional Experience"
+# Fields for each entry:
+#   id:            short key, used by the private (local) CV to add hours,
+#                  salary, and supervisor details that stay off the website
+#   title:         job title                          (required)
+#   organization:  employer, shown on the line below  (required)
+#   location:      optional, added after the organization
+#   dates:         "Mon YYYY – Mon YYYY" (month + year, as federal resumes require)
+#   details:       list of accomplishment bullets     (optional)
+# ---------------------------------------------------------------
+professional:
+
+  - id: csi
+    title: "Forensic Analyst"
+    organization: "The Medical Evidence Project, The Center for Scientific Integrity"
+    location: "New York, NY (remote)"
+    dates: "Aug 2025 – Dec 2025"
+    details:
+      - "Investigated published medical and clinical research for fabricated or falsified data, statistical errors, and misconduct."
+      - "Reanalyzed reported statistics and trial data to test internal consistency and plausibility; wrote investigation reports."
+
+  - id: uconn
+    title: "Graduate Assistant (Research and Teaching)"
+    organization: "University of Connecticut"
+    location: "Storrs, CT"
+    dates: "Jan 2021 – Aug 2025"
+    details:
+      - "Systematic Health Action Research Program (2022–2025; Dr. Blair Johnson): meta-analysis of health research."
+      - "Sensory Perception and Neuroscience Laboratory (2020–2022; Drs. Read and Chrobak): experiments and data analysis."
+      - "Teaching assistant: Principles of Psychological Research; Sensory Neuroscience Laboratory."
+
+additional:
+  - id: ace
+    title: "Creator and Lead Auditor"
+    organization: "Audit Clinical Evidence (ACE)"
+    dates: "Sep 2026 – Present"
+    details:
+      - "Lead independent audits of published clinical research for statistical errors, data inconsistencies, and integrity violations."
+      - "Direct study identification, statistical analyses, report development, and project standards."
+
+  - id: consulting
+    title: "Statistical Consultant"
+    organization: "Self-employed"
+    dates: "Sep 2023 – May 2025"
+    details:
+      - "Statistical consulting for labs and companies in genetics, agriculture, clinical psychology, and exercise physiology."

@@ -53,16 +53,18 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="..//webLogoFavicon2.png" rel="icon" type="image/png">
+<link href="..//images/favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -90,9 +92,18 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
+<script>
+window.MathJax = {
+  output: { font: "mathjax-fira" },
+  tex: {
+    inlineMath:  [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"], ["$$", "$$"]]
+  }
+};
+</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml-nofont.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -124,18 +135,18 @@ window.Quarto = {
 <link rel="stylesheet" href="../styles.css">
 <meta property="og:title" content="Respectful Operationalism, Realism, and Models of Measurement Error in Psychometrics – Matthew B. Jané">
 <meta property="og:description" content="Full disclaimer: I am not well-versed in these issues, and I am not a philosopher. The purpose of this post is for me to articulate my own thought process, rather than have it serve as a teaching tool. There may be errors in this text, so please feel free to point them out, and, of course, share your thoughts with me on Twitter (disagreements are encouraged!). I am striving to gain a better understanding of my own beliefs about measurement and how those beliefs may influence my approach to applied measurement. This blog post was inspired by the works of Elina Vessonen, who introduced Respectful Operationalism—a concept that resonates with my beliefs and convictions regarding psychological measurement.">
-<meta property="og:image" content="https://matthewbjane.com/blog-posts/blog-image.png">
+<meta property="og:image" content="https://matthewbjane.com/blog-posts/images/blog-image.png">
 <meta property="og:site_name" content="Matthew B. Jané">
 <meta property="og:locale" content="en_US">
 <meta property="og:image:height" content="7206">
 <meta property="og:image:width" content="10817">
 <meta name="twitter:title" content="Respectful Operationalism, Realism, and Models of Measurement Error in Psychometrics – Matthew B. Jané">
 <meta name="twitter:description" content="Full disclaimer: I am not well-versed in these issues, and I am not a philosopher. The purpose of this post is for me to articulate my own thought process, rather than have it serve as a teaching tool. There may be errors in this text, so please feel free to point them out, and, of course, share your thoughts with me on Twitter (disagreements are encouraged!). I am striving to gain a better understanding of my own beliefs about measurement and how those beliefs may influence my approach to applied measurement. This blog post was inspired by the works of Elina Vessonen, who introduced Respectful Operationalism—a concept that resonates with my beliefs and convictions regarding psychological measurement.">
-<meta name="twitter:image" content="https://matthewbjane.com/blog-posts/blog-image.png">
+<meta name="twitter:image" content="https://matthewbjane.com/blog-posts/images/blog-image.png">
 <meta name="twitter:creator" content="@MatthewBJane">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image-height" content="7206">
 <meta name="twitter:image-width" content="10817">
-<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed">
@@ -146,10 +157,7 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../webLogoFavicon2.png" alt="" class="navbar-logo">
-    </a>
-    <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Matthew B. Jané</span>
+    <img src="../images/logo/logo-navbar.png" alt="Matthew B. Jané" class="navbar-logo">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -163,10 +171,6 @@ window.Quarto = {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../blog.html"> 
-<span class="menu-text">Meta-Analysis Magic</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="../CV.html"> 
 <span class="menu-text">CV</span></a>
   </li>  
@@ -174,34 +178,45 @@ window.Quarto = {
     <a class="nav-link" href="../Software.html"> 
 <span class="menu-text">Software</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../Books.html"> 
-<span class="menu-text">Books</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-simulators" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Simulators</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-simulators">    
+        <li>
+    <a class="dropdown-item" href="../artifact-simulator.html">
+ <span class="dropdown-text">Artifact Simulator</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../trial-simulator.html">
+ <span class="dropdown-text">Clinical Trial Simulator</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../posc-simulator.html">
+ <span class="dropdown-text">POSC Simulator</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
-    <a class="nav-link" href="../Consulting.html"> 
-<span class="menu-text">Consulting</span></a>
+    <a class="nav-link" href="https://auditclinicalevidence.org"> 
+<span class="menu-text">ACE</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.github.com/MatthewBJane"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://www.github.com/MatthewBJane"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.twitter.com/MatthewBJane"> <i class="bi bi-twitter" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="../blog.xml"> <i class="bi bi-rss" role="img">
+    <a class="nav-link" href="https://www.x.com/MatthewBJane"> <i class="bi bi-twitter-x" role="img" aria-label="X">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -212,7 +227,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+    <h2 id="toc-title">Sections</h2>
    
   <ul>
   <li><a href="#some-useful-definitions" id="toc-some-useful-definitions" class="nav-link active" data-scroll-target="#some-useful-definitions">Some useful definitions</a></li>
@@ -266,6 +281,16 @@ window.Quarto = {
 </header>
 
 
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>This post is archived and is no longer updated. <a href="../blog.html">See all archived posts</a>.</p>
+</div>
+</div>
+</div>
 <a href="https://www.buymeacoffee.com/matthewbjane"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&amp;emoji=☕&amp;slug=matthewbjane&amp;button_colour=ed5c9b&amp;font_colour=ffffff&amp;font_family=Arial&amp;outline_colour=ffffff&amp;coffee_colour=ffffff"></a>
 <p><br></p>
 <section id="some-useful-definitions" class="level2">
@@ -287,7 +312,7 @@ window.Quarto = {
 <p><strong>A strict operationalist</strong> may simply define a person’s <em>true</em> score <span class="math inline">\(T_p\)</span> as the observed score such that, <span class="math inline">\(T_p = X_p\)</span>. Trivially, the observed score can be modeled <em>as</em> the true score,</p>
 <p><span id="eq-1"><span class="math display">\[
 X_p = T_p
-\tag{1}\]</span></span></p>
+\qquad(1)\]</span></span></p>
 <p>There is something attractive and so practical about this model, however there are immediate problems of usability. What if we test that person again and they obtain a different score? What if the scoring is done by a rater and a different rater assigns a different score to that person? To answer this, let us use an example where a person’s true score is defined as the observed score <span class="math inline">\(X_{par}\)</span>, for person <span class="math inline">\(p\)</span>, test administration <span class="math inline">\(a\)</span>, and rater <span class="math inline">\(r\)</span> such that,</p>
 <p><span class="math display">\[
 T_p = X_{par}
@@ -312,7 +337,7 @@ T_p -  \mathbb{E}[X_p\mid p] = T_p - T_p =  0.
 <p>So now, even if observed scores vary across raters and/or test administrations, the true score will remain constant. The question at this point is how can we model a single instance of an observed score. Here, we will need to introduce measurement errors. <strong>Measurement errors</strong> can be defined as differences between observed scores and true scores. Remember that in our strict operationalist model (<a href="#eq-1" class="quarto-xref">Equation&nbsp;1</a>) we did not have any measurement errors since the true score was equivalent to the observed score (i.e., if <span class="math inline">\(T_p = X_p\)</span>, then <span class="math inline">\(T_p - X_p = 0\)</span>). Now that the true score is the conditional expectation of the observed score, a single instance of an observed score <em>can</em> differ from the true score. We can thus add a new term to the model described in <a href="#eq-1" class="quarto-xref">Equation&nbsp;1</a>,</p>
 <p><span id="eq-ctt"><span class="math display">\[
 X_{p} = T_p + E_{p},
-\tag{2}\]</span></span></p>
+\qquad(2)\]</span></span></p>
 <p>where <span class="math inline">\(E_{p}\)</span> indicates the error in the observed score for a given person and measurement. Since we started with the definition of true scores being <span class="math inline">\(T_p = \mathbb{E}[X \mid  p]\)</span>, an extremely useful consequence of this is that the conditional expectation of measurement errors within a person is zero. We can demonstrate why this is the case with a short derivation (first re-arranging <a href="#eq-ctt" class="quarto-xref">Equation&nbsp;2</a> so that <span class="math inline">\(E_{p}\)</span> is on the left hand side),</p>
 <p><span class="math display">\[\begin{align}
 \mathbb{E}[E_{p}\mid p] &amp;= \mathbb{E}[T_p -  X_p\mid p] \\[.3em]
@@ -324,7 +349,7 @@ X_{p} = T_p + E_{p},
 <p><strong>A realist</strong> model may suppose that the true score is a construct score that is an objective value that is defined outside of the measurement operations (the actual value of the construct/attribute being measured; <span class="citation" data-cites="borsboom2002">Borsboom and Mellenbergh (<a href="#ref-borsboom2002" role="doc-biblioref">2002</a>)</span>). Therefore we can not define true scores in terms of observed scores without knowing how observed scores are calibrated true scores. The realist model for an observed score is superficially identical to <a href="#eq-ctt" class="quarto-xref">Equation&nbsp;2</a>,</p>
 <p><span id="eq-nctt"><span class="math display">\[
 X_{p} = T_p + E_{p},
-\tag{3}\]</span></span></p>
+\qquad(3)\]</span></span></p>
 <p>with the major difference being that <span class="math inline">\(\mathbb{E}[X|p] \neq T_p\)</span>. Note that <a href="#eq-nctt" class="quarto-xref">Equation&nbsp;3</a> is <em>not</em> the classical test theory model because it does not, by default, meet the assumptions of classical test theory that the laxed operationalist model does (<a href="#eq-ctt" class="quarto-xref">Equation&nbsp;2</a>). The big difference between this realist model the laxed operationalist model is that the conditional expectation of errors is no longer zero in the realist approach, and thus systematic errors (i.e., biased estimates of true scores) can exist. In order to recover proper calibration of the observed scores to true scores, we would have to just assume that <span class="math inline">\(\mathbb{E}[E_p\mid p]=0\)</span> (see flaws below).</p>
 <p>When it comes to psychological constructs the realist approach has two major flaws to me.</p>
 <ol type="1">
@@ -401,6 +426,150 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -805,16 +974,66 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Email me at matthew.jane@uconn.edu</p>
+<p>© 2026 Matthew B. Jané</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
     <div class="nav-footer-right">
-      &nbsp;
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="../blog.html">
+<p>Blog archive</p>
+</a>
+  </li>  
+</ul>
     </div>
   </div>
 </footer>
+<script>
+// Fold-in right panel for narrow screens. Quarto hides
+// #quarto-margin-sidebar below 768px; this adds an edge tab that
+// slides it in as an overlay, on every page that has something in
+// that column (report and page contents, downloads, categories).
+// Styling lives in styles.css under "FOLD-IN RIGHT PANEL".
+(function () {
+  function addPanelToggle() {
+    var sidebar = document.getElementById("quarto-margin-sidebar");
+    if (!sidebar || document.querySelector(".ace-panel-toggle")) return;
+    var hasToc = !!sidebar.querySelector("nav[role='doc-toc'], #TOC");
+    var hasCats = !!sidebar.querySelector(".quarto-listing-category");
+    var hasLinks = !!sidebar.querySelector(".quarto-other-links, .quarto-alternate-formats");
+    if (!hasToc && !hasCats && !hasLinks) return;
+    var what = hasCats && !hasToc ? "categories" : "contents";
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "ace-panel-toggle";
+    b.setAttribute("aria-expanded", "false");
+    function setOpen(open) {
+      document.body.classList.toggle("ace-panel-open", open);
+      b.setAttribute("aria-expanded", open ? "true" : "false");
+      b.setAttribute("aria-label", (open ? "Close " : "Open ") + what + " panel");
+    }
+    setOpen(false);
+    b.addEventListener("click", function () {
+      setOpen(!document.body.classList.contains("ace-panel-open"));
+    });
+    // close after choosing a section, a category, or the PDF, and on Escape
+    sidebar.addEventListener("click", function (e) {
+      if (e.target.closest("a, .category")) setOpen(false);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") setOpen(false);
+    });
+    document.body.appendChild(b);
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", addPanelToggle);
+  } else {
+    addPanelToggle();
+  }
+})();
+</script>
 
 
 

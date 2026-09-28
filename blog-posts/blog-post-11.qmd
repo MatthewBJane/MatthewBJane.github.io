@@ -2,7 +2,7 @@
 title: "When Evidence Synthesis Obscures: A Critique of Meta-Meta-Analyses"
 
 author: "Matthew B. Jané"
-image: "blog-image.png"
+image: "images/blog-image.png"
 image-height: "5%"
 toc: true
 code-fold: false
@@ -14,9 +14,13 @@ categories:
   - Meta-Analysis
   - Meta-Meta-Analyses
 
-image-meta: "blog-image.png"
+image-meta: "images/blog-image.png"
 bibliography: references.bib
 ---
+
+::: {.callout-note appearance="simple"}
+This post is archived and is no longer updated. [See all archived posts](../blog.qmd).
+:::
 
 ```{=html}
 <a href="https://www.buymeacoffee.com/matthewbjane"><img src="https://img.buymeacoffee.com/button-api/?text=Support my work&emoji=☕&slug=matthewbjane&button_colour=ed5c9b&font_colour=ffffff&font_family=Arial&outline_colour=ffffff&coffee_colour=ffffff" /></a>

@@ -1,0 +1,10 @@
+# ---------------------------------------------------------------
+# PROFESSIONAL SERVICE: one line per category (same layout as skills).
+#   category: label shown in bold
+#   items:    the rest of the line (Markdown allowed)
+# ---------------------------------------------------------------
+entries:
+  - category: "Peer review"
+    items: "*Psychological Bulletin*, *Collabra: Psychology*, *British Journal of Psychology*, *The Unjournal*."
+  - category: "Memberships"
+    items: "Science Integrity Alliance."

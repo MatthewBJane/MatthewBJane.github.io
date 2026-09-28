@@ -1,0 +1,181 @@
+---
+title: "Artifact Simulator"
+description: "Interactive simulation of how measurement error, coarse measurement, range restriction, misclassification, and selection bias correlations, standardized mean differences, odds ratios, and risk ratios."
+toc: false
+page-layout: full
+resources:
+  - artifact-simulator/simulator.js
+  - artifact-simulator/ratio.js
+  - artifact-simulator/simulator.css
+---
+
+Statistical artifacts like unreliable measures, coarse rating scales, restricted samples, and misclassified exposures and outcomes distort the effect sizes we observe. Pick an effect size, move the sliders to see how each artifact pulls the observed effect away from the true one, switch artifacts on and off to see what each one costs, and run 1,000 replications to separate bias from sampling error. Everything runs in your browser.
+
+```{=html}
+<link rel="stylesheet" href="artifact-simulator/simulator.css">
+<div class="as-tabs sim-tabs" role="tablist" aria-label="Effect size">
+  <button type="button" role="tab" class="as-tab" data-tab="r" aria-selected="true">Correlation (r)</button>
+  <button type="button" role="tab" class="as-tab" data-tab="d" aria-selected="false">Mean difference (d)</button>
+  <button type="button" role="tab" class="as-tab" data-tab="ratio" aria-selected="false">Odds &amp; risk ratios</button>
+</div>
+
+<!-- correlation and mean difference tabs (simulator.js) -->
+<div class="as-app" id="as-app">
+  <div class="as-body">
+    <div class="as-controls">
+      <div class="as-controls-top">
+        <button type="button" class="btn btn-secondary as-seed">Regenerate seed</button>
+      </div>
+      <div class="as-panel" data-panel="r"></div>
+      <div class="as-panel" data-panel="d" hidden></div>
+    </div>
+    <div class="as-output">
+      <div class="as-toolbar">
+        <div class="as-seg as-view" role="radiogroup" aria-label="View">
+          <label><input type="radio" name="as-view" value="sample" checked>Single sample</label>
+          <label><input type="radio" name="as-view" value="repl">1,000 replications</label>
+        </div>
+        <div class="as-actions">
+          <button type="button" class="btn btn-primary as-copy">Copy link</button>
+          <button type="button" class="btn btn-primary as-png">PNG</button>
+          <button type="button" class="btn btn-primary as-svg">SVG</button>
+        </div>
+      </div>
+      <div class="as-stats" aria-live="polite"></div>
+      <div class="as-plot-wrap">
+        <svg class="as-plot" viewBox="0 0 640 480" role="img" aria-label="Simulated data"></svg>
+      </div>
+      <div class="as-legend"></div>
+      <div class="as-budget"></div>
+    </div>
+  </div>
+</div>
+
+<!-- odds & risk ratios tab (ratio.js) -->
+<div class="as-app" id="rs-app" hidden>
+  <div class="as-body">
+    <div class="as-controls">
+      <div class="as-controls-top">
+        <button type="button" class="btn btn-secondary as-seed">Regenerate seed</button>
+      </div>
+      <div class="as-panel"></div>
+    </div>
+    <div class="as-output">
+      <div class="as-toolbar">
+        <div class="as-seg as-view" role="radiogroup" aria-label="View">
+          <label><input type="radio" name="rs-view" value="sample" checked>Single sample</label>
+          <label><input type="radio" name="rs-view" value="repl">1,000 replications</label>
+        </div>
+        <div class="as-actions">
+          <button type="button" class="btn btn-primary as-copy">Copy link</button>
+          <button type="button" class="btn btn-primary as-png">PNG</button>
+          <button type="button" class="btn btn-primary as-svg">SVG</button>
+        </div>
+      </div>
+      <div class="as-stats" aria-live="polite"></div>
+      <div class="as-plot-wrap">
+        <svg class="as-plot" viewBox="0 0 640 420" role="img" aria-label="True and observed contingency tables"></svg>
+      </div>
+      <div class="as-legend"></div>
+      <div class="as-budget"></div>
+    </div>
+  </div>
+</div>
+
+<script src="artifact-simulator/simulator.js"></script>
+<script src="artifact-simulator/ratio.js"></script>
+<script>
+// Page-level tabs: show the right app and tell both apps which tab is active.
+(function () {
+  var tabs = document.querySelectorAll(".sim-tabs .as-tab");
+  var rd = document.getElementById("as-app"), ratio = document.getElementById("rs-app");
+  function select(t) {
+    tabs.forEach(function (b) { b.setAttribute("aria-selected", b.dataset.tab === t ? "true" : "false"); });
+    var isRatio = t === "ratio";
+    rd.hidden = isRatio; ratio.hidden = !isRatio;
+    document.dispatchEvent(new CustomEvent("sim:tab", { detail: t }));
+  }
+  tabs.forEach(function (b) { b.addEventListener("click", function () { select(b.dataset.tab); }); });
+  // info buttons: tap to open or close a description; tap elsewhere or press Escape to close
+  function closeTips(except) {
+    document.querySelectorAll('.as-info[aria-expanded="true"]').forEach(function (o) { if (o !== except) o.setAttribute("aria-expanded", "false"); });
+  }
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest(".as-info");
+    closeTips(b);
+    if (b) b.setAttribute("aria-expanded", b.getAttribute("aria-expanded") === "true" ? "false" : "true");
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "Escape") return;
+    closeTips(null);
+    if (document.activeElement && document.activeElement.classList.contains("as-info")) document.activeElement.blur();
+  });
+  var m = (location.hash || "").match(/[#&]t=(r|d|ratio|or|rr)(?=&|$)/);
+  select(m ? (m[1] === "or" || m[1] === "rr" ? "ratio" : m[1]) : "r");
+})();
+</script>
+```
+
+## Reading the output
+
+- **Observed** is the effect size in the simulated study, after every artifact that is switched on.
+- **Corrected** applies the standard corrections to that observed value (see below). In a single sample it can land far from the truth; the replications view shows whether it's right *on average*.
+- **Expected** is the observed value you would get in a very large study with the same settings: the bias with sampling error removed.
+- **1,000 replications** repeats the study 1,000 times and plots the observed and corrected estimates. The gap between the histogram's center and the true value is bias; the histogram's width is sampling error. Corrections remove the bias but widen the distribution. For odds and risk ratios, *CI coverage* is the share of observed 95% confidence intervals that contain the true value; with bias it falls well below 95%, and it gets worse as the sample grows.
+- **The bias breakdown** adds the active artifacts one at a time and shows how much each one moves the expected effect.
+- On the **odds & risk ratios** tab, the *Effect measure* switch picks which ratio everything on the tab uses. The **True** table shows the population by true exposure and outcome; the **Observed** table shows the people analyzed in the simulated study, as recorded. The cells use the usual 2 × 2 letters: *a* (exposed with the outcome), *b* (exposed without it), *c* (unexposed with the outcome), and *d* (unexposed without it). The outcome column is cyan and the no-outcome column is magenta. Each cell shows its share of the whole table (for the observed study, with the count in parentheses), and brighter cells hold a larger share. The column on the right gives each row's risk or odds of the outcome. The odds ratio is $ad/bc$ and the risk ratio is $\frac{a/(a+b)}{c/(c+d)}$.
+- **Copy link** saves the current tab, settings, and seed in the page address, so a link reproduces exactly what you see. **PNG** and **SVG** download the current plot.
+
+## What each artifact does
+
+### Correlations and mean differences
+
+**Measurement error.** An unreliable measure adds noise that doesn't correlate with anything, so the observed correlation shrinks to $\rho\sqrt{r_{XX}\,r_{YY}}$ and the observed *d* to $\delta\sqrt{r_{YY}}$.
+
+**Correlated errors.** When X and Y share a source of error, such as both being self-reports from the same person on the same day, their errors correlate. The shared error adds $\rho_e\sqrt{(1-r_{XX})(1-r_{YY})}$ to the observed correlation, which can offset the attenuation or even push the observed correlation above the true one (try the *Common method variance* scenario).
+
+**Range restriction.** Keeping only people above a cutoff shrinks the variance of the selected variable, and with it the correlation. *Direct* restriction selects on X and/or Y themselves; *indirect* restriction selects on a third variable Z that is related to both.
+
+**Coarseness.** Cutting a continuous variable into a few categories throws away information, most sharply with very few cuts (one cut is a median split).
+
+**Misclassification.** Putting some people in the wrong group mixes the two distributions and pulls the group means together.
+
+### Odds ratios and risk ratios
+
+**Nondifferential exposure misclassification.** When exposure is recorded with the same error in people with and without the outcome, the exposed and unexposed groups get mixed together, and the estimate is usually pulled toward 1 (no effect).
+
+**Recall bias.** People with the outcome often remember or report past exposure more completely. That raises the exposure's sensitivity in cases only, which can push the estimate *away* from 1 and create an association where there is none.
+
+**Outcome misclassification.** With nondifferential outcome errors and perfect specificity, the risk ratio is unbiased no matter how poor the sensitivity: every group loses the same share of its cases. The odds ratio is biased slightly toward 1. Imperfect specificity is far more damaging, especially when the outcome is rare, because false positives swamp the true cases in both groups (compare the two *Outcome* scenarios).
+
+**Detection bias.** When exposed people are examined more closely (more tests, more follow-up), their outcomes are found more often, inflating the estimate.
+
+**Selection.** If participation depends on both exposure and outcome, the analyzed sample no longer reflects the population. The odds ratio is biased by the factor $\frac{s_{11}\,s_{00}}{s_{10}\,s_{01}}$; when participation depends on the outcome alone, as in a case-control study, that factor is 1, so the odds ratio is unbiased while the risk ratio is not (try *Case-control sampling*).
+
+## How the simulation works
+
+- **Correlation.** True scores $T_X, T_Y$ are bivariate normal with correlation $\rho$. Observed scores are $X = \sqrt{r_{XX}}\,T_X + \sqrt{1-r_{XX}}\,e_X$ (likewise for Y), so they keep unit variance; the two error terms correlate $\rho_e$. For indirect restriction, a true selector $T_Z$ correlates $\rho_{Z}$ with both $T_X$ and $T_Y$, and is observed with reliability $r_{ZZ}$.
+- **Mean difference.** Group B's true mean is $\delta$ above group A's, with within-group SD 1. Observed Y has reliability $r_{YY}$. Each person's group label is flipped with probability equal to the misclassification rate. The selector Z correlates $\rho_{YZ}$ with true Y and is observed with reliability $r_{ZZ}$.
+- **Selection (r and d).** A selection ratio of $p$ keeps the top $p$ share on the selected variable(s), using the continuous observed scores. With direct restriction on both X and Y, a case must clear both cutoffs.
+- **Coarseness.** $k$ cuts split the scale into $k + 1$ equal-width bins across $\pm 3$ SD, and each score is replaced by its bin's midpoint. Coarsening is applied after selection.
+- **Odds and risk ratios.** Each person is exposed with the chosen prevalence, and the risk of the outcome is set by the risk in the unexposed and the true odds ratio or risk ratio (switching the effect measure converts the true value so the underlying risks stay the same). Exposure and outcome are recorded with the chosen sensitivities and specificities, independently of each other (the extra sensitivity for recall or detection bias is added to the base sensitivity, capped at 1), and each person takes part with a probability that depends on their true exposure and outcome. Estimates add 0.5 to every cell when a cell is empty, and confidence intervals are Wald intervals on the log scale. Expected values and the bias breakdown are computed exactly rather than simulated.
+
+## How the corrections work
+
+The corrections undo the artifacts in reverse order, using the known artifact values (and, for range restriction, the SD ratios observed in the sample), as an analyst would.
+
+**Correlations and mean differences**
+
+1. **Coarseness:** divide by the correlation between a normal variable and its binned version, $c_X c_Y$.
+2. **Range restriction:** Thorndike's Case II for direct selection, $R = rU/\sqrt{1 + r^2(U^2 - 1)}$ with $U = SD_{\text{unrestricted}}/SD_{\text{restricted}}$ (applied to X, then Y, when both are selected, which is approximate); Case III (Pearson–Lawley) for indirect selection on Z.
+3. **Measurement error:** subtract the shared error covariance $\rho_e\sqrt{(1-r_{XX})(1-r_{YY})}$, then divide by $\sqrt{r_{XX}\,r_{YY}}$. The usual correction assumes $\rho_e = 0$; with positively correlated errors it overcorrects.
+4. **For *d*:** convert to a point-biserial *r*, apply steps 1–3, then divide by the correlation between true and observed group membership (misclassification), and convert back to *d* using the true group proportions.
+
+The coarseness correction assumes normal scores, which no longer holds after selection, and sequential Case II is approximate when both X and Y are selected, so the replications view is the honest test of when the corrections work.
+
+**Odds and risk ratios**
+
+1. **Misclassification:** back-calculate the true 2 × 2 table by inverting the classification probabilities (the matrix method). With poor specificity and small cells this can give negative counts; those studies can't be corrected and are dropped from the corrected histogram.
+2. **Selection:** weight each cell by the inverse of its participation probability.
+
+With the true bias parameters the corrected estimates are close to unbiased on average, but they are much more variable. In practice the bias parameters are themselves uncertain, which is why bias analyses usually vary them over plausible ranges.

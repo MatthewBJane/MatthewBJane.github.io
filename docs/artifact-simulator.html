@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Interactive simulation of how measurement error, coarse measurement, range restriction, misclassification, and selection bias correlations, standardized mean differences, odds ratios, and risk ratios.">
+
+<title>Artifact Simulator – Matthew B. Jané</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href=".//images/favicon.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>
+window.MathJax = {
+  output: { font: "mathjax-fira" },
+  tex: {
+    inlineMath:  [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"], ["$$", "$$"]]
+  }
+};
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml-nofont.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="Artifact Simulator – Matthew B. Jané">
+<meta property="og:description" content="Interactive simulation of how measurement error, coarse measurement, range restriction, misclassification, and selection bias correlations, standardized mean differences, odds ratios, and risk ratios.">
+<meta property="og:image" content="https://matthewbjane.com/images/social-card.png">
+<meta property="og:site_name" content="Matthew B. Jané">
+<meta property="og:locale" content="en_US">
+<meta property="og:image:height" content="630">
+<meta property="og:image:width" content="1200">
+<meta name="twitter:title" content="Artifact Simulator – Matthew B. Jané">
+<meta name="twitter:description" content="Interactive simulation of how measurement error, coarse measurement, range restriction, misclassification, and selection bias correlations, standardized mean differences, odds ratios, and risk ratios.">
+<meta name="twitter:image" content="https://matthewbjane.com/images/social-card.png">
+<meta name="twitter:creator" content="@MatthewBJane">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image-height" content="630">
+<meta name="twitter:image-width" content="1200">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./images/logo/logo-navbar.png" alt="Matthew B. Jané" class="navbar-logo">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./CV.html"> 
+<span class="menu-text">CV</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Software.html"> 
+<span class="menu-text">Software</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-simulators" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Simulators</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-simulators">    
+        <li>
+    <a class="dropdown-item" href="./artifact-simulator.html">
+ <span class="dropdown-text">Artifact Simulator</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./trial-simulator.html">
+ <span class="dropdown-text">Clinical Trial Simulator</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./posc-simulator.html">
+ <span class="dropdown-text">POSC Simulator</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://auditclinicalevidence.org"> 
+<span class="menu-text">ACE</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.github.com/MatthewBJane"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.x.com/MatthewBJane"> <i class="bi bi-twitter-x" role="img" aria-label="X">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content column-page" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Artifact Simulator</h1>
+</div>
+
+<div>
+  <div class="description">
+    Interactive simulation of how measurement error, coarse measurement, range restriction, misclassification, and selection bias correlations, standardized mean differences, odds ratios, and risk ratios.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta column-page">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Statistical artifacts like unreliable measures, coarse rating scales, restricted samples, and misclassified exposures and outcomes distort the effect sizes we observe. Pick an effect size, move the sliders to see how each artifact pulls the observed effect away from the true one, switch artifacts on and off to see what each one costs, and run 1,000 replications to separate bias from sampling error. Everything runs in your browser.</p>
+<link rel="stylesheet" href="artifact-simulator/simulator.css">
+<div class="as-tabs sim-tabs" role="tablist" aria-label="Effect size">
+  <button type="button" role="tab" class="as-tab" data-tab="r" aria-selected="true">Correlation (r)</button>
+  <button type="button" role="tab" class="as-tab" data-tab="d" aria-selected="false">Mean difference (d)</button>
+  <button type="button" role="tab" class="as-tab" data-tab="ratio" aria-selected="false">Odds &amp; risk ratios</button>
+</div>
+
+<!-- correlation and mean difference tabs (simulator.js) -->
+<div class="as-app" id="as-app">
+  <div class="as-body">
+    <div class="as-controls">
+      <div class="as-controls-top">
+        <button type="button" class="btn btn-secondary as-seed">Regenerate seed</button>
+      </div>
+      <div class="as-panel" data-panel="r"></div>
+      <div class="as-panel" data-panel="d" hidden=""></div>
+    </div>
+    <div class="as-output">
+      <div class="as-toolbar">
+        <div class="as-seg as-view" role="radiogroup" aria-label="View">
+          <label><input type="radio" name="as-view" value="sample" checked="">Single sample</label>
+          <label><input type="radio" name="as-view" value="repl">1,000 replications</label>
+        </div>
+        <div class="as-actions">
+          <button type="button" class="btn btn-primary as-copy">Copy link</button>
+          <button type="button" class="btn btn-primary as-png">PNG</button>
+          <button type="button" class="btn btn-primary as-svg">SVG</button>
+        </div>
+      </div>
+      <div class="as-stats" aria-live="polite"></div>
+      <div class="as-plot-wrap">
+        <svg class="as-plot" viewbox="0 0 640 480" role="img" aria-label="Simulated data"></svg>
+      </div>
+      <div class="as-legend"></div>
+      <div class="as-budget"></div>
+    </div>
+  </div>
+</div>
+
+<!-- odds & risk ratios tab (ratio.js) -->
+<div class="as-app" id="rs-app" hidden="">
+  <div class="as-body">
+    <div class="as-controls">
+      <div class="as-controls-top">
+        <button type="button" class="btn btn-secondary as-seed">Regenerate seed</button>
+      </div>
+      <div class="as-panel"></div>
+    </div>
+    <div class="as-output">
+      <div class="as-toolbar">
+        <div class="as-seg as-view" role="radiogroup" aria-label="View">
+          <label><input type="radio" name="rs-view" value="sample" checked="">Single sample</label>
+          <label><input type="radio" name="rs-view" value="repl">1,000 replications</label>
+        </div>
+        <div class="as-actions">
+          <button type="button" class="btn btn-primary as-copy">Copy link</button>
+          <button type="button" class="btn btn-primary as-png">PNG</button>
+          <button type="button" class="btn btn-primary as-svg">SVG</button>
+        </div>
+      </div>
+      <div class="as-stats" aria-live="polite"></div>
+      <div class="as-plot-wrap">
+        <svg class="as-plot" viewbox="0 0 640 420" role="img" aria-label="True and observed contingency tables"></svg>
+      </div>
+      <div class="as-legend"></div>
+      <div class="as-budget"></div>
+    </div>
+  </div>
+</div>
+
+<script src="artifact-simulator/simulator.js"></script>
+<script src="artifact-simulator/ratio.js"></script>
+<script>
+// Page-level tabs: show the right app and tell both apps which tab is active.
+(function () {
+  var tabs = document.querySelectorAll(".sim-tabs .as-tab");
+  var rd = document.getElementById("as-app"), ratio = document.getElementById("rs-app");
+  function select(t) {
+    tabs.forEach(function (b) { b.setAttribute("aria-selected", b.dataset.tab === t ? "true" : "false"); });
+    var isRatio = t === "ratio";
+    rd.hidden = isRatio; ratio.hidden = !isRatio;
+    document.dispatchEvent(new CustomEvent("sim:tab", { detail: t }));
+  }
+  tabs.forEach(function (b) { b.addEventListener("click", function () { select(b.dataset.tab); }); });
+  // info buttons: tap to open or close a description; tap elsewhere or press Escape to close
+  function closeTips(except) {
+    document.querySelectorAll('.as-info[aria-expanded="true"]').forEach(function (o) { if (o !== except) o.setAttribute("aria-expanded", "false"); });
+  }
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest(".as-info");
+    closeTips(b);
+    if (b) b.setAttribute("aria-expanded", b.getAttribute("aria-expanded") === "true" ? "false" : "true");
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "Escape") return;
+    closeTips(null);
+    if (document.activeElement && document.activeElement.classList.contains("as-info")) document.activeElement.blur();
+  });
+  var m = (location.hash || "").match(/[#&]t=(r|d|ratio|or|rr)(?=&|$)/);
+  select(m ? (m[1] === "or" || m[1] === "rr" ? "ratio" : m[1]) : "r");
+})();
+</script>
+<section id="reading-the-output" class="level2">
+<h2 class="anchored" data-anchor-id="reading-the-output">Reading the output</h2>
+<ul>
+<li><strong>Observed</strong> is the effect size in the simulated study, after every artifact that is switched on.</li>
+<li><strong>Corrected</strong> applies the standard corrections to that observed value (see below). In a single sample it can land far from the truth; the replications view shows whether it’s right <em>on average</em>.</li>
+<li><strong>Expected</strong> is the observed value you would get in a very large study with the same settings: the bias with sampling error removed.</li>
+<li><strong>1,000 replications</strong> repeats the study 1,000 times and plots the observed and corrected estimates. The gap between the histogram’s center and the true value is bias; the histogram’s width is sampling error. Corrections remove the bias but widen the distribution. For odds and risk ratios, <em>CI coverage</em> is the share of observed 95% confidence intervals that contain the true value; with bias it falls well below 95%, and it gets worse as the sample grows.</li>
+<li><strong>The bias breakdown</strong> adds the active artifacts one at a time and shows how much each one moves the expected effect.</li>
+<li>On the <strong>odds &amp; risk ratios</strong> tab, the <em>Effect measure</em> switch picks which ratio everything on the tab uses. The <strong>True</strong> table shows the population by true exposure and outcome; the <strong>Observed</strong> table shows the people analyzed in the simulated study, as recorded. The cells use the usual 2 × 2 letters: <em>a</em> (exposed with the outcome), <em>b</em> (exposed without it), <em>c</em> (unexposed with the outcome), and <em>d</em> (unexposed without it). The outcome column is cyan and the no-outcome column is magenta. Each cell shows its share of the whole table (for the observed study, with the count in parentheses), and brighter cells hold a larger share. The column on the right gives each row’s risk or odds of the outcome. The odds ratio is <span class="math inline">\(ad/bc\)</span> and the risk ratio is <span class="math inline">\(\frac{a/(a+b)}{c/(c+d)}\)</span>.</li>
+<li><strong>Copy link</strong> saves the current tab, settings, and seed in the page address, so a link reproduces exactly what you see. <strong>PNG</strong> and <strong>SVG</strong> download the current plot.</li>
+</ul>
+</section>
+<section id="what-each-artifact-does" class="level2">
+<h2 class="anchored" data-anchor-id="what-each-artifact-does">What each artifact does</h2>
+<section id="correlations-and-mean-differences" class="level3">
+<h3 class="anchored" data-anchor-id="correlations-and-mean-differences">Correlations and mean differences</h3>
+<p><strong>Measurement error.</strong> An unreliable measure adds noise that doesn’t correlate with anything, so the observed correlation shrinks to <span class="math inline">\(\rho\sqrt{r_{XX}\,r_{YY}}\)</span> and the observed <em>d</em> to <span class="math inline">\(\delta\sqrt{r_{YY}}\)</span>.</p>
+<p><strong>Correlated errors.</strong> When X and Y share a source of error, such as both being self-reports from the same person on the same day, their errors correlate. The shared error adds <span class="math inline">\(\rho_e\sqrt{(1-r_{XX})(1-r_{YY})}\)</span> to the observed correlation, which can offset the attenuation or even push the observed correlation above the true one (try the <em>Common method variance</em> scenario).</p>
+<p><strong>Range restriction.</strong> Keeping only people above a cutoff shrinks the variance of the selected variable, and with it the correlation. <em>Direct</em> restriction selects on X and/or Y themselves; <em>indirect</em> restriction selects on a third variable Z that is related to both.</p>
+<p><strong>Coarseness.</strong> Cutting a continuous variable into a few categories throws away information, most sharply with very few cuts (one cut is a median split).</p>
+<p><strong>Misclassification.</strong> Putting some people in the wrong group mixes the two distributions and pulls the group means together.</p>
+</section>
+<section id="odds-ratios-and-risk-ratios" class="level3">
+<h3 class="anchored" data-anchor-id="odds-ratios-and-risk-ratios">Odds ratios and risk ratios</h3>
+<p><strong>Nondifferential exposure misclassification.</strong> When exposure is recorded with the same error in people with and without the outcome, the exposed and unexposed groups get mixed together, and the estimate is usually pulled toward 1 (no effect).</p>
+<p><strong>Recall bias.</strong> People with the outcome often remember or report past exposure more completely. That raises the exposure’s sensitivity in cases only, which can push the estimate <em>away</em> from 1 and create an association where there is none.</p>
+<p><strong>Outcome misclassification.</strong> With nondifferential outcome errors and perfect specificity, the risk ratio is unbiased no matter how poor the sensitivity: every group loses the same share of its cases. The odds ratio is biased slightly toward 1. Imperfect specificity is far more damaging, especially when the outcome is rare, because false positives swamp the true cases in both groups (compare the two <em>Outcome</em> scenarios).</p>
+<p><strong>Detection bias.</strong> When exposed people are examined more closely (more tests, more follow-up), their outcomes are found more often, inflating the estimate.</p>
+<p><strong>Selection.</strong> If participation depends on both exposure and outcome, the analyzed sample no longer reflects the population. The odds ratio is biased by the factor <span class="math inline">\(\frac{s_{11}\,s_{00}}{s_{10}\,s_{01}}\)</span>; when participation depends on the outcome alone, as in a case-control study, that factor is 1, so the odds ratio is unbiased while the risk ratio is not (try <em>Case-control sampling</em>).</p>
+</section>
+</section>
+<section id="how-the-simulation-works" class="level2">
+<h2 class="anchored" data-anchor-id="how-the-simulation-works">How the simulation works</h2>
+<ul>
+<li><strong>Correlation.</strong> True scores <span class="math inline">\(T_X, T_Y\)</span> are bivariate normal with correlation <span class="math inline">\(\rho\)</span>. Observed scores are <span class="math inline">\(X = \sqrt{r_{XX}}\,T_X + \sqrt{1-r_{XX}}\,e_X\)</span> (likewise for Y), so they keep unit variance; the two error terms correlate <span class="math inline">\(\rho_e\)</span>. For indirect restriction, a true selector <span class="math inline">\(T_Z\)</span> correlates <span class="math inline">\(\rho_{Z}\)</span> with both <span class="math inline">\(T_X\)</span> and <span class="math inline">\(T_Y\)</span>, and is observed with reliability <span class="math inline">\(r_{ZZ}\)</span>.</li>
+<li><strong>Mean difference.</strong> Group B’s true mean is <span class="math inline">\(\delta\)</span> above group A’s, with within-group SD 1. Observed Y has reliability <span class="math inline">\(r_{YY}\)</span>. Each person’s group label is flipped with probability equal to the misclassification rate. The selector Z correlates <span class="math inline">\(\rho_{YZ}\)</span> with true Y and is observed with reliability <span class="math inline">\(r_{ZZ}\)</span>.</li>
+<li><strong>Selection (r and d).</strong> A selection ratio of <span class="math inline">\(p\)</span> keeps the top <span class="math inline">\(p\)</span> share on the selected variable(s), using the continuous observed scores. With direct restriction on both X and Y, a case must clear both cutoffs.</li>
+<li><strong>Coarseness.</strong> <span class="math inline">\(k\)</span> cuts split the scale into <span class="math inline">\(k + 1\)</span> equal-width bins across <span class="math inline">\(\pm 3\)</span> SD, and each score is replaced by its bin’s midpoint. Coarsening is applied after selection.</li>
+<li><strong>Odds and risk ratios.</strong> Each person is exposed with the chosen prevalence, and the risk of the outcome is set by the risk in the unexposed and the true odds ratio or risk ratio (switching the effect measure converts the true value so the underlying risks stay the same). Exposure and outcome are recorded with the chosen sensitivities and specificities, independently of each other (the extra sensitivity for recall or detection bias is added to the base sensitivity, capped at 1), and each person takes part with a probability that depends on their true exposure and outcome. Estimates add 0.5 to every cell when a cell is empty, and confidence intervals are Wald intervals on the log scale. Expected values and the bias breakdown are computed exactly rather than simulated.</li>
+</ul>
+</section>
+<section id="how-the-corrections-work" class="level2">
+<h2 class="anchored" data-anchor-id="how-the-corrections-work">How the corrections work</h2>
+<p>The corrections undo the artifacts in reverse order, using the known artifact values (and, for range restriction, the SD ratios observed in the sample), as an analyst would.</p>
+<p><strong>Correlations and mean differences</strong></p>
+<ol type="1">
+<li><strong>Coarseness:</strong> divide by the correlation between a normal variable and its binned version, <span class="math inline">\(c_X c_Y\)</span>.</li>
+<li><strong>Range restriction:</strong> Thorndike’s Case II for direct selection, <span class="math inline">\(R = rU/\sqrt{1 + r^2(U^2 - 1)}\)</span> with <span class="math inline">\(U = SD_{\text{unrestricted}}/SD_{\text{restricted}}\)</span> (applied to X, then Y, when both are selected, which is approximate); Case III (Pearson–Lawley) for indirect selection on Z.</li>
+<li><strong>Measurement error:</strong> subtract the shared error covariance <span class="math inline">\(\rho_e\sqrt{(1-r_{XX})(1-r_{YY})}\)</span>, then divide by <span class="math inline">\(\sqrt{r_{XX}\,r_{YY}}\)</span>. The usual correction assumes <span class="math inline">\(\rho_e = 0\)</span>; with positively correlated errors it overcorrects.</li>
+<li><strong>For <em>d</em>:</strong> convert to a point-biserial <em>r</em>, apply steps 1–3, then divide by the correlation between true and observed group membership (misclassification), and convert back to <em>d</em> using the true group proportions.</li>
+</ol>
+<p>The coarseness correction assumes normal scores, which no longer holds after selection, and sequential Case II is approximate when both X and Y are selected, so the replications view is the honest test of when the corrections work.</p>
+<p><strong>Odds and risk ratios</strong></p>
+<ol type="1">
+<li><strong>Misclassification:</strong> back-calculate the true 2 × 2 table by inverting the classification probabilities (the matrix method). With poor specificity and small cells this can give negative counts; those studies can’t be corrected and are dropped from the corrected histogram.</li>
+<li><strong>Selection:</strong> weight each cell by the inverse of its participation probability.</li>
+</ol>
+<p>With the true bias parameters the corrected estimates are close to unbiased on average, but they are much more variable. In practice the bias parameters are themselves uncertain, which is why bias analyses usually vary them over plausible ranges.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/matthewbjane\.com");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Matthew B. Jané</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="./blog.html">
+<p>Blog archive</p>
+</a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+<script>
+// Fold-in right panel for narrow screens. Quarto hides
+// #quarto-margin-sidebar below 768px; this adds an edge tab that
+// slides it in as an overlay, on every page that has something in
+// that column (report and page contents, downloads, categories).
+// Styling lives in styles.css under "FOLD-IN RIGHT PANEL".
+(function () {
+  function addPanelToggle() {
+    var sidebar = document.getElementById("quarto-margin-sidebar");
+    if (!sidebar || document.querySelector(".ace-panel-toggle")) return;
+    var hasToc = !!sidebar.querySelector("nav[role='doc-toc'], #TOC");
+    var hasCats = !!sidebar.querySelector(".quarto-listing-category");
+    var hasLinks = !!sidebar.querySelector(".quarto-other-links, .quarto-alternate-formats");
+    if (!hasToc && !hasCats && !hasLinks) return;
+    var what = hasCats && !hasToc ? "categories" : "contents";
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "ace-panel-toggle";
+    b.setAttribute("aria-expanded", "false");
+    function setOpen(open) {
+      document.body.classList.toggle("ace-panel-open", open);
+      b.setAttribute("aria-expanded", open ? "true" : "false");
+      b.setAttribute("aria-label", (open ? "Close " : "Open ") + what + " panel");
+    }
+    setOpen(false);
+    b.addEventListener("click", function () {
+      setOpen(!document.body.classList.contains("ace-panel-open"));
+    });
+    // close after choosing a section, a category, or the PDF, and on Escape
+    sidebar.addEventListener("click", function (e) {
+      if (e.target.closest("a, .category")) setOpen(false);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") setOpen(false);
+    });
+    document.body.appendChild(b);
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", addPanelToggle);
+  } else {
+    addPanelToggle();
+  }
+})();
+</script>
+
+
+
+
+</body></html>

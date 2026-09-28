@@ -1,54 +1,133 @@
 project:
   type: website
   output-dir: docs
-
   resources:
-    - "/webLogo2.png"
-    - "/blog-image.png"
+    - "/images/social-card.png"
+    - "/images/logo/logo-black.png"
+    - "/images/logo/logo-white.png"
+    - "/images/logo/logo-bars-light.svg"
+    - "/images/logo/logo-bars-dark.svg"
+    - "/images/logo/ace-navbar.png"
 
 website:
-  site-url: https://matthewbjane.com
-  description: "Website for Matthew B. Jané. PhD student at the University of Connecticut."
-  page-footer: 
-    left: "Email me at matthew.jane@uconn.edu"
   title: "Matthew B. Jané"
-  favicon: "/webLogoFavicon2.png"
-  
+  site-url: https://matthewbjane.com
+  description: "Matthew B. Jané, PhD candidate in Quantitative Psychology at the University of Connecticut. Statistical methods for meta-analysis, and detecting errors and fraud in published research."
+  favicon: "/images/favicon.png"
   open-graph:
-    image: "/webLogo2.png"
+    image: "/images/social-card.png"
     locale: en_US
-    
-  twitter-card: 
+  twitter-card:
     creator: "@MatthewBJane"
-    image: "/webLogo2.png"
+    image: "/images/social-card.png"
+    card-style: summary_large_image
   navbar:
-    right: 
-      - icon: github
-        href: https://www.github.com/MatthewBJane
-      - icon: twitter
-        href: https://www.twitter.com/MatthewBJane
-      - icon: rss
-        href: blog.xml
-    logo: webLogoFavicon2.png
-    background: primary
+    logo: images/logo/logo-navbar.png
+    logo-alt: "Matthew B. Jané"
+    title: false
     left:
       - href: index.qmd
         text: Home
-      - href: blog.qmd
-        text: Meta-Analysis Magic
       - href: CV.qmd
         text: CV
       - href: Software.qmd
         text: Software
-      - href: Books.qmd
-        text: Books
+      - text: Simulators
+        menu:
+          - href: artifact-simulator.qmd
+            text: Artifact Simulator
+          - href: trial-simulator.qmd
+            text: Clinical Trial Simulator
+          - href: posc-simulator.qmd
+            text: POSC Simulator
+      - href: https://auditclinicalevidence.org
+        text: ACE
+    right:
+      - icon: github
+        href: https://www.github.com/MatthewBJane
+        aria-label: GitHub
+      - icon: twitter-x
+        href: https://www.x.com/MatthewBJane
+        aria-label: X
+  page-footer:
+    left: "© 2026 Matthew B. Jané"
+    right:
+      - text: "Blog archive"
+        href: blog.qmd
 
 format:
   html:
-    theme: 
-      - darkly
-      - barbie.scss
+    theme:
+      light: flatly
+      dark: darkly
     css: styles.css
     toc: true
-editor: visual
+    toc-title: "Sections"
+    mainfont: "Roboto, sans-serif"
+    monofont: "Roboto Mono, monospace"
+    # Math: MathJax 4 with Fira Math (a sans math font that matches Roboto),
+    # as on ACE. ACE uses html-math-method: plain; the archived blog posts are
+    # math-heavy, so here pandoc emits TeX delimiters for MathJax to typeset
+    # everything (plain would turn simple math into HTML italics).
+    html-math-method:
+      method: mathjax
+      url: "https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml-nofont.js"
+    include-in-header:
+      text: |
+        <script>
+        window.MathJax = {
+          output: { font: "mathjax-fira" },
+          tex: {
+            inlineMath:  [["\\(", "\\)"]],
+            displayMath: [["\\[", "\\]"], ["$$", "$$"]]
+          }
+        };
+        </script>
+    include-after-body:
+      - text: |
+          <script>
+          // Fold-in right panel for narrow screens. Quarto hides
+          // #quarto-margin-sidebar below 768px; this adds an edge tab that
+          // slides it in as an overlay, on every page that has something in
+          // that column (report and page contents, downloads, categories).
+          // Styling lives in styles.css under "FOLD-IN RIGHT PANEL".
+          (function () {
+            function addPanelToggle() {
+              var sidebar = document.getElementById("quarto-margin-sidebar");
+              if (!sidebar || document.querySelector(".ace-panel-toggle")) return;
+              var hasToc = !!sidebar.querySelector("nav[role='doc-toc'], #TOC");
+              var hasCats = !!sidebar.querySelector(".quarto-listing-category");
+              var hasLinks = !!sidebar.querySelector(".quarto-other-links, .quarto-alternate-formats");
+              if (!hasToc && !hasCats && !hasLinks) return;
+              var what = hasCats && !hasToc ? "categories" : "contents";
+              var b = document.createElement("button");
+              b.type = "button";
+              b.className = "ace-panel-toggle";
+              b.setAttribute("aria-expanded", "false");
+              function setOpen(open) {
+                document.body.classList.toggle("ace-panel-open", open);
+                b.setAttribute("aria-expanded", open ? "true" : "false");
+                b.setAttribute("aria-label", (open ? "Close " : "Open ") + what + " panel");
+              }
+              setOpen(false);
+              b.addEventListener("click", function () {
+                setOpen(!document.body.classList.contains("ace-panel-open"));
+              });
+              // close after choosing a section, a category, or the PDF, and on Escape
+              sidebar.addEventListener("click", function (e) {
+                if (e.target.closest("a, .category")) setOpen(false);
+              });
+              document.addEventListener("keydown", function (e) {
+                if (e.key === "Escape") setOpen(false);
+              });
+              document.body.appendChild(b);
+            }
+            if (document.readyState === "loading") {
+              document.addEventListener("DOMContentLoaded", addPanelToggle);
+            } else {
+              addPanelToggle();
+            }
+          })();
+          </script>
 
+editor: visual

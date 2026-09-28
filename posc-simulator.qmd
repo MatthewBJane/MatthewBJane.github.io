@@ -1,0 +1,79 @@
+---
+title: "POSC Simulator"
+description: "Interactive probability of outcome superiority curves (POSCs): the chance that someone who scores higher on a predictor also scores higher on an outcome, for any size of difference."
+toc: false
+page-layout: full
+resources:
+  - posc-simulator/posc.js
+  - artifact-simulator/simulator.css
+---
+
+A correlation says how strongly a predictor and an outcome are related, but not what that means for two particular people. A **probability of outcome superiority curve (POSC)** answers that directly: if person A scores higher than person B on the predictor, how likely is A to also score higher on the outcome, and how does that change as the gap between them grows? Set the correlation, drag along the curve, compare two curves, or combine two predictors. This is the browser version of the [posc R package](https://github.com/MatthewBJane/posc); everything runs in your browser.
+
+```{=html}
+<link rel="stylesheet" href="artifact-simulator/simulator.css">
+<div class="as-app sim-page" id="po-app">
+  <div class="as-body">
+    <div class="as-controls">
+      <div class="as-panel"></div>
+    </div>
+    <div class="as-output">
+      <div class="as-toolbar">
+        <div></div>
+        <div class="as-actions">
+          <button type="button" class="btn btn-primary as-copy">Copy link</button>
+          <button type="button" class="btn btn-primary as-png">PNG</button>
+          <button type="button" class="btn btn-primary as-svg">SVG</button>
+        </div>
+      </div>
+      <div class="as-stats" aria-live="polite"></div>
+      <div class="as-plot-wrap">
+        <svg class="as-plot" viewBox="0 0 640 400" role="img" aria-label="Probability of outcome superiority curve"></svg>
+      </div>
+      <div class="as-legend"></div>
+      <p class="po-sentence" aria-live="polite"></p>
+      <div class="po-table"></div>
+    </div>
+  </div>
+</div>
+<script src="posc-simulator/posc.js"></script>
+<script>
+// info buttons: tap to open or close a description; tap elsewhere or press Escape to close
+(function () {
+  function closeTips(except) {
+    document.querySelectorAll('.as-info[aria-expanded="true"]').forEach(function (o) { if (o !== except) o.setAttribute("aria-expanded", "false"); });
+  }
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest(".as-info");
+    closeTips(b);
+    if (b) b.setAttribute("aria-expanded", b.getAttribute("aria-expanded") === "true" ? "false" : "true");
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "Escape") return;
+    closeTips(null);
+    if (document.activeElement && document.activeElement.classList.contains("as-info")) document.activeElement.blur();
+  });
+})();
+</script>
+```
+
+## Reading the output
+
+- **The curve** gives, for each difference between two people on the predictor, the probability that the person with the higher predictor score also has the higher outcome. It starts at 50% (no difference, a coin flip) and rises toward 100% as the gap grows; the stronger the correlation, the faster it rises. With a negative correlation it gives the probability of a *lower* outcome.
+- **The shaded band** is the confidence band, from the confidence interval for the correlation at the chosen sample size.
+- **Drag along the plot** (or use the slider) to read the curve at any difference. The sentence under the plot says what that point means in plain language.
+- **Overall probability of superiority** is the same probability for two people picked at random, whatever their difference: $\tfrac{1}{2} + \arcsin(r)/\pi$.
+- **Difference for a 75% chance** is how far apart two people need to be on the predictor before the higher scorer has a 75% chance of the better outcome.
+- **Compare with a second curve** overlays a second correlation (another predictor, or another study) and tests whether the two correlations differ (Fisher's *z*).
+- **Composite of two** combines two predictors with regression weights and draws the curve for the combination.
+- **Copy link** saves the settings in the page address. **PNG** and **SVG** download the plot.
+
+## How it works
+
+For a predictor $X$ and an outcome $Y$ that are bivariate normal with correlation $r$, the difference between two people's outcomes, given that their predictor scores differ by $\Delta_x$ standard deviations, is normal with mean $r\Delta_x$ and variance $2(1 - r^2)$. So the probability that the person higher on $X$ is also higher on $Y$ is
+
+$$
+P(y_i > y_j \mid x_i - x_j = \Delta_x) = \Phi\!\left(\frac{r\,\Delta_x}{\sqrt{2(1 - r^2)}}\right).
+$$
+
+The confidence band applies the same formula to the lower and upper limits of the Fisher-*z* confidence interval for $r$, $\tanh\!\big(\operatorname{atanh}(r) \pm z_{1-\alpha/2}/\sqrt{n - 3}\big)$. For a composite of two predictors, the weights are the standardized regression coefficients, and the curve uses the composite's correlation with the outcome (the multiple correlation). The comparison test is $z = \big(\operatorname{atanh}(r_1) - \operatorname{atanh}(r_2)\big) / \sqrt{1/(n_1 - 3) + 1/(n_2 - 3)}$.

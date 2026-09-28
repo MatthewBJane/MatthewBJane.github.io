@@ -1,7 +1,7 @@
 ---
 title: "Approximating Standard Deviation from Inter-Quantile Range"
 author: "Matthew B. Jané"
-image: "blog-image.png"
+image: "images/blog-image.png"
 image-height: "5%"
 date: 2023-09-10
 description: "Occasionally researchers report inter-quantile ranges (e.g., inter-quartile range) to measure the spread of the data. Since meta-analysts need standard deviations to calculate effect size estimates, here is a strategy to approximate them from an inter-quantile range."
@@ -12,8 +12,12 @@ categories:
 title-meta: "Approximating Standard Deviation from Inter-Quantile Range"
 author-meta: "Matthew B. Jané"
 date-meta: 2023-09-10
-image-meta: "blog-image.png"
+image-meta: "images/blog-image.png"
 ---
+
+::: {.callout-note appearance="simple"}
+This post is archived and is no longer updated. [See all archived posts](../blog.qmd).
+:::
 
 ```{=html}
 <a href="https://www.buymeacoffee.com/matthewbjane"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=matthewbjane&button_colour=ed5c9b&font_colour=ffffff&font_family=Arial&outline_colour=ffffff&coffee_colour=ffffff" /></a>
@@ -22,55 +26,11 @@ image-meta: "blog-image.png"
 
 Studies may report inter-quantile ranges in order to communicate the spread of the data. However, meta-analysts will need standard deviations (SD) to calculate effect size estimates such as standardized mean differences (i.e., Cohen's $d$). For this post, we will focus on the inter-*quartile* range (IQR) although the method described here will apply to any range between a pair of quantiles. The IQR ($X_{(75-25)}$) is defined as the difference between the 75th and 25th quantile values, that is, the region where 50% of the data lies. We can visualize what this will look like with normally distributed data:
 
-```{r, echo=FALSE}
-# install.packages('ggplot2')
-# install.packages('ggdist')
-# install.packages('remotes')
-
-library(ggplot2)
-library(ggdist)
-
-ggplot(data = NULL, aes(y = 0, 
-                        xdist = distributional::dist_normal(0,1),
-                        fill=after_stat(abs(x)<qnorm(.75)))) +
-  stat_dist_slab(size = 4) +  
-  labs(title = "Inter-Quartile Range", y = "density", x = "standard deviations") + 
-  theme_ggdist()+
-  theme(plot.background = element_rect(fill = '#f1f9fa',
-                                       color = 'transparent'),
-        panel.background = element_rect(fill = 'transparent'),
-        text = element_text(color = '#ED5C9B',size = 17),
-        axis.text.x = element_text(color = '#ED5C9B',size = 14),
-        axis.text.y = element_blank(),
-        axis.title = element_text(color = '#ED5C9B',size = 17),
-        legend.position = 'none') +
-  scale_fill_manual(values = c('#FF9EAA','#ED5C9B'))
-
-
-```
+![](figures/blog-post-2-fig1.png)
 
 Now let's compare the range of values covered by +/- 1 SDs of a normal distribution:
 
-```{r, echo=FALSE}
-
-ggplot(data = NULL, aes(y = 0,
-                        xdist = distributional::dist_normal(0,1),
-                        fill=after_stat(abs(x)<1))) +
-  stat_dist_slab(size = 4) +  
-  labs(title = "+/- 1 Standard Deviation", y = "density", x = "standard deviations") + 
-  theme_ggdist()+
-  theme(plot.background = element_rect(fill = '#f1f9fa',
-                                       color = 'transparent'),
-        panel.background = element_rect(fill = 'transparent'),
-        text = element_text(color = '#ED5C9B',size = 17),
-        axis.text.x = element_text(color = '#ED5C9B',size = 14),
-        axis.text.y = element_blank(),
-        axis.title = element_text(color = '#ED5C9B',size = 17),
-        legend.position = 'none') +
-  scale_fill_manual(values = c('#FF9EAA','#ED5C9B'))
-
-
-```
+![](figures/blog-post-2-fig2.png)
 
 The range covered by $\pm 1$ SD covers a considerably larger range of values than the IQR.
 
@@ -92,7 +52,7 @@ $$
 S_X =  \frac{X_{(75-25)}}{S_{(75-25)}} = \frac{X_{(75-25)}}{1.34898}
 $$
 
-```{r}
+```r
 # Define IQR
 X_25 <- 30
 X_75 <- 50
@@ -108,36 +68,21 @@ S_X <-  X_75_25 / S_75_25
 print(S_X)
 ```
 
+``` {.cell-output}
+[1] 14.82602
+```
+
 ## Note the Assumptions!
 
 Since this method provides an approximation of a normal distribution it is important to point out that the method may be biased under different distributions. For example, if we try the same method on a Student's t distribution with heavy tails (3.5 degrees of freedom), $S_{(75-25)}$ would be equal to 1.50187 which is slightly larger than 1.34898 that we computed from the normal distribution. If we were to assume a normal distribution when it was truly a student's t, the method would over-estimate the standard deviation by \~11%.
 
-```{r, echo=FALSE}
-
-ggplot(data = NULL, aes(y = 0,
-                        xdist = distributional::dist_student_t(3.5,0,1),
-                        fill=after_stat(abs(x)<qstudent_t(.75,3.5,0,1)))) +
-  stat_dist_slab(size = 4) +  
-  labs(title = "Student's t (3.5 df)", y = "density", x = "standard deviations") + 
-  theme_ggdist()+
-  theme(plot.background = element_rect(fill = '#f1f9fa',
-                                       color = 'transparent'),
-        panel.background = element_rect(fill = 'transparent'),
-        text = element_text(color = '#ED5C9B',size = 17),
-        axis.text.x = element_text(color = '#ED5C9B',size = 14),
-        axis.text.y = element_blank(),
-        axis.title = element_text(color = '#ED5C9B',size = 17),
-        legend.position = 'none') +
-  scale_fill_manual(values = c('#FF9EAA','#ED5C9B'))
-
-
-```
+![](figures/blog-post-2-fig3.png)
 
 ### Applying it to simulated data
 
 Lets see how it performs in simulated sample of normally distributed data... Close enough!!
 
-```{r}
+```r
 # Set seed
 set.seed(343)
 
@@ -157,6 +102,10 @@ S_X <-  X_75_25 / S_75_25
 
 # Print results
 print(S_X)
+```
+
+``` {.cell-output}
+[1] 4.706901
 ```
 
 <iframe src="https://embeds.beehiiv.com/f3ffd81a-4723-4419-bb1d-afc8af3bac36" data-test-id="beehiiv-embed" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius: 4px; border: 2px solid #e5e7eb; margin: 0; background-color: transparent;">

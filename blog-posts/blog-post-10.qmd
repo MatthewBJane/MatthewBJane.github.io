@@ -2,7 +2,7 @@
 title: "Individual Person Data (IPD) Meta-Analysis with Beta Regression in a Repeated-Measures Cross-Over Design"
 
 author: "Matthew B. Jané"
-image: "blog-image.png"
+image: "images/blog-image.png"
 image-height: "5%"
 toc: true
 code-fold: false
@@ -14,15 +14,18 @@ categories:
   - Repeated Measures
   - Meta-Analysis
 
-image-meta: "blog-image.png"
+image-meta: "images/blog-image.png"
 bibliography: references.bib
 ---
+
+::: {.callout-note appearance="simple"}
+This post is archived and is no longer updated. [See all archived posts](../blog.qmd).
+:::
 
 ```{=html}
 <a href="https://www.buymeacoffee.com/matthewbjane"><img src="https://img.buymeacoffee.com/button-api/?text=Support my work&emoji=☕&slug=matthewbjane&button_colour=ed5c9b&font_colour=ffffff&font_family=Arial&outline_colour=ffffff&coffee_colour=ffffff" /></a>
 ```
 <br>
-
 
 ## Description of the Meta-analysis
 
@@ -32,7 +35,7 @@ The studies in this meta-analysis are investigating if auditory stimuli during s
 
 We can load in the necessary packages [@tidyverse, @readr, @brms, @tidybayes] and get the data from my [github repository](https://github.com/MatthewBJane/meta-analysis-data-code/blob/main/acoustic_stimulation_and_memory/data/individual_person_data.csv).
 
-```{r,message=F,warning=F}
+```r
 library(tidyverse)
 library(readr)
 library(brms)
@@ -48,8 +51,19 @@ df <- read_csv(url(urlfile))
 head(df)
 ```
 
-We can see that each subject has four values: pre-stim, post-stim, pre-sham, and post-sham. The values denote the number of words recalled correctly and the total words column is the total number of word-pairs the subject was tasked to memorize. In total, there are `r length(unique(df$study))` studies and `r nrow(df)` subjects.
+``` {.cell-output}
+# A tibble: 6 × 6
+  study preSham postSham preStim postStim total_words
+  <chr>   <dbl>    <dbl>   <dbl>    <dbl>       <dbl>
+1 W2016      89      103      69       93         120
+2 W2016      59       89      72       92         120
+3 W2016      80       95      48       77         120
+4 W2016      47       75      57       75         120
+5 W2016      40       67      61       91         120
+6 W2016      78      104      71       99         120
+```
 
+We can see that each subject has four values: pre-stim, post-stim, pre-sham, and post-sham. The values denote the number of words recalled correctly and the total words column is the total number of word-pairs the subject was tasked to memorize. In total, there are 7 studies and 110 subjects.
 
 #### Outcome of interest
 
@@ -68,8 +82,7 @@ We have two other Bernoulli random variables that represents time $T_i$ (pre=0, 
 
 Every participant has an observed proportion for all four experimental states: $p^{(0)}_{\mathrm{pre},i}$, $p^{(0)}_{\mathrm{post},i}$, $p^{(1)}_{\mathrm{pre},i}$, and $p^{(1)}_{\mathrm{post},i}$. What we want to do is make the data set long where condition is a dummy variable, this will set up our data such that we can fit an ANCOVA model in the next section.
 
-```{r}
-
+```r
 dat <- df %>%
   # relabel the column headers
   rename(pre.sham = preSham, pre.stim = preStim, 
@@ -98,7 +111,20 @@ dat <- df %>%
 
 # display cleaned data set
 head(dat,8)
+```
 
+``` {.cell-output}
+# A tibble: 8 × 5
+  study            person condition p_pre p_post
+  <fct>             <int> <fct>     <dbl>  <dbl>
+1 Weigenand (2016)      1 0         0.738  0.854
+2 Weigenand (2016)      1 1         0.572  0.771
+3 Weigenand (2016)      2 0         0.489  0.738
+4 Weigenand (2016)      2 1         0.597  0.763
+5 Weigenand (2016)      3 0         0.663  0.788
+6 Weigenand (2016)      3 1         0.398  0.638
+7 Weigenand (2016)      4 0         0.390  0.622
+8 Weigenand (2016)      4 1         0.473  0.622
 ```
 
 Now we have columns for the proportions at pre-test and post-test for each condition. Notice that each person has two rows pertaining to the stim and sham condition.
@@ -113,10 +139,10 @@ $$
 
 Since this effect size is essentially an average of risk differences, conditioning on a pre-sleep value of .50 is useful as is put succinctly by [Karlson and Quillian (2023)](https://journals.sagepub.com/doi/10.1177/23780231231192394#:~:text=Risk%20differences%20are%20useful%20when,often%20be%20a%20good%20choice.) **"Risk differences are useful when base rates are in a middle range"**. We will see that the IPD model will use the pre-sleep score as a covariate so conditioning on pre-sleep scores is straightforward. The grand average pre-sleep score is \~.47, which makes conditioning on .50 a bit easier to justify. We can visualize the pre-sleep scores for each study below, we can see that they are fairly evenly distributed around .50.
 
-```{r}
-#| code-fold: true
-#| fig-cap: "Distributions of pre-sleep scores by study. The dashed line denotes the 50:50 correct/incorrect value ($p_\\mathrm{pre} = .5$)"
+<details class="code-fold">
+<summary>Code</summary>
 
+```r
 ggplot(dat, aes(x = p_pre, y = study)) +
   stat_slab(point_interval = "mean_qi",fill = "hotpink",slab_color = "transparent", slab_alpha = .15) +
   stat_dotsinterval(point_interval = "mean_qi",fill = "hotpink2",slab_color = "transparent", color = "hotpink4") +
@@ -126,8 +152,11 @@ ggplot(dat, aes(x = p_pre, y = study)) +
   geom_vline(xintercept = c(.5), linetype = "dashed", alpha = .1, color = "black") +
   labs(x = "Pre-sleep scores (proportion correct)",
        y = "Studies") 
-
 ```
+
+</details>
+
+![Distributions of pre-sleep scores by study. The dashed line denotes the 50:50 correct/incorrect value ($p_\mathrm{pre} = .5$)](figures/blog-post-10-fig1.png)
 
 We can interpret the effect size as: on average, a typical person sees a $[\delta\times 100]$ percentage point increase in accurately recalling a word-pair in the stim condition relative to the sham condition. An effect size value of $\delta < 0$ would indicate reduced recall in the stim group (i.e., stim was actually detrimental relative to sham), a value between $\delta >0$ would indicate increased recall in the stim group (i.e., stim was beneficial relative to sham), and a value of $\delta=1$ would be a null effect. Important to note that $\delta$ is not standardized in this meta-analysis because scores are comparable across studies.
 
@@ -145,16 +174,13 @@ $$
 \mu_i = \frac{\exp(\beta_{0,sp} +  \beta_{1,s}\,p_{\mathrm{pre},i} + \beta_{2,s}\, C_i)}{1 + \exp(\beta_{0,sp} +  \beta_{1,s}\,p_{\mathrm{pre},i} + \beta_{2,s}\, C_i)}
 $$
 
-
 To obtain person and study-level variability, we want to incorporate a random effect for study samples on each of the regression coefficients (there are 7 studies, denoted with subscript $s = 1...7$). We also allow the intercept to vary between individuals such that each person $p$ has a random intercept (this is reasonable since there are individual differences in recall ability). Note that having condition vary by person (each person has 2 data points pertaining to treatment-control) would produce a model that is not identifiable. We will just use the default `brms` priors for all parameters.
 
-```{r,results = 'hide', warning=F}
-
+```r
 mdl <- bf(p_post ~ 0 + Intercept + p_pre + condition + (1|person) + (1+p_pre+condition|study), 
           family = Beta("logit"))
 
 prior <- default_prior(mdl, data = dat)
-
 
 fit <- brm(mdl,
            data = dat,
@@ -165,19 +191,15 @@ fit <- brm(mdl,
            prior = prior,
            file = "ipd_meta",
            file_refit = "on_change")
-
 ```
 
 I recommend reading A. Solomon Kurz's awesome [blog post on Beta regression for causal inference](https://solomonkurz.netlify.app/blog/2023-06-25-causal-inference-with-beta-regression/#beta-likelihood), which inspired some of this model (if I made any mistakes that does not reflect on Solomon's blog, that is just me being dense).  
-
 
 #### Study-level estimates of $\delta$
 
 Let's observe the posterior distribution of effects from each study in the meta-analysis. Visualizations created with the help of the awesome `tidybayes` and `ggdist` packages [@tidybayes, @ggdist].
 
-```{r, fig.height=5}
-#| fig-cap: "Study-level posterior estimates of the expected value of $\\delta$"
-
+```r
 nd <- data_grid(condition = 0:1,
                 p_pre = .5,
                 person = NA,
@@ -199,20 +221,17 @@ add_epred_draws(fit, newdata = nd, allow_new_levels = TRUE, re_formula = ~ (1+p_
   labs(x = expression(Effect ~ delta),
        y = "") +
   ggtitle("Study-level effects", subtitle = "with 50% and 95% intervals")
-
-
 ```
 
-In our original paper we found a strong moderating effect of publication year on the effect size. Although we were only able to get a subset of the raw data sets, you can still see the shadow of that trend appears here.
+![Study-level posterior estimates of the expected value of $\delta$](figures/blog-post-10-fig2.png)
 
+In our original paper we found a strong moderating effect of publication year on the effect size. Although we were only able to get a subset of the raw data sets, you can still see the shadow of that trend appears here.
 
 #### Mean Effect
 
 Now we want to estimate the average effect across studies, the key here is to set the `re_formula` argument in the add_epred_draws to `NA`. The figure below denotes the distribution of plausible values for the average true effect.
 
-```{r,fig.height=3}
-
-
+```r
 nd <- data_grid(condition = 0:1,
                 p_pre = .5,
                 person = NA,
@@ -225,7 +244,6 @@ posterior_mean <- add_epred_draws(fit, newdata = nd, re_formula = NA) %>%
               id_cols = .draw) %>%
   mutate(delta = `1` - `0`)
 
-
 ggplot(data = posterior_mean, aes(x = delta, y = 0)) +
   stat_slabinterval(point_interval = "mean_qi",fill = "hotpink4", slab_alpha = .80, .width = c(.50,.95)) +
   theme_ggdist(base_size = 14) +
@@ -237,19 +255,15 @@ ggplot(data = posterior_mean, aes(x = delta, y = 0)) +
   ggtitle("Mean effect", subtitle = "with 50% and 95% intervals") +
   scale_x_continuous(breaks = round(seq(-.15,.15,by=.05),2)) +
   scale_y_continuous(breaks = NULL)
-
-
 ```
 
-As we can see there is little/no *average* effect of the stim condition `r round(summarize(posterior_mean, mean_delta=mean(delta)),3)` [`r round(summarize(posterior_mean, delta_2.5=quantile(delta,.025)),3)`, `r round(summarize(posterior_mean, delta_2.5=quantile(delta,.975)),3)`]. The estimate suggests there is about a 1% in recall probability difference from stim to sham. 
+![](figures/blog-post-10-fig3.png)
+
+As we can see there is little/no *average* effect of the stim condition 0.012 [-0.047, 0.069]. The estimate suggests there is about a 1% in recall probability difference from stim to sham. 
 
 Let's now obtain the credibility intervals which tells us what in what range of $\delta$ do *X%* of study effects fall. The figure below will show 50, 80, and 95% credibility intervals. To do this in `brms` I am like 99% sure we just need to incorporate all the study-level random effects in the `re_formula` argument again. Therefore we would want to specify it as `re_formula = ~(1+p_pre+condition|study)`.
 
-
-
-```{r,fig.height=3}
-
-
+```r
 nd <- data_grid(condition = 0:1,
                 p_pre = .5,
                 person = NA,
@@ -272,17 +286,15 @@ add_predicted_draws(fit, newdata = nd, allow_new_levels = TRUE, re_formula = ~(1
        y = "") +
   ggtitle("Credibility intervals", subtitle = "Intervals where 50,80,95% of study effects fall") +
   scale_y_continuous(breaks = NULL)
-
-
 ```
 
+![](figures/blog-post-10-fig4.png)
 
 #### Diagnostics
 
 Let's observe the posterior predictive check to see if our model performed as we expected.
 
-```{r,fig.height=4, message=F, warning=F}
-
+```r
 pp_check(fit, ndraws = 200) + 
   xlim(0,1) +
   theme_ggdist(base_size = 14) +
@@ -294,23 +306,72 @@ pp_check(fit, ndraws = 200) +
         title = element_markdown(),
         axis.text = element_text(family = "arial"), 
         aspect.ratio = .7)
-
 ```
 
-
+![](figures/blog-post-10-fig5.png)
 
 The predictive check looks quite good! 
 
-
 Anyways... thats the post. Let me know if you have any suggestions or critiques.
-
-
-
 
 ## Session Info
 
-```{r}
+```r
 sessionInfo()
+```
+
+``` {.cell-output}
+R version 4.4.2 (2024-10-31)
+Platform: aarch64-apple-darwin20
+Running under: macOS Sequoia 15.4.1
+
+Matrix products: default
+BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
+LAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+time zone: America/New_York
+tzcode source: internal
+
+attached base packages:
+[1] stats     graphics  grDevices datasets  utils     methods   base     
+
+other attached packages:
+ [1] ggtext_0.1.2    ggdist_3.3.2    modelr_0.1.11   tidybayes_3.0.7
+ [5] brms_2.22.0     Rcpp_1.0.12     lubridate_1.9.3 forcats_1.0.0  
+ [9] stringr_1.5.1   dplyr_1.1.4     purrr_1.0.2     readr_2.1.5    
+[13] tidyr_1.3.1     tibble_3.2.1    ggplot2_3.5.1   tidyverse_2.0.0
+
+loaded via a namespace (and not attached):
+ [1] svUnit_1.0.6         tidyselect_1.2.1     viridisLite_0.4.2   
+ [4] farver_2.1.2         loo_2.8.0            fastmap_1.2.0       
+ [7] tensorA_0.36.2.1     digest_0.6.36        timechange_0.3.0    
+[10] lifecycle_1.0.4      StanHeaders_2.32.10  magrittr_2.0.3      
+[13] posterior_1.6.0      compiler_4.4.2       rlang_1.1.4         
+[16] tools_4.4.2          utf8_1.2.4           yaml_2.3.8          
+[19] knitr_1.47           labeling_0.4.3       bridgesampling_1.1-2
+[22] htmlwidgets_1.6.4    bit_4.0.5            pkgbuild_1.4.4      
+[25] plyr_1.8.9           xml2_1.3.6           abind_1.4-8         
+[28] withr_3.0.0          grid_4.4.2           stats4_4.4.2        
+[31] fansi_1.0.6          colorspace_2.1-0     inline_0.3.19       
+[34] scales_1.3.0         cli_3.6.3            mvtnorm_1.3-1       
+[37] rmarkdown_2.27       crayon_1.5.3         generics_0.1.3      
+[40] RcppParallel_5.1.9   rstudioapi_0.16.0    reshape2_1.4.4      
+[43] tzdb_0.4.0           commonmark_1.9.2     rstan_2.32.6        
+[46] bayesplot_1.11.1     parallel_4.4.2       matrixStats_1.4.1   
+[49] vctrs_0.6.5          Matrix_1.7-1         jsonlite_1.8.8      
+[52] hms_1.1.3            arrayhelpers_1.1-0   bit64_4.0.5         
+[55] glue_1.7.0           codetools_0.2-20     distributional_0.4.0
+[58] stringi_1.8.4        gtable_0.3.5         QuickJSR_1.3.1      
+[61] quadprog_1.5-8       munsell_0.5.1        pillar_1.9.0        
+[64] htmltools_0.5.8.1    Brobdingnag_1.2-9    R6_2.5.1            
+[67] vroom_1.6.5          evaluate_0.24.0      lattice_0.22-6      
+[70] markdown_1.13        backports_1.5.0      gridtext_0.1.5      
+[73] broom_1.0.6          renv_0.17.3          rstantools_2.4.0    
+[76] gridExtra_2.3        coda_0.19-4.1        nlme_3.1-166        
+[79] checkmate_2.3.1      xfun_0.45            pkgconfig_2.0.3     
 ```
 
 ## Citing R packages

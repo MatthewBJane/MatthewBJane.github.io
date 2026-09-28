@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="PhD candidate in Quantitative Psychology at the University of Connecticut. Statistical methods for meta-analysis, and detecting errors and fraud in published research.">
 
 <title>Matthew B. Jané</title>
 <style>
@@ -30,17 +31,17 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href=".//webLogoFavicon2.png" rel="icon" type="image/png">
+<link href=".//images/favicon.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,26 +69,35 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+window.MathJax = {
+  output: { font: "mathjax-fira" },
+  tex: {
+    inlineMath:  [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"], ["$$", "$$"]]
+  }
+};
+</script>
 
 
 <link rel="stylesheet" href="styles.css">
 <meta property="og:title" content="Matthew B. Jané">
-<meta property="og:description" content="Website for Matthew B. Jané. PhD student at the University of Connecticut.">
-<meta property="og:image" content="https://matthewbjane.com/website_banner.png">
+<meta property="og:description" content="PhD candidate in Quantitative Psychology at the University of Connecticut. Statistical methods for meta-analysis, and detecting errors and fraud in published research.">
+<meta property="og:image" content="https://matthewbjane.com/images/social-card.png">
 <meta property="og:site_name" content="Matthew B. Jané">
 <meta property="og:locale" content="en_US">
-<meta property="og:image:height" content="7035">
-<meta property="og:image:width" content="8251">
+<meta property="og:image:height" content="630">
+<meta property="og:image:width" content="1200">
 <meta name="twitter:title" content="Matthew B. Jané">
-<meta name="twitter:description" content="Website for Matthew B. Jané. PhD student at the University of Connecticut.">
-<meta name="twitter:image" content="https://matthewbjane.com/website_banner.png">
+<meta name="twitter:description" content="PhD candidate in Quantitative Psychology at the University of Connecticut. Statistical methods for meta-analysis, and detecting errors and fraud in published research.">
+<meta name="twitter:image" content="https://matthewbjane.com/images/social-card.png">
 <meta name="twitter:creator" content="@MatthewBJane">
-<meta name="twitter:image-height" content="7035">
-<meta name="twitter:image-width" content="8251">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image-height" content="630">
+<meta name="twitter:image-width" content="1200">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed homepage fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -95,10 +105,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./webLogoFavicon2.png" alt="" class="navbar-logo">
-    </a>
-    <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Matthew B. Jané</span>
+    <img src="./images/logo/logo-navbar.png" alt="Matthew B. Jané" class="navbar-logo">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -112,10 +119,6 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./blog.html"> 
-<span class="menu-text">Meta-Analysis Magic</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="./CV.html"> 
 <span class="menu-text">CV</span></a>
   </li>  
@@ -123,34 +126,45 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="./Software.html"> 
 <span class="menu-text">Software</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./Books.html"> 
-<span class="menu-text">Books</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-simulators" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Simulators</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-simulators">    
+        <li>
+    <a class="dropdown-item" href="./artifact-simulator.html">
+ <span class="dropdown-text">Artifact Simulator</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./trial-simulator.html">
+ <span class="dropdown-text">Clinical Trial Simulator</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./posc-simulator.html">
+ <span class="dropdown-text">POSC Simulator</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
-    <a class="nav-link" href="./Consulting.html"> 
-<span class="menu-text">Consulting</span></a>
+    <a class="nav-link" href="https://auditclinicalevidence.org"> 
+<span class="menu-text">ACE</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.github.com/MatthewBJane"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://www.github.com/MatthewBJane"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.twitter.com/MatthewBJane"> <i class="bi bi-twitter" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="./blog.xml"> <i class="bi bi-rss" role="img">
+    <a class="nav-link" href="https://www.x.com/MatthewBJane"> <i class="bi bi-twitter-x" role="img" aria-label="X">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -161,21 +175,49 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<div class="quarto-about-jolla">
-  <img src="website_banner.png" class="about-image
-  rectangle " style="width: 23.5em;">
- <main class="content" id="quarto-document-content">
-<div class="btn-group" role="group" aria-label="Social Links">
-<p><a href="mailto:matthew.jane@uconn.edu" class="btn btn-secondary" role="button" data-toggle="data" title="email"><i class="fa-solid fa-envelope" aria-label="envelope"></i><br>Email</a> <a href="https://www.twitter.com/MatthewBJane" class="btn btn-secondary" role="button" data-toggle="data" title="twitter"><i class="fa-brands fa-twitter" aria-label="twitter"></i><br>Twitter</a> <a href="https://www.github.com/MatthewBJane" class="btn btn-secondary" role="button" data-toggle="data" title="github"><i class="fa-brands fa-github" aria-label="github"></i><br>Github</a> <a href="https://scholar.google.com/citations?user=a4C6CX0AAAAJ&amp;hl=en" class="btn btn-secondary" role="button" data-toggle="data" title="scholar"><i class="fa-solid fa-graduation-cap" aria-label="graduation-cap"></i><br>Scholar</a></p>
+<div class="quarto-about-trestles">
+  <div class="about-entity">
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Matthew B. Jané</h1>
 </div>
-<p><br></p>
-<p>Hello there! I’m <strong>Matthew B. Jané</strong> - I’m a PhD student in Quantitative Psychology at the University of Connecticut. My research involves developing statistical methods and software to aide in meta-analysis and evidence synthesis. Specifically, my current research projects focus on correcting bias in effect size estimates caused by statistical artifacts. My advisor is Dr.&nbsp;Blair T. Johnson and I am a member of the Systematic Health Action Research Program (SHARP). I am also on the editorial board for <em>Psychological Bulletin</em> as a methodological reviewer.</p>
-<a href="https://www.buymeacoffee.com/matthewbjane"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&amp;emoji=☕&amp;slug=matthewbjane&amp;button_colour=ed5c9b&amp;font_colour=ffffff&amp;font_family=Arial&amp;outline_colour=ffffff&amp;coffee_colour=ffffff"></a>
-<!-- **View my new open-source text-book:** [ Artifact Corrections for Effect Sizes](https://matthewbjane.quarto.pub/artifact-corrections-for-effect-sizes/){.btn .btn-primary .btn role="button" data-toggle="data" title="email"} -->
-<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="matthewbjane" data-description="Support me on Buy me a coffee!" data-message="" data-color="#ED5C9B" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+<div>
+  <div class="description">
+    PhD candidate in Quantitative Psychology at the University of Connecticut. Statistical methods for meta-analysis, and detecting errors and fraud in published research.
+  </div>
+</div>
+<div class="quarto-title-meta">
+  </div>
+</header>
+    <div class="about-links">
+  <a href="https://www.github.com/MatthewBJane" class="about-link" rel="" target="">
+    <i class="bi bi-github"></i>
+     <span class="about-link-text">GitHub</span>
+  </a>
+  <a href="https://scholar.google.com/citations?user=LemZrcQAAAAJ&amp;hl=en" class="about-link" rel="" target="">
+    <i class="bi bi-mortarboard"></i>
+     <span class="about-link-text">Scholar</span>
+  </a>
+  <a href="mailto:matthew.jane@uconn.edu" class="about-link" rel="" target="">
+    <i class="bi bi-envelope"></i>
+     <span class="about-link-text">Email</span>
+  </a>
+  <a href="https://www.x.com/MatthewBJane" class="about-link" rel="" target="">
+    <i class="bi bi-twitter-x"></i>
+     <span class="about-link-text">X</span>
+  </a>
+  <a href="/CV.pdf" class="about-link" rel="" target="">
+     <span class="about-link-text">Curriculum Vitae</span>
+  </a>
+</div>
+  </div>
+  <div class="about-contents"><main class="content" id="quarto-document-content">
+<div class="ace-lead">
+<p>I’m <span class="ace-wordmark">Matthew B. Jané</span>, a PhD candidate in Quantitative Psychology at the University of Connecticut, advised by Dr.&nbsp;Blair T. Johnson. My research focuses on statistical methods for meta-analysis and on detecting fraud and identifying errors in published research.</p>
+</div>
 
 
-</main>  
+</main></div>
 </div>
  <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -198,6 +240,150 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     
@@ -595,16 +781,66 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Email me at matthew.jane@uconn.edu</p>
+<p>© 2026 Matthew B. Jané</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
     <div class="nav-footer-right">
-      &nbsp;
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="./blog.html">
+<p>Blog archive</p>
+</a>
+  </li>  
+</ul>
     </div>
   </div>
 </footer>
+<script>
+// Fold-in right panel for narrow screens. Quarto hides
+// #quarto-margin-sidebar below 768px; this adds an edge tab that
+// slides it in as an overlay, on every page that has something in
+// that column (report and page contents, downloads, categories).
+// Styling lives in styles.css under "FOLD-IN RIGHT PANEL".
+(function () {
+  function addPanelToggle() {
+    var sidebar = document.getElementById("quarto-margin-sidebar");
+    if (!sidebar || document.querySelector(".ace-panel-toggle")) return;
+    var hasToc = !!sidebar.querySelector("nav[role='doc-toc'], #TOC");
+    var hasCats = !!sidebar.querySelector(".quarto-listing-category");
+    var hasLinks = !!sidebar.querySelector(".quarto-other-links, .quarto-alternate-formats");
+    if (!hasToc && !hasCats && !hasLinks) return;
+    var what = hasCats && !hasToc ? "categories" : "contents";
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "ace-panel-toggle";
+    b.setAttribute("aria-expanded", "false");
+    function setOpen(open) {
+      document.body.classList.toggle("ace-panel-open", open);
+      b.setAttribute("aria-expanded", open ? "true" : "false");
+      b.setAttribute("aria-label", (open ? "Close " : "Open ") + what + " panel");
+    }
+    setOpen(false);
+    b.addEventListener("click", function () {
+      setOpen(!document.body.classList.contains("ace-panel-open"));
+    });
+    // close after choosing a section, a category, or the PDF, and on Escape
+    sidebar.addEventListener("click", function (e) {
+      if (e.target.closest("a, .category")) setOpen(false);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") setOpen(false);
+    });
+    document.body.appendChild(b);
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", addPanelToggle);
+  } else {
+    addPanelToggle();
+  }
+})();
+</script>
 
 
 

@@ -1,0 +1,91 @@
+# ---------------------------------------------------------------
+# PUBLICATIONS: newest first. Each entry lands in a section by `type`:
+#   article   peer-reviewed journal article or book chapter
+#   preprint  preprint, or a published evaluation of another paper
+#   book      open textbook
+#             (article, preprint, and book are listed together as
+#             Academic Publications, newest first)
+#   public    public-facing writing (op-eds, The Conversation, ...)
+# Fields:
+#   authors:  surnames in order, comma separated, e.g. "Harlow*, Jané*, Read, Chrobak"
+#             "Jané" is bolded automatically. Add * after a surname for equal
+#             contribution (explained once at the top of Publications).
+#             Use "..." to skip authors in long lists.
+#   year:     e.g. 2025
+#   title:    title in sentence case
+#   venue:    journal / book / outlet (set in italics automatically)
+#   note:     optional plain text after the venue (e.g. "Living open-source textbook")
+#   status:   optional, e.g. "Under review at *Meta-Psychology*"
+#   doi:      bare DOI, e.g. "10.3389/frsle.2023.1082253" (optional)
+#   url:      link to use when there is no DOI (optional)
+#   links:    optional extra buttons, e.g. {label: PDF, url: ...}
+# ---------------------------------------------------------------
+entries:
+  # ---- articles and chapters (article) / preprints and evaluations (preprint) ----
+  - type: article
+    authors: "Johnson, Simon, Li, Rokos, Martinez-Berman, Jané, Tsai, Loucks"
+    year: 2026
+    title: "Mindfulness-based stress reduction interventions and cortisol regulation: A systematic review and meta-analysis"
+    venue: "Health Psychology"
+    note: "Advance online publication"
+    doi: "10.1037/hea0001636"
+
+  - type: preprint
+    authors: "Jané*, Heathers*, Grimes*"
+    year: 2025
+    title: "Major flaws in Taylor et al.'s (2025) meta-analysis on fluoride exposure and children's IQ scores"
+    venue: "OSF Preprints"
+    status: "Under review at *Meta-Psychology*"
+    doi: "10.31219/osf.io/zhm54_v3"
+
+  - type: preprint
+    authors: "Jané, Reinstein, Capitan"
+    year: 2025
+    title: "Evaluation summary and metrics: \"Meaningfully reducing consumption of meat and animal products is an unsolved problem: A meta-analysis\""
+    venue: "The Unjournal"
+    doi: "10.21428/d28e8e57.808d24c9"
+
+  - type: article
+    authors: "Johnson, Jané, Curley, Li, Martinez-Berman"
+    year: 2025
+    title: "Methodological quality in health psychology research"
+    venue: "The Sage Handbook of Health Psychology"
+    note: "Book chapter"
+    doi: "10.4135/9781529674743.n4"
+
+  - type: preprint
+    authors: "Jané, Harlow, Khu, Shah, Gould, Veiner, Kuo, Hsu, Johnson"
+    year: 2024
+    title: "Extracting pre-post correlations for meta-analyses of repeated measures designs"
+    note: "Preprint"
+    doi: "10.17605/OSF.IO/HZJ4D"
+
+  # ---- open textbooks (living, updated online) ----
+  - type: book
+    authors: "Jané, Xiao, Yeung, Ben-Shachar, Caldwell, ..., Feldman"
+    year: 2024
+    title: "Guide to effect sizes and confidence intervals"
+    note: "Living open guide"
+    doi: "10.17605/OSF.IO/D8C4G"
+
+  - type: article
+    authors: "Harlow*, Jané*, Read, Chrobak"
+    year: 2023
+    title: "Memory retention following acoustic stimulation in slow-wave sleep: A meta-analytic review of replicability and measurement quality"
+    venue: "Frontiers in Sleep"
+    doi: "10.3389/frsle.2023.1082253"
+
+  - type: preprint
+    authors: "Jané, Pisupati, Smith, Castro-Tonelli, Melo-Thomas, Schwarting, ..., Read"
+    year: 2022
+    title: "Correlations across timing cues in natural vocalizations predict biases in judging synthetic sound burst durations"
+    venue: "bioRxiv"
+    doi: "10.1101/2022.05.29.493898"
+
+  # ---- public writing ----
+  - type: public
+    authors: "Meyerowitz-Katz, Jané"
+    year: 2024
+    title: "Governments are pushing teen social media bans – but behind the scenes is a messy fight over science"
+    venue: "The Conversation"
+    doi: "10.64628/aa.waggh46ca"

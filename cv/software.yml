@@ -1,0 +1,35 @@
+# ---------------------------------------------------------------
+# SOFTWARE AND TOOLS
+#   name, kind (R package / Database / Web app / ...), description,
+#   url: shown as a plain link on its own line
+#   items: optional list of {name, description, url}, shown as bullets
+# ---------------------------------------------------------------
+entries:
+  - name: "ThemePark"
+    kind: "R package"
+    description: "Popular-culture styled ggplot themes."
+    url: "https://github.com/MatthewBJane/theme_park"
+
+  - name: "POSC"
+    kind: "R package"
+    description: "Probability of Outcome Superiority Curves (POSCs)."
+    url: "https://github.com/MatthewBJane/posc"
+
+  - name: "OpenSynthesis"
+    kind: "Database"
+    description: "A catalog of publicly available meta-analytic databases."
+    url: "https://matthewbjane.com/opensynthesis/"
+
+  - name: "Interactive Simulators"
+    kind: "Web apps"
+    description: "Browser-based simulators for teaching and research on effect sizes and bias."
+    items:
+      - name: "Artifact Simulator"
+        description: "How measurement error, range restriction, dichotomization, misclassification, and selection bias distort correlations, standardized mean differences, odds ratios, and risk ratios."
+        url: "https://matthewbjane.com/artifact-simulator.html"
+      - name: "Clinical Trial Simulator"
+        description: "How non-adherence, attrition, measurement error, unblinded assessment, and failed allocation concealment bias randomized trial estimates."
+        url: "https://matthewbjane.com/trial-simulator.html"
+      - name: "POSC Simulator"
+        description: "Interactive probability of outcome superiority curves."
+        url: "https://matthewbjane.com/posc-simulator.html"

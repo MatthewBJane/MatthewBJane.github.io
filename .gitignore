@@ -4,3 +4,7 @@
 .Ruserdata
 
 /.quarto/
+.DS_Store
+
+# private local CV (address, phone, federal employment): never commit
+_private/

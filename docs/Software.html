@@ -30,18 +30,20 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href=".//webLogoFavicon2.png" rel="icon" type="image/png">
+<link href=".//images/favicon.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,25 +71,35 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Asap" type="text/css">
+<script>
+window.MathJax = {
+  output: { font: "mathjax-fira" },
+  tex: {
+    inlineMath:  [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"], ["$$", "$$"]]
+  }
+};
+</script>
 
 
 <link rel="stylesheet" href="styles.css">
 <meta property="og:title" content="Software – Matthew B. Jané">
-<meta property="og:image" content="https://matthewbjane.com/webLogo2.png">
+<meta property="og:description" content="Matthew B. Jané, PhD candidate in Quantitative Psychology at the University of Connecticut. Statistical methods for meta-analysis, and detecting errors and fraud in published research.">
+<meta property="og:image" content="https://matthewbjane.com/images/social-card.png">
 <meta property="og:site_name" content="Matthew B. Jané">
 <meta property="og:locale" content="en_US">
-<meta property="og:image:height" content="4780">
-<meta property="og:image:width" content="5906">
+<meta property="og:image:height" content="630">
+<meta property="og:image:width" content="1200">
 <meta name="twitter:title" content="Software – Matthew B. Jané">
-<meta name="twitter:image" content="https://matthewbjane.com/webLogo2.png">
+<meta name="twitter:description" content="Matthew B. Jané, PhD candidate in Quantitative Psychology at the University of Connecticut. Statistical methods for meta-analysis, and detecting errors and fraud in published research.">
+<meta name="twitter:image" content="https://matthewbjane.com/images/social-card.png">
 <meta name="twitter:creator" content="@MatthewBJane">
-<meta name="twitter:image-height" content="4780">
-<meta name="twitter:image-width" content="5906">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image-height" content="630">
+<meta name="twitter:image-width" content="1200">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -95,10 +107,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./webLogoFavicon2.png" alt="" class="navbar-logo">
-    </a>
-    <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Matthew B. Jané</span>
+    <img src="./images/logo/logo-navbar.png" alt="Matthew B. Jané" class="navbar-logo">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -112,10 +121,6 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./blog.html"> 
-<span class="menu-text">Meta-Analysis Magic</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="./CV.html"> 
 <span class="menu-text">CV</span></a>
   </li>  
@@ -123,34 +128,45 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link active" href="./Software.html" aria-current="page"> 
 <span class="menu-text">Software</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./Books.html"> 
-<span class="menu-text">Books</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-simulators" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Simulators</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-simulators">    
+        <li>
+    <a class="dropdown-item" href="./artifact-simulator.html">
+ <span class="dropdown-text">Artifact Simulator</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./trial-simulator.html">
+ <span class="dropdown-text">Clinical Trial Simulator</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./posc-simulator.html">
+ <span class="dropdown-text">POSC Simulator</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
-    <a class="nav-link" href="./Consulting.html"> 
-<span class="menu-text">Consulting</span></a>
+    <a class="nav-link" href="https://auditclinicalevidence.org"> 
+<span class="menu-text">ACE</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.github.com/MatthewBJane"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://www.github.com/MatthewBJane"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.twitter.com/MatthewBJane"> <i class="bi bi-twitter" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="./blog.xml"> <i class="bi bi-rss" role="img">
+    <a class="nav-link" href="https://www.x.com/MatthewBJane"> <i class="bi bi-twitter-x" role="img" aria-label="X">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -159,9 +175,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -184,74 +198,69 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<a href="https://www.buymeacoffee.com/matthewbjane"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&amp;emoji=☕&amp;slug=matthewbjane&amp;button_colour=ed5c9b&amp;font_colour=ffffff&amp;font_family=Arial&amp;outline_colour=ffffff&amp;coffee_colour=ffffff"></a>
-<hr>
-<div>
-
+<div class="mbj-cards">
+<div class="mbj-card">
+<div class="mbj-card-logo">
+<p><img src="images/software/themeparklogo.png" class="img-fluid" alt="ThemePark logo"></p>
 </div>
-<div class="quarto-layout-panel" data-layout="[ 25, 80 ]">
-<div class="quarto-layout-row">
-<div id="first-column" class="quarto-layout-cell" style="flex-basis: 23.8%;justify-content: center;">
-<p><img src="themeparklogo.png" class="img-fluid"></p>
-</div>
-<div id="second-column" class="quarto-layout-cell" style="flex-basis: 76.2%;justify-content: flex-start;">
+<div class="mbj-card-body">
+<p><span class="mbj-card-kind">R package</span></p>
 <section id="themepark" class="level3">
 <h3 class="anchored" data-anchor-id="themepark">ThemePark</h3>
-<p>Generating popular culture styled ggplot themes. Featured on <a href="https://rweekly.org/2023-W32.html">rweekly.org</a> and <a href="https://flowingdata.com/2023/07/28/barbie-and-oppenheimer-themes-for-charts-in-r/">flowingdata.com</a></p>
-<p><a href="https://github.com/MatthewBJane/theme_park" class="btn btn-primary btn-sm" role="button" data-toggle="data" title="Data File"><i class="fa-brands fa-github" aria-label="github"></i> Github Repository</a></p>
+<p>Popular-culture styled ggplot themes. Featured on <a href="https://rweekly.org/2023-W32.html">rweekly.org</a> and <a href="https://flowingdata.com/2023/07/28/barbie-and-oppenheimer-themes-for-charts-in-r/">flowingdata.com</a>.</p>
+<div class="mbj-card-links">
+<p><a href="https://github.com/MatthewBJane/theme_park" class="btn btn-secondary"><i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></p>
+</div>
 </section>
 </div>
 </div>
+<div class="mbj-card">
+<div class="mbj-card-logo">
+<p><img src="images/software/posclogo.png" class="img-fluid" alt="POSC logo"></p>
 </div>
-<hr>
-<div>
-
-</div>
-<div class="quarto-layout-panel" data-layout="[ 25, 80 ]">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 23.8%;justify-content: center;">
-<p><img src="posclogo.png" class="img-fluid"></p>
-</div>
-<section id="posc" class="level3 quarto-layout-cell" style="flex-basis: 76.2%;justify-content: flex-start;">
+<div class="mbj-card-body">
+<p><span class="mbj-card-kind">R package</span></p>
+<section id="posc" class="level3">
 <h3 class="anchored" data-anchor-id="posc">POSC</h3>
-<p>An R Package for generating Probability of Outcome Superiority Curves (POSCs).</p>
-<p><a href="https://github.com/MatthewBJane/posc" class="btn btn-primary btn-sm" role="button" data-toggle="data" title="Data File"><i class="fa-brands fa-github" aria-label="github"></i> Github Repository</a></p>
+<p>Probability of Outcome Superiority Curves (POSCs) in R.</p>
+<div class="mbj-card-links">
+<p><a href="https://github.com/MatthewBJane/posc" class="btn btn-secondary"><i class="fa-brands fa-github" aria-label="github"></i> GitHub</a> <a href="./posc-simulator.html" class="btn btn-secondary"><i class="fa-solid fa-chart-line" aria-label="chart-line"></i> Simulator</a></p>
+</div>
 </section>
 </div>
 </div>
-<hr>
-<div>
-
+<div class="mbj-card">
+<div class="mbj-card-logo">
+<p><img src="images/software/opensynthesislogo.png" class="img-fluid" alt="OpenSynthesis logo"></p>
 </div>
-<div class="quarto-layout-panel" data-layout="[ 25, 80 ]">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 23.8%;justify-content: center;">
-<p><img src="opensynthesislogo.png" class="img-fluid"></p>
-</div>
-<section id="opensynthesis" class="level3 quarto-layout-cell" style="flex-basis: 76.2%;justify-content: flex-start;">
+<div class="mbj-card-body">
+<p><span class="mbj-card-kind">Database</span></p>
+<section id="opensynthesis" class="level3">
 <h3 class="anchored" data-anchor-id="opensynthesis">OpenSynthesis</h3>
-<p>Website cataloging publicly available meta-analytic databases.</p>
-<p><a href="https://github.com/MatthewBJane/opensynthesis" class="btn btn-primary btn-sm" role="button" data-toggle="data" title="Data File"><i class="fa-brands fa-github" aria-label="github"></i> Github Repository</a> <a href="https://matthewbjane.com/opensynthesis/" class="btn btn-primary btn-sm" role="button" data-toggle="data" title="Data File"><i class="fa-solid fa-globe" aria-label="globe"></i> Webpage</a></p>
+<p>A catalog of publicly available meta-analytic databases.</p>
+<div class="mbj-card-links">
+<p><a href="https://github.com/MatthewBJane/opensynthesis" class="btn btn-secondary"><i class="fa-brands fa-github" aria-label="github"></i> GitHub</a> <a href="https://matthewbjane.com/opensynthesis/" class="btn btn-secondary"><i class="fa-solid fa-globe" aria-label="globe"></i> Website</a></p>
+</div>
 </section>
 </div>
 </div>
-<hr>
-<div>
-
+<div class="mbj-card">
+<div class="mbj-card-logo">
+<p><img src="images/software/artifactsimulatorlogo.png" class="img-fluid" alt="Artifact Simulator logo"></p>
 </div>
-<div class="quarto-layout-panel" data-layout="[ 25, 80 ]">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 23.8%;justify-content: center;">
-<p><img src="artifactsimulatorlogo.png" class="img-fluid"></p>
-</div>
-<section id="artifact-simulator" class="level3 quarto-layout-cell" style="flex-basis: 76.2%;justify-content: flex-start;">
+<div class="mbj-card-body">
+<p><span class="mbj-card-kind">Web app</span></p>
+<section id="artifact-simulator" class="level3">
 <h3 class="anchored" data-anchor-id="artifact-simulator">Artifact Simulator</h3>
-<p>A Shiny App for Visualizing Statistical Artifacts.</p>
-<p><a href="matthewbjane.shinyapps.io/effect_size_artifact_bias" class="btn btn-primary btn-sm" role="button" data-toggle="data" title="Data File"><i class="fa-solid fa-diagram-project" aria-label="diagram-project"></i> Shiny App</a></p>
+<p>Visualize how statistical artifacts bias effect size estimates.</p>
+<div class="mbj-card-links">
+<p><a href="./artifact-simulator.html" class="btn btn-secondary"><i class="fa-solid fa-diagram-project" aria-label="diagram-project"></i> Open app</a></p>
+</div>
 </section>
 </div>
 </div>
-<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="matthewbjane" data-description="Support me on Buy me a coffee!" data-message="" data-color="#ED5C9B" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+</div>
+<p><a href="https://www.buymeacoffee.com/matthewbjane" class="btn btn-primary">Support my work on Buy Me a Coffee</a></p>
 
 
 
@@ -276,6 +285,150 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -680,16 +833,66 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Email me at matthew.jane@uconn.edu</p>
+<p>© 2026 Matthew B. Jané</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
     <div class="nav-footer-right">
-      &nbsp;
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="./blog.html">
+<p>Blog archive</p>
+</a>
+  </li>  
+</ul>
     </div>
   </div>
 </footer>
+<script>
+// Fold-in right panel for narrow screens. Quarto hides
+// #quarto-margin-sidebar below 768px; this adds an edge tab that
+// slides it in as an overlay, on every page that has something in
+// that column (report and page contents, downloads, categories).
+// Styling lives in styles.css under "FOLD-IN RIGHT PANEL".
+(function () {
+  function addPanelToggle() {
+    var sidebar = document.getElementById("quarto-margin-sidebar");
+    if (!sidebar || document.querySelector(".ace-panel-toggle")) return;
+    var hasToc = !!sidebar.querySelector("nav[role='doc-toc'], #TOC");
+    var hasCats = !!sidebar.querySelector(".quarto-listing-category");
+    var hasLinks = !!sidebar.querySelector(".quarto-other-links, .quarto-alternate-formats");
+    if (!hasToc && !hasCats && !hasLinks) return;
+    var what = hasCats && !hasToc ? "categories" : "contents";
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "ace-panel-toggle";
+    b.setAttribute("aria-expanded", "false");
+    function setOpen(open) {
+      document.body.classList.toggle("ace-panel-open", open);
+      b.setAttribute("aria-expanded", open ? "true" : "false");
+      b.setAttribute("aria-label", (open ? "Close " : "Open ") + what + " panel");
+    }
+    setOpen(false);
+    b.addEventListener("click", function () {
+      setOpen(!document.body.classList.contains("ace-panel-open"));
+    });
+    // close after choosing a section, a category, or the PDF, and on Escape
+    sidebar.addEventListener("click", function (e) {
+      if (e.target.closest("a, .category")) setOpen(false);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") setOpen(false);
+    });
+    document.body.appendChild(b);
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", addPanelToggle);
+  } else {
+    addPanelToggle();
+  }
+})();
+</script>
 
 
 

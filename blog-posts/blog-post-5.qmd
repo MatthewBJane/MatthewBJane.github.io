@@ -1,7 +1,7 @@
 ---
 title: "Respectful Operationalism, Realism, and Models of Measurement Error in Psychometrics"
 author: "Matthew B. Jané"
-image: "blog-image.png"
+image: "images/blog-image.png"
 image-height: "5%"
 code-fold: true
 date: 2024-02-02
@@ -13,9 +13,13 @@ categories:
 title-meta: "Respectful Operationalism, Realism, and Models of Measurement Error in Psychometrics"
 author-meta: "Matthew B. Jané"
 date-meta: 2024-02-02
-image-meta: "blog-image.png"
+image-meta: "images/blog-image.png"
 bibliography: references.bib
 ---
+
+::: {.callout-note appearance="simple"}
+This post is archived and is no longer updated. [See all archived posts](../blog.qmd).
+:::
 
 ```{=html}
 <a href="https://www.buymeacoffee.com/matthewbjane"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=matthewbjane&button_colour=ed5c9b&font_colour=ffffff&font_family=Arial&outline_colour=ffffff&coffee_colour=ffffff" /></a>

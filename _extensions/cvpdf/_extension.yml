@@ -1,0 +1,20 @@
+title: cvpdf
+author: Matthew B. Jané
+version: 1.0.0
+quarto-required: ">=1.4.0"
+contributes:
+  formats:
+    pdf:
+      pdf-engine: xelatex
+      documentclass: article
+      fontsize: 10pt
+      papersize: letter
+      fontfamily: fontspec     # load fontspec instead of the default lmodern
+      include-in-header:
+        - cvpdf.tex
+      toc: false
+      number-sections: false
+      colorlinks: true
+      linkcolor: cvlink
+      urlcolor: cvlink
+      filecolor: cvlink

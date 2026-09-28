@@ -2,7 +2,7 @@
 title: Generalized Additive Models (GAMs) for Meta-Regression using `brms`
 
 author: "Matthew B. Jané"
-image: "blog-image.png"
+image: "images/blog-image.png"
 image-height: "5%"
 toc: true
 code-fold: false
@@ -15,9 +15,13 @@ categories:
 
 title-meta: Generalized Additive Models for Meta-Regression using `brms`
 author-meta: "Matthew B. Jané"
-image-meta: "blog-image.png"
+image-meta: "images/blog-image.png"
 bibliography: references.bib
 ---
+
+::: {.callout-note appearance="simple"}
+This post is archived and is no longer updated. [See all archived posts](../blog.qmd).
+:::
 
 ```{=html}
 <a href="https://www.buymeacoffee.com/matthewbjane"><img src="https://img.buymeacoffee.com/button-api/?text=Support my work&emoji=☕&slug=matthewbjane&button_colour=ed5c9b&font_colour=ffffff&font_family=Arial&outline_colour=ffffff&coffee_colour=ffffff" /></a>
@@ -34,10 +38,10 @@ $$
 \ln RR = \ln \frac{p_T}{p_C},
 $$ where $p_T$ and $p_C$ are the proportions of individuals in remission within the treatment and control group, respectively. We will then see how the doseage moderates the $\ln RR$ across studies. In R, we can use the `metafor` [@metafor] package to fit a meta-regression.
 
-```{r,message=FALSE, fig.width = 5, fig.height = 5}
-#| code-fold: true
-#| code-summary: "Show the code"
-#| 
+<details class="code-fold">
+<summary>Show the code</summary>
+
+```r
 library(metafor)
 
 dat <- escalc(measure = "RR",
@@ -57,8 +61,11 @@ mdl <- rma(lnRR ~ dose,
 
 # plot model
 regplot(mdl,refline = 0)
-
 ```
+
+</details>
+
+![](figures/blog-post-8-fig1.png)
 
 We see a very strong relationship between the effect size and the dosage amount.
 
@@ -92,7 +99,7 @@ The conditional expectation of true effects now can have a lot of flexibility. N
 
 We will need the following packages before we begin.
 
-```{r,message=FALSE,warning=FALSE}
+```r
 library(tidyverse)
 library(brms)
 library(mgcv)
@@ -105,7 +112,7 @@ library(ggdist)
 
 We can use some made up non-linear data created by Wolfgang Viechtbauer in his [tutorial](https://www.metafor-project.org/doku.php/tips:non_linear_meta_regression) on spline meta-regression.
 
-```{r}
+```r
 dat <- structure(list(
   # effect size data
   yi = c(0.99, 0.54, -0.01, 1.29, 0.66, -0.12, 1.18,-0.23, 0.03, 0.73, 1.27, 0.38, -0.19, 0.01, 0.31, 1.41, 1.32, 1.22, 1.24,-0.05, 1.17, -0.17, 1.29, -0.07, 0.04, 1.03, -0.16, 1.25, 0.27, 0.27, 0.07,0.02, 0.7, 1.64, 1.66, 1.4, 0.76, 0.8, 1.91, 1.27, 0.62, -0.29, 0.17, 1.05,-0.34, -0.21, 1.24, 0.2, 0.07, 0.21, 0.95, 1.71, -0.11, 0.17, 0.24, 0.78,1.04, 0.2, 0.93, 1, 0.77, 0.47, 1.04, 0.22, 1.42, 1.24, 0.15, -0.53, 0.73,0.98, 1.43, 0.35, 0.64, -0.09, 1.06, 0.36, 0.65, 1.05, 0.97, 1.28), 
@@ -116,7 +123,16 @@ dat <- structure(list(
   class = "data.frame", row.names = c(NA, -80L))
 
 head(dat)
+```
 
+``` {.cell-output}
+     yi       sei   xi
+1  0.99 0.1341641  9.4
+2  0.54 0.2049390  6.3
+3 -0.01 0.1760682  1.9
+4  1.29 0.1483240 14.5
+5  0.66 0.1264911  8.4
+6 -0.12 0.1140175  1.8
 ```
 
 The effect size is denoted with `yi`, the standard errors are denoted with `sei`, and the study-level moderator values is denoted with `xi`.
@@ -125,8 +141,7 @@ The effect size is denoted with `yi`, the standard errors are denoted with `sei`
 
 Using the `brm` function in the `brms` [@brms] package we can construct the meta-regression GAM model by utilizing the `se()` argument to input the standard errors of the effect sizes. Then `s()` function to tell `brms` that we are fitting a GAM. The `sigma=TRUE` function allows us to have heterogeneity, that is, the model includes a $\sigma$ parameter which represents the standard deviation in true effects which we previously defined as $\tau$.
 
-```{r,warning = FALSE, results='hide'}
-
+```r
 mdl_gam <- brm(yi | se(sei, sigma = TRUE) ~ s(xi),
           data = dat, 
           family = gaussian(),
@@ -136,13 +151,11 @@ mdl_gam <- brm(yi | se(sei, sigma = TRUE) ~ s(xi),
           chains = 2,
           file = "model_gam",
           file_refit = "on_change")
-
 ```
 
 Now let's also construct a linear model so that we can compare the two fits.
 
-```{r,warning = FALSE, results='hide'}
-
+```r
 mdl_lm <- brm(yi | se(sei, sigma = TRUE) ~ xi,
           data = dat, 
           family = gaussian(),
@@ -152,15 +165,14 @@ mdl_lm <- brm(yi | se(sei, sigma = TRUE) ~ xi,
           chains = 2,
           file = "model_lm",
           file_refit = "on_change")
-
 ```
 
 We can plot out the models by displaying the estimates of the conditional effect size mean that are compatible with the data (denoted with the dark lines) and the conditional distribution of effect sizes (the density band with the bounds denoting the 95% prediction interval).
 
-```{r,fig.height=10}
-#| code-fold: true
-#| code-summary: "Show the code"
+<details class="code-fold">
+<summary>Show the code</summary>
 
+```r
 # Extract conditional mean estimates for GAM
 gam_conditional_means <- dat %>%
   data_grid(xi = seq_range(xi, n = 101), sei = sei) %>%
@@ -170,7 +182,6 @@ gam_conditional_means <- dat %>%
 gam_predictions <- dat %>%
   data_grid(xi = seq_range(xi, n = 71), sei = sei) %>%
   add_predicted_draws(mdl_gam, ndraws = 400)
-
 
 p1 <- ggplot() +
   stat_lineribbon(data = gam_predictions, 
@@ -198,7 +209,6 @@ lm_predictions <- dat %>%
   data_grid(xi = seq_range(xi, n = 51), sei = sei) %>%
   add_predicted_draws(mdl_lm, ndraws = 200)
 
-
 p2 <- ggplot() +
   stat_ribbon(data = lm_predictions, 
             aes(x = xi, y = .prediction, fill_ramp = after_stat(.width)),
@@ -215,18 +225,18 @@ p2 <- ggplot() +
   xlab("Moderator Value") + 
   ggtitle("GAM")
 
-
 cowplot::plot_grid(p1,p2,ncol = 1)
-
-
 ```
+
+</details>
+
+![](figures/blog-post-8-fig2.png)
 
 ## Predictive Check
 
 The predictive check of the GAM model captures the data better than the linear model in this data set.
 
-```{r}
-
+```r
 pp1 <- pp_check(mdl_gam, ndraws = 100) +
   theme(aspect.ratio = 1, legend.position = "none") +
   ggtitle("GAM")
@@ -234,15 +244,70 @@ pp2 <- pp_check(mdl_lm, ndraws = 100) +
   theme(aspect.ratio = 1, legend.position = "none") +
   ggtitle("Linear Model")
 
-
 cowplot::plot_grid(pp1,pp2)
 ```
 
+![](figures/blog-post-8-fig3.png)
+
 ## Session Info
 
-```{r}
+```r
 sessionInfo()
+```
 
+``` {.cell-output}
+R version 4.4.2 (2024-10-31)
+Platform: aarch64-apple-darwin20
+Running under: macOS Sequoia 15.4.1
+
+Matrix products: default
+BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
+LAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+time zone: America/New_York
+tzcode source: internal
+
+attached base packages:
+[1] stats     graphics  grDevices datasets  utils     methods   base     
+
+other attached packages:
+ [1] ggdist_3.3.2        modelr_0.1.11       tidybayes_3.0.7    
+ [4] mgcv_1.9-1          nlme_3.1-166        brms_2.22.0        
+ [7] Rcpp_1.0.12         lubridate_1.9.3     forcats_1.0.0      
+[10] stringr_1.5.1       dplyr_1.1.4         purrr_1.0.2        
+[13] readr_2.1.5         tidyr_1.3.1         tibble_3.2.1       
+[16] ggplot2_3.5.1       tidyverse_2.0.0     metafor_4.6-0      
+[19] numDeriv_2016.8-1.1 metadat_1.2-0       Matrix_1.7-1       
+
+loaded via a namespace (and not attached):
+ [1] tidyselect_1.2.1     svUnit_1.0.6         viridisLite_0.4.2   
+ [4] farver_2.1.2         loo_2.8.0            fastmap_1.2.0       
+ [7] tensorA_0.36.2.1     mathjaxr_1.6-0       digest_0.6.36       
+[10] timechange_0.3.0     lifecycle_1.0.4      StanHeaders_2.32.10 
+[13] magrittr_2.0.3       posterior_1.6.0      compiler_4.4.2      
+[16] rlang_1.1.4          tools_4.4.2          utf8_1.2.4          
+[19] yaml_2.3.8           knitr_1.47           labeling_0.4.3      
+[22] bridgesampling_1.1-2 htmlwidgets_1.6.4    pkgbuild_1.4.4      
+[25] plyr_1.8.9           abind_1.4-8          withr_3.0.0         
+[28] grid_4.4.2           stats4_4.4.2         fansi_1.0.6         
+[31] colorspace_2.1-0     inline_0.3.19        scales_1.3.0        
+[34] cli_3.6.3            mvtnorm_1.3-1        rmarkdown_2.27      
+[37] generics_0.1.3       RcppParallel_5.1.9   rstudioapi_0.16.0   
+[40] reshape2_1.4.4       tzdb_0.4.0           rstan_2.32.6        
+[43] splines_4.4.2        bayesplot_1.11.1     parallel_4.4.2      
+[46] matrixStats_1.4.1    vctrs_0.6.5          jsonlite_1.8.8      
+[49] hms_1.1.3            arrayhelpers_1.1-0   glue_1.7.0          
+[52] codetools_0.2-20     cowplot_1.1.3        distributional_0.4.0
+[55] stringi_1.8.4        gtable_0.3.5         QuickJSR_1.3.1      
+[58] munsell_0.5.1        pillar_1.9.0         htmltools_0.5.8.1   
+[61] Brobdingnag_1.2-9    R6_2.5.1             evaluate_0.24.0     
+[64] lattice_0.22-6       backports_1.5.0      broom_1.0.6         
+[67] renv_0.17.3          rstantools_2.4.0     coda_0.19-4.1       
+[70] gridExtra_2.3        checkmate_2.3.1      xfun_0.45           
+[73] pkgconfig_2.0.3     
 ```
 
 ## Citing R packages

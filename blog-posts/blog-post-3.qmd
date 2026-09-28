@@ -1,7 +1,7 @@
 ---
 title: "Calculating Pre/Post Correlation from a Paired T-Test"
 author: "Matthew B. Jané"
-image: "blog-image.png"
+image: "images/blog-image.png"
 image-height: "5%"
 date: 2023-09-13
 description: "In this post we will go over how to convert a t-statistic from a paired t-test into a pre/post correlation. This is useful when change score standard deviations are unknown. Pre/post correlations are necessary to obtain various types of effect sizes and standard errors such as the repeated measures variant of Cohen's $d$, also referred to as Cohen's $d_{rm}$."
@@ -13,8 +13,12 @@ categories:
 title-meta: "Calculating Pre/Post Correlation from a Paired T-Test"
 author-meta: "Matthew B. Jané"
 date-meta: 2023-09-13
-image-meta: "blog-image.png"
+image-meta: "images/blog-image.png"
 ---
+
+::: {.callout-note appearance="simple"}
+This post is archived and is no longer updated. [See all archived posts](../blog.qmd).
+:::
 
 ```{=html}
 <a href="https://www.buymeacoffee.com/matthewbjane"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=matthewbjane&button_colour=ed5c9b&font_colour=ffffff&font_family=Arial&outline_colour=ffffff&coffee_colour=ffffff" /></a>
@@ -35,7 +39,7 @@ $$
 
 Ensure that you apply the correct sign (negative or positive) to the t-statistic, since the F-statistic is always positive.
 
-```{r}
+```r
 # Obtain values
 M_change <- 3
 SD_post <- 11
@@ -84,7 +88,7 @@ $$
 
 Isn't that just a beautiful thing?? So there you have it! the full equation for the pre/post correlation from a paired t-test! Note that this is a direct conversion and not merely an approximation.
 
-```{r}
+```r
 # Calculate pre/post correlation
 r <- (t^2*(SD_pre^2 + SD_post^2) - N * M_change^2) / (2*t^2*SD_pre*SD_post)
 
@@ -92,11 +96,15 @@ r <- (t^2*(SD_pre^2 + SD_post^2) - N * M_change^2) / (2*t^2*SD_pre*SD_post)
 print(paste0('r = ',round(r,3)))
 ```
 
+``` {.cell-output}
+[1] "r = 0.657"
+```
+
 ## Applying it to a simulated dataset
 
 We can simulate correlated pre/post scores from a bivariate Gaussian with known parameters. The calculated correlation is exactly correct!
 
-```{r}
+```r
 # install.packages('MASS')
 library(MASS)
 
@@ -131,6 +139,10 @@ r <- (t^2*(SD_pre^2 + SD_post^2) - N * M_change^2) / (2*t^2*SD_pre*SD_post)
 
 # print results
 print(paste0('r = ',r))
+```
+
+``` {.cell-output}
+[1] "r = 0.7"
 ```
 
 <iframe src="https://embeds.beehiiv.com/f3ffd81a-4723-4419-bb1d-afc8af3bac36" data-test-id="beehiiv-embed" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius: 4px; border: 2px solid #e5e7eb; margin: 0; background-color: transparent;">

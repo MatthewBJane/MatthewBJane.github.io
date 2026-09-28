@@ -1,0 +1,12 @@
+# ---------------------------------------------------------------
+# SKILLS: one line per category.
+#   category: label shown in bold
+#   items:    the rest of the line (Markdown allowed, e.g. [link](url))
+# ---------------------------------------------------------------
+entries:
+  - category: "Statistical methods"
+    items: "Meta-analysis, forensic meta-science, clinical trial analysis, regression, simulation."
+  - category: "Research integrity"
+    items: "Detecting statistical errors, data inconsistencies, and fabricated or manipulated data."
+  - category: "Programming and tools"
+    items: "R, Python, MATLAB, Quarto, LaTeX, Git and GitHub."

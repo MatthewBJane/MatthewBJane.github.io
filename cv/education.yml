@@ -1,0 +1,34 @@
+# ---------------------------------------------------------------
+# EDUCATION: newest first. Copy a block to add a degree. The second line reads
+#   School · Advisor: ... · GPA: ...
+#   degree:  degree name              (required)
+#   field:   field of study
+#   school:  institution              (required)
+#   dates:   e.g. "2022 – Present"
+#   gpa:     optional, e.g. "3.94"
+#   advisor: optional, e.g. "Dr. Blair Johnson"
+#   thesis:  optional dissertation or thesis title (shown on its own line)
+#   details: list of bullet points (optional)
+# ---------------------------------------------------------------
+entries:
+  - degree: "Ph.D."
+    field: "Quantitative Psychology and Neuroscience"
+    school: "University of Connecticut"
+    dates: "Sep 2022 – Present"
+    gpa: "3.94"
+    advisor: "Dr. Blair Johnson"
+    thesis: "Dissertation: Correcting bias in meta-analysis: Comparing Rubin's effect size surface to Hunter and Schmidt's study-level correction procedures"
+
+  - degree: "M.S."
+    field: "Behavioral Neuroscience"
+    school: "University of Connecticut"
+    dates: "Jan 2021 – Aug 2022"
+    gpa: "3.97"
+    advisor: "Dr. Heather Read"
+
+  - degree: "B.S."
+    field: "Computational Neuroscience"
+    school: "University of Connecticut"
+    dates: "Aug 2016 – Dec 2020"
+    gpa: "3.14"
+    advisor: "Dr. James Chrobak"

@@ -87,16 +87,18 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="..//webLogoFavicon2.png" rel="icon" type="image/png">
+<link href="..//images/favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -124,9 +126,18 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
+<script>
+window.MathJax = {
+  output: { font: "mathjax-fira" },
+  tex: {
+    inlineMath:  [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"], ["$$", "$$"]]
+  }
+};
+</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml-nofont.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -158,18 +169,18 @@ window.Quarto = {
 <link rel="stylesheet" href="../styles.css">
 <meta property="og:title" content="Individual Person Data (IPD) Meta-Analysis with Beta Regression in a Repeated-Measures Cross-Over Design – Matthew B. Jané">
 <meta property="og:description" content="I worked on a meta-analysis along with my good friend Tylor J. Harlow on the effect of acoustic stimulations during slow-wave on memory retention. Since we have some individual participant data, I thought it would be fun to conduct an Individual Person Data (IPD) meta-analysis on it. Let me know if you have suggestions to improve this post.">
-<meta property="og:image" content="https://matthewbjane.com/blog-posts/blog-image.png">
+<meta property="og:image" content="https://matthewbjane.com/blog-posts/images/blog-image.png">
 <meta property="og:site_name" content="Matthew B. Jané">
 <meta property="og:locale" content="en_US">
 <meta property="og:image:height" content="7206">
 <meta property="og:image:width" content="10817">
 <meta name="twitter:title" content="Individual Person Data (IPD) Meta-Analysis with Beta Regression in a Repeated-Measures Cross-Over Design – Matthew B. Jané">
 <meta name="twitter:description" content="I worked on a meta-analysis along with my good friend Tylor J. Harlow on the effect of acoustic stimulations during slow-wave on memory retention. Since we have some individual participant data, I thought it would be fun to conduct an Individual Person Data (IPD) meta-analysis on it. Let me know if you have suggestions to improve this post.">
-<meta name="twitter:image" content="https://matthewbjane.com/blog-posts/blog-image.png">
+<meta name="twitter:image" content="https://matthewbjane.com/blog-posts/images/blog-image.png">
 <meta name="twitter:creator" content="@MatthewBJane">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image-height" content="7206">
 <meta name="twitter:image-width" content="10817">
-<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed">
@@ -180,10 +191,7 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../webLogoFavicon2.png" alt="" class="navbar-logo">
-    </a>
-    <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Matthew B. Jané</span>
+    <img src="../images/logo/logo-navbar.png" alt="Matthew B. Jané" class="navbar-logo">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -197,10 +205,6 @@ window.Quarto = {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../blog.html"> 
-<span class="menu-text">Meta-Analysis Magic</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="../CV.html"> 
 <span class="menu-text">CV</span></a>
   </li>  
@@ -208,34 +212,45 @@ window.Quarto = {
     <a class="nav-link" href="../Software.html"> 
 <span class="menu-text">Software</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../Books.html"> 
-<span class="menu-text">Books</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-simulators" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Simulators</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-simulators">    
+        <li>
+    <a class="dropdown-item" href="../artifact-simulator.html">
+ <span class="dropdown-text">Artifact Simulator</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../trial-simulator.html">
+ <span class="dropdown-text">Clinical Trial Simulator</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../posc-simulator.html">
+ <span class="dropdown-text">POSC Simulator</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
-    <a class="nav-link" href="../Consulting.html"> 
-<span class="menu-text">Consulting</span></a>
+    <a class="nav-link" href="https://auditclinicalevidence.org"> 
+<span class="menu-text">ACE</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.github.com/MatthewBJane"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://www.github.com/MatthewBJane"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.twitter.com/MatthewBJane"> <i class="bi bi-twitter" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="../blog.xml"> <i class="bi bi-rss" role="img">
+    <a class="nav-link" href="https://www.x.com/MatthewBJane"> <i class="bi bi-twitter-x" role="img" aria-label="X">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -246,7 +261,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+    <h2 id="toc-title">Sections</h2>
    
   <ul>
   <li><a href="#description-of-the-meta-analysis" id="toc-description-of-the-meta-analysis" class="nav-link active" data-scroll-target="#description-of-the-meta-analysis">Description of the Meta-analysis</a></li>
@@ -300,6 +315,16 @@ window.Quarto = {
 </header>
 
 
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>This post is archived and is no longer updated. <a href="../blog.html">See all archived posts</a>.</p>
+</div>
+</div>
+</div>
 <a href="https://www.buymeacoffee.com/matthewbjane"><img src="https://img.buymeacoffee.com/button-api/?text=Support my work&amp;emoji=☕&amp;slug=matthewbjane&amp;button_colour=ed5c9b&amp;font_colour=ffffff&amp;font_family=Arial&amp;outline_colour=ffffff&amp;coffee_colour=ffffff"></a>
 <p><br></p>
 <section id="description-of-the-meta-analysis" class="level2">
@@ -308,8 +333,7 @@ window.Quarto = {
 <h4 class="anchored" data-anchor-id="study-design">Study design</h4>
 <p>The studies in this meta-analysis are investigating if auditory stimuli during slow-wave sleep can enhance overnight memory retention (this is based on theoretical reasons we don’t need to get into). In each study the participants undergo two sleep sessions reflecting two conditions. In one of the sessions, auditory stimuli (i.e., pink noise bursts) were presented while the subject’s were in deep slow-wave sleep (“stim” condition). In the other session there was no auditory stimuli (“sham” condition). These sleep sessions were separated by a week (or two) and were counter-balanced such that the ordering of conditions were randomized. Before subject’s go to sleep, subjects were given word-pairs that they are required to memorize. Prior to falling asleep they are assessed on how many word-pairs they can accurately remember (they are given one word and they are told to recall the other word). After the subjects wake up, they are assessed on the same task and the number of word-pairs they can remember correctly. So ultimately we have a repeated-measures (pre-post) cross-over (treatment-control) design.</p>
 <p>We can load in the necessary packages <span class="citation" data-cites="tidyverse">Kay (<a href="#ref-tidybayes" role="doc-biblioref">2024</a>)</span> and get the data from my <a href="https://github.com/MatthewBJane/meta-analysis-data-code/blob/main/acoustic_stimulation_and_memory/data/individual_person_data.csv">github repository</a>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(brms)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidybayes)</span>
@@ -322,8 +346,7 @@ window.Quarto = {
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">url</span>(urlfile))</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 6
+<pre class="cell-output"><code># A tibble: 6 × 6
   study preSham postSham preStim postStim total_words
   &lt;chr&gt;   &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;
 1 W2016      89      103      69       93         120
@@ -332,8 +355,6 @@ window.Quarto = {
 4 W2016      47       75      57       75         120
 5 W2016      40       67      61       91         120
 6 W2016      78      104      71       99         120</code></pre>
-</div>
-</div>
 <p>We can see that each subject has four values: pre-stim, post-stim, pre-sham, and post-sham. The values denote the number of words recalled correctly and the total words column is the total number of word-pairs the subject was tasked to memorize. In total, there are 7 studies and 110 subjects.</p>
 </section>
 <section id="outcome-of-interest" class="level4">
@@ -351,8 +372,7 @@ window.Quarto = {
 <li>Post-sleep, stim condition: <span class="math inline">\(\;\;\pi^{(1)}_{\mathrm{post},i} := \Pr_i(Y_{ij}\! =\!1 \mid T_i\! =\!1, C_i\! =\!1)\)</span></li>
 </ul>
 <p>Every participant has an observed proportion for all four experimental states: <span class="math inline">\(p^{(0)}_{\mathrm{pre},i}\)</span>, <span class="math inline">\(p^{(0)}_{\mathrm{post},i}\)</span>, <span class="math inline">\(p^{(1)}_{\mathrm{pre},i}\)</span>, and <span class="math inline">\(p^{(1)}_{\mathrm{post},i}\)</span>. What we want to do is make the data set long where condition is a dummy variable, this will set up our data such that we can fit an ANCOVA model in the next section.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># relabel the column headers</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">pre.sham =</span> preSham, <span class="at">pre.stim =</span> preStim, </span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">post.sham =</span> postSham, <span class="at">post.stim =</span> postStim) <span class="sc">%&gt;%</span></span>
@@ -380,8 +400,7 @@ window.Quarto = {
 <span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co"># display cleaned data set</span></span>
 <span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat,<span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 8 × 5
+<pre class="cell-output"><code># A tibble: 8 × 5
   study            person condition p_pre p_post
   &lt;fct&gt;             &lt;int&gt; &lt;fct&gt;     &lt;dbl&gt;  &lt;dbl&gt;
 1 Weigenand (2016)      1 0         0.738  0.854
@@ -392,8 +411,6 @@ window.Quarto = {
 6 Weigenand (2016)      3 1         0.398  0.638
 7 Weigenand (2016)      4 0         0.390  0.622
 8 Weigenand (2016)      4 1         0.473  0.622</code></pre>
-</div>
-</div>
 <p>Now we have columns for the proportions at pre-test and post-test for each condition. Notice that each person has two rows pertaining to the stim and sham condition.</p>
 </section>
 <section id="effect-size-of-interest" class="level4">
@@ -403,10 +420,11 @@ window.Quarto = {
 \delta = \mathbb{E}\left(p^{(1)}_{\mathrm{post},i}\,- p^{(0)}_{\mathrm{post},i}\, \middle|\, p_{\mathrm{pre},i} = .50\right).
 \]</span></p>
 <p>Since this effect size is essentially an average of risk differences, conditioning on a pre-sleep value of .50 is useful as is put succinctly by <a href="https://journals.sagepub.com/doi/10.1177/23780231231192394#:~:text=Risk%20differences%20are%20useful%20when,often%20be%20a%20good%20choice.">Karlson and Quillian (2023)</a> <strong>“Risk differences are useful when base rates are in a middle range”</strong>. We will see that the IPD model will use the pre-sleep score as a covariate so conditioning on pre-sleep scores is straightforward. The grand average pre-sleep score is ~.47, which makes conditioning on .50 a bit easier to justify. We can visualize the pre-sleep scores for each study below, we can see that they are fairly evenly distributed around .50.</p>
-<div class="cell">
 <details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat, <span class="fu">aes</span>(<span class="at">x =</span> p_pre, <span class="at">y =</span> study)) <span class="sc">+</span></span>
+<summary>
+Code
+</summary>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat, <span class="fu">aes</span>(<span class="at">x =</span> p_pre, <span class="at">y =</span> study)) <span class="sc">+</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_slab</span>(<span class="at">point_interval =</span> <span class="st">"mean_qi"</span>,<span class="at">fill =</span> <span class="st">"hotpink"</span>,<span class="at">slab_color =</span> <span class="st">"transparent"</span>, <span class="at">slab_alpha =</span> .<span class="dv">15</span>) <span class="sc">+</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_dotsinterval</span>(<span class="at">point_interval =</span> <span class="st">"mean_qi"</span>,<span class="at">fill =</span> <span class="st">"hotpink2"</span>,<span class="at">slab_color =</span> <span class="st">"transparent"</span>, <span class="at">color =</span> <span class="st">"hotpink4"</span>) <span class="sc">+</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lims</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>)) <span class="sc">+</span></span>
@@ -416,14 +434,11 @@ window.Quarto = {
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Pre-sleep scores (proportion correct)"</span>,</span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Studies"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="blog-post-10_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="figures/blog-post-10-fig1.png" class="img-fluid figure-img"></p>
 <figcaption>Distributions of pre-sleep scores by study. The dashed line denotes the 50:50 correct/incorrect value (<span class="math inline">\(p_\mathrm{pre} = .5\)</span>)</figcaption>
 </figure>
-</div>
-</div>
 </div>
 <p>We can interpret the effect size as: on average, a typical person sees a <span class="math inline">\([\delta\times 100]\)</span> percentage point increase in accurately recalling a word-pair in the stim condition relative to the sham condition. An effect size value of <span class="math inline">\(\delta &lt; 0\)</span> would indicate reduced recall in the stim group (i.e., stim was actually detrimental relative to sham), a value between <span class="math inline">\(\delta &gt;0\)</span> would indicate increased recall in the stim group (i.e., stim was beneficial relative to sham), and a value of <span class="math inline">\(\delta=1\)</span> would be a null effect. Important to note that <span class="math inline">\(\delta\)</span> is not standardized in this meta-analysis because scores are comparable across studies.</p>
 </section>
@@ -439,29 +454,25 @@ window.Quarto = {
 \mu_i = \frac{\exp(\beta_{0,sp} +  \beta_{1,s}\,p_{\mathrm{pre},i} + \beta_{2,s}\, C_i)}{1 + \exp(\beta_{0,sp} +  \beta_{1,s}\,p_{\mathrm{pre},i} + \beta_{2,s}\, C_i)}
 \]</span></p>
 <p>To obtain person and study-level variability, we want to incorporate a random effect for study samples on each of the regression coefficients (there are 7 studies, denoted with subscript <span class="math inline">\(s = 1...7\)</span>). We also allow the intercept to vary between individuals such that each person <span class="math inline">\(p\)</span> has a random intercept (this is reasonable since there are individual differences in recall ability). Note that having condition vary by person (each person has 2 data points pertaining to treatment-control) would produce a model that is not identifiable. We will just use the default <code>brms</code> priors for all parameters.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mdl <span class="ot">&lt;-</span> <span class="fu">bf</span>(p_post <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> Intercept <span class="sc">+</span> p_pre <span class="sc">+</span> condition <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>person) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">+</span>p_pre<span class="sc">+</span>condition<span class="sc">|</span>study), </span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mdl <span class="ot">&lt;-</span> <span class="fu">bf</span>(p_post <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> Intercept <span class="sc">+</span> p_pre <span class="sc">+</span> condition <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>person) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">+</span>p_pre<span class="sc">+</span>condition<span class="sc">|</span>study), </span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">family =</span> <span class="fu">Beta</span>(<span class="st">"logit"</span>))</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>prior <span class="ot">&lt;-</span> <span class="fu">default_prior</span>(mdl, <span class="at">data =</span> dat)</span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">brm</span>(mdl,</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> dat,</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">cores =</span> <span class="dv">2</span>, </span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">iter =</span> <span class="dv">2000</span>,</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">warmup =</span> <span class="dv">200</span>,</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">chains =</span> <span class="dv">3</span>,</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>           <span class="at">prior =</span> prior,</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>           <span class="at">file =</span> <span class="st">"ipd_meta"</span>,</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>           <span class="at">file_refit =</span> <span class="st">"on_change"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">brm</span>(mdl,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> dat,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">cores =</span> <span class="dv">2</span>, </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">iter =</span> <span class="dv">2000</span>,</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">warmup =</span> <span class="dv">200</span>,</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">chains =</span> <span class="dv">3</span>,</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">prior =</span> prior,</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>           <span class="at">file =</span> <span class="st">"ipd_meta"</span>,</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>           <span class="at">file_refit =</span> <span class="st">"on_change"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>I recommend reading A. Solomon Kurz’s awesome <a href="https://solomonkurz.netlify.app/blog/2023-06-25-causal-inference-with-beta-regression/#beta-likelihood">blog post on Beta regression for causal inference</a>, which inspired some of this model (if I made any mistakes that does not reflect on Solomon’s blog, that is just me being dense).</p>
 <section id="study-level-estimates-of-delta" class="level4">
 <h4 class="anchored" data-anchor-id="study-level-estimates-of-delta">Study-level estimates of <span class="math inline">\(\delta\)</span></h4>
 <p>Let’s observe the posterior distribution of effects from each study in the meta-analysis. Visualizations created with the help of the awesome <code>tidybayes</code> and <code>ggdist</code> packages <span class="citation" data-cites="tidybayes">Kay (<a href="#ref-ggdist" role="doc-biblioref">2023</a>)</span>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>nd <span class="ot">&lt;-</span> <span class="fu">data_grid</span>(<span class="at">condition =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>,</span>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>nd <span class="ot">&lt;-</span> <span class="fu">data_grid</span>(<span class="at">condition =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>,</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">p_pre =</span> .<span class="dv">5</span>,</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">person =</span> <span class="cn">NA</span>,</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">study =</span> dat<span class="sc">$</span>study,</span>
@@ -482,22 +493,18 @@ window.Quarto = {
 <span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="fu">expression</span>(Effect <span class="sc">~</span> delta),</span>
 <span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">""</span>) <span class="sc">+</span></span>
 <span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Study-level effects"</span>, <span class="at">subtitle =</span> <span class="st">"with 50% and 95% intervals"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="blog-post-10_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="figures/blog-post-10-fig2.png" class="img-fluid figure-img"></p>
 <figcaption>Study-level posterior estimates of the expected value of <span class="math inline">\(\delta\)</span></figcaption>
 </figure>
-</div>
-</div>
 </div>
 <p>In our original paper we found a strong moderating effect of publication year on the effect size. Although we were only able to get a subset of the raw data sets, you can still see the shadow of that trend appears here.</p>
 </section>
 <section id="mean-effect" class="level4">
 <h4 class="anchored" data-anchor-id="mean-effect">Mean Effect</h4>
 <p>Now we want to estimate the average effect across studies, the key here is to set the <code>re_formula</code> argument in the add_epred_draws to <code>NA</code>. The figure below denotes the distribution of plausible values for the average true effect.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>nd <span class="ot">&lt;-</span> <span class="fu">data_grid</span>(<span class="at">condition =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>,</span>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>nd <span class="ot">&lt;-</span> <span class="fu">data_grid</span>(<span class="at">condition =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>,</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">p_pre =</span> .<span class="dv">5</span>,</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">person =</span> <span class="cn">NA</span>,</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">study =</span> <span class="cn">NA</span>,</span>
@@ -509,30 +516,21 @@ window.Quarto = {
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">id_cols =</span> .draw) <span class="sc">%&gt;%</span></span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">delta =</span> <span class="st">`</span><span class="at">1</span><span class="st">`</span> <span class="sc">-</span> <span class="st">`</span><span class="at">0</span><span class="st">`</span>)</span>
 <span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> posterior_mean, <span class="fu">aes</span>(<span class="at">x =</span> delta, <span class="at">y =</span> <span class="dv">0</span>)) <span class="sc">+</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_slabinterval</span>(<span class="at">point_interval =</span> <span class="st">"mean_qi"</span>,<span class="at">fill =</span> <span class="st">"hotpink4"</span>, <span class="at">slab_alpha =</span> .<span class="dv">80</span>, <span class="at">.width =</span> <span class="fu">c</span>(.<span class="dv">50</span>,.<span class="dv">95</span>)) <span class="sc">+</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_ggdist</span>(<span class="at">base_size =</span> <span class="dv">14</span>) <span class="sc">+</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> .<span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span>.<span class="dv">15</span>,.<span class="dv">15</span>)) <span class="sc">+</span></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">alpha =</span> .<span class="dv">1</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="fu">expression</span>(Effect <span class="sc">~</span> delta),</span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">""</span>) <span class="sc">+</span></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Mean effect"</span>, <span class="at">subtitle =</span> <span class="st">"with 50% and 95% intervals"</span>) <span class="sc">+</span></span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">round</span>(<span class="fu">seq</span>(<span class="sc">-</span>.<span class="dv">15</span>,.<span class="dv">15</span>,<span class="at">by=</span>.<span class="dv">05</span>),<span class="dv">2</span>)) <span class="sc">+</span></span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="blog-post-10_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> posterior_mean, <span class="fu">aes</span>(<span class="at">x =</span> delta, <span class="at">y =</span> <span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_slabinterval</span>(<span class="at">point_interval =</span> <span class="st">"mean_qi"</span>,<span class="at">fill =</span> <span class="st">"hotpink4"</span>, <span class="at">slab_alpha =</span> .<span class="dv">80</span>, <span class="at">.width =</span> <span class="fu">c</span>(.<span class="dv">50</span>,.<span class="dv">95</span>)) <span class="sc">+</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_ggdist</span>(<span class="at">base_size =</span> <span class="dv">14</span>) <span class="sc">+</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> .<span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span>.<span class="dv">15</span>,.<span class="dv">15</span>)) <span class="sc">+</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">alpha =</span> .<span class="dv">1</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="fu">expression</span>(Effect <span class="sc">~</span> delta),</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">""</span>) <span class="sc">+</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Mean effect"</span>, <span class="at">subtitle =</span> <span class="st">"with 50% and 95% intervals"</span>) <span class="sc">+</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">round</span>(<span class="fu">seq</span>(<span class="sc">-</span>.<span class="dv">15</span>,.<span class="dv">15</span>,<span class="at">by=</span>.<span class="dv">05</span>),<span class="dv">2</span>)) <span class="sc">+</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="figures/blog-post-10-fig3.png" class="img-fluid"></p>
 <p>As we can see there is little/no <em>average</em> effect of the stim condition 0.012 [-0.047, 0.069]. The estimate suggests there is about a 1% in recall probability difference from stim to sham.</p>
 <p>Let’s now obtain the credibility intervals which tells us what in what range of <span class="math inline">\(\delta\)</span> do <em>X%</em> of study effects fall. The figure below will show 50, 80, and 95% credibility intervals. To do this in <code>brms</code> I am like 99% sure we just need to incorporate all the study-level random effects in the <code>re_formula</code> argument again. Therefore we would want to specify it as <code>re_formula = ~(1+p_pre+condition|study)</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>nd <span class="ot">&lt;-</span> <span class="fu">data_grid</span>(<span class="at">condition =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>,</span>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>nd <span class="ot">&lt;-</span> <span class="fu">data_grid</span>(<span class="at">condition =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>,</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">p_pre =</span> .<span class="dv">5</span>,</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">person =</span> <span class="cn">NA</span>,</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">study =</span> <span class="st">"new_study"</span>,</span>
@@ -554,20 +552,12 @@ window.Quarto = {
 <span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">""</span>) <span class="sc">+</span></span>
 <span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Credibility intervals"</span>, <span class="at">subtitle =</span> <span class="st">"Intervals where 50,80,95% of study effects fall"</span>) <span class="sc">+</span></span>
 <span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="blog-post-10_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
+<p><img src="figures/blog-post-10-fig4.png" class="img-fluid"></p>
 </section>
 <section id="diagnostics" class="level4">
 <h4 class="anchored" data-anchor-id="diagnostics">Diagnostics</h4>
 <p>Let’s observe the posterior predictive check to see if our model performed as we expected.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pp_check</span>(fit, <span class="at">ndraws =</span> <span class="dv">200</span>) <span class="sc">+</span> </span>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pp_check</span>(fit, <span class="at">ndraws =</span> <span class="dv">200</span>) <span class="sc">+</span> </span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>,<span class="dv">1</span>) <span class="sc">+</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_ggdist</span>(<span class="at">base_size =</span> <span class="dv">14</span>) <span class="sc">+</span></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks=</span><span class="cn">NULL</span>) <span class="sc">+</span></span>
@@ -578,24 +568,15 @@ window.Quarto = {
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> <span class="fu">element_markdown</span>(),</span>
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"arial"</span>), </span>
 <span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">aspect.ratio =</span> .<span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="blog-post-10_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
+<p><img src="figures/blog-post-10-fig5.png" class="img-fluid"></p>
 <p>The predictive check looks quite good!</p>
 <p>Anyways… thats the post. Let me know if you have any suggestions or critiques.</p>
 </section>
 </section>
 <section id="session-info" class="level2">
 <h2 class="anchored" data-anchor-id="session-info">Session Info</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>R version 4.4.2 (2024-10-31)
+<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="cell-output"><code>R version 4.4.2 (2024-10-31)
 Platform: aarch64-apple-darwin20
 Running under: macOS Sequoia 15.4.1
 
@@ -646,8 +627,6 @@ loaded via a namespace (and not attached):
 [73] broom_1.0.6          renv_0.17.3          rstantools_2.4.0    
 [76] gridExtra_2.3        coda_0.19-4.1        nlme_3.1-166        
 [79] checkmate_2.3.1      xfun_0.45            pkgconfig_2.0.3     </code></pre>
-</div>
-</div>
 </section>
 <section id="citing-r-packages" class="level2">
 <h2 class="anchored" data-anchor-id="citing-r-packages">Citing R packages</h2>
@@ -703,6 +682,150 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -1107,16 +1230,66 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Email me at matthew.jane@uconn.edu</p>
+<p>© 2026 Matthew B. Jané</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
     <div class="nav-footer-right">
-      &nbsp;
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="../blog.html">
+<p>Blog archive</p>
+</a>
+  </li>  
+</ul>
     </div>
   </div>
 </footer>
+<script>
+// Fold-in right panel for narrow screens. Quarto hides
+// #quarto-margin-sidebar below 768px; this adds an edge tab that
+// slides it in as an overlay, on every page that has something in
+// that column (report and page contents, downloads, categories).
+// Styling lives in styles.css under "FOLD-IN RIGHT PANEL".
+(function () {
+  function addPanelToggle() {
+    var sidebar = document.getElementById("quarto-margin-sidebar");
+    if (!sidebar || document.querySelector(".ace-panel-toggle")) return;
+    var hasToc = !!sidebar.querySelector("nav[role='doc-toc'], #TOC");
+    var hasCats = !!sidebar.querySelector(".quarto-listing-category");
+    var hasLinks = !!sidebar.querySelector(".quarto-other-links, .quarto-alternate-formats");
+    if (!hasToc && !hasCats && !hasLinks) return;
+    var what = hasCats && !hasToc ? "categories" : "contents";
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "ace-panel-toggle";
+    b.setAttribute("aria-expanded", "false");
+    function setOpen(open) {
+      document.body.classList.toggle("ace-panel-open", open);
+      b.setAttribute("aria-expanded", open ? "true" : "false");
+      b.setAttribute("aria-label", (open ? "Close " : "Open ") + what + " panel");
+    }
+    setOpen(false);
+    b.addEventListener("click", function () {
+      setOpen(!document.body.classList.contains("ace-panel-open"));
+    });
+    // close after choosing a section, a category, or the PDF, and on Escape
+    sidebar.addEventListener("click", function (e) {
+      if (e.target.closest("a, .category")) setOpen(false);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") setOpen(false);
+    });
+    document.body.appendChild(b);
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", addPanelToggle);
+  } else {
+    addPanelToggle();
+  }
+})();
+</script>
 
 
 

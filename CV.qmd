@@ -1,132 +1,81 @@
 ---
+title: "Matthew B. Jané"
+pagetitle: "CV – Matthew B. Jané"
 format:
   html:
-    header-includes: |
-      <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Asap" type="text/css"/>
     toc: true
-  PrettyPDF-pdf: default
-format-links: [PrettyPDF-pdf]
-
-mainfont: Asap
-sansfont: Asap
+  cvpdf-pdf: default
+format-links: false
+language:
+  other-links-title: Download
+other-links:
+  - text: PDF
+    href: CV.pdf
+    icon: file-pdf
 ---
 
-# Matthew B. Jané
+<!--
+  This page is generated from the YAML files in cv/.
+  To add or change an entry, edit the matching file:
+    cv/profile.yml       name line, headline, summary, contact links
+    cv/experience.yml    jobs and roles (professional and additional)
+    cv/education.yml     degrees
+    cv/publications.yml  articles, chapters, preprints, books, public writing
+    cv/talks.yml         talks, teaching, workshops
+    cv/software.yml      software and tools
+    cv/media.yml         media coverage
+    cv/service.yml       peer review and memberships
+    cv/skills.yml        skills
+  Then re-render. Section order is set below. The PDF layout lives in
+  _extensions/cvpdf/cvpdf.tex; the section builder in _extensions/cv/cv.lua.
+-->
 
-::: {.content-visible when-format="pdf"}
-{{< fa globe >}} [MatthewBJane.com](https://www.matthewbjane.github.io)
+{{< cv headline >}}
 
-{{< fa envelope >}} [matthew.jane\@uconn.edu](mailto:matthew.jane@uconn.edu)
+{{< cv contact >}}
 
-{{< fa brands twitter >}} [\@MatthewBJane](https://www.x.com/MatthewBJane)
+## Summary
 
-{{< fa brands github >}} [MatthewBJane](https://www.github.io/MatthewBJane)
-:::
+{{< cv summary >}}
 
-::: {.content-visible when-format="html"}
-[{{< fa globe >}} Website](https://www.matthewbjane.github.io){.btn .btn-primary .btn-sm role="button" data-toggle="data" title="Data File"} [{{< fa envelope >}} Email](mailto:matthew.jane@uconn.edu){.btn .btn-primary .btn-sm role="button" data-toggle="data" title="Data File"} [{{< fa brands twitter >}} Twitter](https://www.x.com/MatthewBJane){.btn .btn-primary .btn-sm role="button" data-toggle="data" title="Data File"} [{{< fa brands github >}} Github](https://www.github.io/MatthewBJane){.btn .btn-primary .btn-sm role="button" data-toggle="data" title="Data File"}
-:::
+## Professional Experience
 
-## <i class="fa-solid fa-graduation-cap"></i> Education
+{{< cv experience >}}
 
--   2022--*present* \| **Ph.D.** *Quantitative Psychology*, University of Connecticut
+## Education
 
-    -   Research involves developing statistical methods and software for meta-analysis and evidence synthesis. Primarily focusing on correcting bias in effect size estimates induced by statistical artifacts.
+{{< cv education >}}
 
--   2021--2022 \| **M.S.** *Behavioral Neuroscience*, University of Connecticut
+## Additional Experience
 
--   2018--2020 \| **B.S.** *Computational Neuroscience*, University of Connecticut
+{{< cv experience group="additional" >}}
 
-## <i class="fa-solid fa-book"></i> Textbooks
+## Publications
 
--   **Jané, M. B.**, Xiao, Q., Yeung, S. K., Caldwell, A. R., Dunleavy, D. J., ... (2023) ***Guide to Effect Sizes and Confidence Intervals***. A collaborative guide to calculating, interpreting, and reporting effect sizes and confidence intervals. *In Progress*. See preliminary version here: <https://matthewbjane.quarto.pub/effect-size-and-confidence-intervals-guide/>
+{{< cv pubnote >}}
 
--   **Jané, M. B.**, Kroc, E., Wiernik, B. M., Oswald, F. L., Johnson, B. T. (2023) ***Artifact Corrections for Effect Sizes***. An open-source book for correcting bias in effect size estimates contaminated by statistical artifacts. *In Progress*. See preliminary version here: <https://matthewbjane.quarto.pub/artifact-corrections-for-effect-sizes/>
+### Academic Publications
 
-## <i class="fa-solid fa-code"></i> Software
+{{< cv publications type="article,preprint,book" >}}
 
--   [<i class="fa-solid fa-cube"></i> R Package]{.badge .rounded-pill .bg-primary} **ThemePark**, Generating popular culture styled ggplot themes. [github.com/MatthewBJane/theme_park](https://github.com/MatthewBJane/theme_park). Featured on [rweekly.org](https://rweekly.org/2023-W32.html) and [flowingdata.com](https://flowingdata.com/2023/07/28/barbie-and-oppenheimer-themes-for-charts-in-r/)
+### Public Writing
 
--   [<i class="fa-solid fa-cube"></i> R Package]{.badge .rounded-pill .bg-primary} **POSC** An R Package for generating Probability of Outcome Superiority Curves (POSCs). [github.com/MatthewBJane/posc](https://github.com/MatthewBJane/posc)
+{{< cv publications type="public" >}}
 
--   [<i class="fa-solid fa-database"></i> Database]{.badge .rounded-pill .bg-primary} **OpenSynthesis**, website cataloging publicly available meta-analytic databases. [matthewbjane.com/opensynthesis](https://matthewbjane.com/opensynthesis)
+## Talks and Workshops
 
--   [<i class="fa-solid fa-diagram-project"></i> Shiny App]{.badge .rounded-pill .bg-primary} **Artifact Simulator**, A Shiny App for Visualizing Statistical Artifacts. [matthewbjane.shinyapps.io/effect_size_artifact_bias](matthewbjane.shinyapps.io/effect_size_artifact_bias)
+{{< cv talks >}}
 
-## <i class="fa-solid fa-chalkboard-user"></i> Consulting and Workshops
+## Software
 
--   **Matthew B. Jané Consulting** statistical consulting services for clients in academia and industry research. [matthewbjane.github.io/Consulting.html](https://matthewbjane.github.io/Consulting.html)
--   **Physalia Courses "Meta-Analysis in R" Workshop** hosted a four day workshop in meta-analysis with application to R programming language. [www.physalia-courses.org/courses-workshops/metain-r/](https://www.physalia-courses.org/courses-workshops/metain-r/)
--   **R workshops for Ukraine "Meta-Analysis in R" Workshop** hosted a 2-hour workshop in meta-analysis with application to R programming language for charity. [sites.google.com/view/dariia-mykhailyshyna/main/r-workshops-for-ukraine#h.qwn56mbd02im](https://sites.google.com/view/dariia-mykhailyshyna/main/r-workshops-for-ukraine#h.qwn56mbd02im).
--   **USF "Meta-Analysis in R" Workshop** hosted a 1-hour workshop in meta-analysis with application to R programming language for the University of South Florida.
+{{< cv software >}}
 
-## <i class="fa-solid fa-chalkboard-user"></i> Scientific Communication
+## Media Coverage
 
--   **Meta-Analysis Magic Blog** blog discussing statistical modeling and other quantitative topics in meta-analysis and measurement.
--   **X/Twitter and Blue Sky** using twitter and bluesky as a means of scientific communication.
+{{< cv media >}}
 
-## <i class="fa-solid fa-file-lines"></i> Publications
+## Skills and Professional Service
 
-**Jané, M. B.**, Harlow, T. J., Khu, E. C., and colleagues (2024). Extracting Pre-Post Correlations for Meta-Analyses of Repeated Measures Designs https://matthewbjane.quarto.pub/pre-post-correlations/ *Manuscript in Preparation.*
+{{< cv skills >}}
 
-:::: {.content-visible when-format="html"}
-::: {.btn-group role="group" aria-label="Open Science Links"}
-[Data](){.btn-sm .btn .disabled .btn-primary role="button" data-toggle="data" title="data"} [Code](https://matthewbjane.quarto.pub/pre-post-correlations/){.btn-sm .btn .btn-primary role="button" data-toggle="code" title="Data File"} [PDF](https://osf.io/nx96q){.btn-sm .btn .btn-primary role="button" data-toggle="pdf" title="Data File"} [OSF](https://osf.io/hzj4d/){.btn-sm .btn .btn-primary role="button" data-toggle="osf" title="Data File"}
-:::
-::::
-
-<hr width="10%">
-
-Johnson, B. T., **Jané, M. B.**, Curley, C. (2023). Methodological Quality in Research in Health Psychology. *Under review at Sage Journal of Health Psychology.*
-
-:::: {.content-visible when-format="html"}
-::: {.btn-group role="group" aria-label="Open Science Links"}
-[Data](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="data" title="data"} [Code](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="code" title="Data File"} [PDF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="pdf" title="Data File"} [OSF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="osf" title="Data File"}
-:::
-::::
-
-<hr width="10%">
-
-Champion, G., **Jané, M. B.**, Johnson, B. T., and colleagues (2023). Efficacy of Mindfulness Based Stress Reduction Interventions on Stress Reduction in the United States: A Meta-Analysis. *Data being collected.*
-
-:::: {.content-visible when-format="html"}
-::: {.btn-group role="group" aria-label="Open Science Links"}
-[Data](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="data" title="data"} [Code](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="code" title="Data File"} [PDF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="pdf" title="Data File"} [OSF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="osf" title="Data File"}
-:::
-::::
-
-<hr width="10%">
-
-Harlow\*, T. J., **Jané\*, M. B.**, Read, H. L., & Chrobak, J. J. (2023). Memory retention following acoustic stimulation in slow-wave sleep: a meta-analytic review of replicability and measurement quality. *Frontiers in Sleep.*
-
-:::: {.content-visible when-format="html"}
-::: {.btn-group role="group" aria-label="Open Science Links"}
-[Data](https://github.com/MatthewBJane/meta-analysis-data-code/tree/main/acoustic_stimulation_and_memory/data){.btn-sm .btn .btn-primary role="button" data-toggle="data" title="data"} [Code](https://github.com/MatthewBJane/meta-analysis-data-code/tree/main/acoustic_stimulation_and_memory/analysis){.btn-sm .btn .btn-primary role="button" data-toggle="code" title="Data File"} [PDF](manuscripts/Harlow2023_Frontiers.pdf){.btn-sm .btn .btn-primary role="button" data-toggle="pdf" title="Data File"} [OSF](https://osf.io/8b49k/){.btn-sm .btn .btn-primary role="button" data-toggle="osf" title="Data File"}
-:::
-::::
-
-<hr width="10%">
-
-**Jané, M. B.**, Pisupati, S., Smith, K. E., Castro-Tonelli, L., Melo-Thomas, L., Schwarting, R. K., ... & Read, H. L. (2022). Correlations across timing cues in natural vocalizations predict biases in judging synthetic sound burst durations. *bioRxiv.*
-
-:::: {.content-visible when-format="html"}
-::: {.btn-group role="group" aria-label="Open Science Links"}
-[Data](https://doi.org/10.24433/CO.8495056.v1){.btn-sm .btn .btn-primary role="button" data-toggle="data" title="data"} [Code](https://doi.org/10.24433/CO.8495056.v1){.btn-sm .btn .btn-primary role="button" data-toggle="code" title="Data File"} [PDF](manuscripts/Jane2022_BioArxiv.pdf){.btn-sm .btn .btn-primary role="button" data-toggle="pdf" title="Data File"} [OSF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="osf" title="Data File"}
-:::
-::::
-
-<hr width="10%">
-
-**Jané, M. B.**, Uanhoro, J., Boika, N. (2024). Predictive Validity of the Unified Tertiary Matriculation Examination on University Grades: A Living Meta-Analysis. https://matthewbjane.com/utme-validity-meta-analysis/ *Manuscript in Preparation.*
-
-:::: {.content-visible when-format="html"}
-::: {.btn-group role="group" aria-label="Open Science Links"}
-[Data](https://matthewbjane.com/utme-validity-meta-analysis/){.btn-sm .btn .btn-primary role="button" data-toggle="data" title="data"} [Code](https://github.com/MatthewBJane/utme-validity-meta-analysis){.btn-sm .btn .btn-primary role="button" data-toggle="code" title="Data File"} [PDF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="pdf" title="Data File"} [OSF](){.btn-sm .btn .btn-primary .disabled role="button" data-toggle="osf" title="Data File"}
-:::
-::::
-
-<hr width="10%">
-
-```{=html}
-<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="matthewbjane" data-description="Support me on Buy me a coffee!" data-message="" data-color="#f1f9fa" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
-```
+{{< cv lines src="service" >}}
