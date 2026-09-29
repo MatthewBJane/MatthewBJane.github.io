@@ -59,8 +59,9 @@ website:
 format:
   html:
     theme:
-      light: flatly
+      # dark is listed first, so it is the default; the toggle still switches to light
       dark: darkly
+      light: flatly
     css: styles.css
     toc: true
     toc-title: "Sections"

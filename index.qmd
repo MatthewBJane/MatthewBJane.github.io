@@ -30,5 +30,5 @@ body-classes: homepage
 ---
 
 ::: {.ace-lead}
-I'm [Matthew B. Jané]{.ace-wordmark}, a PhD candidate in Quantitative Psychology and Neuroscience at the University of Connecticut, advised by Dr. Blair T. Johnson. My research focuses on statistical methods for meta-analysis and on detecting fraud and identifying errors in published research.
+I'm [Matthew B. Jané]{.ace-wordmark}, a PhD candidate in Quantitative Psychology and Neuroscience at the University of Connecticut. My research focuses on forensic meta-science and statistical methods for meta-analysis.
 :::

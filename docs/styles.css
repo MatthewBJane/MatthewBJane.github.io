@@ -520,19 +520,44 @@ body.quarto-dark ::selection {
   color: inherit;
 }
 
-/* ---- GLOBAL NAVBAR STYLE ---- */
+/* ---- GLOBAL NAVBAR STYLE ----
+   No top border; a thin accent line along the bottom with a faint highlight
+   that drifts slowly across it (see .navbar::after below). */
 .navbar {
+  position: relative;
   background-color: #222222 !important; /* Smooth off-black for both themes */
-  border-width: 10px 0 10px 0; 
+  border-width: 0 0 4px 0;
   border-style: solid;
   border-image: linear-gradient(90deg, #e262e2, #d75dd7) 1;
 }
 
-.navbar {
-  background-color: #222222 !important;
-  border-width: 10px 0 10px 0;
-  border-style: solid;
-  border-image: linear-gradient(90deg, #e262e2, #d75dd7) 1;
+/* the moving glow: a soft white band that sweeps along the bottom line */
+.navbar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;               /* sits exactly on the 4px bottom border */
+  height: 4px;
+  pointer-events: none;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0) 40%,
+      rgba(255, 255, 255, 0.55) 50%,
+      rgba(255, 255, 255, 0) 60%,
+      transparent 100%) no-repeat;
+  background-size: 40% 100%;
+  background-position: -60% 0;
+  filter: blur(1px);
+  animation: mbj-navbar-glow 9s ease-in-out infinite;
+}
+@keyframes mbj-navbar-glow {
+  0%   { background-position: -60% 0; }
+  70%  { background-position: 160% 0; }
+  100% { background-position: 160% 0; }  /* short pause before the next pass */
+}
+@media (prefers-reduced-motion: reduce) {
+  .navbar::after { animation: none; display: none; }
 }
 
 /* Light theme gradient */
