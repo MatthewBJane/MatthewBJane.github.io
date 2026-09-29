@@ -5,8 +5,10 @@
 # ---------------------------------------------------------------
 entries:
   - category: "Statistical methods"
-    items: "Meta-analysis, forensic meta-science, clinical trial analysis, regression, simulation."
+    items: "Meta-analysis, forensic meta-science, clinical trials, regression, simulation."
   - category: "Research integrity"
     items: "Detecting statistical errors, data inconsistencies, and fabricated or manipulated data."
   - category: "Programming and tools"
     items: "R, Python, MATLAB, Quarto, LaTeX, Git and GitHub."
+  - category: "Science communication"
+    items: "Public writing, social media, workshops, and invited talks."

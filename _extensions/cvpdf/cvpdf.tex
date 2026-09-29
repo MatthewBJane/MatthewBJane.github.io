@@ -14,6 +14,9 @@
 \usepackage{etoolbox}
 \usepackage{lastpage}
 \usepackage{needspace}
+\usepackage{graphicx}
+\usepackage{eso-pic}
+\usepackage{framed}
 
 \geometry{letterpaper, left=0.7in, right=0.7in, top=0.55in, bottom=0.65in, footskip=0.3in}
 
@@ -55,17 +58,36 @@
 \fancypagestyle{plain}{\pagestyle{cv}}
 \pagestyle{cv}
 
-% ---- header: name, headline, contact line, then a full-width rule ----
+% ---- header: small kicker, name, roles, contact line, then a full-width rule ----
 \renewcommand{\maketitle}{%
-  {\bfseries\fontsize{23}{27}\selectfont\color{cvink}\@title\par}%
-  \vspace{1pt}}
+  {\scriptsize\bfseries\color{cvmuted}\addfontfeatures{LetterSpace=14}CURRICULUM VITAE\par}%
+  \vspace{3pt}%
+  {\bfseries\fontsize{24}{28}\selectfont\color{cvink}\@title\par}%
+  \vspace{2pt}}
 \makeatother
 
+% roles line: "A \cvdot B \cvdot C" (the cv extension splits the headline on "·")
+\newcommand{\cvdot}{\hspace{0.45em}{\color{cvaccent}\textbullet}\hspace{0.45em}}
 \newcommand{\cvheadline}[1]{%
-  {\small\color{cvaccent}\addfontfeatures{LetterSpace=2}#1\par}\vspace{3pt}}
+  {\small\bfseries\color{cvgrey}#1\par}\vspace{4pt}}
 \newcommand{\cvsep}{\hspace{0.5em}{\color{cvrule}\textbar}\hspace{0.5em}}
-\newcommand{\cvcontact}[1]{{\footnotesize\color{cvgrey}#1\par}\vspace{5pt}%
-  {\color{cvaccent}\rule{\linewidth}{0.9pt}}\par\vspace{1pt}}
+\newcommand{\cvcontact}[1]{{\footnotesize\color{cvgrey}#1\par}\vspace{6pt}%
+  {\color{cvaccent}\rule{\linewidth}{1.2pt}}\par\vspace{2pt}}
+
+% logo in the top-right corner of the first page, aligned with the top margin
+\newlength{\cvlogoh}\setlength{\cvlogoh}{0.62in}
+\newcommand{\cvlogo}[1]{%
+  \AddToShipoutPictureFG*{\AtPageUpperLeft{%
+    \put(\LenToUnit{\dimexpr\paperwidth-0.7in-\cvlogoh\relax},\LenToUnit{\dimexpr-0.55in-\cvlogoh\relax}){%
+      \includegraphics[height=\cvlogoh]{#1}}}}}
+
+% summary as a lead paragraph with an accent bar on the left
+\newenvironment{cvlead}{%
+  \par\vspace{4pt}%
+  \def\FrameCommand{{\color{cvaccent}\vrule width 2.2pt}\hspace{9pt}}%
+  \MakeFramed{\advance\hsize-\width\FrameRestore}%
+  \linespread{1.12}\selectfont\color{cvink}}%
+  {\par\endMakeFramed\vspace{2pt}}
 
 % ---- section headings ----
 % ## : small uppercase letterspaced label in the accent colour, hairline below

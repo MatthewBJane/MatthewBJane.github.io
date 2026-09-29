@@ -2965,3 +2965,89 @@ div.quarto-about-trestles .about-entity .about-link .bi-bluesky::before {
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.468 1.948C5.303 3.325 7.276 6.118 8 7.616c.725-1.498 2.698-4.29 4.532-5.668C13.855.955 16 .186 16 2.632c0 .489-.28 4.105-.444 4.692-.572 2.04-2.653 2.561-4.504 2.246 3.236.551 4.06 2.375 2.281 4.2-3.376 3.464-4.852-.87-5.23-1.98-.07-.204-.103-.3-.103-.218 0-.081-.033.014-.102.218-.379 1.11-1.855 5.444-5.231 1.98-1.778-1.825-.955-3.65 2.28-4.2-1.85.315-3.932-.205-4.503-2.246C.28 6.737 0 3.12 0 2.632 0 .186 2.145.955 3.468 1.948'/%3E%3C/svg%3E") center / contain no-repeat;
           mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.468 1.948C5.303 3.325 7.276 6.118 8 7.616c.725-1.498 2.698-4.29 4.532-5.668C13.855.955 16 .186 16 2.632c0 .489-.28 4.105-.444 4.692-.572 2.04-2.653 2.561-4.504 2.246 3.236.551 4.06 2.375 2.281 4.2-3.376 3.464-4.852-.87-5.23-1.98-.07-.204-.103-.3-.103-.218 0-.081-.033.014-.102.218-.379 1.11-1.855 5.444-5.231 1.98-1.778-1.825-.955-3.65 2.28-4.2-1.85.315-3.932-.205-4.503-2.246C.28 6.737 0 3.12 0 2.632 0 .186 2.145.955 3.468 1.948'/%3E%3C/svg%3E") center / contain no-repeat;
 }
+
+/* the page title is drawn inside the header card instead */
+body.cv-page #title-block-header { display: none; }
+
+/* ---- CV web page header (the "cv hero" shortcode): name, role chips, the
+        summary as a lead paragraph, contact buttons and a PDF button, in a
+        soft accent panel. The PDF keeps its own plain header. ---- */
+.cv-hero {
+  position: relative;
+  margin: 0.4rem 0 2.4rem;
+  padding: 1.7rem 1.8rem 1.35rem 2rem;
+  border: 1px solid var(--mbj-line);
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--mbj-accent-wash) 0%, transparent 65%);
+  overflow: hidden;
+}
+.cv-hero::before {                /* accent spine on the left */
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: var(--mbj-accent);
+}
+.cv-hero .cv-name {
+  margin: 0 0 0.6rem;
+  padding: 0;
+  border: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--mbj-text);
+}
+.cv-hero .cv-roles { margin: 0 0 1.1rem; }
+.cv-hero .cv-roles p { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0; }
+.cv-hero .cv-role {
+  display: inline-block;
+  padding: 0.22rem 0.65rem;
+  border: 1px solid var(--mbj-accent);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--mbj-text);
+  background: var(--mbj-accent-wash);
+}
+.cv-hero .cv-lead p {
+  margin: 0 0 1.25rem;
+  font-size: 1.04rem;
+  line-height: 1.65;
+  color: var(--mbj-text);
+}
+.cv-hero .cv-hero-links p { display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 0; }
+main .cv-hero a.mbj-badge.cv-hero-link {
+  --mbj-badge: var(--mbj-muted);
+  margin: 0;
+  padding: 0.4rem 0.7rem !important;
+  border-radius: 4px !important;
+  font-family: "Roboto", sans-serif !important;
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0;
+  text-transform: none;
+}
+main .cv-hero a.mbj-badge.cv-hero-link .bi { font-size: 0.95rem; line-height: 1; }
+main .cv-hero a.mbj-badge.cv-hero-pdf { --mbj-badge: var(--mbj-accent); margin-left: auto; }        /* PDF sits at the right end */
+main .cv-hero a.cv-hero-pdf:not(:hover):not(:focus-visible) {
+  background: var(--mbj-accent-wash) !important;
+}
+/* Bluesky butterfly (not in this Quarto's icon set), drawn as a mask */
+.cv-hero .bi-bluesky::before {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.468 1.948C5.303 3.325 7.276 6.118 8 7.616c.725-1.498 2.698-4.29 4.532-5.668C13.855.955 16 .186 16 2.632c0 .489-.28 4.105-.444 4.692-.572 2.04-2.653 2.561-4.504 2.246 3.236.551 4.06 2.375 2.281 4.2-3.376 3.464-4.852-.87-5.23-1.98-.07-.204-.103-.3-.103-.218 0-.081-.033.014-.102.218-.379 1.11-1.855 5.444-5.231 1.98-1.778-1.825-.955-3.65 2.28-4.2-1.85.315-3.932-.205-4.503-2.246C.28 6.737 0 3.12 0 2.632 0 .186 2.145.955 3.468 1.948'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.468 1.948C5.303 3.325 7.276 6.118 8 7.616c.725-1.498 2.698-4.29 4.532-5.668C13.855.955 16 .186 16 2.632c0 .489-.28 4.105-.444 4.692-.572 2.04-2.653 2.561-4.504 2.246 3.236.551 4.06 2.375 2.281 4.2-3.376 3.464-4.852-.87-5.23-1.98-.07-.204-.103-.3-.103-.218 0-.081-.033.014-.102.218-.379 1.11-1.855 5.444-5.231 1.98-1.778-1.825-.955-3.65 2.28-4.2-1.85.315-3.932-.205-4.503-2.246C.28 6.737 0 3.12 0 2.632 0 .186 2.145.955 3.468 1.948'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+@media (max-width: 575.98px) {
+  .cv-hero { padding: 1.3rem 1.1rem 1.1rem 1.35rem; }
+  .cv-hero .cv-name { font-size: 2rem; }
+  main .cv-hero a.cv-hero-pdf { margin-left: 0; }
+}

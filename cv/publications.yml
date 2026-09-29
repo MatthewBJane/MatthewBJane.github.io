@@ -62,7 +62,7 @@ entries:
 
   # ---- open textbooks (living, updated online) ----
   - type: book
-    authors: "Jané, Xiao, Yeung, Ben-Shachar, Caldwell, ..., Feldman"
+    authors: "Jané, Xiao, Yeung, Ben-Shachar, Caldwell, Cousineau, Dunleavy, Elsherif, Johnson, Moreau, Riesthuis, Röseler, Steele, Vieira, Zloteanu, Feldman"
     year: 2024
     title: "Guide to effect sizes and confidence intervals"
     note: "Living open guide"

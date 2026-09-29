@@ -7,7 +7,7 @@
 entries:
   - name: "ThemePark"
     kind: "R package"
-    description: "Popular-culture styled ggplot themes."
+    description: "Popular-culture styled ggplot themes, featured on [R Weekly](https://rweekly.org/2023-W32.html) and [FlowingData](https://flowingdata.com/2023/07/28/barbie-and-oppenheimer-themes-for-charts-in-r/)."
     url: "https://github.com/MatthewBJane/theme_park"
 
   - name: "POSC"

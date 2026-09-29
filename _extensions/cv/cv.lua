@@ -234,8 +234,38 @@ local S = {}
 
 function S.headline()
   local m = read_yaml("profile"); if not m then return {} end
-  if is_latex() then return pandoc.Blocks({ pandoc.Plain(cat(tex("\\cvheadline{"), inl(m.headline), tex("}"))) }) end
+  if is_latex() then
+    -- "A · B · C" -> A \cvdot B \cvdot C
+    local roles = pandoc.Inlines({})
+    local k = 0
+    for part in ((str(m.headline) or "") .. " · "):gmatch("(.-)%s*·%s*") do
+      if part ~= "" then
+        if k > 0 then roles:insert(tex("\\cvdot ")) end
+        roles:extend(inl(part)); k = k + 1
+      end
+    end
+    local out = pandoc.Blocks({})
+    -- optional logo in the page corner: cv-logo: images/favicon.png in the front matter
+    local logo = META and META["cv-logo"] and pandoc.utils.stringify(META["cv-logo"]) or ""
+    if logo ~= "" then out:insert(pandoc.RawBlock("latex", "\\cvlogo{" .. logo .. "}")) end
+    out:insert(pandoc.Plain(cat(tex("\\cvheadline{"), roles, tex("}"))))
+    return out
+  end
   return pandoc.Blocks({ pandoc.Para({ span(m.headline, "cv-headline") }) })
+end
+
+-- the summary as a lead paragraph (PDF: accent bar on the left)
+function S.lead()
+  local m = read_yaml("profile"); if not m then return {} end
+  local v = m.summary
+  local body = ptype(v) == "Blocks" and v or pandoc.Blocks({ pandoc.Para(inl(v)) })
+  if is_latex() then
+    local out = pandoc.Blocks({ pandoc.RawBlock("latex", "\\begin{cvlead}") })
+    out:extend(body)
+    out:insert(pandoc.RawBlock("latex", "\\end{cvlead}"))
+    return out
+  end
+  return body
 end
 
 function S.summary()
@@ -248,7 +278,9 @@ end
 function S.contact()
   local m = read_yaml("profile"); if not m or not m.contact then return {} end
   local out = pandoc.Inlines({})
-  for i, c in ipairs(m.contact) do
+  local n = 0
+  for _, c in ipairs(m.contact) do
+    if not ((is_latex() and c.html_only) or (is_html() and c.pdf_only)) then n = n + 1; local i = n
     if is_html() then
       if i > 1 then out:insert(pandoc.Space()) end
       local label = pandoc.Inlines({})
@@ -264,9 +296,52 @@ function S.contact()
       -- items without a url (e.g. a mailing address) are plain text
       if has(c.url) then out:insert(pandoc.Link(inl(c.label), str(c.url))) else out:extend(inl(c.label)) end
     end
+    end
   end
   if is_html() then return pandoc.Blocks({ div({ pandoc.Plain(out) }, "cv-contact") }) end
   return pandoc.Blocks({ pandoc.Plain(cat(tex("\\cvcontact{"), out, tex("}"))) })
+end
+
+-- HTML-only page header: name, headline as role chips, the summary as a lead
+-- paragraph, then the contact links (icon + short label) and a PDF button.
+-- The PDF keeps the plain headline / contact / summary layout.
+function S.hero()
+  if not is_html() then return {} end
+  local m = read_yaml("profile"); if not m then return {} end
+  local out = pandoc.Blocks({})
+  out:insert(pandoc.RawBlock("html", '<h1 class="cv-name">' .. pandoc.utils.stringify(m.name or "") .. '</h1>'))
+  -- "A · B · C" -> three chips
+  local roles = pandoc.Inlines({})
+  for part in ((str(m.headline) or "") .. " · "):gmatch("(.-)%s*·%s*") do
+    if part ~= "" then
+      roles:insert(pandoc.Span(inl(part), pandoc.Attr("", { "cv-role" })))
+      roles:insert(pandoc.Space())
+    end
+  end
+  out:insert(div({ pandoc.Plain(roles) }, "cv-roles"))
+  local v = m.summary
+  local lead = ptype(v) == "Blocks" and pandoc.utils.blocks_to_inlines(v) or inl(v)
+  out:insert(pandoc.Para(lead))
+  out[#out] = div({ out[#out] }, "cv-lead")
+  local links = pandoc.Inlines({})
+  for _, c in ipairs(m.contact or {}) do
+    if has(c.url) and not c.pdf_only then
+      local label = pandoc.Inlines({})
+      if has(c.icon) then
+        label:insert(pandoc.RawInline("html", '<i class="bi bi-' .. str(c.icon) .. '" aria-hidden="true"></i>'))
+      end
+      label:insert(pandoc.Span(inl(c.short or c.label), pandoc.Attr("", { "cv-link-label" })))
+      links:insert(pandoc.Link(label, str(c.url), str(c.label), pandoc.Attr("", { "mbj-badge", "cv-hero-link" })))
+      links:insert(pandoc.Space())
+    end
+  end
+  if has(m.pdf) then
+    links:insert(pandoc.Link({ pandoc.RawInline("html", '<i class="bi bi-file-earmark-pdf" aria-hidden="true"></i>'),
+      pandoc.Span({ pandoc.Str("Download"), pandoc.Space(), pandoc.Str("PDF") }, pandoc.Attr("", { "cv-link-label" })) },
+      str(m.pdf), "Download this CV as a PDF", pandoc.Attr("", { "mbj-badge", "mbj-badge-accent", "cv-hero-link", "cv-hero-pdf" })))
+  end
+  out:insert(div({ pandoc.Plain(links) }, "cv-hero-links"))
+  return pandoc.Blocks({ div(out, "cv-hero") })
 end
 
 function S.education()
@@ -333,8 +408,7 @@ end
 function S.software()
   local m = read_yaml("software"); if not m then return {} end
   -- one bullet per tool: **Name** KIND  description  url
-  -- sub-items (e.g. the simulators) follow in plain text: web page as a nested
-  -- list with descriptions, PDF as one run of "Name url; Name url".
+  -- sub-items (e.g. the simulators) follow as a nested list: Name: description URL
   local items = {}
   for _, e in ipairs(m.entries or {}) do
     local c = cat(pandoc.Strong(inl(e.name)))
@@ -349,20 +423,15 @@ function S.software()
     end
     local extra = nil
     if e.items and #e.items > 0 then
-      if is_html() then
+      do
         local its = {}
         for _, it in ipairs(e.items) do
-          local line = inl(it.name)
+          local line = pandoc.Inlines({ pandoc.Emph(inl(it.name)) })
           if has(it.description) then line = cat(line, ": ", inl(it.description)) end
           if has(it.url) then local u = abs_url(str(it.url)); line:extend(cat(" ", pandoc.Link((u:gsub("^https?://", "")), u))) end
           table.insert(its, { pandoc.Plain(line) })
         end
         extra = pandoc.BulletList(its)
-      else
-        for k, it in ipairs(e.items) do
-          c:extend(cat(k == 1 and " " or "; ", tex("\\mbox{"), inl(it.name), tex("}")))
-          if has(it.url) then local u = abs_url(str(it.url)); c:extend(cat(" ", pandoc.Link((u:gsub("^https?://", "")), u))) end
-        end
       end
     end
     table.insert(items, { c, extra })

@@ -1,11 +1,13 @@
 ---
 title: "Matthew B. Jané"
 pagetitle: "CV – Matthew B. Jané"
+body-classes: cv-page      # the web page draws its own header (cv hero)
 format:
   html:
     toc: true
   cvpdf-pdf: default
 format-links: false
+cv-logo: images/favicon.png   # logo in the PDF's top-right corner
 language:
   other-links-title: Download
 other-links:
@@ -30,13 +32,17 @@ other-links:
   _extensions/cvpdf/cvpdf.tex; the section builder in _extensions/cv/cv.lua.
 -->
 
+::: {.content-visible when-format="html"}
+{{< cv hero >}}
+:::
+
+::: {.content-visible unless-format="html"}
 {{< cv headline >}}
 
 {{< cv contact >}}
 
-## Summary
-
-{{< cv summary >}}
+{{< cv lead >}}
+:::
 
 ## Professional Experience
 

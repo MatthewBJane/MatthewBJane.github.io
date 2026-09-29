@@ -1,7 +1,7 @@
 ---
 title: "Matthew B. Jané"
 # Link-preview text only (og:description).
-description: "PhD candidate in Quantitative Psychology and Neuroscience at the University of Connecticut. Statistical methods for meta-analysis, and detecting errors and fraud in published research."
+description: "PhD candidate in Quantitative Psychology and Neuroscience at the University of Connecticut. My research focuses on forensic meta-science and statistical methods for meta-analysis."
 toc: false
 about:
   template: trestles

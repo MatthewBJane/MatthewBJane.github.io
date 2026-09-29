@@ -1,29 +1,45 @@
 # ---------------------------------------------------------------
 # PROFILE: name line, headline, summary, and contact links.
 # Text fields accept Markdown (*italic*, **bold**, [link](url)).
+# Contact items: label (shown in the PDF), url, icon (a Bootstrap icon name),
+#   short: label on the web page's header buttons (defaults to label)
+#   html_only: true -> web page only;  pdf_only: true -> PDF only
 # ---------------------------------------------------------------
 name: "Matthew B. Jané"
-headline: "Meta-Scientist · Forensic Research Analyst · PhD Candidate, Quantitative Psychology and Neuroscience"
+headline: "Forensic Meta-Scientist · PhD Candidate, Quantitative Psychology and Neuroscience"
 summary: >
-  Meta-scientist and forensic research analyst who detects fabricated data,
+  Forensic meta-scientist who detects fabricated data,
   statistical errors, and research misconduct in published medical and clinical
   research. PhD candidate in Quantitative Psychology and Neuroscience at the University of
-  Connecticut with expertise in meta-analysis, clinical trial methodology, and
-  evidence synthesis, and creator of Audit Clinical Evidence (ACE), which audits
+  Connecticut with expertise in meta-analysis and
+  evidence synthesis. Creator of Audit Clinical Evidence (ACE), which audits
   published clinical trials for research integrity violations.
 contact:
   - label: "matthewbjane.com"
     url: "https://matthewbjane.com"
     icon: globe
+    pdf_only: true          # the web page already is the website
   - label: "matthew.jane@uconn.edu"
+    short: "Email"
     url: "mailto:matthew.jane@uconn.edu"
     icon: envelope
   - label: "ORCID 0000-0002-3121-7769"
+    short: "ORCID"
     url: "https://orcid.org/0000-0002-3121-7769"
     icon: person-badge
   - label: "Google Scholar"
+    short: "Scholar"
     url: "https://scholar.google.com/citations?user=LemZrcQAAAAJ"
     icon: mortarboard
   - label: "github.com/MatthewBJane"
+    short: "GitHub"
     url: "https://github.com/MatthewBJane"
     icon: github
+  - label: "LinkedIn"
+    url: "https://www.linkedin.com/in/matthew-b-jan%C3%A9-0b6728183/"
+    icon: linkedin
+    html_only: true
+  - label: "Bluesky"
+    url: "https://bsky.app/profile/matthewbjane.bsky.social"
+    icon: bluesky
+    html_only: true

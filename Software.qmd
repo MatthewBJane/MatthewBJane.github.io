@@ -56,21 +56,4 @@ A catalog of publicly available meta-analytic databases.
 :::
 :::
 
-::: {.mbj-card}
-::: {.mbj-card-logo}
-![](images/software/artifactsimulatorlogo.png){fig-alt="Artifact Simulator logo"}
-:::
-::: {.mbj-card-body}
-[Web app]{.mbj-card-kind}
-
-### Artifact Simulator
-
-Visualize how statistical artifacts bias effect size estimates.
-
-::: {.mbj-card-links}
-[{{< fa diagram-project >}} Open app](artifact-simulator.qmd){.btn .btn-secondary}
-:::
-:::
-:::
-
 :::

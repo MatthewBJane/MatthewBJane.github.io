@@ -9,13 +9,46 @@
 #   url:     link
 # ---------------------------------------------------------------
 entries:
-  # TODO: add Gideon Meyerowitz-Katz's coverage of ACE (title, outlet, date, link)
+  - author: "Meyerowitz-Katz"
+    year: 2026
+    title: "How do we deal with seriously problematic research?"
+    outlet: "Medium"
+    note: "On Audit Clinical Evidence (ACE), the clinical trial auditing project"
+    url: "https://gidmk.medium.com/how-do-we-deal-with-seriously-problematic-research-b894bdd848b3"
+
+  - author: "Ritchie, Chivers"
+    year: 2025
+    title: "Jonathan Haidt vs. social media"
+    outlet: "Science Fictions (podcast)"
+    note: "On the Haidt–Jané debate over the social media reduction meta-analysis"
+    url: "https://sciencefictionspod.substack.com/p/unpaywalled-jonathan-haidt-vs-social"
 
   - year: 2025
     title: "The research on fluoride and IQ"
     outlet: "Good Science Project"
     note: "On the fluoride–IQ critique"
     url: "https://goodscienceproject.org/articles/the-research-on-fluoride-and-iq/"
+
+  - author: "Reinstein"
+    year: 2025
+    title: "Can we do useful meta-analysis? Unjournal evaluations of \"Meaningfully reducing consumption of meat and animal products is an unsolved problem\""
+    outlet: "Effective Altruism Forum"
+    note: "Discusses Jané's Unjournal evaluation"
+    url: "https://forum.effectivealtruism.org/posts/iPcsAEzoMQTdCswDf/can-we-do-useful-meta-analysis-unjournal-evaluations-of"
+
+  - author: "Steier"
+    year: 2025
+    title: "Fighting for the F word: Defending fluoride against fear and faulty science"
+    outlet: "Unbiased Science"
+    note: "On the fluoride–IQ critique"
+    url: "https://theunbiasedscipod.substack.com/p/fighting-for-the-f-word-defending"
+
+  - author: "Rausch, Haidt"
+    year: 2024
+    title: "The fundamental flaws of the only meta-analysis of social media reduction experiments (and why it matters), part 2"
+    outlet: "After Babel"
+    note: "Response to Jané's critique of their re-analysis"
+    url: "https://www.afterbabel.com/p/fundamental-flaws-part-2"
 
   - author: "Lee"
     year: 2024
