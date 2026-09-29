@@ -8,7 +8,7 @@
 #   title:         job title                          (required)
 #   organization:  employer, shown on the line below  (required)
 #   location:      optional, added after the organization
-#   dates:         "Mon YYYY – Mon YYYY" (month + year, as federal resumes require)
+#   dates:         "Mon YYYY – Mon YYYY" (month + year)
 #   details:       list of accomplishment bullets     (optional)
 # ---------------------------------------------------------------
 professional:

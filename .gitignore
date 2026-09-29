@@ -6,5 +6,8 @@
 /.quarto/
 .DS_Store
 
-# private local CV (address, phone, federal employment): never commit
+# private files: never commit
 _private/
+
+# old default Quarto output folder (the site builds into docs/)
+/_site/

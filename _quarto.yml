@@ -13,7 +13,7 @@ project:
 website:
   title: "Matthew B. Jané"
   site-url: https://matthewbjane.com
-  description: "Matthew B. Jané, PhD candidate in Quantitative Psychology at the University of Connecticut. Statistical methods for meta-analysis, and detecting errors and fraud in published research."
+  description: "Matthew B. Jané, PhD candidate in Quantitative Psychology and Neuroscience at the University of Connecticut. Statistical methods for meta-analysis, and detecting errors and fraud in published research."
   favicon: "/images/favicon.png"
   open-graph:
     image: "/images/social-card.png"

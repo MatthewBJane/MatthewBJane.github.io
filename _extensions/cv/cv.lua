@@ -294,21 +294,21 @@ function S.experience(kwargs)
   for _, e in ipairs(m[group] or {}) do
     local sub = inl(e.organization)
     if has(e.location) then sub = cat(sub, ", ", inl(e.location)) end
-    -- federal-resume details (hours, pay, supervisor): set only by the private overlay
-    local fed = pandoc.Inlines({})
+    -- extra job details (hours, pay, supervisor): set only by the private overlay
+    local extra_line = pandoc.Inlines({})
     local function add(label, v)
       if not has(v) then return end
-      if #fed > 0 then fed:extend({ pandoc.Space(), pandoc.Str("·"), pandoc.Space() }) end
-      fed:extend(cat(label, inl(v)))
+      if #extra_line > 0 then extra_line:extend({ pandoc.Space(), pandoc.Str("·"), pandoc.Space() }) end
+      extra_line:extend(cat(label, inl(v)))
     end
     add("Hours per week: ", e.hours)
     add("Salary: ", e.salary)
-    add("Series/grade: ", e.grade)
+    add("Grade: ", e.grade)
     add("Supervisor: ", e.supervisor)
     local extra = {}
-    if #fed > 0 then
-      if is_latex() then table.insert(extra, pandoc.Plain(cat(tex("\\cvfed{"), fed, tex("}"))))
-      else table.insert(extra, div({ pandoc.Plain(fed) }, "cv-org")) end
+    if #extra_line > 0 then
+      if is_latex() then table.insert(extra, pandoc.Plain(cat(tex("\\cvextra{"), extra_line, tex("}"))))
+      else table.insert(extra, div({ pandoc.Plain(extra_line) }, "cv-org")) end
     end
     table.insert(extra, bullets(e.details))
     out:extend(entry(cat(pandoc.Strong(inl(e.title))), e.dates, sub, extra))

@@ -21,9 +21,6 @@ bibliography: references.bib
 This post is archived and is no longer updated. [See all archived posts](../blog.qmd).
 :::
 
-```{=html}
-<a href="https://www.buymeacoffee.com/matthewbjane"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=matthewbjane&button_colour=ed5c9b&font_colour=ffffff&font_family=Arial&outline_colour=ffffff&coffee_colour=ffffff" /></a>
-```
 ## Defining a Squared Effect Size
 
 Sometimes squared effect sizes are used in order to interpret results (e.g., $R^2$, $\eta^2$). However these squared indices are biased in small sample sizes. To see why this is the case we can describe the mathematically. Generally, lets say we have some observed effect size $h_i$ for a sample $i$. This can be modeled as a function of a population correlation $\theta$ and sampling error $e_i$,
@@ -59,7 +56,7 @@ Since the sampling error variance is always positive (unless the sample size was
 
 ## Simulated Example
 
-Lets assume that in the population, the squared correlation between predicted and observed outcome ($R^2$) is zero, that is, the independent variables ($X_1$,$X_2$, and $X_3$) do not explain any variance in the dependent variable ($Y$). Lets simulate two studies, where one study has a sample size of 100 and the other has a sample size of 25. Then lets replicate these studies 5,000 times. In the first figure we will see that the mean value of $R^2$ is not zero even though the population value is. And with the smaller sample sizes within each study ($N = 25$), the mean $R^2$ is larger. The plots below show the distribution of $R^2$ using the `ggdist` package [@kay].
+Lets assume that in the population, the squared correlation between predicted and observed outcome ($R^2$) is zero, that is, the independent variables ($X_1$,$X_2$, and $X_3$) do not explain any variance in the dependent variable ($Y$). Lets simulate two studies, where one study has a sample size of 100 and the other has a sample size of 25. Then lets replicate these studies 5,000 times. In the first figure we will see that the mean value of $R^2$ is not zero even though the population value is. And with the smaller sample sizes within each study ($N = 25$), the mean $R^2$ is larger. The plots below show the distribution of $R^2$ using the `ggdist` package [@ggdist].
 
 <details class="code-fold">
 <summary>Code</summary>
@@ -205,7 +202,3 @@ ggplot(data=NULL, aes(N,R2)) +
 </details>
 
 ![](figures/blog-post-4-fig3.png)
-
-<iframe src="https://embeds.beehiiv.com/f3ffd81a-4723-4419-bb1d-afc8af3bac36" data-test-id="beehiiv-embed" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius: 4px; border: 2px solid #e5e7eb; margin: 0; background-color: transparent;">
-
-</iframe>

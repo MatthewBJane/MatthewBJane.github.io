@@ -304,7 +304,6 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<a href="https://www.buymeacoffee.com/matthewbjane"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&amp;emoji=☕&amp;slug=matthewbjane&amp;button_colour=ed5c9b&amp;font_colour=ffffff&amp;font_family=Arial&amp;outline_colour=ffffff&amp;coffee_colour=ffffff"></a>
 <section id="step-1-obtain-the-necessary-statistics" class="level2">
 <h2 class="anchored" data-anchor-id="step-1-obtain-the-necessary-statistics">Step 1: Obtain the necessary statistics</h2>
 <p>In order to calculate the pre/post correlation (<span class="math inline">\(r\)</span>), we need the standard deviation (SD) of pre-test scores (<span class="math inline">\(SD_{pre}\)</span>), the SD of post-test scores (<span class="math inline">\(SD_{post}\)</span>), the mean change (<span class="math inline">\(M_{change}\)</span>), the paired t-statistic (<span class="math inline">\(t\)</span>), the sample size (<span class="math inline">\(N\)</span>). In this blog post, we are assuming that the change score standard deviation (<span class="math inline">\(SD_{change}\)</span>) is unavailable to us. If the pre-test SD is available, but the post-test SD is unavailable, you can approximate the post-test SD by, first, taking average ratio of the pre-test SD and post-test SD from <span class="math inline">\(k\)</span> studies in the current meta-analysis (<span class="math inline">\(\overline{SD}_{ratio}\)</span>; see the blog post on 9/8/2023), then we can approximate the post-test SD by multiplying the pre-test SD by the average SD ratio,</p>
@@ -397,8 +396,6 @@ r = \frac{t^2\left(SD^2_{pre} + SD^2_{post}\right) - N\times M^2_{change} }{2 \t
 <span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="co"># print results</span></span>
 <span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">'r = '</span>,r))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="cell-output"><code>[1] "r = 0.7"</code></pre>
-<iframe src="https://embeds.beehiiv.com/f3ffd81a-4723-4419-bb1d-afc8af3bac36" data-test-id="beehiiv-embed" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius: 4px; border: 2px solid #e5e7eb; margin: 0; background-color: transparent;">
-</iframe>
 
 
 </section>

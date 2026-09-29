@@ -1,9 +1,9 @@
 ---
 title: "The Effect of Social Media Reduction on Depression and Anxiety: A Meta-Analysis of RCTs"
-editor: source
-
+toc: false
+# This page moved; old links are forwarded to the new address.
+include-in-header:
+  text: '<meta http-equiv="refresh" content="0; url=https://matthewbjane.quarto.pub/social-media-and-mental-health/">'
 ---
 
-
-
-This site has been relocated to: [matthewbjane.quarto.pub/social-media-and-mental-health/](https://matthewbjane.quarto.pub/social-media-and-mental-health/)
+This page has moved to [matthewbjane.quarto.pub/social-media-and-mental-health](https://matthewbjane.quarto.pub/social-media-and-mental-health/).

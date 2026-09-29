@@ -1,7 +1,7 @@
 ---
 title: "Matthew B. Jané"
 # Link-preview text only (og:description).
-description: "PhD candidate in Quantitative Psychology at the University of Connecticut. Statistical methods for meta-analysis, and detecting errors and fraud in published research."
+description: "PhD candidate in Quantitative Psychology and Neuroscience at the University of Connecticut. Statistical methods for meta-analysis, and detecting errors and fraud in published research."
 toc: false
 about:
   template: trestles
@@ -12,17 +12,23 @@ about:
     - icon: mortarboard
       text: Scholar
       href: https://scholar.google.com/citations?user=LemZrcQAAAAJ&hl=en
-    - icon: envelope
-      text: Email
-      href: mailto:matthew.jane@uconn.edu
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/matthew-b-jan%C3%A9-0b6728183/
+    - icon: bluesky
+      text: Bluesky
+      href: https://bsky.app/profile/matthewbjane.bsky.social
     - icon: twitter-x
       text: X
       href: https://www.x.com/MatthewBJane
+    - icon: envelope
+      text: Email
+      href: mailto:matthew.jane@uconn.edu
     - text: Curriculum Vitae
       href: CV.pdf
 body-classes: homepage
 ---
 
 ::: {.ace-lead}
-I'm [Matthew B. Jané]{.ace-wordmark}, a PhD candidate in Quantitative Psychology at the University of Connecticut, advised by Dr. Blair T. Johnson. My research focuses on statistical methods for meta-analysis and on detecting fraud and identifying errors in published research.
+I'm [Matthew B. Jané]{.ace-wordmark}, a PhD candidate in Quantitative Psychology and Neuroscience at the University of Connecticut, advised by Dr. Blair T. Johnson. My research focuses on statistical methods for meta-analysis and on detecting fraud and identifying errors in published research.
 :::
