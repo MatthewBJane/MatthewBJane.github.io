@@ -87,7 +87,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="..//images/favicon.png" rel="icon" type="image/png">
+<link href="..//images/favicon.png?v=3f9fdf5a" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -166,7 +166,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../styles.css?v=72cec098">
 <meta property="og:title" content="A Response to Jonathan Haidt’s Response – Matthew B. Jané">
 <meta property="og:description" content="I want to thank Jonathan Haidt and Zach Rausch for engaging with my critique of their re-analysis of Ferguson’s meta-analysis. Unfortunately, their response continued to convey a misunderstanding of meta-analysis. There however were some valid points brought up that could have enhanced my analyses so I will also include those here. Before digging into this post, please first read my initial critique. I also address some accusations about my motivation here.">
 <meta property="og:image" content="https://matthewbjane.com/blog-posts/images/blog-image.png">
@@ -191,7 +191,7 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../images/logo/logo-navbar.png" alt="Matthew B. Jané" class="navbar-logo">
+    <img src="../images/logo/logo-navbar.png?v=68b7d2e4" alt="Matthew B. Jané" class="navbar-logo">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -529,7 +529,7 @@ window.Quarto = {
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">method =</span> <span class="st">"REML"</span>,</span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">test =</span> <span class="st">"knha"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The output of the model will be difficult to interpret so we will go ahead and plot it out with the confidence and prediction intervals.</p>
-<p><img src="figures/blog-post-7-fig1.png" class="img-fluid"></p>
+<p><img src="figures/blog-post-7-fig1.png?v=0a3c0e3e" class="img-fluid"></p>
 <p>As we kind of would have expected, you see an initial increase in the conditional mean and then a slow fall over time. Still there is a lot of variability both in the true effects (prediction interval) and in the conditional mean effect (confidence interval) so it is difficult to say anything here with much confidence. Now we can construct the same model with Collis and Eggers (2022) removed from the analysis.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dat_no_CollisEggers <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Citation <span class="sc">!=</span> <span class="st">"Collins and Edgers 2022"</span>)</span>
@@ -541,11 +541,11 @@ window.Quarto = {
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">method =</span> <span class="st">"REML"</span>,</span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>                 <span class="at">test =</span> <span class="st">"knha"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Like we did for the last one, we can plot out the same model without the Collis and Egger (2022) study:</p>
-<p><img src="figures/blog-post-7-fig2.png" class="img-fluid"></p>
+<p><img src="figures/blog-post-7-fig2.png?v=98db64c1" class="img-fluid"></p>
 <p>Surprisingly, even without Collis and Egger’s study there really isn’t a whole lot we can say here with confidence. It does not really even appear is much different than it is with Collis and Eggers (2022) study included. In fact, with the predictions (conditional means) plotted side by side they appear almost identical:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="figures/blog-post-7-fig3.png" class="img-fluid figure-img"></p>
+<p><img src="figures/blog-post-7-fig3.png?v=bc3f3867" class="img-fluid figure-img"></p>
 <figcaption>Model predictions (conditional mean of true effects) and confidence intervals for the model including Collis &amp; Egger and the model without.</figcaption>
 </figure>
 </div>

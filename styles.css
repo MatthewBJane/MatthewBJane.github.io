@@ -2516,7 +2516,7 @@ div.quarto-about-trestles .about-entity .about-links {
   justify-content: center;
   gap: 0.5rem !important;
 }
-div.quarto-about-trestles .about-entity .about-link[href$="CV.pdf"] {
+div.quarto-about-trestles .about-entity .about-link[href*="CV.pdf"] {
   grid-column: 1 / -1;
   justify-content: flex-start;
   gap: 0.6rem;
@@ -2531,11 +2531,11 @@ div.quarto-about-trestles .about-entity .about-link[href$="CV.pdf"] {
   font-weight: 700 !important;
   letter-spacing: 0;
 }
-div.quarto-about-trestles .about-entity .about-link[href$="CV.pdf"] .bi {
+div.quarto-about-trestles .about-entity .about-link[href*="CV.pdf"] .bi {
   display: none;                 /* the PDF tag on the right carries the format */
 }
 /* "PDF" tag on the right */
-div.quarto-about-trestles .about-entity .about-link[href$="CV.pdf"]::after {
+div.quarto-about-trestles .about-entity .about-link[href*="CV.pdf"]::after {
   content: "PDF";
   margin-left: auto;
   padding: 0.14rem 0.4rem 0.12rem;
@@ -2547,17 +2547,17 @@ div.quarto-about-trestles .about-entity .about-link[href$="CV.pdf"]::after {
   letter-spacing: 0.06em;
   line-height: 1;
 }
-div.quarto-about-trestles .about-entity .about-link[href$="CV.pdf"]:hover,
-div.quarto-about-trestles .about-entity .about-link[href$="CV.pdf"]:focus-visible {
+div.quarto-about-trestles .about-entity .about-link[href*="CV.pdf"]:hover,
+div.quarto-about-trestles .about-entity .about-link[href*="CV.pdf"]:focus-visible {
   background: rgba(3, 229, 255, 0.3) !important;
   color: #222222 !important;
 }
-body.quarto-dark div.quarto-about-trestles .about-entity .about-link[href$="CV.pdf"] {
+body.quarto-dark div.quarto-about-trestles .about-entity .about-link[href*="CV.pdf"] {
   background: rgba(226, 98, 226, 0.16) !important;
   color: #ffffff !important;
 }
-body.quarto-dark div.quarto-about-trestles .about-entity .about-link[href$="CV.pdf"]:hover,
-body.quarto-dark div.quarto-about-trestles .about-entity .about-link[href$="CV.pdf"]:focus-visible {
+body.quarto-dark div.quarto-about-trestles .about-entity .about-link[href*="CV.pdf"]:hover,
+body.quarto-dark div.quarto-about-trestles .about-entity .about-link[href*="CV.pdf"]:focus-visible {
   background: rgba(226, 98, 226, 0.32) !important;
   color: #ffffff !important;
 }
@@ -2934,14 +2934,14 @@ main h3 { font-size: 1.05rem; margin-top: 1.5rem; }
 div.quarto-about-trestles .about-entity .about-links {
   grid-template-columns: repeat(6, auto) !important;
 }
-div.quarto-about-trestles .about-entity .about-link:not([href$="CV.pdf"]) {
+div.quarto-about-trestles .about-entity .about-link:not([href*="CV.pdf"]) {
   width: 2.4rem !important;
   height: 2.4rem;
   padding: 0 !important;
   gap: 0;
   justify-content: center;
 }
-div.quarto-about-trestles .about-entity .about-link:not([href$="CV.pdf"]) .about-link-text {
+div.quarto-about-trestles .about-entity .about-link:not([href*="CV.pdf"]) .about-link-text {
   position: absolute !important;
   width: 1px;
   height: 1px;
@@ -2950,7 +2950,7 @@ div.quarto-about-trestles .about-entity .about-link:not([href$="CV.pdf"]) .about
   clip-path: inset(50%);
   white-space: nowrap;
 }
-div.quarto-about-trestles .about-entity .about-link:not([href$="CV.pdf"]) .bi {
+div.quarto-about-trestles .about-entity .about-link:not([href*="CV.pdf"]) .bi {
   font-size: 1.1rem;
 }
 /* Bluesky: this Quarto's icon set has no butterfly, so draw it as a mask

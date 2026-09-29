@@ -67,7 +67,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="..//images/favicon.png" rel="icon" type="image/png">
+<link href="..//images/favicon.png?v=3f9fdf5a" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -146,7 +146,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../styles.css?v=72cec098">
 <meta property="og:title" content="Approximating Standard Deviation from Inter-Quantile Range – Matthew B. Jané">
 <meta property="og:description" content="Occasionally researchers report inter-quantile ranges (e.g., inter-quartile range) to measure the spread of the data. Since meta-analysts need standard deviations to calculate effect size estimates, here is a strategy to approximate them from an inter-quantile range.">
 <meta property="og:image" content="https://matthewbjane.com/blog-posts/images/blog-image.png">
@@ -171,7 +171,7 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../images/logo/logo-navbar.png" alt="Matthew B. Jané" class="navbar-logo">
+    <img src="../images/logo/logo-navbar.png?v=68b7d2e4" alt="Matthew B. Jané" class="navbar-logo">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -309,9 +309,9 @@ window.Quarto = {
 <section id="inter-quantile-range" class="level3">
 <h3 class="anchored" data-anchor-id="inter-quantile-range">Inter-Quantile Range</h3>
 <p>Studies may report inter-quantile ranges in order to communicate the spread of the data. However, meta-analysts will need standard deviations (SD) to calculate effect size estimates such as standardized mean differences (i.e., Cohen’s <span class="math inline">\(d\)</span>). For this post, we will focus on the inter-<em>quartile</em> range (IQR) although the method described here will apply to any range between a pair of quantiles. The IQR (<span class="math inline">\(X_{(75-25)}\)</span>) is defined as the difference between the 75th and 25th quantile values, that is, the region where 50% of the data lies. We can visualize what this will look like with normally distributed data:</p>
-<p><img src="figures/blog-post-2-fig1.png" class="img-fluid"></p>
+<p><img src="figures/blog-post-2-fig1.png?v=4dce50c1" class="img-fluid"></p>
 <p>Now let’s compare the range of values covered by +/- 1 SDs of a normal distribution:</p>
-<p><img src="figures/blog-post-2-fig2.png" class="img-fluid"></p>
+<p><img src="figures/blog-post-2-fig2.png?v=6464332a" class="img-fluid"></p>
 <p>The range covered by <span class="math inline">\(\pm 1\)</span> SD covers a considerably larger range of values than the IQR.</p>
 </section>
 <section id="step-2-convert-iqr-to-standard-deviations" class="level3">
@@ -345,7 +345,7 @@ S_X =  \frac{X_{(75-25)}}{S_{(75-25)}} = \frac{X_{(75-25)}}{1.34898}
 <section id="note-the-assumptions" class="level2">
 <h2 class="anchored" data-anchor-id="note-the-assumptions">Note the Assumptions!</h2>
 <p>Since this method provides an approximation of a normal distribution it is important to point out that the method may be biased under different distributions. For example, if we try the same method on a Student’s t distribution with heavy tails (3.5 degrees of freedom), <span class="math inline">\(S_{(75-25)}\)</span> would be equal to 1.50187 which is slightly larger than 1.34898 that we computed from the normal distribution. If we were to assume a normal distribution when it was truly a student’s t, the method would over-estimate the standard deviation by ~11%.</p>
-<p><img src="figures/blog-post-2-fig3.png" class="img-fluid"></p>
+<p><img src="figures/blog-post-2-fig3.png?v=83a9a30c" class="img-fluid"></p>
 <section id="applying-it-to-simulated-data" class="level3">
 <h3 class="anchored" data-anchor-id="applying-it-to-simulated-data">Applying it to simulated data</h3>
 <p>Lets see how it performs in simulated sample of normally distributed data… Close enough!!</p>

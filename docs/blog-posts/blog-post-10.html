@@ -87,7 +87,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="..//images/favicon.png" rel="icon" type="image/png">
+<link href="..//images/favicon.png?v=3f9fdf5a" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -166,7 +166,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../styles.css?v=72cec098">
 <meta property="og:title" content="Individual Person Data (IPD) Meta-Analysis with Beta Regression in a Repeated-Measures Cross-Over Design – Matthew B. Jané">
 <meta property="og:description" content="I worked on a meta-analysis along with my good friend Tylor J. Harlow on the effect of acoustic stimulations during slow-wave on memory retention. Since we have some individual participant data, I thought it would be fun to conduct an Individual Person Data (IPD) meta-analysis on it. Let me know if you have suggestions to improve this post.">
 <meta property="og:image" content="https://matthewbjane.com/blog-posts/images/blog-image.png">
@@ -191,7 +191,7 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../images/logo/logo-navbar.png" alt="Matthew B. Jané" class="navbar-logo">
+    <img src="../images/logo/logo-navbar.png?v=68b7d2e4" alt="Matthew B. Jané" class="navbar-logo">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -435,7 +435,7 @@ Code
 </details>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="figures/blog-post-10-fig1.png" class="img-fluid figure-img"></p>
+<p><img src="figures/blog-post-10-fig1.png?v=32e2bb0e" class="img-fluid figure-img"></p>
 <figcaption>Distributions of pre-sleep scores by study. The dashed line denotes the 50:50 correct/incorrect value (<span class="math inline">\(p_\mathrm{pre} = .5\)</span>)</figcaption>
 </figure>
 </div>
@@ -494,7 +494,7 @@ Code
 <span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Study-level effects"</span>, <span class="at">subtitle =</span> <span class="st">"with 50% and 95% intervals"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="figures/blog-post-10-fig2.png" class="img-fluid figure-img"></p>
+<p><img src="figures/blog-post-10-fig2.png?v=77d3c4a6" class="img-fluid figure-img"></p>
 <figcaption>Study-level posterior estimates of the expected value of <span class="math inline">\(\delta\)</span></figcaption>
 </figure>
 </div>
@@ -526,7 +526,7 @@ Code
 <span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Mean effect"</span>, <span class="at">subtitle =</span> <span class="st">"with 50% and 95% intervals"</span>) <span class="sc">+</span></span>
 <span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">round</span>(<span class="fu">seq</span>(<span class="sc">-</span>.<span class="dv">15</span>,.<span class="dv">15</span>,<span class="at">by=</span>.<span class="dv">05</span>),<span class="dv">2</span>)) <span class="sc">+</span></span>
 <span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="figures/blog-post-10-fig3.png" class="img-fluid"></p>
+<p><img src="figures/blog-post-10-fig3.png?v=d08d3985" class="img-fluid"></p>
 <p>As we can see there is little/no <em>average</em> effect of the stim condition 0.012 [-0.047, 0.069]. The estimate suggests there is about a 1% in recall probability difference from stim to sham.</p>
 <p>Let’s now obtain the credibility intervals which tells us what in what range of <span class="math inline">\(\delta\)</span> do <em>X%</em> of study effects fall. The figure below will show 50, 80, and 95% credibility intervals. To do this in <code>brms</code> I am like 99% sure we just need to incorporate all the study-level random effects in the <code>re_formula</code> argument again. Therefore we would want to specify it as <code>re_formula = ~(1+p_pre+condition|study)</code>.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>nd <span class="ot">&lt;-</span> <span class="fu">data_grid</span>(<span class="at">condition =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>,</span>
@@ -551,7 +551,7 @@ Code
 <span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">""</span>) <span class="sc">+</span></span>
 <span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Credibility intervals"</span>, <span class="at">subtitle =</span> <span class="st">"Intervals where 50,80,95% of study effects fall"</span>) <span class="sc">+</span></span>
 <span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="figures/blog-post-10-fig4.png" class="img-fluid"></p>
+<p><img src="figures/blog-post-10-fig4.png?v=0df45369" class="img-fluid"></p>
 </section>
 <section id="diagnostics" class="level4">
 <h4 class="anchored" data-anchor-id="diagnostics">Diagnostics</h4>
@@ -567,7 +567,7 @@ Code
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> <span class="fu">element_markdown</span>(),</span>
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"arial"</span>), </span>
 <span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">aspect.ratio =</span> .<span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="figures/blog-post-10-fig5.png" class="img-fluid"></p>
+<p><img src="figures/blog-post-10-fig5.png?v=625e42bc" class="img-fluid"></p>
 <p>The predictive check looks quite good!</p>
 <p>Anyways… thats the post. Let me know if you have any suggestions or critiques.</p>
 </section>

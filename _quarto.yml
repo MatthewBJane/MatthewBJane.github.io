@@ -1,6 +1,8 @@
 project:
   type: website
   output-dir: docs
+  post-render:
+    - scripts/cache_bust.py   # version tags on our CSS/JS so returning visitors get fresh files
   resources:
     - CNAME   # keeps the custom domain (matthewbjane.com) when docs/ is rebuilt
     - "/images/social-card.png"
