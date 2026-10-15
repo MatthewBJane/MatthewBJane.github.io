@@ -1,6 +1,6 @@
 ---
 title: "POSC Simulator"
-description: "Interactive probability of outcome superiority curves (POSCs): the chance that someone who scores higher on a predictor also scores higher on an outcome, for any size of difference."
+description: "Probability of outcome superiority curves (POSCs) show the chance that someone who scores higher on a predictor also scores higher on an outcome, for any size of difference."
 toc: false
 page-layout: full
 resources:
@@ -8,7 +8,7 @@ resources:
   - artifact-simulator/simulator.css
 ---
 
-A correlation says how strongly a predictor and an outcome are related, but not what that means for two particular people. A **probability of outcome superiority curve (POSC)** answers that directly: if person A scores higher than person B on the predictor, how likely is A to also score higher on the outcome, and how does that change as the gap between them grows? Set the correlation, drag along the curve, compare two curves, or combine two predictors. This is the browser version of the [posc R package](https://github.com/MatthewBJane/posc); everything runs in your browser.
+A correlation says how strongly a predictor and an outcome are related, but not what that means for two particular people. A probability of outcome superiority curve (POSC) asks a more concrete question. If person A scores higher than person B on the predictor, how likely is A to also score higher on the outcome, and how does that probability change as the gap between them grows? This page is a browser version of my [posc R package](https://github.com/MatthewBJane/posc).
 
 ```{=html}
 <link rel="stylesheet" href="artifact-simulator/simulator.css">
@@ -59,14 +59,14 @@ A correlation says how strongly a predictor and an outcome are related, but not 
 
 ## Reading the output
 
-- **The curve** gives, for each difference between two people on the predictor, the probability that the person with the higher predictor score also has the higher outcome. It starts at 50% (no difference, a coin flip) and rises toward 100% as the gap grows; the stronger the correlation, the faster it rises. With a negative correlation it gives the probability of a *lower* outcome.
-- **The shaded band** is the confidence band, from the confidence interval for the correlation at the chosen sample size.
-- **Drag along the plot** (or use the slider) to read the curve at any difference. The sentence under the plot says what that point means in plain language.
-- **Overall probability of superiority** is the same probability for two people picked at random, whatever their difference: $\tfrac{1}{2} + \arcsin(r)/\pi$.
-- **Difference for a 75% chance** is how far apart two people need to be on the predictor before the higher scorer has a 75% chance of the better outcome.
-- **Compare with a second curve** overlays a second correlation (another predictor, or another study) and tests whether the two correlations differ (Fisher's *z*).
-- **Composite of two** combines two predictors with regression weights and draws the curve for the combination.
-- **Copy link** saves the settings in the page address. **PNG** and **SVG** download the plot.
+- *The curve* gives, for each difference between two people on the predictor, the probability that the person with the higher predictor score also has the higher outcome. It starts at 50% when there is no difference and rises toward 100% as the gap grows. The stronger the correlation, the faster it rises. With a negative correlation it gives the probability of a *lower* outcome.
+- *The shaded band* is the confidence band, from the confidence interval for the correlation at the chosen sample size.
+- *Drag along the plot* (or use the slider) to read the curve at any difference. The sentence under the plot describes that point in words.
+- *Overall probability of superiority* is the same probability for two people picked at random, whatever their difference: $\tfrac{1}{2} + \arcsin(r)/\pi$.
+- *Difference for a 75% chance* is how far apart two people need to be on the predictor before the higher scorer has a 75% chance of the better outcome.
+- *Compare with a second curve* overlays a second correlation (another predictor, or another study) and tests whether the two correlations differ (Fisher's *z*).
+- *Composite of two* combines two predictors with regression weights and draws the curve for the combination.
+- *Copy link* saves the settings in the page address. *PNG* and *SVG* download the plot.
 
 ## How it works
 

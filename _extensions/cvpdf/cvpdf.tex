@@ -48,35 +48,48 @@
 \linespread{1.03}
 
 % ---- footer: name on the left, page x of y on the right ----
+% document label (kicker above the name, and the footer) and the summary's side
+% bar. A document can override them in its front matter with header-includes,
+% e.g. the private resume: \def\cvdoclabel{Resume}
+\providecommand{\cvdoclabel}{Curriculum Vitae}
+\providecommand{\cvleadbar}{{\color{cvaccent}\vrule width 2.2pt}}
+% optional text after the name, same size but not bold (e.g. \def\cvnamesuffix{PhD Candidate})
+\providecommand{\cvnamesuffix}{}
+
 \makeatletter
 \fancypagestyle{cv}{%
   \fancyhf{}%
   \renewcommand\headrulewidth{0pt}%
   \renewcommand\footrulewidth{0pt}%
-  \fancyfoot[L]{{\scriptsize\color{cvmuted}\@title\ \textperiodcentered\ Curriculum Vitae}}%
+  \fancyfoot[L]{{\scriptsize\color{cvmuted}\@title\ \textperiodcentered\ \cvdoclabel}}%
   \fancyfoot[R]{{\scriptsize\color{cvmuted}Page \thepage\ of \pageref*{LastPage}}}}
 \fancypagestyle{plain}{\pagestyle{cv}}
 \pagestyle{cv}
 
 % ---- header: small kicker, name, roles, contact line, then a full-width rule ----
 \renewcommand{\maketitle}{%
-  {\scriptsize\bfseries\color{cvmuted}\addfontfeatures{LetterSpace=14}CURRICULUM VITAE\par}%
+  {\scriptsize\bfseries\color{cvmuted}\addfontfeatures{LetterSpace=14}\MakeUppercase{\cvdoclabel}\par}%
   \vspace{3pt}%
-  {\bfseries\fontsize{24}{28}\selectfont\color{cvink}\@title\par}%
+  {\fontsize{24}{28}\selectfont{\bfseries\color{cvink}\@title}%
+   \ifx\cvnamesuffix\empty\else{\hspace{0.4em}{\color{cvmuted}\textbar}\hspace{0.4em}\color{cvink}\cvnamesuffix}\fi\par}%
   \vspace{2pt}}
 \makeatother
 
 % roles line: "A \cvdot B \cvdot C" (the cv extension splits the headline on "·")
 \newcommand{\cvdot}{\hspace{0.45em}{\color{cvaccent}\textbullet}\hspace{0.45em}}
+% with a corner logo, the roles and contact lines wrap short of it
+\newlength{\cvheadw}\AtBeginDocument{\setlength{\cvheadw}{\linewidth}}   % full width unless a logo is set
 \newcommand{\cvheadline}[1]{%
-  {\small\bfseries\color{cvgrey}#1\par}\vspace{4pt}}
-\newcommand{\cvsep}{\hspace{0.5em}{\color{cvrule}\textbar}\hspace{0.5em}}
-\newcommand{\cvcontact}[1]{{\footnotesize\color{cvgrey}#1\par}\vspace{6pt}%
+  \noindent\parbox[t]{\cvheadw}{\raggedright\small\bfseries\color{cvgrey}#1\strut}\par\vspace{4pt}}
+% separator between contact items; disappears if the line breaks there
+\newcommand{\cvsep}{\discretionary{}{}{\mbox{\hspace{0.5em}\textcolor{cvrule}{\textbar}\hspace{0.5em}}}}
+\newcommand{\cvcontact}[1]{\noindent\parbox[t]{\cvheadw}{\raggedright\footnotesize\color{cvgrey}#1\strut}\par\vspace{6pt}%
   {\color{cvaccent}\rule{\linewidth}{1.2pt}}\par\vspace{2pt}}
 
 % logo in the top-right corner of the first page, aligned with the top margin
 \newlength{\cvlogoh}\setlength{\cvlogoh}{0.62in}
 \newcommand{\cvlogo}[1]{%
+  \setlength{\cvheadw}{\dimexpr\linewidth-\cvlogoh-1.2em\relax}%
   \AddToShipoutPictureFG*{\AtPageUpperLeft{%
     \put(\LenToUnit{\dimexpr\paperwidth-0.7in-\cvlogoh\relax},\LenToUnit{\dimexpr-0.55in-\cvlogoh\relax}){%
       \includegraphics[height=\cvlogoh]{#1}}}}}
@@ -84,7 +97,7 @@
 % summary as a lead paragraph with an accent bar on the left
 \newenvironment{cvlead}{%
   \par\vspace{4pt}%
-  \def\FrameCommand{{\color{cvaccent}\vrule width 2.2pt}\hspace{9pt}}%
+  \def\FrameCommand{\cvleadbar\hspace{9pt}}%
   \MakeFramed{\advance\hsize-\width\FrameRestore}%
   \linespread{1.12}\selectfont\color{cvink}}%
   {\par\endMakeFramed\vspace{2pt}}

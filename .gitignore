@@ -11,3 +11,5 @@ _private/
 
 # old default Quarto output folder (the site builds into docs/)
 /_site/
+
+**/*.quarto_ipynb

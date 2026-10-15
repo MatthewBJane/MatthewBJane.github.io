@@ -484,7 +484,7 @@
     clone.insertBefore(bg, clone.firstChild);
     var tx = document.createElementNS(NS, "text");
     tx.setAttribute("x", 0); tx.setAttribute("y", -12);
-    tx.setAttribute("style", "font-family:Roboto,Helvetica,Arial,sans-serif;font-size:13px;font-weight:600;fill:" + bs.color);
+    tx.setAttribute("style", "font-family:Source Serif 4,Georgia,serif;font-size:13px;font-weight:600;fill:" + bs.color);
     tx.textContent = last; clone.appendChild(tx);
     return new XMLSerializer().serializeToString(clone);
   }

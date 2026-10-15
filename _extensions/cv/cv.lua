@@ -294,7 +294,10 @@ function S.contact()
     else
       if i > 1 then out:insert(tex("\\cvsep ")) end
       -- items without a url (e.g. a mailing address) are plain text
+      -- each item stays on one line; lines only break at the separators
+      out:insert(tex("\\mbox{"))
       if has(c.url) then out:insert(pandoc.Link(inl(c.label), str(c.url))) else out:extend(inl(c.label)) end
+      out:insert(tex("}"))
     end
     end
   end
@@ -539,9 +542,12 @@ function S.publications(kwargs)
     want = {}
     for t in str(kwargs["type"]):gmatch("[^,%s]+") do want[t] = true end
   end
+  -- selected="true": only entries marked `selected: true` (homepage list)
+  local only_selected = kwargs and has(kwargs["selected"]) and str(kwargs["selected"]) == "true"
   local items = {}
   for _, e in ipairs(m.entries or {}) do
-    if want == nil or want[str(e.type)] then
+    if (want == nil or want[str(e.type)])
+       and (not only_selected or (e.selected ~= nil and str(e.selected) == "true")) then
       local c = cat(inl(e.authors), " (", inl(e.year), ") ", inl(e.title))
       if not ends_punct(e.title) then c:insert(pandoc.Str(".")) end
       if has(e.venue) then

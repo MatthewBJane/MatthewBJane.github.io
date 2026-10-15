@@ -45,6 +45,7 @@ website:
             text: POSC Simulator
       - href: https://auditclinicalevidence.org
         text: ACE
+        aria-label: "Audit Clinical Evidence (ACE), opens another site"
     right:
       - icon: github
         href: https://www.github.com/MatthewBJane
@@ -67,12 +68,11 @@ format:
     css: styles.css
     toc: true
     toc-title: "Sections"
-    mainfont: "Roboto, sans-serif"
-    monofont: "Roboto Mono, monospace"
-    # Math: MathJax 4 with Fira Math (a sans math font that matches Roboto),
-    # as on ACE. ACE uses html-math-method: plain; the archived blog posts are
-    # math-heavy, so here pandoc emits TeX delimiters for MathJax to typeset
-    # everything (plain would turn simple math into HTML italics).
+    mainfont: "Source Serif 4, Georgia, serif"
+    monofont: "JetBrains Mono, ui-monospace, monospace"
+    # Math: MathJax 4 with New Computer Modern, the LaTeX look, which sits
+    # well next to Source Serif. Pandoc emits TeX delimiters so MathJax
+    # typesets everything in the (math-heavy) blog archive.
     html-math-method:
       method: mathjax
       url: "https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml-nofont.js"
@@ -80,7 +80,7 @@ format:
       text: |
         <script>
         window.MathJax = {
-          output: { font: "mathjax-fira" },
+          output: { font: "mathjax-newcm" },
           tex: {
             inlineMath:  [["\\(", "\\)"]],
             displayMath: [["\\[", "\\]"], ["$$", "$$"]]
@@ -98,7 +98,7 @@ format:
           (function () {
             function addPanelToggle() {
               var sidebar = document.getElementById("quarto-margin-sidebar");
-              if (!sidebar || document.querySelector(".ace-panel-toggle")) return;
+              if (!sidebar || document.querySelector(".mbj-panel-toggle")) return;
               var hasToc = !!sidebar.querySelector("nav[role='doc-toc'], #TOC");
               var hasCats = !!sidebar.querySelector(".quarto-listing-category");
               var hasLinks = !!sidebar.querySelector(".quarto-other-links, .quarto-alternate-formats");
@@ -106,16 +106,16 @@ format:
               var what = hasCats && !hasToc ? "categories" : "contents";
               var b = document.createElement("button");
               b.type = "button";
-              b.className = "ace-panel-toggle";
+              b.className = "mbj-panel-toggle";
               b.setAttribute("aria-expanded", "false");
               function setOpen(open) {
-                document.body.classList.toggle("ace-panel-open", open);
+                document.body.classList.toggle("mbj-panel-open", open);
                 b.setAttribute("aria-expanded", open ? "true" : "false");
                 b.setAttribute("aria-label", (open ? "Close " : "Open ") + what + " panel");
               }
               setOpen(false);
               b.addEventListener("click", function () {
-                setOpen(!document.body.classList.contains("ace-panel-open"));
+                setOpen(!document.body.classList.contains("mbj-panel-open"));
               });
               // close after choosing a section, a category, or the PDF, and on Escape
               sidebar.addEventListener("click", function (e) {
